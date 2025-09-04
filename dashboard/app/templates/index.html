@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mirachai Dashboard</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CDN (play) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            head: ['"Caveat Brush"', 'system-ui', 'sans-serif'],
+            body: ['Lato', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="font-body bg-white text-zinc-800">
+  <div class="max-w-6xl mx-auto px-4 py-6">
+    <!-- Header -->
+    <header class="flex items-center justify-between gap-4 mb-6">
+      <h1 class="font-head text-4xl">Mirachai</h1>
+      <div class="flex-1 max-w-xl">
+        <input id="q" type="text" placeholder="{{ config.labels_hu.search_placeholder or 'Keresés…' }}"
+               class="w-full border rounded-xl px-4 py-2 outline-none focus:ring" />
+      </div>
+      <button id="reset" class="border px-4 py-2 rounded-xl">Szűrők törlése</button>
+    </header>
+
+    <!-- Grid -->
+    <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+    <!-- Pager -->
+    <div class="flex items-center justify-center gap-2 mt-6">
+      <button id="prev" class="border px-3 py-2 rounded-xl">Előző</button>
+      <span id="page" class="px-2"></span>
+      <button id="next" class="border px-3 py-2 rounded-xl">Következő</button>
+    </div>
+  </div>
+
+  <script>
+    const state = { q: "", page: 1, per_page: 24 };
+    const grid = document.getElementById("grid");
+    const q = document.getElementById("q");
+    const pageEl = document.getElementById("page");
+
+    async function fetchTeas(){
+      const params = new URLSearchParams();
+      if(state.q) params.set("q", state.q);
+      params.set("page", state.page);
+      params.set("per_page", state.per_page);
+      const res = await fetch(`/api/teas?${params.toString()}`);
+      const total = Number(res.headers.get("X-Total-Count") || "0");
+      const data = await res.json();
+      renderGrid(data);
+      renderPager(total);
+    }
+    function renderGrid(items){
+      grid.innerHTML = items.map(t => `
+        <article class="border rounded-2xl p-4 shadow-sm hover:shadow">
+          <h3 class="font-head text-2xl mb-1">${t.name ?? ""}</h3>
+          <p class="text-sm text-zinc-600 mb-2">${t.category ?? ""}${t.subcategory ? " • " + t.subcategory : ""}</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            ${(t.tags || []).slice(0,3).map(x=>`<span class="text-xs border rounded-full px-2 py-0.5">${x}</span>`).join("")}
+          </div>
+          <div class="text-sm">
+            <strong>Forrázás:</strong>
+            ${(t.tempC ?? "—")}°C • ${(t.steepMin ?? "—")} perc
+          </div>
+        </article>
+      `).join("");
+    }
+    function renderPager(total){
+      const maxPage = Math.max(1, Math.ceil(total / state.per_page));
+      pageEl.textContent = `${state.page} / ${maxPage}`;
+      document.getElementById("prev").disabled = (state.page <= 1);
+      document.getElementById("next").disabled = (state.page >= maxPage);
+    }
+    q.addEventListener("input", (e)=>{
+      state.q = e.target.value;
+      state.page = 1;
+      fetchTeas();
+    });
+    document.getElementById("reset").addEventListener("click", ()=>{
+      state.q = "";
+      q.value = "";
+      state.page = 1;
+      fetchTeas();
+    });
+    document.getElementById("prev").addEventListener("click", ()=>{ state.page=Math.max(1,state.page-1); fetchTeas(); });
+    document.getElementById("next").addEventListener("click", ()=>{ state.page=state.page+1; fetchTeas(); });
+
+    fetchTeas();
+  </script>
+</body>
+</html>

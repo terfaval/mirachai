@@ -1,0 +1,9 @@
+:root{
+  --color-primary: #222222;
+  --color-accent: #6B8E23;
+  --color-border: #EAEAEA;
+}
+*{box-sizing:border-box}
+body{background:var(--bg, #fff);}
+.border{border-color:var(--color-border);}
+a{color:var(--color-accent);}

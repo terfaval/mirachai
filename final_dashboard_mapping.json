@@ -1,0 +1,163 @@
+{
+  "version": 2,
+  "brand": {
+    "name": "Mirachai",
+    "logo": "/static/logo.svg"
+  },
+  "typography": {
+    "head": "Caveat Brush",
+    "body": "Lato",
+    "scale": {
+      "h1": {
+        "size": "48px",
+        "weight": 400,
+        "letterSpacing": "0.2px"
+      },
+      "h2": {
+        "size": "36px",
+        "weight": 400,
+        "letterSpacing": "0.2px"
+      },
+      "h3": {
+        "size": "28px",
+        "weight": 400,
+        "letterSpacing": "0.2px"
+      },
+      "body": {
+        "size": "16px",
+        "weight": 400
+      },
+      "label": {
+        "size": "12px",
+        "weight": 700,
+        "letterSpacing": "0.3px"
+      },
+      "button": {
+        "size": "15px",
+        "weight": 700
+      }
+    }
+  },
+  "colors": {
+    "text": "#1B1B1B",
+    "bg": "#FFFFFF",
+    "surface": "#F7F7F5",
+    "border": "#E6E4DE",
+    "primary": "#356859",
+    "primary-ink": "#103A34",
+    "accent": "#E6AA68",
+    "accent-ink": "#7A4E20",
+    "highlight": "#90B77D",
+    "muted": "#9AA0A6",
+    "danger": "#C05252"
+  },
+  "elevation": {
+    "card": "0 1px 2px rgba(16,24,40,0.06), 0 1px 3px rgba(16,24,40,0.10)",
+    "hover": "0 4px 10px rgba(16,24,40,0.12)"
+  },
+  "labels_hu": {
+    "search_placeholder": "Keresés név vagy összetevő szerint…",
+    "filters_title": "Szűrők",
+    "reset_filters": "Szűrők törlése",
+    "details": "Részletek",
+    "ingredients": "Összetevők",
+    "brewing": "Forrázási javaslat",
+    "quantity": "Mennyiség",
+    "temperature": "Hőfok (°C)",
+    "steep_time": "Áztatási idő (perc)",
+    "serve": "Fogyasztás",
+    "caffeine": "Koffein",
+    "season": "Évszak",
+    "daytime": "Napszak",
+    "tags": "Címkék",
+    "favorites": "Kedvencek"
+  },
+  "filters": [
+    {
+      "key": "category",
+      "type": "single",
+      "label": "Kategória"
+    },
+    {
+      "key": "subcategory",
+      "type": "single",
+      "label": "Alkategória"
+    },
+    {
+      "key": "mood_short",
+      "type": "multi",
+      "label": "Hangulat"
+    },
+    {
+      "key": "caffeineLevel",
+      "type": "single",
+      "label": "Koffein"
+    },
+    {
+      "key": "timeSeason",
+      "type": "multi",
+      "label": "Évszak"
+    },
+    {
+      "key": "serve",
+      "type": "multi",
+      "label": "Fogyasztás"
+    }
+  ],
+  "value_maps": {
+    "caffeineLevel": {
+      "alacsony": {
+        "label": "Alacsony",
+        "icon": "🌿"
+      },
+      "közepes": {
+        "label": "Közepes",
+        "icon": "⚖️"
+      },
+      "magas": {
+        "label": "Magas",
+        "icon": "⚡"
+      },
+      "mentes": {
+        "label": "Mentes",
+        "icon": "0️⃣"
+      }
+    },
+    "timeDay": {
+      "reggel": {
+        "label": "Reggel"
+      },
+      "délelőtt": {
+        "label": "Délelőtt"
+      },
+      "délután": {
+        "label": "Délután"
+      },
+      "este": {
+        "label": "Este"
+      },
+      "étkezés után": {
+        "label": "Étkezés után",
+        "aliasOf": "délután"
+      }
+    },
+    "serve": {
+      "forrón": {
+        "label": "Forrón",
+        "default": true
+      },
+      "jegesen": {
+        "label": "Jegesen"
+      },
+      "langyosan": {
+        "label": "Langyosan"
+      }
+    }
+  },
+  "ui_flags": {
+    "show_favorites": true,
+    "enable_url_state": true,
+    "show_allergens": false,
+    "rounded": "xl"
+  }
+}
