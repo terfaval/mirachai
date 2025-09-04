@@ -2,6 +2,16 @@ const state = { q: "", page: 1, per_page: 12 };
 const grid = document.getElementById("grid");
 const q = document.getElementById("q");
 
+const categoryColors = {
+  "Energia & Fókusz": "#FFE08A",
+  "Gyümölcs & Virág": "#FFD1DC",
+  "Immunitás & Tisztulás": "#C7E9B0",
+  "Különleges Tradíciók": "#F0E68C",
+  "Nyugalom & Álmodás": "#C3B1E1",
+  "Spirituális & Meditatív": "#BDE0FE",
+  "Élmény & Szezonális": "#FFDAC1"
+};
+
 async function fetchTeas(){
   const params = new URLSearchParams();
   if (state.q) params.set("q", state.q);
@@ -12,19 +22,21 @@ async function fetchTeas(){
   renderGrid(data);
 }
 function renderGrid(items){
-  grid.innerHTML = items.map(t => `
-    <article class="border rounded-2xl p-4 shadow-sm hover:shadow">
-      <h3 class="font-head text-2xl mb-1">${t.name ?? ""}</h3>
-      <p class="text-sm text-zinc-600 mb-2">${t.category ?? ""}${t.subcategory ? " • " + t.subcategory : ""}</p>
-      <div class="flex flex-wrap gap-2 mb-3">
-        ${(t.tags || []).slice(0,3).map(x=>`<span class="text-xs border rounded-full px-2 py-0.5">${x}</span>`).join("")}
+  grid.innerHTML = items.map(t => {
+    const color = categoryColors[t.category] || "#ffffff";
+    return `
+      <div class="p-4 bg-[#3e1f0d] rounded-md">
+        <article class="flex flex-col items-center text-center gap-y-1 p-6 rounded-full" style="background-color: ${color};">
+          <h3 class="font-bold text-lg text-black">${t.name ?? ""}</h3>
+          <p class="text-base text-gray-800">${t.mood_short ?? ""}</p>
+          <div class="flex flex-col gap-y-1 text-sm text-gray-700">
+            <p>${t.subcategory ?? ""}</p>
+            ${(t.tags || []).slice(0,2).map(x=>`<p>${x}</p>`).join("")}
+          </div>
+        </article>
       </div>
-      <div class="text-sm">
-        <strong>Forrázás:</strong>
-        ${(t.tempC ?? "—")}°C • ${(t.steepMin ?? "—")} perc
-      </div>
-    </article>
-  `).join("");
+    `;
+  }).join("");
 }
 q.addEventListener("input", (e)=>{
   state.q = e.target.value;

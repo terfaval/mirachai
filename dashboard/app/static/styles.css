@@ -4,6 +4,12 @@
   --color-border: #EAEAEA;
 }
 *{box-sizing:border-box}
-body{background:var(--bg, #fff);}
+body{
+  background-color: var(--bg, #fff);
+  background-image: url('/static/images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 .border{border-color:var(--color-border);}
 a{color:var(--color-accent);}
