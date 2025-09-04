@@ -2,15 +2,7 @@ const state = { q: "", page: 1, per_page: 12 };
 const grid = document.getElementById("grid");
 const q = document.getElementById("q");
 
-const categoryColors = {
-  "Energia & Fókusz": "#FFE08A",
-  "Gyümölcs & Virág": "#FFD1DC",
-  "Immunitás & Tisztulás": "#C7E9B0",
-  "Különleges Tradíciók": "#F0E68C",
-  "Nyugalom & Álmodás": "#C3B1E1",
-  "Spirituális & Meditatív": "#BDE0FE",
-  "Élmény & Szezonális": "#FFDAC1"
-};
+const categoryColors = window.CATEGORY_COLORS || {};
 
 async function fetchTeas(){
   const params = new URLSearchParams();
@@ -24,15 +16,13 @@ async function fetchTeas(){
 function renderGrid(items){
   grid.innerHTML = items.map(t => {
     const color = categoryColors[t.category] || "#ffffff";
+    const tags = [t.subcategory, ...(t.tags || []).slice(0,2)].filter(Boolean).join(', ');
     return `
-      <div class="p-4 bg-[#3e1f0d] rounded-md">
-        <article class="flex flex-col items-center text-center gap-y-1 p-6 rounded-full" style="background-color: ${color};">
-          <h3 class="font-bold text-lg text-black">${t.name ?? ""}</h3>
-          <p class="text-base text-gray-800">${t.mood_short ?? ""}</p>
-          <div class="flex flex-col gap-y-1 text-sm text-gray-700">
-            <p>${t.subcategory ?? ""}</p>
-            ${(t.tags || []).slice(0,2).map(x=>`<p>${x}</p>`).join("")}
-          </div>
+      <div class="bg-[#3E2515] rounded-lg shadow-inner drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)]">
+        <article class="py-3 px-4 rounded-lg" style="background-color: ${color};">
+          <h2 class="font-cim text-xl font-bold">${t.name ?? ""}</h2>
+          <p class="font-torzs text-base italic">${t.mood_short ?? ""}</p>
+          <p class="font-torzs text-sm opacity-80">${tags}</p>
         </article>
       </div>
     `;

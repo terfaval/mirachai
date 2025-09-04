@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import json
 import unicodedata
 from functools import lru_cache
@@ -12,6 +13,7 @@ DASHBOARD_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = DASHBOARD_DIR.parent
 DATA_FILE = DASHBOARD_DIR / "data" / "teas.json"
 CONFIG_FILE = ROOT_DIR / "final_dashboard_mapping.json"
+COLORS_FILE = DASHBOARD_DIR / "data" / "tea_app_colors.csv"
 
 
 def load_json(path: Path):
@@ -38,6 +40,13 @@ def get_config() -> dict:
     return load_json(CONFIG_FILE)
 
 
+@lru_cache(maxsize=1)
+def get_category_colors() -> dict[str, str]:
+    with COLORS_FILE.open("r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        return {row["category"]: row["var1"] for row in reader}
+    
+    
 def matches_query(item: Tea, q: str | None) -> bool:
     if not q:
         return True

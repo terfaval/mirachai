@@ -13,6 +13,8 @@ venv/
 # Data and builds
 *.csv
 *.db
+!84_teadoboz.csv
+!dashboard/data/tea_app_colors.csv
 *.zip
 .DS_Store
 
