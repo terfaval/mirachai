@@ -16,3 +16,8 @@ def test_filter_by_category():
     teas = services.get_teas()
     filtered = services.filter_teas(teas, category="Immunitás & Tisztulás")
     assert all(t.category == "Immunitás & Tisztulás" for t in filtered)
+
+
+def test_get_category_colors():
+    colors = services.get_category_colors()
+    assert colors["Immunitás & Tisztulás"] == "#467209"

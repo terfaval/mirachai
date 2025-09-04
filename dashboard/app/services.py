@@ -44,9 +44,9 @@ def get_config() -> dict:
 def get_category_colors() -> dict[str, str]:
     with COLORS_FILE.open("r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        return {row["category"]: row["var1"] for row in reader}
+        return {row["Category"]: row["var1"] for row in reader}
     
-    
+
 def matches_query(item: Tea, q: str | None) -> bool:
     if not q:
         return True
