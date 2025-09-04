@@ -1,22 +1,40 @@
 # Mirachai – Teadoboz Dashboard
 
 Ez a projekt egy FastAPI-alapú dashboard, amely a Mirachai 84-féle tea adatbázisát kezeli és vizualizálja.
-A cél: egy WordPress oldalba ágyazható, kereshető és szűrhető teaválasztó felület kialakítása, egyedi designnal.
+Célja egy WordPress oldalba ágyazható, kereshető és szűrhető teaválasztó felület kialakítása.
 
-## Főbb fájlok és mappák
+## Telepítés
 
-- `84_teadoboz.csv` – Nyers teaadatbázis
-- `final_dashboard_mapping.json` – Dashboard szűrők, címkék, színek, label‑ek
-- `data/teas.json` – Normalizált adatbázis (backendhez)
-- `dashboard/` – Python + FastAPI + Jinja alapú megjelenítő
-- `config/dashboard_mapping.json` – Régi mapping (javasolt törölni vagy egységesíteni)
-- `mirachai_logo.svg` – Projekt logó
-- `requirements.txt` – Python könyvtárak
-- `CODEX_PROMPT.md` – Fejlesztési utasítás Codex számára
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r dashboard/requirements.txt
+```
+
+## Futtatás
+
+```bash
+uvicorn dashboard.app.main:app --reload
+# Böngészőben: http://127.0.0.1:8000/
+```
+
+## Fejlesztés
+
+- Adatforrás: `84_teadoboz.csv` → `dashboard/data/teas.json`
+- Konfiguráció: `final_dashboard_mapping.json`
+- Alkalmazás modulok a `dashboard/app/` mappában: `main.py`, `routes.py`, `services.py`, `models.py`
+- Frontend sablon: `dashboard/app/templates/index.html`
+- Statikus fájlok: `dashboard/app/static/`
+
+### Tesztek
+
+```bash
+pytest
+```
 
 ## TODO / Fejlesztendők
 
 - Szűrők teljes körű implementálása
 - Mobilbarát reszponzív frontend
 - WordPress beágyazás iframe-ként
-- `.gitignore`, tesztek, CI integráció
+- CI integráció

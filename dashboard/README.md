@@ -23,10 +23,14 @@ uvicorn app.main:app --reload
 ```
 
 ## Struktúra
-- `app/main.py` – FastAPI app, / és /api végpontok
+- `app/main.py` – FastAPI indítás
+- `app/routes.py` – végpontok
+- `app/services.py` – adatbetöltés és szűrés
+- `app/models.py` – típusdefiníciók
 - `app/templates/index.html` – Jinja UI (Tailwind CDN, Caveat Brush + Lato)
+- `app/static/` – CSS és JS
 - `data/teas.json` – normalizált teák
-- `config/dashboard_mapping.json` – globális mapping (tipó, színek, label-ek, szűrők)
+- `../final_dashboard_mapping.json` – globális mapping (tipó, színek, label-ek, szűrők)
 
 ## Codex prompt (fejlesztési feladatlista)
 Lásd: `CODEX_PROMPT.md`

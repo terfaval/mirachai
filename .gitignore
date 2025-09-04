@@ -8,11 +8,11 @@ venv/
 .env
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.ipynb_checkpoints/
 
 # Data and builds
 *.csv
-*.json
+*.db
 *.zip
 .DS_Store
 
@@ -21,3 +21,6 @@ venv/
 *.swo
 .idea/
 .vscode/
+
+# Node modules
+node_modules/
