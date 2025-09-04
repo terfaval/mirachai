@@ -1,18 +1,15 @@
-const state = { q: "", page: 1, per_page: 24 };
+const state = { q: "", page: 1, per_page: 12 };
 const grid = document.getElementById("grid");
 const q = document.getElementById("q");
-const pageEl = document.getElementById("page");
 
 async function fetchTeas(){
   const params = new URLSearchParams();
-  if(state.q) params.set("q", state.q);
+  if (state.q) params.set("q", state.q);
   params.set("page", state.page);
   params.set("per_page", state.per_page);
   const res = await fetch(`/api/teas?${params.toString()}`);
-  const total = Number(res.headers.get("X-Total-Count") || "0");
   const data = await res.json();
   renderGrid(data);
-  renderPager(total);
 }
 function renderGrid(items){
   grid.innerHTML = items.map(t => `
@@ -29,24 +26,9 @@ function renderGrid(items){
     </article>
   `).join("");
 }
-function renderPager(total){
-  const maxPage = Math.max(1, Math.ceil(total / state.per_page));
-  pageEl.textContent = `${state.page} / ${maxPage}`;
-  document.getElementById("prev").disabled = (state.page <= 1);
-  document.getElementById("next").disabled = (state.page >= maxPage);
-}
 q.addEventListener("input", (e)=>{
   state.q = e.target.value;
   state.page = 1;
   fetchTeas();
 });
-document.getElementById("reset").addEventListener("click", ()=>{
-  state.q = "";
-  q.value = "";
-  state.page = 1;
-  fetchTeas();
-});
-document.getElementById("prev").addEventListener("click", ()=>{ state.page=Math.max(1,state.page-1); fetchTeas(); });
-document.getElementById("next").addEventListener("click", ()=>{ state.page=state.page+1; fetchTeas(); });
-
 fetchTeas();
