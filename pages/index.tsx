@@ -12,7 +12,7 @@ interface HomeProps {
 
 export default function Home({ teas }: HomeProps) {
   const [query, setQuery] = useState('');
-  const filtered = filterTeas(teas, query).slice(0, 12);
+  const filtered = filterTeas(teas, query).slice(0, 9);
 
   return (
     <>
