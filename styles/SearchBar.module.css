@@ -1,10 +1,7 @@
 .search {
   width: 40vw;
-  margin: 20px auto;
   padding: 8px;
   font-size: 0.8rem;
   border-radius: 50px;
-  border: 0px;
-  display: block;
-  align: right;
+  border: 0;
 }

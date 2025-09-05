@@ -3,7 +3,6 @@ import { useState } from 'react';
 import path from 'path';
 import { promises as fs } from 'fs';
 import TeaGrid from '../components/TeaGrid';
-import SearchBar from '../components/SearchBar';
 import Header from '../components/Header';
 import { filterTeas, Tea } from '../utils/filter';
 
@@ -17,8 +16,7 @@ export default function Home({ teas }: HomeProps) {
 
   return (
     <>
-      <Header />
-      <SearchBar query={query} onChange={setQuery} />
+      <Header query={query} onChange={setQuery} />
       <TeaGrid teas={filtered} />
     </>
   );

@@ -2,23 +2,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 150px 10px 40px;
 }
 
 .logo {
-  height: 40px;
+  height: 120px;
+  fill: white;
 }
 
 .actions {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   align-items: center;
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
+  fill: white;
 }
 
 .iconContainer {
@@ -31,7 +33,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  color: #fff;
+  color: #000;
   background: transparent;
   font-size: 0.75rem;
   padding: 2px 4px;
