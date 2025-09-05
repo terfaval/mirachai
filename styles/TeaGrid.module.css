@@ -1,11 +1,25 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 200px);
-  grid-template-rows: repeat(3, 180px);
-  gap: 0px;
-  max-width: 80vw;
-  margin: 0 auto;
-  background: #3E2515;
-  border: 4px solid #6B4226;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 150px);
+  gap: 0;
+  width: 70%;
+  margin: 80px auto 0; /* 50px a tetején, auto oldalt, 0 alul */
+  max-height: 80%;
+}
+
+.cell {
+  border: 6px solid #80350E;
+  background: linear-gradient(180deg, #4A2912 0%, #321B0C 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* fontos: a háttér csak a border belsejéig érjen */
+  background-clip: padding-box;
+
+  /* csak belső árnyék (inset), két rétegben */
+  box-shadow:
+    inset -15px 15px 16px rgba(0,0,0,0.9), /* PPT szerinti irány belülre */
+    inset 0 0 10px rgba(0,0,0,0.5);
 }

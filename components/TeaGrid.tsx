@@ -10,7 +10,9 @@ export default function TeaGrid({ teas }: Props) {
   return (
     <div className={styles.grid}>
       {teas.map((tea) => (
-        <TeaCard key={tea.id} tea={tea} />
+        <div key={tea.id} className={styles.cell}>
+          <TeaCard tea={tea} />
+        </div>
       ))}
     </div>
   );
