@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mirachai Dashboard</title>
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Mansalva&family=Swanky+and+Moo+Moo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&family=Lato&display=swap" rel="stylesheet">
   <!-- Tailwind CDN (play) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/static/styles.css">
@@ -13,6 +13,7 @@
 <body class="font-torzs text-zinc-800">
   <div class="max-w-6xl mx-auto px-4 py-6">
     <!-- Header -->
+  <div class="px-4 py-6">
     <header class="flex items-center gap-4 mb-6">
       <img src="/static/images/mirachai_logo.svg" alt="Mirachai logó" class="w-24 h-auto" />
       <div class="relative w-[60%] max-w-xl ml-auto">
@@ -28,10 +29,10 @@
         </div>
       </div>
     </header>
-
-    <!-- Grid -->
-    <div id="grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 px-8 py-8"></div>
   </div>
+
+  <!-- Grid -->
+  <div id="grid" class="grid grid-cols-4 grid-rows-3 gap-0 mx-auto" style="width: 100vw;"></div>
   <script>
     window.CATEGORY_COLORS = { category_colors , tojson };
   </script>

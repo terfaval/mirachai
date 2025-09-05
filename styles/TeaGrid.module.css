@@ -1,0 +1,11 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: repeat(3, 180px);
+  gap: 16px;
+  max-width: 80vw;
+  margin: 0 auto;
+  background: #3E2515;
+  border: 4px solid #6B4226;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}

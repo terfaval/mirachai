@@ -1,0 +1,9 @@
+.search {
+  width: 80vw;
+  margin: 20px auto;
+  padding: 8px;
+  font-size: 1rem;
+  border: 2px solid #6B4226;
+  border-radius: 4px;
+  display: block;
+}

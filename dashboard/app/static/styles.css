@@ -14,10 +14,12 @@ body{
 .border{border-color:var(--color-border);}
 a{color:var(--color-accent);}
 
-.font-cim {
-  font-family: 'Mansalva', 'Swanky and Moo Moo', cursive;
-}
+@layer base {
+  .font-cim {
+    font-family: 'Swanky and Moo Moo', cursive;
+  }
 
-.font-torzs {
-  font-family: 'Lato', sans-serif;
+  .font-torzs {
+    font-family: 'Lato', sans-serif;
+  }
 }

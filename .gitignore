@@ -26,3 +26,42 @@ venv/
 
 # Node modules
 node_modules/
+
+# Next.js / Node build output
+.next/
+out/
+build/
+dist/
+
+# Caches
+.next/cache/
+.cache/
+.turbo/
+.swc/
+.eslintcache
+.stylelintcache
+
+# Local env fájlok (a sima .env már ignorált)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel/
+
+# Teszt/coverage artefaktok
+coverage/
+.pytest_cache/
+.mypy_cache/
+.tox/
+.playwright/
+test-results/
+.cypress/
+.cypress-cache/
+
+# Logok
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
