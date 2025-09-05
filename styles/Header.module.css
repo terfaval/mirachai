@@ -7,6 +7,10 @@
 
 .logo {
   height: 120px;
+}
+
+.logo svg {
+  filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.6));
   fill: white;
 }
 
@@ -20,6 +24,11 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
+  fill: white;
+}
+
+.icon svg {
+  filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.6));
   fill: white;
 }
 
