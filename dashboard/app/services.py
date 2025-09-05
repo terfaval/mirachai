@@ -11,7 +11,7 @@ from .models import Tea
 
 DASHBOARD_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = DASHBOARD_DIR.parent
-DATA_FILE = DASHBOARD_DIR / "data" / "teas.json"
+DATA_FILE = ROOT_DIR / "data" / "teas.json"
 CONFIG_FILE = ROOT_DIR / "final_dashboard_mapping.json"
 COLORS_FILE = DASHBOARD_DIR / "data" / "tea_app_colors.csv"
 

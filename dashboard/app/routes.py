@@ -1,36 +1,11 @@
 from __future__ import annotations
 
-from pathlib import Path
-from fastapi import APIRouter, Query, Request
-from fastapi.responses import HTMLResponse, JSONResponse
-from jinja2 import Environment, FileSystemLoader, select_autoescape
+from fastapi import APIRouter, Query
+from fastapi.responses import JSONResponse
 
-from .services import (
-    filter_teas,
-    get_category_colors,
-    get_config,
-    get_teas,
-)
+from .services import filter_teas, get_teas
 
-BASE = Path(__file__).resolve().parent
 router = APIRouter()
-
-env = Environment(
-    loader=FileSystemLoader(str(BASE / "templates")),
-    autoescape=select_autoescape(["html", "xml"]),
-)
-
-
-@router.get("/", response_class=HTMLResponse)
-async def index(request: Request, lang: str | None = "hu"):
-    template = env.get_template("index.html")
-    return template.render(
-        request=request,
-        config=get_config(),
-        lang=lang,
-        category_colors=get_category_colors(),
-    )
-
 
 @router.get("/api/teas")
 async def api_teas(
