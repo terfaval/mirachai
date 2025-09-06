@@ -7,14 +7,7 @@
 
 .logo {
   height: 120px;         /* nagyobb logo */
-  filter: brightness(0) invert(1); /* fehérre színezés, ha PNG/SVG */
-}
-
-/* 1) Inline SVG-k: engedjük ki a filtert a bounding boxból */
-.logo svg,
-.icon svg {
-  overflow: visible; /* fontos! különben a shadow levágódhat */
-  filter: drop-shadow(20px 20px 20px rgba(0,0,0,.65));
+  filter: brightness(0) invert(1) drop-shadow(2px 2px 3px rgba(0,0,0,0.6));
 }
 
 .actions {
@@ -27,7 +20,8 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1) drop-shadow(2px 2px 3px rgba(0,0,0,0.6));
+  gap: 20px;
 }
 
 .iconContainer {
@@ -40,7 +34,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  color: #000;
+  color: #FFF;
   background: transparent;
   font-size: 0.75rem;
   padding: 2px 4px;

@@ -16,8 +16,9 @@ export default function Header({ query, onChange }: Props) {
           <img src="/search.svg" className={`search-button ${styles.icon}`} alt="Keresés" />
           <span className={styles.tooltip}>Keresés</span>
         <div className={styles.iconContainer}>
-          </div>  <img src="/filter.svg" className={`filter-button ${styles.icon}`} alt="Szűrés" />
+          <img src="/filter.svg" className={`filter-button ${styles.icon}`} alt="Szűrés" />
           <span className={styles.tooltip}>Szűrés</span>
+        </div>
         </div>
       </div>
     </header>
