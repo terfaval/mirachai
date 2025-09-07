@@ -20,3 +20,11 @@ export function getCategoryColor(
   const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
   return entry?.[variant] ?? entry?.main ?? DEFAULT_COLOR;
 }
+
+export function getComplementaryColor(
+  category: string,
+  variant: ColorVariant = 'dark'
+): string {
+  const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
+  return entry?.[variant] ?? entry?.dark ?? DEFAULT_COLOR;
+}

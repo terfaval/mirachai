@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,10 +11,23 @@
   text-align: center;
   transition: transform 0.2s ease;
   transform-origin: center;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: scale(1.05);
+}
+
+.mandala {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  mask: url('/Mandala.svg') center/contain no-repeat;
+  -webkit-mask: url('/Mandala.svg') center/contain no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 .name {
@@ -26,4 +40,64 @@
   font-family: 'Lato', sans-serif;
   font-size: 0.6rem;
   color: #000;
+}
+
+.info {
+  display: flex;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 0.6rem;
+}
+
+.flavor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart {
+  width: 80px;
+  height: 80px;
+}
+
+.flavorList {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0 0;
+  width: 100%;
+}
+
+.flavorList li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.intensity {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot,
+.dotActive {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.dotActive {
+  background: #000;
+}
+
+.intensityLabel {
+  margin-top: 4px;
 }
