@@ -22,14 +22,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 800%;
-  height: 800%;
+  width: 1000%;
+  height: 1000%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   mask: url('/Mandala.svg') top left/100% 100% no-repeat;
   -webkit-mask: url('/Mandala.svg') top left/100% 100% no-repeat;
   opacity: 0.15;
+  fill: white;
   pointer-events: none;
 }
 

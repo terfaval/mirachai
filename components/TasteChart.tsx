@@ -35,6 +35,11 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
     ];
   });
 
+  const topEntries = entries
+    .filter(([, value]) => value > 0)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3);
+
   const center = size / 2;
   const maxRadius = center - 5;
 
@@ -77,7 +82,7 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
       </svg>
       {showLabels && (
         <div className={styles.labels}>
-          {entries.map(([label, value]) => (
+          {topEntries.map(([label, value]) => (
             <div key={label}>{label}: {value}</div>
           ))}
         </div>
