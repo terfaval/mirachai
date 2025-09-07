@@ -54,22 +54,21 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
       <div className={styles.mood}>{tea.mood_short}</div>
 
       <div className={styles.info}>
-        <div className={styles.flavor}>
-          {/* ⬅︎ előbb a labelek */}
-          <ul className={styles.flavorList}>
-            {flavors.map((f) => (
-              <li key={f.name}>
-                <span className={styles.flavorValue}>{f.value}</span>
-                <span className={styles.flavorName}>{f.name}</span>
-              </li>
-            ))}
-          </ul>
+        <div className={styles.info}>
+        {/* ⬅︎ előbb a labelek */}
+        <ul className={styles.flavorList}>
+          {flavors.map((f) => (
+            <li key={f.name}>
+              <span className={styles.flavorValue}>{f.value}</span>
+              <span className={styles.flavorName}>{f.name}</span>
+            </li>
+          ))}
+        </ul>
 
-          {/* ➜ utána a chart */}
-          {showChart && (
-            <TasteChart tea={tea} size={50} showLabels={false} />
-          )}
-        </div>
+        {/* ➜ utána a chart */}
+        {showChart && (
+          <TasteChart tea={tea} size={50} showLabels={false} />
+        )}
 
         <div className={styles.intensity}>
           <div className={styles.dots}>
@@ -84,6 +83,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
           <div className={styles.intensityLabel}>{tea.intensity}</div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

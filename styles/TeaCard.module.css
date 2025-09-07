@@ -78,23 +78,14 @@
   font-size: 0.6rem;
   position: relative;
   z-index: 1;
-}
-
-.flavor {
-  margin-left: 10px;
-  flex: 1;
-  display: flex;
-  flex-direction: row; /* lista balra, chart jobbra */
   align-items: center;
+  justify-content: space-between;
 }
-
-/* korábban bal oldali margó volt; mivel a lista most balra kerül,
-   ide jobb oldali margó kell, hogy legyen helye a chartnak */
 .flavorList {
   list-style: none;
   padding: 0;
-  margin: 0 8px 0 0; /* jobbra 8px hely a charttól */
-  width: auto;
+  margin: 0;
+  margin-left: 10px;
 }
 
 .flavorList li {
@@ -114,11 +105,11 @@
 }
 
 .intensity {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 10px;
 }
 
 .dots {
