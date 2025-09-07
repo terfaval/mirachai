@@ -9,9 +9,10 @@ interface Props {
   tileY: number;
   tilesX: number;
   tilesY: number;
+  onClick?: (tea: Tea) => void;
 }
 
-export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY }: Props) {
+export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: Props) {
   const color = getCategoryColor(tea.category);
   const mandalaColor = getCategoryColor(tea.category, 'white');
   const dotActiveColor = tea.intensity ? '#000' : getCategoryColor(tea.category, 'dark');
@@ -31,7 +32,11 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY }: Props) {
   const intensityLevel = intensityMap[tea.intensity ?? ''] ?? 0;
 
   return (
-    <div className={styles.card} style={{ backgroundColor: color }}>
+    <div
+      className={styles.card}
+      style={{ backgroundColor: color }}
+      onClick={() => onClick?.(tea)}
+    >
       <div
         className={styles.mandala}
         style={
@@ -41,7 +46,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY }: Props) {
             '--tiles-y': tilesY,
             '--tile-x': tileX,
             '--tile-y': tileY,
-            '--mandala-scale': 1.0, // itt állíthatsz nagyítást, pl. 1.3
+            '--mandala-scale': 1.5, // itt állíthatsz nagyítást, pl. 1.3
           } as React.CSSProperties
         }
       />

@@ -4,6 +4,7 @@ import { Tea } from '../utils/filter';
 
 interface Props {
   teas: Tea[];
+  onTeaClick?: (tea: Tea) => void;
 }
 
 const TILES_X = 3;
@@ -20,7 +21,7 @@ function compareIdAsc(a: any, b: any) {
   return String(a).localeCompare(String(b), 'hu', { numeric: true });
 }
 
-export default function TeaGrid({ teas }: Props) {
+export default function TeaGrid({ teas, onTeaClick }: Props) {
   // 1) kategóriánként ID szerint sorba rendezett teák
   const byCategory = new Map<string, Tea[]>();
   for (const t of teas) {
@@ -64,6 +65,7 @@ export default function TeaGrid({ teas }: Props) {
               tileY={tileY}
               tilesX={TILES_X}
               tilesY={TILES_Y}
+              onClick={onTeaClick}
             />
           </div>
         );

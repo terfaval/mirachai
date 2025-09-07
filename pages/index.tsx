@@ -4,6 +4,7 @@ import path from 'path';
 import { promises as fs } from 'fs';
 import TeaGrid from '../components/TeaGrid';
 import Header from '../components/Header';
+import TeaModal from '../components/TeaModal';
 import { filterTeas, Tea } from '../utils/filter';
 
 interface HomeProps {
@@ -11,13 +12,17 @@ interface HomeProps {
 }
 
 export default function Home({ teas }: HomeProps) {
+  const [selectedTea, setSelectedTea] = useState<Tea | null>(null);
   const [query, setQuery] = useState('');
   const filtered = filterTeas(teas, query).slice(0, 9);
 
   return (
     <>
       <Header query={query} onChange={setQuery} />
-      <TeaGrid teas={filtered} />
+      <TeaGrid teas={filtered} onTeaClick={setSelectedTea} />
+      {selectedTea && (
+        <TeaModal tea={selectedTea} onClose={() => setSelectedTea(null)} />
+      )}
     </>
   );
 }

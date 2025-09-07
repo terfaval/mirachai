@@ -12,6 +12,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   transform-origin: center;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -51,6 +52,8 @@
   background: currentColor; /* fallback, ha kéne */
   opacity: 0.18;
   filter: grayscale(100%);
+  transform: scale(var(--mandala-scale));
+  transform-origin: center;
 }
 
 /* ── Szöveg és infó ─────────────────────────────────────────────── */
