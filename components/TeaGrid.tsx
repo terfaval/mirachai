@@ -7,11 +7,12 @@ interface Props {
 }
 
 export default function TeaGrid({ teas }: Props) {
+  const cells = Array.from({ length: 9 });
   return (
     <div className={styles.grid}>
-      {teas.map((tea) => (
-        <div key={tea.id} className={styles.cell}>
-          <TeaCard tea={tea} />
+      {cells.map((_, idx) => (
+        <div key={idx} className={styles.cell}>
+          {teas[idx] && <TeaCard tea={teas[idx]} />}
         </div>
       ))}
     </div>
