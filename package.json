@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "echo \"No tests\""
+    "test": "tsc --module commonjs --outDir build tests/filter.test.ts utils/filter.ts && node build/tests/filter.test.js"
   },
   "dependencies": {
     "next": "^15.5.2",

@@ -7,6 +7,8 @@ from pathlib import Path
 from types import SimpleNamespace
 from typing import Iterable, List
 
+from typing import Any
+
 DASHBOARD_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = DASHBOARD_DIR.parent
 DATA_FILE = ROOT_DIR / "data" / "teas.json"
@@ -28,7 +30,7 @@ def norm(s: str) -> str:
 
 
 @lru_cache(maxsize=1)
-def get_teas() -> List[SimpleNamespace]:
+def get_teas() -> List[Any]:
     data = load_json(DATA_FILE)
     return [SimpleNamespace(**t) for t in data]
 
@@ -44,7 +46,7 @@ def get_category_colors() -> dict[str, str]:
     return {entry["category"]: entry["main"] for entry in data}
     
 
-def matches_query(item: SimpleNamespace, q: str | None) -> bool:
+def matches_query(item: Any, q: str | None) -> bool:
     if not q:
         return True
     qn = norm(q)
@@ -52,9 +54,11 @@ def matches_query(item: SimpleNamespace, q: str | None) -> bool:
     for k in ("name", "description", "category", "subcategory", "taste", "color"):
         v = getattr(item, k, None) or ""
         fields.append(str(v))
-    for ing in item.ingredients or []:
-        fields.append(ing.name or "")
-    for t in item.tags or []:
+    for ing in getattr(item, 'ingredients', []) or []:
+        name = getattr(ing, 'name', ing)
+        if name:
+            fields.append(str(name))
+    for t in getattr(item, 'tags', []) or []:
         fields.append(str(t))
     corpus = " ".join(fields)
     return qn in norm(corpus)
@@ -71,7 +75,7 @@ def in_filter(val, selected):
 
 
 def filter_teas(
-    teas: Iterable[SimpleNamespace],
+    teas: Iterable[Any],
     q: str | None = None,
     category: str | None = None,
     subcategory: str | None = None,
@@ -79,32 +83,32 @@ def filter_teas(
     caffeine: str | None = None,
     season: List[str] | None = None,
     serve: List[str] | None = None,
-) -> List[SimpleNamespace]:
-    filtered: List[SimpleNamespace] = []
+) -> List[Any]:
+    filtered: List[Any] = []
     for t in teas:
         if not matches_query(t, q):
             continue
-        if category and not in_filter(t.category, category):
+        if category and not in_filter(getattr(t, 'category', None), category):
             continue
-        if subcategory and not in_filter(t.subcategory, subcategory):
+        if subcategory and not in_filter(getattr(t, 'subcategory', None), subcategory):
             continue
         mood_ok = True
         if mood:
-            ms = t.mood_short or ""
-            tags = t.tags or []
+            ms = getattr(t, 'mood_short', '') or ""
+            tags = getattr(t, 'tags', []) or []
             mood_ok = (norm(mood) in norm(ms)) or any(norm(mood) in norm(x) for x in tags)
         if not mood_ok:
             continue
         if caffeine:
-            cval = t.caffeineLevel or ""
+            cval = getattr(t, 'caffeineLevel', '') or ""
             if norm(caffeine) not in norm(str(cval)):
                 continue
         if season:
-            seasons = t.timeSeason or []
+            seasons = getattr(t, 'timeSeason', []) or []
             if not any(s in seasons for s in season):
                 continue
         if serve:
-            serves = t.serve or []
+            serves = getattr(t, 'serve', []) or []
             if not any(s in serves for s in serve):
                 continue
         filtered.append(t)
