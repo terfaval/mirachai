@@ -2,6 +2,9 @@ import styles from '../styles/TasteChart.module.css';
 import { Tea } from '../utils/filter';
 import { getCategoryColor } from '../utils/colorMap';
 
+const N = (v: string | number | null | undefined) =>
+  typeof v === "number" ? v : v != null ? Number(v) : NaN;
+
 interface Props {
   tea: Tea;
   size?: number;
@@ -16,14 +19,14 @@ export default function TasteChart({ tea, size = 60, showLabels = true }: Props)
       k.replace('taste_', '').replace(/_/g, ' '),
       Math.max(0, Math.min(Number(v), 3)),
     ])
-    .filter(([_, v]) => v > 0);
+    .filter(([_, v]) => N(v) > 0);
 
   const center = size / 2;
   const maxRadius = center - 5;
 
   const points = entries.map(([_, value], i) => {
     const angle = (i / entries.length) * Math.PI * 2 - Math.PI / 2;
-    const r = (value / 3) * maxRadius;
+    const r = (N(value) / 3) * maxRadius;
     const x = center + r * Math.cos(angle);
     const y = center + r * Math.sin(angle);
     return { x, y, value };
@@ -36,7 +39,7 @@ export default function TasteChart({ tea, size = 60, showLabels = true }: Props)
       <svg width={size} height={size} className={styles.chart}>
         <polygon points={polygon} fill="none" stroke={color} />
         {points.map((p, i) => (
-          <circle key={i} cx={p.x} cy={p.y} r={2 + p.value} fill={color} />
+          <circle key={i} cx={p.x} cy={p.y} r={2 + N(p.value)} fill={color} />
         ))}
       </svg>
       {showLabels && (
