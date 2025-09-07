@@ -14,14 +14,6 @@ export default function Header({ query, onChange }: Props) {
         <SearchBar query={query} onChange={onChange} />
         <div className={styles.iconContainer}>
           <img
-            src="/search.svg"
-            className={`search-button ${styles.icon}`}
-            alt="Keresés"
-          />
-          <span className={styles.tooltip}>Keresés</span>
-        </div>
-        <div className={styles.iconContainer}>
-          <img
             src="/filter.svg"
             className={`filter-button ${styles.icon}`}
             alt="Szűrés"
