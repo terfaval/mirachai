@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function TeaCard({ tea }: Props) {
-  const color = getCategoryColor(tea.category);
+  const color = getCategoryColor(tea.category, 'main');
   return (
     <div className={styles.card} style={{ backgroundColor: color }}>
       <div className={styles.name}>{tea.name}</div>
