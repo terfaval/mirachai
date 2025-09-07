@@ -3,17 +3,12 @@ import { Tea } from '../utils/filter';
 import { getCategoryColor } from '../utils/colorMap';
 import TasteChart from './TasteChart'
 
-const MANDALA_POSITIONS = [
-  { top: '0%', left: '0%' },
-  { top: '0%', left: '-350%' },
-  { top: '0%', left: '-700%' },
-  { top: '-350%', left: '0%' },
-  { top: '-350%', left: '-350%' },
-  { top: '-350%', left: '-700%' },
-  { top: '-700%', left: '0%' },
-  { top: '-700%', left: '-350%' },
-  { top: '-700%', left: '-700%' },
-];
+function getMandalaPosition(index: number) {
+  const row = Math.floor(index / 3);
+  const col = index % 3;
+  const offset = -350;
+  return { top: `${row * offset}%`, left: `${col * offset}%` };
+}
 
 interface Props {
   tea: Tea;
@@ -25,8 +20,7 @@ export default function TeaCard({ tea }: Props) {
   const dotActiveColor = getCategoryColor(tea.category, 'dark');
   const dotColor = getCategoryColor(tea.category, 'light');
 
-  const mandalaPos =
-    MANDALA_POSITIONS[(tea.mandalaIndex ?? 0) % MANDALA_POSITIONS.length];
+  const mandalaPos = getMandalaPosition((tea.mandalaIndex ?? 0) % 9);
 
   const flavorKeys = [
     'friss',
