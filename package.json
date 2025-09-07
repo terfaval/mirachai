@@ -1,12 +1,14 @@
 {
-  "name": "mirachai-dashboard",
-  "version": "0.1.0",
+  "name": "mirachai-search",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "next:build": "next build",
     "start": "next start",
-    "test": "tsc --module commonjs --outDir build tests/filter.test.ts utils/filter.ts && node build/tests/filter.test.js"
+    "build": "tsc -p .",
+    "test": "vitest run",
+    "demo": "tsx src/demo/demo.ts"
   },
   "dependencies": {
     "next": "^15.5.2",
@@ -19,6 +21,7 @@
     "@types/react-dom": "^18.3.7",
     "csv-parse": "^6.1.0",
     "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^1.6.0"
   }
 }
