@@ -27,8 +27,14 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  mask: url('/Mandala.svg') top left/100% 100% no-repeat;
-  -webkit-mask: url('/Mandala.svg') top left/100% 100% no-repeat;
+  mask-image: url('/Mandala.svg');
+  -webkit-mask-image: url('/Mandala.svg');
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: top left;
+  -webkit-mask-position: top left;
+  mask-size: 200% 200%;
+  -webkit-mask-size: 200% 200%;
   opacity: 0.15;
   fill: white;
   pointer-events: none;

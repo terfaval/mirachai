@@ -59,6 +59,13 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
 
   return (
     <div className={styles.container}>
+        {showLabels && (
+        <div className={styles.labels}>
+          {topEntries.map(([label, value]) => (
+            <div key={label}>{value} {label}</div>
+          ))}
+        </div>
+      )}
       <svg width={size} height={size} className={styles.chart}>
         <circle
           cx={center}
@@ -81,13 +88,6 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
           <circle key={i} cx={p.x} cy={p.y} r={2 + N(p.value)} fill={color} />
         ))}
       </svg>
-      {showLabels && (
-        <div className={styles.labels}>
-          {topEntries.map(([label, value]) => (
-            <div key={label}>{label}: {value}</div>
-          ))}
-        </div>
-      )}
-    </div>
+      </div>
   );
 }

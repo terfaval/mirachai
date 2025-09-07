@@ -17,10 +17,12 @@ interface Props {
 export default function TeaCard({ tea }: Props) {
   const color = getCategoryColor(tea.category);
   const mandalaColor = getCategoryColor(tea.category, 'white');
-  const dotActiveColor = getCategoryColor(tea.category, 'dark');
+  const dotActiveColor = tea.intensity ? '#000' : getCategoryColor(tea.category, 'dark');
   const dotColor = getCategoryColor(tea.category, 'light');
 
-  const mandalaPos = getMandalaPosition((tea.mandalaIndex ?? 0) % 9);
+  const mandalaIdx = (tea.mandalaIndex ?? 0) % 9;
+  const mandalaPos = getMandalaPosition(mandalaIdx);
+  const maskSize = mandalaIdx === 4 ? '600% 600%' : '1200% 1200%';
 
   const flavorKeys = [
     'friss',
@@ -53,6 +55,8 @@ export default function TeaCard({ tea }: Props) {
           backgroundColor: mandalaColor,
           top: mandalaPos.top,
           left: mandalaPos.left,
+          maskSize,
+          WebkitMaskSize: maskSize,
         }}
       />
       <div className={styles.name}>{tea.name}</div>
