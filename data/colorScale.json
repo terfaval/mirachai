@@ -2,118 +2,118 @@
   {
     "category": "Álom Kapu",
     "main": "#C8B8DB",
-    "light": "#F1EDF6",
-    "dark": "#9E82BF",
-    "complementary": "#CBDAB8",
-    "alternative": "#D8B8DA",
-    "white":  "#FFFFFF"
+    "light": "#E5DEED",
+    "dark": "#2D1E3E",
+    "complementary": "#CBDBB8",
+    "alternative": "#D9B8DB",
+    "white": "#FFFFFF"
   },
   {
-    "category": "Szavannai Frissesség",
+    "category": "Afrika Frissességei",
     "main": "#E26B39",
-    "light": "#E98F6A",
-    "dark": "#C54E1C",
-    "complementary": "#38AFE2",
-    "alternative": "#E2BC38",
-    "white":  "#FFFFFF"
+    "light": "#F7DFD4",
+    "dark": "#521F0A",
+    "complementary": "#39B0E2",
+    "alternative": "#E2BC39",
+    "white": "#FFFFFF"
   },
   {
     "category": "Évszakok Zamata",
     "main": "#6DA544",
-    "light": "#84BB5B",
-    "dark": "#578436",
-    "complementary": "#7B44A5",
-    "alternative": "#44A549",
-    "white":  "#FFFFFF"
+    "light": "#E4EFDC",
+    "dark": "#2B421A",
+    "complementary": "#7C44A5",
+    "alternative": "#44A54A",
+    "white": "#FFFFFF"
   },
   {
     "category": "Európai Gyógyfüvek",
     "main": "#8AA88A",
-    "light": "#ADC2AD",
-    "dark": "#688C68",
-    "complementary": "#A78AA8",
+    "light": "#E2E9E2",
+    "dark": "#273527",
+    "complementary": "#A88AA8",
     "alternative": "#8AA898",
-    "white":  "#FFFFFF"
+    "white": "#FFFFFF"
   },
   {
     "category": "Andoki Lendület",
     "main": "#2A9DAF",
-    "light": "#35B9CE",
-    "dark": "#217D8B",
-    "complementary": "#AE3B2A",
-    "alternative": "#2A5DAE",
-    "white":  "#FFFFFF"
+    "light": "#D7F0F4",
+    "dark": "#10434B",
+    "complementary": "#AF3C2A",
+    "alternative": "#2A5DAF",
+    "white": "#FFFFFF"
   },
   {
     "category": "Finom Védelem",
     "main": "#B23A48",
-    "light": "#C75361",
-    "dark": "#8E2E39",
-    "complementary": "#39B2A4",
-    "alternative": "#B26539",
-    "white":  "#FFFFFF"
+    "light": "#F1DADD",
+    "dark": "#46151B",
+    "complementary": "#3AB2A4",
+    "alternative": "#B2663A",
+    "white": "#FFFFFF"
   },
   {
     "category": "Csendes Idő",
     "main": "#AAB9C3",
-    "light": "#D4DCE1",
-    "dark": "#7F95A4",
-    "complementary": "#C2B3AA",
-    "alternative": "#AAADC2",
-    "white":  "#FFFFFF"
+    "light": "#E2E6E9",
+    "dark": "#263036",
+    "complementary": "#C3B4AA",
+    "alternative": "#AAADC3",
+    "white": "#FFFFFF"
   },
   {
     "category": "Tiszta Fókusz",
     "main": "#EBCB4A",
-    "light": "#F1DA81",
-    "dark": "#DEB718",
-    "complementary": "#4969EB",
-    "alternative": "#BDEB49",
-    "white":  "#FFFFFF"
+    "light": "#F8F1D3",
+    "dark": "#554507",
+    "complementary": "#4A6AEB",
+    "alternative": "#BEEB4A",
+    "white": "#FFFFFF"
   },
   {
     "category": "Indiai Chai",
     "main": "#A0522D",
-    "light": "#C06236",
-    "dark": "#804123",
-    "complementary": "#2D7AA0",
+    "light": "#F2E1D9",
+    "dark": "#492413",
+    "complementary": "#2D7BA0",
     "alternative": "#A0892D",
-    "white":  "#FFFFFF"
+    "white": "#FFFFFF"
   },
   {
     "category": "Hűs Kortyok",
     "main": "#7EC8E3",
-    "light": "#B8E0EF",
-    "dark": "#43AFD6",
+    "light": "#D7ECF4",
+    "dark": "#0F3C4D",
     "complementary": "#E3997E",
-    "alternative": "#7E97E3",
-    "white":  "#FFFFFF"
+    "alternative": "#7E98E3",
+    "white": "#FFFFFF"
   },
   {
     "category": "Japán Zöld",
     "main": "#5A8F3B",
-    "light": "#6CAB46",
-    "dark": "#48722F",
-    "complementary": "#6F3B8F",
+    "light": "#E3EFDC",
+    "dark": "#29421A",
+    "complementary": "#703B8F",
     "alternative": "#3B8F44",
-    "white":  "#FFFFFF"
+    "white": "#FFFFFF"
   },
   {
     "category": "Közel-Kelet Illata",
     "main": "#C89B3C",
-    "light": "#D3AF64",
-    "dark": "#A27C2D",
-    "complementary": "#3B68C8",
-    "alternative": "#B1C83B",
-    "white":  "#FFFFFF"
+    "light": "#F2EAD9",
+    "dark": "#493813",
+    "complementary": "#3C69C8",
+    "alternative": "#B2C83C",
+    "white": "#FFFFFF"
   },
   {
     "category": "Kínai Klasszikus",
     "main": "#317873",
-    "light": "#3A908A",
-    "dark": "#27605C",
-    "complementary": "#783035",
-    "alternative": "#305A78",
-    "white":  "#FFFFFF"
+    "light": "#DCEFEE",
+    "dark": "#1A423F",
+    "complementary": "#783136",
+    "alternative": "#315B78",
+    "white": "#FFFFFF"
   }
 ]

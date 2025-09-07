@@ -22,7 +22,39 @@ export function getCategoryColor(
   return entry?.[variant] ?? entry?.main ?? DEFAULT_COLOR;
 }
 
+export function getLightColor(
+  category: string,
+  variant: ColorVariant = 'light'
+): string {
+  const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
+  return entry?.[variant] ?? entry?.light ?? DEFAULT_COLOR;
+}
+
+export function getDarkColor(
+  category: string,
+  variant: ColorVariant = 'dark'
+): string {
+  const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
+  return entry?.[variant] ?? entry?.dark ?? DEFAULT_COLOR;
+}
+
 export function getComplementaryColor(
+  category: string,
+  variant: ColorVariant = 'complementary'
+): string {
+  const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
+  return entry?.[variant] ?? entry?.complementary ?? DEFAULT_COLOR;
+}
+
+export function getAlternativeColor(
+  category: string,
+  variant: ColorVariant = 'alternative'
+): string {
+  const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
+  return entry?.[variant] ?? entry?.alternative ?? DEFAULT_COLOR;
+}
+
+export function getWhiteColor(
   category: string,
   variant: ColorVariant = 'white'
 ): string {

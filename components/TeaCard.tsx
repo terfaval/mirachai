@@ -14,7 +14,7 @@ interface Props {
 
 export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: Props) {
   const color = getCategoryColor(tea.category);
-  const mandalaColor = getCategoryColor(tea.category, 'white');
+  const mandalaColor = getCategoryColor(tea.category, 'light');
   const dotActiveColor = tea.intensity ? '#000' : getCategoryColor(tea.category, 'dark');
   const dotColor = getCategoryColor(tea.category, 'light');
 
@@ -46,26 +46,31 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
             '--tiles-y': tilesY,
             '--tile-x': tileX,
             '--tile-y': tileY,
-            '--mandala-scale': 1.5, // itt állíthatsz nagyítást, pl. 1.3
+            '--mandala-scale': 1.5, // nagyítás mértéke
           } as React.CSSProperties
         }
       />
       <div className={styles.name}>{tea.name}</div>
       <div className={styles.mood}>{tea.mood_short}</div>
+
       <div className={styles.info}>
         <div className={styles.flavor}>
-          {showChart && (
-            <TasteChart tea={tea} size={50} showLabels={false} />
-          )}
+          {/* ⬅︎ előbb a labelek */}
           <ul className={styles.flavorList}>
             {flavors.map((f) => (
               <li key={f.name}>
-                <span>{f.name}</span>
-                <span>{f.value}</span>
+                <span className={styles.flavorValue}>{f.value}</span>
+                <span className={styles.flavorName}>{f.name}</span>
               </li>
             ))}
           </ul>
+
+          {/* ➜ utána a chart */}
+          {showChart && (
+            <TasteChart tea={tea} size={50} showLabels={false} />
+          )}
         </div>
+
         <div className={styles.intensity}>
           <div className={styles.dots}>
             {[1, 2, 3].map((i) => (
