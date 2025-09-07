@@ -2452,7 +2452,7 @@
   {
     "id": 51,
     "name": "Marokkói Napfény",
-    "category": "Afrika Frissességei",
+    "category": "Szavannai Frissesség",
     "subcategory": "Belső utazás",
     "description": "Zöld tea mentával – nem bonyolítja túl. Inkább olyan, mint egy friss szellő, amitől kicsit jobban áll a világ.",
     "mood_short": "Marrákesi szellő a bögrédben.",
@@ -2648,7 +2648,7 @@
   {
     "id": 55,
     "name": "Afrikai Naplemente",
-    "category": "Afrika Frissességei",
+    "category": "Szavannai Frissesség",
     "subcategory": "Esti relax",
     "description": "Rooibos narancshéjjal: nem forradalom, csak kellemes zárókép. Mint egy lassú, vörös fényű est, ami magától megtörténik.",
     "mood_short": "Vörös alkony Fokföldről.",
@@ -2697,7 +2697,7 @@
   {
     "id": 56,
     "name": "Sivatagi Szellő",
-    "category": "Afrika Frissességei",
+    "category": "Szavannai Frissesség",
     "subcategory": "Nyári frissesség",
     "description": "Ez a zöld tea nem filozofál: hűsít és elenged. Mint egy váratlan, jókor érkező szél a melegben.",
     "mood_short": "Hűsítő hírnök a sivatagban.",
