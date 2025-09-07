@@ -1,12 +1,12 @@
 .container {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  gap: 8px;
 }
 
-.chart {
-  flex: 0 0 auto;
-}
+/* Labels mindig balra, chart mindig jobbra */
+.labels { order: 1; }
+.chart  { order: 2; }
 
 .labels {
   display: flex;
@@ -14,4 +14,27 @@
   margin-right: 8px;
   font-size: 0.875rem;
   line-height: 1.2;
+}
+
+.labelRow {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+/* előbb az érték, aztán a név */
+.value {
+  font-weight: 700;
+  min-width: 1ch;      /* feszes, de nem ugrál */
+  text-align: right;
+}
+
+.sep { opacity: 0.6; }
+
+.name {
+  opacity: 0.9;
+}
+
+.chart {
+  flex: 0 0 auto;
 }

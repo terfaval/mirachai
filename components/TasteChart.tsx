@@ -1,9 +1,8 @@
 import styles from '../styles/TasteChart.module.css';
 import { Tea } from '../utils/filter';
-import { getCategoryColor } from '../utils/colorMap';
 
 const N = (v: string | number | null | undefined) =>
-  typeof v === "number" ? v : v != null ? Number(v) : NaN;
+  typeof v === 'number' ? v : v != null ? Number(v) : NaN;
 
 interface Props {
   tea: Tea;
@@ -26,12 +25,13 @@ const ORDER = [
 
 export default function TasteChart({ tea, size = 40, showLabels = true }: Props) {
   const color = '#000';
+
   const entries = ORDER.map((k) => {
     const raw = N((tea as any)[k]);
     const value = Math.max(0, Math.min(raw, 3));
     return [k.replace('taste_', '').replace(/_/g, ' '), isNaN(value) ? 0 : value] as [
       string,
-      number,
+      number
     ];
   });
 
@@ -52,21 +52,23 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
   });
 
   const active = points.filter((p) => p.value > 0);
-  const pathData =
-    points
-      .map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`)
-      .join(' ') + ' Z';
+  const pathData = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ') + ' Z';
 
   return (
     <div className={styles.container}>
-        {showLabels && (
-        <div className={styles.labels}>
+      {showLabels && (
+        <div className={styles.labels} aria-label="ízprofil top értékek">
           {topEntries.map(([label, value]) => (
-            <div key={label}>{value} {label}</div>
+            <div key={label} className={styles.labelRow}>
+              <span className={styles.value}>{value}</span>
+              <span className={styles.sep}>&nbsp;</span>
+              <span className={styles.name}>{label}</span>
+            </div>
           ))}
         </div>
       )}
-      <svg width={size} height={size} className={styles.chart}>
+
+      <svg width={size} height={size} className={styles.chart} role="img" aria-label="ízprofil diagram">
         <circle
           cx={center}
           cy={center}
@@ -88,6 +90,6 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
           <circle key={i} cx={p.x} cy={p.y} r={2 + N(p.value)} fill={color} />
         ))}
       </svg>
-      </div>
+    </div>
   );
 }
