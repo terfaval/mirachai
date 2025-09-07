@@ -46,11 +46,15 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
     return { x, y, value };
   });
 
-  const segments = points.map((p, i) => {
-    const next = points[(i + 1) % points.length];
-    const width = 2 + Math.max(N(p.value), N(next.value));
-    return { x1: p.x, y1: p.y, x2: next.x, y2: next.y, width };
-  });
+  const active = points.filter((p) => p.value > 0);
+  const segments =
+    active.length > 1
+      ? active.map((p, i) => {
+          const next = active[(i + 1) % active.length];
+          const width = 2 + Math.max(N(p.value), N(next.value));
+          return { x1: p.x, y1: p.y, x2: next.x, y2: next.y, width };
+        })
+      : [];
 
   return (
     <div className={styles.container}>
@@ -67,7 +71,7 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
             strokeLinecap="round"
           />
         ))}
-        {points.map((p, i) => (
+        {active.map((p, i) => (
           <circle key={i} cx={p.x} cy={p.y} r={2 + N(p.value)} fill={color} />
         ))}
       </svg>

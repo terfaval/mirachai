@@ -26,5 +26,19 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const filePath = path.join(process.cwd(), 'data', 'teas.json');
   const jsonData = await fs.readFile(filePath, 'utf8');
   const teas: Tea[] = JSON.parse(jsonData);
-  return { props: { teas } };
+  const catMap: Record<string, Tea[]> = {};
+  for (const tea of teas) {
+    (catMap[tea.category] ||= []).push(tea);
+  }
+
+  const sorted: Tea[] = [];
+  for (const cat of Object.keys(catMap)) {
+    const group = catMap[cat].sort((a, b) => a.id - b.id);
+    group.forEach((t, idx) => {
+      t.mandalaIndex = idx;
+      sorted.push(t);
+    });
+  }
+
+  return { props: { teas: sorted } };
 };

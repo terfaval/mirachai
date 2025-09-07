@@ -16,6 +16,7 @@ export interface Tea {
   ['ingerdient-5']?: string;
   ['ingerdient-6']?: string;
   intensity?: string;
+  mandalaIndex?: number;
 }
 
 export function filterTeas(teas: Tea[], query: string): Tea[] {

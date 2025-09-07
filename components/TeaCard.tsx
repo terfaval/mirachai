@@ -3,6 +3,18 @@ import { Tea } from '../utils/filter';
 import { getCategoryColor } from '../utils/colorMap';
 import TasteChart from './TasteChart'
 
+const MANDALA_POSITIONS = [
+  { top: '0%', left: '0%' },
+  { top: '0%', left: '-350%' },
+  { top: '0%', left: '-700%' },
+  { top: '-350%', left: '0%' },
+  { top: '-350%', left: '-350%' },
+  { top: '-350%', left: '-700%' },
+  { top: '-700%', left: '0%' },
+  { top: '-700%', left: '-350%' },
+  { top: '-700%', left: '-700%' },
+];
+
 interface Props {
   tea: Tea;
 }
@@ -12,6 +24,9 @@ export default function TeaCard({ tea }: Props) {
   const mandalaColor = getCategoryColor(tea.category, 'alternative');
   const dotActiveColor = getCategoryColor(tea.category, 'dark');
   const dotColor = getCategoryColor(tea.category, 'light');
+
+  const mandalaPos =
+    MANDALA_POSITIONS[(tea.mandalaIndex ?? 0) % MANDALA_POSITIONS.length];
 
   const flavorKeys = [
     'friss',
@@ -36,7 +51,14 @@ export default function TeaCard({ tea }: Props) {
 
   return (
     <div className={styles.card} style={{ backgroundColor: color }}>
-      <div className={styles.mandala} style={{ backgroundColor: mandalaColor }} />
+      <div
+        className={styles.mandala}
+        style={{
+          backgroundColor: mandalaColor,
+          top: mandalaPos.top,
+          left: mandalaPos.left,
+        }}
+      />
       <div className={styles.name}>{tea.name}</div>
       <div className={styles.mood}>{tea.mood_short}</div>
       <div className={styles.info}>
