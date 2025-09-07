@@ -32,12 +32,13 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   }
 
   const sorted: Tea[] = [];
+  let idx = 0;
   for (const cat of Object.keys(catMap)) {
     const group = catMap[cat].sort((a, b) => a.id - b.id);
-    group.forEach((t, idx) => {
-      t.mandalaIndex = idx;
+    for (const t of group) {
+      t.mandalaIndex = idx++;
       sorted.push(t);
-    });
+    }
   }
 
   return { props: { teas: sorted } };

@@ -25,7 +25,7 @@ const ORDER = [
 ];
 
 export default function TasteChart({ tea, size = 40, showLabels = true }: Props) {
-  const color = getCategoryColor(tea.category, 'dark');
+  const color = '#000';
   const entries = ORDER.map((k) => {
     const raw = N((tea as any)[k]);
     const value = Math.max(0, Math.min(raw, 3));

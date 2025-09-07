@@ -6,7 +6,7 @@ import TasteChart from './TasteChart'
 function getMandalaPosition(index: number) {
   const row = Math.floor(index / 3);
   const col = index % 3;
-  const offset = -350;
+  const offset = -220;
   return { top: `${row * offset}%`, left: `${col * offset}%` };
 }
 
@@ -34,11 +34,13 @@ export default function TeaCard({ tea }: Props) {
     'csípős',
     'umami',
   ];
-  const flavors = flavorKeys
+  const allFlavors = flavorKeys
     .map((k) => ({ name: k, value: (tea as any)[`taste_${k}`] || 0 }))
     .filter((f) => f.value > 0);
 
-  const showChart = flavors.length >= 3;
+  const flavors = allFlavors.sort((a, b) => b.value - a.value).slice(0, 3);
+
+  const showChart = allFlavors.length >= 3;
 
   const intensityMap: Record<string, number> = { enyhe: 1, közepes: 2, erős: 3 };
   const intensityLevel = intensityMap[tea.intensity ?? ''] ?? 0;
@@ -58,7 +60,7 @@ export default function TeaCard({ tea }: Props) {
       <div className={styles.info}>
         <div className={styles.flavor}>
           {showChart && (
-            <TasteChart tea={tea} size={80} showLabels={false} />
+            <TasteChart tea={tea} size={50} showLabels={false} /> 
           )}
           <ul className={styles.flavorList}>
             {flavors.map((f) => (
