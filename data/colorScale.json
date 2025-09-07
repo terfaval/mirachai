@@ -5,7 +5,8 @@
     "light": "#F1EDF6",
     "dark": "#9E82BF",
     "complementary": "#CBDAB8",
-    "alternative": "#D8B8DA"
+    "alternative": "#D8B8DA",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Szavannai Frissesség",
@@ -13,7 +14,8 @@
     "light": "#E98F6A",
     "dark": "#C54E1C",
     "complementary": "#38AFE2",
-    "alternative": "#E2BC38"
+    "alternative": "#E2BC38",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Évszakok Zamata",
@@ -21,7 +23,8 @@
     "light": "#84BB5B",
     "dark": "#578436",
     "complementary": "#7B44A5",
-    "alternative": "#44A549"
+    "alternative": "#44A549",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Európai Gyógyfüvek",
@@ -29,7 +32,8 @@
     "light": "#ADC2AD",
     "dark": "#688C68",
     "complementary": "#A78AA8",
-    "alternative": "#8AA898"
+    "alternative": "#8AA898",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Andoki Lendület",
@@ -37,7 +41,8 @@
     "light": "#35B9CE",
     "dark": "#217D8B",
     "complementary": "#AE3B2A",
-    "alternative": "#2A5DAE"
+    "alternative": "#2A5DAE",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Finom Védelem",
@@ -45,7 +50,8 @@
     "light": "#C75361",
     "dark": "#8E2E39",
     "complementary": "#39B2A4",
-    "alternative": "#B26539"
+    "alternative": "#B26539",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Csendes Idő",
@@ -53,7 +59,8 @@
     "light": "#D4DCE1",
     "dark": "#7F95A4",
     "complementary": "#C2B3AA",
-    "alternative": "#AAADC2"
+    "alternative": "#AAADC2",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Tiszta Fókusz",
@@ -61,7 +68,8 @@
     "light": "#F1DA81",
     "dark": "#DEB718",
     "complementary": "#4969EB",
-    "alternative": "#BDEB49"
+    "alternative": "#BDEB49",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Indiai Chai",
@@ -69,7 +77,8 @@
     "light": "#C06236",
     "dark": "#804123",
     "complementary": "#2D7AA0",
-    "alternative": "#A0892D"
+    "alternative": "#A0892D",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Hűs Kortyok",
@@ -77,7 +86,8 @@
     "light": "#B8E0EF",
     "dark": "#43AFD6",
     "complementary": "#E3997E",
-    "alternative": "#7E97E3"
+    "alternative": "#7E97E3",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Japán Zöld",
@@ -85,7 +95,8 @@
     "light": "#6CAB46",
     "dark": "#48722F",
     "complementary": "#6F3B8F",
-    "alternative": "#3B8F44"
+    "alternative": "#3B8F44",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Közel-Kelet Illata",
@@ -93,7 +104,8 @@
     "light": "#D3AF64",
     "dark": "#A27C2D",
     "complementary": "#3B68C8",
-    "alternative": "#B1C83B"
+    "alternative": "#B1C83B",
+    "white":  "#FFFFFF"
   },
   {
     "category": "Kínai Klasszikus",
@@ -101,6 +113,7 @@
     "light": "#3A908A",
     "dark": "#27605C",
     "complementary": "#783035",
-    "alternative": "#305A78"
+    "alternative": "#305A78",
+    "white":  "#FFFFFF"
   }
 ]

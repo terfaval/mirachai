@@ -7,6 +7,7 @@ interface ColorEntry {
   dark?: string;
   complementary?: string;
   alternative?: string;
+  white?: string;
 }
 
 const DEFAULT_COLOR = '#6B4226';
@@ -23,8 +24,8 @@ export function getCategoryColor(
 
 export function getComplementaryColor(
   category: string,
-  variant: ColorVariant = 'dark'
+  variant: ColorVariant = 'white'
 ): string {
   const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
-  return entry?.[variant] ?? entry?.dark ?? DEFAULT_COLOR;
+  return entry?.[variant] ?? entry?.white ?? DEFAULT_COLOR;
 }
