@@ -3,6 +3,14 @@ import { mapSyn } from './synonyms';
 import { ParsedQuery } from './types';
 
 
+const BOOL_TOKENS: Record<string, { facet: keyof ParsedQuery['facets']; value: string }> = {
+  jeges: { facet: 'serve', value: 'jeges' },
+  forron: { facet: 'serve', value: 'forron' },
+  langyosan: { facet: 'serve', value: 'langyosan' },
+  coldbrew: { facet: 'serve', value: 'coldbrew' },
+};
+
+
 const parseParts = (q: string): string[] => {
   const parts: string[] = [];
   let cur = '';
@@ -65,7 +73,13 @@ export function parseQuery(qstr: string): ParsedQuery {
     const toks = tokenize(part);
     for (const rawTok of toks) {
       const tok = mapSyn(rawTok);
-      if (neg) pq.not.push(tok); else if (must) pq.must.push(tok); else pq.tokens.push(tok);
+      const bool = BOOL_TOKENS[tok];
+      if (bool && !neg && !must) {
+        const key = bool.facet as keyof typeof pq.facets;
+        (pq.facets[key] = pq.facets[key] || []).push(bool.value);
+      } else {
+        if (neg) pq.not.push(tok); else if (must) pq.must.push(tok); else pq.tokens.push(tok);
+      }
       pq.rawTokens!.push(rawTok);
     }
   }

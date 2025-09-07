@@ -14,6 +14,15 @@ describe('search engine', () => {
     expect(res.some(r => r.name.toLowerCase().includes('chai') || (r.category || '').toLowerCase().includes('chai'))).toBe(true);
   });
 
+  it('infers serve facet from token', () => {
+    const res = search(idx, 'jegest');
+    expect(res.length).toBeGreaterThan(0);
+    for (const r of res) {
+      const doc = teaById.get(r.id)!;
+      expect(doc.serve_iced).toBe('TRUE');
+    }
+  });
+  
   it('facet and range filters', () => {
     const res = search(idx, 'caffeine:<20 taste:friss serve:iced');
     expect(res.length).toBeGreaterThan(0);

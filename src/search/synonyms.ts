@@ -12,6 +12,7 @@ export const SYN_RAW: Record<string, string> = {
   "porkolt": "porkolt",
   "jeges": "jeges",
   "iced": "jeges",
+  "jegest": "jeges",
   "pikans": "csipos"
 };
 
