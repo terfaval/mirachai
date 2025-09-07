@@ -13,7 +13,7 @@ Kérlek, készítsd el a `dashboard/` mappán belüli FastAPI + Jinja2 alapú da
 
 ## Megkötések
 
-- Betűtípus: Caveat Brush (fantázianév), Lato (szövegtörzs)
+- Betűtípus: Titan One (fantázianév), Lato (szövegtörzs)
 - Színek és UI részletek: `final_dashboard_mapping.json` alapján
 - Szűrők: mood, season, intensity, tags, time_of_day stb.
 

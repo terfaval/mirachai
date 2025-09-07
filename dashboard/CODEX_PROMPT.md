@@ -18,7 +18,7 @@ You are an expert Python + FastAPI + Jinja developer. Build the following featur
    - Cards: name, mood_short/labels, chips (category, caffeine, season), 'Részletek' button to toggle details (htmx or minimal JS).
 
 3) Theming
-   - Fonts from mapping.typography (Caveat Brush + Lato), Tailwind via CDN.
+   - Fonts from mapping.typography (Titan One + Lato), Tailwind via CDN.
    - CSS variables populated from mapping.colors on load.
 
 4) URL state
