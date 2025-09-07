@@ -8,6 +8,12 @@
   border-radius: 12px;
   padding: 12px;
   text-align: center;
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .name {
