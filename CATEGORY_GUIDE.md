@@ -4,9 +4,9 @@
 Ez a projekt több helyen is használja a teák kategóriáit. Ha új kategória kerül be vagy módosul a lista, az alábbi fájlokban kell frissítést végezni:
 
 1. **`data/teas.json`** – minden teánál állítsd be az új `category` értéket. Érdemes egy scriptet írni, ami az `origin` vagy más mezők alapján végzi a tömeges cserét.
-2. **`data/colorMap.ts`** – add hozzá az új kategóriát a színkódjával, hogy a felület tudja használni.
-3. **`dashboard/data/tea_app_colors.csv`** – itt szerepelnek a kategóriákhoz tartozó színek, amelyeket a backend szolgáltat.
-4. **`tests/test_services.py`** – frissítsd a teszteket, hogy az új vagy módosított kategóriát használják.
+2. **`data/colorScale.json`** – add hozzá az új kategóriát a színkódjaival, hogy a felület tudja használni.
+3. **`tests/test_services.py`** – frissítsd a teszteket, hogy az új vagy módosított kategóriát használják.
+
 
 A módosítások után futtasd a teszteket:
 

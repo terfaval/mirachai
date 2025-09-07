@@ -1,19 +1,17 @@
 from __future__ import annotations
 
-import csv
 import json
 import unicodedata
 from functools import lru_cache
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Iterable, List
-
-from .models import Tea
 
 DASHBOARD_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = DASHBOARD_DIR.parent
 DATA_FILE = ROOT_DIR / "data" / "teas.json"
 CONFIG_FILE = ROOT_DIR / "final_dashboard_mapping.json"
-COLORS_FILE = DASHBOARD_DIR / "data" / "tea_app_colors.csv"
+COLORS_FILE = ROOT_DIR / "data" / "colorScale.json"
 
 
 def load_json(path: Path):
@@ -30,9 +28,9 @@ def norm(s: str) -> str:
 
 
 @lru_cache(maxsize=1)
-def get_teas() -> List[Tea]:
+def get_teas() -> List[SimpleNamespace]:
     data = load_json(DATA_FILE)
-    return [Tea(**t) for t in data]
+    return [SimpleNamespace(**t) for t in data]
 
 
 @lru_cache(maxsize=1)
@@ -42,12 +40,11 @@ def get_config() -> dict:
 
 @lru_cache(maxsize=1)
 def get_category_colors() -> dict[str, str]:
-    with COLORS_FILE.open("r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        return {row["Category"]: row["var1"] for row in reader}
+    data = load_json(COLORS_FILE)
+    return {entry["category"]: entry["main"] for entry in data}
     
 
-def matches_query(item: Tea, q: str | None) -> bool:
+def matches_query(item: SimpleNamespace, q: str | None) -> bool:
     if not q:
         return True
     qn = norm(q)
@@ -74,7 +71,7 @@ def in_filter(val, selected):
 
 
 def filter_teas(
-    teas: Iterable[Tea],
+    teas: Iterable[SimpleNamespace],
     q: str | None = None,
     category: str | None = None,
     subcategory: str | None = None,
@@ -82,8 +79,8 @@ def filter_teas(
     caffeine: str | None = None,
     season: List[str] | None = None,
     serve: List[str] | None = None,
-) -> List[Tea]:
-    filtered: List[Tea] = []
+) -> List[SimpleNamespace]:
+    filtered: List[SimpleNamespace] = []
     for t in teas:
         if not matches_query(t, q):
             continue

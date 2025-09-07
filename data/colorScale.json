@@ -1,0 +1,106 @@
+[
+  {
+    "category": "Álom Kapu",
+    "main": "#C8B8DB",
+    "light": "#F1EDF6",
+    "dark": "#9E82BF",
+    "complementary": "#CBDAB8",
+    "alternative": "#D8B8DA"
+  },
+  {
+    "category": "Szavannai Frissesség",
+    "main": "#E26B39",
+    "light": "#E98F6A",
+    "dark": "#C54E1C",
+    "complementary": "#38AFE2",
+    "alternative": "#E2BC38"
+  },
+  {
+    "category": "Évszakok Zamata",
+    "main": "#6DA544",
+    "light": "#84BB5B",
+    "dark": "#578436",
+    "complementary": "#7B44A5",
+    "alternative": "#44A549"
+  },
+  {
+    "category": "Európai Gyógyfüvek",
+    "main": "#8AA88A",
+    "light": "#ADC2AD",
+    "dark": "#688C68",
+    "complementary": "#A78AA8",
+    "alternative": "#8AA898"
+  },
+  {
+    "category": "Andoki Lendület",
+    "main": "#2A9DAF",
+    "light": "#35B9CE",
+    "dark": "#217D8B",
+    "complementary": "#AE3B2A",
+    "alternative": "#2A5DAE"
+  },
+  {
+    "category": "Finom Védelem",
+    "main": "#B23A48",
+    "light": "#C75361",
+    "dark": "#8E2E39",
+    "complementary": "#39B2A4",
+    "alternative": "#B26539"
+  },
+  {
+    "category": "Csendes Idő",
+    "main": "#AAB9C3",
+    "light": "#D4DCE1",
+    "dark": "#7F95A4",
+    "complementary": "#C2B3AA",
+    "alternative": "#AAADC2"
+  },
+  {
+    "category": "Tiszta Fókusz",
+    "main": "#EBCB4A",
+    "light": "#F1DA81",
+    "dark": "#DEB718",
+    "complementary": "#4969EB",
+    "alternative": "#BDEB49"
+  },
+  {
+    "category": "Indiai Chai",
+    "main": "#A0522D",
+    "light": "#C06236",
+    "dark": "#804123",
+    "complementary": "#2D7AA0",
+    "alternative": "#A0892D"
+  },
+  {
+    "category": "Hűs Kortyok",
+    "main": "#7EC8E3",
+    "light": "#B8E0EF",
+    "dark": "#43AFD6",
+    "complementary": "#E3997E",
+    "alternative": "#7E97E3"
+  },
+  {
+    "category": "Japán Zöld",
+    "main": "#5A8F3B",
+    "light": "#6CAB46",
+    "dark": "#48722F",
+    "complementary": "#6F3B8F",
+    "alternative": "#3B8F44"
+  },
+  {
+    "category": "Közel-Kelet Illata",
+    "main": "#C89B3C",
+    "light": "#D3AF64",
+    "dark": "#A27C2D",
+    "complementary": "#3B68C8",
+    "alternative": "#B1C83B"
+  },
+  {
+    "category": "Kínai Klasszikus",
+    "main": "#317873",
+    "light": "#3A908A",
+    "dark": "#27605C",
+    "complementary": "#783035",
+    "alternative": "#305A78"
+  }
+]
