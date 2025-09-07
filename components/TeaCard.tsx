@@ -21,7 +21,7 @@ interface Props {
 
 export default function TeaCard({ tea }: Props) {
   const color = getCategoryColor(tea.category);
-  const mandalaColor = getCategoryColor(tea.category, 'alternative');
+  const mandalaColor = getCategoryColor(tea.category, 'white');
   const dotActiveColor = getCategoryColor(tea.category, 'dark');
   const dotColor = getCategoryColor(tea.category, 'light');
 

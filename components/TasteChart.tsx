@@ -35,9 +35,9 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
     ];
   });
 
-  const topEntries = entries
-    .filter(([, value]) => value > 0)
+  const topEntries = [...entries]
     .sort((a, b) => b[1] - a[1])
+    .filter(([, value]) => value > 0)
     .slice(0, 3);
 
   const center = size / 2;
@@ -52,30 +52,31 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
   });
 
   const active = points.filter((p) => p.value > 0);
-  const segments =
-    active.length > 1
-      ? active.map((p, i) => {
-          const next = active[(i + 1) % active.length];
-          const width = 2 + Math.max(N(p.value), N(next.value));
-          return { x1: p.x, y1: p.y, x2: next.x, y2: next.y, width };
-        })
-      : [];
+  const pathData =
+    points
+      .map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`)
+      .join(' ') + ' Z';
 
   return (
     <div className={styles.container}>
       <svg width={size} height={size} className={styles.chart}>
-        {segments.map((s, i) => (
-          <line
-            key={i}
-            x1={s.x1}
-            y1={s.y1}
-            x2={s.x2}
-            y2={s.y2}
-            stroke={color}
-            strokeWidth={s.width}
-            strokeLinecap="round"
-          />
-        ))}
+        <circle
+          cx={center}
+          cy={center}
+          r={maxRadius}
+          stroke="white"
+          strokeWidth={1}
+          fill="none"
+          opacity={0.3}
+        />
+        <path
+          d={pathData}
+          stroke={color}
+          strokeWidth={2}
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
         {active.map((p, i) => (
           <circle key={i} cx={p.x} cy={p.y} r={2 + N(p.value)} fill={color} />
         ))}
