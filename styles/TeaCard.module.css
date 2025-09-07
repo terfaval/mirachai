@@ -20,7 +20,11 @@
 
 .mandala {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  transform: translate(-50%, -50%);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -86,16 +90,10 @@
   gap: 4px;
 }
 
-.dot,
-.dotActive {
+.dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ccc;
-}
-
-.dotActive {
-  background: #000;
 }
 
 .intensityLabel {

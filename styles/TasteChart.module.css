@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.chart {
+  width: 60px;
+  height: 60px;
+}
+
+.labels {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}

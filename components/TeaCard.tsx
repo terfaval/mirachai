@@ -1,6 +1,6 @@
 import styles from '../styles/TeaCard.module.css';
 import { Tea } from '../utils/filter';
-import { getCategoryColor, getComplementaryColor } from '../utils/colorMap';
+import { getCategoryColor } from '../utils/colorMap';
 import TasteChart from './TasteChart'
 
 interface Props {
@@ -9,7 +9,9 @@ interface Props {
 
 export default function TeaCard({ tea }: Props) {
   const color = getCategoryColor(tea.category);
-  const mandalaColor = getComplementaryColor(color);
+  const mandalaColor = getCategoryColor(tea.category, 'alternative');
+  const dotActiveColor = getCategoryColor(tea.category, 'dark');
+  const dotColor = getCategoryColor(tea.category, 'light');
 
   const flavorKeys = [
     'friss',
@@ -73,7 +75,8 @@ export default function TeaCard({ tea }: Props) {
             {[1, 2, 3].map((i) => (
               <span
                 key={i}
-                className={i <= intensityLevel ? styles.dotActive : styles.dot}
+                className={styles.dot}
+                style={{ background: i <= intensityLevel ? dotActiveColor : dotColor }}
               />
             ))}
           </div>
