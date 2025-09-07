@@ -60,11 +60,6 @@
   align-items: center;
 }
 
-.chart {
-  width: 80px;
-  height: 80px;
-}
-
 .flavorList {
   list-style: none;
   padding: 0;

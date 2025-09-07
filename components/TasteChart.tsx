@@ -4,9 +4,11 @@ import { getCategoryColor } from '../utils/colorMap';
 
 interface Props {
   tea: Tea;
+  size?: number;
+  showLabels?: boolean;
 }
 
-export default function TasteChart({ tea }: Props) {
+export default function TasteChart({ tea, size = 60, showLabels = true }: Props) {
   const color = getCategoryColor(tea.category, 'dark');
   const entries = Object.entries(tea)
     .filter(([k, v]) => k.startsWith('taste_') && typeof v === 'number')
@@ -16,7 +18,6 @@ export default function TasteChart({ tea }: Props) {
     ])
     .filter(([_, v]) => v > 0);
 
-  const size = 60;
   const center = size / 2;
   const maxRadius = center - 5;
 
@@ -38,11 +39,13 @@ export default function TasteChart({ tea }: Props) {
           <circle key={i} cx={p.x} cy={p.y} r={2 + p.value} fill={color} />
         ))}
       </svg>
-      <div className={styles.labels}>
-        {entries.map(([label, value]) => (
-          <div key={label}>{label}: {value}</div>
-        ))}
-      </div>
+      {showLabels && (
+        <div className={styles.labels}>
+          {entries.map(([label, value]) => (
+            <div key={label}>{label}: {value}</div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

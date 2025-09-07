@@ -30,21 +30,6 @@ export default function TeaCard({ tea }: Props) {
     .filter((f) => f.value > 0);
 
   const showChart = flavors.length >= 3;
-  let points = '';
-  if (showChart) {
-    const max = Math.max(...flavors.map((f) => f.value));
-    const center = 50;
-    const radius = 40;
-    points = flavors
-      .map((f, i) => {
-        const angle = (2 * Math.PI * i) / flavors.length - Math.PI / 2;
-        const r = (f.value / max) * radius;
-        const x = center + r * Math.cos(angle);
-        const y = center + r * Math.sin(angle);
-        return `${x},${y}`;
-      })
-      .join(' ');
-  }
 
   const intensityMap: Record<string, number> = { enyhe: 1, közepes: 2, erős: 3 };
   const intensityLevel = intensityMap[tea.intensity ?? ''] ?? 0;
@@ -57,9 +42,7 @@ export default function TeaCard({ tea }: Props) {
       <div className={styles.info}>
         <div className={styles.flavor}>
           {showChart && (
-            <svg viewBox="0 0 100 100" className={styles.chart}>
-              <polygon points={points} />
-            </svg>
+            <TasteChart tea={tea} size={80} showLabels={false} />
           )}
           <ul className={styles.flavorList}>
             {flavors.map((f) => (
