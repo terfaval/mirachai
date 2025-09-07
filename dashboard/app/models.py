@@ -1,25 +1,40 @@
 from __future__ import annotations
 
 from typing import List, Optional
-from pydantic import BaseModel
+
+from pydantic import BaseModel, Field
 
 
-class Ingredient(BaseModel):
-    name: Optional[str] = None
-    rate: Optional[str] = None
+class IngredientPart(BaseModel):
+    name: str
+    rate: float
+
+
+class ServTempModes(BaseModel):
+    hot: Optional[bool] = None
+    lukewarm: Optional[bool] = None
+    iced: Optional[bool] = None
+    coldbrew: Optional[bool] = None
 
 
 class Tea(BaseModel):
-    id: Optional[int] = None
-    name: Optional[str] = None
-    description: Optional[str] = None
-    category: Optional[str] = None
+    id: str
+    name: str
+    category: str
     subcategory: Optional[str] = None
-    tags: Optional[List[str]] = None
-    mood_short: Optional[str] = None
-    caffeineLevel: Optional[str] = None
-    timeSeason: Optional[List[str]] = None
-    serve: Optional[List[str]] = None
-    tempC: Optional[str] = None
-    steepMin: Optional[str] = None
-    ingredients: Optional[List[Ingredient]] = None
+    tags: List[str] = Field(default_factory=list)
+    shortDescription: Optional[str] = None
+    description: Optional[str] = None
+    tastes: List[str] = Field(default_factory=list)
+    effects: List[str] = Field(default_factory=list)
+    ingredients: List[str] = Field(default_factory=list)
+    ingredientsBreakdown: List[IngredientPart] = Field(default_factory=list)
+    timeOfDay: str
+    season: str
+    tempC: int
+    steepMin: int
+    quantitySpoons: Optional[float] = None
+    caffeineLevel: Optional[float] = None
+    servTempModes: Optional[ServTempModes] = None
+    allergens: List[str] = Field(default_factory=list)
+    intensity: Optional[str] = None
