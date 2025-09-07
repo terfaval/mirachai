@@ -9,37 +9,51 @@
   border-radius: 12px;
   padding: 12px;
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   transform-origin: center;
   overflow: hidden;
 }
 
 .card:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.9);
 }
+
+/* ── Mandala overlay (SVG mask mozaik) ───────────────────────────── */
 
 .mandala {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 300%;
-  height: 300%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* A maszk mindig ugyanaz az SVG (a TELJES mandala).
+     Ezt a maszkot skálázzuk a teljes 3×3-as rácsra,
+     és az adott kártya "szeletét" a mask-position-nel választjuk ki. */
   mask-image: url('/Mandala.svg');
   -webkit-mask-image: url('/Mandala.svg');
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
-  mask-position: top left;
-  -webkit-mask-position: top left;
-  mask-size: 200% 200%;
-  -webkit-mask-size: 200% 200%;
-  opacity: 0.15;
-  fill: white;
-  pointer-events: none;
-  z-index: 0;
+
+  /* A TELJES kép mérete: a kártya méretének tilesX × tilesY-szerese */
+  mask-size: calc(100% * var(--tiles-x)) calc(100% * var(--tiles-y));
+  -webkit-mask-size: calc(100% * var(--tiles-x)) calc(100% * var(--tiles-y));
+
+  /* A kivágott szelet pozíciója: tileX/tileY arány a (tilesX-1)/(tilesY-1)-hez képest */
+  mask-position:
+    calc((var(--tile-x) / (var(--tiles-x) - 1)) * 100%)
+    calc((var(--tile-y) / (var(--tiles-y) - 1)) * 100%);
+  -webkit-mask-position:
+    calc((var(--tile-x) / (var(--tiles-x) - 1)) * 100%)
+    calc((var(--tile-y) / (var(--tiles-y) - 1)) * 100%);
+
+  /* A háttérszín, amit a maszk láthatóvá tesz, a komponens inline style-jából jön */
+  background: currentColor; /* fallback, ha kéne */
+  opacity: 0.18;
+  filter: grayscale(100%);
 }
+
+/* ── Szöveg és infó ─────────────────────────────────────────────── */
 
 .name {
   font-family: 'Titan One', cursive;
