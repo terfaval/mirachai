@@ -46,7 +46,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, bármikor"
   },
   {
     "id": 2,
@@ -95,7 +97,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 3,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz",
+    "daypart_recommended": "este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 3,
@@ -144,7 +148,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, étkezés_után, bármikor"
   },
   {
     "id": 4,
@@ -193,7 +199,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, étkezés_után, bármikor"
   },
   {
     "id": 5,
@@ -242,7 +250,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 1,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, étkezés_után, bármikor"
   },
   {
     "id": 6,
@@ -291,7 +301,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 7,
@@ -340,7 +352,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, étkezés_után, bármikor"
   },
   {
     "id": 8,
@@ -389,7 +403,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 9,
@@ -438,7 +454,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt"
   },
   {
     "id": 10,
@@ -487,7 +505,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 1,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 11,
@@ -536,7 +556,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "reggel, délelőtt, kora_délután"
   },
   {
     "id": 12,
@@ -585,7 +607,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 3,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 13,
@@ -634,7 +658,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "reggel, délelőtt, kora_délután, délután"
   },
   {
     "id": 14,
@@ -683,7 +709,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "ősz, tél",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 15,
@@ -732,7 +760,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz",
+    "daypart_recommended": "délelőtt, kora_délután"
   },
   {
     "id": 16,
@@ -781,7 +811,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "ősz, tél",
+    "daypart_recommended": "délelőtt, kora_délután"
   },
   {
     "id": 17,
@@ -830,7 +862,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "ősz, tél",
+    "daypart_recommended": "délelőtt, kora_délután, étkezés_után"
   },
   {
     "id": 18,
@@ -879,7 +913,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 3,
     "nature": 1,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 19,
@@ -928,7 +964,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt"
   },
   {
     "id": 20,
@@ -977,7 +1015,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, este, lefekvés_előtt"
   },
   {
     "id": 21,
@@ -1026,7 +1066,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 2,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "ősz, tél",
+    "daypart_recommended": "bármikor"
   },
   {
     "id": 22,
@@ -1075,7 +1117,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 2,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, étkezés_után, bármikor"
   },
   {
     "id": 23,
@@ -1124,7 +1168,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 24,
@@ -1173,7 +1219,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 25,
@@ -1222,7 +1270,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, bármikor"
   },
   {
     "id": 26,
@@ -1271,7 +1321,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 27,
@@ -1320,7 +1372,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 28,
@@ -1369,7 +1423,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz",
+    "daypart_recommended": "bármikor"
   },
   {
     "id": 29,
@@ -1418,7 +1474,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, ősz, tél",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 30,
@@ -1467,7 +1525,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 31,
@@ -1516,7 +1576,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 3,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 32,
@@ -1565,7 +1627,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 33,
@@ -1614,7 +1678,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, bármikor"
   },
   {
     "id": 34,
@@ -1663,7 +1729,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "étkezés_után, bármikor"
   },
   {
     "id": 35,
@@ -1712,7 +1780,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 36,
@@ -1761,11 +1831,13 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, étkezés_után"
   },
   {
     "id": 37,
-    "name": "Chai Masala",
+    "name": "Chai Masala Klasszikus",
     "category": "Indiai Chai",
     "subcategory": "Rituálé",
     "description": "Olyan, mint egy régi barát, aki mindig hangosan köszön. Fűszeres, meleg, és mégis otthonos.",
@@ -1810,7 +1882,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 1,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, étkezés_után"
   },
   {
     "id": 38,
@@ -1859,7 +1933,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 3,
     "nature": 2,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délelőtt, kora_délután, délután"
   },
   {
     "id": 39,
@@ -1908,7 +1984,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "ősz, tél",
+    "daypart_recommended": "bármikor"
   },
   {
     "id": 40,
@@ -1957,7 +2035,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, bármikor"
   },
   {
     "id": 41,
@@ -2006,7 +2086,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 3,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, bármikor"
   },
   {
     "id": 42,
@@ -2055,7 +2137,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 43,
@@ -2104,7 +2188,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 44,
@@ -2153,7 +2239,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 45,
@@ -2202,7 +2290,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "reggel, délelőtt, kora_délután, étkezés_után"
   },
   {
     "id": 46,
@@ -2251,7 +2341,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 1,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "ősz, tél",
+    "daypart_recommended": "délelőtt, kora_délután, étkezés_után"
   },
   {
     "id": 47,
@@ -2300,7 +2392,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, kora_délután"
   },
   {
     "id": 48,
@@ -2349,7 +2443,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "reggel, délelőtt, kora_délután, délután"
   },
   {
     "id": 49,
@@ -2398,7 +2494,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "ősz, tél",
+    "daypart_recommended": "étkezés_után, bármikor"
   },
   {
     "id": 50,
@@ -2447,12 +2545,14 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, ősz, tél",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 51,
     "name": "Marokkói Napfény",
-    "category": "Szavannai Frissesség",
+    "category": "Afrika Frissességei",
     "subcategory": "Belső utazás",
     "description": "Zöld tea mentával – nem bonyolítja túl. Inkább olyan, mint egy friss szellő, amitől kicsit jobban áll a világ.",
     "mood_short": "Marrákesi szellő a bögrédben.",
@@ -2496,7 +2596,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "reggel, délelőtt, kora_délután, étkezés_után"
   },
   {
     "id": 52,
@@ -2545,7 +2647,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, este, lefekvés_előtt"
   },
   {
     "id": 53,
@@ -2594,7 +2698,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 54,
@@ -2643,12 +2749,14 @@
     "serve_coldbrew": "TRUE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, bármikor"
   },
   {
     "id": 55,
     "name": "Afrikai Naplemente",
-    "category": "Szavannai Frissesség",
+    "category": "Afrika Frissességei",
     "subcategory": "Esti relax",
     "description": "Rooibos narancshéjjal: nem forradalom, csak kellemes zárókép. Mint egy lassú, vörös fényű est, ami magától megtörténik.",
     "mood_short": "Vörös alkony Fokföldről.",
@@ -2692,12 +2800,14 @@
     "serve_coldbrew": "TRUE",
     "garden": 3,
     "nature": 2,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 56,
     "name": "Sivatagi Szellő",
-    "category": "Szavannai Frissesség",
+    "category": "Afrika Frissességei",
     "subcategory": "Nyári frissesség",
     "description": "Ez a zöld tea nem filozofál: hűsít és elenged. Mint egy váratlan, jókor érkező szél a melegben.",
     "mood_short": "Hűsítő hírnök a sivatagban.",
@@ -2741,7 +2851,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 57,
@@ -2790,7 +2902,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, étkezés_után"
   },
   {
     "id": 58,
@@ -2839,7 +2953,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 59,
@@ -2888,7 +3004,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 60,
@@ -2937,7 +3055,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 61,
@@ -2986,7 +3106,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, ősz, tél",
+    "daypart_recommended": "délelőtt, kora_délután, étkezés_után"
   },
   {
     "id": 62,
@@ -3035,7 +3157,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délelőtt, kora_délután, délután"
   },
   {
     "id": 63,
@@ -3084,7 +3208,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, étkezés_után, bármikor"
   },
   {
     "id": 64,
@@ -3133,7 +3259,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 65,
@@ -3182,7 +3310,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 66,
@@ -3231,7 +3361,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, étkezés_után"
   },
   {
     "id": 67,
@@ -3280,7 +3412,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, ősz",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 68,
@@ -3329,7 +3463,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 2,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, étkezés_után, bármikor"
   },
   {
     "id": 69,
@@ -3378,7 +3514,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 70,
@@ -3427,7 +3565,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 71,
@@ -3476,7 +3616,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 72,
@@ -3525,7 +3667,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "ősz, tél",
+    "daypart_recommended": "étkezés_után, bármikor"
   },
   {
     "id": 73,
@@ -3574,7 +3718,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 74,
@@ -3623,7 +3769,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 75,
@@ -3672,7 +3820,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, bármikor"
   },
   {
     "id": 76,
@@ -3721,7 +3871,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz",
+    "daypart_recommended": "este, lefekvés_előtt"
   },
   {
     "id": 77,
@@ -3770,7 +3922,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 3,
     "nature": 3,
-    "diy-kit": 3
+    "diy-kit": 3,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 78,
@@ -3819,7 +3973,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "étkezés_után, bármikor"
   },
   {
     "id": 79,
@@ -3868,7 +4024,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "délután, este, lefekvés_előtt"
   },
   {
     "id": 80,
@@ -3917,7 +4075,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt, étkezés_után"
   },
   {
     "id": 81,
@@ -3966,7 +4126,9 @@
     "serve_coldbrew": "FALSE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 82,
@@ -4015,7 +4177,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 3,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "délután, bármikor"
   },
   {
     "id": 83,
@@ -4064,7 +4228,9 @@
     "serve_coldbrew": "TRUE",
     "garden": 2,
     "nature": 2,
-    "diy-kit": 2
+    "diy-kit": 2,
+    "season_recommended": "tavasz, nyár",
+    "daypart_recommended": "este, lefekvés_előtt, étkezés_után"
   },
   {
     "id": 84,
@@ -4113,6 +4279,366 @@
     "serve_coldbrew": "FALSE",
     "garden": 1,
     "nature": 1,
-    "diy-kit": 1
+    "diy-kit": 1,
+    "season_recommended": "tavasz, nyár, ősz, tél",
+    "daypart_recommended": "reggel, délelőtt"
+  },
+    {
+    "id": 85,
+    "name": "Kalahári Hajnal",
+    "category": "Afrika Frissességei",
+    "subcategory": "Nyári frissesség",
+    "description": "Honeybush és rooibos citrusos lehelettel. Olyan, mint amikor a hajnali levegő előbb ér a bögrédbe, mint az ablakhoz.",
+    "mood_short": "Lágy napindító a sivatag pereméről.",
+    "function": "",
+    "ingerdient-1": "honeybush",
+    "rate-1": 40,
+    "ingerdient-2": "rooibos",
+    "rate-2": 30,
+    "ingerdient-3": "narancshéj",
+    "rate-3": 10,
+    "ingerdient-4": "citromfű",
+    "rate-4": 10,
+    "ingerdient-5": "hibiszkusz",
+    "rate-5": 10,
+    "ingerdient-6": "",
+    "rate-6": "",
+    "color": "mély narancsos-vöröses",
+    "taste_friss": 2,
+    "taste_édeskés": 1,
+    "taste_savanykás": 2,
+    "taste_fűszeres": 0,
+    "taste_virágos": 0,
+    "taste_gyümölcsös": 2,
+    "taste_földes": 0,
+    "taste_kesernyés": 0,
+    "taste_csípős": 0,
+    "taste_umami": 0,
+    "focus_immunity": 1,
+    "focus_relax": 1,
+    "focus_focus": 1,
+    "focus_detox": 1,
+    "intensity": "enyhe",
+    "quantity_250ml": 1.5,
+    "tempC": 95,
+    "steepMin": 6,
+    "caffeine_pct": 0,
+    "allergens": "citrus",
+    "serve_hot": "TRUE",
+    "serve_lukewarm": "TRUE",
+    "serve_iced": "TRUE",
+    "serve_coldbrew": "TRUE",
+    "garden": 2,
+    "nature": 2,
+    "diy-kit": 2,
+    "season_recommended": ["tavasz","nyár"],
+    "daypart_recommended": ["bármikor","délután"]
+  },
+  {
+    "id": 86,
+    "name": "Oázis Nektára",
+    "category": "Afrika Frissességei",
+    "subcategory": "Esti relax",
+    "description": "Rooibos, kamilla és vanília – egy fotel, ami nem kérdez. Csak leül melléd, és a nap szépen magától befejeződik.",
+    "mood_short": "Vaníliás csönd egy csészében.",
+    "function": "",
+    "ingerdient-1": "rooibos",
+    "rate-1": 60,
+    "ingerdient-2": "kamilla",
+    "rate-2": 15,
+    "ingerdient-3": "vanília",
+    "rate-3": 10,
+    "ingerdient-4": "édeskömény",
+    "rate-4": 10,
+    "ingerdient-5": "rózsa",
+    "rate-5": 5,
+    "ingerdient-6": "",
+    "rate-6": "",
+    "color": "aranyló-vöröses",
+    "taste_friss": 0,
+    "taste_édeskés": 2,
+    "taste_savanykás": 0,
+    "taste_fűszeres": 0,
+    "taste_virágos": 2,
+    "taste_gyümölcsös": 0,
+    "taste_földes": 1,
+    "taste_kesernyés": 0,
+    "taste_csípős": 0,
+    "taste_umami": 0,
+    "focus_immunity": 0,
+    "focus_relax": 3,
+    "focus_focus": 0,
+    "focus_detox": 0,
+    "intensity": "enyhe",
+    "quantity_250ml": 1.5,
+    "tempC": 95,
+    "steepMin": 7,
+    "caffeine_pct": 0,
+    "allergens": "",
+    "serve_hot": "TRUE",
+    "serve_lukewarm": "TRUE",
+    "serve_iced": "FALSE",
+    "serve_coldbrew": "FALSE",
+    "garden": 2,
+    "nature": 1,
+    "diy-kit": 2,
+    "season_recommended": ["bármelyik"],
+    "daypart_recommended": ["este","lefekvés_előtt","étkezés_után"]
+  },
+  {
+    "id": 87,
+    "name": "Savannai Szellő",
+    "category": "Afrika Frissességei",
+    "subcategory": "Meditáció",
+    "description": "Buchu és menta egy kis citrushéjjal. Olyan, mint amikor a forró délutánban megmozdul a levegő – és te is fellélegzel.",
+    "mood_short": "Halk, hűvös fellélegzés.",
+    "function": "",
+    "ingerdient-1": "buchu",
+    "rate-1": 35,
+    "ingerdient-2": "menta",
+    "rate-2": 25,
+    "ingerdient-3": "narancshéj",
+    "rate-3": 10,
+    "ingerdient-4": "rooibos",
+    "rate-4": 20,
+    "ingerdient-5": "almahéj",
+    "rate-5": 10,
+    "ingerdient-6": "",
+    "rate-6": "",
+    "color": "halvány arany-barnás",
+    "taste_friss": 3,
+    "taste_édeskés": 0,
+    "taste_savanykás": 1,
+    "taste_fűszeres": 0,
+    "taste_virágos": 0,
+    "taste_gyümölcsös": 1,
+    "taste_földes": 0,
+    "taste_kesernyés": 0,
+    "taste_csípős": 0,
+    "taste_umami": 0,
+    "focus_immunity": 1,
+    "focus_relax": 2,
+    "focus_focus": 1,
+    "focus_detox": 1,
+    "intensity": "enyhe",
+    "quantity_250ml": 1.5,
+    "tempC": 95,
+    "steepMin": 6,
+    "caffeine_pct": 0,
+    "allergens": "citrus",
+    "serve_hot": "TRUE",
+    "serve_lukewarm": "TRUE",
+    "serve_iced": "TRUE",
+    "serve_coldbrew": "TRUE",
+    "garden": 1,
+    "nature": 2,
+    "diy-kit": 1,
+    "season_recommended": ["tavasz","nyár"],
+    "daypart_recommended": ["bármikor","délután"]
+  },
+  {
+    "id": 88,
+    "name": "Baobab Derű",
+    "category": "Afrika Frissességei",
+    "subcategory": "Vitalitás",
+    "description": "Baobab és hibiszkusz C-vitaminos lendülete narancshéjjal. Nem siet, de észrevétlenül jobb kedved lesz.",
+    "mood_short": "C-vitaminos mosoly.",
+    "function": "",
+    "ingerdient-1": "baobab gyümölcspor",
+    "rate-1": 35,
+    "ingerdient-2": "hibiszkusz",
+    "rate-2": 25,
+    "ingerdient-3": "narancshéj",
+    "rate-3": 15,
+    "ingerdient-4": "rooibos",
+    "rate-4": 15,
+    "ingerdient-5": "gyömbér",
+    "rate-5": 10,
+    "ingerdient-6": "",
+    "rate-6": "",
+    "color": "mélyvörös-bordó",
+    "taste_friss": 1,
+    "taste_édeskés": 1,
+    "taste_savanykás": 3,
+    "taste_fűszeres": 1,
+    "taste_virágos": 0,
+    "taste_gyümölcsös": 2,
+    "taste_földes": 0,
+    "taste_kesernyés": 0,
+    "taste_csípős": 1,
+    "taste_umami": 0,
+    "focus_immunity": 3,
+    "focus_relax": 0,
+    "focus_focus": 1,
+    "focus_detox": 1,
+    "intensity": "közepes",
+    "quantity_250ml": 1.5,
+    "tempC": 95,
+    "steepMin": 6,
+    "caffeine_pct": 0,
+    "allergens": "citrus",
+    "serve_hot": "TRUE",
+    "serve_lukewarm": "TRUE",
+    "serve_iced": "FALSE",
+    "serve_coldbrew": "FALSE",
+    "garden": 2,
+    "nature": 3,
+    "diy-kit": 2,
+    "season_recommended": ["ősz","tél"],
+    "daypart_recommended": ["bármikor","étkezés_után"]
+  },
+  {
+    "id": 89,
+    "name": "Atlasz Fűszerút",
+    "category": "Afrika Frissességei",
+    "subcategory": "Chai",
+    "description": "Rooibos alap, kardamom és fahéj; narancs és datolya a háttérben. Fűszeres mellékutca a bazár helyett.",
+    "mood_short": "Meleg fűszer, koffein nélkül.",
+    "function": "",
+    "ingerdient-1": "rooibos",
+    "rate-1": 55,
+    "ingerdient-2": "fahéj",
+    "rate-2": 15,
+    "ingerdient-3": "kardamom",
+    "rate-3": 10,
+    "ingerdient-4": "narancshéj",
+    "rate-4": 10,
+    "ingerdient-5": "datolya",
+    "rate-5": 10,
+    "ingerdient-6": "",
+    "rate-6": "",
+    "color": "mély narancsos-vöröses",
+    "taste_friss": 1,
+    "taste_édeskés": 1,
+    "taste_savanykás": 0,
+    "taste_fűszeres": 3,
+    "taste_virágos": 0,
+    "taste_gyümölcsös": 0,
+    "taste_földes": 1,
+    "taste_kesernyés": 0,
+    "taste_csípős": 0,
+    "taste_umami": 0,
+    "focus_immunity": 1,
+    "focus_relax": 2,
+    "focus_focus": 0,
+    "focus_detox": 0,
+    "intensity": "közepes",
+    "quantity_250ml": 1.5,
+    "tempC": 95,
+    "steepMin": 6,
+    "caffeine_pct": 0,
+    "allergens": "citrus|fahéj",
+    "serve_hot": "TRUE",
+    "serve_lukewarm": "TRUE",
+    "serve_iced": "FALSE",
+    "serve_coldbrew": "FALSE",
+    "garden": 1,
+    "nature": 2,
+    "diy-kit": 2,
+    "season_recommended": ["ősz","tél"],
+    "daypart_recommended": ["bármikor"]
+  },
+  {
+    "id": 90,
+    "name": "Kilifi Part",
+    "category": "Afrika Frissességei",
+    "subcategory": "Gyümölcsös",
+    "description": "Hibiszkusz és ananász egy csipet citromfűvel, kókusz árnyékkal. Trópusi mosoly, ami jégen a legőszintébb.",
+    "mood_short": "Trópusi hűs mosoly.",
+    "function": "",
+    "ingerdient-1": "hibiszkusz",
+    "rate-1": 40,
+    "ingerdient-2": "ananász darab",
+    "rate-2": 20,
+    "ingerdient-3": "citromfű",
+    "rate-3": 15,
+    "ingerdient-4": "kókuszreszelék",
+    "rate-4": 10,
+    "ingerdient-5": "rooibos",
+    "rate-5": 15,
+    "ingerdient-6": "",
+    "rate-6": "",
+    "color": "mélyvörös-bordó",
+    "taste_friss": 2,
+    "taste_édeskés": 2,
+    "taste_savanykás": 2,
+    "taste_fűszeres": 0,
+    "taste_virágos": 0,
+    "taste_gyümölcsös": 3,
+    "taste_földes": 0,
+    "taste_kesernyés": 0,
+    "taste_csípős": 0,
+    "taste_umami": 0,
+    "focus_immunity": 1,
+    "focus_relax": 1,
+    "focus_focus": 0,
+    "focus_detox": 1,
+    "intensity": "közepes",
+    "quantity_250ml": 1.5,
+    "tempC": 95,
+    "steepMin": 6,
+    "caffeine_pct": 0,
+    "allergens": "kókusz",
+    "serve_hot": "TRUE",
+    "serve_lukewarm": "TRUE",
+    "serve_iced": "TRUE",
+    "serve_coldbrew": "TRUE",
+    "garden": 2,
+    "nature": 2,
+    "diy-kit": 3,
+    "season_recommended": ["tavasz","nyár"],
+    "daypart_recommended": ["bármikor","délután"]
+  },
+  {
+    "id": 88,
+    "name": "Tavaszi Nyitány",
+    "category": "Évszakok Zamata",
+    "subcategory": "Tavaszi virágzás",
+    "description": "Bodzavirág, citromfű és menta – mintha a kert halkan kinyitná az ablakot. Nem nagy bejelentés, csak friss levegő a bögrédben.",
+    "mood_short": "Halk tavaszi fellélegzés.",
+    "function": "",
+    "ingerdient-1": "bodzavirág",
+    "rate-1": 40,
+    "ingerdient-2": "citromfű",
+    "rate-2": 25,
+    "ingerdient-3": "menta",
+    "rate-3": 15,
+    "ingerdient-4": "citromhéj",
+    "rate-4": 10,
+    "ingerdient-5": "almahéj",
+    "rate-5": 10,
+    "ingerdient-6": "",
+    "rate-6": "",
+    "color": "aranyló-sárgás",
+    "taste_friss": 2,
+    "taste_édeskés": 1,
+    "taste_savanykás": 1,
+    "taste_fűszeres": 0,
+    "taste_virágos": 2,
+    "taste_gyümölcsös": 1,
+    "taste_földes": 0,
+    "taste_kesernyés": 0,
+    "taste_csípős": 0,
+    "taste_umami": 0,
+    "focus_immunity": 1,
+    "focus_relax": 2,
+    "focus_focus": 0,
+    "focus_detox": 1,
+    "intensity": "enyhe",
+    "quantity_250ml": 1.5,
+    "tempC": 95,
+    "steepMin": 6,
+    "caffeine_pct": 0,
+    "allergens": "citrus",
+    "serve_hot": "TRUE",
+    "serve_lukewarm": "TRUE",
+    "serve_iced": "TRUE",
+    "serve_coldbrew": "TRUE",
+    "garden": 2,
+    "nature": 2,
+    "diy-kit": 1,
+    "season_recommended": ["tavasz"],
+    "daypart_recommended": ["bármikor","délután","étkezés_után"]
   }
+
 ]
