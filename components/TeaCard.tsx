@@ -1,3 +1,4 @@
+// components/TeaCard.tsx
 import styles from '../styles/TeaCard.module.css';
 import { Tea } from '../utils/filter';
 import { getCategoryColor } from '../utils/colorMap';
@@ -14,8 +15,8 @@ interface Props {
 }
 
 export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: Props) {
-  const color = getCategoryColor(tea.category);
-  const mandalaColor = getCategoryColor(tea.category, 'light');
+  const color = getCategoryColor(tea.category);                    // main
+  const mandalaColor = getCategoryColor(tea.category, 'light');    // LIGHT – kérés szerint
   const mandalaUrl = getMandalaPath(tea.category);
   const dotActiveColor = tea.intensity ? '#000' : getCategoryColor(tea.category, 'dark');
   const dotColor = getCategoryColor(tea.category, 'light');
@@ -43,12 +44,19 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
         className={styles.mandala}
         style={
           {
-            backgroundColor: mandalaColor,
+            /* LIGHT szín beégetve a maszk kitöltéséhez */
+            '--mandala-fill': mandalaColor,
+
+            /* mozaik-paraméterek */
             '--tiles-x': tilesX,
             '--tiles-y': tilesY,
             '--tile-x': tileX,
             '--tile-y': tileY,
-            '--mandala-scale': 1.5, // nagyítás mértéke
+
+            /* nagyobb mandala */
+            '--mandala-scale': 2.15,
+
+            /* az aktuális kategória mandalája */
             '--mandala-url': `url(${mandalaUrl})`,
           } as React.CSSProperties
         }
@@ -57,8 +65,6 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
       <div className={styles.mood}>{tea.mood_short}</div>
 
       <div className={styles.info}>
-        <div className={styles.info}>
-        {/* ⬅︎ előbb a labelek */}
         <ul className={styles.flavorList}>
           {flavors.map((f) => (
             <li key={f.name}>
@@ -68,10 +74,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
           ))}
         </ul>
 
-        {/* ➜ utána a chart */}
-        {showChart && (
-          <TasteChart tea={tea} size={50} showLabels={false} />
-        )}
+        {showChart && <TasteChart tea={tea} size={50} showLabels={false} />}
 
         <div className={styles.intensity}>
           <div className={styles.dots}>
@@ -86,7 +89,6 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
           <div className={styles.intensityLabel}>{tea.intensity}</div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
