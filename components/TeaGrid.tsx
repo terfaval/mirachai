@@ -47,9 +47,10 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
     <div className={styles.grid}>
       {cells.map((_, idx) => {
         const tea = teas[idx];
+        const key = tea ? `tea-${tea.id}` : `empty-${idx}`;
         if (!tea) {
           // üres cellák, ha kevesebb, mint 9 tea van
-          return <div key={idx} className={styles.cell} />;
+          return <div key={key} className={styles.cell} />;
         }
 
         const rank = rankMap.get(`${tea.category}::${tea.id}`) ?? 0;
@@ -58,7 +59,7 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
         const tileY = Math.floor(tileIndex / TILES_X);
 
         return (
-          <div key={idx} className={styles.cell}>
+          <div key={key} className={styles.cell}>
             <TeaCard
               tea={tea}
               tileX={tileX}

@@ -88,8 +88,8 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
           />
         ))}
         <circle cx={center} cy={center} r={2} fill={lineColor} />
-        {active.map((p, i) => (
-          <circle key={i} cx={p.x} cy={p.y} r={4 + N(p.value)} fill={p.color} />
+        {active.map((p) => (
+          <circle key={p.key} cx={p.x} cy={p.y} r={4 + N(p.value)} fill={p.color} />
         ))}
       </svg>
     </div>
