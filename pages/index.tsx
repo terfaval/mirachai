@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import path from 'path';
 import { promises as fs } from 'fs';
 import TeaGrid from '../components/TeaGrid';
@@ -20,8 +20,20 @@ export default function Home({ teas }: HomeProps) {
   const [filterOpen, setFilterOpen] = useState(false);
 
   const filtered = filterTeas(teas, query).filter(t => !category || t.category === category);
+    const sorted = useMemo(() => {
+    const uniqueCategories = new Set(filtered.map(t => t.category));
+    if (uniqueCategories.size === 1) {
+      return [...filtered].sort((a, b) => a.id - b.id);
+    }
+    const shuffled = [...filtered];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }, [filtered]);
   const perPage = 9;
-  const paginated = filtered.slice((page - 1) * perPage, page * perPage);
+  const paginated = sorted.slice((page - 1) * perPage, page * perPage);
 
   const categories = Array.from(new Set(teas.map(t => t.category))).sort();
 
