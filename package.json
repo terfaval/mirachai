@@ -1,7 +1,6 @@
 {
   "name": "mirachai-search",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "next:build": "next build",
