@@ -4,9 +4,10 @@ import styles from '../styles/Header.module.css';
 interface Props {
   query: string;
   onChange: (value: string) => void;
+  onFilterClick: () => void;
 }
 
-export default function Header({ query, onChange }: Props) {
+export default function Header({ query, onChange, onFilterClick }: Props) {
   return (
     <header className={styles.header}>
       <img src="/mirachai_logo.svg" alt="Mirachai logo" className={styles.logo} />
@@ -17,6 +18,7 @@ export default function Header({ query, onChange }: Props) {
             src="/filter.svg"
             className={`filter-button ${styles.icon}`}
             alt="Szűrés"
+            onClick={onFilterClick}
           />
           <span className={styles.tooltip}>Szűrés</span>
         </div>
