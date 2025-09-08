@@ -8,6 +8,36 @@ import TeaModal from '../components/TeaModal';
 import FilterPanel from '../components/FilterPanel';
 import { filterTeas, Tea } from '../utils/filter';
 
+type SortKey = 'default' | 'intensity' | 'steepMin' | 'relevance';
+
+function getSeason(date: Date): string {
+  const m = date.getMonth();
+  const d = date.getDate();
+  if (m < 2 || (m === 2 && d < 21)) return 'tél';
+  if (m < 5 || (m === 5 && d < 21)) return 'tavasz';
+  if (m < 8 || (m === 8 && d < 23)) return 'nyár';
+  if (m < 11 || (m === 11 && d < 21)) return 'ősz';
+  return 'tél';
+}
+
+function getDaypart(date: Date): string {
+  const h = date.getHours();
+  if (h >= 5 && h < 10) return 'reggel';
+  if (h >= 10 && h < 12) return 'délelőtt';
+  if (h >= 12 && h < 18) return 'délután';
+  if (h >= 18 && h < 22) return 'este';
+  return 'bármikor';
+}
+
+function computeRelevance(tea: Tea, now: Date): number {
+  let score = 0;
+  const season = getSeason(now);
+  const daypart = getDaypart(now);
+  if (tea.season_recommended && tea.season_recommended.includes(season)) score += 2;
+  if (tea.daypart_recommended && tea.daypart_recommended.includes(daypart)) score += 1;
+  return score;
+}
+
 interface HomeProps {
   teas: Tea[];
 }
@@ -18,6 +48,7 @@ export default function Home({ teas }: HomeProps) {
   const [category, setCategory] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [sort, setSort] = useState<SortKey>('default');
 
   const [shuffledTeas] = useState<Tea[]>(() => {
     const arr = [...teas];
@@ -33,11 +64,26 @@ export default function Home({ teas }: HomeProps) {
   );
 
   const sorted = useMemo(() => {
+    const arr = [...filtered];
+    if (sort === 'intensity') {
+      const map: Record<string, number> = { enyhe: 1, 'közepes': 2, 'erős': 3 };
+      arr.sort((a, b) => (map[a.intensity || ''] || 0) - (map[b.intensity || ''] || 0));
+      return arr;
+    }
+    if (sort === 'steepMin') {
+      arr.sort((a, b) => (a.steepMin || 0) - (b.steepMin || 0));
+      return arr;
+    }
+    if (sort === 'relevance') {
+      const now = new Date();
+      arr.sort((a, b) => computeRelevance(b, now) - computeRelevance(a, now));
+      return arr;
+    }
     const uniqueCategories = new Set(filtered.map((t) => t.category));
     return uniqueCategories.size === 1
       ? [...filtered].sort((a, b) => a.id - b.id)
       : filtered;
-  }, [filtered]);
+  }, [filtered, sort]);
 
   const perPage = 9;
   const paginated = sorted.slice((page - 1) * perPage, page * perPage);
@@ -53,7 +99,7 @@ export default function Home({ teas }: HomeProps) {
   return (
     <>
       <Header query={query} onChange={setQuery} onFilterClick={() => setFilterOpen(true)} />
-      <TeaGrid teas={paginated} onTeaClick={setSelectedTea} />
+      <TeaGrid teas={paginated} onTeaClick={setSelectedTea} sort={sort} onChangeSort={setSort} />
       <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
         {page > 1 && <button onClick={() => setPage(page - 1)}>Előző</button>}
         {page * perPage < filtered.length && <button onClick={() => setPage(page + 1)}>Következő</button>}

@@ -28,6 +28,30 @@
     inset 0 0 10px rgba(0,0,0,0.5);
 }
 
+.sortIcon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.sortPanel {
+  position: absolute;
+  top: -60px;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 4px;
+  display: flex;
+  gap: 4px;
+}
+
+.active {
+  font-weight: bold;
+}
+
 .cell {
   border: 6px solid #80350E;
   background: linear-gradient(180deg, #4A2912 0%, #321B0C 80%);

@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import TeaCard from './TeaCard';
 import styles from '../styles/TeaGrid.module.css';
 import { Tea } from '../utils/filter';
 
+export type SortKey = 'default' | 'intensity' | 'steepMin' | 'relevance';
+
 interface Props {
   teas: Tea[];
   onTeaClick?: (tea: Tea) => void;
+  sort: SortKey;
+  onChangeSort: (key: SortKey) => void;
 }
 
 const TILES_X = 3;
@@ -21,7 +26,8 @@ function compareIdAsc(a: any, b: any) {
   return String(a).localeCompare(String(b), 'hu', { numeric: true });
 }
 
-export default function TeaGrid({ teas, onTeaClick }: Props) {
+export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props) {
+  const [open, setOpen] = useState(false);
   // 1) kategóriánként ID szerint sorba rendezett teák
   const byCategory = new Map<string, Tea[]>();
   for (const t of teas) {
@@ -45,6 +51,43 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
   const cells = Array.from({ length: TILE_COUNT });
   return (
     <div className={styles.grid}>
+      <img
+        src="/sort.svg"
+        className={styles.sortIcon}
+        alt="Rendezés"
+        onClick={() => setOpen(!open)}
+      />
+      {open && (
+        <div className={styles.sortPanel}>
+          <button
+            onClick={() => {
+              onChangeSort('intensity');
+              setOpen(false);
+            }}
+            className={sort === 'intensity' ? styles.active : ''}
+          >
+            Intenzitás
+          </button>
+          <button
+            onClick={() => {
+              onChangeSort('steepMin');
+              setOpen(false);
+            }}
+            className={sort === 'steepMin' ? styles.active : ''}
+          >
+            Áztatási idő
+          </button>
+          <button
+            onClick={() => {
+              onChangeSort('relevance');
+              setOpen(false);
+            }}
+            className={sort === 'relevance' ? styles.active : ''}
+          >
+            Relevancia
+          </button>
+        </div>
+      )}
       {cells.map((_, idx) => {
         const tea = teas[idx];
         const key = tea ? `tea-${tea.id}` : `empty-${idx}`;
