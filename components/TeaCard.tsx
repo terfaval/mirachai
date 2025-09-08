@@ -55,6 +55,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
 
             /* nagyobb mandala */
             '--mandala-scale': 1,
+            '--mandala-prezoom': 5,
 
             /* az aktuális kategória mandalája */
             '--mandala-url': `url(${mandalaUrl})`,
