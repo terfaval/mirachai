@@ -69,15 +69,19 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
       )}
 
       <svg width={size} height={size} className={styles.chart} role="img" aria-label="ízprofil diagram">
-        <circle
-          cx={center}
-          cy={center}
-          r={maxRadius}
-          stroke="white"
-          strokeWidth={1}
-          fill="none"
-          opacity={0.3}
-        />
+        {[1, 2, 3].map((lvl) => (
+          <circle
+            key={lvl}
+            cx={center}
+            cy={center}
+            r={(lvl / 3) * maxRadius}
+            stroke="white"
+            strokeWidth={1}
+            fill="none"
+            opacity={0.1 * lvl}
+          />
+        ))}
+        <circle cx={center} cy={center} r={2} fill="white" />
         <path
           d={pathData}
           stroke={color}
