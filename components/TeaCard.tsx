@@ -1,6 +1,7 @@
 import styles from '../styles/TeaCard.module.css';
 import { Tea } from '../utils/filter';
 import { getCategoryColor } from '../utils/colorMap';
+import { getMandalaPath } from '../utils/mandala';
 import TasteChart from './TasteChart';
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
 export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: Props) {
   const color = getCategoryColor(tea.category);
   const mandalaColor = getCategoryColor(tea.category, 'light');
+  const mandalaUrl = getMandalaPath(tea.category);
   const dotActiveColor = tea.intensity ? '#000' : getCategoryColor(tea.category, 'dark');
   const dotColor = getCategoryColor(tea.category, 'light');
 
@@ -47,6 +49,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
             '--tile-x': tileX,
             '--tile-y': tileY,
             '--mandala-scale': 1.5, // nagyítás mértéke
+            '--mandala-url': `url(${mandalaUrl})`,
           } as React.CSSProperties
         }
       />

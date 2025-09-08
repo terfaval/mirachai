@@ -28,8 +28,8 @@
   pointer-events: none;
   z-index: 0;
 
-  mask-image: url('/Mandala.svg');
-  -webkit-mask-image: url('/Mandala.svg');
+  mask-image: var(--mandala-url);
+  -webkit-mask-image: var(--mandala-url);
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
 

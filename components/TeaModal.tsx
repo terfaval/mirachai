@@ -1,6 +1,7 @@
 import styles from '../styles/TeaModal.module.css';
 import { Tea } from '../utils/filter';
 import { getCategoryColor } from '../utils/colorMap';
+import { getMandalaPath } from '../utils/mandala';
 
 interface Props {
   tea: Tea;
@@ -25,7 +26,7 @@ export default function TeaModal({ tea, onClose }: Props) {
         style={{ backgroundColor: color }}
         onClick={(e) => e.stopPropagation()}
       >
-        <img src="/Mandala.svg" alt="" className={styles.mandala} />
+        <img src={getMandalaPath(tea.category)} alt="" className={styles.mandala} />
         <button className={styles.close} onClick={onClose} aria-label="Bezárás">
           ×
         </button>
