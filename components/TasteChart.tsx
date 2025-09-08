@@ -1,4 +1,4 @@
-import styles from '../styles/TasteChart.module.css';
+import styles from '../../styles/TasteChart.module.css';
 import { Tea } from '../utils/filter';
 import { getTasteColor } from '../utils/colorMap';
 
