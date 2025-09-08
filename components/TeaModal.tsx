@@ -30,7 +30,10 @@ export default function TeaModal({ tea, onClose }: Props) {
         <button className={styles.close} onClick={onClose} aria-label="Bezárás">
           ×
         </button>
-        <div className={styles.content} style={{ backgroundColor: light }}>
+        <div
+          className={styles.content}
+          style={{ background: `linear-gradient(to bottom, ${light}, #fff)` }}
+        >
           <h2>{tea.name}</h2>
           {tea.mood_short && <p>{tea.mood_short}</p>}
           {tea.description && <p>{tea.description}</p>}

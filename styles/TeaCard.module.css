@@ -13,6 +13,7 @@
   transform-origin: center;
   overflow: hidden;
   cursor: pointer;
+  isolation: isolate; /* ← hogy a mandala (z-index:0) biztosan alatta legyen mindennek */
 }
 
 .card:hover {
@@ -21,7 +22,6 @@
 }
 
 /* ── Mandala overlay (SVG mask mozaik) ───────────────────────────── */
-
 .mandala {
   position: absolute;
   inset: 0;
@@ -29,36 +29,42 @@
   z-index: 0;
 
   /* stabil maszk */
-  mask-image: var(--mandala-url);
   -webkit-mask-image: var(--mandala-url);
-  mask-type: luminance;
-  mask-repeat: no-repeat;
+  mask-image: var(--mandala-url);
   -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  /* az SVG-knél általában az alpha számít; a luminance sem gond, de az alpha megbízhatóbb webkitben */
+  mask-type: alpha;
 
   /* teljes mandala N×N-re skálázva */
-  mask-size: calc(100% * var(--tiles-x)) calc(100% * var(--tiles-y));
   -webkit-mask-size: calc(100% * var(--tiles-x)) calc(100% * var(--tiles-y));
+  mask-size:         calc(100% * var(--tiles-x)) calc(100% * var(--tiles-y));
 
-  /* adott kártya szelete a rácsból */
-  mask-position:
-    calc((var(--tile-x) / (var(--tiles-x) - 1)) * 100%)
-    calc((var(--tile-y) / (var(--tiles-y) - 1)) * 100%);
+  /* kiválasztott csempe pozíciója */
   -webkit-mask-position:
     calc((var(--tile-x) / (var(--tiles-x) - 1)) * 100%)
     calc((var(--tile-y) / (var(--tiles-y) - 1)) * 100%);
+  mask-position:
+    calc((var(--tile-x) / (var(--tiles-x) - 1)) * 100%)
+    calc((var(--tile-y) / (var(--tiles-y) - 1)) * 100%);
 
-  /* a mandala „kitöltési” színe – a komponens Light színt ad be */
+  /* kitöltési szín (TeaCard-ból jön a light) */
   background: currentColor;
   color: var(--mandala-fill, rgba(0,0,0,0.12));
 
-  /* láthatóság */
+  /* megjelenés */
   opacity: 0.42;
   filter: grayscale(100%);
 
-  /* nagyobb mandala */
-  transform: scale(var(--mandala-scale, 3.5));
-  transform-origin: center;
+  /* nagyítás + ORIGÓ = a kiválasztott csempe! */
+  transform: scale(var(--mandala-scale, 1.7));
+  transform-origin:
+    calc((var(--tile-x) / (var(--tiles-x) - 1)) * 100%)
+    calc((var(--tile-y) / (var(--tiles-y) - 1)) * 100%);
 }
+
+/* szövegrétegek biztosan a mandala fölött */
+.name, .mood, .info { position: relative; z-index: 1; }
 
 /* ── Szöveg és infó ─────────────────────────────────────────────── */
 
