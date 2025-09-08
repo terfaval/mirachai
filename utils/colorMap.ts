@@ -14,6 +14,23 @@ const DEFAULT_COLOR = '#6B4226';
 
 type ColorVariant = keyof Omit<ColorEntry, 'category'>;
 
+const TEA_COLOR_MAP: Record<string, string> = (() => {
+  const last = (colorScale as any)[(colorScale as any).length - 1];
+  if (Array.isArray(last)) {
+    return Object.fromEntries(
+      (last as { tea: string; color: string }[]).map((t) => [
+        t.tea,
+        t.color.slice(0, 7),
+      ])
+    );
+  }
+  return {};
+})();
+
+export function getTeaColor(teaName: string): string {
+  return TEA_COLOR_MAP[teaName] ?? DEFAULT_COLOR;
+}
+
 export function getCategoryColor(
   category: string,
   variant: ColorVariant = 'main'

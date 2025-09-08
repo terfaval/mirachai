@@ -10,6 +10,7 @@ import IngredientsStack from './components/ingredients/IngredientsStack';
 import ColorCup from './components/ColorCup';
 import SimpleProgress from './components/SimpleProgress';
 import ServeModes from './components/ServeModes';
+import { getTeaColor } from './utils/colorMap';
 
 interface Props {
   tea: Tea;
@@ -46,7 +47,7 @@ export default function TeaDetailPage({ tea, colorScale, categoryColors }: Props
       )}
       <IngredientsStack ingredients={tea.ingredients} colorScale={colorScale} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-8 items-center">
-        <ColorCup color={tea.color} />
+        <ColorCup color={getTeaColor(tea.name)} />
         <div className="space-y-4">
           <SimpleProgress
             label="Hőmérséklet"
