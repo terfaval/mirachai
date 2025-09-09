@@ -161,9 +161,11 @@ export default function Home({ teas }: HomeProps) {
     return filtered;
   }, [filtered, sort]);
 
-  const distributed = useMemo(() => distributeByCategory(sorted), [sorted]);
-
   const perPage = 9;
+  const distributed = useMemo(
+    () => distributeByCategory(sorted, perPage, 3),
+    [sorted, perPage],
+  );
   const paginated = useMemo(() => {
     const slice = distributed.slice((page - 1) * perPage, page * perPage);
     if (new Set(slice.map((t) => t.category)).size === 1) {
