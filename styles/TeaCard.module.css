@@ -102,7 +102,7 @@
 
 .info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   margin-top: 8px;
   font-size: 0.6rem;
@@ -110,14 +110,6 @@
   z-index: 1;
   align-items: center;
   gap: 8px;
-}
-
-.infoRight {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
 }
 
 .flavorList {
@@ -175,27 +167,45 @@
   justify-content: center;
 }
 
-.seasonPanel {
-  display: flex;
-  width: 100%;
-  font-size: 0.6rem;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+.chartPanel {
+  position: relative;
+  width: 40px;
+  height: 40px;
 }
 
-.seasonText {
-  margin-left: 8px;
-  text-align: left;
+.chartPanel svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chartLabel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 0.6rem;
+  line-height: 1;
+  color: #fff;
+}
+
+.chartNote {
+  display: block;
+  font-size: 0.5rem;
+  font-style: italic;
+  margin-top: 2px;
+  color: #fff;
 }
 
 .prepPanel {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   margin-top: 8px;
   gap: 8px;
   font-size: 0.6rem;
+  align-items: center;
 }
 
 .timingPanel {
@@ -207,7 +217,7 @@
   font-size: 0.6rem;
 }
 
-.seasonChart {
+.seasonChart svg {
   transform: rotate(-90deg);
 }
 
@@ -230,7 +240,7 @@
   font-size: 0.7rem;
 }
 
-.tempBlock, .steepBlock {
+.tempBlock {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -240,11 +250,19 @@
 
 .prepLabel {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.prepValue {
+  font-weight: 700;
+  font-size: 0.8rem;
 }
 
 .thermo {
   width: 60%;
-  height: 6px;
+  height: 8px;
   background: #eee;
   border-radius: 3px;
   overflow: hidden;
@@ -260,6 +278,11 @@
   position: relative;
   width: 40px;
   height: 40px;
+  margin-left: 10px;
+}
+
+.steepChart svg {
+  transform: rotate(-90deg);
 }
 
 .steepIcon {
