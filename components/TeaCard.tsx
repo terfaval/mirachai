@@ -38,9 +38,10 @@ export default function TeaCard({
   onClick,
 }: Props) {
   const color = getCategoryColor(tea.category); // main
+  const colorDark = getCategoryColor(tea.category, 'dark');
   const mandalaColor = getCategoryColor(tea.category, 'light'); // LIGHT – kérés szerint
   const mandalaUrl = getMandalaPath(tea.category);
-  const dotActiveColor = tea.intensity ? '#000' : getCategoryColor(tea.category, 'dark');
+  const dotActiveColor = tea.intensity ? '#000' : colorDark;
   const dotColor = getCategoryColor(tea.category, 'light');
 
   // ízek (top 3 lista + min. 3 esetén radar chart)
@@ -172,7 +173,7 @@ export default function TeaCard({
 
         {panel === 'category' && (
           <div className={styles.categoryPanel}>
-            <span className={styles.categoryPill} style={{ backgroundColor: color }}>
+            <span className={styles.categoryPill} style={{ backgroundColor: colorDark }}>
               {tea.category}
             </span>
             {tea.subcategory && (
