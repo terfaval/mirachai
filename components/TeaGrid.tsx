@@ -37,6 +37,15 @@ function compareIdAsc(a: any, b: any) {
 
 export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props) {
   const [open, setOpen] = useState(false);
+  const sortOptions: { key: SortKey; label: string }[] = [
+    { key: 'relevanceDesc', label: 'A leginkább releváns teák elől' },
+    { key: 'nameAsc', label: 'Teák A-tól Z-ig' },
+    { key: 'nameDesc', label: 'Teák Z-től A-ig' },
+    { key: 'intensityAsc', label: 'A legkevésbé intenzív teák elől' },
+    { key: 'intensityDesc', label: 'A leginkább intenzív teák elől' },
+    { key: 'steepMinAsc', label: 'A leggyorsabb teák elől' },
+    { key: 'steepMinDesc', label: 'A leglassabb teák elől' },
+  ];
   const [panel, setPanel] = useState<PanelKey>('consumption');
   // 1) kategóriánként ID szerint sorba rendezett teák
   const byCategory = new Map<string, Tea[]>();
@@ -65,100 +74,26 @@ export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props)
       <div className={styles.sortButton} onClick={() => setOpen(!open)}>
         <img src="/sort.svg" className={styles.sortIcon} alt="Rendezés" />
       </div>
-      {open && (
+      {(open || sort !== 'relevanceDesc') && (
         <table className={styles.sortPanel}>
           <tbody>
-            <tr>
-              <td>
-                <button
-                  onClick={() => {
-                    onChangeSort('relevanceDesc');
-                    setOpen(false);
-                  }}
-                  className={sort === 'relevanceDesc' ? styles.active : ''}
-                >
-                  A leginkább releváns teák elől
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={() => {
-                    onChangeSort('nameAsc');
-                    setOpen(false);
-                  }}
-                  className={sort === 'nameAsc' ? styles.active : ''}
-                >
-                  Teák A-tól Z-ig
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={() => {
-                    onChangeSort('nameDesc');
-                    setOpen(false);
-                  }}
-                  className={sort === 'nameDesc' ? styles.active : ''}
-                >
-                  Teák Z-től A-ig
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={() => {
-                    onChangeSort('intensityAsc');
-                    setOpen(false);
-                  }}
-                  className={sort === 'intensityAsc' ? styles.active : ''}
-                >
-                  A legkevésbé intenzív teák elől
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={() => {
-                    onChangeSort('intensityDesc');
-                    setOpen(false);
-                  }}
-                  className={sort === 'intensityDesc' ? styles.active : ''}
-                >
-                  A leginkább intenzív teák elől
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={() => {
-                    onChangeSort('steepMinAsc');
-                    setOpen(false);
-                  }}
-                  className={sort === 'steepMinAsc' ? styles.active : ''}
-                >
-                  A leggyorsabb teák elől
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={() => {
-                    onChangeSort('steepMinDesc');
-                    setOpen(false);
-                  }}
-                  className={sort === 'steepMinDesc' ? styles.active : ''}
-                >
-                  A leglassabb teák elől
-                </button>
-              </td>
-            </tr>
+            {sortOptions
+              .filter((opt) => open || opt.key === sort)
+              .map((opt) => (
+                <tr key={opt.key}>
+                  <td>
+                    <button
+                      onClick={() => {
+                        onChangeSort(opt.key);
+                        setOpen(false);
+                      }}
+                      className={sort === opt.key ? styles.active : ''}
+                    >
+                      {opt.label}
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       )}
