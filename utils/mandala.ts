@@ -28,7 +28,7 @@ const MAP: Record<TeaCategory, string> = {
   "Indiai Chai":          "/Mandala_Indiai_Chai.svg",
   "Hűs Kortyok":          "/Mandala_Husito_Kortyok.svg",
   "Japán Zöld":           "/Mandala_Japan_Zold.svg",
-  "Közel-Kelet Illata":   "/Mandala_Kozel-Kelet_illata.svg",
+  "Közel-Kelet Illata":   "/Mandala_Kozel-Kelet_Illata.svg",
   "Kínai Klasszikus":     "/Mandala_Kinai_Klasszikusok.svg",
 };
 

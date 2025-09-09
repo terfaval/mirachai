@@ -3,13 +3,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "next:build": "next build",
+    "build": "next build",
     "start": "next start",
     "typecheck": "tsc -p .",
     "lint": "next lint",
     "test": "vitest run",
     "demo": "tsx src/demo/demo.ts"
   },
+  "engines": { "node": ">=18" },
   "dependencies": {
     "next": "^15.5.2",
     "react": "^18.3.1",
