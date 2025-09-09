@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useMemo, useState } from "react";
 import { Filter } from "lucide-react";
 import { motion } from "framer-motion";
