@@ -71,6 +71,7 @@ export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props)
   return (
     <>
       <div className={styles.grid}>
+      <InfoPanelSidebar panel={panel} onChange={setPanel} />
       <div className={styles.sortButton} onClick={() => setOpen(!open)}>
         <img src="/sort.svg" className={styles.sortIcon} alt="Rendezés" />
       </div>
@@ -125,7 +126,6 @@ export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props)
         );
       })}
     </div>
-      <InfoPanelSidebar panel={panel} onChange={setPanel} />
     </>
   );
 }
