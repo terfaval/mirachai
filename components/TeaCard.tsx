@@ -29,7 +29,7 @@ const INTENSITY_MAP: Record<string, number> = { enyhe: 1, közepes: 2, erős: 3 
 
 const SEASON_NAMES = ['tavasz', 'nyár', 'ősz', 'tél'] as const;
 
-const DAY_NAMES = ['reggel', 'délelőtt', 'délután', 'este'] as const;
+const DAY_NAMES = ['reggel', 'délután', 'este'] as const;
 
 export default function TeaCard({
   tea,
@@ -76,6 +76,8 @@ export default function TeaCard({
   rawDayparts.forEach((d) => {
     if (d === 'kora_délután') {
       daySet.add('délután');
+      } else if (d === 'délelőtt') {
+      daySet.add('reggel');
     } else if (d === 'étkezés_után') {
       hasAfterMeal = true;
     } else if (d === 'lefekvés_előtt') {
@@ -90,18 +92,17 @@ export default function TeaCard({
   if (hasAfterMeal) DAY_NAMES.forEach((n) => daySet.add(n));
 
   const daySegments: DaySegment[] = [
-    { key: 'reggel',   start: 4,  end: 10, color: '#fff', active: daySet.has('reggel') },
-    { key: 'délelőtt', start: 10, end: 13, color: '#fff', active: daySet.has('délelőtt') },
-    { key: 'délután',  start: 13, end: 19, color: '#fff', active: daySet.has('délután') },
-    { key: 'este',     start: 19, end: 28, color: '#fff', active: daySet.has('este') },
+    { key: 'reggel',  start: 1,  end: 3, color: '#fff', active: daySet.has('reggel') },
+    { key: 'délután', start: 4, end: 6, color: '#fff', active: daySet.has('délután') },
+    { key: 'este',    start: 7, end: 9, color: '#fff', active: daySet.has('este') },
   ];
 
   let dayText = '';
   if (hasAfterMeal) dayText = 'étkezés után';
   else if (hasBeforeSleep) dayText = 'lefekvés előtt';
-  else if (daySet.size === 4) dayText = 'egész nap';
+  else if (daySet.size === 3) dayText = 'egész nap';
   else {
-    const daytimeCount = ['reggel', 'délelőtt', 'délután'].filter((n) => daySet.has(n)).length;
+    const daytimeCount = ['reggel', 'délután'].filter((n) => daySet.has(n)).length;
     dayText = daytimeCount >= 2 ? 'napközben' : DAY_NAMES.filter((n) => daySet.has(n)).join(', ');
   }
 

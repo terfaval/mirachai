@@ -23,11 +23,9 @@ function getSeason(date: Date): string {
 
 function getDaypart(date: Date): string {
   const h = date.getHours();
-  if (h >= 5 && h < 10) return 'reggel';
-  if (h >= 10 && h < 12) return 'délelőtt';
+  if (h >= 5 && h < 12) return 'reggel';
   if (h >= 12 && h < 18) return 'délután';
-  if (h >= 18 && h < 22) return 'este';
-  return 'bármikor';
+  return 'este';
 }
 
 function computeRelevance(tea: Tea, now: Date): number {
@@ -35,7 +33,14 @@ function computeRelevance(tea: Tea, now: Date): number {
   const season = getSeason(now);
   const daypart = getDaypart(now);
   const seasons = toStringArray(tea.season_recommended);
-  const dayparts = toStringArray(tea.daypart_recommended);
+  const dayparts = toStringArray(tea.daypart_recommended).flatMap((d) => {
+    if (d === 'délelőtt') return ['reggel'];
+    if (d === 'kora_délután') return ['délután'];
+    if (d === 'késő_délután') return ['délután'];
+    if (d === 'lefekvés_előtt') return ['este'];
+    if (d === 'bármikor' || d === 'étkezés_után') return ['reggel', 'délután', 'este'];
+    return [d];
+  });
   if (seasons.includes(season)) score += 2;
   if (dayparts.includes(daypart)) score += 1;
   return score;
