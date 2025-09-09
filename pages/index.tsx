@@ -11,41 +11,91 @@ import FilterPanel from '../components/FilterPanel';
 import { filterTeas, Tea } from '../utils/filter';
 import { toStringArray } from '../lib/toStringArray';
 
+function normalize(str: string): string {
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
 function getSeason(date: Date): string {
   const m = date.getMonth();
   const d = date.getDate();
-  if (m < 2 || (m === 2 && d < 21)) return 'tél';
+  if (m < 2 || (m === 2 && d < 21)) return 'tel';
   if (m < 5 || (m === 5 && d < 21)) return 'tavasz';
-  if (m < 8 || (m === 8 && d < 22)) return 'nyár';
-  if (m < 11 || (m === 11 && d < 21)) return 'ősz';
-  return 'tél';
+  if (m < 8 || (m === 8 && d < 22)) return 'nyar';
+  if (m < 11 || (m === 11 && d < 21)) return 'osz';
+  return 'tel';
 }
 
-function getDaypart(date: Date): string {
-  const h = date.getHours();
-  if (h >= 4 && h < 10) return 'reggel';
-  if (h >= 10 && h < 12) return 'délelőtt';
-  if (h >= 12 && h < 14) return 'kora_délután';
-  if (h >= 14 && h < 18) return 'délután';
-  return 'este';
+const SEASON_START: Record<string, number> = {
+  tel: 11,
+  tavasz: 2,
+  nyar: 5,
+  osz: 8,
+};
+
+function seasonDistance(now: Date, season: string): number {
+  const month = now.getMonth();
+  const start = SEASON_START[season];
+  let dist = start - month;
+  if (dist < 0) dist += 12;
+  return dist;
 }
 
-function computeRelevance(tea: Tea, now: Date): number {
-  let score = 0;
-  const season = getSeason(now);
-  const daypart = getDaypart(now);
+function seasonScore(seasons: string[], now: Date): number {
+  const normSeasons = seasons.map((s) => normalize(s));
+  const current = getSeason(now);
+  if (normSeasons.length === 0) return 0;
+  if (normSeasons.length === 1 && normSeasons[0] === current) return 30;
+  if (normSeasons.includes(current)) {
+    let minDist = 12;
+    for (const s of normSeasons) {
+      if (s === current) continue;
+      const d = seasonDistance(now, s);
+      if (d < minDist) minDist = d;
+    }
+    return Math.max(0, 20 - minDist);
+  }
+  let minDist = 12;
+  for (const s of normSeasons) {
+    const d = seasonDistance(now, s);
+    if (d < minDist) minDist = d;
+  }
+  return Math.max(0, 10 - minDist);
+}
+
+function daypartPrefs(now: Date): string[] {
+  const h = now.getHours();
+  const prefs: string[] = [];
+  if (h >= 20 || h < 4) prefs.push('lefekves_elott');
+  if ((h >= 12 && h <= 13) || (h >= 18 && h <= 21)) prefs.push('etkezes_utan');
+  if (h >= 4 && h < 10) prefs.push('reggel');
+  if (h >= 10 && h < 12) prefs.push('delelott');
+  if (h >= 12 && h < 14) prefs.push('kora_delutan');
+  if (h >= 14 && h < 18) prefs.push('delutan');
+  if (h >= 18 && h < 22) prefs.push('este');
+  prefs.push('barmikor');
+  return prefs;
+}
+
+function daypartScore(dayparts: string[], now: Date): number {
+  const norm = dayparts.map((d) => normalize(d).replace(/\s+/g, '_'));
+  const prefs = daypartPrefs(now);
+  for (let i = 0; i < prefs.length; i++) {
+    if (norm.includes(prefs[i])) {
+      return prefs.length - i;
+    }
+  }
+  return 0;
+}
+
+export function computeRelevance(tea: Tea, now: Date): number {
   const seasons = toStringArray(tea.season_recommended);
-  const dayparts = toStringArray(tea.daypart_recommended).flatMap((d) => {
-    if (d === 'délelőtt') return ['reggel'];
-    if (d === 'kora_délután') return ['délután'];
-    if (d === 'késő_délután') return ['délután'];
-    if (d === 'lefekvés_előtt') return ['este'];
-    if (d === 'bármikor' || d === 'étkezés_után') return ['reggel', 'délután', 'este'];
-    return [d];
-  });
-  if (seasons.includes(season)) score += 2;
-  if (dayparts.includes(daypart)) score += 1;
-  return score;
+  const dayparts = toStringArray(tea.daypart_recommended);
+  const sScore = seasonScore(seasons, now);
+  const dScore = daypartScore(dayparts, now);
+  return sScore * 10 + dScore;
 }
 
 interface HomeProps {
