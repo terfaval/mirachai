@@ -13,12 +13,12 @@ export default function CategorySidebar({ categories, selected, onToggle }: Prop
       style={{
         position: 'fixed',
         bottom: '20px',
-        left: '20px',
+        left: '40px',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         gap: '0.5rem',
-        maxHeight: '80%',
-        overflowY: 'auto',
+        maxWidth: '80%',
+        overflowX: 'auto',
         zIndex: 1000,
       }}
     >
@@ -41,6 +41,7 @@ export default function CategorySidebar({ categories, selected, onToggle }: Prop
               color: '#fff',
               borderRadius: '9999px',
               cursor: 'pointer',
+              overflow: 'hidden',
             }}
           >
             <div
@@ -66,6 +67,13 @@ export default function CategorySidebar({ categories, selected, onToggle }: Prop
         .category-btn:hover .label,
         .category-btn.selected .label {
           display: inline;
+        }
+        .category-btn {
+          flex: 0 0 auto;
+        }
+        .category-btn:hover,
+        .category-btn.selected {
+          width: auto;
         }
       `}</style>
     </div>
