@@ -104,15 +104,6 @@ export default function TeaCard({
     dayText = daytimeCount >= 2 ? 'napközben' : DAY_NAMES.filter((n) => daySet.has(n)).join(', ');
   }
 
-  // ⬇️ HIÁNYZÓ dayNotes PÓTLÁSA (csak ha van extra info)
-  const dayNotes: string[] = [];
-  if (hasAfterMeal && !rawDayparts.includes('bármikor')) {
-    dayNotes.push('Étkezés után különösen ajánlott.');
-  }
-  if (hasBeforeSleep) {
-    dayNotes.push('Lefekvés előtt gyengédebben, kisebb adaggal.');
-  }
-
   // előkészítés – hőfok / áztatás
   const temp = Number.isFinite(tea.tempC) ? (tea.tempC as number) : 0;
   const steep = Number.isFinite(tea.steepMin) ? (tea.steepMin as number) : 0;
@@ -192,13 +183,7 @@ export default function TeaCard({
               <div className={styles.dayChart}>
                 <DayDonut segments={daySegments} size={40} />
               </div>
-              <div className={styles.chartLabel}>
-                {dayText || '—'}
-                {dayNotes.length > 0 &&
-                  dayNotes.map((n) => (
-                    <div key={n} className={styles.chartNote}>* {n}</div>
-                  ))}
-              </div>
+              <div className={styles.chartLabel}>{dayText || '—'}</div>
             </div>
           </div>
         )}
