@@ -54,7 +54,7 @@ export default function TeaCard({
     .filter((f) => f.value > 0);
 
   const flavors = allFlavors.slice().sort((a, b) => b.value - a.value).slice(0, 3);
-  const showChart = allFlavors.length >= 3;
+  const showChart = allFlavors.length > 0;
 
   // intenzitás
   const intensityLevel = INTENSITY_MAP[tea.intensity ?? ''] ?? 0;
