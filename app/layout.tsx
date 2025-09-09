@@ -1,5 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
+// import "./globals.css"; // kapcsold be, ha lesz globals.css
 
 export const metadata: Metadata = {
   title: 'MirachAI',
