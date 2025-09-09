@@ -103,7 +103,7 @@
 .info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 80%;
+  width: 100%;
   margin-top: 8px;
   font-size: 0.6rem;
   position: relative;
@@ -127,12 +127,15 @@
 
 .flavorValue {
   font-weight: 700;
+  font-size: 0.8rem;
   min-width: 1.2em;
   text-align: right;
 }
 
 .flavorName {
   opacity: 0.9;
+  font-weight: 700;
+  font-size: 0.6rem;
 }
 
 .intensity {
@@ -155,6 +158,8 @@
 
 .intensityLabel {
   margin-top: 4px;
+  font-weight: 700;
+  font-size: 0.8rem;
 }
 
 .categoryPanel {
