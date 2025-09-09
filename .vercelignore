@@ -1,0 +1,36 @@
+# Általános nem-kritikus
+**/*.md
+**/README*
+LICENSE*
+CHANGELOG*
+CODE_OF_CONDUCT*
+CONTRIBUTING*
+
+# Tesztek / sztorik / példák / doksi / tooling
+**/__tests__/**
+**/tests/**
+**/e2e/**
+**/cypress/**
+**/*.spec.*
+**/*.test.*
+**/*.stories.*
+.storybook/**
+examples/**
+example/**
+docs/**
+documentation/**
+tooling/**
+scripts/**
+
+# Build/artifact/log
+*.log
+*.map
+*.DS_Store
+coverage/**
+dist/**
+build/**
+out/**
+
+# Editor mappák
+.vscode/**
+.idea/**

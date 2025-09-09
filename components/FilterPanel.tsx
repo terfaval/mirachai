@@ -38,7 +38,13 @@ export default function FilterPanel({ open, onClose, onSelect }: Props) {
             onClick={() => onSelect(opt.key)}
           >
             {opt.label}
-            <img src={opt.icon} alt="" />
+            <img src={opt.icon} alt="" 
+            style={{
+            width: 24,
+            height: 24,
+            filter:
+              'brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))',
+          }}/>
           </button>
         ))}
       </div>

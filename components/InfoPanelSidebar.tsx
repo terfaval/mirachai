@@ -30,23 +30,7 @@ export default function InfoPanelSidebar({ panel, onChange }: Props) {
         marginLeft: '-10px',
       }}
     >
-      <button
-        aria-label="Info"
-        style={{
-          background: 'none',
-          border: 'none',
-          cursor: 'default',
-          display: 'flex',
-          justifyContent: 'flex-end',
-          width: '100%',
-        }}
-      >
-        <img
-          src="/icon_info.svg"
-          alt="info"
-          style={{ width: 24, height: 24, filter: 'brightness(0) invert(1)' }}
-        />
-      </button>
+    
       {PANELS.map((p) => {
         const active = panel === p.key;
         const isHovered = hovered === p.key;
@@ -81,7 +65,8 @@ export default function InfoPanelSidebar({ panel, onChange }: Props) {
                 height: 40,
                 transition: 'transform 0.2s',
                 transform: `scale(${scale})`,
-                filter: 'brightness(0) invert(1)',
+                filter:
+              'brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.80))',
               }}
             />
           </button>
