@@ -11,6 +11,8 @@ interface Props {
 export default function Header({ query, onChange, onOpenFilters }: Props) {
   const [searchOpen, setSearchOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const searchWrapperRef = useRef<HTMLDivElement>(null);
+  const searchIconRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     if (searchOpen) {
@@ -18,11 +20,26 @@ export default function Header({ query, onChange, onOpenFilters }: Props) {
     }
   }, [searchOpen]);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        searchOpen &&
+        !searchWrapperRef.current?.contains(e.target as Node) &&
+        !searchIconRef.current?.contains(e.target as Node)
+      ) {
+        setSearchOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [searchOpen]);
+
   return (
     <header className={styles.header}>
       <img src="/mirachai_logo.svg" alt="Mirachai logo" className={styles.logo} />
       <div className={styles.actions}>
         <img
+          ref={searchIconRef}
           src="/search.svg"
           alt="Keresés"
           className={styles.icon}
@@ -35,7 +52,10 @@ export default function Header({ query, onChange, onOpenFilters }: Props) {
           onClick={onOpenFilters}
         />
       </div>
-      <div className={`${styles.searchWrapper} ${searchOpen ? styles.open : ''}`}>
+      <div
+        ref={searchWrapperRef}
+        className={`${styles.searchWrapper} ${searchOpen ? styles.open : ''}`}
+      >
         <SearchBar ref={inputRef} query={query} onChange={onChange} />
       </div>
     </header>
