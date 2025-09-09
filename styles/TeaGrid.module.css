@@ -28,26 +28,53 @@
     inset 0 0 10px rgba(0,0,0,0.5);
 }
 
-.sortIcon {
+.sortButton {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  bottom: -12px;
+  right: -18px;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 500;
+}
+
+.sortIcon {
   width: 24px;
   height: 24px;
-  cursor: pointer;
 }
 
 .sortPanel {
   position: absolute;
-  top: -60px;
-  right: 0;
+  bottom: 7px;
+  right: 7px;
   background: white;
   border: 1px solid #ccc;
-  padding: 4px;
-  display: flex;
-  gap: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-collapse: collapse;
+  z-index: 490;
 }
 
+.sortPanel td {
+  padding: 4px 8px;
+}
+
+.sortPanel td button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.sortPanel td button:hover {
+  background: #f0f0f0;
+}
 .active {
   font-weight: bold;
 }

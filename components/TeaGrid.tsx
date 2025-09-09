@@ -3,7 +3,16 @@ import TeaCard from './TeaCard';
 import styles from '../styles/TeaGrid.module.css';
 import { Tea } from '../utils/filter';
 
-export type SortKey = 'default' | 'intensity' | 'steepMin' | 'relevance';
+export type SortKey =
+  | 'default'
+  | 'nameAsc'
+  | 'nameDesc'
+  | 'relevanceDesc'
+  | 'relevanceAsc'
+  | 'intensityAsc'
+  | 'intensityDesc'
+  | 'steepMinAsc'
+  | 'steepMinDesc';
 
 interface Props {
   teas: Tea[];
@@ -51,42 +60,118 @@ export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props)
   const cells = Array.from({ length: TILE_COUNT });
   return (
     <div className={styles.grid}>
-      <img
-        src="/sort.svg"
-        className={styles.sortIcon}
-        alt="Rendezés"
-        onClick={() => setOpen(!open)}
-      />
+      <div className={styles.sortButton} onClick={() => setOpen(!open)}>
+        <img src="/sort.svg" className={styles.sortIcon} alt="Rendezés" />
+      </div>
       {open && (
-        <div className={styles.sortPanel}>
-          <button
-            onClick={() => {
-              onChangeSort('intensity');
-              setOpen(false);
-            }}
-            className={sort === 'intensity' ? styles.active : ''}
-          >
-            Intenzitás
-          </button>
-          <button
-            onClick={() => {
-              onChangeSort('steepMin');
-              setOpen(false);
-            }}
-            className={sort === 'steepMin' ? styles.active : ''}
-          >
-            Áztatási idő
-          </button>
-          <button
-            onClick={() => {
-              onChangeSort('relevance');
-              setOpen(false);
-            }}
-            className={sort === 'relevance' ? styles.active : ''}
-          >
-            Relevancia
-          </button>
-        </div>
+        <table className={styles.sortPanel}>
+          <tbody>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
+                    onChangeSort('nameAsc');
+                    setOpen(false);
+                  }}
+                  className={sort === 'nameAsc' ? styles.active : ''}
+                >
+                  Teák A-tól Z-ig
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
+                    onChangeSort('nameDesc');
+                    setOpen(false);
+                  }}
+                  className={sort === 'nameDesc' ? styles.active : ''}
+                >
+                  Teák Z-től A-ig
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
+                    onChangeSort('relevanceDesc');
+                    setOpen(false);
+                  }}
+                  className={sort === 'relevanceDesc' ? styles.active : ''}
+                >
+                  A leginkább releváns teák elől
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
+                    onChangeSort('relevanceAsc');
+                    setOpen(false);
+                  }}
+                  className={sort === 'relevanceAsc' ? styles.active : ''}
+                >
+                  A legkevésbé releváns teák elől
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
+                    onChangeSort('intensityAsc');
+                    setOpen(false);
+                  }}
+                  className={sort === 'intensityAsc' ? styles.active : ''}
+                >
+                  A legkevésbé intenzív teák elől
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
+                    onChangeSort('intensityDesc');
+                    setOpen(false);
+                  }}
+                  className={sort === 'intensityDesc' ? styles.active : ''}
+                >
+                  A leginkább intenzív teák elől
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
+                    onChangeSort('steepMinAsc');
+                    setOpen(false);
+                  }}
+                  className={sort === 'steepMinAsc' ? styles.active : ''}
+                >
+                  A leggyorsabb teák elől
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
+                    onChangeSort('steepMinDesc');
+                    setOpen(false);
+                  }}
+                  className={sort === 'steepMinDesc' ? styles.active : ''}
+                >
+                  A leglassabb teák elől
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       )}
       {cells.map((_, idx) => {
         const tea = teas[idx];

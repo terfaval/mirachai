@@ -2,13 +2,11 @@ import { GetStaticProps } from 'next';
 import { useState, useEffect, useMemo } from 'react';
 import path from 'path';
 import { promises as fs } from 'fs';
-import TeaGrid from '../components/TeaGrid';
+import TeaGrid, { SortKey } from '../components/TeaGrid';
 import Header from '../components/Header';
 import TeaModal from '../components/TeaModal';
 import FilterPanel from '../components/FilterPanel';
 import { filterTeas, Tea } from '../utils/filter';
-
-type SortKey = 'default' | 'intensity' | 'steepMin' | 'relevance';
 
 function getSeason(date: Date): string {
   const m = date.getMonth();
@@ -69,18 +67,32 @@ export default function Home({ teas }: HomeProps) {
 
   const sorted = useMemo(() => {
     const arr = [...filtered];
-    if (sort === 'intensity') {
-      const map: Record<string, number> = { enyhe: 1, 'közepes': 2, 'erős': 3 };
-      arr.sort((a, b) => (map[a.intensity || ''] || 0) - (map[b.intensity || ''] || 0));
+    if (sort === 'nameAsc') {
+      arr.sort((a, b) => a.name.localeCompare(b.name, 'hu', { sensitivity: 'base' }));
       return arr;
     }
-    if (sort === 'steepMin') {
+    if (sort === 'nameDesc') {
+      arr.sort((a, b) => b.name.localeCompare(a.name, 'hu', { sensitivity: 'base' }));
+      return arr;
+    }
+    if (sort === 'intensityAsc' || sort === 'intensityDesc') {
+      const map: Record<string, number> = { enyhe: 1, 'közepes': 2, 'erős': 3 };
+      arr.sort((a, b) => (map[a.intensity || ''] || 0) - (map[b.intensity || ''] || 0));
+      if (sort === 'intensityDesc') arr.reverse();
+      return arr;
+    }
+    if (sort === 'steepMinAsc') {
       arr.sort((a, b) => (a.steepMin || 0) - (b.steepMin || 0));
       return arr;
     }
-    if (sort === 'relevance') {
+    if (sort === 'steepMinDesc') {
+      arr.sort((a, b) => (b.steepMin || 0) - (a.steepMin || 0));
+      return arr;
+    }
+    if (sort === 'relevanceDesc' || sort === 'relevanceAsc') {
       const now = new Date();
       arr.sort((a, b) => computeRelevance(b, now) - computeRelevance(a, now));
+      if (sort === 'relevanceAsc') arr.reverse();
       return arr;
     }
     const uniqueCategories = new Set(filtered.map((t) => t.category));
