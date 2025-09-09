@@ -13,7 +13,7 @@ export default function IntensityDots({ intensity }: Props) {
       <div className="flex gap-1">
         {[1, 2, 3].map((i) => (
           <span
-            key={i}
+            key={`intensity-dot-${i}`}
             className={`w-3 h-3 rounded-full border ${
               i <= intensity ? 'bg-black border-black' : 'border-gray-300'
             }`}

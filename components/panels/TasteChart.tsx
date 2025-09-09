@@ -15,7 +15,7 @@ export default function TasteChart({ taste }: Props) {
           <div className="flex gap-1" aria-label={`${label} ${value} / 3`}>
             {[1, 2, 3].map((i) => (
               <span
-                key={i}
+                key={`taste-dot-${label}-${i}`}
                 className={`w-3 h-3 rounded-full border ${
                   i <= value ? 'bg-black border-black' : 'border-gray-300'
                 }`}

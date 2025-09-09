@@ -33,7 +33,7 @@ export default function FunctionRadialSteps({ functions, color }: Props) {
           <g key={q.key} transform={`rotate(${rotation} ${center} ${center})`}>
             {[1, 2, 3].map((lvl) => (
               <rect
-                key={lvl}
+                key={`step-${q.key}-${lvl}`}
                 x={center - barWidth / 2}
                 y={center - lvl * step}
                 width={barWidth}

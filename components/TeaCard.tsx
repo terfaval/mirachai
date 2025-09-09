@@ -81,7 +81,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
           <div className={styles.dots}>
             {[1, 2, 3].map((i) => (
               <span
-                key={i}
+                key={`intensity-${i}`}
                 className={styles.dot}
                 style={{ background: i <= intensityLevel ? dotActiveColor : dotColor }}
               />

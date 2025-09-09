@@ -156,7 +156,16 @@ export default function FilterPanel({ open, onClose, filters, setFilters, facets
                         <Label className="text-xs">Intenzitás</Label>
                         <div className="flex flex-wrap gap-2">
                           {facets.intensities.map(i => (
-                            <Badge key={i} variant={filters.intensity.includes(i) ? "default" : "outline"} className="cursor-pointer" onClick={() => setFilters(s => ({ ...s, intensity: toggleFromArray(s.intensity, i) }))}>{i}</Badge>
+                            <Badge
+                              key={`intensity-${i}`}
+                              variant={filters.intensity.includes(i) ? "default" : "outline"}
+                              className="cursor-pointer"
+                              onClick={() =>
+                                setFilters(s => ({ ...s, intensity: toggleFromArray(s.intensity, i) }))
+                              }
+                            >
+                              {i}
+                            </Badge>
                           ))}
                         </div>
                       </div>

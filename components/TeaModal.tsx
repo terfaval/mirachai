@@ -115,7 +115,7 @@ export default function TeaModal({ tea, onClose }: Props) {
                         <span className={styles.dots} aria-label={`${k}: ${v} / 3`}>
                           {Array.from({ length: 3 }).map((_, i) => (
                             <span
-                              key={i}
+                              key={`taste-dot-${k}-${i}`}
                               className={i < v ? styles.dotOn : styles.dotOff}
                               aria-hidden
                             />
@@ -134,7 +134,7 @@ export default function TeaModal({ tea, onClose }: Props) {
                   <div className={styles.intensityDots}>
                     {Array.from({ length: 3 }).map((_, i) => (
                       <span
-                        key={i}
+                        key={`intensity-dot-${i}`}
                         className={i < intensity ? styles.dotOnBig : styles.dotOffBig}
                         aria-hidden
                       />

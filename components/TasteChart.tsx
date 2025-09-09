@@ -77,7 +77,7 @@ export default function TasteChart({ tea, size = 40, showLabels = true }: Props)
       >
         {[1, 2, 3].map((lvl) => (
           <circle
-            key={lvl}
+            key={`grid-${lvl}`}
             cx={center}
             cy={center}
             r={(lvl / 3) * maxRadius}
