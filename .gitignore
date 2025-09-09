@@ -48,7 +48,8 @@ dist/
 .env.production.local
 
 # Vercel
-.vercel/
+.vercel/*
+!.vercel/ignored-build.sh
 
 # Teszt/coverage artefaktok
 coverage/
