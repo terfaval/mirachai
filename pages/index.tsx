@@ -16,15 +16,17 @@ function getSeason(date: Date): string {
   const d = date.getDate();
   if (m < 2 || (m === 2 && d < 21)) return 'tél';
   if (m < 5 || (m === 5 && d < 21)) return 'tavasz';
-  if (m < 8 || (m === 8 && d < 23)) return 'nyár';
+  if (m < 8 || (m === 8 && d < 22)) return 'nyár';
   if (m < 11 || (m === 11 && d < 21)) return 'ősz';
   return 'tél';
 }
 
 function getDaypart(date: Date): string {
   const h = date.getHours();
-  if (h >= 5 && h < 12) return 'reggel';
-  if (h >= 12 && h < 18) return 'délután';
+  if (h >= 4 && h < 10) return 'reggel';
+  if (h >= 10 && h < 12) return 'délelőtt';
+  if (h >= 12 && h < 14) return 'kora_délután';
+  if (h >= 14 && h < 18) return 'délután';
   return 'este';
 }
 
