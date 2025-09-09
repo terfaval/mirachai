@@ -5,7 +5,7 @@ import { promises as fs } from 'fs';
 import TeaGrid, { SortKey } from '../components/TeaGrid';
 import Header from '../components/Header';
 import TeaModal from '../components/TeaModal';
-import FilterPanel from '../components/FilterPanel';
+import CategorySidebar from '../components/CategorySidebar';
 import { filterTeas, Tea } from '../utils/filter';
 
 function getSeason(date: Date): string {
@@ -43,9 +43,8 @@ interface HomeProps {
 export default function Home({ teas }: HomeProps) {
   const [selectedTea, setSelectedTea] = useState<Tea | null>(null);
   const [query, setQuery] = useState('');
-  const [category, setCategory] = useState<string | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [page, setPage] = useState(1);
-  const [filterOpen, setFilterOpen] = useState(false);
   const [sort, setSort] = useState<SortKey>('relevanceDesc');
 
   const [shuffledTeas, setShuffledTeas] = useState<Tea[]>(teas);
@@ -62,7 +61,7 @@ export default function Home({ teas }: HomeProps) {
   }, []);
 
   const filtered = filterTeas(shuffledTeas, query).filter(
-    (t) => !category || t.category === category,
+    (t) => selectedCategories.length === 0 || selectedCategories.includes(t.category),
   );
 
   const sorted = useMemo(() => {
@@ -106,15 +105,24 @@ export default function Home({ teas }: HomeProps) {
 
   const categories = Array.from(new Set(teas.map((t) => t.category))).sort();
 
-  const closeFilter = () => setFilterOpen(false);
+  const toggleCategory = (cat: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    );
+  };
 
   useEffect(() => {
     setPage(1);
-  }, [query, category]);
+  }, [query, selectedCategories]);
 
   return (
     <>
-      <Header query={query} onChange={setQuery} onFilterClick={() => setFilterOpen(true)} />
+      <Header query={query} onChange={setQuery} />
+      <CategorySidebar
+        categories={categories}
+        selected={selectedCategories}
+        onToggle={toggleCategory}
+      />
       <TeaGrid teas={paginated} onTeaClick={setSelectedTea} sort={sort} onChangeSort={setSort} />
       <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
         {page > 1 && <button onClick={() => setPage(page - 1)}>Előző</button>}
@@ -123,13 +131,6 @@ export default function Home({ teas }: HomeProps) {
       {selectedTea && (
         <TeaModal tea={selectedTea} onClose={() => setSelectedTea(null)} />
       )}
-      <FilterPanel
-        open={filterOpen}
-        categories={categories}
-        selectedCategory={category}
-        onSelectCategory={setCategory}
-        onClose={closeFilter}
-      />
     </>
   );
 }
