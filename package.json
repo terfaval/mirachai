@@ -5,7 +5,8 @@
     "dev": "next dev",
     "next:build": "next build",
     "start": "next start",
-    "build": "tsc -p .",
+    "typecheck": "tsc -p .",
+    "lint": "next lint",
     "test": "vitest run",
     "demo": "tsx src/demo/demo.ts"
   },
