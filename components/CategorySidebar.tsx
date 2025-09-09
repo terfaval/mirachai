@@ -23,29 +23,51 @@ export default function CategorySidebar({ categories, selected, onToggle }: Prop
       }}
     >
       {categories.map((cat) => {
-        const color = getCategoryColor(cat);
+        const mainColor = getCategoryColor(cat);
+        const lightColor = getCategoryColor(cat, 'light');
         const isSelected = selected.includes(cat);
         return (
           <button
             key={cat}
             onClick={() => onToggle(cat)}
+            className={`category-btn${isSelected ? ' selected' : ''}`}
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem',
-              padding: '0.25rem 0.5rem',
-              border: `2px solid ${color}`,
-              backgroundColor: isSelected ? color : 'white',
-              color: isSelected ? 'white' : color,
-              borderRadius: '4px',
+              padding: '0.5rem',
+              border: 'none',
+              backgroundColor: mainColor,
+              color: '#fff',
+              borderRadius: '9999px',
               cursor: 'pointer',
             }}
           >
-            <img src={getMandalaPath(cat)} alt="" style={{ width: '24px', height: '24px' }} />
-            <span style={{ whiteSpace: 'nowrap' }}>{cat}</span>
+            <div
+              style={{
+                mask: `url(${getMandalaPath(cat)}) no-repeat center / contain`,
+                WebkitMask: `url(${getMandalaPath(cat)}) no-repeat center / contain`,
+                backgroundColor: lightColor,
+                width: '24px',
+                height: '24px',
+                flexShrink: 0,
+              }}
+            />
+            <span className="label" style={{ whiteSpace: 'nowrap' }}>
+              {cat}
+            </span>
           </button>
         );
       })}
+      <style jsx>{`
+        .category-btn .label {
+          display: none;
+        }
+        .category-btn:hover .label,
+        .category-btn.selected .label {
+          display: inline;
+        }
+      `}</style>
     </div>
   );
 }
