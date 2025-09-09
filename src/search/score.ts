@@ -7,6 +7,7 @@ export const FIELD_WEIGHTS = {
   cat: 1.4,
   sub: 1.4,
   tag: 1.6,
+  day: 1.2,
 } as const;
 
 export const idf = (N: number, df: number) => Math.log(1 + (N - df + 0.5) / (df + 0.5));

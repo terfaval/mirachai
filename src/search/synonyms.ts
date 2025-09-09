@@ -13,7 +13,13 @@ export const SYN_RAW: Record<string, string> = {
   "jeges": "jeges",
   "iced": "jeges",
   "jegest": "jeges",
-  "pikans": "csipos"
+  "pikans": "csipos",
+  "lefekves": "lefekves_elott",
+  "alvas": "lefekves_elott",
+  "20": "lefekves_elott",
+  "21": "lefekves_elott",
+  "22": "lefekves_elott",
+  "23": "lefekves_elott"
 };
 
 export const SYN: Record<string, string> = Object.fromEntries(

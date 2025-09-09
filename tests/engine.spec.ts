@@ -70,4 +70,13 @@ describe('search engine', () => {
     expect(res.length).toBeGreaterThan(0);
     expect(res[0].why.some(w => w.includes('csipos'))).toBe(true);
   });
+
+  it('maps late evening times to before bed', () => {
+    const res = search(idx, '20:00');
+    expect(res.length).toBeGreaterThan(0);
+    for (const r of res) {
+      const doc = teaById.get(r.id)!;
+      expect((doc.daypart_recommended || []).includes('lefekvés_előtt')).toBe(true);
+    }
+  });
 });

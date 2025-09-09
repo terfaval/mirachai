@@ -9,7 +9,19 @@ const FIELD_WEIGHTS = {
   cat: 1.4,
   sub: 1.4,
   tag: 1.6,
+  day: 1.2,
 } as const;
+
+const DAYPART_WEIGHTS: Record<string, number> = {
+  reggel: 1,
+  delelott: 1,
+  kora_delutan: 1,
+  delutan: 1,
+  este: 1,
+  lefekves_elott: 5,
+  barmikor: 0.2,
+  etkezes_utan: 0.2,
+};
 
 const trigram = (t: string): string[] => {
   const res: string[] = [];
@@ -84,6 +96,16 @@ export function build(rows: Tea[]): BuiltIndex {
       }
     }
 
+    // daypart recommendations
+    if (Array.isArray(row.daypart_recommended)) {
+      for (const dp of row.daypart_recommended) {
+        for (const t of tokenize(dp).map(mapSyn)) {
+          const w = DAYPART_WEIGHTS[t] ?? 1;
+          addToken(t, 'day', w);
+        }
+      }
+    }
+    
     // update df
     for (const t of docTokens) {
       df.set(t, (df.get(t) || 0) + 1);

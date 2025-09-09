@@ -19,7 +19,7 @@ export type Tea = Record<string, unknown> & {
   daypart_recommended?: string[];
 };
 
-export type Posting = { id: string; f: "name"|"desc"|"ing"|"cat"|"sub"|"tag"; tf: number };
+export type Posting = { id: string; f: "name"|"desc"|"ing"|"cat"|"sub"|"tag"|"day"; tf: number };
 
 export type BuiltIndex = {
   docs: Map<string, Tea>;

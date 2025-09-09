@@ -57,6 +57,7 @@ export function parseQuery(qstr: string): ParsedQuery {
           const key = field as keyof typeof pq.facets;
           (pq.facets[key] = pq.facets[key] || []).push(normVal);
         }
+        continue;
       } else if (['caffeine','tempc','steepmin'].includes(field)) {
         const m = normVal.match(/^(<=|>=|<|>)(\d+(?:\.\d+)?)$/);
         if (m) {
@@ -65,8 +66,9 @@ export function parseQuery(qstr: string): ParsedQuery {
           const keyBase = field === 'caffeine' ? 'caffeine' : field;
           (pq.ranges as any)[`${keyBase}_${cmp.replace('<=','lt').replace('>=','gt').replace('<','lt').replace('>','gt')}`] = num;
         }
+        continue;
       }
-      continue;
+      // unrecognized field token -> treat as free text
     }
 
     // free token

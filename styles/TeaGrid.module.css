@@ -10,10 +10,10 @@
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 170px);
+  grid-template-rows: repeat(3, 160px);
   gap: 0;
   max-height: 100%;
-  width: 70%;
+  width: 60%;
   border: 6px solid #80350E;
   background: linear-gradient(180deg, #4A2912 0%, #321B0C 80%);
 
