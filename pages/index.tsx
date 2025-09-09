@@ -6,6 +6,7 @@ import TeaGrid, { SortKey } from '../components/TeaGrid';
 import Header from '../components/Header';
 import TeaModal from '../components/TeaModal';
 import CategorySidebar from '../components/CategorySidebar';
+import FilterPanel from '../components/FilterPanel';
 import { filterTeas, Tea } from '../utils/filter';
 import { toStringArray } from '../lib/toStringArray';
 
@@ -49,6 +50,8 @@ export default function Home({ teas }: HomeProps) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState<SortKey>('relevanceDesc');
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [showCategorySidebar, setShowCategorySidebar] = useState(false);
 
   const [shuffledTeas, setShuffledTeas] = useState<Tea[]>(teas);
 
@@ -119,11 +122,21 @@ export default function Home({ teas }: HomeProps) {
 
   return (
     <>
-      <Header query={query} onChange={setQuery} />
-      <CategorySidebar
-        categories={categories}
-        selected={selectedCategories}
-        onToggle={toggleCategory}
+      <Header query={query} onChange={setQuery} onOpenFilters={() => setFiltersOpen(true)} />
+      {showCategorySidebar && (
+        <CategorySidebar
+          categories={categories}
+          selected={selectedCategories}
+          onToggle={toggleCategory}
+        />
+      )}
+      <FilterPanel
+        open={filtersOpen}
+        onClose={() => setFiltersOpen(false)}
+        onSelect={(key) => {
+          if (key === 'category') setShowCategorySidebar(true);
+          setFiltersOpen(false);
+        }}
       />
       <TeaGrid teas={paginated} onTeaClick={setSelectedTea} sort={sort} onChangeSort={setSort} />
       <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>

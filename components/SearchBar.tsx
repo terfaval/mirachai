@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import styles from '../styles/SearchBar.module.css';
 
 interface Props {
@@ -5,9 +6,13 @@ interface Props {
   onChange: (value: string) => void;
 }
 
-export default function SearchBar({ query, onChange }: Props) {
+const SearchBar = forwardRef<HTMLInputElement, Props>(function SearchBar(
+  { query, onChange },
+  ref,
+) {
   return (
     <input
+      ref={ref}
       className={styles.search}
       type="text"
       placeholder="Keresés..."
@@ -15,4 +20,6 @@ export default function SearchBar({ query, onChange }: Props) {
       onChange={(e) => onChange(e.target.value)}
     />
   );
-}
+});
+
+export default SearchBar;

@@ -1,61 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import styles from '../styles/FilterPanel.module.css';
 
 interface Props {
   open: boolean;
-  categories: string[];
-  selectedCategory: string | null;
-  onSelectCategory: (cat: string | null) => void;
   onClose: () => void;
+  onSelect: (key: string) => void;
 }
 
-export default function FilterPanel({ open, categories, selectedCategory, onSelectCategory, onClose }: Props) {
-  const [localCategory, setLocalCategory] = useState<string>(selectedCategory ?? '');
+interface Option {
+  key: string;
+  label: string;
+  icon: string;
+}
 
-  useEffect(() => {
-    setLocalCategory(selectedCategory ?? '');
-  }, [selectedCategory]);
+const OPTIONS: Option[] = [
+  { key: 'category', label: 'Kategória', icon: '/icon_category.svg' },
+  { key: 'ingredients', label: 'Hozzávalók', icon: '/icon_prep.svg' },
+  { key: 'taste', label: 'Íz', icon: '/icon_taste.svg' },
+  { key: 'focus', label: 'Fókusz', icon: '/icon_info.svg' },
+  { key: 'intensity', label: 'Intenzitás', icon: '/icon_timing.svg' },
+  { key: 'steepMin', label: 'SteepMin', icon: '/icon_timing.svg' },
+  { key: 'caffeine', label: 'Koffein', icon: '/icon_info.svg' },
+  { key: 'allergens', label: 'Allergének', icon: '/icon_info.svg' },
+  { key: 'seasons', label: 'Évszakok', icon: '/icon_timing.svg' },
+  { key: 'dayparts', label: 'Napszakok', icon: '/icon_timing.svg' },
+  { key: 'temperature', label: 'Fogyasztási hőmérséklet', icon: '/icon_taste.svg' },
+];
 
+export default function FilterPanel({ open, onClose, onSelect }: Props) {
   if (!open) return null;
-
-  const apply = () => {
-    onSelectCategory(localCategory || null);
-    onClose();
-  };
-
-  const reset = () => {
-    setLocalCategory('');
-    onSelectCategory(null);
-    onClose();
-  };
-
   return (
-    <div
-      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-      onClick={onClose}
-    >
-      <div style={{ background: 'white', padding: '1rem', width: '90%', maxWidth: '300px' }} onClick={(e) => e.stopPropagation()}>
-        <h2 style={{ marginTop: 0 }}>Szűrők</h2>
-        <div style={{ marginBottom: '1rem' }}>
-          <label>
-            Kategória:
-            <select
-              value={localCategory}
-              onChange={(e) => setLocalCategory(e.target.value)}
-              style={{ marginLeft: '0.5rem' }}
-            >
-              <option value="">(mind)</option>
-              {categories.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem' }}>
-          <button onClick={reset}>Alaphelyzet</button>
-          <button onClick={apply}>Alkalmazás</button>
-        </div>
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
+        {OPTIONS.map((opt) => (
+          <button
+            key={opt.key}
+            className={styles.option}
+            onClick={() => onSelect(opt.key)}
+          >
+            {opt.label}
+            <img src={opt.icon} alt="" />
+          </button>
+        ))}
       </div>
     </div>
   );
