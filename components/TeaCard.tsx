@@ -134,19 +134,20 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, panel, onCl
               ))}
             </ul>
 
-            {showChart && <TasteChart tea={tea} size={50} showLabels={false} />}
-
-            <div className={styles.intensity}>
-              <div className={styles.dots}>
-                {[1, 2, 3].map((i) => (
-                  <span
-                    key={`intensity-${i}`}
-                    className={styles.dot}
-                    style={{ background: i <= intensityLevel ? dotActiveColor : dotColor }}
-                  />
-                ))}
+            <div className={styles.infoRight}>
+              {showChart && <TasteChart tea={tea} size={50} showLabels={false} />}
+              <div className={styles.intensity}>
+                <div className={styles.dots}>
+                  {[1, 2, 3].map((i) => (
+                    <span
+                      key={`intensity-${i}`}
+                      className={styles.dot}
+                      style={{ background: i <= intensityLevel ? dotActiveColor : dotColor }}
+                    />
+                  ))}
+                </div>
+                <div className={styles.intensityLabel}>{tea.intensity}</div>
               </div>
-              <div className={styles.intensityLabel}>{tea.intensity}</div>
             </div>
           </div>
         )}
