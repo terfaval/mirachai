@@ -14,7 +14,7 @@ const PANELS: { key: PanelKey; icon: string; label: string }[] = [
 ];
 
 export default function InfoPanelSidebar({ panel, onChange }: Props) {
-  const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState<PanelKey | null>(null);
   return (
     <div
       style={{
@@ -23,40 +23,55 @@ export default function InfoPanelSidebar({ panel, onChange }: Props) {
         top: '50%',
         transform: 'translateY(-50%)',
         zIndex: 1000,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '0.5rem',
       }}
     >
       <button
-        onClick={() => setOpen(!open)}
         aria-label="Info"
-        style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+        style={{ background: 'none', border: 'none', cursor: 'default' }}
       >
         <img src="/icon_info.svg" alt="info" style={{ width: 24, height: 24 }} />
       </button>
-      {open && (
-        <div style={{ display: 'flex', flexDirection: 'column', marginTop: '0.5rem', gap: '0.5rem' }}>
-          {PANELS.map((p) => (
-            <button
-              key={p.key}
-              onClick={() => { onChange(p.key); setOpen(false); }}
-              aria-label={p.label}
+      {PANELS.map((p) => {
+        const active = panel === p.key;
+        const isHovered = hovered === p.key;
+        const scale = active || isHovered ? 1.1 : 1;
+        return (
+          <button
+            key={p.key}
+            onClick={() => onChange(p.key)}
+            onMouseEnter={() => setHovered(p.key)}
+            onMouseLeave={() => setHovered(null)}
+            aria-label={p.label}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              color: 'white',
+              fontWeight: 'bold',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              opacity: active ? 1 : 0.7,
+            }}
+          >
+            {p.label}
+            <img
+              src={p.icon}
+              alt=""
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                color: 'white',
-                fontWeight: 'bold',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                opacity: panel === p.key ? 1 : 0.7,
+                width: 32,
+                height: 32,
+                transition: 'transform 0.2s',
+                transform: `scale(${scale})`,
               }}
-            >
-              <img src={p.icon} alt="" style={{ width: 24, height: 24 }} />
-              {p.label}
-            </button>
-          ))}
-        </div>
-      )}
+            />
+          </button>
+        );
+      })}
     </div>
   );
 }

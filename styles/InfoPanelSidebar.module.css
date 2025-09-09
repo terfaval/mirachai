@@ -6,6 +6,7 @@
   flex-direction: column;
   gap: 0.5rem;
   z-index: 1000;
+  justify-content: left;
 }
 
 .button {
@@ -26,9 +27,13 @@
 }
 
 .icon {
-  width: 28px;
+  width: 28x;
   height: 28px;
   transition: transform 0.2s ease-in-out;
+}
+
+.icon svg {
+  fill: white;
 }
 
 .button:hover .icon {
