@@ -5,10 +5,9 @@ import { Tea } from '../utils/filter';
 
 export type SortKey =
   | 'default'
+  | 'relevanceDesc'
   | 'nameAsc'
   | 'nameDesc'
-  | 'relevanceDesc'
-  | 'relevanceAsc'
   | 'intensityAsc'
   | 'intensityDesc'
   | 'steepMinAsc'
@@ -70,6 +69,19 @@ export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props)
               <td>
                 <button
                   onClick={() => {
+                    onChangeSort('relevanceDesc');
+                    setOpen(false);
+                  }}
+                  className={sort === 'relevanceDesc' ? styles.active : ''}
+                >
+                  A leginkább releváns teák elől
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
                     onChangeSort('nameAsc');
                     setOpen(false);
                   }}
@@ -89,32 +101,6 @@ export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props)
                   className={sort === 'nameDesc' ? styles.active : ''}
                 >
                   Teák Z-től A-ig
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={() => {
-                    onChangeSort('relevanceDesc');
-                    setOpen(false);
-                  }}
-                  className={sort === 'relevanceDesc' ? styles.active : ''}
-                >
-                  A leginkább releváns teák elől
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={() => {
-                    onChangeSort('relevanceAsc');
-                    setOpen(false);
-                  }}
-                  className={sort === 'relevanceAsc' ? styles.active : ''}
-                >
-                  A legkevésbé releváns teák elől
                 </button>
               </td>
             </tr>

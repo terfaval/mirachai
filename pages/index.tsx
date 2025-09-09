@@ -91,10 +91,9 @@ export default function Home({ teas }: HomeProps) {
       arr.sort((a, b) => (b.steepMin || 0) - (a.steepMin || 0));
       return arr;
     }
-    if (sort === 'relevanceDesc' || sort === 'relevanceAsc') {
+    if (sort === 'relevanceDesc') {
       const now = new Date();
       arr.sort((a, b) => computeRelevance(b, now) - computeRelevance(a, now));
-      if (sort === 'relevanceAsc') arr.reverse();
       return arr;
     }
     const uniqueCategories = new Set(filtered.map((t) => t.category));
