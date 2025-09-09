@@ -10,6 +10,7 @@ import CategorySidebar from '../components/CategorySidebar';
 import FilterPanel from '../components/FilterPanel';
 import { filterTeas, Tea } from '../utils/filter';
 import { toStringArray } from '../lib/toStringArray';
+import { distributeByCategory } from '../utils/category-distribution';
 
 function normalize(str: string): string {
   return str
@@ -157,14 +158,19 @@ export default function Home({ teas }: HomeProps) {
       arr.sort((a, b) => computeRelevance(b, now) - computeRelevance(a, now));
       return arr;
     }
-    const uniqueCategories = new Set(filtered.map((t) => t.category));
-    return uniqueCategories.size === 1
-      ? [...filtered].sort((a, b) => a.id - b.id)
-      : filtered;
+    return filtered;
   }, [filtered, sort]);
 
+  const distributed = useMemo(() => distributeByCategory(sorted), [sorted]);
+
   const perPage = 9;
-  const paginated = sorted.slice((page - 1) * perPage, page * perPage);
+  const paginated = useMemo(() => {
+    const slice = distributed.slice((page - 1) * perPage, page * perPage);
+    if (new Set(slice.map((t) => t.category)).size === 1) {
+      return [...slice].sort((a, b) => a.id - b.id);
+    }
+    return slice;
+  }, [distributed, page]);
 
   const categories = Array.from(new Set(teas.map((t) => t.category))).sort();
 
