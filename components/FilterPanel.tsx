@@ -29,25 +29,20 @@ const OPTIONS: Option[] = [
 export default function FilterPanel({ open, onClose, onSelect }: Props) {
   if (!open) return null;
   return (
-    <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
+    <>
+      <div className={styles.overlay} onClick={onClose} />
+      <div className={styles.panel}>
         {OPTIONS.map((opt) => (
           <button
             key={opt.key}
             className={styles.option}
             onClick={() => onSelect(opt.key)}
           >
+            <img src={opt.icon} alt="" />
             {opt.label}
-            <img src={opt.icon} alt="" 
-            style={{
-            width: 24,
-            height: 24,
-            filter:
-              'brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))',
-          }}/>
           </button>
         ))}
       </div>
-    </div>
+    </>
   );
 }

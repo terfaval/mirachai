@@ -2,41 +2,48 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 80px 40px 0 0;
   z-index: 1000;
 }
 
 .panel {
-  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  background: #fff;
   padding: 1rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  z-index: 1001;
 }
 
 .option {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 0.5rem;
   background: none;
   border: none;
-  color: white;
+  color: #000;
   cursor: pointer;
   font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.option:hover,
+.option:active {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .option img {
   width: 40px;
   height: 40px;
-  filter: brightness(0) invert(1);
   transition: transform 0.2s;
 }
 
-.option:hover img {
+.option:hover img,
+.option:active img {
   transform: scale(1.1);
 }
