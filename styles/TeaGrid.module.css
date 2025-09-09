@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin-top: 80px;
+  max-height: 30%;
 }
 
 .grid {
@@ -14,8 +15,6 @@
   grid-template-rows: repeat(3, 170px);
   gap: 0;
   width: 70%;
-  max-height: 80%;
-
   border: 6px solid #80350E;
   background: linear-gradient(180deg, #4A2912 0%, #321B0C 80%);
 
