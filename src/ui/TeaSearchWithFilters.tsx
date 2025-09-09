@@ -2,13 +2,15 @@
 
 import React, { useMemo, useState } from "react";
 import { Filter } from "lucide-react";
-import { motion } from "framer-motion";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Slider } from "@/components/ui/slider";
-import { buildIndex, search } from "@/search/engine";
+// import { motion } from "framer-motion"; // ha nem használod, hagyd kikommentelve
+
+import { Input } from "./input";
+import { Button } from "./button";
+import { Card, CardHeader, CardTitle, CardContent } from "./card";
+import { Badge } from "./badge";
+import { Slider } from "./slider";
+
+import { buildIndex, search } from "../search/engine";
 import FilterPanel from "./filters/FilterPanel";
 import { collectFacets } from "./filters/collectFacets";
 import { buildQueryFromFilters } from "./filters/buildQueryFromFilters";
