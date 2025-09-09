@@ -31,13 +31,6 @@ const SEASON_NAMES = ['tavasz', 'nyár', 'ősz', 'tél'] as const;
 
 const DAY_NAMES = ['reggel', 'délelőtt', 'délután', 'este'] as const;
 
-const DAY_COLORS: Record<string, string> = {
-  reggel: '#FFE57F',
-  délelőtt: '#FFCA28',
-  délután: '#FB8C00',
-  este: '#8E24AA',
-};
-
 export default function TeaCard({
   tea,
   tileX, tileY, tilesX, tilesY,
@@ -95,10 +88,10 @@ export default function TeaCard({
   if (hasAfterMeal) DAY_NAMES.forEach((n) => daySet.add(n));
 
   const daySegments: DaySegment[] = [
-    { key: 'reggel',   start: 4,  end: 10, color: DAY_COLORS['reggel'],   active: daySet.has('reggel') },
-    { key: 'délelőtt', start: 10, end: 13, color: DAY_COLORS['délelőtt'], active: daySet.has('délelőtt') },
-    { key: 'délután',  start: 13, end: 19, color: DAY_COLORS['délután'],  active: daySet.has('délután') },
-    { key: 'este',     start: 19, end: 28, color: DAY_COLORS['este'],     active: daySet.has('este') },
+    { key: 'reggel',   start: 4,  end: 10, color: '#fff', active: daySet.has('reggel') },
+    { key: 'délelőtt', start: 10, end: 13, color: '#fff', active: daySet.has('délelőtt') },
+    { key: 'délután',  start: 13, end: 19, color: '#fff', active: daySet.has('délután') },
+    { key: 'este',     start: 19, end: 28, color: '#fff', active: daySet.has('este') },
   ];
 
   let dayText = '';
