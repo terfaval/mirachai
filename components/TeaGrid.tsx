@@ -4,21 +4,9 @@ import styles from '../styles/TeaGrid.module.css';
 import { Tea } from '../utils/filter';
 import InfoPanelSidebar from './InfoPanelSidebar';
 
-export type SortKey =
-  | 'default'
-  | 'relevanceDesc'
-  | 'nameAsc'
-  | 'nameDesc'
-  | 'intensityAsc'
-  | 'intensityDesc'
-  | 'steepMinAsc'
-  | 'steepMinDesc';
-
 interface Props {
   teas: Tea[];
   onTeaClick?: (tea: Tea) => void;
-  sort: SortKey;
-  onChangeSort: (key: SortKey) => void;
 }
 
 const TILES_X = 3;
@@ -35,17 +23,7 @@ function compareIdAsc(a: any, b: any) {
   return String(a).localeCompare(String(b), 'hu', { numeric: true });
 }
 
-export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props) {
-  const [open, setOpen] = useState(false);
-  const sortOptions: { key: SortKey; label: string }[] = [
-    { key: 'relevanceDesc', label: 'A leginkább releváns teák elől' },
-    { key: 'nameAsc', label: 'Teák A-tól Z-ig' },
-    { key: 'nameDesc', label: 'Teák Z-től A-ig' },
-    { key: 'intensityAsc', label: 'A legkevésbé intenzív teák elől' },
-    { key: 'intensityDesc', label: 'A leginkább intenzív teák elől' },
-    { key: 'steepMinAsc', label: 'A leggyorsabb teák elől' },
-    { key: 'steepMinDesc', label: 'A leglassabb teák elől' },
-  ];
+export default function TeaGrid({ teas, onTeaClick }: Props) {
   const [panel, setPanel] = useState<PanelKey>('consumption');
   // 1) kategóriánként ID szerint sorba rendezett teák
   const byCategory = new Map<string, Tea[]>();
@@ -72,32 +50,6 @@ export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props)
     <>
       <div className={styles.grid}>
       <InfoPanelSidebar panel={panel} onChange={setPanel} />
-      <div className={styles.sortButton} onClick={() => setOpen(!open)}>
-        <img src="/sort.svg" className={styles.sortIcon} alt="Rendezés" />
-      </div>
-      {(open || sort !== 'relevanceDesc') && (
-        <table className={styles.sortPanel}>
-          <tbody>
-            {sortOptions
-              .filter((opt) => open || opt.key === sort)
-              .map((opt) => (
-                <tr key={opt.key}>
-                  <td>
-                    <button
-                      onClick={() => {
-                        onChangeSort(opt.key);
-                        setOpen(false);
-                      }}
-                      className={sort === opt.key ? styles.active : ''}
-                    >
-                      {opt.label}
-                    </button>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      )}
       {cells.map((_, idx) => {
         const tea = teas[idx];
         const key = tea ? `tea-${tea.id}` : `empty-${idx}`;

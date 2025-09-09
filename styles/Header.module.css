@@ -36,9 +36,10 @@
 .searchWrapper {
   position: absolute;
   top: 50%;
-  right: 190px;
+  right: 240px;
   transform: translate(0, -50%);
   width: 0%;
+  padding: 0px;
   max-width: 40vw;
   overflow: hidden;
   transition: width 0.3s ease;
@@ -68,4 +69,40 @@
 
 .iconContainer:hover .tooltip {
   visibility: visible;
+}
+
+.sortContainer {
+  position: relative;
+}
+
+.sortPanel {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 250px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-collapse: collapse;
+  z-index: 1002;
+}
+
+.sortPanel td {
+  padding: 4px 8px;
+}
+
+.sortPanel td button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.sortPanel td button:hover {
+  background: #f0f0f0;
+}
+
+.active {
+  font-weight: bold;
 }

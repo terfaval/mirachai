@@ -2,8 +2,9 @@ import { GetStaticProps } from 'next';
 import { useState, useEffect, useMemo } from 'react';
 import path from 'path';
 import { promises as fs } from 'fs';
-import TeaGrid, { SortKey } from '../components/TeaGrid';
+import TeaGrid from '../components/TeaGrid';
 import Header from '../components/Header';
+import { SortKey } from '../components/sortOptions';
 import TeaModal from '../components/TeaModal';
 import CategorySidebar from '../components/CategorySidebar';
 import FilterPanel from '../components/FilterPanel';
@@ -122,7 +123,13 @@ export default function Home({ teas }: HomeProps) {
 
   return (
     <>
-      <Header query={query} onChange={setQuery} onOpenFilters={() => setFiltersOpen(true)} />
+      <Header
+        query={query}
+        onChange={setQuery}
+        onOpenFilters={() => setFiltersOpen(true)}
+        sort={sort}
+        onChangeSort={setSort}
+      />
       {showCategorySidebar && (
         <CategorySidebar
           categories={categories}
@@ -138,7 +145,7 @@ export default function Home({ teas }: HomeProps) {
           setFiltersOpen(false);
         }}
       />
-      <TeaGrid teas={paginated} onTeaClick={setSelectedTea} sort={sort} onChangeSort={setSort} />
+      <TeaGrid teas={paginated} onTeaClick={setSelectedTea} />
       <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
         {page > 1 && <button onClick={() => setPage(page - 1)}>Előző</button>}
         {page * perPage < filtered.length && <button onClick={() => setPage(page + 1)}>Következő</button>}
