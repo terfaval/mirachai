@@ -1,8 +1,14 @@
 import { readFileSync } from 'fs';
 import { buildIndex, search } from '../search/engine';
 import { Tea } from '../search/types';
+import { toStringArray } from '../../lib/toStringArray';
 
-const teas: Tea[] = JSON.parse(readFileSync('data/teas.json', 'utf8'));
+const rawTeas: any[] = JSON.parse(readFileSync('data/teas.json', 'utf8'));
+const teas: Tea[] = rawTeas.map((t) => ({
+  ...t,
+  season_recommended: toStringArray(t.season_recommended),
+  daypart_recommended: toStringArray(t.daypart_recommended),
+}));
 const idx = buildIndex(teas);
 
 const queries = [

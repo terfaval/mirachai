@@ -18,8 +18,8 @@ export interface Tea {
   intensity?: string;
   steepMin?: number;
   tempC?: number;
-  season_recommended?: string;
-  daypart_recommended?: string;
+  season_recommended?: string[];
+  daypart_recommended?: string[];
   mandalaIndex?: number;
 }
 

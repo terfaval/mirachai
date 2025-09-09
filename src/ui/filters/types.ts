@@ -42,6 +42,8 @@ export type Tea = Record<string, unknown> & {
   steepMin?: number;
   allergens?: string;
   serve_hot?: string; serve_lukewarm?: string; serve_iced?: string; serve_coldbrew?: string;
+  season_recommended?: string[];
+  daypart_recommended?: string[];
   [k: `taste_${string}`]: number | undefined;
   [k: `focus_${string}`]: number | undefined;
   [k: `ingerdient-${number}`]: string | undefined;

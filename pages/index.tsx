@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import TeaModal from '../components/TeaModal';
 import CategorySidebar from '../components/CategorySidebar';
 import { filterTeas, Tea } from '../utils/filter';
+import { toStringArray } from '../lib/toStringArray';
 
 function getSeason(date: Date): string {
   const m = date.getMonth();
@@ -31,8 +32,10 @@ function computeRelevance(tea: Tea, now: Date): number {
   let score = 0;
   const season = getSeason(now);
   const daypart = getDaypart(now);
-  if (tea.season_recommended && tea.season_recommended.includes(season)) score += 2;
-  if (tea.daypart_recommended && tea.daypart_recommended.includes(daypart)) score += 1;
+  const seasons = toStringArray(tea.season_recommended);
+  const dayparts = toStringArray(tea.daypart_recommended);
+  if (seasons.includes(season)) score += 2;
+  if (dayparts.includes(daypart)) score += 1;
   return score;
 }
 
@@ -138,7 +141,12 @@ export default function Home({ teas }: HomeProps) {
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const filePath = path.join(process.cwd(), 'data', 'teas.json');
   const jsonData = await fs.readFile(filePath, 'utf8');
-  const teas: Tea[] = JSON.parse(jsonData);
+  const rawTeas: any[] = JSON.parse(jsonData);
+  const teas: Tea[] = rawTeas.map((t) => ({
+    ...t,
+    season_recommended: toStringArray(t.season_recommended),
+    daypart_recommended: toStringArray(t.daypart_recommended),
+  }));
   const catMap: Record<string, Tea[]> = {};
   for (const tea of teas) {
     (catMap[tea.category] ||= []).push(tea);

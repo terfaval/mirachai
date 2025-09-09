@@ -6,6 +6,7 @@ import { getCategoryColor } from '../utils/colorMap';
 import { getMandalaPath } from '../utils/mandala';
 import TasteChart from './TasteChart';
 import QuarterDonut, { Segment } from './QuarterDonut';
+import { toStringArray } from '../lib/toStringArray';
 
 interface Props {
   tea: Tea;
@@ -45,10 +46,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
     ősz: '#F4B183',
     tél: '#9DC3E6',
   };
-  const seasons = (tea.season_recommended || '')
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
+  const seasons = toStringArray(tea.season_recommended);
   const seasonSegments: Segment[] = seasonNames.map((s) => ({
     key: s,
     color: seasonColors[s],
@@ -72,10 +70,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
     délután: '#FB8C00',
     este: '#8E24AA',
   };
-  const rawDayparts = (tea.daypart_recommended || '')
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
+  const rawDayparts = toStringArray(tea.daypart_recommended);
   const daySet = new Set<string>();
   rawDayparts.forEach((d) => {
     if (d === 'kora_délután' || d === 'étkezés_után') daySet.add('délután');

@@ -15,6 +15,8 @@ export type Tea = Record<string, unknown> & {
   serve_coldbrew?: string;
   tempC?: number;
   steepMin?: number;
+  season_recommended?: string[];
+  daypart_recommended?: string[];
 };
 
 export type Posting = { id: string; f: "name"|"desc"|"ing"|"cat"|"sub"|"tag"; tf: number };
