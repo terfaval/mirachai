@@ -19,7 +19,7 @@ export default function InfoPanelSidebar({ panel, onChange }: Props) {
     <div
       style={{
         position: 'absolute',
-        right: '-50px',
+        left: '-150px',
         top: '50%',
         transform: 'translateY(-50%)',
         zIndex: 1000,
@@ -27,7 +27,7 @@ export default function InfoPanelSidebar({ panel, onChange }: Props) {
         flexDirection: 'column',
         alignItems: 'flex-end',
         gap: '0.5rem',
-        marginRight: '-10px',
+        marginLeft: '-10px',
       }}
     >
       <button
