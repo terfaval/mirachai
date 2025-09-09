@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import TeaCard from './TeaCard';
+import TeaCard, { PanelKey } from './TeaCard';
 import styles from '../styles/TeaGrid.module.css';
 import { Tea } from '../utils/filter';
+import InfoPanelSidebar from './InfoPanelSidebar';
 
 export type SortKey =
   | 'default'
@@ -36,6 +37,7 @@ function compareIdAsc(a: any, b: any) {
 
 export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props) {
   const [open, setOpen] = useState(false);
+  const [panel, setPanel] = useState<PanelKey>('consumption');
   // 1) kategóriánként ID szerint sorba rendezett teák
   const byCategory = new Map<string, Tea[]>();
   for (const t of teas) {
@@ -58,7 +60,8 @@ export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props)
   // 3) fix 3×3 rács; a mandala-szelet indexe a kategória-rang szerint
   const cells = Array.from({ length: TILE_COUNT });
   return (
-    <div className={styles.grid}>
+    <>
+      <div className={styles.grid}>
       <div className={styles.sortButton} onClick={() => setOpen(!open)}>
         <img src="/sort.svg" className={styles.sortIcon} alt="Rendezés" />
       </div>
@@ -181,10 +184,13 @@ export default function TeaGrid({ teas, onTeaClick, sort, onChangeSort }: Props)
               tilesX={TILES_X}
               tilesY={TILES_Y}
               onClick={onTeaClick}
+              panel={panel}
             />
           </div>
         );
       })}
     </div>
+      <InfoPanelSidebar panel={panel} onChange={setPanel} />
+    </>
   );
 }

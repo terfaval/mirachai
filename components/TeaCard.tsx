@@ -1,5 +1,4 @@
 // components/TeaCard.tsx
-import { useState } from 'react';
 import styles from '../styles/TeaCard.module.css';
 import { Tea } from '../utils/filter';
 import { getCategoryColor } from '../utils/colorMap';
@@ -8,23 +7,24 @@ import TasteChart from './TasteChart';
 import QuarterDonut, { Segment } from './QuarterDonut';
 import { toStringArray } from '../lib/toStringArray';
 
+export type PanelKey = 'consumption' | 'category' | 'timing' | 'prep';
+
 interface Props {
   tea: Tea;
   tileX: number;
   tileY: number;
   tilesX: number;
   tilesY: number;
+  panel: PanelKey;
   onClick?: (tea: Tea) => void;
 }
 
-export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: Props) {
+export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, panel, onClick }: Props) {
   const color = getCategoryColor(tea.category); // main
   const mandalaColor = getCategoryColor(tea.category, 'light'); // LIGHT – kérés szerint
   const mandalaUrl = getMandalaPath(tea.category);
   const dotActiveColor = tea.intensity ? '#000' : getCategoryColor(tea.category, 'dark');
   const dotColor = getCategoryColor(tea.category, 'light');
-
-  const [panel, setPanel] = useState<'taste' | 'category' | 'season' | 'daypart' | 'prep'>('taste');
 
   const flavorKeys = [
     'friss','édeskés','savanykás','fűszeres','virágos',
@@ -52,16 +52,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
     color: seasonColors[s],
     active: seasons.includes(s),
   }));
-  const seasonMonthMap: Record<string, string[]> = {
-    tavasz: ['március', 'április', 'május'],
-    nyár: ['június', 'július', 'augusztus'],
-    ősz: ['szeptember', 'október', 'november'],
-    tél: ['december', 'január', 'február'],
-  };
-  const seasonMonthsText =
-    seasons.length === 4
-      ? 'egész évben'
-      : seasons.flatMap((s) => seasonMonthMap[s] || []).join(', ');
+  const seasonText = seasons.length === 4 ? 'egész évben' : seasons.join(', ');
 
   const dayNames = ['reggel', 'délelőtt', 'délután', 'este'];
   const dayColors: Record<string, string> = {
@@ -71,51 +62,44 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
     este: '#8E24AA',
   };
   const rawDayparts = toStringArray(tea.daypart_recommended);
+  let hasAfterMeal = false;
+  let hasBeforeSleep = false;
   const daySet = new Set<string>();
   rawDayparts.forEach((d) => {
-    if (d === 'kora_délután' || d === 'étkezés_után') daySet.add('délután');
-    else if (d === 'lefekvés_előtt') daySet.add('este');
-    else if (d === 'bármikor') dayNames.forEach((n) => daySet.add(n));
-    else daySet.add(d);
+    if (d === 'kora_délután') daySet.add('délután');
+    else if (d === 'étkezés_után') {
+      hasAfterMeal = true;
+    } else if (d === 'lefekvés_előtt') {
+      hasBeforeSleep = true;
+      daySet.add('este');
+    } else if (d === 'bármikor') {
+      dayNames.forEach((n) => daySet.add(n));
+    } else {
+      daySet.add(d);
+    }
   });
+  if (hasAfterMeal) dayNames.forEach((n) => daySet.add(n));
   const daySegments: Segment[] = dayNames.map((n) => ({
     key: n,
     color: dayColors[n],
     active: daySet.has(n),
   }));
-  const dayText = daySet.size === 4 ? 'bármikor' : dayNames.filter((n) => daySet.has(n)).join(', ');
+  let dayText = '';
+  if (hasAfterMeal) dayText = 'étkezés után';
+  else if (hasBeforeSleep) dayText = 'lefekvés előtt';
+  else if (daySet.size === 4) dayText = 'egész nap';
+  else {
+    const daytimeCount = ['reggel', 'délelőtt', 'délután'].filter((n) => daySet.has(n)).length;
+    if (daytimeCount >= 2) dayText = 'napközben';
+    else dayText = dayNames.filter((n) => daySet.has(n)).join(', ');
+  }
 
   const temp = tea.tempC ?? 0;
   const steep = tea.steepMin ?? 0;
   const steepPct = Math.max(0, Math.min(steep, 10)) / 10 * 100;
 
-  const icons = [
-    { key: 'taste', symbol: '🍵', label: 'íz' },
-    { key: 'category', symbol: '📚', label: 'kategória' },
-    { key: 'season', symbol: '☀️', label: 'évszak' },
-    { key: 'daypart', symbol: '🕒', label: 'napszak' },
-    { key: 'prep', symbol: '⚙️', label: 'elkészítés' },
-  ];
-
   return (
     <div className={styles.wrapper}>
-      <div className={styles.iconColumn}>
-        {icons.map((ic) => (
-          <button
-            key={ic.key}
-            className={styles.iconBtn}
-            data-active={panel === ic.key}
-            onClick={(e) => {
-              e.stopPropagation();
-              setPanel(ic.key as any);
-            }}
-            aria-label={ic.label}
-          >
-            {ic.symbol}
-          </button>
-        ))}
-      </div>
-
       <div
         className={styles.card}
         style={{ backgroundColor: color }}
@@ -139,7 +123,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
         <div className={styles.name}>{tea.name}</div>
         <div className={styles.mood}>{tea.mood_short}</div>
 
-        {panel === 'taste' && (
+        {panel === 'consumption' && (
           <div className={styles.info}>
             <ul className={styles.flavorList}>
               {flavors.map((f) => (
@@ -169,22 +153,27 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
 
         {panel === 'category' && (
           <div className={styles.categoryPanel}>
-            <div>{tea.category}</div>
-            {tea.subcategory && <div>{tea.subcategory}</div>}
+            <span className={styles.categoryPill} style={{ backgroundColor: color }}>
+              {tea.category}
+            </span>
+            {tea.subcategory && (
+              <span className={styles.subcategoryPill}>{tea.subcategory}</span>
+            )}
           </div>
         )}
 
-        {panel === 'season' && (
-          <div className={styles.seasonPanel}>
-            <QuarterDonut segments={seasonSegments} size={40} />
-            <div className={styles.seasonText}>{seasonMonthsText}</div>
-          </div>
-        )}
-
-        {panel === 'daypart' && (
-          <div className={styles.seasonPanel}>
-            <QuarterDonut segments={daySegments} size={40} />
-            <div className={styles.seasonText}>{dayText}</div>
+        {panel === 'timing' && (
+          <div className={styles.timingPanel}>
+            <div className={styles.seasonPanel}>
+              <div className={styles.seasonChart}>
+                <QuarterDonut segments={seasonSegments} size={40} />
+              </div>
+              <div className={styles.seasonText}>{seasonText}</div>
+            </div>
+            <div className={styles.seasonPanel}>
+              <QuarterDonut segments={daySegments} size={40} />
+              <div className={styles.seasonText}>{dayText}</div>
+            </div>
           </div>
         )}
 
@@ -204,7 +193,7 @@ export default function TeaCard({ tea, tileX, tileY, tilesX, tilesY, onClick }: 
                     cx={18}
                     cy={18}
                     r={16}
-                    stroke="#eee"
+                    stroke="#fff"
                     strokeWidth={4}
                     fill="none"
                   />
