@@ -103,7 +103,7 @@
 .info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 100%;
+  width: 80%;
   margin-top: 8px;
   font-size: 0.6rem;
   position: relative;
@@ -198,6 +198,21 @@
   color: #fff;
 }
 
+.seasonPanel {
+  display: flex;
+  width: 100%;
+  font-size: 0.6rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.seasonText {
+  margin-left: 8px;
+  text-align: left;
+  color: #000;
+}
+
 .prepPanel {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -215,10 +230,12 @@
   margin-top: 8px;
   gap: 8px;
   font-size: 0.6rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .seasonChart svg {
-  transform: rotate(-90deg);
+  transform: rotate(-45deg);
 }
 
 .categoryPill {
