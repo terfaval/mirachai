@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 90%;
+  height: 80%;
 }
 
 .card {
@@ -9,9 +11,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-width: 220px;
-  min-height: 130px;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
   border-radius: 12px;
   padding: 12px;
   text-align: center;
@@ -104,12 +106,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
-  margin-top: 8px;
   font-size: 0.6rem;
   position: relative;
   z-index: 1;
   align-items: center;
   gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
 }
 
 .flavorList {
@@ -165,37 +168,31 @@
 .categoryPanel {
   display: flex;
   width: 100%;
-  margin-top: 8px;
   font-size: 0.7rem;
   gap: 4px;
   align-items: center;
   justify-content: center;
+  margin-top: auto;
+  padding-top: 8px;
 }
 
 .chartPanel {
-  position: relative;
-  width: 70px;
-  height: 40px;
-  justify-content: center;
+  display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .chartPanel svg {
-  position: absolute;
-  top: 0;
-  left: 0;
+  flex-shrink: 0;
 }
 
 .chartLabel {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
   font-weight: 700;
   font-size: 0.8rem;
   line-height: 1;
   color: #000;
+  text-align: left;
+  z-index:300;
 }
 
 .chartNote {
@@ -226,26 +223,32 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
-  margin-top: 8px;
   gap: 8px;
   font-size: 0.6rem;
   align-items: center;
+  margin-top: auto;
+  padding-top: 8px;
 }
 
 .timingPanel {
   display: grid;
   grid-template-columns: auto auto;
   width: 100%;
-  margin-top: 8px;
-  gap: 40px;
+  gap: 20px;
   font-size: 0.6rem;
   align-items: center;
   justify-content: center;
   justify-items: center;
+  margin-top: auto;
+  padding-top: 8px;
 }
 
 .seasonChart svg {
   transform: rotate(-45deg);
+}
+
+.daypartChart svg {
+  transform: rotate(+1deg);
 }
 
 .categoryPill {

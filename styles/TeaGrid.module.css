@@ -11,7 +11,7 @@
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 150px);
+  grid-template-rows: repeat(3, 170px);
   gap: 0;
   width: 70%;
   max-height: 80%;
