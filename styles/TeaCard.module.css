@@ -1,3 +1,28 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.iconColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 20px;
+  margin-right: 8px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  font-size: 0.8rem;
+}
+
+.iconBtn[data-active='true'] {
+  opacity: 1;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -72,9 +97,8 @@
     calc(var(--py) * 100%);
 }
 
-
 /* szövegrétegek biztosan a mandala fölött */
-.name, .mood, .info { position: relative; z-index: 1; }
+.name, .mood, .info, .categoryPanel, .seasonPanel, .prepPanel { position: relative; z-index: 1; }
 
 /* ── Szöveg és infó ─────────────────────────────────────────────── */
 
@@ -150,4 +174,76 @@
 
 .intensityLabel {
   margin-top: 4px;
+}
+
+.categoryPanel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 0.7rem;
+  gap: 4px;
+  align-items: center;
+}
+
+.seasonPanel {
+  display: flex;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 0.6rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.seasonText {
+  margin-left: 8px;
+  text-align: left;
+}
+
+.prepPanel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 8px;
+  gap: 8px;
+  font-size: 0.6rem;
+}
+
+.tempBlock, .steepBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.prepLabel {
+  text-align: center;
+}
+
+.thermo {
+  width: 80%;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.thermoFill {
+  height: 100%;
+  background: linear-gradient(to right, #00f, #f00);
+}
+
+.steepChart {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.steepIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
 }

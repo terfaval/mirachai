@@ -17,6 +17,7 @@ export interface Tea {
   ['ingerdient-6']?: string;
   intensity?: string;
   steepMin?: number;
+  tempC?: number;
   season_recommended?: string;
   daypart_recommended?: string;
   mandalaIndex?: number;

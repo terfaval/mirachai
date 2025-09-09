@@ -46,7 +46,7 @@ export default function Home({ teas }: HomeProps) {
   const [category, setCategory] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [filterOpen, setFilterOpen] = useState(false);
-  const [sort, setSort] = useState<SortKey>('default');
+  const [sort, setSort] = useState<SortKey>('relevanceDesc');
 
   const [shuffledTeas, setShuffledTeas] = useState<Tea[]>(teas);
 
