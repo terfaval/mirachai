@@ -19,21 +19,33 @@ export default function InfoPanelSidebar({ panel, onChange }: Props) {
     <div
       style={{
         position: 'absolute',
-        left: '-50px',
+        right: '-50px',
         top: '50%',
         transform: 'translateY(-50%)',
         zIndex: 1000,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         gap: '0.5rem',
+        marginRight: '-10px',
       }}
     >
       <button
         aria-label="Info"
-        style={{ background: 'none', border: 'none', cursor: 'default' }}
+        style={{
+          background: 'none',
+          border: 'none',
+          cursor: 'default',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          width: '100%',
+        }}
       >
-        <img src="/icon_info.svg" alt="info" style={{ width: 24, height: 24 }} />
+        <img
+          src="/icon_info.svg"
+          alt="info"
+          style={{ width: 24, height: 24, filter: 'brightness(0) invert(1)' }}
+        />
       </button>
       {PANELS.map((p) => {
         const active = panel === p.key;
@@ -49,13 +61,15 @@ export default function InfoPanelSidebar({ panel, onChange }: Props) {
             style={{
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'flex-end',
               gap: '0.5rem',
               color: 'white',
               fontWeight: 'bold',
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              opacity: active ? 1 : 0.7,
+              opacity: active ? 1 : 1,
+              width: '100%',
             }}
           >
             {p.label}
@@ -63,10 +77,11 @@ export default function InfoPanelSidebar({ panel, onChange }: Props) {
               src={p.icon}
               alt=""
               style={{
-                width: 32,
-                height: 32,
+                width: 40,
+                height: 40,
                 transition: 'transform 0.2s',
                 transform: `scale(${scale})`,
+                filter: 'brightness(0) invert(1)',
               }}
             />
           </button>
