@@ -1,7 +1,7 @@
 // components/TeaCard.tsx
 import styles from '../styles/TeaCard.module.css';
 import { Tea } from '../utils/filter';
-import { getCategoryColor } from '../utils/colorMap';
+import { getCategoryColor, getTasteColor } from '../utils/colorMap';
 import { getMandalaPath } from '../utils/mandala';
 import TasteChart from './TasteChart';
 import QuarterDonut, { Segment } from './QuarterDonut';
@@ -39,10 +39,11 @@ export default function TeaCard({
 }: Props) {
   const color = getCategoryColor(tea.category); // main
   const colorDark = getCategoryColor(tea.category, 'dark');
-  const mandalaColor = getCategoryColor(tea.category, 'light'); // LIGHT – kérés szerint
+  const colorLight = getCategoryColor(tea.category, 'light');
   const mandalaUrl = getMandalaPath(tea.category);
-  const dotActiveColor = tea.intensity ? '#000' : colorDark;
-  const dotColor = getCategoryColor(tea.category, 'light');
+  const dotActiveColor = colorDark;
+  const dotColor = colorLight;
+  const mandalaColor = colorLight;
 
   // ízek (top 3 lista + min. 3 esetén radar chart)
   const allFlavors = FLAVOR_KEYS
@@ -113,7 +114,11 @@ export default function TeaCard({
     <div className={styles.wrapper}>
       <div
         className={styles.card}
-        style={{ backgroundColor: color }}
+        style={{
+          backgroundColor: color,
+          '--color-dark': colorDark,
+          '--color-light': colorLight,
+        } as React.CSSProperties}
         onClick={() => onClick?.(tea)}
         role={onClick ? 'button' : undefined}
         tabIndex={onClick ? 0 : -1}
@@ -122,7 +127,7 @@ export default function TeaCard({
           className={styles.mandala}
           style={
             {
-              '--mandala-fill': mandalaColor,
+              '--mandala-fill': colorLight,
               '--tiles-x': tilesX,
               '--tiles-y': tilesY,
               '--tile-x': tileX,
@@ -138,15 +143,22 @@ export default function TeaCard({
 
         {panel === 'consumption' && (
           <div className={styles.info}>
-            <ul className={styles.flavorList}>
-              {flavors.map((f) => (
-                <li key={f.name}>
-                  <span className={styles.flavorValue}>{f.value}</span>
-                  <span className={styles.flavorName}>{f.name}</span>
-                </li>
-              ))}
-            </ul>
-            {showChart && <TasteChart tea={tea} size={50} showLabels={false} />}
+            <div className={styles.tasteBox}>
+              <ul className={styles.flavorList}>
+                {flavors.map((f) => (
+                  <li key={f.name}>
+                    <span className={styles.flavorValue}>{f.value}</span>
+                    <span
+                      className={styles.flavorName}
+                      style={{ color: getTasteColor(`taste_${f.name}`) }}
+                    >
+                      {f.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              {showChart && <TasteChart tea={tea} size={50} showLabels={false} />}
+            </div>
             <div className={styles.intensity}>
               <div className={styles.dots}>
                 {[1, 2, 3].map((i) => (
@@ -204,12 +216,12 @@ export default function TeaCard({
             </div>
             <div className={styles.steepChart}>
               <svg width={40} height={40} viewBox="0 0 36 36" aria-hidden="true" focusable="false">
-                <circle cx={18} cy={18} r={16} stroke="#fff" strokeWidth={4} fill="none" />
+                <circle cx={18} cy={18} r={16} stroke={colorLight} strokeWidth={4} fill="none" />
                 <circle
                   cx={18}
                   cy={18}
                   r={16}
-                  stroke="#000"
+                  stroke={colorDark}
                   strokeWidth={4}
                   fill="none"
                   strokeDasharray={100}
