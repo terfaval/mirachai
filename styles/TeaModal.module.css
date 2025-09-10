@@ -5,7 +5,7 @@
   overflow-y:auto; padding:40px 0;
 }
 .panel{
-  position: relative; width:min(960px, 92vw); border-radius:24px; overflow:hidden;
+  position: relative; width:min(800px, 92vw); border-radius:24px; overflow:hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
 }
 /* ── Mandala overlay (SVG mask mozaik) ───────────────────────────── */
@@ -33,14 +33,15 @@
 }
 .content{
   position:relative;
-  padding: 40px 30px;
+  padding: 40px 20px;
   border-radius:20px;
-  margin:16px;
-  padding-right: 45px;
+  margin: 20px 20px;
+  padding-right: 35px;
   z-index:1;
-  max-width: 80%;
-  justify-content:center;
-}
+  display:flex;
+  flex-direction:column;
+  align-items:space-between;
+} 
 
 /* új panelek */
 .topPanel{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
