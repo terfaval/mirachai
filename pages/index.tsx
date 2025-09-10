@@ -216,11 +216,23 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const filePath = path.join(process.cwd(), 'data', 'teas.json');
   const jsonData = await fs.readFile(filePath, 'utf8');
   const rawTeas: any[] = JSON.parse(jsonData);
-  const teas: Tea[] = rawTeas.map((t) => ({
-    ...t,
-    season_recommended: toStringArray(t.season_recommended),
-    daypart_recommended: toStringArray(t.daypart_recommended),
-  }));
+  const descPath = path.join(process.cwd(), 'data', 'teas_descriptions.json');
+  const descData = await fs.readFile(descPath, 'utf8');
+  const descList: any[] = JSON.parse(descData);
+  const descMap: Record<number, any> = {};
+  for (const d of descList) descMap[d.id] = d;
+
+  const teas: Tea[] = rawTeas.map((t) => {
+    const d = descMap[t.id] || {};
+    return {
+      ...t,
+      season_recommended: toStringArray(t.season_recommended),
+      daypart_recommended: toStringArray(t.daypart_recommended),
+      fullDescription: d['főszöveg'],
+      when: d['mikor'],
+      origin: d['eredet'],
+    };
+  });
 
   const catMap: Record<string, Tea[]> = {};
   for (const tea of teas) (catMap[tea.category] ||= []).push(tea);

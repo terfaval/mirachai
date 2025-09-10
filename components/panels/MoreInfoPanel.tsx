@@ -1,10 +1,11 @@
 import React from 'react';
 
 type Props = {
+  text: string;
   colorDark: string;
 };
 
-export default function MoreInfoPanel({ colorDark }: Props) {
+export default function MoreInfoPanel({ text, colorDark }: Props) {
   return (
     <div
       style={{
@@ -12,11 +13,11 @@ export default function MoreInfoPanel({ colorDark }: Props) {
         color: colorDark,
         padding: '20px 24px',
         borderRadius: 12,
-        fontSize: '1rem',
+        fontSize: '1.3rem',
         lineHeight: 1.5,
       }}
     >
-      Itt lesz egy hosszabb leírás a teáról: ízéről, hozzávalókról, hatásokról stb.
+      {text}
     </div>
   );
 }

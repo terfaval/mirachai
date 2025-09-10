@@ -46,13 +46,14 @@ export default function TeaModal({ tea, onClose }: Props) {
             colorDark={colorDark}
             categoryColor={colorMain}
             imageSrc="/tea-sample-1.png"
+            origin={tea.origin ?? ''}
           />
           <div className={styles.spacer} />
-          <MoreInfoPanel colorDark={colorDark} />
-            <div className={styles.spacer} />
-            <TeaDashboard tea={tea} colorScale={ingredientColors} colorDark={colorDark} />
-            <div className={styles.spacer} />
-            <MoreInfoPanel colorDark={colorDark} />
+          <MoreInfoPanel text={tea.fullDescription ?? ''} colorDark={colorDark} />
+          <div className={styles.spacer} />
+          <TeaDashboard tea={tea} colorScale={ingredientColors} colorDark={colorDark} />
+          <div className={styles.spacer} />
+          <MoreInfoPanel text={tea.when ?? ''} colorDark={colorDark} />
           <div className={styles.spacer} />
           <PrepServePanel tea={tea} colorScale={ingredientColors} />
         </div>
