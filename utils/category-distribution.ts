@@ -1,72 +1,82 @@
-import { Tea } from './filter';
+// utils/category-distribution.ts
+import type { Tea } from "./filter";
 
-function shuffle<T>(arr: T[]): T[] {
-  const result = [...arr];
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [result[i], result[j]] = [result[j], result[i]];
+/** ---- determinisztikus RNG + hash ---- */
+function mulberry32(a: number) {
+  return () => {
+    let t = (a += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function hash(str: string) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) h = Math.imul(h ^ str.charCodeAt(i), 16777619);
+  return h >>> 0;
+}
+function shuffleDeterministic<T>(arr: T[], seed: number): T[] {
+  const rand = mulberry32(seed >>> 0);
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
-  return result;
+  return a;
 }
 
 /**
- * Returns a new array of teas where the first `perPage` items contain at least
- * `minCategories` different categories. The order of the remaining items is
- * randomized. When only a single category is present, the original order is
- * preserved.
+ * Kategóriánként elosztja a teákat, és körkörösen (round-robin) vesz belőlük,
+ * hogy a rács jól “szétszórt” legyen. Minden keverés **determininsztikus** a seed alapján.
+ *
+ * @param teas      bemeneti lista
+ * @param perPage   oldalméret (disztribúció célja)
+ * @param perRow    rács oszlopszám (pl. 3)
+ * @param seed      determinisztikus keverési mag; 0/undefined → nincs keverés (stabil)
  */
 export function distributeByCategory(
   teas: Tea[],
-  perPage = 9,
-  minCategories = 3,
+  perPage: number = 9,
+  perRow: number = 3,
+  seed: number = 0
 ): Tea[] {
-  // Group teas by category
-  const byCategory = new Map<string, Tea[]>();
-  for (const tea of teas) {
-    const list = byCategory.get(tea.category);
-    if (list) {
-      list.push(tea);
-    } else {
-      byCategory.set(tea.category, [tea]);
-    }
+  if (!teas.length) return [];
+
+  // 1) csoportosítás kategóriánként
+  const byCat = new Map<string, Tea[]>();
+  for (const t of teas) {
+    const list = byCat.get(t.category) ?? [];
+    list.push(t);
+    byCat.set(t.category, list);
   }
 
-  if (byCategory.size <= 1) {
-    return [...teas];
+  // 2) kategória-sorrend: determinisztikusan keverjük a seed alapján
+  const categories = Array.from(byCat.keys());
+  const catOrder =
+    seed ? shuffleDeterministic(categories, seed) : categories;
+
+  // 3) kategórián belüli sorrend: szintén determinisztikus, külön maggal
+  for (const c of categories) {
+    const list = byCat.get(c)!;
+    byCat.set(
+      c,
+      seed ? shuffleDeterministic(list, (seed ^ hash(String(c))) >>> 0) : list
+    );
   }
 
-  minCategories = Math.min(minCategories, byCategory.size, perPage);
+  // 4) round-robin kivétel a kategorikus listákból
+  const queues = catOrder.map((c) => ({ c, items: byCat.get(c)! }));
+  const out: Tea[] = [];
+  let cursor = 0;
 
-  // shuffle categories and teas within categories for randomness
-  const categories = shuffle(Array.from(byCategory.keys()));
-  for (const cat of categories) {
-    byCategory.set(cat, shuffle(byCategory.get(cat)!));
+  while (queues.some((q) => q.items.length)) {
+    const q = queues[cursor % queues.length];
+    if (q.items.length) out.push(q.items.shift()!);
+    cursor++;
   }
 
-  const result: Tea[] = [];
+  // 5) (opcionális) igazítás sorokhoz: ha kell, itt lehetne még lapokra törni perPage/perRow szerint
+  // Jelenleg az elosztás csak a "szétszórást" biztosítja; a lapozás az oldalon történik.
 
-  // Ensure at least one tea from `minCategories` different categories
-  for (const cat of categories.slice(0, minCategories)) {
-    const list = byCategory.get(cat)!;
-    if (list.length > 0) {
-      result.push(list.shift()!);
-    }
-  }
-
-  // Collect remaining teas and shuffle
-  let pool: Tea[] = [];
-  for (const list of byCategory.values()) {
-    pool = pool.concat(list);
-  }
-  pool = shuffle(pool);
-
-  // Fill the rest of the first page
-  while (result.length < perPage && pool.length > 0) {
-    result.push(pool.shift()!);
-  }
-
-  // Append any remaining teas
-  result.push(...pool);
-
-  return result;
+  return out;
 }
