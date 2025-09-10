@@ -19,6 +19,16 @@
   border-radius:20px; margin:16px;
 }
 
+/* új panelek */
+.topPanel{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+.topCharts{ display:flex; align-items:center; gap:20px; }
+
+.descPanel{ display:flex; gap:20px; margin-top:24px; flex-wrap:wrap; }
+.descCol{ flex:0 0 40%; color:#fff; font-size:18px; line-height:1.5; padding:20px; display:flex; align-items:center; border-radius:12px; }
+.descText{ margin:0; }
+.imgCol{ flex:0 0 60%; }
+.descImage{ width:100%; height:100%; object-fit:cover; border-radius:12px; }
+
 /* cím – Titan One lowercase, közép */
 .title{
   font-family: 'Titan One', cursive;
