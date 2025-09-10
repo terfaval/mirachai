@@ -14,6 +14,28 @@ export default function FocusChart({ data, size=240, colorDark='#333' }: Props) 
     return { ...d, a };
   });
 
+  const sectorPath = (inner:number, outer:number, start:number, end:number) => {
+    const sx = cx + Math.cos(start) * outer;
+    const sy = cy + Math.sin(start) * outer;
+    const ex = cx + Math.cos(end) * outer;
+    const ey = cy + Math.sin(end) * outer;
+    if (inner === 0) {
+      return `M ${cx} ${cy} L ${sx} ${sy} A ${outer} ${outer} 0 0 1 ${ex} ${ey} Z`;
+    }
+    const isx = cx + Math.cos(start) * inner;
+    const isy = cy + Math.sin(start) * inner;
+    const iex = cx + Math.cos(end) * inner;
+    const iey = cy + Math.sin(end) * inner;
+    return [
+      `M ${isx} ${isy}`,
+      `L ${sx} ${sy}`,
+      `A ${outer} ${outer} 0 0 1 ${ex} ${ey}`,
+      `L ${iex} ${iey}`,
+      `A ${inner} ${inner} 0 0 0 ${isx} ${isy}`,
+      'Z',
+    ].join(' ');
+  };
+
   return (
     <div style={{ position:'relative' }}>
       <svg width={size} height={size} aria-hidden>
@@ -26,17 +48,18 @@ export default function FocusChart({ data, size=240, colorDark='#333' }: Props) 
         {points.map((p) => (
           <g key={p.key}>
             {[1,2,3].map(level => {
-              const r = step*level;
-              const x = cx + Math.cos(p.a) * r;
-              const y = cy + Math.sin(p.a) * r;
+              const outer = step * level;
+              const inner = step * (level - 1);
+              const start = p.a - Math.PI/4;
+              const end = p.a + Math.PI/4;
               const active = level <= (Number(p.value)||0);
+              const opacity = active ? 0.25 * level : 0.05;
               return (
-                <circle
+                <path
                   key={level}
-                  cx={x}
-                  cy={y}
-                  r={active ? 7 : 4}
-                  fill={active ? colorDark : 'rgba(0,0,0,0.15)'}
+                  d={sectorPath(inner, outer, start, end)}
+                  fill={colorDark}
+                  fillOpacity={opacity}
                 />
               );
             })}
@@ -61,5 +84,4 @@ export default function FocusChart({ data, size=240, colorDark='#333' }: Props) 
         })}
       </div>
     </div>
-  );
-}
+  )}
