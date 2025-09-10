@@ -4,10 +4,9 @@ import json
 import unicodedata
 from functools import lru_cache
 from pathlib import Path
-from types import SimpleNamespace
-from typing import Iterable, List
+from typing import Any, Iterable, List
 
-from typing import Any
+from .models import Tea
 
 DASHBOARD_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = DASHBOARD_DIR.parent
@@ -29,10 +28,37 @@ def norm(s: str) -> str:
     return strip_accents(s).lower()
 
 
+def _normalize_list(val: Any) -> List[str]:
+    if isinstance(val, str):
+        return [v.strip() for v in val.split(",") if v.strip()]
+    if isinstance(val, list):
+        return [str(v).strip() for v in val if str(v).strip()]
+    return []
+
+
 @lru_cache(maxsize=1)
-def get_teas() -> List[Any]:
+def _load_teas() -> List[Tea]:
     data = load_json(DATA_FILE)
-    return [SimpleNamespace(**t) for t in data]
+    teas: List[Tea] = []
+    for t in data:
+        t = dict(t)
+        t["season_recommended"] = _normalize_list(t.get("season_recommended"))
+        t["daypart_recommended"] = _normalize_list(t.get("daypart_recommended"))
+        allergens = t.get("allergens")
+        if isinstance(allergens, str):
+            t["allergens"] = [a.strip() for a in allergens.replace("|", ",").split(",") if a.strip()]
+        elif isinstance(allergens, list):
+            t["allergens"] = [str(a).strip() for a in allergens if str(a).strip()]
+        else:
+            t["allergens"] = []
+        teas.append(Tea(**t))
+    return teas
+
+
+def get_teas(refresh: bool = False) -> List[Tea]:
+    if refresh:
+        _load_teas.cache_clear()
+    return _load_teas()
 
 
 @lru_cache(maxsize=1)
@@ -43,7 +69,7 @@ def get_config() -> dict:
 @lru_cache(maxsize=1)
 def get_category_colors() -> dict[str, str]:
     data = load_json(COLORS_FILE)
-    return {entry["category"]: entry["main"] for entry in data}
+    return {entry["category"]: entry["main"] for entry in data if "category" in entry}
     
 
 def matches_query(item: Any, q: str | None) -> bool:
@@ -75,15 +101,15 @@ def in_filter(val, selected):
 
 
 def filter_teas(
-    teas: Iterable[Any],
+    teas: Iterable[Tea],
     q: str | None = None,
     category: str | None = None,
     subcategory: str | None = None,
     mood: str | None = None,
     caffeine: str | None = None,
     season: List[str] | None = None,
-    serve: List[str] | None = None,
-) -> List[Any]:
+    daypart: List[str] | None = None,
+) -> List[Tea]:
     filtered: List[Any] = []
     for t in teas:
         if not matches_query(t, q):
@@ -104,12 +130,12 @@ def filter_teas(
             if norm(caffeine) not in norm(str(cval)):
                 continue
         if season:
-            seasons = getattr(t, 'timeSeason', []) or []
-            if not any(s in seasons for s in season):
+            seasons = [norm(s) for s in getattr(t, 'season_recommended', [])]
+            if not any(norm(s) in seasons for s in season):
                 continue
-        if serve:
-            serves = getattr(t, 'serve', []) or []
-            if not any(s in serves for s in serve):
+        if daypart:
+            parts = [norm(s) for s in getattr(t, 'daypart_recommended', [])]
+            if not any(norm(d) in parts for d in daypart):
                 continue
         filtered.append(t)
     return filtered

@@ -15,7 +15,7 @@ async def api_teas(
     mood: str | None = None,
     caffeine: str | None = None,
     season: list[str] | None = Query(default=None),
-    serve: list[str] | None = Query(default=None),
+    daypart: list[str] | None = Query(default=None),
     page: int = 1,
     per_page: int = 24,
 ):
@@ -28,7 +28,7 @@ async def api_teas(
         mood=mood,
         caffeine=caffeine,
         season=season,
-        serve=serve,
+        daypart=daypart,
     )
     total = len(filtered)
     start = max(0, (page - 1) * per_page)
