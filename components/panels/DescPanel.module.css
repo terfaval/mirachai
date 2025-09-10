@@ -1,0 +1,12 @@
+.originLabel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-right: -30px;
+  transform: translateY(-50%);
+  padding: 4px 8px;
+  padding-right: 30px;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #000;
+}

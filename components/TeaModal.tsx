@@ -41,7 +41,12 @@ export default function TeaModal({ tea, onClose }: Props) {
         >
           <HeaderPanel tea={tea} colorDark={colorDark} />
           <div className={styles.spacer} />
-          <DescPanel description={tea.description ?? ''} colorDark={colorDark} imageSrc="/tea-sample-1.png" />
+          <DescPanel
+            description={tea.description ?? ''}
+            colorDark={colorDark}
+            categoryColor={colorMain}
+            imageSrc="/tea-sample-1.png"
+          />
           <div className={styles.spacer} />
           <MoreInfoPanel colorDark={colorDark} />
             <div className={styles.spacer} />

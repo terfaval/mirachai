@@ -69,12 +69,7 @@ export default function TasteChart({
   );
   const polyStroke =
     strongColor ?? (strongest ? getTasteColor(strongest.key) : undefined) ?? colorDark;
-  const polyFill =
-    strongest ? getTasteColor(strongest.key, 'alternative') ?? polyStroke : polyStroke;
   const labelRadius = (4 / 3) * maxRadius;
-
-  const polygonPath =
-    sorted.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ') + 'Z';
 
   return (
     <div className={styles.container}>
@@ -110,10 +105,6 @@ export default function TasteChart({
             opacity={0.2}
           />
         ))}
-        <circle cx={center} cy={center} r={2} fill={lineColor} />
-        {connectByStrongest && points.length > 1 && (
-          <path d={polygonPath} fill={polyFill} fillOpacity={0.2} stroke="none" />
-        )}
         {points.map((p) => (
           <circle
             key={`pt-${p.key}`}
@@ -142,7 +133,7 @@ export default function TasteChart({
               </text>
             );
           })}
-        </svg>
-      </div>
-    );
-  }
+      </svg>
+    </div>
+  );
+}
