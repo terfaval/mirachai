@@ -191,7 +191,7 @@ export default function TeaCard({
             </div>
             <div className={styles.chartPanel}>
               <div className={styles.dayChart}>
-                <DayDonut segments={daySegments} size={40} max={3} />
+                <DayDonut segments={daySegments} size={40} max={3} rotation={-90} />
               </div>
               <div className={styles.chartLabel}>{dayText || '—'}</div>
             </div>

@@ -1,4 +1,5 @@
 import { Tea } from '@/types/tea';
+import { toStringArray } from '../../lib/toStringArray';
 type IngredientItem = { name: string; rate: number };
 
 export function buildIngredients(tea: any): IngredientItem[] {
@@ -49,11 +50,14 @@ export function resolveColorForCup(tea: any, fallback = '#C8B8DB') {
 // season/daypart szegmensek építése (0..1 arányokkal)
 export function buildSeasonSegments(tea: any, colorDark: string) {
   const keys = ['tavasz','nyár','ősz','tél'];
-  return keys.map(k => ({
+  const seasonArr = toStringArray(tea.season_recommended);
+  const segments = keys.map(k => ({
     key: k,
     color: colorDark,
-    active: Number(tea[`season_${k}`] ?? 0) > 0,
+    active: seasonArr.includes(k) || Number(tea[`season_${k}`] ?? 0) > 0,
   }));
+  const text = seasonArr.length === 4 ? 'egész évben' : seasonArr.join(', ');
+  return { segments, text };
 }
 
 export function buildDaySegments(tea: any, colorDark: string) {
@@ -65,9 +69,37 @@ export function buildDaySegments(tea: any, colorDark: string) {
     { key: 'este', start: 4, end: 5 },
     { key: 'éjszaka', start: 5, end: 6 },
   ];
-  return parts.map(p => ({
+  const rec = toStringArray(tea.daypart_recommended);
+  let hasAfterMeal = rec.includes('étkezés_után');
+  const segments = parts.map(p => ({
     ...p,
     color: colorDark,
-    active: Number(tea[`daypart_${p.key}`] ?? 0) > 0,
+    active: hasAfterMeal || rec.includes(p.key) || Number(tea[`daypart_${p.key}`] ?? 0) > 0,
   }));
+
+  let hasBeforeSleep = false;
+  const daySet = new Set<string>();
+  rec.forEach(d => {
+    if (d === 'kora_délután') {
+      daySet.add('délután');
+    } else if (d === 'délelőtt') {
+      daySet.add('reggel');
+    } else if (d === 'lefekvés_előtt') {
+      hasBeforeSleep = true;
+      daySet.add('este');
+    } else if (d === 'bármikor') {
+      ['reggel','délután','este'].forEach(n => daySet.add(n));
+    } else {
+      daySet.add(d);
+    }
+  });
+  if (hasAfterMeal) ['reggel','délután','este'].forEach(n => daySet.add(n));
+  const dayNames = ['reggel','délután','este'];
+  let text = '';
+  if (hasAfterMeal) text = 'étkezés után';
+  else if (hasBeforeSleep) text = 'lefekvés előtt';
+  else if (dayNames.every(n => daySet.has(n))) text = 'egész nap';
+  else text = dayNames.filter(n => daySet.has(n)).join(', ');
+
+  return { segments, text };
 }
