@@ -1,14 +1,14 @@
 import React from 'react';
 
 interface Props {
-  label: string;
+  label?: string;
   value: number;
-  max: number;
-  endLabel: string;
+  max?: number;
+  endLabel?: string;
   color?: string;
 }
 
-export default function SimpleProgress({ label, value, max, endLabel, color = '#000' }: Props) {
+export default function SimpleProgress({ label = '', value, max = 100, endLabel = '', color = '#000' }: Props) {
   const pct = Math.min(100, Math.max(0, (value / max) * 100));
   return (
     <div>

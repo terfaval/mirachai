@@ -4,7 +4,6 @@
   align-items: center;
   padding: 10px 80px 10px 40px;
   position: relative;
-  z-index: 1000;
 }
 
 .logo {
@@ -26,7 +25,6 @@
   cursor: pointer;
   filter: brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.55));
   transition: transform 0.2s;
-  z-index: 1001;
 }
 
 .icon:hover {

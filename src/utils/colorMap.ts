@@ -15,7 +15,7 @@ const colorScale: CategoryColor[] = [
   // … folytasd a saját palettáddal
 ];
 
-export function getCategoryColors(name: string) {
+export function getCategoryColor(name: string) {
   return colorScale.find(c => c.category === name) ?? {
     category: name,
     main: "#DDD",
@@ -26,3 +26,5 @@ export function getCategoryColors(name: string) {
     white: "#FFFFFF"
   };
 }
+
+export const getCategoryColors = getCategoryColor;

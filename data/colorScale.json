@@ -117,193 +117,756 @@
     "white": "#FFFFFF"
   },
   {
-  "taste_friss": "#4CAF50",
-  "taste_édeskés": "#FFB74D",
-  "taste_savanykás": "#FF7043",
-  "taste_fűszeres": "#8D6E63",
-  "taste_virágos": "#BA68C8",
-  "taste_gyümölcsös": "#E57373",
-  "taste_földes": "#6D4C41",
-  "taste_kesernyés": "#455A64",
-  "taste_csípős": "#F44336",
-  "taste_umami": "#7986CB"
+    "taste_friss": "#4CAF50",
+    "taste_édeskés": "#FFB74D",
+    "taste_savanykás": "#FF7043",
+    "taste_fűszeres": "#8D6E63",
+    "taste_virágos": "#BA68C8",
+    "taste_gyümölcsös": "#E57373",
+    "taste_földes": "#6D4C41",
+    "taste_kesernyés": "#455A64",
+    "taste_csípős": "#F44336",
+    "taste_umami": "#7986CB"
   },
   {
-  "homoktövis": "#FFA726",
-  "kakukkfű": "#A5D6A7",
-  "ginseng": "#D7CCC8",
-  "csalán": "#388E3C",
-  "édeskömény": "#FFF59D",
-  "hibiszkusz": "#C62828",
-  "gyömbér": "#FBC02D",
-  "citromfű": "#AED581",
-  "zöld tea": "#81C784",
-  "hárs": "#FDD835",
-  "oolong tea": "#8D6E63",
-  "fehér tea": "#ECEFF1",
-  "krizantém": "#FFD54F",
-  "hōjicha tea": "#6D4C41",
-  "kukicha tea": "#AED581",
-  "tulsi": "#4DB6AC",
-  "kurkuma": "#FFB300",
-  "pörkölt kukorica": "#F57C00",
-  "mate": "#388E3C",
-  "fekete tea": "#3E2723",
-  "almahéj": "#FFCC80",
-  "eper": "#E53935",
-  "bodzavirág": "#FFF9C4",
-  "szilva": "#8E24AA",
-  "zsálya": "#9CCC65",
-  "borókabogyó": "#283593",
-  "málna levél": "#66BB6A",
-  "galagonya": "#D32F2F",
-  "pörkölt árpa": "#795548",
-  "pu-erh tea": "#5D4037",
-  "pandan levél": "#7CB342",
-  "kakaóhéj": "#4E342E",
-  "narancshéj": "#FF9800",
-  "meggy": "#C62828",
-  "körtedarab": "#DCE775",
-  "macskagyökér": "#A1887F",
-  "szárított cseresznyevirág": "#F48FB1",
-  "rózsaszirom": "#EC407A",
-  "áfonya": "#303F9F",
-  "rooibos": "#BF360C",
-  "guayusa levél": "#43A047",
-  "kamilla": "#FFF176",
-  "matcha": "#8BC34A",
-  "rozmaring": "#607D8B",
-  "hársfavirág": "#FFF59D",
-  "csipkebogyó": "#E53935",
-  "menta": "#4CAF50",
-  "édesgyökér": "#FFEE58",
-  "szárított málna": "#E57373",
-  "maca": "#FBC02D",
-  "pitypanglevél": "#9CCC65",
-  "ánizs": "#A1887F",
-  "fahéj": "#6D4C41",
-  "levendula": "#9575CD",
-  "jázmin": "#FFF9C4",
-  "árpa": "#8D6E63",
-  "kardamom": "#A5D6A7",
-  "rizs": "#E0E0E0",
-  "rózsa": "#F06292",
-  "diólevél": "#6D4C41",
-  "fenyőtű": "#2E7D32",
-  "ashwagandha": "#D7CCC8",
-  "cickafark": "#FFF59D",
-  "kukorica": "#FFEB3B",
-  "kókuszreszelék": "#FFFFFF",
-  "vaníliarúd": "#3E2723",
-  "jázminvirág": "#FFF59D",
-  "pörkölt barna rizs": "#A1887F",
-  "koriandermag": "#DCE775",
-  "málna": "#E57373",
-  "citromhéj": "#FFEB3B",
-  "borsmenta": "#388E3C",
-  "guarana": "#BF360C",
-  "hársvirág": "#FDD835",
-  "cayenne bors": "#D84315",
-  "goji bogyó": "#E53935",
-  "vanília": "#FFD180",
-  "körtehéj": "#DCE775",
-  "szegfűszeg": "#4E342E",
-  "kömény": "#A1887F",
-  "chili": "#F44336",
-  "ribizli": "#AD1457",
-  "ginzeng": "#D7CCC8",
-  "vaníliahéj": "#FFE0B2",
-  "körömvirág": "#FFB74D",
-  "limehéj": "#CDDC39",
-  "datolya": "#6D4C41",
-  "mézpor": "#FFEB3B",
-  "szent zsálya": "#9CCC65",
-  "bodzabogyó": "#8E24AA"
+  "leaf": "#66BB6A",
+  "flower": "#FFD54F",
+  "fruit": "#E57373",
+  "stem": "#8D6E63",
+  "root": "#A1887F",
+  "other": "#90A4AE"
   },
-  [
-  {"tea":"Szundi Korty","color":"#E7C855BD"},
-  {"tea":"Afrikai Naplemente","color":"#B53A2EF2"},
-  {"tea":"Alap Derű","color":"#6E1B1BDD"},
-  {"tea":"Alpesi Erő","color":"#D6C38AA8"},
-  {"tea":"Amazonas Zöldje","color":"#E7C855B8"},
-  {"tea":"Andoki Fény","color":"#CFEA6ECC"},
-  {"tea":"Anyagcsere Tűz","color":"#CFEA6EBF"},
-  {"tea":"Apró Kikapcs","color":"#7E1E3ADC"},
-  {"tea":"Apró Kényelem","color":"#E7C855B5"},
-  {"tea":"Derűs Kanyar","color":"#D6C38ABF"},
-  {"tea":"Apró Zárás","color":"#CFEA6EBF"},
-  {"tea":"Arany Chai","color":"#D6C38AC4"},
-  {"tea":"Finom Fordulat","color":"#A0B26ABF"},
-  {"tea":"Barátságos Köd","color":"#D6C38AB2"},
-  {"tea":"Barátságos Zárás","color":"#F7D6CFAD"},
-  {"tea":"Belső Mosoly","color":"#F5E47AA6"},
-  {"tea":"Chai Masala","color":"#D6C38AF0"},
-  {"tea":"Kis Idő","color":"#D6C38AC2"},
-  {"tea":"Csésze Rend","color":"#D6C38ABF"},
-  {"tea":"Derű Üzem","color":"#E7C855B8"},
-  {"tea":"Megnyugvó Idő","color":"#C49E58C7"},
-  {"tea":"Derűs Kitérő","color":"#BEEA93B8"},
-  {"tea":"Egyszerű Megoldás","color":"#E7C855B5"},
-  {"tea":"Erdő Szelleme","color":"#D6C38AB5"},
-  {"tea":"Ezeregy Rózsa","color":"#7E1E3AE0"},
-  {"tea":"Fehér Holdfény","color":"#D6C38AA3"},
-  {"tea":"Fél Hanggal","color":"#B53A2EEA"},
-  {"tea":"Finom Hangulat","color":"#E7C855B8"},
-  {"tea":"Finom Kikapcs","color":"#BEEA93B8"},
-  {"tea":"Finom Reset","color":"#8A1C2BDD"},
-  {"tea":"Hōjicha Nyugalom","color":"#D6C38AF2"},
-  {"tea":"Jáde Légzés","color":"#CFEA6EB8"},
-  {"tea":"Virágos Szieszta","color":"#D6C38AB0"},
-  {"tea":"Karácsonyi Szilva","color":"#B53A2EE0"},
-  {"tea":"Pirított Béke","color":"#CFEA6EB8"},
-  {"tea":"Kellemes Pálya","color":"#F5E47AA6"},
-  {"tea":"Kellemes Tempó","color":"#E7C855B5"},
-  {"tea":"Kis Csavar","color":"#7E1E3ADC"},
-  {"tea":"Kis Derű","color":"#CFEA6EBF"},
-  {"tea":"Nyitott Ablak","color":"#B53A2EE0"},
-  {"tea":"Oolong Harmónia","color":"#D6C38ABB"},
-  {"tea":"Kompakt Derű","color":"#D6C38AB5"},
-  {"tea":"Kompakt Idő","color":"#F0E08AAE"},
-  {"tea":"Könnyed Kanyar","color":"#F0B14AC0"},
-  {"tea":"Krizantém Harmat","color":"#CFEA6EB8"},
-  {"tea":"Kukicha Erdeje","color":"#D6C38AB3"},
-  {"tea":"Kukorica Napfény","color":"#CFEA6EBE"},
-  {"tea":"Lassított Délután","color":"#F7D6CFA8"},
-  {"tea":"Sivatagi Szellő","color":"#CFEA6EB8"},
-  {"tea":"Latin Energia","color":"#CFEA6EBF"},
-  {"tea":"Mantra Csend","color":"#D6C38AB0"},
-  {"tea":"Marokkói Napfény","color":"#CFEA6EBD"},
-  {"tea":"Megérdemelt Szünet","color":"#CFEA6EBC"},
-  {"tea":"Vata Melege","color":"#D6C38AC4"},
-  {"tea":"Mező Frissessége","color":"#E7C855BD"},
-  {"tea":"Mini Csoda","color":"#CFEA6EBF"},
-  {"tea":"Mini Ünnep","color":"#7E1E3ADC"},
-  {"tea":"Nappforduló Fény","color":"#D6C38AAC"},
-  {"tea":"Apró Derű","color":"#E7C855C0"},
-  {"tea":"Nyitott Jegy","color":"#E7C855B8"},
-  {"tea":"Nyugodt Csavar","color":"#D6C38AC4"},
-  {"tea":"Kis Rásegítés","color":"#D6C38AB3"},
-  {"tea":"Pandan Kókusz Álom","color":"#CFEA6EB6"},
-  {"tea":"Perzsa Rózsaálom","color":"#D6C38AF0"},
-  {"tea":"Lassú Indítás","color":"#E7C855B5"},
-  {"tea":"Pu-erh Földje","color":"#D6C38AF2"},
-  {"tea":"Reggeli Restart","color":"#E7C855B8"},
-  {"tea":"Rejtett Tartalék","color":"#B53A2EF0"},
-  {"tea":"Rögtön Jobb","color":"#D6C38ABF"},
-  {"tea":"Rövid Kitérő","color":"#D6C38AC0"},
-  {"tea":"Sakura Csend","color":"#CFEA6EB3"},
-  {"tea":"Selyem Út","color":"#D6C38AF0"},
-  {"tea":"Csésze Nyugi","color":"#E7C855B7"},
-  {"tea":"Skandináv Bogyómező","color":"#7E1E3ADC"},
-  {"tea":"Pitta Rózsa","color":"#D6C38AB3"},
-  {"tea":"Szolid Optimizmus","color":"#7E1E3AE0"},
-  {"tea":"Tiszta Hang","color":"#7E1E3ADC"},
-  {"tea":"Tiszta Perc","color":"#E9A938C3"},
-  {"tea":"Tiszta Vázlat","color":"#E7C855B5"},
-  {"tea":"Túlélőcsomag","color":"#94263BD9"},
-  {"tea":"Tulsi Chai","color":"#D6C38AF0"},
-  {"tea":"Ünnep Zamata","color":"#4A2E1AF2"},
-  {"tea":"Váratlan Mosoly","color":"#BEEA93B5"},
-  {"tea":"Szív ereje","color":"#7A0E2EDD"}
+  {
+  "almahéj": {
+    "hex": "#FFCC80",
+    "type": "fruit"
+  },
+  "ashwagandha": {
+    "hex": "#D7CCC8",
+    "type": "other"
+  },
+  "bodzabogyó": {
+    "hex": "#6A1B9A",
+    "type": "fruit"
+  },
+  "bodzavirág": {
+    "hex": "#FFF176",
+    "type": "flower"
+  },
+  "borsmenta": {
+    "hex": "#4CAF50",
+    "type": "other"
+  },
+  "borókabogyó": {
+    "hex": "#2E7D32",
+    "type": "fruit"
+  },
+  "cayenne bors": {
+    "hex": "#F44336",
+    "type": "other"
+  },
+  "chili": {
+    "hex": "#F44336",
+    "type": "other"
+  },
+  "cickafark": {
+    "hex": "#FFF59D",
+    "type": "other"
+  },
+  "citromfű": {
+    "hex": "#FFD54F",
+    "type": "fruit"
+  },
+  "citromhéj": {
+    "hex": "#FFD54F",
+    "type": "fruit"
+  },
+  "csalán": {
+    "hex": "#9CCC65",
+    "type": "other"
+  },
+  "csipkebogyó": {
+    "hex": "#FFA726",
+    "type": "fruit"
+  },
+  "cukor (opcionális)": {
+    "hex": "#DD7DCF",
+    "type": "other"
+  },
+  "datolya": {
+    "hex": "#7FE4C7",
+    "type": "other"
+  },
+  "diólevél": {
+    "hex": "#8BC34A",
+    "type": "leaf"
+  },
+  "eper": {
+    "hex": "#E53935",
+    "type": "fruit"
+  },
+  "fahéj": {
+    "hex": "#8D6E63",
+    "type": "fruit"
+  },
+  "fehér tea": {
+    "hex": "#ECEFF1",
+    "type": "leaf"
+  },
+  "fekete tea": {
+    "hex": "#3E2723",
+    "type": "leaf"
+  },
+  "fenyőtű": {
+    "hex": "#2E7D32",
+    "type": "other"
+  },
+  "galagonya virág+bogyó": {
+    "hex": "#C62828",
+    "type": "flower"
+  },
+  "ginseng": {
+    "hex": "#D7CCC8",
+    "type": "other"
+  },
+  "ginzeng": {
+    "hex": "#D7CCC8",
+    "type": "other"
+  },
+  "goji bogyó": {
+    "hex": "#E53935",
+    "type": "fruit"
+  },
+  "guarana": {
+    "hex": "#8D6E63",
+    "type": "other"
+  },
+  "guayusa": {
+    "hex": "#66BB6A",
+    "type": "other"
+  },
+  "guayusa levél": {
+    "hex": "#8BC34A",
+    "type": "leaf"
+  },
+  "gyömbér": {
+    "hex": "#FBC02D",
+    "type": "other"
+  },
+  "hibiszkusz": {
+    "hex": "#E6C480",
+    "type": "other"
+  },
+  "homoktövis": {
+    "hex": "#FFA726",
+    "type": "other"
+  },
+  "hárs": {
+    "hex": "#FFF176",
+    "type": "other"
+  },
+  "hársfavirág": {
+    "hex": "#FFF176",
+    "type": "flower"
+  },
+  "hársvirág": {
+    "hex": "#FFF176",
+    "type": "flower"
+  },
+  "hōjicha tea": {
+    "hex": "#6D4C41",
+    "type": "leaf"
+  },
+  "jázmin": {
+    "hex": "#FFF176",
+    "type": "other"
+  },
+  "jázminvirág": {
+    "hex": "#FFF176",
+    "type": "flower"
+  },
+  "kakaóhéj": {
+    "hex": "#4E342E",
+    "type": "fruit"
+  },
+  "kakukkfű": {
+    "hex": "#8BC34A",
+    "type": "other"
+  },
+  "kamilla": {
+    "hex": "#FFF176",
+    "type": "other"
+  },
+  "kardamom": {
+    "hex": "#8D6E63",
+    "type": "other"
+  },
+  "koriandermag": {
+    "hex": "#8D6E63",
+    "type": "other"
+  },
+  "krizantém": {
+    "hex": "#FFF176",
+    "type": "other"
+  },
+  "kukicha tea": {
+    "hex": "#9CCC65",
+    "type": "stem"
+  },
+  "kukorica": {
+    "hex": "#FFCA28",
+    "type": "other"
+  },
+  "kurkuma": {
+    "hex": "#FFB300",
+    "type": "other"
+  },
+  "kókuszreszelék": {
+    "hex": "#FFFFFF",
+    "type": "other"
+  },
+  "kömény": {
+    "hex": "#8D6E63",
+    "type": "other"
+  },
+  "körtedarab": {
+    "hex": "#DCE775",
+    "type": "fruit"
+  },
+  "körtehéj": {
+    "hex": "#DCE775",
+    "type": "fruit"
+  },
+  "körömvirág": {
+    "hex": "#FFF176",
+    "type": "flower"
+  },
+  "levendula": {
+    "hex": "#9575CD",
+    "type": "other"
+  },
+  "limehéj": {
+    "hex": "#FFD54F",
+    "type": "fruit"
+  },
+  "maca": {
+    "hex": "#EABD83",
+    "type": "other"
+  },
+  "macskagyökér": {
+    "hex": "#D7CCC8",
+    "type": "root"
+  },
+  "matcha": {
+    "hex": "#81C784",
+    "type": "other"
+  },
+  "mate": {
+    "hex": "#66BB6A",
+    "type": "other"
+  },
+  "meggy": {
+    "hex": "#E53935",
+    "type": "fruit"
+  },
+  "menta": {
+    "hex": "#4CAF50",
+    "type": "other"
+  },
+  "málna": {
+    "hex": "#E53935",
+    "type": "other"
+  },
+  "málna levél": {
+    "hex": "#66BB6A",
+    "type": "leaf"
+  },
+  "mézpor": {
+    "hex": "#FFEB3B",
+    "type": "other"
+  },
+  "narancshéj": {
+    "hex": "#FF9800",
+    "type": "fruit"
+  },
+  "oolong tea": {
+    "hex": "#A98274",
+    "type": "leaf"
+  },
+  "pandan levél": {
+    "hex": "#8BC34A",
+    "type": "leaf"
+  },
+  "pitypanglevél": {
+    "hex": "#8BC34A",
+    "type": "leaf"
+  },
+  "pu-erh tea": {
+    "hex": "#5D4037",
+    "type": "leaf"
+  },
+  "pörkölt barna rizs": {
+    "hex": "#D7CCC8",
+    "type": "other"
+  },
+  "pörkölt kukorica": {
+    "hex": "#FFCA28",
+    "type": "other"
+  },
+  "pörkölt árpa": {
+    "hex": "#A1887F",
+    "type": "other"
+  },
+  "ribizli": {
+    "hex": "#E53935",
+    "type": "fruit"
+  },
+  "rizs": {
+    "hex": "#E0E0E0",
+    "type": "other"
+  },
+  "rooibos": {
+    "hex": "#BF360C",
+    "type": "other"
+  },
+  "rozmaring": {
+    "hex": "#8BC34A",
+    "type": "other"
+  },
+  "rózsa": {
+    "hex": "#7ECBE1",
+    "type": "other"
+  },
+  "rózsaszirom": {
+    "hex": "#D3DA7D",
+    "type": "flower"
+  },
+  "szegfűszeg": {
+    "hex": "#8D6E63",
+    "type": "other"
+  },
+  "szent zsálya": {
+    "hex": "#8BC34A",
+    "type": "other"
+  },
+  "szilva": {
+    "hex": "#6A1B9A",
+    "type": "fruit"
+  },
+  "szárított cseresznyevirág": {
+    "hex": "#E53935",
+    "type": "flower"
+  },
+  "szárított málna": {
+    "hex": "#E53935",
+    "type": "stem"
+  },
+  "tulsi": {
+    "hex": "#B586EE",
+    "type": "other"
+  },
+  "vanília": {
+    "hex": "#FFD180",
+    "type": "other"
+  },
+  "vaníliahéj": {
+    "hex": "#795548",
+    "type": "fruit"
+  },
+  "vaníliarúd": {
+    "hex": "#795548",
+    "type": "other"
+  },
+  "zsálya": {
+    "hex": "#8BC34A",
+    "type": "other"
+  },
+  "zöld tea": {
+    "hex": "#81C784",
+    "type": "leaf"
+  },
+  "zöld tea vagy mate": {
+    "hex": "#81C784",
+    "type": "leaf"
+  },
+  "áfonya": {
+    "hex": "#6A1B9A",
+    "type": "fruit"
+  },
+  "ánizs": {
+    "hex": "#8D6E63",
+    "type": "other"
+  },
+  "árpa": {
+    "hex": "#A1887F",
+    "type": "other"
+  },
+  "édesgyökér": {
+    "hex": "#F4A393",
+    "type": "root"
+  },
+  "édeskömény": {
+    "hex": "#8D6E63",
+    "type": "other"
+  }
+},
+{
+  "aranyló-narancsos": "#7DD4D9",
+  "aranyló-sárgás": "#E7C855",
+  "aranyló-világossárga": "#95F4A0",
+  "aranysárga-narancsos": "#E9A938",
+  "halvány arany-barnás": "#D6C38A",
+  "halványsárga-rózsaszínes": "#D07DDD",
+  "halványzöld": "#F28CAC",
+  "mély arany-barnás": "#87EFB3",
+  "mély narancsos-vöröses": "#B53A2E",
+  "mélybarna": "#7FE3C8",
+  "mélybordó-pirosas": "#D7D67D",
+  "mélyvörös-barnás": "#B387EF",
+  "mélyvörös-bordó": "#7A0E2E",
+  "mélyvörös-rózsaszínes": "#81C0E8",
+  "világosbarna-zöldes": "#B4EE87",
+  "világossárga": "#82E9BF",
+  "világossárga-rózsaszínes": "#8FA8F3",
+  "világoszöld": "#8DF2AA",
+  "világoszöld-sárga": "#CFEA6E"
+},
+[
+    {
+      "tea": "Szolid Optimizmus",
+      "color": "#7A0E2EC8"
+    },
+    {
+      "tea": "Kompakt Derű",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Rövid Kitérő",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Barátságos Köd",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Finom Hangulat",
+      "color": "#E7C855C8"
+    },
+    {
+      "tea": "Mini Ünnep",
+      "color": "#7A0E2EC8"
+    },
+    {
+      "tea": "Kis Idő",
+      "color": "#D6C38AF0"
+    },
+    {
+      "tea": "Egyszerű Megoldás",
+      "color": "#E7C855B0"
+    },
+    {
+      "tea": "Apró Zárás",
+      "color": "#CFEA6EC8"
+    },
+    {
+      "tea": "Lassú Indítás",
+      "color": "#E7C855B0"
+    },
+    {
+      "tea": "Oolong Harmónia",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Fehér Holdfény",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Krizantém Harmat",
+      "color": "#CFEA6EC8"
+    },
+    {
+      "tea": "Hōjicha Nyugalom",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Kukicha Erdeje",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Tulsi Chai",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Arany Chai",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Mező Frissessége",
+      "color": "#E7C855C8"
+    },
+    {
+      "tea": "Latin Energia",
+      "color": "#CFEA6EF0"
+    },
+    {
+      "tea": "Selyem Út",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Csésze Rend",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Derűs Kanyar",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Ezeregy Rózsa",
+      "color": "#7A0E2EC8"
+    },
+    {
+      "tea": "Tiszta Vázlat",
+      "color": "#E7C855B0"
+    },
+    {
+      "tea": "Karácsonyi Szilva",
+      "color": "#B53A2EC8"
+    },
+    {
+      "tea": "Reggeli Restart",
+      "color": "#E7C855C8"
+    },
+    {
+      "tea": "Nappforduló Fény",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Erdő Szelleme",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Mantra Csend",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Adaptogén Nyugalom",
+      "color": "#E7C855B0"
+    },
+    {
+      "tea": "Anyagcsere Tűz",
+      "color": "#CFEA6EF0"
+    },
+    {
+      "tea": "Csésze Nyugi",
+      "color": "#E7C855B0"
+    },
+    {
+      "tea": "Szív ereje",
+      "color": "#7A0E2EC8"
+    },
+    {
+      "tea": "Rögtön Jobb",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Kukorica Napfény",
+      "color": "#CFEA6EC8"
+    },
+    {
+      "tea": "Pu-erh Földje",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Chai Masala Klasszikus",
+      "color": "#D6C38AF0"
+    },
+    {
+      "tea": "Pandan Kókusz Álom",
+      "color": "#CFEA6EC8"
+    },
+    {
+      "tea": "Apró Derű",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Nyitott Ablak",
+      "color": "#B53A2EC8"
+    },
+    {
+      "tea": "Kis Csavar",
+      "color": "#7A0E2EC8"
+    },
+    {
+      "tea": "Fél Hanggal",
+      "color": "#B53A2EB0"
+    },
+    {
+      "tea": "Derű Üzem",
+      "color": "#E7C855C8"
+    },
+    {
+      "tea": "Kanapébarát Szünet",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Jáde Légzés",
+      "color": "#CFEA6EC8"
+    },
+    {
+      "tea": "Nyugodt Csavar",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Kellemes Mellékhatás",
+      "color": "#CFEA6EB0"
+    },
+    {
+      "tea": "Sakura Csend",
+      "color": "#CFEA6EB0"
+    },
+    {
+      "tea": "Vata Melege",
+      "color": "#D6C38AF0"
+    },
+    {
+      "tea": "Pitta Rózsa",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Marokkói Napfény",
+      "color": "#CFEA6EC8"
+    },
+    {
+      "tea": "Perzsa Rózsaálom",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Alpesi Erő",
+      "color": "#D6C38AC8"
+    },
+    {
+      "tea": "Skandináv Bogyómező",
+      "color": "#7A0E2EC8"
+    },
+    {
+      "tea": "Afrikai Naplemente",
+      "color": "#B53A2EC8"
+    },
+    {
+      "tea": "Sivatagi Szellő",
+      "color": "#CFEA6EC8"
+    },
+    {
+      "tea": "Andoki Fény",
+      "color": "#CFEA6EF0"
+    },
+    {
+      "tea": "Amazonas Zöldje",
+      "color": "#E7C855C8"
+    },
+    {
+      "tea": "Kis Rásegítés",
+      "color": "#D6C38AB0"
+    },
+    {
+      "tea": "Kellemes Tempó",
+      "color": "#E7C855B0"
+    },
+    {
+      "tea": "Kis Derű",
+      "color": "#CFEA6EC8"
+    },
+    {
+      "tea": "Megérdemelt Szünet",
+      "color": "#CFEA6EC8"
+    },
+    {
+      "tea": "Tiszta Hang",
+      "color": "#7A0E2EC8"
+    },
+    {
+      "tea": "Nyitott Jegy",
+      "color": "#E7C855F0"
+    },
+    {
+      "tea": "Apró Kényelem",
+      "color": "#E7C855B0"
+    },
+    {
+      "tea": "Mini Csoda",
+      "color": "#CFEA6EF0"
+    },
+    {
+      "tea": "Barátságos Zárás",
+      "color": "#D07DDDC8"
+    },
+    {
+      "tea": "Apró Kikapcs",
+      "color": "#7A0E2EC8"
+    },
+    {
+      "tea": "Rejtett Tartalék",
+      "color": "#B53A2EC8"
+    },
+    {
+      "tea": "Könnyed Kanyar",
+      "color": "#7DD4D9C8"
+    },
+    {
+      "tea": "Belső Mosoly",
+      "color": "#82E9BFB0"
+    },
+    {
+      "tea": "Megnyugvó Idő",
+      "color": "#87EFB3C8"
+    },
+    {
+      "tea": "Derűs Kitérő",
+      "color": "#F28CACC8"
+    },
+    {
+      "tea": "Túlélőcsomag",
+      "color": "#81C0E8C8"
+    },
+    {
+      "tea": "Alap Derű",
+      "color": "#B387EFC8"
+    },
+    {
+      "tea": "Lassított Délután",
+      "color": "#8FA8F3B0"
+    },
+    {
+      "tea": "Váratlan Mosoly",
+      "color": "#8DF2AAC8"
+    },
+    {
+      "tea": "Tiszta Perc",
+      "color": "#E9A938C8"
+    },
+    {
+      "tea": "Kellemes Pálya",
+      "color": "#82E9BFB0"
+    },
+    {
+      "tea": "Barátságos Fordulat",
+      "color": "#B4EE87F0"
+    },
+    {
+      "tea": "Kompakt Idő",
+      "color": "#95F4A0B0"
+    },
+    {
+      "tea": "Finom Reset",
+      "color": "#D7D67DC8"
+    },
+    {
+      "tea": "Finom Kikapcs",
+      "color": "#F28CACC8"
+    },
+    {
+      "tea": "Ünnep Zamata",
+      "color": "#7FE3C8C8"
+    }
   ]
 ]

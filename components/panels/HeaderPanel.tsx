@@ -13,6 +13,8 @@ export default function HeaderPanel({ tea, colorDark }: Props) {
   const seasonSegs = buildSeasonSegments(tea, colorDark);
   const daySegs = buildDaySegments(tea, colorDark);
 
+  const intensity = Math.min(3, Math.max(1, Number(tea.intensity ?? 2))) as 1 | 2 | 3;
+
   return (
     <div className="headerPanel" style={{ display:'flex', justifyContent:'space-between', alignItems:'center', gap:24 }}>
       <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
@@ -23,7 +25,7 @@ export default function HeaderPanel({ tea, colorDark }: Props) {
         </div>
       </div>
       <div style={{ display:'flex', alignItems:'center', gap:24 }}>
-        <IntensityDots intensity={Number(tea.intensity ?? 2)} />
+        <IntensityDots intensity={intensity} />
         <QuarterDonut segments={seasonSegs} inactiveColor="rgba(0,0,0,0.08)" />
         <DayDonut segments={daySegs} inactiveColor="rgba(0,0,0,0.08)" />
       </div>

@@ -62,7 +62,7 @@ export default function TeaCard({
   // évszakok – negyed kördiagram
   const seasons = toStringArray(tea.season_recommended);
   const seasonSegments: Segment[] = SEASON_NAMES.map((s) => ({
-    key: s,
+    value: 0.25,
     color: '#fff',
     active: seasons.includes(s),
   }));
@@ -92,9 +92,9 @@ export default function TeaCard({
   if (hasAfterMeal) DAY_NAMES.forEach((n) => daySet.add(n));
 
   const daySegments: DaySegment[] = [
-    { key: 'reggel',  start: 1,  end: 3, color: '#fff', active: daySet.has('reggel') },
-    { key: 'délután', start: 4, end: 6, color: '#fff', active: daySet.has('délután') },
-    { key: 'este',    start: 7, end: 9, color: '#fff', active: daySet.has('este') },
+    { value: 1 / 3, color: '#fff', active: daySet.has('reggel') },
+    { value: 1 / 3, color: '#fff', active: daySet.has('délután') },
+    { value: 1 / 3, color: '#fff', active: daySet.has('este') },
   ];
 
   let dayText = '';
