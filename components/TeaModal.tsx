@@ -5,8 +5,8 @@ import DescPanel from '@/components/panels/DescPanel';
 import TasteFocusPanel from '@/components/panels/TasteFocusPanel';
 import IngredientCaffeinePanel from '@/components/panels/IngredientCaffeinePanel';
 import PrepServePanel from '@/components/panels/PrepServePanel';
-import { getCategoryColor } from '@/utils/colorMap';
-import { getMandalaPath } from '@/utils/mandala';
+import { getCategoryColor } from '../utils/colorMap';
+import MandalaBackground from '@/components/panels/MandalaBackground';
 
 interface Props {
   tea: Tea;
@@ -14,19 +14,24 @@ interface Props {
 }
 
 export default function TeaModal({ tea, onClose }: Props) {
-  const colors = getCategoryColor(tea.category);
-  const colorDark = colors?.dark ?? '#2D1E3E';
-  const color = colors?.main ?? '#ffffff';
-  const mandala = getMandalaPath(tea.category);
-
+  const colorDark = getCategoryColor(tea.category, 'dark') ?? '#2D1E3E';
+  const colorLight = getCategoryColor(tea.category, 'light') ?? 'rgba(0,0,0,0.05)';
+  const colorMain = getCategoryColor(tea.category, 'main') ?? '#CCCCCC';
+  
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div
         className={styles.panel}
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: colorMain }}
         onClick={(e) => e.stopPropagation()}
       >
-        <img src={mandala} alt="" className={styles.mandala} />
+        <div className={styles.backLayer} style={{ background: colorMain }}>
+          <MandalaBackground color={colorDark} category={tea.category} />
+        </div>
+        <div
+          className={styles.frontLayer}
+          style={{ background: `linear-gradient(180deg, ${colorLight} 0%, #FFFFFF 65%)` }}
+        />
         <button className={styles.close} onClick={onClose} aria-label="Bezárás">
           ×
         </button>

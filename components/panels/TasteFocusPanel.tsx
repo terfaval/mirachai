@@ -1,5 +1,6 @@
 import React from 'react';
 import TasteChart from '@/components/TasteChart';
+import FocusChart from '@/components/FocusChart';
 import { sortTasteDescending, getFocusOrdered } from '@/utils/teaTransforms';
 
 type Props = {
@@ -15,7 +16,7 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
     <div style={{ display:'grid', gridTemplateColumns:'60% 40%', gap:24 }}>
       <div style={{ display:'grid', gridTemplateColumns:'1fr auto', alignItems:'center', gap:16 }}>
         <div style={{ padding:16, borderRadius:12, background:'rgba(0,0,0,0.03)' }}>
-          <TasteChart tea={tea} size={220} showLabels={false} />
+          <TasteChart tea={tea} size={220} minValue={1} pointRadiusBase={6} connectByStrongest colorDark={colorDark} />
         </div>
         <div>
           {tastes.map(t => (
@@ -28,14 +29,7 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
       </div>
 
       <div style={{ padding:16, borderRadius:12, background:'rgba(0,0,0,0.03)' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12 }}>
-          {focus.map(f => (
-            <div key={f.key} style={{ textAlign:'center' }}>
-              <div style={{ fontWeight:700, fontSize:'1.1rem', marginBottom:4 }}>{f.value}</div>
-              <div style={{ fontSize:'.9rem', opacity:.85, textTransform:'capitalize' }}>{f.label}</div>
-            </div>
-          ))}
-        </div>
+        <FocusChart data={focus} colorDark={colorDark} size={220} />
       </div>
     </div>
   );

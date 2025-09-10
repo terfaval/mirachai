@@ -1,9 +1,10 @@
 import React from 'react';
 
 export interface Segment {
-  key: string;
+  key?: string;
   color: string;
   active: boolean;
+  value?: number;
 }
 
 interface Props {
@@ -25,7 +26,7 @@ export default function QuarterDonut({ segments, size = 50, inactiveColor = 'rgb
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}> 
       {segments.map((seg, i) => (
         <circle
-          key={seg.key}
+          key={seg.key ?? i}
           cx={center}
           cy={center}
           r={radius}
