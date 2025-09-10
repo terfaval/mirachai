@@ -3,7 +3,7 @@ import styles from '../../styles/TeaModal.module.css';
 import IngredientsStack from '@/components/ingredients/IngredientsStack';
 import TasteChart from './TasteChart';
 import FocusChart from './FocusChart';
-import SimpleProgress from '@/components/SimpleProgress';
+import CaffeineBar from '@/components/ingredients/CaffeineBar';
 import { buildIngredients, getFocusOrdered, caffeineToPct } from '@/utils/teaTransforms';
 
 type Props = {
@@ -33,11 +33,7 @@ export default function TeaDashboard({ tea, colorScale, colorDark }: Props) {
             <FocusChart data={focusData} size={240} colorDark={colorDark} />
           </div>
           <div className={styles.panelBox}>
-            <div style={{ marginBottom:8, display:'flex', justifyContent:'space-between' }}>
-              <span>Koffein</span>
-              <strong>{Math.round(caffeine)}%</strong>
-            </div>
-            <SimpleProgress value={caffeine} color={colorDark} />
+            <CaffeineBar value={caffeine} color={colorDark} />
           </div>
         </div>
       </div>

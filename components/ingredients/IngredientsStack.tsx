@@ -8,42 +8,25 @@ interface Props {
 
 export default function IngredientsStack({ ingredients, colorScale }: Props) {
   return (
-    <div className="space-y-2">
-      <div className="flex text-xs font-medium">
-        {ingredients.map((ing) => (
-          <div
-            key={ing.name}
-            className="text-center"
-            style={{ width: `${ing.rate}%` }}
-          >
-            {ing.name}
+    <div
+      className="w-full flex h-16 rounded-full overflow-hidden"
+      role="progressbar"
+      aria-label="Hozzávalók aránya"
+    >
+      {ingredients.map((ing) => (
+        <div
+          key={ing.name}
+          className="relative h-full"
+          style={{ width: `${ing.rate}%`, backgroundColor: colorScale[ing.name] }}
+        >
+          <div className="absolute left-2 top-2 text-white">
+            <div className="text-lg font-bold leading-none">
+              {Math.round(ing.rate)}%
+            </div>
+            <div className="text-xs leading-none">{ing.name}</div>
           </div>
-        ))}
-      </div>
-      <div
-        className="w-full bg-gray-200 rounded-full h-4 flex overflow-hidden"
-        role="progressbar"
-        aria-label="Hozzávalók aránya"
-      >
-        {ingredients.map((ing) => (
-          <div
-            key={ing.name}
-            className="h-4"
-            style={{ width: `${ing.rate}%`, backgroundColor: colorScale[ing.name] }}
-          />
-        ))}
-      </div>
-      <div className="flex text-xs">
-        {ingredients.map((ing) => (
-          <div
-            key={ing.name}
-            className="text-center"
-            style={{ width: `${ing.rate}%` }}
-          >
-            {ing.rate}%
-          </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }
