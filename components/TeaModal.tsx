@@ -3,8 +3,7 @@ import { Tea } from '../utils/filter';
 import HeaderPanel from '@/components/panels/HeaderPanel';
 import DescPanel from '@/components/panels/DescPanel';
 import MoreInfoPanel from '@/components/panels/MoreInfoPanel';
-import TasteFocusPanel from '@/components/panels/TasteFocusPanel';
-import IngredientCaffeinePanel from '@/components/panels/IngredientCaffeinePanel';
+import TeaDashboard from '@/components/panels/TeaDashboard';
 import PrepServePanel from '@/components/panels/PrepServePanel';
 import { getCategoryColor } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
@@ -44,14 +43,10 @@ export default function TeaModal({ tea, onClose }: Props) {
           <DescPanel description={tea.description ?? ''} colorDark={colorDark} imageSrc="/tea-sample-1.png" />
           <div className={styles.spacer} />
           <MoreInfoPanel colorDark={colorDark} />
-          <div className={styles.spacer} />
-          <TasteFocusPanel tea={tea} colorDark={colorDark} />
-          <div className={styles.spacer} />
-          <MoreInfoPanel colorDark={colorDark} />
-          <div className={styles.spacer} />
-          <IngredientCaffeinePanel tea={tea} colorScale={{}} colorDark={colorDark} />
-          <div className={styles.spacer} />
-          <MoreInfoPanel colorDark={colorDark} />
+            <div className={styles.spacer} />
+            <TeaDashboard tea={tea} colorScale={{}} colorDark={colorDark} />
+            <div className={styles.spacer} />
+            <MoreInfoPanel colorDark={colorDark} />
           <div className={styles.spacer} />
           <PrepServePanel tea={tea} colorScale={{}} />
         </div>

@@ -1,0 +1,46 @@
+import React from 'react';
+import styles from '../../styles/TeaModal.module.css';
+import IngredientsStack from '@/components/ingredients/IngredientsStack';
+import TasteChart from './TasteChart';
+import FocusChart from './FocusChart';
+import SimpleProgress from '@/components/SimpleProgress';
+import { buildIngredients, getFocusOrdered, caffeineToPct } from '@/utils/teaTransforms';
+
+type Props = {
+  tea: any;
+  colorScale: Record<string,string>;
+  colorDark: string;
+};
+
+export default function TeaDashboard({ tea, colorScale, colorDark }: Props) {
+  const ingredients = buildIngredients(tea);
+  const focusData = getFocusOrdered(tea);
+  const caffeine = caffeineToPct(tea);
+
+  return (
+    <section className={styles.panelElement} data-panel="tea-dashboard">
+      <div style={{ display:'grid', gap:24 }}>
+        <div style={{ display:'grid', gridTemplateColumns:'3fr 1fr', gap:24 }}>
+          <div className={styles.panelBox}>
+            <IngredientsStack ingredients={ingredients} colorScale={colorScale} />
+          </div>
+          <div className={styles.panelBox}>
+            <TasteChart tea={tea} size={240} />
+          </div>
+        </div>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 3fr', gap:24 }}>
+          <div className={styles.panelBox}>
+            <FocusChart data={focusData} size={240} colorDark={colorDark} />
+          </div>
+          <div className={styles.panelBox}>
+            <div style={{ marginBottom:8, display:'flex', justifyContent:'space-between' }}>
+              <span>Koffein</span>
+              <strong>{Math.round(caffeine)}%</strong>
+            </div>
+            <SimpleProgress value={caffeine} color={colorDark} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

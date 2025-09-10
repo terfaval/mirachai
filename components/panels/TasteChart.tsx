@@ -34,7 +34,7 @@ export default function TasteChart({
   size = 40,
   showLabels = true,
   minValue = 0,
-  pointRadiusBase = 5,
+  pointRadiusBase = 15,
   connectByStrongest = true,
   strongColor,
   colorDark = '#333',
