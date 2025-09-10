@@ -1,0 +1,821 @@
+[
+  {
+    "id": 1,
+    "name": "Szolid Optimizmus",
+    "főszöveg": "Homoktövis, csipkebogyó, narancshéj ízei nyílnak ki a bögrében, friss, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Védelem órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs immunerősítő herbál – olyan, mint egy vitaminos titkos fegyver."
+  },
+  {
+    "id": 2,
+    "name": "Kompakt Derű",
+    "főszöveg": "Kakukkfű, zsálya, hársvirág ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Védelem órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs immunerősítő herbál – olyan, mint egy vitaminos titkos fegyver."
+  },
+  {
+    "id": 3,
+    "name": "Rövid Kitérő",
+    "főszöveg": "Ginseng, maca, gyömbér ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső utazás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 4,
+    "name": "Barátságos Köd",
+    "főszöveg": "Csalán, pitypanglevél, citromhéj ízei nyílnak ki a bögrében, friss, savanykás, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Védelem órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern blend a nyugalom kapujában – esti társ, nemcsak álmodozóknak."
+  },
+  {
+    "id": 5,
+    "name": "Finom Hangulat",
+    "főszöveg": "Édeskömény, ánizs, kamilla ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső utazás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 6,
+    "name": "Mini Ünnep",
+    "főszöveg": "Hibiszkusz, citromfű, menta ízei nyílnak ki a bögrében, friss, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern gyümölcsös–fűszeres frissítés – mintha a nyár pohárba bújt volna."
+  },
+  {
+    "id": 7,
+    "name": "Kis Idő",
+    "főszöveg": "Gyömbér, fahéj, cayenne bors ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Vitalitás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs immunerősítő herbál – olyan, mint egy vitaminos titkos fegyver."
+  },
+  {
+    "id": 8,
+    "name": "Egyszerű Megoldás",
+    "főszöveg": "Citromfű, levendula, macskagyökér ízei nyílnak ki a bögrében, édeskés, virágos, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern gyümölcsös–fűszeres frissítés – mintha a nyár pohárba bújt volna."
+  },
+  {
+    "id": 9,
+    "name": "Apró Zárás",
+    "főszöveg": "Zöld tea, mate, guayusa ízei nyílnak ki a bögrében, friss, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Kreatív lendület órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 10,
+    "name": "Lassú Indítás",
+    "főszöveg": "Hárs, édesgyökér, kamilla ízei nyílnak ki a bögrében, édeskés, savanykás, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Esti relax órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern blend a nyugalom kapujában – esti társ, nemcsak álmodozóknak."
+  },
+  {
+    "id": 11,
+    "name": "Oolong Harmónia",
+    "főszöveg": "Oolong tea, jázmin, narancshéj ízei nyílnak ki a bögrében, friss, savanykás, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Védelem órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "klasszikus kínai hagyomány – meditatív és kifinomult kortyok szertartása."
+  },
+  {
+    "id": 12,
+    "name": "Fehér Holdfény",
+    "főszöveg": "Fehér tea, krizantém, rózsa ízei nyílnak ki a bögrében, friss, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Alvástámogatás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "klasszikus kínai hagyomány – meditatív és kifinomult kortyok szertartása."
+  },
+  {
+    "id": 13,
+    "name": "Krizantém Harmat",
+    "főszöveg": "Krizantém, zöld tea, goji bogyó ízei nyílnak ki a bögrében, friss, virágos, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Kreatív lendület órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "japán teakultúra modern változata – a hétköznapokban is egy kis zen-pillanat."
+  },
+  {
+    "id": 14,
+    "name": "Hōjicha Nyugalom",
+    "főszöveg": "Hōjicha tea, árpa, vanília ízei nyílnak ki a bögrében, édeskés, földes, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Alvástámogatás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "japán teakultúra modern változata – a hétköznapokban is egy kis zen-pillanat."
+  },
+  {
+    "id": 15,
+    "name": "Kukicha Erdeje",
+    "főszöveg": "Kukicha tea, jázmin, körtehéj ízei nyílnak ki a bögrében, friss, virágos, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső utazás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "japán teakultúra modern változata – a hétköznapokban is egy kis zen-pillanat."
+  },
+  {
+    "id": 16,
+    "name": "Tulsi Chai",
+    "főszöveg": "Tulsi, kardamom, fahéj ízei nyílnak ki a bögrében, édeskés, fűszeres, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "indiai chai-vonal – fűszeres, élénk és szertartásos, kortárs bögrébe ültetve."
+  },
+  {
+    "id": 17,
+    "name": "Arany Chai",
+    "főszöveg": "Kurkuma, gyömbér, fahéj ízei nyílnak ki a bögrében, édeskés, fűszeres, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "indiai chai-vonal – fűszeres, élénk és szertartásos, kortárs bögrébe ültetve."
+  },
+  {
+    "id": 18,
+    "name": "Mező Frissessége",
+    "főszöveg": "Pörkölt kukorica, rizs, citromfű ízei nyílnak ki a bögrében, friss, édeskés, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "klasszikus kínai hagyomány – meditatív és kifinomult kortyok szertartása."
+  },
+  {
+    "id": 19,
+    "name": "Latin Energia",
+    "főszöveg": "Mate, kakaóhéj, fahéj ízei nyílnak ki a bögrében, édeskés, fűszeres, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "latin-amerikai hagyomány – mate és kakaó, dél-amerikai ritmus bögrében."
+  },
+  {
+    "id": 20,
+    "name": "Selyem Út",
+    "főszöveg": "Fekete tea, rózsa, kardamom ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Chai órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "közel-keleti inspiráció – rózsa, kardamom és bazárhangulat könnyed kiadásban."
+  },
+  {
+    "id": 21,
+    "name": "Csésze Rend",
+    "főszöveg": "Almahéj, diólevél, fahéj ízei nyílnak ki a bögrében, édeskés, fűszeres, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Meditáció órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "európai herbál hagyomány – a nagymamák polcáról kortárs lendülettel."
+  },
+  {
+    "id": 22,
+    "name": "Derűs Kanyar",
+    "főszöveg": "Homoktövis, narancshéj, gyömbér ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Virágos órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 23,
+    "name": "Ezeregy Rózsa",
+    "főszöveg": "Eper, rózsa, hibiszkusz ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "közel-keleti inspiráció – rózsa, kardamom és bazárhangulat könnyed kiadásban."
+  },
+  {
+    "id": 24,
+    "name": "Tiszta Vázlat",
+    "főszöveg": "Bodzavirág, levendula, citromfű ízei nyílnak ki a bögrében, friss, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Virágos órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "európai herbál hagyomány – a nagymamák polcáról kortárs lendülettel."
+  },
+  {
+    "id": 25,
+    "name": "Karácsonyi Szilva",
+    "főszöveg": "Szilva, fahéj, szegfűszeg ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Téli hangulat órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "szezonális hangulat-blend – ünnepi és hétköznapi pillanatok váltakozásához."
+  },
+  {
+    "id": 26,
+    "name": "Reggeli Restart",
+    "főszöveg": "Zsálya, csalán, citromfű ízei nyílnak ki a bögrében, friss, savanykás, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Alvástámogatás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs immunerősítő herbál – olyan, mint egy vitaminos titkos fegyver."
+  },
+  {
+    "id": 27,
+    "name": "Nappforduló Fény",
+    "főszöveg": "Bodzavirág, hárs, rózsa ízei nyílnak ki a bögrében, friss, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Meditáció órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern gyümölcsös–fűszeres frissítés – mintha a nyár pohárba bújt volna."
+  },
+  {
+    "id": 28,
+    "name": "Erdő Szelleme",
+    "főszöveg": "Borókabogyó, fenyőtű, kakukkfű ízei nyílnak ki a bögrében, friss, fűszeres, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Meditáció órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "japán teakultúra modern változata – a hétköznapokban is egy kis zen-pillanat."
+  },
+  {
+    "id": 29,
+    "name": "Mantra Csend",
+    "főszöveg": "Tulsi, rózsaszirom, jázmin ízei nyílnak ki a bögrében, friss, virágos, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "indiai chai-vonal – fűszeres, élénk és szertartásos, kortárs bögrébe ültetve."
+  },
+  {
+    "id": 30,
+    "name": "Szundi Korty",
+    "főszöveg": "Tulsi, ashwagandha, levendula ízei nyílnak ki a bögrében, friss, virágos, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Esti relax órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern blend a nyugalom kapujában – esti társ, nemcsak álmodozóknak."
+  },
+  {
+    "id": 31,
+    "name": "Anyagcsere Tűz",
+    "főszöveg": "Zöld tea, mate, citromfű ízei nyílnak ki a bögrében, friss, fűszeres, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Vitalitás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs immunerősítő herbál – olyan, mint egy vitaminos titkos fegyver."
+  },
+  {
+    "id": 32,
+    "name": "Csésze Nyugi",
+    "főszöveg": "Málna levél, cickafark, kamilla ízei nyílnak ki a bögrében, friss, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Vitalitás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 33,
+    "name": "Szív ereje",
+    "főszöveg": "Galagonya virág+bogyó, hibiszkusz, csipkebogyó ízei nyílnak ki a bögrében, friss, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Védelem órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs immunerősítő herbál – olyan, mint egy vitaminos titkos fegyver."
+  },
+  {
+    "id": 34,
+    "name": "Rögtön Jobb",
+    "főszöveg": "Édeskömény, ánizs, kömény ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Meditáció órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 35,
+    "name": "Kukorica Napfény",
+    "főszöveg": "Pörkölt árpa, kukorica, zöld tea ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "klasszikus kínai hagyomány – meditatív és kifinomult kortyok szertartása."
+  },
+  {
+    "id": 36,
+    "name": "Pu-erh Földje",
+    "főszöveg": "Pu-erh tea, gyömbér, fahéj ízei nyílnak ki a bögrében, friss, savanykás, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "klasszikus kínai hagyomány – meditatív és kifinomult kortyok szertartása."
+  },
+  {
+    "id": 37,
+    "name": "Chai Masala",
+    "főszöveg": "Fekete tea, gyömbér, fahéj ízei nyílnak ki a bögrében, édeskés, fűszeres, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "indiai chai-vonal – fűszeres, élénk és szertartásos, kortárs bögrébe ültetve."
+  },
+  {
+    "id": 38,
+    "name": "Pandan Kókusz Álom",
+    "főszöveg": "Pandan levél, kókuszreszelék, zöld tea ízei nyílnak ki a bögrében, édeskés, gyümölcsös, umami hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "klasszikus kínai hagyomány – meditatív és kifinomult kortyok szertartása."
+  },
+  {
+    "id": 39,
+    "name": "Apró Derű",
+    "főszöveg": "Kakaóhéj, fahéj, chili ízei nyílnak ki a bögrében, édeskés, fűszeres, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 40,
+    "name": "Nyitott Ablak",
+    "főszöveg": "Narancshéj, fahéj, rooibos ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "szezonális hangulat-blend – ünnepi és hétköznapi pillanatok váltakozásához."
+  },
+  {
+    "id": 41,
+    "name": "Kis Csavar",
+    "főszöveg": "Meggy, hibiszkusz, almahéj ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Gyümölcsös órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern gyümölcsös–fűszeres frissítés – mintha a nyár pohárba bújt volna."
+  },
+  {
+    "id": 42,
+    "name": "Fél Hanggal",
+    "főszöveg": "Körtedarab, vaníliarúd, rooibos ízei nyílnak ki a bögrében, friss, édeskés, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Őszi melegség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "szezonális hangulat-blend – ünnepi és hétköznapi pillanatok váltakozásához."
+  },
+  {
+    "id": 43,
+    "name": "Derű Üzem",
+    "főszöveg": "Macskagyökér, levendula, kamilla ízei nyílnak ki a bögrében, virágos, földes, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Esti relax órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern blend a nyugalom kapujában – esti társ, nemcsak álmodozóknak."
+  },
+  {
+    "id": 44,
+    "name": "Virágos Szieszta",
+    "főszöveg": "Tulsi, rózsaszirom, jázmin ízei nyílnak ki a bögrében, friss, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern blend a nyugalom kapujában – esti társ, nemcsak álmodozóknak."
+  },
+  {
+    "id": 45,
+    "name": "Jáde Légzés",
+    "főszöveg": "Zöld tea, jázminvirág, menta ízei nyílnak ki a bögrében, friss, virágos, umami hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Méregtelenítő órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "klasszikus kínai hagyomány – meditatív és kifinomult kortyok szertartása."
+  },
+  {
+    "id": 46,
+    "name": "Nyugodt Csavar",
+    "főszöveg": "Gyömbér, fahéj, szegfűszeg ízei nyílnak ki a bögrében, édeskés, fűszeres, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 47,
+    "name": "Pirított Béke",
+    "főszöveg": "Zöld tea, pörkölt barna rizs ízei nyílnak ki a bögrében, friss, földes, umami hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Méregtelenítő órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 48,
+    "name": "Sakura Csend",
+    "főszöveg": "Szárított cseresznyevirág, zöld tea ízei nyílnak ki a bögrében, friss, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "japán teakultúra modern változata – a hétköznapokban is egy kis zen-pillanat."
+  },
+  {
+    "id": 49,
+    "name": "Vata Melege",
+    "főszöveg": "Gyömbér, fahéj, kardamom ízei nyílnak ki a bögrében, édeskés, fűszeres, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Meditáció órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "indiai chai-vonal – fűszeres, élénk és szertartásos, kortárs bögrébe ültetve."
+  },
+  {
+    "id": 50,
+    "name": "Pitta Rózsa",
+    "főszöveg": "Rózsaszirom, koriandermag, édesgyökér ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Illatos órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "indiai chai-vonal – fűszeres, élénk és szertartásos, kortárs bögrébe ültetve."
+  },
+  {
+    "id": 51,
+    "name": "Marokkói Napfény",
+    "főszöveg": "Zöld tea, menta, cukor (opcionális) ízei nyílnak ki a bögrében, friss, édeskés, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső utazás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 52,
+    "name": "Perzsa Rózsaálom",
+    "főszöveg": "Fekete tea, rózsaszirom, kardamom ízei nyílnak ki a bögrében, édeskés, fűszeres, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "közel-keleti inspiráció – rózsa, kardamom és bazárhangulat könnyed kiadásban."
+  },
+  {
+    "id": 53,
+    "name": "Alpesi Fuvallat",
+    "főszöveg": "Kakukkfű, cickafark, bodzavirág ízei nyílnak ki a bögrében, friss, fűszeres, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Vitalitás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "európai herbál hagyomány – a nagymamák polcáról kortárs lendülettel."
+  },
+  {
+    "id": 54,
+    "name": "Északi Bogyómező",
+    "főszöveg": "Áfonya, málna, ribizli ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Gyümölcsös órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "európai herbál hagyomány – a nagymamák polcáról kortárs lendülettel."
+  },
+  {
+    "id": 55,
+    "name": "Afrikai Naplemente",
+    "főszöveg": "Rooibos, narancshéj, vanília ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Esti relax órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 56,
+    "name": "Sivatagi Szellő",
+    "főszöveg": "Zöld tea, menta, citromfű ízei nyílnak ki a bögrében, friss, savanykás, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 57,
+    "name": "Andoki Fény",
+    "főszöveg": "Mate, citromhéj, gyömbér ízei nyílnak ki a bögrében, friss, savanykás, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "latin-amerikai hagyomány – mate és kakaó, dél-amerikai ritmus bögrében."
+  },
+  {
+    "id": 58,
+    "name": "Amazonas Zöldje",
+    "főszöveg": "Guayusa levél, citromfű, menta ízei nyílnak ki a bögrében, friss, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "latin-amerikai hagyomány – mate és kakaó, dél-amerikai ritmus bögrében."
+  },
+  {
+    "id": 59,
+    "name": "Kis Rásegítés",
+    "főszöveg": "Kakukkfű, zsálya, borókabogyó ízei nyílnak ki a bögrében, friss, fűszeres, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső utazás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 60,
+    "name": "Kellemes Tempó",
+    "főszöveg": "Kamilla, citromfű, levendula ízei nyílnak ki a bögrében, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Alvástámogatás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern blend a nyugalom kapujában – esti társ, nemcsak álmodozóknak."
+  },
+  {
+    "id": 61,
+    "name": "Kis Derű",
+    "főszöveg": "Kurkuma, gyömbér, citromhéj ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső utazás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 62,
+    "name": "Megérdemelt Szünet",
+    "főszöveg": "Csalán, pitypanglevél, zöld tea ízei nyílnak ki a bögrében, friss, savanykás, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 63,
+    "name": "Tiszta Hang",
+    "főszöveg": "Hibiszkusz, menta, áfonya ízei nyílnak ki a bögrében, friss, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Meditáció órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 64,
+    "name": "Nyitott Jegy",
+    "főszöveg": "Matcha, citromfű, ginzeng ízei nyílnak ki a bögrében, friss, kesernyés, umami hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Kreatív lendület órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern gyümölcsös–fűszeres frissítés – mintha a nyár pohárba bújt volna."
+  },
+  {
+    "id": 65,
+    "name": "Apró Kényelem",
+    "főszöveg": "Citromfű, kamilla, levendula ízei nyílnak ki a bögrében, friss, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Esti relax órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 66,
+    "name": "Mini Csoda",
+    "főszöveg": "Zöld tea vagy mate, borsmenta, citromhéj ízei nyílnak ki a bögrében, friss, savanykás, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Kreatív lendület órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern gyümölcsös–fűszeres frissítés – mintha a nyár pohárba bújt volna."
+  },
+  {
+    "id": 67,
+    "name": "Barátságos Zárás",
+    "főszöveg": "Rozmaring, kakukkfű, zsálya ízei nyílnak ki a bögrében, fűszeres, virágos, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Őszi melegség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "szezonális hangulat-blend – ünnepi és hétköznapi pillanatok váltakozásához."
+  },
+  {
+    "id": 68,
+    "name": "Apró Kikapcs",
+    "főszöveg": "Gyömbér, csipkebogyó, hibiszkusz ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Védelem órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern blend a nyugalom kapujában – esti társ, nemcsak álmodozóknak."
+  },
+  {
+    "id": 69,
+    "name": "Rejtett Tartalék",
+    "főszöveg": "Rooibos, narancshéj, kardamom ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 70,
+    "name": "Könnyed Kanyar",
+    "főszöveg": "Citromfű, citromhéj, csipkebogyó ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Immunerősítő órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern gyümölcsös–fűszeres frissítés – mintha a nyár pohárba bújt volna."
+  },
+  {
+    "id": 71,
+    "name": "Belső Mosoly",
+    "főszöveg": "Hársfavirág, citromfű, vaníliahéj ízei nyílnak ki a bögrében, friss, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Alvástámogatás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern blend a nyugalom kapujában – esti társ, nemcsak álmodozóknak."
+  },
+  {
+    "id": 72,
+    "name": "Megnyugvó Idő",
+    "főszöveg": "Almahéj, fahéj, szegfűszeg ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Vitalitás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs immunerősítő herbál – olyan, mint egy vitaminos titkos fegyver."
+  },
+  {
+    "id": 73,
+    "name": "Derűs Kitérő",
+    "főszöveg": "Zöld tea, menta, citromfű ízei nyílnak ki a bögrében, friss, földes, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Vitalitás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 74,
+    "name": "Túlélőcsomag",
+    "főszöveg": "Hibiszkusz, borsmenta, citromhéj ízei nyílnak ki a bögrében, friss, savanykás, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Őszi melegség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "szezonális hangulat-blend – ünnepi és hétköznapi pillanatok váltakozásához."
+  },
+  {
+    "id": 75,
+    "name": "Alap Derű",
+    "főszöveg": "Csipkebogyó, zsálya, kakukkfű ízei nyílnak ki a bögrében, friss, savanykás, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "szezonális hangulat-blend – ünnepi és hétköznapi pillanatok váltakozásához."
+  },
+  {
+    "id": 76,
+    "name": "Lassított Délután",
+    "főszöveg": "Kamilla, levendula, körömvirág ízei nyílnak ki a bögrében, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Virágos órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "szezonális hangulat-blend – ünnepi és hétköznapi pillanatok váltakozásához."
+  },
+  {
+    "id": 77,
+    "name": "Váratlan Mosoly",
+    "főszöveg": "Menta, citromfű, pitypanglevél ízei nyílnak ki a bögrében, friss, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 78,
+    "name": "Tiszta Perc",
+    "főszöveg": "Kurkuma, gyömbér, fahéj ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Chai órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "indiai chai-vonal – fűszeres, élénk és szertartásos, kortárs bögrébe ültetve."
+  },
+  {
+    "id": 79,
+    "name": "Kellemes Pálya",
+    "főszöveg": "Hársfavirág, citromfű, macskagyökér ízei nyílnak ki a bögrében, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Alvástámogatás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern blend a nyugalom kapujában – esti társ, nemcsak álmodozóknak."
+  },
+  {
+    "id": 80,
+    "name": "Finom Fordulat",
+    "főszöveg": "Mate, guarana, menta ízei nyílnak ki a bögrében, friss, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Vitalitás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs immunerősítő herbál – olyan, mint egy vitaminos titkos fegyver."
+  },
+  {
+    "id": 81,
+    "name": "Kompakt Idő",
+    "főszöveg": "Édesgyökér, kamilla, citromfű ízei nyílnak ki a bögrében, édeskés, fűszeres, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Illatos órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "európai herbál hagyomány – a nagymamák polcáról kortárs lendülettel."
+  },
+  {
+    "id": 82,
+    "name": "Finom Reset",
+    "főszöveg": "Szárított málna, áfonya, hibiszkusz ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Gyümölcsös órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 83,
+    "name": "Finom Kikapcs",
+    "főszöveg": "Zöld tea, citromfű, csalán ízei nyílnak ki a bögrében, friss, földes, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Immunerősítő órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs immunerősítő herbál – olyan, mint egy vitaminos titkos fegyver."
+  },
+  {
+    "id": 84,
+    "name": "Ünnep Zamata",
+    "főszöveg": "Fekete tea, fahéj, szegfűszeg ízei nyílnak ki a bögrében, édeskés, fűszeres, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Téli hangulat órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "szezonális hangulat-blend – ünnepi és hétköznapi pillanatok váltakozásához."
+  },
+  {
+    "id": 85,
+    "name": "Kalahári Hajnal",
+    "főszöveg": "Honeybush, rooibos, narancshéj ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 86,
+    "name": "Oázis Nektára",
+    "főszöveg": "Rooibos, kamilla, vanília ízei nyílnak ki a bögrében, édeskés, virágos, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Esti relax órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 87,
+    "name": "Szavanna Sóhaj",
+    "főszöveg": "Buchu, menta, narancshéj ízei nyílnak ki a bögrében, friss, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Meditáció órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 88,
+    "name": "Baobab Derű",
+    "főszöveg": "Baobab gyümölcspor, hibiszkusz, narancshéj ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Vitalitás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 89,
+    "name": "Atlasz Fűszerút",
+    "főszöveg": "Rooibos, fahéj, kardamom ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Chai órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 90,
+    "name": "Kilifi Part",
+    "főszöveg": "Hibiszkusz, ananász darab, citromfű ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Gyümölcsös órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "kortárs blend – hozzávalók találkozása, mint barátok egy kávézóban."
+  },
+  {
+    "id": 91,
+    "name": "Tavaszi Nyitány",
+    "főszöveg": "Bodzavirág, citromfű, menta ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Tavaszi virágzás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "szezonális hangulat-blend – ünnepi és hétköznapi pillanatok váltakozásához."
+  },
+  {
+    "id": 92,
+    "name": "Párnaengedély",
+    "főszöveg": "Valeriána (macskagyökér), orbáncfű, kamilla ízei nyílnak ki a bögrében, virágos, földes, kesernyés hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Alvástámogatás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "európai herbál hagyomány – a nagymamák polcáról kortárs lendülettel."
+  },
+  {
+    "id": 93,
+    "name": "Mediterrán Rakpart",
+    "főszöveg": "Hibiszkusz, narancshéj, csillagánizs ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Vitalitás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "európai herbál hagyomány – a nagymamák polcáról kortárs lendülettel."
+  },
+  {
+    "id": 94,
+    "name": "Pásztorcsend",
+    "főszöveg": "Görög hegyi tea (sideritis), louisa (citromverbéna), kamilla ízei nyílnak ki a bögrében, friss, virágos, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "európai herbál hagyomány – a nagymamák polcáról kortárs lendülettel."
+  },
+  {
+    "id": 95,
+    "name": "Szamovár Mellett",
+    "főszöveg": "Füstös fekete tea (russian caravan), berkenye (bogyó), orbáncfű ízei nyílnak ki a bögrében, édeskés, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Őszi melegség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "európai herbál hagyomány – a nagymamák polcáról kortárs lendülettel."
+  },
+  {
+    "id": 96,
+    "name": "Tereré Lendület",
+    "főszöveg": "Yerba mate, menta, limehéj ízei nyílnak ki a bögrében, friss, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "latin-amerikai hagyomány – mate és kakaó, dél-amerikai ritmus bögrében."
+  },
+  {
+    "id": 97,
+    "name": "Guayusa Ébresztő",
+    "főszöveg": "Guayusa, citromfű, gyömbér ízei nyílnak ki a bögrében, friss, savanykás, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Kreatív lendület órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "latin-amerikai hagyomány – mate és kakaó, dél-amerikai ritmus bögrében."
+  },
+  {
+    "id": 98,
+    "name": "Altiplano Csend",
+    "főszöveg": "Kakaóhéj, muña (andoki menta), narancshéj ízei nyílnak ki a bögrében, édeskés, savanykás, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "latin-amerikai hagyomány – mate és kakaó, dél-amerikai ritmus bögrében."
+  },
+  {
+    "id": 99,
+    "name": "Muña Rend",
+    "főszöveg": "Muña (andoki menta), édeskömény, ánizs ízei nyílnak ki a bögrében, friss, édeskés, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső utazás órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "latin-amerikai hagyomány – mate és kakaó, dél-amerikai ritmus bögrében."
+  },
+  {
+    "id": 100,
+    "name": "Morada Szikra",
+    "főszöveg": "Lila kukorica, hibiszkusz, almahéj ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "latin-amerikai hagyomány – mate és kakaó, dél-amerikai ritmus bögrében."
+  },
+  {
+    "id": 101,
+    "name": "Andoki Pörkölés",
+    "főszöveg": "Pörkölt yerba mate, kakaóhéj, narancshéj ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "latin-amerikai hagyomány – mate és kakaó, dél-amerikai ritmus bögrében."
+  },
+  {
+    "id": 102,
+    "name": "Kahwa Hajnal",
+    "főszöveg": "Zöld tea, kardamom, mandula ízei nyílnak ki a bögrében, friss, fűszeres, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "indiai chai-vonal – fűszeres, élénk és szertartásos, kortárs bögrébe ültetve."
+  },
+  {
+    "id": 103,
+    "name": "Éjjeli Masala",
+    "főszöveg": "Rooibos, gyömbér, fahéj ízei nyílnak ki a bögrében, édeskés, fűszeres, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "indiai chai-vonal – fűszeres, élénk és szertartásos, kortárs bögrébe ültetve."
+  },
+  {
+    "id": 104,
+    "name": "Jégvörös Latte",
+    "főszöveg": "Rooibos, vanília, narancshéj ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Belső Béke órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern gyümölcsös–fűszeres frissítés – mintha a nyár pohárba bújt volna."
+  },
+  {
+    "id": 105,
+    "name": "Fehér Szellő",
+    "főszöveg": "Fehér tea, bodzavirág, citromhéj ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Meditáció órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "modern gyümölcsös–fűszeres frissítés – mintha a nyár pohárba bújt volna."
+  },
+  {
+    "id": 106,
+    "name": "Yuzu Sencha Szellő",
+    "főszöveg": "Sencha (zöld tea), yuzu héj, citromfű ízei nyílnak ki a bögrében, friss, savanykás, gyümölcsös hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "japán teakultúra modern változata – a hétköznapokban is egy kis zen-pillanat."
+  },
+  {
+    "id": 107,
+    "name": "Genmaicha Felhő",
+    "főszöveg": "Genmaicha (zöld tea + pirított rizs) ízei nyílnak ki a bögrében, friss, édeskés, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Meditáció órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "japán teakultúra modern változata – a hétköznapokban is egy kis zen-pillanat."
+  },
+  {
+    "id": 108,
+    "name": "Ume–Shiso Derű",
+    "főszöveg": "Sencha (zöld tea), ume (japán szilva) darabka, shiso levél ízei nyílnak ki a bögrében, friss, savanykás, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Kreatív lendület órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "japán teakultúra modern változata – a hétköznapokban is egy kis zen-pillanat."
+  },
+  {
+    "id": 109,
+    "name": "Gyokuro Árnyék",
+    "főszöveg": "Gyokuro (zöld tea) ízei nyílnak ki a bögrében, friss, kesernyés, umami hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "japán teakultúra modern változata – a hétköznapokban is egy kis zen-pillanat."
+  },
+  {
+    "id": 110,
+    "name": "Narancsvirág Kapu",
+    "főszöveg": "Fekete tea, kardamom, narancsvirág ízei nyílnak ki a bögrében, friss, édeskés, savanykás hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Illatos órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "közel-keleti inspiráció – rózsa, kardamom és bazárhangulat könnyed kiadásban."
+  },
+  {
+    "id": 111,
+    "name": "Karkadé Oázis",
+    "főszöveg": "Hibiszkusz, rózsa, menta ízei nyílnak ki a bögrében, friss, savanykás, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "közel-keleti inspiráció – rózsa, kardamom és bazárhangulat könnyed kiadásban."
+  },
+  {
+    "id": 112,
+    "name": "Sáfrány Est",
+    "főszöveg": "Sáfrány, kamilla, rózsa ízei nyílnak ki a bögrében, édeskés, fűszeres, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Esti relax órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "közel-keleti inspiráció – rózsa, kardamom és bazárhangulat könnyed kiadásban."
+  },
+  {
+    "id": 113,
+    "name": "Beduin Csend",
+    "főszöveg": "Zsálya, kakukkfű, citromhéj ízei nyílnak ki a bögrében, friss, savanykás, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Védelem órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "közel-keleti inspiráció – rózsa, kardamom és bazárhangulat könnyed kiadásban."
+  },
+  {
+    "id": 114,
+    "name": "Pisztácia Hold",
+    "főszöveg": "Fekete tea, pisztácia, kardamom ízei nyílnak ki a bögrében, édeskés, fűszeres, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Rituálé órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "közel-keleti inspiráció – rózsa, kardamom és bazárhangulat könnyed kiadásban."
+  },
+  {
+    "id": 115,
+    "name": "Za’atar Szellő",
+    "főszöveg": "Kakukkfű, szumák, menta ízei nyílnak ki a bögrében, friss, savanykás, fűszeres hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Nyári frissesség órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "közel-keleti inspiráció – rózsa, kardamom és bazárhangulat könnyed kiadásban."
+  },
+  {
+    "id": 116,
+    "name": "Licsi Liget",
+    "főszöveg": "Fekete tea, licsi ízei nyílnak ki a bögrében, friss, édeskés, virágos hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Kreatív lendület órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "klasszikus kínai hagyomány – meditatív és kifinomult kortyok szertartása."
+  },
+  {
+    "id": 117,
+    "name": "Vörös Datolya Álom",
+    "főszöveg": "Vörös datolya (jujuba), longan, goji bogyó ízei nyílnak ki a bögrében, édeskés, gyümölcsös, földes hangulatot adva. Ez a tea olyan, mint egy apró szertartás a nap közepén: nem harsány, de hiányozna, ha kimaradna.",
+    "mikor": "Ideális Esti relax órákhoz, amikor a legjobban esik egy bögre figyelem.",
+    "eredet": "klasszikus kínai hagyomány – meditatív és kifinomult kortyok szertartása."
+  }
+]

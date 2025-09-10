@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
-  value: number;
+  value: number; // 0..100
   color?: string;
 }
 
 export default function CaffeineBar({ value, color }: Props) {
   const pct = Number.isFinite(value) ? Math.min(100, Math.max(0, value)) : 0;
-  const barColor = color ?? '#000';
+  const barColor = color && typeof color === "string" ? color : "#000";
+
   return (
     <div className="space-y-2">
       <div
@@ -18,10 +19,7 @@ export default function CaffeineBar({ value, color }: Props) {
         aria-valuemax={100}
         aria-label="Koffein tartalom"
       >
-        <div
-          className="absolute left-0 top-0 h-full"
-          style={{ width: `${pct}%`, backgroundColor: barColor }}
-        />
+        <div className="absolute left-0 top-0 h-full" style={{ width: `${pct}%`, backgroundColor: barColor }} />
       </div>
       <div className="text-center" style={{ color: barColor }}>
         <div className="text-lg font-bold leading-none">{Math.round(pct)}%</div>
