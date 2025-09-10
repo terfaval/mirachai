@@ -1,5 +1,5 @@
 import React from 'react';
-import TasteChart from '@/components/TasteChart';
+import TasteChart from '@/components/panels/TasteChart';
 import FocusChart from '@/components/FocusChart';
 import { sortTasteDescending, getFocusOrdered } from '@/utils/teaTransforms';
 

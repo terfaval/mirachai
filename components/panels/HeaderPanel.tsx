@@ -17,7 +17,13 @@ export default function HeaderPanel({ tea, colorDark }: Props) {
   );
   const { segments: daySegs, text: dayText } = buildDaySegments(tea, colorDark);
 
-  const intensity = Math.min(3, Math.max(1, Number(tea.intensity ?? 2))) as 1 | 2 | 3;
+  const INTENSITY_MAP: Record<string, 1 | 2 | 3> = {
+    enyhe: 1,
+    közepes: 2,
+    erős: 3,
+  };
+  const intensityKey = String(tea.intensity || '').toLowerCase();
+  const intensity = INTENSITY_MAP[intensityKey] ?? 2;
 
   return (
     <div className="headerPanel" style={{ display:'flex', justifyContent:'space-between', alignItems:'center', gap:24 }}>
@@ -29,7 +35,11 @@ export default function HeaderPanel({ tea, colorDark }: Props) {
         </div>
       </div>
       <div style={{ display:'flex', alignItems:'center', gap:24 }}>
-        <IntensityDots intensity={intensity} color={colorDark} />
+        <IntensityDots
+          intensity={intensity}
+          color={colorDark}
+          orientation="column"
+        />
         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:4 }}>
           <QuarterDonut
             segments={seasonSegs}

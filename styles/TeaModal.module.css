@@ -38,6 +38,8 @@
   margin:16px;
   padding-right: 45px;
   z-index:1;
+  max-width: 80%;
+  justify-content:center;
 }
 
 /* új panelek */
@@ -163,6 +165,8 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  max-width: 40%;
+  justify-content:center;
 }
 
 .titleTitan {

@@ -9,11 +9,20 @@ interface Props {
    * a darker brand color.
    */
   color?: string;
+  /**
+   * Layout direction. Use "column" to stack the label below the dots. Defaults
+   * to a horizontal row layout with the label on the right.
+   */
+  orientation?: 'row' | 'column';
 }
 
 const LABELS = ['enyhe', 'közepes', 'erős'];
 
-export default function IntensityDots({ intensity, color = '#000' }: Props) {
+export default function IntensityDots({
+  intensity,
+  color = '#000',
+  orientation = 'row',
+}: Props) {
   const dotStyle = (active: boolean): React.CSSProperties => ({
     width: 12,
     height: 12,
@@ -23,9 +32,16 @@ export default function IntensityDots({ intensity, color = '#000' }: Props) {
     display: 'inline-block',
   });
 
+  const isColumn = orientation === 'column';
+
   return (
     <div
-      style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: isColumn ? 'column' : 'row',
+        gap: isColumn ? 4 : 8,
+      }}
       aria-label="intenzitás"
     >
       <div style={{ display: 'flex', gap: 4 }}>
