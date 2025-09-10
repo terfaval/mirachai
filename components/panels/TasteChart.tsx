@@ -41,41 +41,40 @@ export default function TasteChart({
 }: Props) {
   const lineColor = '#ccc';
 
-  const entries = ORDER.map((k) => {
+  const center = size / 2;
+  const maxRadius = center - 50;
+
+  const allEntries = ORDER.map((k, i) => {
     const raw = N((tea as any)[k]);
     const value = Math.max(0, Math.min(raw, 3));
     const label = k.replace('taste_', '').replace(/_/g, ' ');
     const color = getTasteColor(k);
-    return { key: k, label, value: isNaN(value) ? 0 : value, color };
-  }).filter((e) => e.value >= minValue);
+    const angle = (i / ORDER.length) * Math.PI * 2 - Math.PI / 2;
+    return { key: k, label, value: isNaN(value) ? 0 : value, color, angle };
+  });
 
-  const center = size / 2;
-  const maxRadius = center - 5;
+  const entries = allEntries.filter((e) => e.value >= minValue);
 
-  const points = entries.map((entry, i) => {
-    const angle = (i / entries.length) * Math.PI * 2 - Math.PI / 2;
+  const points = entries.map((entry) => {
     const r = (entry.value / 3) * maxRadius;
-    const x = center + r * Math.cos(angle);
-    const y = center + r * Math.sin(angle);
-    return { ...entry, x, y, angle };
+    const x = center + r * Math.cos(entry.angle);
+    const y = center + r * Math.sin(entry.angle);
+    return { ...entry, x, y };
   });
 
   const sorted = points.slice().sort((a, b) => a.angle - b.angle);
-  const strongest = entries.reduce((a, b) => (b.value > (a?.value ?? -1) ? b : a), undefined as any);
+  const strongest = entries.reduce(
+    (a, b) => (b.value > (a?.value ?? -1) ? b : a),
+    undefined as any,
+  );
   const polyStroke =
     strongColor ?? (strongest ? getTasteColor(strongest.key) : undefined) ?? colorDark;
   const polyFill =
     strongest ? getTasteColor(strongest.key, 'alternative') ?? polyStroke : polyStroke;
   const labelRadius = (4 / 3) * maxRadius;
 
-  const curvePath = sorted
-    .map((p, i) => {
-      const next = sorted[(i + 1) % sorted.length];
-      const midX = (p.x + next.x) / 2;
-      const midY = (p.y + next.y) / 2;
-      return `${i === 0 ? `M${midX},${midY}` : ''} Q${p.x},${p.y} ${midX},${midY}`;
-    })
-    .join(' ');
+  const polygonPath =
+    sorted.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ') + 'Z';
 
   return (
     <div className={styles.container}>
@@ -99,7 +98,7 @@ export default function TasteChart({
             opacity={0.1 * lvl}
           />
         ))}
-        {points.map((p) => (
+        {allEntries.map((p) => (
           <line
             key={`axis-${p.key}`}
             x1={center}
@@ -113,41 +112,39 @@ export default function TasteChart({
         ))}
         <circle cx={center} cy={center} r={2} fill={lineColor} />
         {connectByStrongest && points.length > 1 && (
-          <path
-            d={curvePath}
-            fill={polyFill}
-            fillOpacity={0.2}
-            stroke={polyStroke}
-            strokeWidth={2}
-          />
+          <path d={polygonPath} fill={polyFill} fillOpacity={0.2} stroke="none" />
         )}
-        {points.map((p) => {
-          const lx = center + Math.cos(p.angle) * labelRadius;
-          const ly = center + Math.sin(p.angle) * labelRadius;
-          return (
-            <g key={p.key}>
-              <circle
-                cx={p.x}
-                cy={p.y}
-                r={pointRadiusBase + p.value * 3}
-                fill={p.color}
-              />
-              {showLabels && p.value > 0 && (
-                <text
-                  x={lx}
-                  y={ly}
-                  fontSize={12}
-                  textAnchor="middle"
-                  alignmentBaseline="middle"
-                  fill={colorDark}
-                >
-                  {p.label}
-                </text>
-              )}
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
+        {points.map((p) => (
+          <circle
+            key={`pt-${p.key}`}
+            cx={p.x}
+            cy={p.y}
+            r={pointRadiusBase + p.value * 3}
+            fill={p.color}
+          />
+        ))}
+        {connectByStrongest && points.length > 1 && (
+          <path d={polygonPath} fill="none" stroke={polyStroke} strokeWidth={2} />
+        )}
+        {showLabels &&
+          points.map((p) => {
+            const lx = center + Math.cos(p.angle) * labelRadius;
+            const ly = center + Math.sin(p.angle) * labelRadius;
+            return (
+              <text
+                key={`label-${p.key}`}
+                x={lx}
+                y={ly}
+                fontSize={12}
+                textAnchor="middle"
+                alignmentBaseline="middle"
+                fill={colorDark}
+              >
+                {p.label}
+              </text>
+            );
+          })}
+        </svg>
+      </div>
+    );
+  }

@@ -8,6 +8,8 @@ export default function FocusChart({ data, size=240, colorDark='#333' }: Props) 
   const radius = size*0.32;
   const step = radius/3;
   const angleFor = (i:number) => (i*2*Math.PI/data.length) - Math.PI/2;
+  const wedge = (2*Math.PI)/data.length;
+  const halfArc = wedge*0.4; // shrink sectors to leave space between axes
 
   const points = data.map((d,i) => {
     const a = angleFor(i);
@@ -50,8 +52,8 @@ export default function FocusChart({ data, size=240, colorDark='#333' }: Props) 
             {[1,2,3].map(level => {
               const outer = step * level;
               const inner = step * (level - 1);
-              const start = p.a - Math.PI/4;
-              const end = p.a + Math.PI/4;
+              const start = p.a - halfArc;
+              const end = p.a + halfArc;
               const active = level <= (Number(p.value)||0);
               const opacity = active ? 0.25 * level : 0.05;
               return (

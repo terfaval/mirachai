@@ -17,7 +17,7 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
             tea={tea}
             size={240}
             minValue={1}
-            pointRadiusBase={7}
+            pointRadiusBase={10}
             connectByStrongest
             colorDark={colorDark}
           />
