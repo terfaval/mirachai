@@ -9,9 +9,10 @@ export interface Segment {
 interface Props {
   segments: Segment[];
   size?: number;
+  inactiveColor?: string;
 }
 
-export default function QuarterDonut({ segments, size = 50 }: Props) {
+export default function QuarterDonut({ segments, size = 50, inactiveColor = 'rgba(255,255,255,0.2)' }: Props) {
   const center = size / 2;
   const radius = center - 4;
   const circumference = 2 * Math.PI * radius;
@@ -29,7 +30,7 @@ export default function QuarterDonut({ segments, size = 50 }: Props) {
           cy={center}
           r={radius}
           fill="none"
-          stroke={seg.active ? seg.color : 'rgba(255,255,255,0.2)'}
+          stroke={seg.active ? seg.color : inactiveColor}
           strokeWidth={8}
           strokeDasharray={dash}
           strokeDashoffset={-i * quarter}

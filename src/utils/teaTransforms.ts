@@ -49,14 +49,25 @@ export function resolveColorForCup(tea: any, fallback = '#C8B8DB') {
 // season/daypart szegmensek építése (0..1 arányokkal)
 export function buildSeasonSegments(tea: any, colorDark: string) {
   const keys = ['tavasz','nyár','ősz','tél'];
-  const values = keys.map(k => Number(tea[`season_${k}`] ?? 0));
-  const sum = values.reduce((a,b)=>a+b,0) || 1;
-  return values.map(v => ({ value: v/sum, color: colorDark, active: v>0 }));
+  return keys.map(k => ({
+    key: k,
+    color: colorDark,
+    active: Number(tea[`season_${k}`] ?? 0) > 0,
+  }));
 }
 
 export function buildDaySegments(tea: any, colorDark: string) {
-  const keys = ['reggel','délelőtt','kora_délután','délután','este','éjszaka'];
-  const values = keys.map(k => Number(tea[`daypart_${k}`] ?? 0));
-  const sum = values.reduce((a,b)=>a+b,0) || 1;
-  return values.map(v => ({ value: v/sum, color: colorDark, active: v>0 }));
+  const parts = [
+    { key: 'reggel', start: 0, end: 1 },
+    { key: 'délelőtt', start: 1, end: 2 },
+    { key: 'kora_délután', start: 2, end: 3 },
+    { key: 'délután', start: 3, end: 4 },
+    { key: 'este', start: 4, end: 5 },
+    { key: 'éjszaka', start: 5, end: 6 },
+  ];
+  return parts.map(p => ({
+    ...p,
+    color: colorDark,
+    active: Number(tea[`daypart_${p.key}`] ?? 0) > 0,
+  }));
 }

@@ -42,6 +42,7 @@
   overflow: hidden;
   transition: width 0.3s ease;
   filter: brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.55));
+  z-index: 500;
 }
 
 .open {
@@ -82,7 +83,7 @@
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-collapse: collapse;
-  z-index: 1002;
+  z-index: 400;
 }
 
 .sortPanel td {

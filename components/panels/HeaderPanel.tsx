@@ -16,7 +16,7 @@ export default function HeaderPanel({ tea, colorDark }: Props) {
   const intensity = Math.min(3, Math.max(1, Number(tea.intensity ?? 2))) as 1 | 2 | 3;
 
   return (
-    <div className="headerPanel" style={{ display:'flex', justifyContent:'space-between', alignItems:'center', gap:24 }}>
+    <div className="headerPanel" style={{ display:'flex', justifyContent:'space-between', alignItems:'center', gap:24, height: '200px' }}>
       <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
         <h1 style={{ margin:0 }}>{tea.name}</h1>
         <div style={{ display:'flex', gap:8, alignItems:'center', opacity:.9 }}>
@@ -27,7 +27,7 @@ export default function HeaderPanel({ tea, colorDark }: Props) {
       <div style={{ display:'flex', alignItems:'center', gap:24 }}>
         <IntensityDots intensity={intensity} />
         <QuarterDonut segments={seasonSegs} inactiveColor="rgba(0,0,0,0.08)" />
-        <DayDonut segments={daySegs} inactiveColor="rgba(0,0,0,0.08)" />
+        <DayDonut segments={daySegs} inactiveColor="rgba(0,0,0,0.08)" max={6} />
       </div>
     </div>
   );
