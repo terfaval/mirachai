@@ -13,15 +13,15 @@ interface Props {
 
 const ORDER = [
   'taste_friss',
-  'taste_kesernyés',
+  'taste_gyümölcsös',
+  'taste_virágos',
   'taste_savanykás',
-  'taste_édeskés',
-  'taste_csípős',
+  'taste_kesernyés',
+  'taste_földes',
   'taste_umami',
   'taste_fűszeres',
-  'taste_földes',
-  'taste_virágos',
-  'taste_gyümölcsös',
+  'taste_csípős',
+  'taste_édeskés',
 ];
 
 export default function TasteChart({ tea, size = 40, showLabels = true }: Props) {
