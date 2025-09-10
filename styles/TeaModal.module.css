@@ -174,3 +174,17 @@
   font-family: 'Titan One', cursive;
   letter-spacing: .2px;
 }
+
+.panelElement {
+  position: relative;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.02);
+}
+
+.panelBox {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}

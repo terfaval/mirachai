@@ -33,7 +33,7 @@ export default function TeaDetailPage({ tea, colorScale, categoryColors }: Props
         categoryColors={categoryColors}
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-8">
-        <TasteChart taste={tea.taste} />
+        <TasteChart tea={tea as any} />
         <FunctionRadialSteps functions={tea.functions} color={categoryColor} />
         <IntensityDots intensity={tea.intensity} />
         <DonutPercent percent={percent} color={categoryColor} />
