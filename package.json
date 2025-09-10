@@ -8,7 +8,8 @@
     "typecheck": "tsc -p .",
     "lint": "next lint",
     "test": "vitest run",
-    "demo": "tsx src/demo/demo.ts"
+    "demo": "tsx src/demo/demo.ts",
+    "vercel-build": "next build"
   },
   "engines": {
     "node": ">=18"

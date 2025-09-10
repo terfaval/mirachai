@@ -112,18 +112,14 @@ export default function Home({ teas }: HomeProps) {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [showCategorySidebar, setShowCategorySidebar] = useState(false);
 
-  const [shuffledTeas, setShuffledTeas] = useState<Tea[]>(teas);
-
-  useEffect(() => {
-    setShuffledTeas((prev) => {
-      const arr = [...prev];
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    });
-  }, []);
+  const shuffledTeas = useMemo(() => {
+    const arr = [...teas];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, [teas, query, selectedCategories, sort]);
 
   const filtered = filterTeas(shuffledTeas, query).filter(
     (t) => selectedCategories.length === 0 || selectedCategories.includes(t.category),
