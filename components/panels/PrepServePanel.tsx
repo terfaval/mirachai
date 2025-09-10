@@ -1,6 +1,5 @@
 import React from 'react';
 import ServeModes from '@/components/ServeModes';
-import { normalizeServeFlags } from '@/utils/teaTransforms';
 import { getTeaColor } from '../../utils/colorMap';
 import PrepInfo from '@/components/panels/PrepInfo';
 
@@ -15,13 +14,11 @@ function ColorCup({ hex }: { hex: string }) {
 
 type Props = {
   tea: any;
-  colorScale: Record<string,string>;
 };
 
 export default function PrepServePanel({ tea }: Props) {
   const tempC = Number(tea.tempC ?? tea.temperatureC ?? 0) || undefined;
   const steepMin = Number(tea.steepMin ?? tea.steepMinutes ?? 0) || undefined;
-  const serve = normalizeServeFlags(tea);
   const cupHex = getTeaColor?.(tea.color) ?? '#D9D9D9';
 
   return (

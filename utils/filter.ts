@@ -21,6 +21,9 @@ export interface Tea {
   season_recommended?: string[];
   daypart_recommended?: string[];
   mandalaIndex?: number;
+  fullDescription?: string;
+  when?: string;
+  origin?: string;
 }
 
 export function filterTeas(teas: Tea[], query: string): Tea[] {

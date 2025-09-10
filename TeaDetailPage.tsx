@@ -14,11 +14,10 @@ import { getTeaColor } from './utils/colorMap';
 
 interface Props {
   tea: Tea;
-  colorScale: Record<string, string>;
   categoryColors: Record<string, string>;
 }
 
-export default function TeaDetailPage({ tea, colorScale, categoryColors }: Props) {
+export default function TeaDetailPage({ tea, categoryColors }: Props) {
   const categoryColor = categoryColors[tea.category] || '#000';
   const percent = (tea.intensity / 3) * 100;
   const descClass = tea.descriptionDisplayAsTitanOne
@@ -45,7 +44,7 @@ export default function TeaDetailPage({ tea, colorScale, categoryColors }: Props
           {tea.description}
         </p>
       )}
-      <IngredientsStack ingredients={tea.ingredients} colorScale={colorScale} />
+      <IngredientsStack ingredients={tea.ingredients} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-8 items-center">
         <ColorCup color={getTeaColor(tea.name)} />
         <div className="space-y-4">

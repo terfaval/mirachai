@@ -5,18 +5,17 @@ import { buildIngredients, caffeineToPct } from '@/utils/teaTransforms';
 
 type Props = {
   tea: any;
-  colorScale: Record<string,string>;
   colorDark: string;
 };
 
-export default function IngredientCaffeinePanel({ tea, colorScale, colorDark }: Props) {
+export default function IngredientCaffeinePanel({ tea, colorDark }: Props) {
   const ingredients = buildIngredients(tea);
   const caffeine = caffeineToPct(tea);
 
   return (
     <div style={{ display:'grid', gridTemplateRows:'auto auto', gap:24 }}>
       <div style={{ padding:16, borderRadius:12, background:'rgba(0,0,0,0.03)' }}>
-        <IngredientsStack ingredients={ingredients} colorScale={colorScale} />
+        <IngredientsStack ingredients={ingredients} />
         <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginTop:12 }}>
           {ingredients.map((ing) => (
             <div key={ing.name} style={{ textAlign:'center' }}>

@@ -8,11 +8,10 @@ import { buildIngredients, getFocusOrdered, caffeineToPct } from '@/utils/teaTra
 
 type Props = {
   tea: any;
-  colorScale: Record<string,string>;
   colorDark: string;
 };
 
-export default function TeaDashboard({ tea, colorScale, colorDark }: Props) {
+export default function TeaDashboard({ tea, colorDark }: Props) {
   const ingredients = buildIngredients(tea);
   const focusData = getFocusOrdered(tea);
   const caffeine = caffeineToPct(tea);
@@ -22,7 +21,7 @@ export default function TeaDashboard({ tea, colorScale, colorDark }: Props) {
       <div style={{ display:'grid', gap:24 }}>
         <div style={{ display:'grid', gridTemplateColumns:'3fr 1fr', gap:24 }}>
           <div className={styles.panelBox}>
-            <IngredientsStack ingredients={ingredients} colorScale={colorScale} />
+            <IngredientsStack ingredients={ingredients} />
           </div>
           <div className={styles.panelBox}>
             <TasteChart tea={tea} size={240} />

@@ -1,9 +1,9 @@
 import React from "react";
 import { Ingredient } from "../../src/types/tea";
+import { getIngredientColor } from "../../utils/colorMap";
 
 interface Props {
   ingredients: Ingredient[];
-  colorScale: Record<string, string>;
   /** ha true, a rate-eket 100%-ra normalizálja */
   normalize?: boolean;
   /** minimum szélesség, ami felett megjelenik a címke (%), pl. 10 = 10% */
@@ -12,20 +12,26 @@ interface Props {
 
 export default function IngredientsStack({
   ingredients,
-  colorScale,
   normalize = true,
   labelThresholdPct = 10,
 }: Props) {
   const safe = Array.isArray(ingredients) ? ingredients : [];
 
-  const total = safe.reduce((s, it) => s + (Number.isFinite(it.rate) ? it.rate : 0), 0) || 1;
+  // csak pozitív és véges rate-eket engedünk
+  const total = safe.reduce(
+    (s, it) => s + (Number.isFinite(it.rate) && it.rate > 0 ? it.rate : 0),
+    0
+  );
 
-  // normalizált szeletek [0..100] és bal oldali offsetek
-  const slices = safe.map((it) => ({
-    name: it.name,
-    pct: normalize ? (it.rate / total) * 100 : it.rate, // lehet 100+-os is, ezért lent korrigálunk
-    color: colorScale[it.name] ?? "#999",
-  }));
+  // normalizált szeletek [0..100]
+  const slices = safe.map((it) => {
+    const rate = Number.isFinite(it.rate) && it.rate > 0 ? it.rate : 0;
+    return {
+      name: it.name,
+      pct: normalize && total > 0 ? (rate / total) * 100 : rate,
+      color: getIngredientColor(it.name),
+    };
+  });
 
   // ha a nyers összege nem 100, arányosan fel/le skálázunk
   const sumPct = slices.reduce((s, it) => s + it.pct, 0);
@@ -37,13 +43,18 @@ export default function IngredientsStack({
   let acc = 0;
   for (let i = 0; i < scaled.length; i++) {
     const isLast = i === scaled.length - 1;
-    const width = isLast ? Math.max(0, 100 - acc) : Math.max(0, Math.min(100 - acc, scaled[i].pct));
+    const width = isLast
+      ? Math.max(0, 100 - acc)
+      : Math.max(0, Math.min(100 - acc, scaled[i].pct));
     withOffsets.push({ name: scaled[i].name, color: scaled[i].color, left: acc, width });
     acc += width;
   }
 
   return (
-    <div className="relative w-full h-16 rounded-full overflow-hidden bg-gray-200" aria-label="Hozzávalók aránya">
+    <div
+      className="relative w-full h-16 overflow-hidden bg-gray-200 rounded-r-xl"
+      aria-label="Hozzávalók aránya (összesen 100%)"
+    >
       {/* szeletek */}
       {withOffsets.map((s) => (
         <div
