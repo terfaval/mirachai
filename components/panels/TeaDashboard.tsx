@@ -4,6 +4,7 @@ import IngredientsStack from '@/components/ingredients/IngredientsStack';
 import TasteChart from './TasteChart';
 import FocusChart from './FocusChart';
 import CaffeineBar from '@/components/ingredients/CaffeineBar';
+import ServeModes from '@/components/ServeModes';
 import { buildIngredients, getFocusOrdered, caffeineToPct } from '@/utils/teaTransforms';
 
 type Props = {
@@ -31,9 +32,10 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
           <div className={styles.panelBox}>
             <FocusChart data={focusData} size={240} colorDark={colorDark} />
           </div>
-          <div className={styles.panelBox}>
-            <CaffeineBar value={caffeine} color={colorDark} />
-          </div>
+          <div style={{ display:'grid', gap:12 }}>
+              <CaffeineBar value={caffeine} color={colorDark} />
+              <ServeModes tea={tea} />
+            </div>
         </div>
       </div>
     </section>

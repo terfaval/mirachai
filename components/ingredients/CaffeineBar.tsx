@@ -12,7 +12,7 @@ export default function CaffeineBar({ value, color }: Props) {
 
   return (
     <div
-      className="relative w-full h-16 bg-gray-200 rounded-l-xl overflow-hidden"
+      className="relative w-full h-12 bg-gray-200 rounded-l-xl overflow-hidden"
       role="progressbar"
       aria-valuenow={pct}
       aria-valuemin={0}

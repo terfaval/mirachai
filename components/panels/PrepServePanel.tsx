@@ -1,7 +1,7 @@
 import React from 'react';
-import ServeModes from '@/components/ServeModes';
 import { getTeaColor } from '../../utils/colorMap';
 import PrepInfo from '@/components/panels/PrepInfo';
+import MoreInfoPanel from '@/components/panels/MoreInfoPanel';
 
 // Ha van külön ColorCup komponensed, használd azt; itt egy lightweight helyettesítő:
 function ColorCup({ hex }: { hex: string }) {
@@ -14,9 +14,11 @@ function ColorCup({ hex }: { hex: string }) {
 
 type Props = {
   tea: any;
+  colorDark: string;
+  infoText: string;
 };
 
-export default function PrepServePanel({ tea }: Props) {
+export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
   const tempC = Number(tea.tempC ?? tea.temperatureC ?? 0) || undefined;
   const steepMin = Number(tea.steepMin ?? tea.steepMinutes ?? 0) || undefined;
   const cupHex = getTeaColor?.(tea.color) ?? '#D9D9D9';
@@ -32,7 +34,7 @@ export default function PrepServePanel({ tea }: Props) {
       </div>
 
       <div style={{ padding:16, borderRadius:12, background:'rgba(0,0,0,0.03)' }}>
-        <ServeModes tea={tea} />
+        <MoreInfoPanel text={infoText} colorDark={colorDark} />
       </div>
     </div>
   );
