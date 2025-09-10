@@ -11,8 +11,8 @@ type Props = {
 };
 
 export default function HeaderPanel({ tea, colorDark }: Props) {
-  const seasonSegs = buildSeasonSegments(tea, colorDark);
-  const daySegs = buildDaySegments(tea, colorDark);
+  const { segments: seasonSegs } = buildSeasonSegments(tea, colorDark);
+  const { segments: daySegs } = buildDaySegments(tea, colorDark);
 
   const intensity = Math.min(3, Math.max(1, Number(tea.intensity ?? 2))) as 1 | 2 | 3;
 

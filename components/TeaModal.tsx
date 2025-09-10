@@ -28,17 +28,16 @@ export default function TeaModal({ tea, onClose }: Props) {
         <div className={styles.backLayer} style={{ background: colorMain }}>
           <MandalaBackground color={colorDark} category={tea.category} />
         </div>
-        <div
-          className={styles.frontLayer}
-          style={{ background: `linear-gradient(180deg, ${colorLight} 0%, #FFFFFF 65%)` }}
-        />
         <button className={styles.close} onClick={onClose} aria-label="Bezárás">
           ×
         </button>
         {/*
           BEGIN MODAL CONTENT (replace the existing inner layout with this)
         */}
-        <div className={styles.content}>
+        <div
+          className={styles.content}
+          style={{ background: `linear-gradient(180deg, ${colorLight} 0%, #FFFFFF 65%)` }}
+        >
           <HeaderPanel tea={tea} colorDark={colorDark} />
           <div className={styles.spacer} />
           <DescPanel description={tea.description ?? ''} colorDark={colorDark} imageSrc="/tea-sample-1.png" />

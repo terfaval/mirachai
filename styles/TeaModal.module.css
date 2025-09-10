@@ -32,8 +32,11 @@
   position:absolute; right:14px; top:10px; background:transparent; border:0; color:#fff; font-size:28px; cursor:pointer;
 }
 .content{
-  position:relative; padding: 28px 22px 24px; background:#fff;
-  border-radius:20px; margin:16px;
+  position:relative;
+  padding: 28px 22px 24px;
+  border-radius:20px;
+  margin:16px;
+  z-index:1;
 }
 
 /* új panelek */
@@ -160,16 +163,7 @@
   inset: 0;
   z-index: 0;
 }
-.frontLayer {
-  position: absolute;
-  inset: 0;
-  width: 90%;
-  z-index: 1;
-}
-.content {
-  position: relative;
-  z-index: 2;
-}
+
 .titleTitan {
   font-family: 'Titan One', cursive;
   letter-spacing: .2px;

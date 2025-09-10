@@ -8,6 +8,7 @@ export default defineConfig({
       "@/utils/teaTransforms": path.resolve(__dirname, "src/utils/teaTransforms"),
       "@/utils": path.resolve(__dirname, "utils"),
       "@": path.resolve(__dirname, "src"),
+      "@/styles": path.resolve(__dirname, "styles"),
     },
   },
 });
