@@ -121,11 +121,9 @@ export default function TasteChart({
             cy={p.y}
             r={pointRadiusBase + p.value * 3}
             fill={p.color}
+            opacity={0.8}
           />
         ))}
-        {connectByStrongest && points.length > 1 && (
-          <path d={polygonPath} fill="none" stroke={polyStroke} strokeWidth={2} />
-        )}
         {showLabels &&
           points.map((p) => {
             const lx = center + Math.cos(p.angle) * labelRadius;

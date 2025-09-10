@@ -5,7 +5,7 @@ import DescPanel from '@/components/panels/DescPanel';
 import MoreInfoPanel from '@/components/panels/MoreInfoPanel';
 import TeaDashboard from '@/components/panels/TeaDashboard';
 import PrepServePanel from '@/components/panels/PrepServePanel';
-import { getCategoryColor } from '../utils/colorMap';
+import { getCategoryColor, getIngredientColorScale } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 
 interface Props {
@@ -17,6 +17,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const colorDark = getCategoryColor(tea.category, 'dark') ?? '#2D1E3E';
   const colorLight = getCategoryColor(tea.category, 'light') ?? 'rgba(0,0,0,0.05)';
   const colorMain = getCategoryColor(tea.category, 'main') ?? '#CCCCCC';
+  const ingredientColors = getIngredientColorScale();
   
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -44,11 +45,11 @@ export default function TeaModal({ tea, onClose }: Props) {
           <div className={styles.spacer} />
           <MoreInfoPanel colorDark={colorDark} />
             <div className={styles.spacer} />
-            <TeaDashboard tea={tea} colorScale={{}} colorDark={colorDark} />
+            <TeaDashboard tea={tea} colorScale={ingredientColors} colorDark={colorDark} />
             <div className={styles.spacer} />
             <MoreInfoPanel colorDark={colorDark} />
           <div className={styles.spacer} />
-          <PrepServePanel tea={tea} colorScale={{}} />
+          <PrepServePanel tea={tea} colorScale={ingredientColors} />
         </div>
         {/*
           END MODAL CONTENT

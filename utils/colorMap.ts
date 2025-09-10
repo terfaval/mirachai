@@ -27,8 +27,26 @@ const TEA_COLOR_MAP: Record<string, string> = (() => {
   return {};
 })();
 
+const INGREDIENT_COLOR_MAP: Record<string, string> = (() => {
+  const last = (colorScale as any)[(colorScale as any).length - 1];
+  if (last && typeof last === 'object' && !Array.isArray(last)) {
+    return Object.fromEntries(
+      Object.entries(last).map(([name, val]: [string, any]) => [name, (val as any).hex])
+    );
+  }
+  return {};
+})();
+
 export function getTeaColor(teaName: string): string {
   return TEA_COLOR_MAP[teaName] ?? DEFAULT_COLOR;
+}
+
+export function getIngredientColor(name: string): string {
+  return INGREDIENT_COLOR_MAP[name] ?? DEFAULT_COLOR;
+}
+
+export function getIngredientColorScale(): Record<string, string> {
+  return INGREDIENT_COLOR_MAP;
 }
 
 export function getCategoryColor(
