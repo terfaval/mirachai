@@ -1,48 +1,57 @@
 import React from 'react';
 
-export interface DaySegment {
-  key: string;
-  start: number; // unit start, 0-max
-  end: number; // unit end, can exceed max for wrap
+export type DaySegment = {
+  value: number;          // 0..1
   color: string;
-  active: boolean;
-}
+  active?: boolean;
+};
 
-interface Props {
+type Props = {
   segments: DaySegment[];
   size?: number;
-  max?: number;
-}
+  strokeWidth?: number;
+  inactiveColor?: string; // ÚJ
+  max?: number;           // opcionális
+};
 
-export default function DayDonut({ segments, size = 50, max = 10 }: Props) {
-  const center = size / 2;
-  const radius = center - 4;
-  const circumference = 2 * Math.PI * radius;
-  const gap = 2;
+export default function DayDonut({
+  segments,
+  size = 84,
+  strokeWidth = 10,
+  inactiveColor = 'rgba(255,255,255,0.2)',
+}: Props) {
+  const r = (size - strokeWidth) / 2;
+  const cx = size / 2;
+  const cy = size / 2;
+  const circumference = Math.PI * r * 2;
+
+  let offset = 0;
+  const arcs = segments.map((seg, i) => {
+    const len = circumference * seg.value;
+    const dashArray = `${len} ${circumference - len}`;
+    const dashOffset = circumference - offset;
+    offset += len;
+
+    return (
+      <circle
+        key={i}
+        cx={cx}
+        cy={cy}
+        r={r}
+        fill="none"
+        stroke={seg.active ? seg.color : inactiveColor}
+        strokeWidth={strokeWidth}
+        strokeDasharray={dashArray}
+        strokeDashoffset={dashOffset}
+        transform={`rotate(-90 ${cx} ${cy})`}
+        strokeLinecap="round"
+      />
+    );
+  });
 
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      {segments.map((seg) => {
-        const start = seg.start % max;
-        const end = seg.end <= seg.start ? seg.end + max : seg.end;
-        const length = end - start;
-        const arcLen = (length / max) * circumference - gap;
-        const dash = `${Math.max(0, arcLen)} ${circumference - Math.max(0, arcLen)}`;
-        const offset = (start / max) * circumference + gap / 2;
-        return (
-          <circle
-            key={seg.key}
-            cx={center}
-            cy={center}
-            r={radius}
-            fill="none"
-            stroke={seg.active ? seg.color : 'rgba(255,255,255,0.2)'}
-            strokeWidth={8}
-            strokeDasharray={dash}
-            strokeDashoffset={-offset}
-          />
-        );
-      })}
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-hidden>
+      {arcs}
     </svg>
   );
 }
