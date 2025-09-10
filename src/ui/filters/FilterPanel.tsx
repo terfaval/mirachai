@@ -1,211 +1,305 @@
-import React from "react";
+import React, { useMemo } from "react";
+import Dropdown from "./Dropdown";
+import MultiSelectDropdown from "./MultiSelectDropdown";
+import Slider from "./Slider";
+import Chip from "./Chip";
+import { getCategoryColors } from "../../utils/colorMap";
 
-import { X, RotateCcw, SlidersHorizontal } from "lucide-react";
-import { Badge } from "../badge";
-import { Button } from "../button";
-import { Checkbox } from "../checkbox";
-import { Label } from "../label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select";
-import { Separator } from "../separator";
-import { ScrollArea } from "../scroll-area";
-import type { Filters } from "./types";
+export type FilterState = {
+  categories: string[];
+  ingredients: string[];
+  tastes: Record<string, number>;
+  focuses: Record<string, number>;
+  intensity?: number;
+  steepMin?: number;
+  caffeine?: number;
+  allergens: string[];
+  dayparts: string[];
+  seasons: string[];
+};
 
-type Facets = ReturnType<typeof import("./collectFacets")["collectFacets"]>;
 type Props = {
   open: boolean;
   onClose: () => void;
-  filters: Filters;
-  setFilters: (updater: (prev: Filters) => Filters) => void;
-  facets: Facets;
-  subcatOptions: string[];
+  value: FilterState;
+  onChange: (f: FilterState) => void;
+  allCategories: string[];
+  allIngredients: string[];
+  allTastes: string[];
+  allFocuses: string[];
+  allAllergens: string[];
+  allDayparts: string[];
+  allSeasons: string[];
 };
 
-const toggleFromArray = (arr: string[], val: string) => arr.includes(val) ? arr.filter(x => x !== val) : [...arr, val];
+const toggle = (arr: string[], v: string) =>
+  arr.includes(v) ? arr.filter(x => x !== v) : [...arr, v];
 
-export default function FilterPanel({ open, onClose, filters, setFilters, facets, subcatOptions }: Props) {
-  const reset = () => setFilters(() => ({
-    category: undefined, subcategory: undefined, tastes: [], focus: [],
-    serve: { hot: false, lukewarm: false, iced: false, coldbrew: false },
-    allergens_exclude: [], intensity: [], colors: [],
-    caffeineRange: [0, 100], tempCRange: [facets.ranges.tempC[0], facets.ranges.tempC[1]],
-    steepRange: [facets.ranges.steepMin[0], facets.ranges.steepMin[1]],
-    ingredients: []
-  }));
+export default function FilterPanel({
+  open,
+  onClose,
+  value,
+  onChange,
+  allCategories,
+  allIngredients,
+  allTastes,
+  allFocuses,
+  allAllergens,
+  allDayparts,
+  allSeasons
+}: Props) {
+  const categories = useMemo(
+    () => [...value.categories, ...allCategories.filter(c => !value.categories.includes(c))],
+    [value.categories, allCategories]
+  );
 
-    if (!open) return null;
+  if (!open) return null;
 
   return (
     <>
       <div className="fixed inset-0 bg-black/30 z-40" onClick={onClose} />
-      <aside
-        className="fixed right-0 top-0 h-screen bg-white z-50 shadow-2xl border-l w-full sm:w-2/3 lg:w-[40vw]"
-        aria-label="Szűrőpanel"
-      >
+      <aside className="fixed right-0 top-0 h-screen bg-white z-50 shadow-2xl border-l w-full sm:w-2/3 lg:w-[40vw]">
         <div className="h-full flex flex-col">
-              <div className="p-4 flex items-center justify-between border-b">
-                <div className="flex items-center gap-2">
-                  <SlidersHorizontal className="w-4 h-4" />
-                  <h3 className="font-semibold">Szűrők</h3>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="icon" onClick={reset} title="Szűrők visszaállítása">
-                    <RotateCcw className="w-5 h-5" />
-                  </Button>
-                  <Button variant="ghost" size="icon" onClick={onClose} title="Bezárás (Esc)">
-                    <X className="w-5 h-5" />
-                  </Button>
-                </div>
+          <div className="p-4 flex items-center justify-between border-b">
+            <h3 className="font-semibold">Szűrők</h3>
+            <button onClick={onClose} className="px-2 py-1 rounded-lg border">×</button>
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-4 space-y-6">
+            {/* Categories */}
+            <section>
+              <h4 className="font-medium mb-3">Kategória</h4>
+              <div className="flex flex-wrap gap-2">
+                {categories.map(c => {
+                  const col = getCategoryColors(c);
+                  const selected = value.categories.includes(c);
+                  return (
+                    <button
+                      key={c}
+                      type="button"
+                      onClick={() =>
+                        onChange({ ...value, categories: selected ? value.categories.filter(x => x !== c) : [c, ...value.categories] })
+                      }
+                      onMouseEnter={e => {
+                        if (!selected) e.currentTarget.style.backgroundColor = col.main;
+                      }}
+                      onMouseLeave={e => {
+                        if (!selected) e.currentTarget.style.backgroundColor = "";
+                      }}
+                      style={{
+                        borderColor: col.dark,
+                        backgroundColor: selected ? col.dark : undefined,
+                        color: selected ? col.white : undefined
+                      }}
+                      className="px-3 py-1.5 rounded-full border text-sm"
+                    >
+                      {c}
+                    </button>
+                  );
+                })}
               </div>
+            </section>
 
-              <ScrollArea className="flex-1">
-                <div className="p-4 space-y-6">
-                  {/* Category */}
-                  <section>
-                    <h4 className="font-medium mb-3">Kategória</h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div>
-                        <Label className="text-xs">Főkategória</Label>
-                        <Select value={filters.category ?? ""} onValueChange={(v: string) => setFilters(s => ({ ...s, category: v || undefined, subcategory: undefined }))}>
-                          <SelectTrigger className="mt-1"><SelectValue placeholder="Válassz…" /></SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="">(mind)</SelectItem>
-                            {facets.categories.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
-                        <Label className="text-xs">Alkategória</Label>
-                        <Select value={filters.subcategory ?? ""} onValueChange={(v: string) => setFilters(s => ({ ...s, subcategory: v || undefined }))}>
-                          <SelectTrigger className="mt-1"><SelectValue placeholder="Válassz…" /></SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="">(mind)</SelectItem>
-                            {subcatOptions.map(sc => <SelectItem key={sc} value={sc}>{sc}</SelectItem>)}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                  </section>
-
-                  <Separator />
-
-                  {/* Tastes */}
-                  <section>
-                    <h4 className="font-medium mb-3">Ízprofil</h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                      {facets.tasteKeys.map(t => (
-                        <label key={t} className="flex items-center gap-2 rounded-xl border p-2 hover:bg-muted cursor-pointer">
-                          <Checkbox checked={filters.tastes.includes(t)} onCheckedChange={(val: boolean) => setFilters(s => ({ ...s, tastes: val ? [...s.tastes, t] : s.tastes.filter(x => x !== t) }))} />
-                          <span className="text-sm capitalize">{t}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </section>
-
-                  {/* Focus */}
-                  <section>
-                    <h4 className="font-medium mb-3">Hatás</h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                      {facets.focusKeys.map(t => (
-                        <label key={t} className="flex items-center gap-2 rounded-xl border p-2 hover:bg-muted cursor-pointer">
-                          <Checkbox checked={filters.focus.includes(t)} onCheckedChange={(val: boolean) => setFilters(s => ({ ...s, focus: val ? [...s.focus, t] : s.focus.filter(x => x !== t) }))} />
-                          <span className="text-sm capitalize">{t}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </section>
-
-                  <Separator />
-
-                  {/* Serve */}
-                  <section>
-                    <h4 className="font-medium mb-3">Tálalás</h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                      {([ ["forró", "hot"], ["langyos", "lukewarm"], ["jeges", "iced"], ["cold brew", "coldbrew"] ] as const).map(([label, key]) => (
-                        <label key={key} className="flex items-center gap-2 rounded-xl border p-2 hover:bg-muted cursor-pointer">
-                          <Checkbox checked={(filters.serve as any)[key]} onCheckedChange={(val: boolean) => setFilters(s => ({ ...s, serve: { ...s.serve, [key]: !!val } as any }))} />
-                          <span className="text-sm">{label}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </section>
-
-                  <Separator />
-
-                  {/* Allergens exclude */}
-                  <section>
-                    <h4 className="font-medium mb-3">Allergének (kizárás)</h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                      {facets.allergens.map(a => (
-                        <label key={a} className="flex items-center gap-2 rounded-xl border p-2 hover:bg-muted cursor-pointer">
-                          <Checkbox checked={filters.allergens_exclude.includes(a)} onCheckedChange={(val: boolean) => setFilters(s => ({ ...s, allergens_exclude: val ? [...s.allergens_exclude, a] : s.allergens_exclude.filter(x => x !== a) }))} />
-                          <span className="text-sm capitalize">{a}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </section>
-
-                  <Separator />
-
-                  {/* Intensity & Colors */}
-                  <section>
-                    <h4 className="font-medium mb-3">Intenzitás & Szín</h4>
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="space-y-2">
-                        <Label className="text-xs">Intenzitás</Label>
-                        <div className="flex flex-wrap gap-2">
-                          {facets.intensities.map(i => (
-                            <Badge
-                              key={`intensity-${i}`}
-                              variant={filters.intensity.includes(i) ? "default" : "outline"}
-                              className="cursor-pointer"
-                              onClick={() =>
-                                setFilters(s => ({ ...s, intensity: toggleFromArray(s.intensity, i) }))
-                              }
-                            >
-                              {i}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <Label className="text-xs">Szín</Label>
-                        <div className="flex flex-wrap gap-2">
-                          {facets.colors.map(c => (
-                            <Badge key={c} variant={filters.colors.includes(c) ? "default" : "outline"} className="cursor-pointer" onClick={() => setFilters(s => ({ ...s, colors: toggleFromArray(s.colors, c) }))}>{c}</Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-
-                  <Separator />
-
-                  {/* Ranges – sliders: use your Slider component in outer page (or keep here if available) */}
-                  <p className="text-sm text-muted-foreground">Koffein/°C/Áztatás csúszkák a fő komponensben (vagy itt), a query builder támogatja.</p>
-
-                  <Separator />
-
-                  {/* Ingredients (multi) */}
-                  <section>
-                    <h4 className="font-medium mb-3">Hozzávalók</h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-56 overflow-y-auto pr-2">
-                      {facets.ingredientKeys.map(ing => (
-                        <label key={ing} className="flex items-center gap-2 rounded-xl border p-2 hover:bg-muted cursor-pointer">
-                          <Checkbox checked={filters.ingredients.includes(ing)} onCheckedChange={(val: boolean) => setFilters(s => ({ ...s, ingredients: val ? [...s.ingredients, ing] : s.ingredients.filter(x => x !== ing) }))} />
-                          <span className="text-sm">{ing}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </section>
-                </div>
-              </ScrollArea>
-
-              <div className="p-4 border-t flex items-center gap-2 justify-end">
-                <Button variant="ghost" onClick={reset}>Alaphelyzet</Button>
-                <Button onClick={onClose}>Alkalmazás</Button>
+            {/* Ingredients */}
+            <section>
+              <h4 className="font-medium mb-3">Hozzávalók</h4>
+              <Dropdown label="Válassz" wide>
+                <MultiSelectDropdown
+                  items={allIngredients}
+                  selected={value.ingredients}
+                  onChange={items => onChange({ ...value, ingredients: items })}
+                />
+              </Dropdown>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {value.ingredients.map(i => (
+                  <Chip key={i} label={i} onRemove={() => onChange({ ...value, ingredients: value.ingredients.filter(x => x !== i) })} />
+                ))}
               </div>
-            </div>
-          </aside>
-        </>
+            </section>
+
+            {/* Tastes */}
+            <section>
+              <h4 className="font-medium mb-3">Íz</h4>
+              <Dropdown label="Adj hozzá">
+                <select
+                  className="w-full px-2 py-1 border rounded-xl"
+                  onChange={e => {
+                    const v = e.target.value;
+                    if (v) {
+                      onChange({ ...value, tastes: { ...value.tastes, [v]: 1 } });
+                      e.target.value = "";
+                    }
+                  }}
+                  value=""
+                >
+                  <option value="">Válassz…</option>
+                  {allTastes.filter(t => !(t in value.tastes)).map(t => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+              </Dropdown>
+              <div className="mt-2 space-y-2">
+                {Object.entries(value.tastes).map(([t, v]) => (
+                  <div key={t} className="p-2 rounded-xl border flex items-center gap-2">
+                    <span className="capitalize flex-1">{t}</span>
+                    <Slider value={v} min={1} max={3} onChange={val => onChange({ ...value, tastes: { ...value.tastes, [t]: val } })} />
+                    <button
+                      onClick={() => {
+                        const { [t]: _omit, ...rest } = value.tastes;
+                        onChange({ ...value, tastes: rest });
+                      }}
+                      className="px-2"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Focus */}
+            <section>
+              <h4 className="font-medium mb-3">Fókusz</h4>
+              <Dropdown label="Adj hozzá">
+                <select
+                  className="w-full px-2 py-1 border rounded-xl"
+                  onChange={e => {
+                    const v = e.target.value;
+                    if (v) {
+                      onChange({ ...value, focuses: { ...value.focuses, [v]: 1 } });
+                      e.target.value = "";
+                    }
+                  }}
+                  value=""
+                >
+                  <option value="">Válassz…</option>
+                  {allFocuses.filter(t => !(t in value.focuses)).map(t => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+              </Dropdown>
+              <div className="mt-2 space-y-2">
+                {Object.entries(value.focuses).map(([t, v]) => (
+                  <div key={t} className="p-2 rounded-xl border flex items-center gap-2">
+                    <span className="capitalize flex-1">{t}</span>
+                    <Slider value={v} min={1} max={3} onChange={val => onChange({ ...value, focuses: { ...value.focuses, [t]: val } })} />
+                    <button
+                      onClick={() => {
+                        const { [t]: _omit, ...rest } = value.focuses;
+                        onChange({ ...value, focuses: rest });
+                      }}
+                      className="px-2"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Intensity / Steep / Caffeine */}
+            <section className="flex flex-col gap-4">
+              <Dropdown label="Intenzitás" rightAlign>
+                <Slider value={value.intensity ?? 0} min={0} max={3} onChange={val => onChange({ ...value, intensity: val })} />
+              </Dropdown>
+              <Dropdown label="Áztatás" rightAlign>
+                <Slider value={value.steepMin ?? 0} min={0} max={10} onChange={val => onChange({ ...value, steepMin: val })} />
+              </Dropdown>
+              <Dropdown label="Koffein" rightAlign>
+                <Slider value={value.caffeine ?? 0} min={0} max={3} onChange={val => onChange({ ...value, caffeine: val })} />
+              </Dropdown>
+            </section>
+
+            {/* Allergens */}
+            <section>
+              <h4 className="font-medium mb-3">Allergének</h4>
+              <Dropdown label="Válassz" wide>
+                <div className="grid grid-cols-2 gap-2">
+                  {allAllergens.map(a => {
+                    const selected = value.allergens.includes(a);
+                    return (
+                      <button
+                        key={a}
+                        type="button"
+                        onClick={() => onChange({ ...value, allergens: toggle(value.allergens, a) })}
+                        className="px-2 py-1 rounded-lg border text-sm"
+                        style={{ backgroundColor: selected ? "#333" : undefined, color: selected ? "#fff" : undefined }}
+                      >
+                        {a}
+                      </button>
+                    );
+                  })}
+                </div>
+              </Dropdown>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {value.allergens.map(a => (
+                  <Chip key={a} label={a} onRemove={() => onChange({ ...value, allergens: value.allergens.filter(x => x !== a) })} />
+                ))}
+              </div>
+            </section>
+
+            {/* Dayparts */}
+            <section>
+              <h4 className="font-medium mb-3">Napszak</h4>
+              <Dropdown label="Válassz" wide>
+                <div className="grid grid-cols-2 gap-2">
+                  {allDayparts.map(a => {
+                    const selected = value.dayparts.includes(a);
+                    return (
+                      <button
+                        key={a}
+                        type="button"
+                        onClick={() => onChange({ ...value, dayparts: toggle(value.dayparts, a) })}
+                        className="px-2 py-1 rounded-lg border text-sm"
+                        style={{ backgroundColor: selected ? "#333" : undefined, color: selected ? "#fff" : undefined }}
+                      >
+                        {a}
+                      </button>
+                    );
+                  })}
+                </div>
+              </Dropdown>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {value.dayparts.map(a => (
+                  <Chip key={a} label={a} onRemove={() => onChange({ ...value, dayparts: value.dayparts.filter(x => x !== a) })} />
+                ))}
+              </div>
+            </section>
+
+            {/* Seasons */}
+            <section>
+              <h4 className="font-medium mb-3">Évszak</h4>
+              <Dropdown label="Válassz" wide>
+                <div className="grid grid-cols-2 gap-2">
+                  {allSeasons.map(a => {
+                    const selected = value.seasons.includes(a);
+                    return (
+                      <button
+                        key={a}
+                        type="button"
+                        onClick={() => onChange({ ...value, seasons: toggle(value.seasons, a) })}
+                        className="px-2 py-1 rounded-lg border text-sm"
+                        style={{ backgroundColor: selected ? "#333" : undefined, color: selected ? "#fff" : undefined }}
+                      >
+                        {a}
+                      </button>
+                    );
+                  })}
+                </div>
+              </Dropdown>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {value.seasons.map(a => (
+                  <Chip key={a} label={a} onRemove={() => onChange({ ...value, seasons: value.seasons.filter(x => x !== a) })} />
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      </aside>
+    </>
   );
 }
