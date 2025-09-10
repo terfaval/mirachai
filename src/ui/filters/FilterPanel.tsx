@@ -1,13 +1,13 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import { X, RotateCcw, SlidersHorizontal } from "lucide-react";
 import { Badge } from "../badge";
 import { Button } from "../button";
 import { Checkbox } from "../checkbox";
 import { Label } from "../label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select";
+import { Separator } from "../separator";
+import { ScrollArea } from "../scroll-area";
 import type { Filters } from "./types";
 
 type Facets = ReturnType<typeof import("./collectFacets")["collectFacets"]>;
@@ -32,18 +32,16 @@ export default function FilterPanel({ open, onClose, filters, setFilters, facets
     ingredients: []
   }));
 
+    if (!open) return null;
+
   return (
-    <AnimatePresence>
-      {open && (
-        <>
-          <motion.div className="fixed inset-0 bg-black/30 z-40" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} />
-          <motion.aside
-            className="fixed right-0 top-0 h-screen bg-white z-50 shadow-2xl border-l w-full sm:w-2/3 lg:w-[40vw]"
-            initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 260, damping: 28 }}
-            aria-label="Szűrőpanel"
-          >
-            <div className="h-full flex flex-col">
+    <>
+      <div className="fixed inset-0 bg-black/30 z-40" onClick={onClose} />
+      <aside
+        className="fixed right-0 top-0 h-screen bg-white z-50 shadow-2xl border-l w-full sm:w-2/3 lg:w-[40vw]"
+        aria-label="Szűrőpanel"
+      >
+        <div className="h-full flex flex-col">
               <div className="p-4 flex items-center justify-between border-b">
                 <div className="flex items-center gap-2">
                   <SlidersHorizontal className="w-4 h-4" />
@@ -207,9 +205,7 @@ export default function FilterPanel({ open, onClose, filters, setFilters, facets
                 <Button onClick={onClose}>Alkalmazás</Button>
               </div>
             </div>
-          </motion.aside>
+          </aside>
         </>
-      )}
-    </AnimatePresence>
   );
 }
