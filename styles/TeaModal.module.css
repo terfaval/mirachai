@@ -33,9 +33,10 @@
 }
 .content{
   position:relative;
-  padding: 28px 22px 24px;
+  padding: 40px 30px;
   border-radius:20px;
   margin:16px;
+  padding-right: 45px;
   z-index:1;
 }
 

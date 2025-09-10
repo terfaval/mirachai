@@ -3,24 +3,37 @@ import { Scale1to3 } from '../../src/types/tea';
 
 interface Props {
   intensity: Scale1to3;
+  /**
+   * Optional color for the active dots and text. Defaults to black which works on
+   * light backgrounds, but callers (like the header panel) can override it with
+   * a darker brand color.
+   */
+  color?: string;
 }
 
 const LABELS = ['enyhe', 'közepes', 'erős'];
 
-export default function IntensityDots({ intensity }: Props) {
+export default function IntensityDots({ intensity, color = '#000' }: Props) {
+  const dotStyle = (active: boolean): React.CSSProperties => ({
+    width: 12,
+    height: 12,
+    borderRadius: '50%',
+    border: `1px solid ${active ? color : '#ccc'}`,
+    backgroundColor: active ? color : 'transparent',
+    display: 'inline-block',
+  });
+
   return (
-    <div className="flex items-center gap-2" aria-label="intenzitás">
-      <div className="flex gap-1">
+    <div
+      style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+      aria-label="intenzitás"
+    >
+      <div style={{ display: 'flex', gap: 4 }}>
         {[1, 2, 3].map((i) => (
-          <span
-            key={`intensity-dot-${i}`}
-            className={`w-3 h-3 rounded-full border ${
-              i <= intensity ? 'bg-black border-black' : 'border-gray-300'
-            }`}
-          />
+          <span key={`intensity-dot-${i}`} style={dotStyle(i <= intensity)} />
         ))}
       </div>
-      <span className="text-sm">{LABELS[intensity - 1]}</span>
+      <span style={{ fontSize: '0.875rem', color }}>{LABELS[intensity - 1]}</span>
     </div>
   );
 }
