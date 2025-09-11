@@ -6,23 +6,53 @@ interface Props {
 }
 
 const MODES = [
-  { key: 'serve_hot', label: 'Forrón', icon: '🔥' },
-  { key: 'serve_lukewarm', label: 'Langyosan', icon: '🌤️' },
-  { key: 'serve_iced', label: 'Jegesen', icon: '❄️' },
-  { key: 'serve_coldbrew', label: 'Coldbrew', icon: '🧊' },
+  {
+    key: 'serve_hot',
+    label: 'Forrón',
+    svg: '/serve_hot.svg',
+    color: '#e11d48',
+  },
+  {
+    key: 'serve_lukewarm',
+    label: 'Langyosan',
+    svg: '/serve_lukewarm.svg',
+    color: '#fb923c',
+  },
+  {
+    key: 'serve_iced',
+    label: 'Jegesen',
+    svg: '/serve_iced.svg',
+    color: '#60a5fa',
+  },
+  {
+    key: 'serve_coldbrew',
+    label: 'Coldbrew',
+    svg: '/serve_coldbrew.svg',
+    color: '#4ade80',
+  },
 ] as const;
 
 export default function ServeModes({ tea }: Props) {
   return (
-    <div className="flex flex-wrap gap-2" aria-label="fogyasztási módok">
+    <div className="grid grid-cols-2" aria-label="fogyasztási módok">
       {MODES.filter((m) => (tea as any)[m.key]).map((m) => (
-        <span
+        <div
           key={m.key}
-          className="px-3 py-1 bg-gray-100 rounded-full text-sm flex items-center gap-1"
+          className="relative flex items-center justify-center text-center aspect-square w-full"
         >
-          <span aria-hidden>{m.icon}</span>
-          {m.label}
-        </span>
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundColor: m.color,
+              mask: `url(${m.svg}) center/60% no-repeat`,
+              WebkitMask: `url(${m.svg}) center/60% no-repeat`,
+            }}
+          />
+          <span className="relative font-bold" style={{ color: m.color }}>
+            {m.label}
+          </span>
+        </div>
       ))}
     </div>
   );
