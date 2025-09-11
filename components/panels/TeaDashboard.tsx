@@ -23,21 +23,19 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
         <CaffeineBar value={caffeine} color={colorDark} />
       </div>
       <div style={{ display:'grid', gap:24 }}>
-        <div style={{ display:'grid', gridTemplateColumns:'3fr 1fr', gap:24 }}>
-          <div className={styles.panelBox}>
-            <IngredientsStack ingredients={ingredients} />
-          </div>
+        <div className={styles.panelBox}>
+          <IngredientsStack ingredients={ingredients} />
+        </div>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:24 }}>
           <div className={styles.panelBox}>
             <TasteChart tea={tea} size={240} />
           </div>
-        </div>
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 2fr', gap:24 }}>
           <div className={styles.panelBox}>
             <FocusChart data={focusData} size={240} colorDark={colorDark} />
           </div>
-          <div className={styles.panelBox}>
-            <ServeModes tea={tea} />
           </div>
+        <div className={styles.panelBox}>
+          <ServeModes tea={tea} />
         </div>
       </div>
     </section>

@@ -34,11 +34,11 @@ const MODES = [
 
 export default function ServeModes({ tea }: Props) {
   return (
-    <div className="grid grid-cols-2" aria-label="fogyasztási módok">
+    <div className="flex gap-4" aria-label="fogyasztási módok">
       {MODES.filter((m) => (tea as any)[m.key]).map((m) => (
         <div
           key={m.key}
-          className="relative flex items-center justify-center text-center aspect-square w-full"
+          className="relative flex flex-1 items-center justify-center text-center aspect-square"
         >
           <div
             aria-hidden
