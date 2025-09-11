@@ -31,21 +31,18 @@ const ORDER = [
 
 export default function TasteChart({
   tea,
-  size = 40,
+  size = 1,
   showLabels = true,
-  minValue = 1,
+  minValue = 0,
   pointRadiusBase: _pointRadiusBase = 15,
   connectByStrongest: _connectByStrongest = true,
   strongColor: _strongColor,
   colorDark = '#333',
 }: Props) {
-  const lineColor = '#ccc';
   const cx = size / 2;
   const cy = size / 2;
   const radius = size * 0.3; // leave room for labels
   const step = radius / 3;
-  const wedge = (2 * Math.PI) / ORDER.length;
-  const halfArc = wedge * 0.45; // leave space between petals
 
   const allEntries = ORDER.map((k, i) => {
     const raw = N((tea as any)[k]);
@@ -58,24 +55,7 @@ export default function TasteChart({
 
   const entries = allEntries.filter((e) => e.value >= minValue);
   const labelRadius = radius + 30;
-
-  const petalPath = (outer: number, start: number, end: number) => {
-    const sx = cx + Math.cos(start) * outer;
-    const sy = cy + Math.sin(start) * outer;
-    const ex = cx + Math.cos(end) * outer;
-    const ey = cy + Math.sin(end) * outer;
-    const c1x = cx + Math.cos(start) * outer * 0.4;
-    const c1y = cy + Math.sin(start) * outer * 0.4;
-    const c2x = cx + Math.cos(end) * outer * 0.4;
-    const c2y = cy + Math.sin(end) * outer * 0.4;
-    return [
-      `M ${cx} ${cy}`,
-      `Q ${c1x} ${c1y} ${sx} ${sy}`,
-      `A ${outer} ${outer} 0 0 1 ${ex} ${ey}`,
-      `Q ${c2x} ${c2y} ${cx} ${cy}`,
-      'Z',
-    ].join(' ');
-  };
+  const POINT_RADII = [60,30,5];
 
   return (
     <div className={styles.container}>
@@ -87,44 +67,28 @@ export default function TasteChart({
         aria-label="ízprofil diagram"
         style={{ background: 'transparent' }}
       >
-        {[1, 2, 3].map((lvl) => (
-          <circle
-            key={`grid-${lvl}`}
-            cx={cx}
-            cy={cy}
-            r={step * lvl}
-            stroke={lineColor}
-            strokeWidth={1}
-            fill="none"
-            opacity={0.1 * lvl}
-          />
-        ))}
         {allEntries.map((p) => (
-          <line
-            key={`axis-${p.key}`}
-            x1={cx}
-            y1={cy}
-            x2={cx + Math.cos(p.angle) * radius}
-            y2={cy + Math.sin(p.angle) * radius}
-            stroke={lineColor}
-            strokeWidth={1}
-            opacity={0.2}
-          />
+          <g key={p.key}>
+            {[1, 2, 3].map((lvl) => {
+              const r = step * lvl;
+              const x = cx + Math.cos(p.angle) * r;
+              const y = cy + Math.sin(p.angle) * r;
+              const active = lvl <= p.value;
+              const pr = active ? POINT_RADII[lvl - 1] : 1.1;
+              const opacity = active ? 0.85 : 0.15;
+              return (
+                <circle
+                  key={lvl}
+                  cx={x}
+                  cy={y}
+                  r={pr}
+                  fill={p.color}
+                  fillOpacity={opacity}
+                />
+              );
+            })}
+          </g>
         ))}
-        {entries.map((p) => {
-          if (p.value <= 0) return null;
-          const outer = step * p.value;
-          const start = p.angle - halfArc;
-          const end = p.angle + halfArc;
-          return (
-            <path
-              key={`petal-${p.key}`}
-              d={petalPath(outer, start, end)}
-              fill={p.color}
-              fillOpacity={0.8}
-            />
-          );
-        })}
         {showLabels &&
           entries.map((p) => {
             const lx = cx + Math.cos(p.angle) * labelRadius;
