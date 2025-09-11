@@ -10,7 +10,7 @@ interface Props {
   size?: number;
   showLabels?: boolean;
   minValue?: number;
-  pointRadiusBase?: number; // unused, kept for compat
+  pointRadiusBase?: number; // controls size of active points
   connectByStrongest?: boolean; // unused, kept for compat
   strongColor?: string; // unused, kept for compat
   colorDark?: string;
@@ -34,7 +34,7 @@ export default function TasteChart({
   size = 1,
   showLabels = true,
   minValue = 0,
-  pointRadiusBase: _pointRadiusBase = 15,
+  pointRadiusBase = 15,
   connectByStrongest: _connectByStrongest = true,
   strongColor: _strongColor,
   colorDark = '#333',
@@ -55,7 +55,8 @@ export default function TasteChart({
 
   const entries = allEntries.filter((e) => e.value >= minValue);
   const labelRadius = radius + 30;
-  const POINT_RADII = [60,30,5];
+  const base = pointRadiusBase;
+  const POINT_RADII = [base * 1.5, base, base / 2];
 
   return (
     <div className={styles.container}>
