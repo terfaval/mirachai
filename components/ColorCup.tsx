@@ -3,11 +3,10 @@ import { getTeaColor } from '../utils/colorMap';
 
 type Props = {
   teaName?: string;
-  color?: string;            // címke vagy hex
-  size?: number | string;    // <<< MÉRET: itt adható px vagy pl. '10rem'
-  teaInsetPct?: number;      // belső perem (%)
-  teaOpacity?: number;       // 0–1 között: a színes „tea” áttetszősége
-  showImage?: boolean;       // belső PNG megjelenítése (most: kikapcsoljuk)
+  color?: string;             // címke vagy hex
+  size?: number | string;     // <<< MÉRET: px vagy pl. '10rem'
+  teaInsetPct?: number;       // belső perem (%)
+  teaOpacity?: number;        // 0–1
   className?: string;
   'aria-label'?: string;
 };
@@ -18,7 +17,6 @@ export default function ColorCup({
   size = 112,
   teaInsetPct = 12,
   teaOpacity = 1,
-  showImage = true,
   className,
   'aria-label': ariaLabel,
 }: Props) {
@@ -28,30 +26,28 @@ export default function ColorCup({
 
   return (
     <div
-      className={['relative mx-auto select-none', className].filter(Boolean).join(' ')}
-      style={{ width: pxSize, height: pxSize }}
+      // FONTOS: mindig legyen positioned wrapper!
+      style={{ position: 'relative', width: pxSize, height: pxSize }}
+      className={className}
       role="img"
       aria-label={ariaLabel ?? (teaName ? `Tea color for ${teaName}` : 'Tea color')}
     >
-      {/* SZÍNES TEA – csak kör (áttetsző is lehet) */}
+      {/* SZÍNES TEA-KÖR */}
       <div
-        className="absolute rounded-full z-10"
         style={{
-          inset: `${inset}%`,
+          position: 'absolute',
+          top: `${inset}%`,
+          right: `${inset}%`,
+          bottom: `${inset}%`,
+          left: `${inset}%`,
+          borderRadius: '50%',
           background: cupColor,
           opacity: teaOpacity,
+          marginBottom: '2px',
+          marginRight: '1px',
+          zIndex: 2,
         }}
       />
-
-      {/* (opcionális) CSÉSZE PNG – ha külön akarod kezelni, kapcsold ki showImage-gel */}
-      {showImage && (
-        <img
-          src="/colorCup.png"
-          alt=""
-          className="absolute inset-0 h-full w-full object-contain pointer-events-none z-0"
-          draggable={false}
-        />
-      )}
     </div>
   );
 }
