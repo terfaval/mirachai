@@ -12,6 +12,15 @@ interface ColorEntry {
 
 const DEFAULT_COLOR = '#6B4226';
 
+// segítség a név normalizálásához: kisbetű, trim, ékezetek nélkül
+function norm(s: string): string {
+  return s
+    .trim()
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '');
+}
+
 type ColorVariant = keyof Omit<ColorEntry, 'category'>;
 
 const TEA_COLOR_MAP: Record<string, string> = (() => {
@@ -27,22 +36,50 @@ const TEA_COLOR_MAP: Record<string, string> = (() => {
   return {};
 })();
 
-const INGREDIENT_COLOR_MAP: Record<string, string> = (() => {
-  const last = (colorScale as any)[(colorScale as any).length - 1];
-  if (last && typeof last === 'object' && !Array.isArray(last)) {
+// type alapú színek (leaf/flower/fruit/...)
+const INGREDIENT_TYPE_COLORS: Record<string, string> = (() => {
+  const secondLast = (colorScale as any)[(colorScale as any).length - 2];
+  if (secondLast && typeof secondLast === 'object' && !Array.isArray(secondLast)) {
     return Object.fromEntries(
-      Object.entries(last).map(([name, val]: [string, any]) => [name, (val as any).hex])
+      Object.entries(secondLast).map(([k, v]: [string, any]) => [norm(k), String(v)])
     );
   }
   return {};
 })();
 
+// konkrét hozzávaló -> {hex, type}
+const INGREDIENT_INFO_MAP: Record<string, { hex: string; type?: string }> = (() => {
+  const last = (colorScale as any)[(colorScale as any).length - 1];
+  if (last && typeof last === 'object' && !Array.isArray(last)) {
+    return Object.fromEntries(
+      Object.entries(last).map(([name, val]: [string, any]) => [
+        norm(name),
+        { hex: String((val as any).hex), type: (val as any).type as string | undefined },
+      ])
+    );
+  }
+  return {};
+})();
+
+// egyszerű lookup objektum a skála hex értékeivel
+const INGREDIENT_COLOR_MAP: Record<string, string> = Object.fromEntries(
+  Object.entries(INGREDIENT_INFO_MAP).map(([k, v]) => [k, v.hex])
+);
+
 export function getTeaColor(teaName: string): string {
   return TEA_COLOR_MAP[teaName] ?? DEFAULT_COLOR;
 }
 
-export function getIngredientColor(name: string): string {
-  return INGREDIENT_COLOR_MAP[name] ?? DEFAULT_COLOR;
+export function getIngredientColor(name: string, type?: string): string {
+  const key = norm(name);
+  const info = INGREDIENT_INFO_MAP[key];
+  if (info) return info.hex;
+  if (type) {
+    const tKey = norm(type);
+    const tColor = INGREDIENT_TYPE_COLORS[tKey];
+    if (tColor) return tColor;
+  }
+  return INGREDIENT_TYPE_COLORS['other'] ?? DEFAULT_COLOR;
 }
 
 export function getIngredientColorScale(): Record<string, string> {

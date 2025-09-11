@@ -4,16 +4,13 @@ import { getIngredientColor } from "../../utils/colorMap";
 
 interface Props {
   ingredients: Ingredient[];
-  /** ha true, a rate-eket 100%-ra normalizálja */
-  normalize?: boolean;
-  /** minimum szélesség, ami felett megjelenik a címke (%), pl. 10 = 10% */
+  /** minimum szélesség, ami felett megjelenik a címke (%), pl. 12 = 12% */
   labelThresholdPct?: number;
 }
 
 export default function IngredientsStack({
   ingredients,
-  normalize = true,
-  labelThresholdPct = 10,
+  labelThresholdPct = 12,
 }: Props) {
   const safe = Array.isArray(ingredients) ? ingredients : [];
 
@@ -28,7 +25,7 @@ export default function IngredientsStack({
     const rate = Number.isFinite(it.rate) && it.rate > 0 ? it.rate : 0;
     return {
       name: it.name,
-      pct: normalize && total > 0 ? (rate / total) * 100 : rate,
+      pct: total > 0 ? (rate / total) * 100 : 0,
       color: getIngredientColor(it.name),
     };
   });
@@ -53,6 +50,7 @@ export default function IngredientsStack({
   return (
     <div
       className="relative w-full h-16 overflow-hidden bg-gray-200 rounded-r-xl"
+      role="img"
       aria-label="Hozzávalók aránya (összesen 100%)"
     >
       {/* szeletek */}
@@ -69,7 +67,7 @@ export default function IngredientsStack({
           {/* középre igazított címke; csak elég széles szeletnél */}
           {s.width >= labelThresholdPct && (
             <div className="flex h-full items-center justify-center">
-              <div className="text-white text-center drop-shadow-sm">
+              <div className="text-white text-center drop-shadow-sm whitespace-nowrap">
                 <div className="text-lg font-bold leading-none">{Math.round(s.width)}%</div>
                 <div className="text-xs leading-none">{s.name}</div>
               </div>

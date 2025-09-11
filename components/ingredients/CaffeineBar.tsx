@@ -21,7 +21,7 @@ export default function CaffeineBar({ value, color }: Props) {
     >
       {pct > 0 && (
         <div
-          className="absolute left-0 top-0 h-full"
+          className="absolute left-0 top-0 h-full rounded-l-xl"
           style={{ width: `${pct}%`, backgroundColor: barColor }}
         />
       )}
@@ -34,7 +34,7 @@ export default function CaffeineBar({ value, color }: Props) {
           className="absolute top-1/2 -translate-y-1/2 text-xs font-bold whitespace-nowrap"
           style={{
             left: `${pct}%`,
-            color: barColor,
+            color: showInside ? "#fff" : barColor,
             transform: showInside
               ? "translate(-100%, -50%)"
               : "translate(4px, -50%)",

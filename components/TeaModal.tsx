@@ -52,9 +52,7 @@ export default function TeaModal({ tea, onClose }: Props) {
           <div className={styles.spacer} />
           <TeaDashboard tea={tea} colorDark={colorDark} />
           <div className={styles.spacer} />
-          <MoreInfoPanel text={tea.when ?? ''} colorDark={colorDark} />
-          <div className={styles.spacer} />
-          <PrepServePanel tea={tea} />
+          <PrepServePanel tea={tea} colorDark={colorDark} infoText={tea.when ?? ''} />
         </div>
         {/*
           END MODAL CONTENT
