@@ -19,6 +19,9 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
 
   return (
     <section className={styles.panelElement} data-panel="tea-dashboard">
+      <div className={styles.caffeineLabel} style={{ background: colorDark }}>
+        <CaffeineBar value={caffeine} color={colorDark} />
+      </div>
       <div style={{ display:'grid', gap:24 }}>
         <div style={{ display:'grid', gridTemplateColumns:'3fr 1fr', gap:24 }}>
           <div className={styles.panelBox}>
@@ -28,10 +31,7 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
             <TasteChart tea={tea} size={240} />
           </div>
         </div>
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 2fr', gap:24 }}>
-          <div className={styles.panelBox}>
-            <CaffeineBar value={caffeine} color={colorDark} />
-          </div>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 2fr', gap:24 }}>
           <div className={styles.panelBox}>
             <FocusChart data={focusData} size={240} colorDark={colorDark} />
           </div>
