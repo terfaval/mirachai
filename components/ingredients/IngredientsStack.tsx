@@ -1,3 +1,5 @@
+// IngredientsStack.tsx
+
 import React from "react";
 import { Ingredient } from "../../src/types/tea";
 import { getIngredientColor } from "../../utils/colorMap";
@@ -6,14 +8,6 @@ interface Props {
   ingredients: Ingredient[];
 }
 
-/**
- * Vizuál logika:
- * 1) Felül: vízszintes, arányos, színes sávok (stacked bar), felirat nélkül.
- * 2) Alul: egy 1-soros, N-oszlopos grid (N = szeletek száma), mindegyik cella középre zárt
- *    két soros labellel: 1. sor a % (nagyobb), 2. sor a hozzávaló neve (kisebb).
- *
- * Finomhangolás jelölve: // [TUNE] ...
- */
 export default function IngredientsStack({ ingredients }: Props) {
   const safe = Array.isArray(ingredients) ? ingredients : [];
 
@@ -25,77 +19,59 @@ export default function IngredientsStack({ ingredients }: Props) {
     }
     return map;
   }, new Map<string, number>());
-
   const total = Array.from(grouped.values()).reduce((s, v) => s + v, 0) || 1;
 
   const slices = Array.from(grouped.entries()).map(([name, rate]) => ({
     name,
     ratePct: (rate / total) * 100,
-    // ha az Ingredient-nek van `type` mezője, ide beadhatod második paraméterként:
-    color: getIngredientColor(name /*, it.type */), // a colorScale-ből jön a HEX. [forrás] :contentReference[oaicite:2]{index=2}
+    color: getIngredientColor(name),
   }));
 
+  // egyszerű kontrasztos szövegszín (FINOMHANG: küszöböt állíthatod)
+  const textColorFor = (hex?: string) => {
+    if (!hex || !/^#/.test(hex)) return "#fff";
+    const c = hex.slice(1);
+    const n = c.length === 3 ? c.split("").map((ch) => ch + ch).join("") : c;
+    const r = parseInt(n.slice(0, 2), 16);
+    const g = parseInt(n.slice(2, 4), 16);
+    const b = parseInt(n.slice(4, 6), 16);
+    const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+    return lum > 0.55 ? "#111" : "#fff";
+  };
+
   return (
-    <figure aria-label="Hozzávalók arányai és címkék" className="w-full">
-      {/* Felső: stacked bar */}
+    <div className="flex flex-col justify-center w-full h-full">
+      {/* Sávdiagram */}
       <div
-        className="flex w-full h-16 overflow-hidden rounded-r-xl"
+        className="flex w-full h-16 overflow-hidden bg-gray-200 rounded-l-xl rounded-r-xl"
         role="img"
         aria-label="Hozzávalók aránya (összesen 100%)"
-        // [TUNE] háttérszín a 'hézagok' érzéshez
-        style={{ backgroundColor: "#E5E7EB" }} // tailwind bg-gray-200
       >
-        {slices.map((s) => (
+        {slices.map((s, idx) => (
           <div
-            key={s.name}
-            className="h-full"
-            style={{
-              width: `${s.ratePct}%`,
-              backgroundColor: s.color,
-              // [TUNE] ha szeretnél minimális szelet-szélességet adni:
-              minWidth: s.ratePct > 0 ? 0 : 0,
-            }}
-            aria-label={`${s.name}: ${Math.round(s.ratePct)}%`}
-            title={`${s.name}: ${Math.round(s.ratePct)}%`}
+            key={s.name + idx}
+            className="relative h-full"
+            style={{ width: `${s.ratePct}%`, backgroundColor: s.color }}
           />
         ))}
       </div>
 
-      {/* Alsó: label-sor (egyenlő távolság, középre zárt) */}
-      <figcaption
-        className="mt-2 grid gap-2"
-        style={{
-          gridTemplateColumns: `repeat(${Math.max(slices.length, 1)}, minmax(0, 1fr))`,
-        }}
+      {/* Labelek a sáv alatt, egyenlő oszlopokban, középre zárva */}
+      <div
+        className="grid mt-3 gap-2"
+        style={{ gridTemplateColumns: `repeat(${Math.max(slices.length, 1)}, minmax(0, 1fr))` }}
       >
-        {slices.map((s) => (
-          <div key={`label-${s.name}`} className="text-center leading-tight">
-            {/* [TUNE] %-sor tipó: méret, súly, betűköz, sortáv */}
-            <div
-              className="font-semibold"
-              style={{
-                fontSize: 16, // [TUNE] nagyobb szám = nagyobb %-szöveg
-                lineHeight: 1.0,
-                // [TUNE] színkontraszthoz módosítható, pl. mindig sötét:
-                color: "#111827",
-              }}
-            >
+        {slices.map((s, idx) => (
+          <div key={"label-" + s.name + idx} className="text-center leading-tight">
+            {/* FINOMHANG: % méret/weight itt állítható */}
+            <div className="font-semibold text-base md:text-lg">
               {Math.round(s.ratePct)}%
             </div>
-            {/* [TUNE] név-sor tipó: méret, súly, szín */}
-            <div
-              className="truncate"
-              style={{
-                fontSize: 12, // [TUNE] kisebb, mint a fenti sor
-                color: "#374151",
-              }}
-              title={s.name}
-            >
-              {s.name}
-            </div>
+            {/* FINOMHANG: név mérete/betűköz, sor-köz itt állítható */}
+            <div className="text-xs md:text-sm opacity-90">{s.name}</div>
           </div>
         ))}
-      </figcaption>
-    </figure>
+      </div>
+    </div>
   );
 }

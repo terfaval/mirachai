@@ -1,3 +1,5 @@
+// colorMap.ts — robusztus feloldás
+
 import colorScale from '../data/colorScale.json';
 import teaColorLabels from '../data/teaColorLabels.json';
 
@@ -24,45 +26,53 @@ const COLOR_LABEL_MAP: Record<string, string> = Object.fromEntries(
   Object.entries(teaColorLabels as Record<string, string>).map(([k, v]) => [norm(k), String(v)])
 );
 
-// --- teaNév → hex (ha van ilyen a colorScale végén) ---
+// --- teaNév → hex (a colorScale legvégén lévő tömbből) ---
 const TEA_COLOR_MAP: Record<string, string> = (() => {
-  if (Array.isArray(colorScale)) {
-    const tail = (colorScale as any)[(colorScale as any).length - 1];
-    if (Array.isArray(tail)) {
-      return Object.fromEntries(
-        (tail as { tea: string; color: string }[]).map((t) => [t.tea, t.color.slice(0, 7)])
-      );
-    }
-  }
-  return {};
+  if (!Array.isArray(colorScale)) return {};
+  // FINOMHANG: ha később több ilyen tömb is lesz, itt lehet szűrni mezőkre
+  const arr =
+    (colorScale as any[]).slice().reverse()
+      .find((x) => Array.isArray(x) && x.every((t: any) => t && 'tea' in t && 'color' in t)) || [];
+  return Object.fromEntries(
+    (arr as any[]).map((t: any) => [String(t.tea), String(t.color).slice(0, 7)])
+  );
 })();
 
-// --- hozzávaló-színek és típusok: változatlanul hagyhatod, ha használod --- //
+// --- összetevő-típus (leaf/flower/fruit/...) → hex ---
 const INGREDIENT_TYPE_COLORS: Record<string, string> = (() => {
-  if (Array.isArray(colorScale)) {
-    const secondLast = (colorScale as any)[(colorScale as any).length - 2];
-    if (secondLast && typeof secondLast === 'object' && !Array.isArray(secondLast)) {
-      return Object.fromEntries(
-        Object.entries(secondLast).map(([k, v]: [string, any]) => [norm(k), String(v)])
+  if (!Array.isArray(colorScale)) return {};
+  const obj =
+    (colorScale as any[]).slice().reverse()
+      .find(
+        (x) =>
+          x && !Array.isArray(x) && typeof x === 'object' &&
+          // kulcsok alapján azonosítjuk
+          ('leaf' in x || 'flower' in x || 'fruit' in x || 'root' in x || 'stem' in x || 'other' in x)
       );
-    }
-  }
-  return {};
+  return obj
+    ? Object.fromEntries(Object.entries(obj as Record<string, string>).map(([k, v]) => [norm(k), String(v)]))
+    : {};
 })();
 
+// --- összetevő-név → { hex, type } ---
 const INGREDIENT_INFO_MAP: Record<string, { hex: string; type?: string }> = (() => {
-  if (Array.isArray(colorScale)) {
-    const last = (colorScale as any)[(colorScale as any).length - 1];
-    if (last && typeof last === 'object' && !Array.isArray(last)) {
-      return Object.fromEntries(
-        Object.entries(last).map(([name, val]: [string, any]) => [
-          norm(name),
-          { hex: String((val as any).hex), type: (val as any).type as string | undefined },
-        ])
+  if (!Array.isArray(colorScale)) return {};
+  const obj =
+    (colorScale as any[]).slice().reverse()
+      .find(
+        (x) =>
+          x && !Array.isArray(x) && typeof x === 'object' &&
+          // értékek között van {hex, ...}
+          Object.values(x as Record<string, any>).some((v: any) => v && typeof v === 'object' && 'hex' in v)
       );
-    }
-  }
-  return {};
+  return obj
+    ? Object.fromEntries(
+        Object.entries(obj as Record<string, any>).map(([name, val]) => [
+          norm(name),
+          { hex: String(val.hex), type: val.type ? String(val.type) : undefined },
+        ])
+      )
+    : {};
 })();
 
 const INGREDIENT_COLOR_MAP: Record<string, string> = Object.fromEntries(
@@ -70,22 +80,20 @@ const INGREDIENT_COLOR_MAP: Record<string, string> = Object.fromEntries(
 );
 
 // --- FŐ: tea szín feloldása ---
-// elfogad: hex | teaNév | magyar címke
 export function getTeaColor(input: string): string {
   if (!input) return DEFAULT_COLOR;
   const raw = input.trim();
   if (isHex(raw)) return raw;
-  if (TEA_COLOR_MAP[raw]) return TEA_COLOR_MAP[raw];
+  if (TEA_COLOR_MAP[raw]) return TEA_COLOR_MAP[raw]; // FINOMHANG: ha normolni kellene, itt lehet
   const byLabel = COLOR_LABEL_MAP[norm(raw)];
   if (byLabel) return byLabel;
   return DEFAULT_COLOR;
 }
 
-// opcionális direkt címke-függvény
 export const getTeaColorByLabel = (label?: string) =>
   label ? COLOR_LABEL_MAP[norm(label)] ?? DEFAULT_COLOR : DEFAULT_COLOR;
 
-// --- ingredient, category, taste: maradhatnak, ha használod ---
+// --- ingredient, category, taste: változatlan API, de most már lesz adat ---
 export function getIngredientColor(name: string, type?: string): string {
   const key = norm(name);
   const info = INGREDIENT_INFO_MAP[key];
@@ -144,7 +152,7 @@ export function getTasteColor(taste: string, variant: ColorVariant = 'main'): st
     const entry = (colorScale as ColorEntry[]).find((c) => c.category === key);
     if (entry) return entry?.[variant] ?? entry?.main ?? DEFAULT_COLOR;
   }
-  const tasteColors: Record<string, string> = {
+  const fallback: Record<string, string> = {
     taste_friss: '#4CAF50',
     taste_édeskés: '#FFB74D',
     taste_savanykás: '#FF7043',
@@ -154,7 +162,7 @@ export function getTasteColor(taste: string, variant: ColorVariant = 'main'): st
     taste_földes: '#6D4C41',
     taste_kesernyés: '#455A64',
     taste_csípős: '#F44336',
-    taste_umami: '#7986CB'
+    taste_umami: '#7986CB',
   };
-  return tasteColors[key] ?? DEFAULT_COLOR;
+  return fallback[key] ?? DEFAULT_COLOR;
 }
