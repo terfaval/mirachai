@@ -57,6 +57,7 @@ export default function TasteChart({
   const labelRadius = radius + 30;
   const base = pointRadiusBase;
   const POINT_RADII = [base * 1.5, base, base / 2];
+  const placeholderRadius = step * 0.5;
 
   return (
     <div className={styles.container}>
@@ -70,24 +71,41 @@ export default function TasteChart({
       >
         {allEntries.map((p) => (
           <g key={p.key}>
+            <line
+              x1={cx}
+              y1={cy}
+              x2={cx + Math.cos(p.angle) * radius}
+              y2={cy + Math.sin(p.angle) * radius}
+              stroke="#ccc"
+              strokeWidth={1}
+              opacity={0.3}
+            />
             {[1, 2, 3].map((lvl) => {
               const r = step * lvl;
               const x = cx + Math.cos(p.angle) * r;
               const y = cy + Math.sin(p.angle) * r;
               const active = lvl <= p.value;
-              const pr = active ? POINT_RADII[lvl - 1] : 1.1;
-              const opacity = active ? 0.85 : 0.15;
+              const pr = active ? POINT_RADII[lvl - 1] : 3;
+              const fill = active ? p.color : '#ccc';
+              const opacity = active ? 0.85 : 1;
               return (
                 <circle
                   key={lvl}
                   cx={x}
                   cy={y}
                   r={pr}
-                  fill={p.color}
+                  fill={fill}
                   fillOpacity={opacity}
                 />
               );
             })}
+            <circle
+              cx={cx + Math.cos(p.angle) * placeholderRadius}
+              cy={cy + Math.sin(p.angle) * placeholderRadius}
+              r={10}
+              className={styles.placeholder}
+              data-icon-slot={p.key}
+            />
           </g>
         ))}
         {showLabels &&

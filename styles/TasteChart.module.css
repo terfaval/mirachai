@@ -38,3 +38,8 @@
 .chart {
   flex: 0 0 auto;
 }
+
+.placeholder {
+  stroke: #ccc;
+  fill: none;
+}
