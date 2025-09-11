@@ -19,12 +19,17 @@ export default function Page() {
     : null;
 
   return (
-    <main style={{padding:24, fontFamily:"system-ui"}}>
+    <main className="p-6 font-sans">
       <h1>Brew Playground</h1>
-      <p><b>Tea:</b> {tea.tea_name} — <b>Profil:</b> {profile.label}</p>
+      <p>
+        <b>Tea:</b> <span className="font-display">{tea.tea_name}</span> —
+        <b>Profil:</b> {profile.label}
+      </p>
       <p><b>Térfogat:</b> {volumeMl} ml</p>
       <p><b>Arány:</b> {profile.ratio_g_per_100ml} g / 100 ml</p>
-      <p><b>Tea mennyiség:</b> {grams.toFixed(1)} g {tsp ? `(~${tsp} tk)` : ""}</p>
+      <p>
+        <b>Tea mennyiség:</b> {grams.toFixed(1)} g {tsp ? `(~${tsp} tk)` : ""}
+      </p>
       <p><b>Hőfok:</b> {profile.water_temp_c} °C</p>
       <p><b>Timer induló:</b> {timer ? `${Math.round(timer)} mp` : "—"}</p>
 
