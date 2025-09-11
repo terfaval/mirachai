@@ -45,8 +45,8 @@ export default function ServeModes({ tea }: Props) {
             className="absolute inset-0 opacity-20"
             style={{
               backgroundColor: m.color,
-              mask: `url(${m.svg}) center/60% no-repeat`,
-              WebkitMask: `url(${m.svg}) center/60% no-repeat`,
+              mask: `url(${m.svg}) no-repeat center / 60%`,
+              WebkitMask: `url(${m.svg}) no-repeat center / 60%`,
             }}
           />
           <span className="relative font-bold" style={{ color: m.color }}>

@@ -1,4 +1,5 @@
 import colorScale from '../data/colorScale.json';
+import teaColorLabels from '../data/teaColorLabels.json';
 
 interface ColorEntry {
   category: string;
@@ -12,44 +13,31 @@ interface ColorEntry {
 
 const DEFAULT_COLOR = '#6B4226';
 
-// név normalizálás: kisbetű, trim, ékezet nélkül
-function norm(s: string): string {
-  return s
-    .trim()
-    .toLowerCase()
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '');
-}
+const norm = (s: string) =>
+  s.trim().toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
 
 type ColorVariant = keyof Omit<ColorEntry, 'category'>;
-
 const isHex = (s?: string) => !!s && /^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(s);
 
-// --- ÚJ: címke → hex map, ha a colorScale JSON sima objektum (címkék) ---
-const COLOR_LABEL_MAP: Record<string, string> = (() => {
-  // ha az importált colorScale *nem* tömb, akkor címke→hex objektum
-  if (colorScale && !Array.isArray(colorScale) && typeof colorScale === 'object') {
-    return Object.fromEntries(
-      Object.entries(colorScale as Record<string, string>).map(([k, v]) => [norm(k), String(v)])
-    );
-  }
-  return {};
-})();
+// --- címke → hex (külön JSON-ból) ---
+const COLOR_LABEL_MAP: Record<string, string> = Object.fromEntries(
+  Object.entries(teaColorLabels as Record<string, string>).map(([k, v]) => [norm(k), String(v)])
+);
 
-// --- EDDIGI: tea-név → hex (ha a colorScale egy tömb végi blokkot tartalmaz) ---
+// --- teaNév → hex (ha van ilyen a colorScale végén) ---
 const TEA_COLOR_MAP: Record<string, string> = (() => {
   if (Array.isArray(colorScale)) {
-    const last = (colorScale as any)[(colorScale as any).length - 1];
-    if (Array.isArray(last)) {
+    const tail = (colorScale as any)[(colorScale as any).length - 1];
+    if (Array.isArray(tail)) {
       return Object.fromEntries(
-        (last as { tea: string; color: string }[]).map((t) => [t.tea, t.color.slice(0, 7)])
+        (tail as { tea: string; color: string }[]).map((t) => [t.tea, t.color.slice(0, 7)])
       );
     }
   }
   return {};
 })();
 
-// type alapú színek (leaf/flower/fruit/...)
+// --- hozzávaló-színek és típusok: változatlanul hagyhatod, ha használod --- //
 const INGREDIENT_TYPE_COLORS: Record<string, string> = (() => {
   if (Array.isArray(colorScale)) {
     const secondLast = (colorScale as any)[(colorScale as any).length - 2];
@@ -62,7 +50,6 @@ const INGREDIENT_TYPE_COLORS: Record<string, string> = (() => {
   return {};
 })();
 
-// konkrét hozzávaló -> {hex, type}
 const INGREDIENT_INFO_MAP: Record<string, { hex: string; type?: string }> = (() => {
   if (Array.isArray(colorScale)) {
     const last = (colorScale as any)[(colorScale as any).length - 1];
@@ -82,22 +69,23 @@ const INGREDIENT_COLOR_MAP: Record<string, string> = Object.fromEntries(
   Object.entries(INGREDIENT_INFO_MAP).map(([k, v]) => [k, v.hex])
 );
 
-// --- FRISSÍTETT: elfogad tea-nevet, címkét *vagy* hexet ---
+// --- FŐ: tea szín feloldása ---
+// elfogad: hex | teaNév | magyar címke
 export function getTeaColor(input: string): string {
   if (!input) return DEFAULT_COLOR;
   const raw = input.trim();
-  if (isHex(raw)) return raw;                           // már hex
-  if (TEA_COLOR_MAP[raw]) return TEA_COLOR_MAP[raw];    // tea-név map
-  const byLabel = COLOR_LABEL_MAP[norm(raw)];           // címke map (pl. „halvány arany-barnás”)
+  if (isHex(raw)) return raw;
+  if (TEA_COLOR_MAP[raw]) return TEA_COLOR_MAP[raw];
+  const byLabel = COLOR_LABEL_MAP[norm(raw)];
   if (byLabel) return byLabel;
   return DEFAULT_COLOR;
 }
 
-// opcionális: direkt címke → hex
-export function getTeaColorByLabel(label: string): string {
-  return COLOR_LABEL_MAP[norm(label)] ?? DEFAULT_COLOR;
-}
+// opcionális direkt címke-függvény
+export const getTeaColorByLabel = (label?: string) =>
+  label ? COLOR_LABEL_MAP[norm(label)] ?? DEFAULT_COLOR : DEFAULT_COLOR;
 
+// --- ingredient, category, taste: maradhatnak, ha használod ---
 export function getIngredientColor(name: string, type?: string): string {
   const key = norm(name);
   const info = INGREDIENT_INFO_MAP[key];
@@ -119,33 +107,37 @@ export function getCategoryColor(category: string, variant: ColorVariant = 'main
   const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
   return entry?.[variant] ?? entry?.main ?? DEFAULT_COLOR;
 }
+
 export function getLightColor(category: string, variant: ColorVariant = 'light'): string {
   if (!Array.isArray(colorScale)) return DEFAULT_COLOR;
   const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
   return entry?.[variant] ?? entry?.light ?? DEFAULT_COLOR;
 }
+
 export function getDarkColor(category: string, variant: ColorVariant = 'dark'): string {
   if (!Array.isArray(colorScale)) return DEFAULT_COLOR;
   const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
   return entry?.[variant] ?? entry?.dark ?? DEFAULT_COLOR;
 }
+
 export function getComplementaryColor(category: string, variant: ColorVariant = 'complementary'): string {
   if (!Array.isArray(colorScale)) return DEFAULT_COLOR;
   const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
   return entry?.[variant] ?? entry?.complementary ?? DEFAULT_COLOR;
 }
+
 export function getAlternativeColor(category: string, variant: ColorVariant = 'alternative'): string {
   if (!Array.isArray(colorScale)) return DEFAULT_COLOR;
   const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
   return entry?.[variant] ?? entry?.alternative ?? DEFAULT_COLOR;
 }
+
 export function getWhiteColor(category: string, variant: ColorVariant = 'white'): string {
   if (!Array.isArray(colorScale)) return DEFAULT_COLOR;
   const entry = (colorScale as ColorEntry[]).find((c) => c.category === category);
   return entry?.[variant] ?? entry?.white ?? DEFAULT_COLOR;
 }
 
-// taste színek maradnak
 export function getTasteColor(taste: string, variant: ColorVariant = 'main'): string {
   const key = taste.startsWith('taste_') ? taste : `taste_${taste}`;
   if (Array.isArray(colorScale)) {

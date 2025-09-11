@@ -17,10 +17,11 @@ export default function IngredientsStack({ ingredients }: Props) {
     }
     return map;
   }, new Map<string, number>());
+  const total = Array.from(grouped.values()).reduce((s, v) => s + v, 0) || 1;
 
   const slices = Array.from(grouped.entries()).map(([name, rate]) => ({
     name,
-    rate,
+    rate: (rate / total) * 100,
     color: getIngredientColor(name),
   }));
 
@@ -37,7 +38,7 @@ export default function IngredientsStack({ ingredients }: Props) {
           style={{ width: `${s.rate}%`, backgroundColor: s.color }}
         >
           <div className="absolute bottom-0 left-0 p-1 text-white drop-shadow-sm whitespace-nowrap">
-            <div className="text-lg font-bold leading-none">{s.rate}%</div>
+            <div className="text-lg font-bold leading-none">{Math.round(s.rate)}%</div>
             <div className="text-sm leading-none">{s.name}</div>
           </div>
         </div>
