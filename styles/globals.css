@@ -1,12 +1,10 @@
 /* globals.css */
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Titan+One&display=swap');
-
 html, body {
   padding: 0;
   margin: 0;
-  font-family: 'Lato', sans-serif !important;
+  font-family: 'Lato', sans-serif;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
