@@ -9,8 +9,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Lato", "sans-serif"],
-        display: ["Titan One", "cursive"],
+        lato: ["Lato", "sans-serif"],
+        titan: ["Titan One", "cursive"],
       },
     },
   },
