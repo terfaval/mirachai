@@ -1,0 +1,6731 @@
+[
+  {
+    "tea_slug": "szolid-optimizmus",
+    "tea_name": "Szolid Optimizmus",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kompakt-der",
+    "tea_name": "Kompakt Derű",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "r-vid-kit-r",
+    "tea_name": "Rövid Kitérő",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 90,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 240,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "bar-ts-gos-k-d",
+    "tea_name": "Barátságos Köd",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "finom-hangulat",
+    "tea_name": "Finom Hangulat",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "mini-nnep",
+    "tea_name": "Mini Ünnep",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kis-id",
+    "tea_name": "Kis Idő",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "egyszer-megold-s",
+    "tea_name": "Egyszerű Megoldás",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "apr-z-r-s",
+    "tea_name": "Apró Zárás",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "lass-ind-t-s",
+    "tea_name": "Lassú Indítás",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "oolong-harm-nia",
+    "tea_name": "Oolong Harmónia",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.0
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 90,
+        "ratio_g_per_100ml": 0.8,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.0,
+          "tablespoon_g": 6.0
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "gongfu",
+        "label": "Gong fu (többszöri rövid felöntés)",
+        "equipment": [
+          {
+            "code": "gaiwan",
+            "howto_ref": "gaiwan"
+          }
+        ],
+        "water_temp_c": 95,
+        "multi_infusions": [
+          15,
+          15,
+          20,
+          25,
+          30,
+          40,
+          50,
+          60
+        ],
+        "ratio_g_per_100ml": 6.0,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.0,
+          "tablespoon_g": 6.0
+        },
+        "notes_per_step": {
+          "amount": "Magasabb levél:víz arány a rövid infúziókhoz.",
+          "temp": "Puerh esetén öblítés 5–10 mp az első felöntés előtt.",
+          "steep": "Minden kör után TELJES leöntés szervkannába.",
+          "finish": "Figyeld az ízcsúcsot; amikor halványul, növeld 5–10 mp-vel."
+        },
+        "finish_message": "Szép ív! Jegyezd fel melyik felöntés ízlett legjobban.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "a végén, ha szeretnéd"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "feh-r-holdf-ny",
+    "tea_name": "Fehér Holdfény",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 0.9
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 80,
+        "ratio_g_per_100ml": 0.36,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 0.9,
+          "tablespoon_g": 2.7
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.22,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 0.9,
+          "tablespoon_g": 2.7
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "krizant-m-harmat",
+    "tea_name": "Krizantém Harmat",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 80,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 120,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "h-jicha-nyugalom",
+    "tea_name": "Hōjicha Nyugalom",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kukicha-erdeje",
+    "tea_name": "Kukicha Erdeje",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 80,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 120,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "tulsi-chai",
+    "tea_name": "Tulsi Chai",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.2
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.88,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "essence",
+        "label": "Esszencia / koncentrátum",
+        "equipment": [
+          {
+            "code": "french_press",
+            "howto_ref": "french_press"
+          },
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          }
+        ],
+        "water_temp_c": 95,
+        "target_volume_ml_default": 60,
+        "ratio_g_per_100ml": 10.0,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Dupla–tripla erősség: kevesebb víz, több tea.",
+          "temp": "Rövid, de forró áztatás – ne forrald.",
+          "steep": "Finoman nyomd le (press), ne törd szét a leveleket.",
+          "finish": "Hígítás 1:2–1:3 vízzel/tejjel ízlés szerint."
+        },
+        "finish_message": "Esszencia kész – hígítsd és jégeld a kívánt italhoz.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "1 rész esszencia + 2 rész tej",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "szóda + lime",
+            "dose": "1:3",
+            "when": "spritz jelleghez"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "arany-chai",
+    "tea_name": "Arany Chai",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.2
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.32,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "essence",
+        "label": "Esszencia / koncentrátum",
+        "equipment": [
+          {
+            "code": "french_press",
+            "howto_ref": "french_press"
+          },
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          }
+        ],
+        "water_temp_c": 95,
+        "target_volume_ml_default": 60,
+        "ratio_g_per_100ml": 10.0,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Dupla–tripla erősség: kevesebb víz, több tea.",
+          "temp": "Rövid, de forró áztatás – ne forrald.",
+          "steep": "Finoman nyomd le (press), ne törd szét a leveleket.",
+          "finish": "Hígítás 1:2–1:3 vízzel/tejjel ízlés szerint."
+        },
+        "finish_message": "Esszencia kész – hígítsd és jégeld a kívánt italhoz.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "1 rész esszencia + 2 rész tej",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "szóda + lime",
+            "dose": "1:3",
+            "when": "spritz jelleghez"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "mez-frissess-ge",
+    "tea_name": "Mező Frissessége",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "latin-energia",
+    "tea_name": "Latin Energia",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "selyem-t",
+    "tea_name": "Selyem Út",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.2
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.88,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "essence",
+        "label": "Esszencia / koncentrátum",
+        "equipment": [
+          {
+            "code": "french_press",
+            "howto_ref": "french_press"
+          },
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          }
+        ],
+        "water_temp_c": 95,
+        "target_volume_ml_default": 60,
+        "ratio_g_per_100ml": 10.0,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Dupla–tripla erősség: kevesebb víz, több tea.",
+          "temp": "Rövid, de forró áztatás – ne forrald.",
+          "steep": "Finoman nyomd le (press), ne törd szét a leveleket.",
+          "finish": "Hígítás 1:2–1:3 vízzel/tejjel ízlés szerint."
+        },
+        "finish_message": "Esszencia kész – hígítsd és jégeld a kívánt italhoz.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "1 rész esszencia + 2 rész tej",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "szóda + lime",
+            "dose": "1:3",
+            "when": "spritz jelleghez"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "cs-sze-rend",
+    "tea_name": "Csésze Rend",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "der-s-kanyar",
+    "tea_name": "Derűs Kanyar",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "ezeregy-r-zsa",
+    "tea_name": "Ezeregy Rózsa",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "tiszta-v-zlat",
+    "tea_name": "Tiszta Vázlat",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kar-csonyi-szilva",
+    "tea_name": "Karácsonyi Szilva",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.5
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.5,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.9,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "reggeli-restart",
+    "tea_name": "Reggeli Restart",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "nappfordul-f-ny",
+    "tea_name": "Nappforduló Fény",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "erd-szelleme",
+    "tea_name": "Erdő Szelleme",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.02,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.61,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "mantra-csend",
+    "tea_name": "Mantra Csend",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "essence",
+        "label": "Esszencia / koncentrátum",
+        "equipment": [
+          {
+            "code": "french_press",
+            "howto_ref": "french_press"
+          },
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          }
+        ],
+        "water_temp_c": 95,
+        "target_volume_ml_default": 60,
+        "ratio_g_per_100ml": 10.0,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Dupla–tripla erősség: kevesebb víz, több tea.",
+          "temp": "Rövid, de forró áztatás – ne forrald.",
+          "steep": "Finoman nyomd le (press), ne törd szét a leveleket.",
+          "finish": "Hígítás 1:2–1:3 vízzel/tejjel ízlés szerint."
+        },
+        "finish_message": "Esszencia kész – hígítsd és jégeld a kívánt italhoz.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "1 rész esszencia + 2 rész tej",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "szóda + lime",
+            "dose": "1:3",
+            "when": "spritz jelleghez"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "adaptog-n-nyugalom",
+    "tea_name": "Adaptogén Nyugalom",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "anyagcsere-t-z",
+    "tea_name": "Anyagcsere Tűz",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 240,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "cs-sze-nyugi",
+    "tea_name": "Csésze Nyugi",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "sz-v-ereje",
+    "tea_name": "Szív ereje",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "r-gt-n-jobb",
+    "tea_name": "Rögtön Jobb",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kukorica-napf-ny",
+    "tea_name": "Kukorica Napfény",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 1.02,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.61,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "pu-erh-f-ldje",
+    "tea_name": "Pu-erh Földje",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.0
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.8,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.0,
+          "tablespoon_g": 6.0
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "gongfu",
+        "label": "Gong fu (többszöri rövid felöntés)",
+        "equipment": [
+          {
+            "code": "gaiwan",
+            "howto_ref": "gaiwan"
+          }
+        ],
+        "water_temp_c": 95,
+        "multi_infusions": [
+          15,
+          15,
+          20,
+          25,
+          30,
+          40,
+          50,
+          60
+        ],
+        "ratio_g_per_100ml": 6.0,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.0,
+          "tablespoon_g": 6.0
+        },
+        "notes_per_step": {
+          "amount": "Magasabb levél:víz arány a rövid infúziókhoz.",
+          "temp": "Puerh esetén öblítés 5–10 mp az első felöntés előtt.",
+          "steep": "Minden kör után TELJES leöntés szervkannába.",
+          "finish": "Figyeld az ízcsúcsot; amikor halványul, növeld 5–10 mp-vel."
+        },
+        "finish_message": "Szép ív! Jegyezd fel melyik felöntés ízlett legjobban.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "a végén, ha szeretnéd"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "chai-masala-klasszikus",
+    "tea_name": "Chai Masala Klasszikus",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.2
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.32,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "essence",
+        "label": "Esszencia / koncentrátum",
+        "equipment": [
+          {
+            "code": "french_press",
+            "howto_ref": "french_press"
+          },
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          }
+        ],
+        "water_temp_c": 95,
+        "target_volume_ml_default": 60,
+        "ratio_g_per_100ml": 10.0,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Dupla–tripla erősség: kevesebb víz, több tea.",
+          "temp": "Rövid, de forró áztatás – ne forrald.",
+          "steep": "Finoman nyomd le (press), ne törd szét a leveleket.",
+          "finish": "Hígítás 1:2–1:3 vízzel/tejjel ízlés szerint."
+        },
+        "finish_message": "Esszencia kész – hígítsd és jégeld a kívánt italhoz.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "1 rész esszencia + 2 rész tej",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "szóda + lime",
+            "dose": "1:3",
+            "when": "spritz jelleghez"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "pandan-k-kusz-lom",
+    "tea_name": "Pandan Kókusz Álom",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 90,
+        "ratio_g_per_100ml": 1.02,
+        "time_s": 240,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.61,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "apr-der",
+    "tea_name": "Apró Derű",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "nyitott-ablak",
+    "tea_name": "Nyitott Ablak",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.5
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.5,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.9,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kis-csavar",
+    "tea_name": "Kis Csavar",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "f-l-hanggal",
+    "tea_name": "Fél Hanggal",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.5
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.5,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.9,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "der-zem",
+    "tea_name": "Derű Üzem",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kanap-bar-t-sz-net",
+    "tea_name": "Kanapébarát Szünet",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "j-de-l-gz-s",
+    "tea_name": "Jáde Légzés",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 80,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 120,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "nyugodt-csavar",
+    "tea_name": "Nyugodt Csavar",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.2
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.88,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kellemes-mell-khat-s",
+    "tea_name": "Kellemes Mellékhatás",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 120,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "sakura-csend",
+    "tea_name": "Sakura Csend",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 80,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 120,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "vata-melege",
+    "tea_name": "Vata Melege",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "essence",
+        "label": "Esszencia / koncentrátum",
+        "equipment": [
+          {
+            "code": "french_press",
+            "howto_ref": "french_press"
+          },
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          }
+        ],
+        "water_temp_c": 95,
+        "target_volume_ml_default": 60,
+        "ratio_g_per_100ml": 10.0,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Dupla–tripla erősség: kevesebb víz, több tea.",
+          "temp": "Rövid, de forró áztatás – ne forrald.",
+          "steep": "Finoman nyomd le (press), ne törd szét a leveleket.",
+          "finish": "Hígítás 1:2–1:3 vízzel/tejjel ízlés szerint."
+        },
+        "finish_message": "Esszencia kész – hígítsd és jégeld a kívánt italhoz.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "1 rész esszencia + 2 rész tej",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "szóda + lime",
+            "dose": "1:3",
+            "when": "spritz jelleghez"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "pitta-r-zsa",
+    "tea_name": "Pitta Rózsa",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "essence",
+        "label": "Esszencia / koncentrátum",
+        "equipment": [
+          {
+            "code": "french_press",
+            "howto_ref": "french_press"
+          },
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          }
+        ],
+        "water_temp_c": 95,
+        "target_volume_ml_default": 60,
+        "ratio_g_per_100ml": 10.0,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Dupla–tripla erősség: kevesebb víz, több tea.",
+          "temp": "Rövid, de forró áztatás – ne forrald.",
+          "steep": "Finoman nyomd le (press), ne törd szét a leveleket.",
+          "finish": "Hígítás 1:2–1:3 vízzel/tejjel ízlés szerint."
+        },
+        "finish_message": "Esszencia kész – hígítsd és jégeld a kívánt italhoz.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "1 rész esszencia + 2 rész tej",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "szóda + lime",
+            "dose": "1:3",
+            "when": "spritz jelleghez"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "marokk-i-napf-ny",
+    "tea_name": "Marokkói Napfény",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "perzsa-r-zsa-lom",
+    "tea_name": "Perzsa Rózsaálom",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.2
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 90,
+        "ratio_g_per_100ml": 0.88,
+        "time_s": 240,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "alpesi-er",
+    "tea_name": "Alpesi Erő",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "skandin-v-bogy-mez",
+    "tea_name": "Skandináv Bogyómező",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "afrikai-naplemente",
+    "tea_name": "Afrikai Naplemente",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.5
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.0,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.6,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "sivatagi-szell",
+    "tea_name": "Sivatagi Szellő",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "andoki-f-ny",
+    "tea_name": "Andoki Fény",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 90,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 240,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "amazonas-z-ldje",
+    "tea_name": "Amazonas Zöldje",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 90,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 240,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kis-r-seg-t-s",
+    "tea_name": "Kis Rásegítés",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kellemes-temp",
+    "tea_name": "Kellemes Tempó",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kis-der",
+    "tea_name": "Kis Derű",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "meg-rdemelt-sz-net",
+    "tea_name": "Megérdemelt Szünet",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 90,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 240,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "tiszta-hang",
+    "tea_name": "Tiszta Hang",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "nyitott-jegy",
+    "tea_name": "Nyitott Jegy",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.0
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 80,
+        "ratio_g_per_100ml": 0.8,
+        "time_s": 60,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.0,
+          "tablespoon_g": 6.0
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.48,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.0,
+          "tablespoon_g": 6.0
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "apr-k-nyelem",
+    "tea_name": "Apró Kényelem",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "mini-csoda",
+    "tea_name": "Mini Csoda",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "bar-ts-gos-z-r-s",
+    "tea_name": "Barátságos Zárás",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "apr-kikapcs",
+    "tea_name": "Apró Kikapcs",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "rejtett-tartal-k",
+    "tea_name": "Rejtett Tartalék",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.5
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.5,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.9,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.5,
+          "tablespoon_g": 7.5
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "k-nnyed-kanyar",
+    "tea_name": "Könnyed Kanyar",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "bels-mosoly",
+    "tea_name": "Belső Mosoly",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "megnyugv-id",
+    "tea_name": "Megnyugvó Idő",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "der-s-kit-r",
+    "tea_name": "Derűs Kitérő",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "t-l-l-csomag",
+    "tea_name": "Túlélőcsomag",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "alap-der",
+    "tea_name": "Alap Derű",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "lass-tott-d-lut-n",
+    "tea_name": "Lassított Délután",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "v-ratlan-mosoly",
+    "tea_name": "Váratlan Mosoly",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 90,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 240,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "tiszta-perc",
+    "tea_name": "Tiszta Perc",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "essence",
+        "label": "Esszencia / koncentrátum",
+        "equipment": [
+          {
+            "code": "french_press",
+            "howto_ref": "french_press"
+          },
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          }
+        ],
+        "water_temp_c": 95,
+        "target_volume_ml_default": 60,
+        "ratio_g_per_100ml": 10.0,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Dupla–tripla erősség: kevesebb víz, több tea.",
+          "temp": "Rövid, de forró áztatás – ne forrald.",
+          "steep": "Finoman nyomd le (press), ne törd szét a leveleket.",
+          "finish": "Hígítás 1:2–1:3 vízzel/tejjel ízlés szerint."
+        },
+        "finish_message": "Esszencia kész – hígítsd és jégeld a kívánt italhoz.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "1 rész esszencia + 2 rész tej",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "szóda + lime",
+            "dose": "1:3",
+            "when": "spritz jelleghez"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kellemes-p-lya",
+    "tea_name": "Kellemes Pálya",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 420,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "bar-ts-gos-fordulat",
+    "tea_name": "Barátságos Fordulat",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 90,
+        "ratio_g_per_100ml": 0.72,
+        "time_s": 240,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.43,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "kompakt-id",
+    "tea_name": "Kompakt Idő",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "finom-reset",
+    "tea_name": "Finom Reset",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.8
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 1.08,
+        "time_s": 360,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "1–1.5 tk / 250 ml",
+            "when": "áztatás után"
+          },
+          {
+            "hint": "citromlé",
+            "dose": "5 ml / 250 ml",
+            "when": "tálaláskor"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.65,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.8,
+          "tablespoon_g": 5.4
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "finom-kikapcs",
+    "tea_name": "Finom Kikapcs",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 1.7
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 85,
+        "ratio_g_per_100ml": 0.68,
+        "time_s": 180,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      },
+      {
+        "profile_id": "cold_brew",
+        "label": "Cold brew (hideg áztatás)",
+        "equipment": [
+          {
+            "code": "coldbrew_bottle",
+            "howto_ref": "coldbrew_bottle"
+          }
+        ],
+        "water_temp_c": 4,
+        "ratio_g_per_100ml": 0.41,
+        "time_h": "6–12",
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 1.7,
+          "tablespoon_g": 5.1
+        },
+        "notes_per_step": {
+          "amount": "Hideghez picit nagyobb adagot használunk.",
+          "temp": "Hűtőben áztasd – szobahőn ne hagyd.",
+          "steep": "Idő felénél óvatosan rázd át a palackot.",
+          "finish": "Szűrés után 48 órán belül fogyaszd."
+        },
+        "finish_message": "Jégen az igazi – toppantsd meg 1–2 jégkockával.",
+        "flavor_suggestions": [
+          {
+            "hint": "narancshéj",
+            "dose": "1 csík / 500 ml",
+            "when": "áztatás elején"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tea_slug": "nnep-zamata",
+    "tea_name": "Ünnep Zamata",
+    "grams_per_tsp": {
+      "measured": null,
+      "estimated": 2.2
+    },
+    "profiles": [
+      {
+        "profile_id": "hot_standard",
+        "label": "Hagyományos forró áztatás",
+        "equipment": [
+          {
+            "code": "teapot",
+            "howto_ref": "teapot"
+          },
+          {
+            "code": "infuser",
+            "howto_ref": "infuser"
+          }
+        ],
+        "water_temp_c": 95,
+        "ratio_g_per_100ml": 0.88,
+        "time_s": 300,
+        "rounding_g": 0.1,
+        "spoon_equiv": {
+          "teaspoon_g": 2.2,
+          "tablespoon_g": 6.6000000000000005
+        },
+        "notes_per_step": {
+          "amount": "Mérd grammra – kanál csak közelítő (~).",
+          "temp": "Előmelegített bögre/kanna javítja az ízt.",
+          "steep": "Fedő alatt áztasd a teljes időt.",
+          "finish": "Finom szűrés, majd 1 perc pihentetés tálalás előtt."
+        },
+        "finish_message": "Kész! A csésze most a legkerekebb.",
+        "flavor_suggestions": [
+          {
+            "hint": "tej vagy növényi ital",
+            "dose": "50–120 ml / 250 ml",
+            "when": "készre áztatás után"
+          },
+          {
+            "hint": "cukorszirup",
+            "dose": "5–10 ml / 250 ml",
+            "when": "tálaláskor"
+          },
+          {
+            "hint": "méz",
+            "dose": "0.5–1 tk / 250 ml",
+            "when": "áztatás után"
+          }
+        ]
+      }
+    ]
+  }
+]

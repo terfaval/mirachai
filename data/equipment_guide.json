@@ -1,0 +1,254 @@
+[
+  {
+    "code": "teapot",
+    "name": "Teáskanna",
+    "desc": "Általános, kényelmes forró áztatáshoz.",
+    "capacity_ml_range": [
+      300,
+      1000
+    ],
+    "best_methods": [
+      "hot_standard",
+      "essence"
+    ],
+    "best_tea_types": [
+      "fekete",
+      "herbál",
+      "oolong",
+      "puerh"
+    ],
+    "steps": [
+      "Előmelegítés: önts forró vizet a kannába, 10–15 mp, majd öntsd ki.",
+      "Adagolás: mérd ki a teát (gramm), vagy ~kanállal ha nincs mérleg.",
+      "Felöntés: öntsd rá a szükséges hőfokú vizet.",
+      "Áztatás: fedő alatt a megadott időig.",
+      "Szervírozás: finoman önts, ne hagyd állni a kifőtt leveleken."
+    ],
+    "do": [
+      "Szűrt víz használata",
+      "Előmelegítés",
+      "Pontosan időzíteni"
+    ],
+    "dont": [
+      "Ne forrald újra sokszor a vizet",
+      "Ne tartsd a kifőtt leveleken"
+    ],
+    "cleaning": "Öblítsd ki melegen, mosogatószert ritkán használj; szárítsd nyitott tetővel."
+  },
+  {
+    "code": "infuser",
+    "name": "Bögrés szűrő / infuser",
+    "desc": "Gyors egyadagos megoldás bögréhez.",
+    "capacity_ml_range": [
+      250,
+      400
+    ],
+    "best_methods": [
+      "hot_standard"
+    ],
+    "best_tea_types": [
+      "zöld",
+      "fekete",
+      "herbál"
+    ],
+    "steps": [
+      "Helyezd az infusert az előmelegített bögrébe.",
+      "Tedd bele a kimért teát.",
+      "Öntsd fel a megadott hőfokú vízzel.",
+      "Áztasd az előírt ideig, majd emeld ki és csöpögtesd le."
+    ],
+    "do": [
+      "Finomabb szűrő zöld teához",
+      "Fedő használata áztatás közben"
+    ],
+    "dont": [
+      "Ne rázd erősen (kesernyés lehet)"
+    ],
+    "cleaning": "Azonnal öblítsd ki, szárítsd meg."
+  },
+  {
+    "code": "french_press",
+    "name": "French press",
+    "desc": "Szálas teákhoz kényelmes; enyhe prés a végén.",
+    "capacity_ml_range": [
+      350,
+      1000
+    ],
+    "best_methods": [
+      "hot_standard",
+      "essence"
+    ],
+    "best_tea_types": [
+      "herbál",
+      "fekete",
+      "pörkölt zöld (hojicha)"
+    ],
+    "steps": [
+      "Előmelegítés a kancsóban.",
+      "Tea adagolása az aljára.",
+      "Felöntés, fedő fel, szűrő a felszínen.",
+      "Áztatás: idő lejártakor a szűrőt lassan, finoman nyomd le.",
+      "Azonnal töltsd ki az italt."
+    ],
+    "do": [
+      "Finom, folyamatos nyomás",
+      "Azonnali kitöltés"
+    ],
+    "dont": [
+      "Ne zúzd szét a leveleket"
+    ],
+    "cleaning": "Szétszedve öblítsd; időnként szűrőkeret tisztítás."
+  },
+  {
+    "code": "coldbrew_bottle",
+    "name": "Cold brew palack",
+    "desc": "Hűtőben áztatott, tiszta, lágy ízek.",
+    "capacity_ml_range": [
+      500,
+      1200
+    ],
+    "best_methods": [
+      "cold_brew"
+    ],
+    "best_tea_types": [
+      "zöld",
+      "fehér",
+      "gyümölcsös",
+      "herbál"
+    ],
+    "steps": [
+      "Szűrőbe mérd a teát; palackba hideg szűrt vizet.",
+      "Összeállítás után finoman rázd át.",
+      "Hűtő: 6–12 óra; félidőben fordítsd meg/rázd óvatosan.",
+      "Leszűrés, azonnali hűtve tálalás."
+    ],
+    "do": [
+      "Lágy, szűrt víz",
+      "Hűtve tartani végig"
+    ],
+    "dont": [
+      "Ne hagyd szobahőn órákig"
+    ],
+    "cleaning": "Szűrőből a leveleket ürítsd, elemeket külön öblítsd."
+  },
+  {
+    "code": "gaiwan",
+    "name": "Gaiwan (csészekanna)",
+    "desc": "Gong fu módszer rövid, többszöri felöntéssel.",
+    "capacity_ml_range": [
+      90,
+      150
+    ],
+    "best_methods": [
+      "gongfu"
+    ],
+    "best_tea_types": [
+      "oolong",
+      "puerh",
+      "fehér"
+    ],
+    "steps": [
+      "Előmelegítés: gaiwan és csészék átöblítése forró vízzel.",
+      "Adagolás: magasabb teaarány (pl. 6–7 g / 100–120 ml).",
+      "Öblítés (puerh): 5–10 mp, majd azonnal kiönt.",
+      "Felöntés 1: 10–20 mp, teljes leöntés egy szervkannába.",
+      "Következő felöntések: +5–10 mp lépcsők, teljes leöntés minden körben."
+    ],
+    "do": [
+      "Teljes, gyors kiöntés (ne ázzon tovább)",
+      "Stabil kéztartás – fedő döntése"
+    ],
+    "dont": [
+      "Ne hagyd a leveleket vízben két felöntés között"
+    ],
+    "cleaning": "Csak öblítés, mosogatószert ne használj (patina miatt)."
+  },
+  {
+    "code": "kyusu",
+    "name": "Kyusu (oldalfüles kanna)",
+    "desc": "Japán zöld teákhoz finom szűrővel.",
+    "capacity_ml_range": [
+      180,
+      360
+    ],
+    "best_methods": [
+      "hot_standard"
+    ],
+    "best_tea_types": [
+      "zöld (sencha, gyokuro)"
+    ],
+    "steps": [
+      "Előmelegítés és csészemelegítés.",
+      "Tea bemérése, víz 70–75 °C (gyokurónál alacsonyabb).",
+      "Rövid áztatás (pl. 60–90 mp), majd egyenlő arányban kiöntés több csészébe.",
+      "Második felöntés rövidebb (pl. 30–45 mp)."
+    ],
+    "do": [
+      "Pontos hőfok",
+      "Egyenletes körkörös kiöntés"
+    ],
+    "dont": [
+      "Ne rázd erősen – zavaros lehet"
+    ],
+    "cleaning": "Öblítés meleg vízzel; szűrő ne tömődjön el."
+  },
+  {
+    "code": "chasen",
+    "name": "Chasen (matcha habverő)",
+    "desc": "Matcha felveréséhez.",
+    "capacity_ml_range": [
+      60,
+      120
+    ],
+    "best_methods": [
+      "matcha"
+    ],
+    "best_tea_types": [
+      "matcha"
+    ],
+    "steps": [
+      "Tál előmelegítése, chasen benedvesítése meleg vízben.",
+      "Matcha szitálása a csomók ellen.",
+      "Kis vízzel paszta, majd 70–80 ml 70–80 °C víz.",
+      "Gyors W/M mozdulatokkal habosítsd 10–20 mp-ig."
+    ],
+    "do": [
+      "Szitálás kötelező",
+      "Rövid, intenzív habosítás"
+    ],
+    "dont": [
+      "Ne karikázz – nem habosít eléggé"
+    ],
+    "cleaning": "Azonnal öblítsd, szárítsd levegőn, tüskékkel felfelé."
+  },
+  {
+    "code": "capsule_machine",
+    "name": "Kapszulás/okos teafőző",
+    "desc": "Kényelmi megoldás fix programokkal.",
+    "capacity_ml_range": [
+      150,
+      300
+    ],
+    "best_methods": [
+      "machine"
+    ],
+    "best_tea_types": [
+      "fekete",
+      "herbál",
+      "ízesített"
+    ],
+    "steps": [
+      "Válaszd a tea típusának megfelelő programot.",
+      "Helyezd be a kapszulát/szűrőt.",
+      "Indítsd el; kifolyás után azonnal fogyasztható."
+    ],
+    "do": [
+      "Rendszeres vízkőtlenítés",
+      "Szűrt víz"
+    ],
+    "dont": [
+      "Ne használd rossz kapszulával/hőfokkal"
+    ],
+    "cleaning": "Gyártói útmutató szerint, csöpögtetőtálca tisztítása."
+  }
+]
