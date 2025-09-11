@@ -4,10 +4,10 @@ import { getTeaColor } from '../utils/colorMap';
 type Props = {
   teaName?: string;
   color?: string;            // címke vagy hex
-  size?: number | string;    // pl. 120 vagy '10rem'
-  teaInsetPct?: number;      // a színes kör peremének belső margója (%), alap: 10
-  cupScale?: number;         // PNG skálázás (1 = eredeti), alap: 0.95
-  cupOffsetY?: number;       // PNG függőleges eltolás px-ben (negatív: fel)
+  size?: number | string;    // <<< MÉRET: itt adható px vagy pl. '10rem'
+  teaInsetPct?: number;      // belső perem (%)
+  teaOpacity?: number;       // 0–1 között: a színes „tea” áttetszősége
+  showImage?: boolean;       // belső PNG megjelenítése (most: kikapcsoljuk)
   className?: string;
   'aria-label'?: string;
 };
@@ -15,58 +15,43 @@ type Props = {
 export default function ColorCup({
   teaName,
   color,
-  size = 120,
-  teaInsetPct = 10,
-  cupScale = 0.95,
-  cupOffsetY = 0,
+  size = 112,
+  teaInsetPct = 12,
+  teaOpacity = 1,
+  showImage = true,
   className,
   'aria-label': ariaLabel,
 }: Props) {
   const cupColor = (color ?? getTeaColor(teaName ?? '') ?? '#C8B8DB').trim();
   const pxSize = typeof size === 'number' ? `${size}px` : size;
-  const inset = Math.min(Math.max(teaInsetPct, 0), 30); // 0–30% között tartjuk biztonsági okból
+  const inset = Math.min(Math.max(teaInsetPct, 0), 30);
 
   return (
     <div
       className={['relative mx-auto select-none', className].filter(Boolean).join(' ')}
-      style={{
-        width: pxSize,
-        height: pxSize,
-        overflow: 'hidden',          // ne lógjon ki
-        borderRadius: '9999px',      // kerek kivágás
-        position: 'relative',
-      }}
+      style={{ width: pxSize, height: pxSize }}
       role="img"
       aria-label={ariaLabel ?? (teaName ? `Tea color for ${teaName}` : 'Tea color')}
     >
-      {/* színes „pont” – enyhe highlight, folyadék hatás */}
+      {/* SZÍNES TEA – csak kör (áttetsző is lehet) */}
       <div
-        className="absolute rounded-full"
+        className="absolute rounded-full z-10"
         style={{
           inset: `${inset}%`,
-          background: `radial-gradient(circle at 50% 28%, ${cupColor}, ${cupColor}CC 60%, ${cupColor}E6 100%)`,
-          boxShadow:
-            'inset 0 8px 18px rgba(255,255,255,0.25), inset 0 -10px 22px rgba(0,0,0,0.15)',
-          zIndex: 1,
+          background: cupColor,
+          opacity: teaOpacity,
         }}
       />
 
-      {/* csésze overlay – mindig felül, skálázható és picit feljebb tolható */}
-      <img
-        src="/colorCup.png"
-        alt=""
-        className="absolute pointer-events-none"
-        style={{
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'contain',
-          transform: `translateY(${cupOffsetY}px) scale(${cupScale})`,
-          transformOrigin: 'center',
-          zIndex: 2,
-        }}
-        draggable={false}
-      />
+      {/* (opcionális) CSÉSZE PNG – ha külön akarod kezelni, kapcsold ki showImage-gel */}
+      {showImage && (
+        <img
+          src="/colorCup.png"
+          alt=""
+          className="absolute inset-0 h-full w-full object-contain pointer-events-none z-0"
+          draggable={false}
+        />
+      )}
     </div>
   );
 }
