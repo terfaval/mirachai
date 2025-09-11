@@ -39,6 +39,16 @@ export default function IngredientsStack({ ingredients }: Props) {
     return lum > 0.55 ? "#111" : "#fff";
   };
 
+  const alphaBg = (hex?: string, alpha = 0.2) => {
+    if (!hex || !/^#/.test(hex)) return hex;
+    const c = hex.slice(1);
+    const n = c.length === 3 ? c.split("").map((ch) => ch + ch).join("") : c;
+    const r = parseInt(n.slice(0, 2), 16);
+    const g = parseInt(n.slice(2, 4), 16);
+    const b = parseInt(n.slice(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  };
+  
   return (
     <div className="flex flex-col justify-center w-full h-full">
       {/* Sávdiagram */}
@@ -62,7 +72,11 @@ export default function IngredientsStack({ ingredients }: Props) {
         style={{ gridTemplateColumns: `repeat(${Math.max(slices.length, 1)}, minmax(0, 1fr))` }}
       >
         {slices.map((s, idx) => (
-          <div key={"label-" + s.name + idx} className="text-center leading-tight">
+          <div
+            key={"label-" + s.name + idx}
+            className="text-center leading-tight rounded-md p-1"
+            style={{ backgroundColor: alphaBg(s.color, 0.6), color: textColorFor(s.color) }}
+          >
             {/* FINOMHANG: % méret/weight itt állítható */}
             <div className="font-semibold text-base md:text-lg">
               {Math.round(s.ratePct)}%
