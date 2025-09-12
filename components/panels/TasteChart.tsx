@@ -8,12 +8,14 @@ const N = (v: string | number | null | undefined) =>
 interface Props {
   tea: Tea;
   size?: number;
-  showLabels?: boolean;
+  showLabels?: boolean;          // most már: ikonok megjelenítése
   minValue?: number;
-  pointRadiusBase?: number;
-  connectByStrongest?: boolean; // unused, kept for compat
-  strongColor?: string;         // unused, kept for compat
+  pointRadiusBase?: number;      // az aktív pontok mérete
+  connectByStrongest?: boolean;  // (unused)
+  strongColor?: string;          // (unused)
   colorDark?: string;
+  innerZeroScale?: number;       // belső kör méret: a step szorzója (0..1), default 0.9
+  iconSizePx?: number;           // ikon méret px-ben
 }
 
 const ORDER = [
@@ -29,27 +31,36 @@ const ORDER = [
   'taste_édeskés',
 ];
 
+// ékezetek → fájlnév slug (a /public/icon_*.svg-hez)
+const ICON_FILE: Record<string, string> = {
+  taste_friss: 'friss',
+  taste_gyümölcsös: 'gyumolcsos',
+  taste_virágos: 'viragos',
+  taste_savanykás: 'savanyu',
+  taste_kesernyés: 'keseru',
+  taste_földes: 'foldes',
+  taste_umami: 'umami',
+  taste_fűszeres: 'fuszeres',
+  taste_csípős: 'csipos',
+  taste_édeskés: 'edes',
+};
+
 export default function TasteChart({
   tea,
-  size = 260,
-  showLabels = true,
+  size = 200,
+  showLabels = true,         // ikonok
   minValue = 0,
   pointRadiusBase = 15,
   connectByStrongest: _connectByStrongest = true,
   strongColor: _strongColor,
   colorDark = '#333',
+  innerZeroScale = 0.9,      // nagyobb belső kör
+  iconSizePx = 26,
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
-
-  // Külső sugár – hagyjunk helyet a kinti vizuáloknak
-  const outerRadius = size * 0.32;
-
-  // Belső üres kör (0-tengely) mérete az outer %-ában
-  const innerRadius = outerRadius * 0.42;
-
-  // 3 szint marad, de az innerRadius-ról indulnak
-  const step = (outerRadius - innerRadius) / 3;
+  const radius = size * 0.3;      // hagyunk helyet az ikonoknak
+  const step = radius / 3;
 
   const allEntries = ORDER.map((k, i) => {
     const raw = N((tea as any)[k]);
@@ -57,22 +68,21 @@ export default function TasteChart({
     const label = k.replace('taste_', '').replace(/_/g, ' ');
     const color = getTasteColor(k);
     const angle = (i / ORDER.length) * Math.PI * 2 - Math.PI / 2;
-    return { key: k, label, value: isNaN(value) ? 0 : value, color, angle };
+    const icon = `/icon_${ICON_FILE[k] ?? k.replace('taste_', '')}.svg`;
+    return { key: k, label, value: isNaN(value) ? 0 : value, color, angle, icon };
   });
 
   const entries = allEntries.filter((e) => e.value >= minValue);
 
+  const labelRadius = radius + 30;     // ide kerülnek az ikonok
   const base = pointRadiusBase;
-  const POINT_RADII = [base * 1.5, base, base / 2];
+  const POINT_RADII = [base * .5, base * .8, base];
 
-  // ikon-placeholder a belső kör pereme előtt
-  const placeholderRadius = innerRadius * 0.7;
-
-  // címkék a belső körön BELÜL, enyhén bejjebb
-  const labelRadius = innerRadius - 18;
+  // nagyobb "0" tengely – jól látható kör
+  const innerZeroRadius = step * innerZeroScale;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ width: size, height: size }}>
       <svg
         width={size}
         height={size}
@@ -81,88 +91,76 @@ export default function TasteChart({
         aria-label="ízprofil diagram"
         style={{ background: 'transparent' }}
       >
-        {/* 0-tengely (belső kör) */}
+        {/* Belső „0 tengely” kör */}
         <circle
           cx={cx}
           cy={cy}
-          r={innerRadius}
+          r={innerZeroRadius}
           fill="none"
-          stroke="#d0d0d0"
-          strokeWidth={1}
-          opacity={0.8}
+          stroke="#ddd"
+          strokeWidth={2}
         />
 
-        {allEntries.map((p) => {
-          const x0 = cx + Math.cos(p.angle) * innerRadius;
-          const y0 = cy + Math.sin(p.angle) * innerRadius;
-          const xMax = cx + Math.cos(p.angle) * outerRadius;
-          const yMax = cy + Math.sin(p.angle) * outerRadius;
+        {/* Sugár irányú segédvonalak + pontok */}
+        {allEntries.map((p) => (
+          <g key={p.key}>
+            <line
+              x1={cx}
+              y1={cy}
+              x2={cx + Math.cos(p.angle) * radius}
+              y2={cy + Math.sin(p.angle) * radius}
+              stroke="#ccc"
+              strokeWidth={1}
+              opacity={0.35}
+            />
+            {[1, 2, 3].map((lvl) => {
+              const r = step * lvl;
+              const x = cx + Math.cos(p.angle) * r;
+              const y = cy + Math.sin(p.angle) * r;
+              const active = lvl <= p.value;
+              const pr = active ? POINT_RADII[lvl - 1] : 3;
+              const fill = active ? p.color : '#ccc';
+              const opacity = active ? 0.9 : 1;
+              return (
+                <circle
+                  key={lvl}
+                  cx={x}
+                  cy={y}
+                  r={pr}
+                  fill={fill}
+                  fillOpacity={opacity}
+                />
+              );
+            })}
+          </g>
+        ))}
+      </svg>
 
+      {/* Ikonok a korábbi szövegcímkék helyén – CSS maszkkal színezve */}
+      {showLabels &&
+        entries.map((p) => {
+          const lx = cx + Math.cos(p.angle) * labelRadius;
+          const ly = cy + Math.sin(p.angle) * labelRadius;
           return (
-            <g key={p.key}>
-              {/* tengelyvonal a belső körtől kifelé */}
-              <line
-                x1={x0}
-                y1={y0}
-                x2={xMax}
-                y2={yMax}
-                stroke="#ccc"
-                strokeWidth={1}
-                opacity={0.35}
-              />
-              {/* 3 szint – az innerRadius-ról indulva */}
-              {[1, 2, 3].map((lvl) => {
-                const r = innerRadius + step * lvl;
-                const x = cx + Math.cos(p.angle) * r;
-                const y = cy + Math.sin(p.angle) * r;
-                const active = lvl <= p.value;
-                const pr = active ? POINT_RADII[lvl - 1] : 3;
-                const fill = active ? p.color : '#ccc';
-                const opacity = active ? 0.85 : 1;
-                return (
-                  <circle
-                    key={lvl}
-                    cx={x}
-                    cy={y}
-                    r={pr}
-                    fill={fill}
-                    fillOpacity={opacity}
-                  />
-                );
-              })}
-
-              {/* ikon-slot a belső körön belül */}
-              <circle
-                cx={cx + Math.cos(p.angle) * placeholderRadius}
-                cy={cy + Math.sin(p.angle) * placeholderRadius}
-                r={10}
-                className={styles.placeholder}
-                data-icon-slot={p.key}
-              />
-            </g>
+            <span
+              key={`ico-${p.key}`}
+              className={styles.tasteIcon}
+              style={
+                {
+                  left: `${lx}px`,
+                  top: `${ly}px`,
+                  width: `${iconSizePx}px`,
+                  height: `${iconSizePx}px`,
+                  backgroundColor: p.color,             // szín = íz szín
+                  WebkitMaskImage: `url(${p.icon})`,
+                  maskImage: `url(${p.icon})`,
+                } as React.CSSProperties
+              }
+              aria-label={p.label}
+              title={p.label}
+            />
           );
         })}
-
-        {/* belső feliratok */}
-        {showLabels &&
-          entries.map((p) => {
-            const lx = cx + Math.cos(p.angle) * labelRadius;
-            const ly = cy + Math.sin(p.angle) * labelRadius;
-            return (
-              <text
-                key={`label-${p.key}`}
-                x={lx}
-                y={ly}
-                fontSize={12}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fill={colorDark}
-              >
-                {p.label}
-              </text>
-            );
-          })}
-      </svg>
     </div>
   );
 }

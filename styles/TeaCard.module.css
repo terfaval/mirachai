@@ -1,35 +1,39 @@
+/* ========== LAYOUT ALAP ========== */
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90%;
-  height: 80%;
+  width: 100%;           /* rácsban jobban igazodik */
+  height: 100%;
 }
 
 .card {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;  /* minden balra rendezve */
   justify-content: flex-start;
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  padding: 12px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 14px 14px 12px;
+  text-align: left;      /* KO: középre rendezés – olvashatóbb így */
+  transition: transform .18s ease, box-shadow .18s ease;
   transform-origin: center;
   overflow: hidden;
   cursor: pointer;
-  isolation: isolate; /* ← hogy a mandala (z-index:0) biztosan alatta legyen mindennek */
+  isolation: isolate;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.9);
+  transform: scale(1.03);
+  /* lágyabb, nem feketedik el */
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
 }
 
-/* ── Mandala overlay (SVG mask mozaik) ───────────────────────────── */
+/* ========== MANDALA OVERLAY ========== */
 .mandala {
   position: absolute;
   inset: 0;
@@ -42,20 +46,12 @@
   mask-repeat: no-repeat;
   mask-type: alpha;
 
-  /* --- ELŐ-ZOOM (sprite nagyítás) ------------------------------------- */
-  /* Ha var(--mandala-prezoom) > 1, a teljes sprite nagyobb lesz,
-     így egy csempe "nagyobb részletet" fog mutatni a mandalából. */
-  --pre: var(--mandala-prezoom, .5); /* 1.0 = nincs elő-zoom */
-
-  /* A sprite méretét felszorozzuk a prezoommal */
+  --pre: var(--mandala-prezoom, .5);
   -webkit-mask-size: calc(100% * var(--tiles-x) * var(--pre))
                      calc(100% * var(--tiles-y) * var(--pre));
   mask-size:         calc(100% * var(--tiles-x) * var(--pre))
                      calc(100% * var(--tiles-y) * var(--pre));
 
-  /* A pozíciót kompenzálni kell, hogy a nagyítástól ne csússzon el a közép.
-     Képlet: pos% = (p / pre + (pre - 1) / (2 * pre)) * 100
-     ahol p = tileIndex aránya [0..1] a tengely mentén. */
   --px: calc((var(--tile-x) / (var(--tiles-x) - 1)));
   --py: calc((var(--tile-y) / (var(--tiles-y) - 1)));
   --offset: calc((var(--pre) - 1) / (2 * var(--pre)));
@@ -67,276 +63,247 @@
     calc((var(--px) / var(--pre) + var(--offset)) * 100%)
     calc((var(--py) / var(--pre) + var(--offset)) * 100%);
 
-  /* Kitöltés és megjelenés */
   background: currentColor;
   color: var(--mandala-fill, rgba(0,0,0,0.12));
-  opacity: 0.42;
+  opacity: .36;          /* kicsit halkabb */
   filter: grayscale(100%);
-
-  /* Utólagos (vizuális) skálázás – a kiválasztott csempe középpontjára */
-  transform: scale(var(--mandala-scale, 1.1));
-  transform-origin:
-    calc(var(--px) * 100%)
-    calc(var(--py) * 100%);
+  transform: scale(var(--mandala-scale, 1.08));
+  transform-origin: calc(var(--px) * 100%) calc(var(--py) * 100%);
 }
 
-/* szövegrétegek biztosan a mandala fölött */
-.name, .mood, .info, .categoryPanel, .seasonPanel, .prepPanel { position: relative; z-index: 1; }
-
-/* ── Szöveg és infó ─────────────────────────────────────────────── */
+/* ========== TIPOGRÁFIA ========== */
+/* Szép számok mindenhol */
+.card, .name, .mood, .chartLabel, .prepValue, .prepLabel, .intensityLabel {
+  font-feature-settings: "pnum" 1, "lnum" 1;
+}
 
 .name {
   font-family: 'Titan One', cursive;
-  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+  line-height: 1.12;
+  /* kis és nagy kártyán is arányos */
+  font-size: clamp(1.05rem, 1.9vw, 1.28rem);
   color: #000;
-  position: relative;
   z-index: 1;
 }
 
 .mood {
   font-family: 'Lato', sans-serif;
-  font-size: 0.7rem;
-  color: #000;
-  margin-top: 4px;
-  position: relative;
+  font-size: clamp(.80rem, 1.3vw, .9rem);
+  line-height: 1.35;
+  color: rgba(0,0,0,.82);
+  margin-top: 2px;
   z-index: 1;
 }
 
+/* Közös kis címkék */
+.chartLabel, .prepLabel, .intensityLabel {
+  font-size: clamp(.74rem, 1.2vw, .84rem);
+  line-height: 1.2;
+  color: rgba(0,0,0,.9);
+}
+
+/* ========== CONSUMPTION PANEL ========== */
 .info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  height: 100%;
-  font-size: 0.6rem;
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;   /* ízek bal, intenzitás jobb */
   align-items: center;
-  gap: 8px;
-  margin-top: auto;
-  padding-top: 8px;
+  gap: 8px 10px;
+  margin-top: .25rem;
+  padding-top: 6px;
 }
 
 .tasteBox {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;   /* lista + radar */
+  gap: 6px 10px;
   align-items: center;
-  height: 100%;
-  gap: 8px;
   background: var(--color-light);
   border-radius: 8px;
-  padding: 4px;
-  padding-right: 8px;
+  padding: 6px 8px;
 }
 
 .flavorList {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: grid;
+  gap: 3px;
 }
 
 .flavorList li {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.2em auto; /* szám fix szélességen */
   align-items: baseline;
-  gap: 6px;
+  column-gap: 6px;
 }
 
 .flavorValue {
-  font-weight: 700;
-  font-size: 0.8rem;
-  min-width: 1.2em;
+  font-weight: 800;
+  font-size: .86rem;
   text-align: right;
+  line-height: 1;
+  color: rgba(0,0,0,.9);
 }
 
 .flavorName {
-  opacity: 0.9;
   font-weight: 700;
-  font-size: 0.6rem;
+  font-size: .86rem;
+  line-height: 1.1;
+  opacity: .95;
+}
+
+/* ha a radar komponens adható data attribútummal, ez a méret állandó marad */
+.tasteBox :where(svg) {
+  width: 56px !important;
+  height: 56px !important;
 }
 
 .intensity {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-items: end;
+  row-gap: 4px;
 }
 
 .dots {
-  display: flex;
-  gap: 4px;
+  display: inline-flex;
+  gap: 5px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.08) inset;
 }
 
-.intensityLabel {
-  margin-top: 4px;
-  font-weight: 700;
-  font-size: 0.8rem;
-}
-
+/* ========== CATEGORY PANEL ========== */
 .categoryPanel {
   display: flex;
-  width: 100%;
-  font-size: 0.7rem;
-  gap: 4px;
+  gap: 6px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* balra, nem középre */
   margin-top: auto;
   padding-top: 8px;
+  z-index: 1;
 }
 
-.chartPanel {
-  display: flex;
+.categoryPill, .subcategoryPill {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-}
-
-.chartPanel svg {
-  flex-shrink: 0;
-}
-
-.chartLabel {
-  font-weight: 700;
-  font-size: 0.8rem;
-  line-height: 1;
-  color: #000;
-  text-align: left;
-  z-index:300;
-  margin-left: -50px;
-}
-
-.dayPanel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.chartCaption {
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.8rem;
-  line-height: 1;
-  color: #000;
-  margin-top: 4px;
-}
-
-.seasonPanel {
-  display: flex;
-  width: 100%;
-  font-size: 0.6rem;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.seasonText {
-  margin-left: 8px;
-  text-align: left;
-  color: #000;
-}
-
-.prepPanel {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 100%;
-  gap: 8px;
-  font-size: 0.6rem;
-  align-items: center;
-  margin-top: auto;
-  padding-top: 8px;
-}
-
-.timingPanel {
-  display: grid;
-  grid-template-columns: auto auto;
-  width: 100%;
-  gap: 20px;
-  font-size: 0.6rem;
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
-  margin-top: auto;
-  padding-top: 8px;
-}
-
-.seasonChart svg {
-  transform: rotate(-45deg);
-}
-
-.daypartChart svg {
-  transform: rotate(-90deg);
-}
-
-.categoryPill {
-  color: #fff;
-  padding: 4px 10px;
+  height: 1.35rem;
+  padding: 0 .6rem;
   border-radius: 999px;
   font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: .78rem;
+  line-height: 1;
 }
 
+.categoryPill { color: #fff; }
 .subcategoryPill {
   color: #333;
   background: #f2f2f2;
   border: 1px solid #e6e6e6;
-  padding: 4px 10px;
-  border-radius: 14px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.7rem;
+}
+
+/* ========== TIMING PANEL ========== */
+.timingPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+  justify-items: start; /* bal szélre */
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: .6rem;
+}
+
+.chartPanel {
+  display: grid;
+  grid-template-columns: auto 1fr; /* ikon + címke */
+  align-items: center;
+  gap: 8px;
+}
+
+.chartPanel svg { flex-shrink: 0; }
+.chartLabel { margin-left: 0; }      /* eltávolítjuk a -50px hack-et */
+
+.seasonChart svg { transform: rotate(-45deg); }
+.daypartChart svg { transform: rotate(-90deg); }
+
+/* ========== PREP PANEL ========== */
+.prepPanel {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: .6rem;
 }
 
 .tempBlock {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   width: 100%;
 }
 
 .prepLabel {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
+  display: grid;
+  grid-template-columns: auto;
+  text-align: right;     /* számok szépen zárjanak */
+  line-height: 1.12;
 }
 
 .prepValue {
-  font-weight: 700;
-  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: .86rem;
 }
 
 .thermo {
-  width: 60%;
+  width: 100%;
   height: 8px;
-  background: #eee;
-  border-radius: 3px;
+  background: rgba(255,255,255,.6);
+  border-radius: 999px;
   overflow: hidden;
-  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.06) inset;
 }
 
 .thermoFill {
   height: 100%;
-  background: linear-gradient(to right, #00f, #f00);
+  background: var(--color-dark); /* kategória sötét árnyalat */
+  border-radius: 999px;
 }
 
 .steepChart {
   position: relative;
   width: 40px;
   height: 40px;
-  margin-left: 10px;
 }
 
-.steepChart svg {
-  transform: rotate(-90deg);
-}
+.steepChart svg { transform: rotate(-90deg); }
 
 .steepIcon {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.8rem;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: .9rem;
+  opacity: .7;
+}
+
+/* ========== MOBIL APRÓ FINOMÍTÁSOK ========== */
+@media (max-width: 640px) {
+  .card { padding: 12px; }
+  .flavorName, .flavorValue { font-size: .84rem; }
+  .categoryPill, .subcategoryPill { height: 1.28rem; font-size: .76rem; }
 }

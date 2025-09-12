@@ -43,3 +43,23 @@
   stroke: #ccc;
   fill: none;
 }
+
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.chart {
+  display: block;
+}
+
+.tasteIcon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  /* az SVG-t maszkként használjuk, így a háttérszín „festi ki” az ikont */
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  pointer-events: none; /* ne takarja az interakciót a charton */
+}
