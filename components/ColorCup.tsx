@@ -48,6 +48,23 @@ export default function ColorCup({
           zIndex: 2,
         }}
       />
+    {/* COLOR LABEL */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: cupColor,
+          color: '#fff',
+          fontWeight: 'bold',
+          padding: '0.25rem 0.5rem',
+          borderRadius: '4px',
+          zIndex: 3,
+        }}
+      >
+        {cupColor}
+      </div>
     </div>
   );
 }
