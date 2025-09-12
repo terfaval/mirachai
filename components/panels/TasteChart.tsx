@@ -1,6 +1,7 @@
 import styles from '../../styles/TasteChart.module.css';
 import { Tea } from '../../utils/filter';
 import { getTasteColor } from '../../utils/colorMap';
+import { useState } from 'react';
 
 const N = (v: string | number | null | undefined) =>
   typeof v === 'number' ? v : v != null ? Number(v) : NaN;
@@ -31,6 +32,12 @@ const ORDER = [
   'taste_édeskés',
 ];
 
+const STRENGTH_LABELS: Record<number, string> = {
+  1: 'enyhe',
+  2: 'közepes',
+  3: 'erős',
+};
+
 // ékezetek → fájlnév slug (a /public/icon_*.svg-hez)
 const ICON_FILE: Record<string, string> = {
   taste_friss: 'friss',
@@ -55,12 +62,16 @@ export default function TasteChart({
   strongColor: _strongColor,
   colorDark = '#333',
   innerZeroScale = 0.9,      // nagyobb belső kör
-  iconSizePx = 26,
+  iconSizePx = 40,
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
   const radius = size * 0.3;      // hagyunk helyet az ikonoknak
-  const step = radius / 3;
+  const step = radius / 4;
+
+  const [tooltip, setTooltip] = useState<
+    { label: string; value: number; x: number; y: number } | null
+  >(null);
 
   const allEntries = ORDER.map((k, i) => {
     const raw = N((tea as any)[k]);
@@ -74,7 +85,7 @@ export default function TasteChart({
 
   const entries = allEntries.filter((e) => e.value >= minValue);
 
-  const labelRadius = radius + 30;     // ide kerülnek az ikonok
+  const labelRadius = radius + iconSizePx; // ikon távolsága igazodik a méretéhez
   const base = pointRadiusBase;
   const POINT_RADII = [base * .5, base * .8, base];
 
@@ -115,12 +126,14 @@ export default function TasteChart({
             />
             {[1, 2, 3].map((lvl) => {
               const r = step * lvl;
-              const x = cx + Math.cos(p.angle) * r;
-              const y = cy + Math.sin(p.angle) * r;
               const active = lvl <= p.value;
               const pr = active ? POINT_RADII[lvl - 1] : 3;
+              const offset = pr / 2; // finomhangolás: méret arányos eltolás
+              const x = cx + Math.cos(p.angle) * (r + offset);
+              const y = cy + Math.sin(p.angle) * (r + offset);
               const fill = active ? p.color : '#ccc';
               const opacity = active ? 0.9 : 1;
+              const isTop = active && lvl === p.value;
               return (
                 <circle
                   key={lvl}
@@ -129,6 +142,12 @@ export default function TasteChart({
                   r={pr}
                   fill={fill}
                   fillOpacity={opacity}
+                  onMouseEnter={
+                    isTop
+                      ? () => setTooltip({ label: p.label, value: p.value, x, y })
+                      : undefined
+                  }
+                  onMouseLeave={isTop ? () => setTooltip(null) : undefined}
                 />
               );
             })}
@@ -158,9 +177,28 @@ export default function TasteChart({
               }
               aria-label={p.label}
               title={p.label}
+              onMouseEnter={() =>
+                setTooltip({ label: p.label, value: p.value, x: lx, y: ly })
+              }
+              onMouseLeave={() => setTooltip(null)}
             />
           );
         })}
+
+      {tooltip && (
+        <div
+          className={styles.tooltip}
+          style={{ left: `${tooltip.x}px`, top: `${tooltip.y}px` }}
+          role="tooltip"
+        >
+          <div className={styles.tooltipTitle}>
+            {STRENGTH_LABELS[tooltip.value]}
+          </div>
+          <div>
+            {tooltip.label} íz
+          </div>
+        </div>
+      )}
     </div>
   );
 }
