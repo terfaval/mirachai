@@ -79,18 +79,18 @@
 
 .name {
   font-family: 'Titan One', cursive;
-  font-weight: 800;
+  font-weight: 200;
   letter-spacing: .2px;
   line-height: 1.12;
   /* kis és nagy kártyán is arányos */
-  font-size: clamp(1.05rem, 1.9vw, 1.28rem);
+  font-size: 1rem; /* font-size: clamp(1.05rem, 1.9vw, 1.28rem); */
   color: #000;
   z-index: 1;
 }
 
 .mood {
   font-family: 'Lato', sans-serif;
-  font-size: clamp(.80rem, 1.3vw, .9rem);
+  font-size: .70rem; /* font-size: clamp(.80rem, 1.3vw, .9rem); */
   line-height: 1.35;
   color: rgba(0,0,0,.82);
   margin-top: 2px;
@@ -99,7 +99,8 @@
 
 /* Közös kis címkék */
 .chartLabel, .prepLabel, .intensityLabel {
-  font-size: clamp(.74rem, 1.2vw, .84rem);
+  font-size: .75rem; /* font-size: clamp(.74rem, 1.2vw, .84rem); */
+  font-weight: 500;
   line-height: 1.2;
   color: rgba(0,0,0,.9);
 }
@@ -119,11 +120,13 @@
 .tasteBox {
   display: grid;
   grid-template-columns: 1fr auto;   /* lista + radar */
-  gap: 6px 10px;
+  gap: 0px 1px;
   align-items: center;
+  justify-content: center;
   background: var(--color-light);
   border-radius: 8px;
-  padding: 6px 8px;
+  padding: 3px 2px;
+  margin-bottom: 0px;
 }
 
 .flavorList {
@@ -131,7 +134,7 @@
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 3px;
+  gap: 2px;
 }
 
 .flavorList li {
@@ -143,7 +146,7 @@
 
 .flavorValue {
   font-weight: 800;
-  font-size: .86rem;
+  font-size: .70rem;
   text-align: right;
   line-height: 1;
   color: rgba(0,0,0,.9);
@@ -151,7 +154,7 @@
 
 .flavorName {
   font-weight: 700;
-  font-size: .86rem;
+  font-size: .70rem;
   line-height: 1.1;
   opacity: .95;
 }

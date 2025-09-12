@@ -62,15 +62,15 @@ export default function TasteChart({
   strongColor: _strongColor,
   colorDark = '#333',
   innerZeroScale = 0.9,      // nagyobb belső kör
-  iconSizePx = 40,
+  iconSizePx = 48,
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
   const radius = size * 0.3;      // hagyunk helyet az ikonoknak
-  const step = radius / 4;
+  const step = radius / 3;
 
   const [tooltip, setTooltip] = useState<
-    { label: string; value: number; x: number; y: number } | null
+    { label: string; value: number; x: number; y: number; color: string } | null
   >(null);
 
   const allEntries = ORDER.map((k, i) => {
@@ -87,7 +87,7 @@ export default function TasteChart({
 
   const labelRadius = radius + iconSizePx; // ikon távolsága igazodik a méretéhez
   const base = pointRadiusBase;
-  const POINT_RADII = [base * .5, base * .8, base];
+  const POINT_RADII = [base * .6, base * .9, base];
 
   // nagyobb "0" tengely – jól látható kör
   const innerZeroRadius = step * innerZeroScale;
@@ -125,12 +125,12 @@ export default function TasteChart({
               opacity={0.35}
             />
             {[1, 2, 3].map((lvl) => {
-              const r = step * lvl;
               const active = lvl <= p.value;
               const pr = active ? POINT_RADII[lvl - 1] : 3;
-              const offset = pr / 2; // finomhangolás: méret arányos eltolás
-              const x = cx + Math.cos(p.angle) * (r + offset);
-              const y = cy + Math.sin(p.angle) * (r + offset);
+              let r = step * lvl + pr;          // távolság a mérettel arányosan
+              if (lvl === 2) r -= pr * 0.3;     // második szint kicsit beljebb
+              const x = cx + Math.cos(p.angle) * r;
+              const y = cy + Math.sin(p.angle) * r;
               const fill = active ? p.color : '#ccc';
               const opacity = active ? 0.9 : 1;
               const isTop = active && lvl === p.value;
@@ -144,7 +144,14 @@ export default function TasteChart({
                   fillOpacity={opacity}
                   onMouseEnter={
                     isTop
-                      ? () => setTooltip({ label: p.label, value: p.value, x, y })
+                      ? () =>
+                          setTooltip({
+                            label: p.label,
+                            value: p.value,
+                            x,
+                            y,
+                            color: p.color,
+                          })
                       : undefined
                   }
                   onMouseLeave={isTop ? () => setTooltip(null) : undefined}
@@ -178,7 +185,13 @@ export default function TasteChart({
               aria-label={p.label}
               title={p.label}
               onMouseEnter={() =>
-                setTooltip({ label: p.label, value: p.value, x: lx, y: ly })
+                setTooltip({
+                  label: p.label,
+                  value: p.value,
+                  x: lx,
+                  y: ly,
+                  color: p.color,
+                })
               }
               onMouseLeave={() => setTooltip(null)}
             />
@@ -188,7 +201,7 @@ export default function TasteChart({
       {tooltip && (
         <div
           className={styles.tooltip}
-          style={{ left: `${tooltip.x}px`, top: `${tooltip.y}px` }}
+          style={{ left: `${tooltip.x}px`, top: `${tooltip.y}px`, color: tooltip.color }}
           role="tooltip"
         >
           <div className={styles.tooltipTitle}>

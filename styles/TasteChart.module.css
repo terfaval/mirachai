@@ -61,5 +61,5 @@
   mask-repeat: no-repeat;
   -webkit-mask-size: contain;
   mask-size: contain;
-  pointer-events: none; /* ne takarja az interakciót a charton */
+  cursor: pointer;
 }
