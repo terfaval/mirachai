@@ -10,14 +10,14 @@ type Props = {
   infoText: string;
 };
 
-// egyszerű slug – ékezetek le, nem betű/szám → '-'
+// egyszerű slug – ékezetek le, nem betű/szám → '_'
 const toSlug = (s: string) =>
   s
     ?.toLowerCase()
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '') || 'default';
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/(^_|_$)/g, '') || 'default';
 
 export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
   const tempC = Number(tea.tempC ?? tea.temperatureC ?? 0) || undefined;
@@ -30,7 +30,7 @@ export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
   const cupHex = getTeaColor(tea.color ?? '');
 
   // kategória szerinti háttér
-  const tableSrc = `/table_${toSlug(tea?.category ?? '')}.png`;
+  const tableSrc = `/table_background/table_${toSlug(tea?.category ?? '')}.png`;
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr', gap: 24 }}>
@@ -61,7 +61,8 @@ export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
           }}
           // fallback: ha hiányzik a kategória-kép
           onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src = '/table_default.png';
+            (e.currentTarget as HTMLImageElement).src =
+              '/table_background/table_default.png';
           }}
           draggable={false}
         />
