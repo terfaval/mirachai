@@ -18,4 +18,22 @@ describe('IngredientsStack', () => {
     const sum = widths.reduce((a, b) => a + b, 0);
     expect(Math.round(sum)).toBe(100);
   });
+
+it('reorders ingredients to avoid adjacent identical colors', () => {
+    const html = renderToStaticMarkup(
+      <IngredientsStack
+        ingredients={[
+          { name: 'foo', rate: 1 },
+          { name: 'bar', rate: 1 },
+          { name: 'almahéj', rate: 1 }, // ismert összetevő más színnel
+        ]}
+      />
+    );
+    const colors = Array.from(
+      html.matchAll(/background-color:([^;]+);/g)
+    ).map((m) => m[1]);
+    for (let i = 0; i < colors.length - 1; i++) {
+      expect(colors[i]).not.toBe(colors[i + 1]);
+    }
+  });
 });

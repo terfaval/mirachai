@@ -20,12 +20,28 @@ export default function IngredientsStack({ ingredients }: Props) {
     return map;
   }, new Map<string, number>());
   const total = Array.from(grouped.values()).reduce((s, v) => s + v, 0) || 1;
+  interface Slice {
+    name: string;
+    ratePct: number;
+    color: string;
+  }
 
-  const slices = Array.from(grouped.entries()).map(([name, rate]) => ({
+  const initialSlices: Slice[] = Array.from(grouped.entries()).map(([name, rate]) => ({
     name,
     ratePct: (rate / total) * 100,
     color: getIngredientColor(name),
   }));
+
+  // egyszerű rendezés: próbálja meg elkerülni az azonos színű szomszédokat
+  const slices: Slice[] = [];
+  const pool = [...initialSlices];
+  while (pool.length) {
+    const prev = slices[slices.length - 1];
+    let idx = pool.findIndex((s) => s.color !== prev?.color);
+    if (idx === -1) idx = 0; // ha nincs eltérő szín, vesszük az elsőt
+    slices.push(pool.splice(idx, 1)[0]);
+  }
+
 
   // egyszerű kontrasztos szövegszín (FINOMHANG: küszöböt állíthatod)
   const textColorFor = (hex?: string) => {
