@@ -1,7 +1,7 @@
 import styles from '../../styles/TasteChart.module.css';
 import { Tea } from '../../utils/filter';
 import { getTasteColor } from '../../utils/colorMap';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const N = (v: string | number | null | undefined) =>
   typeof v === 'number' ? v : v != null ? Number(v) : NaN;
@@ -72,6 +72,7 @@ export default function TasteChart({
   const [tooltip, setTooltip] = useState<
     { label: string; value: number; x: number; y: number; color: string } | null
   >(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const rotationRad = (rotationDeg * Math.PI) / 180;
   
@@ -93,7 +94,11 @@ export default function TasteChart({
   const POINT_RADII = [base * .6, base * .9, base];
 
   return (
-    <div className={styles.container} style={{ width: size, height: size }}>
+    <div
+      ref={containerRef}
+      className={styles.container}
+      style={{ width: size, height: size }}
+    >
       <svg
         width={size}
         height={size}
@@ -125,14 +130,32 @@ export default function TasteChart({
                   fillOpacity={opacity}
                   onMouseEnter={
                     isTop
-                      ? () =>
+                      ? (e) => {
+                          const rect = containerRef.current?.getBoundingClientRect();
                           setTooltip({
                             label: p.label,
                             value: p.value,
-                            x,
-                            y,
+                            x: e.clientX - (rect?.left ?? 0) + 8,
+                            y: e.clientY - (rect?.top ?? 0) + 8,
                             color: p.color,
-                          })
+                          });
+                        }
+                      : undefined
+                  }
+                  onMouseMove={
+                    isTop
+                      ? (e) => {
+                          const rect = containerRef.current?.getBoundingClientRect();
+                          setTooltip((t) =>
+                            t
+                              ? {
+                                  ...t,
+                                  x: e.clientX - (rect?.left ?? 0) + 8,
+                                  y: e.clientY - (rect?.top ?? 0) + 8,
+                                }
+                              : t
+                          );
+                        }
                       : undefined
                   }
                   onMouseLeave={isTop ? () => setTooltip(null) : undefined}
@@ -165,15 +188,28 @@ export default function TasteChart({
               }
               aria-label={p.label}
               title={p.label}
-              onMouseEnter={() =>
+              onMouseEnter={(e) => {
+                const rect = containerRef.current?.getBoundingClientRect();
                 setTooltip({
                   label: p.label,
                   value: p.value,
-                  x: lx,
-                  y: ly,
+                  x: e.clientX - (rect?.left ?? 0) + 8,
+                  y: e.clientY - (rect?.top ?? 0) + 8,
                   color: p.color,
-                })
-              }
+                });
+              }}
+              onMouseMove={(e) => {
+                const rect = containerRef.current?.getBoundingClientRect();
+                setTooltip((t) =>
+                  t
+                    ? {
+                        ...t,
+                        x: e.clientX - (rect?.left ?? 0) + 8,
+                        y: e.clientY - (rect?.top ?? 0) + 8,
+                      }
+                    : t
+                );
+              }}
               onMouseLeave={() => setTooltip(null)}
             />
           );
@@ -182,7 +218,7 @@ export default function TasteChart({
       {tooltip && (
         <div
           className={styles.tooltip}
-          style={{ left: `${tooltip.x}px`, top: `${tooltip.y}px`, color: tooltip.color }}
+          style={{ left: `${tooltip.x}px`, top: `${tooltip.y}px`, color: tooltip.color, background: 'white' }}
           role="tooltip"
         >
           <div className={styles.tooltipTitle}>

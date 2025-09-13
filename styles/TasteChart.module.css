@@ -63,3 +63,18 @@
   mask-size: contain;
   cursor: pointer;
 }
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--color-light);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.tooltipTitle {
+  font-weight: 600;
+}
