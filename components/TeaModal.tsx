@@ -5,7 +5,7 @@ import DescPanel from '@/components/panels/DescPanel';
 import MoreInfoPanel from '@/components/panels/MoreInfoPanel';
 import TeaDashboard from '@/components/panels/TeaDashboard';
 import PrepServePanel from '@/components/panels/PrepServePanel';
-import { getCategoryColor } from '../utils/colorMap';
+import { getCategoryColor, getAlternativeColor } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 
 interface Props {
@@ -17,6 +17,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const colorDark = getCategoryColor(tea.category, 'dark') ?? '#2D1E3E';
   const colorLight = getCategoryColor(tea.category, 'light') ?? 'rgba(0,0,0,0.05)';
   const colorMain = getCategoryColor(tea.category, 'main') ?? '#CCCCCC';
+  const colorAlternative = getAlternativeColor(tea.category);
   
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -53,6 +54,14 @@ export default function TeaModal({ tea, onClose }: Props) {
           <TeaDashboard tea={tea} colorDark={colorDark} />
           <div className={styles.spacer} />
           <PrepServePanel tea={tea} infoText={tea.when ?? ''} />
+        <div className={styles.spacer} />
+          <button
+            type="button"
+            className={styles.helpButton}
+            style={{ backgroundColor: colorAlternative }}
+          >
+            segítünk elkészíteni!
+          </button>
         </div>
         {/*
           END MODAL CONTENT

@@ -197,3 +197,19 @@
   color: #000;
   z-index:10;
 }
+
+.helpButton {
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  align-self: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.helpButton:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
