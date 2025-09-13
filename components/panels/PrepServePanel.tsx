@@ -22,7 +22,7 @@ export default function PrepServePanel({ tea, infoText }: Props) {
   const steepMin = Number(tea.steepMin ?? tea.steepMinutes ?? 0) || undefined;
 
   // >>> ColorCup MÉRET: ITT ÁLLÍTSD (px vagy pl. '10rem')
-  const CUP_SIZE: number | string = 112;
+  const CUP_SIZE: number | string = '25%';
 
   // tea.color lehet címke vagy hex – getTeaColor mindkettőt kezeli
   const cupHex = getTeaColor(tea.color ?? '');
@@ -85,12 +85,30 @@ export default function PrepServePanel({ tea, infoText }: Props) {
         {/* 3) FELSŐ: a színes „tea” kör */}
         <ColorCup
           color={cupHex}
-          label={infoText}
           size={CUP_SIZE}    // <<< a „chart”/csésze vizuális mérete
           teaInsetPct={100}
           teaOpacity={1}
           aria-label={tea?.name ? `Szín: ${tea.name}` : 'Tea szín'}
         />
+
+        {/* Bal oldali felirat */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: 0,
+            width:"30%",
+            transform: 'translateY(-50%)',
+            background: cupHex,
+            color: '#000',
+            fontWeight: 'bold',
+            padding: '0.25rem 0.75rem',
+            borderRadius: '4px',
+            zIndex: 3,
+          }}
+        >
+          {infoText}
+        </div>
 
         <div
           style={{
