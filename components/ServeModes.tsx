@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tea } from '../src/types/tea';
+import { normalizeServeFlags } from '@/utils/teaTransforms';
 
 interface Props {
   tea: Tea;
@@ -33,12 +34,13 @@ const MODES = [
 ] as const;
 
 export default function ServeModes({ tea }: Props) {
+  const serve = normalizeServeFlags(tea);
   return (
-    <div className="flex gap-4" aria-label="fogyasztási módok">
-      {MODES.filter((m) => (tea as any)[m.key]).map((m) => (
+    <div className="grid grid-cols-4 gap-4" aria-label="fogyasztási módok">
+      {MODES.filter((m) => serve[m.key.replace('serve_', '') as keyof typeof serve]).map((m) => (
         <div
           key={m.key}
-          className="relative flex flex-1 items-center justify-center text-center aspect-square"
+          className="relative flex items-center justify-center text-center aspect-square"
         >
           <div
             aria-hidden
