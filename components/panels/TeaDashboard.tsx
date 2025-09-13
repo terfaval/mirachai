@@ -18,7 +18,7 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
   const caffeine = caffeineToPct(tea);
 
   // finomhangolás
-  const TASTE_SIZE = 360;
+  const TASTE_SIZE = 300;
   const INNER_ZERO_SCALE = 0.95;
   const ICON_SIZE = 64;
 
@@ -37,7 +37,7 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
               padding: 24,
               position: 'relative',
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'flex-start',
               justifyContent: 'center',
               aspectRatio: '1 / 1',
             }}
@@ -62,14 +62,7 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
               </div>
             </div>
 
-            <div
-              style={{
-                position: 'absolute',
-                right: 16,
-                top: '50%',
-                transform: 'translateY(-50%)',
-              }}
-            >
+            <div style={{ position: 'absolute', bottom: 16, right: 16 }}>
               <div
                 style={{
                   background: '#fff',

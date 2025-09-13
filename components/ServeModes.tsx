@@ -40,7 +40,7 @@ export default function ServeModes({ tea }: Props) {
       {MODES.filter((m) => serve[m.key.replace('serve_', '') as keyof typeof serve]).map((m) => (
         <div
           key={m.key}
-          className="relative flex items-center justify-center text-center aspect-square"
+          className="relative flex items-center justify-center text-center aspect-[6/4]"
         >
           <div
             aria-hidden
