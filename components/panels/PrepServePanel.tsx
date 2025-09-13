@@ -33,12 +33,14 @@ export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
   const tableSrc = `/table_background/table_${toSlug(tea?.category ?? '')}.png`;
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr', gap: 24 }}>
+    <div style={{ display: 'grid', gap: 24 }}>
       <div
         style={{
-          position: 'relative',       // rétegezéshez kötelező
+          position: 'relative', // rétegezéshez kötelező
           display: 'grid',
           placeItems: 'center',
+          width: '100%',
+          aspectRatio: '3 / 2',
           padding: 12,
           borderRadius: 12,
           background: 'rgba(0,0,0,0.03)',
@@ -54,7 +56,7 @@ export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
             inset: 0,
             width: '100%',
             height: '100%',
-            objectFit: 'cover',    // ha torzít, tehetsz 'contain'-t
+            objectFit: 'contain',    // ha torzít, tehetsz 'contain'-t
             zIndex: 0,
             opacity: 0.9,          // igény szerint
             pointerEvents: 'none',
@@ -93,12 +95,14 @@ export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
         />
       </div>
 
-      <div style={{ padding: 16, borderRadius: 12, background: 'rgba(0,0,0,0.03)' }}>
-        <PrepInfo tempC={tempC} steepMin={steepMin} />
-      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+        <div style={{ padding: 16, borderRadius: 12, background: 'rgba(0,0,0,0.03)' }}>
+          <PrepInfo tempC={tempC} steepMin={steepMin} />
+        </div>
 
-      <div style={{ padding: 16, borderRadius: 12, background: 'rgba(0,0,0,0.03)' }}>
-        <MoreInfoPanel text={infoText} colorDark={colorDark} />
+        <div style={{ padding: 16, borderRadius: 12, background: 'rgba(0,0,0,0.03)' }}>
+          <MoreInfoPanel text={infoText} colorDark={colorDark} />
+        </div>
       </div>
     </div>
   );
