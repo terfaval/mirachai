@@ -1,12 +1,10 @@
 import React from 'react';
-import { getTeaColor } from '../../utils/colorMap';
+import { getTeaColor, getCategoryColor } from '../../utils/colorMap';
 import PrepInfo from '@/components/panels/PrepInfo';
-import MoreInfoPanel from '@/components/panels/MoreInfoPanel';
 import ColorCup from '@/components/ColorCup';
 
 type Props = {
   tea: any;
-  colorDark: string;
   infoText: string;
 };
 
@@ -19,7 +17,7 @@ const toSlug = (s: string) =>
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/(^_|_$)/g, '') || 'default';
 
-export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
+export default function PrepServePanel({ tea, infoText }: Props) {
   const tempC = Number(tea.tempC ?? tea.temperatureC ?? 0) || undefined;
   const steepMin = Number(tea.steepMin ?? tea.steepMinutes ?? 0) || undefined;
 
@@ -28,25 +26,25 @@ export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
 
   // tea.color lehet címke vagy hex – getTeaColor mindkettőt kezeli
   const cupHex = getTeaColor(tea.color ?? '');
+  const colorLight = getCategoryColor(tea.category, 'light') ?? 'rgba(0,0,0,0.1)';
 
   // kategória szerinti háttér
   const tableSrc = `/table_background/table_${toSlug(tea?.category ?? '')}.png`;
 
   return (
-    <div style={{ display: 'grid', gap: 24 }}>
-      <div
-        style={{
-          position: 'relative', // rétegezéshez kötelező
-          display: 'grid',
-          placeItems: 'center',
-          width: '100%',
-          aspectRatio: '3 / 2',
-          padding: 12,
-          borderRadius: 12,
-          background: 'rgba(0,0,0,0.03)',
-          overflow: 'hidden',
-        }}
-      >
+    <div
+      style={{
+        position: 'relative', // rétegezéshez kötelező
+        display: 'grid',
+        placeItems: 'center',
+        width: '100%',
+        aspectRatio: '3 / 2',
+        padding: 12,
+        borderRadius: 12,
+        background: 'rgba(0,0,0,0.03)',
+        overflow: 'hidden',
+      }}
+    >
         {/* 1) LEGALSÓ: kategória háttér (table_*.png) */}
         <img
           src={tableSrc}
@@ -88,22 +86,23 @@ export default function PrepServePanel({ tea, colorDark, infoText }: Props) {
         {/* 3) FELSŐ: a színes „tea” kör */}
         <ColorCup
           color={cupHex}
+          label={infoText}
           size={CUP_SIZE}    // <<< a „chart”/csésze vizuális mérete
           teaInsetPct={22}
           teaOpacity={0.7}
           aria-label={tea?.name ? `Szín: ${tea.name}` : 'Tea szín'}
         />
-      </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-        <div style={{ padding: 16, borderRadius: 12, background: 'rgba(0,0,0,0.03)' }}>
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 8,
+            right: 8,
+            zIndex: 4,
+          }}
+        >
           <PrepInfo tempC={tempC} steepMin={steepMin} />
         </div>
-
-        <div style={{ padding: 16, borderRadius: 12, background: 'rgba(0,0,0,0.03)' }}>
-          <MoreInfoPanel text={infoText} colorDark={colorDark} />
-        </div>
-      </div>
     </div>
   );
 }

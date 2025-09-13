@@ -4,6 +4,7 @@ import { getTeaColor } from '../utils/colorMap';
 type Props = {
   teaName?: string;
   color?: string;             // címke vagy hex
+  label?: string;             // középre írt szöveg
   size?: number | string;     // <<< MÉRET: px vagy pl. '10rem'
   teaInsetPct?: number;       // belső perem (%)
   teaOpacity?: number;        // 0–1
@@ -14,8 +15,9 @@ type Props = {
 export default function ColorCup({
   teaName,
   color,
-  size = 112,
-  teaInsetPct = 12,
+  label,
+  size = '10rem',
+  teaInsetPct = 20,
   teaOpacity = 1,
   className,
   'aria-label': ariaLabel,
@@ -63,7 +65,7 @@ export default function ColorCup({
           zIndex: 3,
         }}
       >
-        {cupColor}
+        {label ?? cupColor}
       </div>
     </div>
   );
