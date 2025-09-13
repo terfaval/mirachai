@@ -36,7 +36,7 @@
   position:relative;
   padding: 40px 20px;
   border-radius:20px;
-  margin: 20px 20px;
+  margin: 40px 40px;
   padding-right: 35px;
   z-index:1;
   display:flex;
@@ -165,14 +165,13 @@
 .backLayer {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  max-width: 40%;
+  z-index: 1;
   justify-content:center;
 }
 
 .panelElement {
   position: relative;
-  padding: 16px;
+  padding: 0px;
   border-radius: 12px;
   background: rgba(0,0,0,0.02);
 }
@@ -180,7 +179,7 @@
 .panelBox {
   background: #fff;
   border-radius: 12px;
-  padding: 12px;
+  padding: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.06);
 }
 
@@ -192,8 +191,9 @@
   transform: translateY(-50%);
   padding: 12px 16px;
   max-width: 300px;
-  padding-right: 30px;
+  padding-left: 40px;
   border-radius: 6px;
   font-size: 1rem;
   color: #000;
+  z-index:10;
 }
