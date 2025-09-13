@@ -65,6 +65,27 @@ export default function IngredientsStack({ ingredients }: Props) {
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   };
   
+  const adjustColor = (hex?: string, amt = 0) => {
+    if (!hex || !/^#/.test(hex)) return hex ?? "";
+    const c = hex.slice(1);
+    const n = c.length === 3 ? c.split("").map((ch) => ch + ch).join("") : c;
+    const r = Math.max(0, Math.min(255, parseInt(n.slice(0, 2), 16) + amt));
+    const g = Math.max(0, Math.min(255, parseInt(n.slice(2, 4), 16) + amt));
+    const b = Math.max(0, Math.min(255, parseInt(n.slice(4, 6), 16) + amt));
+    return `#${[r, g, b]
+      .map((v) => v.toString(16).padStart(2, "0"))
+      .join("")}`;
+  };
+
+  const gradientBg = (hex?: string, alpha?: number) => {
+    if (!hex || !/^#/.test(hex)) return hex ?? "";
+    const light = adjustColor(hex, 20);
+    const dark = adjustColor(hex, -30);
+    const start = alpha !== undefined ? alphaBg(light, alpha) : light;
+    const end = alpha !== undefined ? alphaBg(dark, alpha) : dark;
+    return `radial-gradient(-90deg, ${start}, ${end})`;
+  };
+
   return (
     <div className="flex flex-col justify-center w-full h-full">
       {/* Sávdiagram */}
@@ -77,7 +98,11 @@ export default function IngredientsStack({ ingredients }: Props) {
           <div
             key={s.name + idx}
             className="relative h-full"
-            style={{ width: `${s.ratePct}%`, backgroundColor: s.color }}
+            style={{
+              width: `${s.ratePct}%`,
+              backgroundColor: s.color,
+              background: gradientBg(s.color),
+            }}
           />
         ))}
       </div>
@@ -91,7 +116,11 @@ export default function IngredientsStack({ ingredients }: Props) {
           <div
             key={"label-" + s.name + idx}
             className="text-center leading-tight rounded-md p-1"
-            style={{ backgroundColor: alphaBg(s.color, 0.6), color: textColorFor(s.color) }}
+            style={{
+              backgroundColor: alphaBg(s.color, 0.6),
+              background: gradientBg(s.color, 0.6),
+              color: textColorFor(s.color),
+            }}
           >
             {/* FINOMHANG: % méret/weight itt állítható */}
             <div className="font-semibold text-base md:text-lg">
