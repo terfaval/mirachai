@@ -36,7 +36,7 @@ const MODES = [
 export default function ServeModes({ tea }: Props) {
   const serve = normalizeServeFlags(tea);
   return (
-    <div className="grid grid-cols-4 gap-4" aria-label="fogyasztási módok">
+    <div className="grid grid-cols-1 gap-4" aria-label="fogyasztási módok">
       {MODES.filter((m) => serve[m.key.replace('serve_', '') as keyof typeof serve]).map((m) => (
         <div
           key={m.key}

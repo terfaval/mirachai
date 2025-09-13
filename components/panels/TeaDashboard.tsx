@@ -7,69 +7,85 @@ import CaffeineBar from '@/components/ingredients/CaffeineBar';
 import ServeModes from '@/components/ServeModes';
 import { buildIngredients, getFocusOrdered, caffeineToPct } from '@/utils/teaTransforms';
 
-type Props = {
+interface Props {
   tea: any;
   colorDark: string;
-};
+}
 
 export default function TeaDashboard({ tea, colorDark }: Props) {
   const ingredients = buildIngredients(tea);
   const focusData = getFocusOrdered(tea);
   const caffeine = caffeineToPct(tea);
 
-  // ===== FINOMHANGOLHATÓ BEÁLLÍTÁSOK =====
-  const CHART_SIZE = 300;     // ← növeld/csökkentsd, ha nagyobb/kisebb radart szeretnél (eredetileg 240)
-  const INNER_ZERO_SCALE = 0.95; // ← a belső „0” kör mérete (0–1 * első lépcső sugara); 0.9-0.98 jellemzően biztonságos
-  const ICON_SIZE = 28;       // ← a TasteChart ikon mérete px-ben
-  const CENTER_BOX_MIN_H = 320; // ← min. magasság a középre igazításhoz (vizuális közép a panelBox-on belül)
-  // =======================================
-
-  // Központosító wrapper – mindkét chart dobozában ezt használjuk
-  const centerWrap: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: CENTER_BOX_MIN_H,
-  };
+  // finomhangolás
+  const TASTE_SIZE = 360;
+  const INNER_ZERO_SCALE = 0.95;
+  const ICON_SIZE = 64;
 
   return (
     <section className={styles.panelElement} data-panel="tea-dashboard">
-      <div className={styles.caffeineLabel} style={{ background: colorDark }}>
-        <CaffeineBar value={caffeine} color={colorDark} />
-      </div>
-
       <div style={{ display: 'grid', gap: 24 }}>
         <div className={styles.panelBox}>
           <IngredientsStack ingredients={ingredients} />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-          <div className={styles.panelBox}>
-            {/* KÖZÉPRE IGAZÍTÁS + NAGYOBB CHART + NAGYOBB BELSŐ KÖR + IKON MÉRET */}
-            <div style={centerWrap}>
-              <TasteChart
-                tea={tea}
-                size={CHART_SIZE}
-                innerZeroScale={INNER_ZERO_SCALE}
-                iconSizePx={ICON_SIZE}
-              />
+        <div style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: 24 }}>
+          <div
+            className={styles.panelBox}
+            style={{
+              borderRadius: '9999px',
+              padding: 24,
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              aspectRatio: '1 / 1',
+            }}
+          >
+            <TasteChart
+              tea={tea}
+              size={TASTE_SIZE}
+              innerZeroScale={INNER_ZERO_SCALE}
+              iconSizePx={ICON_SIZE}
+            />
+
+            <div style={{ position: 'absolute', bottom: 16, left: 16 }}>
+              <div
+                style={{
+                  background: '#fff',
+                  borderRadius: '9999px',
+                  padding: 8,
+                  boxShadow: '0 1px 2px rgba(0,0,0,0.06)',
+                }}
+              >
+                <CaffeineBar value={caffeine} color={colorDark} />
+              </div>
+            </div>
+
+            <div
+              style={{
+                position: 'absolute',
+                right: 16,
+                top: '50%',
+                transform: 'translateY(-50%)',
+              }}
+            >
+              <div
+                style={{
+                  background: '#fff',
+                  borderRadius: '9999px',
+                  padding: 8,
+                  boxShadow: '0 1px 2px rgba(0,0,0,0.06)',
+                }}
+              >
+                <FocusChart data={focusData} size={160} colorDark={colorDark} />
+              </div>
             </div>
           </div>
 
           <div className={styles.panelBox}>
-            {/* FocusChart is középre és kicsit nagyobbra véve a vizuális balansz miatt */}
-            <div style={centerWrap}>
-              <FocusChart
-                data={focusData}
-                size={CHART_SIZE}
-                colorDark={colorDark}
-              />
-            </div>
+            <ServeModes tea={tea} />
           </div>
-        </div>
-
-        <div className={styles.panelBox}>
-          <ServeModes tea={tea} />
         </div>
       </div>
     </section>
