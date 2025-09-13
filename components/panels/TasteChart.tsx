@@ -15,7 +15,6 @@ interface Props {
   connectByStrongest?: boolean;  // (unused)
   strongColor?: string;          // (unused)
   colorDark?: string;
-  innerZeroScale?: number;       // belső kör méret: a step szorzója (0..1), default 0.9
   iconSizePx?: number;           // ikon méret px-ben
 }
 
@@ -61,7 +60,6 @@ export default function TasteChart({
   connectByStrongest: _connectByStrongest = true,
   strongColor: _strongColor,
   colorDark = '#333',
-  innerZeroScale = 0.9,      // nagyobb belső kör
   iconSizePx = 48,
 }: Props) {
   const cx = size / 2;
@@ -89,9 +87,6 @@ export default function TasteChart({
   const base = pointRadiusBase;
   const POINT_RADII = [base * .6, base * .9, base];
 
-  // nagyobb "0" tengely – jól látható kör
-  const innerZeroRadius = step * innerZeroScale;
-
   return (
     <div className={styles.container} style={{ width: size, height: size }}>
       <svg
@@ -102,28 +97,9 @@ export default function TasteChart({
         aria-label="ízprofil diagram"
         style={{ background: 'transparent' }}
       >
-        {/* Belső „0 tengely” kör */}
-        <circle
-          cx={cx}
-          cy={cy}
-          r={innerZeroRadius}
-          fill="none"
-          stroke="#ddd"
-          strokeWidth={2}
-        />
-
-        {/* Sugár irányú segédvonalak + pontok */}
+        {/* Pontok */}
         {allEntries.map((p) => (
           <g key={p.key}>
-            <line
-              x1={cx}
-              y1={cy}
-              x2={cx + Math.cos(p.angle) * radius}
-              y2={cy + Math.sin(p.angle) * radius}
-              stroke="#ccc"
-              strokeWidth={1}
-              opacity={0.35}
-            />
             {[1, 2, 3].map((lvl) => {
               const active = lvl <= p.value;
               const pr = active ? POINT_RADII[lvl - 1] : 3;
