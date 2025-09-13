@@ -58,10 +58,12 @@ export default function ColorCup({
           left: '50%',
           transform: 'translate(-50%, -50%)',
           background: cupColor,
-          color: '#fff',
+          color: '#000',
           fontWeight: 'bold',
-          padding: '0.25rem 0.5rem',
+          padding: '0.25rem 0.75rem',
           borderRadius: '4px',
+          width: '80%',
+          textAlign: 'center',
           zIndex: 3,
         }}
       >

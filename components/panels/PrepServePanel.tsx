@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTeaColor, getCategoryColor } from '../../utils/colorMap';
+import { getTeaColor } from '../../utils/colorMap';
 import PrepInfo from '@/components/panels/PrepInfo';
 import ColorCup from '@/components/ColorCup';
 
@@ -26,7 +26,6 @@ export default function PrepServePanel({ tea, infoText }: Props) {
 
   // tea.color lehet címke vagy hex – getTeaColor mindkettőt kezeli
   const cupHex = getTeaColor(tea.color ?? '');
-  const colorLight = getCategoryColor(tea.category, 'light') ?? 'rgba(0,0,0,0.1)';
 
   // kategória szerinti háttér
   const tableSrc = `/table_background/table_${toSlug(tea?.category ?? '')}.png`;
@@ -88,8 +87,8 @@ export default function PrepServePanel({ tea, infoText }: Props) {
           color={cupHex}
           label={infoText}
           size={CUP_SIZE}    // <<< a „chart”/csésze vizuális mérete
-          teaInsetPct={22}
-          teaOpacity={0.7}
+          teaInsetPct={100}
+          teaOpacity={1}
           aria-label={tea?.name ? `Szín: ${tea.name}` : 'Tea szín'}
         />
 
