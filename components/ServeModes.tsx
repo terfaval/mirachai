@@ -36,26 +36,35 @@ const MODES = [
 export default function ServeModes({ tea }: Props) {
   const serve = normalizeServeFlags(tea);
   return (
-    <div className="grid grid-cols-1 gap-4" aria-label="fogyasztási módok">
-      {MODES.filter((m) => serve[m.key.replace('serve_', '') as keyof typeof serve]).map((m) => (
-        <div
-          key={m.key}
-          className="relative flex items-center justify-center text-center aspect-[6/4]"
-        >
-          <div
-            aria-hidden
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundColor: m.color,
-              mask: `url(${m.svg}) no-repeat center / 60%`,
-              WebkitMask: `url(${m.svg}) no-repeat center / 60%`,
-            }}
-          />
-          <span className="relative font-bold" style={{ color: m.color }}>
-            {m.label}
-          </span>
-        </div>
-      ))}
+    <div className="flex justify-center" aria-label="fogyasztási módok">
+      <div className="grid grid-cols-4 gap-4">
+        {MODES.map((m) => {
+          const active = serve[m.key.replace('serve_', '') as keyof typeof serve];
+          return (
+            <div
+              key={m.key}
+              className="relative flex items-center justify-center text-center aspect-[6/4]"
+            >
+              {active && (
+                <>
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 opacity-20"
+                    style={{
+                      backgroundColor: m.color,
+                      mask: `url(${m.svg}) no-repeat center / 100%`,
+                      WebkitMask: `url(${m.svg}) no-repeat center / 100%`,
+                    }}
+                  />
+                  <span className="relative font-bold" style={{ color: m.color }}>
+                    {m.label}
+                  </span>
+                </>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

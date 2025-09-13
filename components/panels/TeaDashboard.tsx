@@ -21,6 +21,9 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
   const TASTE_SIZE = 300;
   const INNER_ZERO_SCALE = 0.95;
   const ICON_SIZE = 64;
+  const TASTE_ROTATION_DEG = 0; // ízdiagram elforgatása fokban
+  const CAFFEINE_Y_OFFSET = -120;  // kávéinfó függőleges eltolása px-ben
+  const FOCUS_Y_OFFSET = 120;     // fókuszdiagram függőleges eltolása px-ben
 
   return (
     <section className={styles.panelElement} data-panel="tea-dashboard">
@@ -29,54 +32,46 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
           <IngredientsStack ingredients={ingredients} />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: 24 }}>
+        <div
+          className={styles.panelBox}
+          style={{ padding: 24, display: 'grid', gap: 24 }}
+        >
           <div
-            className={styles.panelBox}
             style={{
-              borderRadius: '9999px',
-              padding: 24,
-              position: 'relative',
-              display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-              aspectRatio: '1 / 1',
+              display: 'grid',
+              gridTemplateColumns: '1fr auto 1fr',
+              alignItems: 'center',
             }}
           >
-            <TasteChart
-              tea={tea}
-              size={TASTE_SIZE}
-              innerZeroScale={INNER_ZERO_SCALE}
-              iconSizePx={ICON_SIZE}
-            />
-
-            <div style={{ position: 'absolute', bottom: 16, left: 16 }}>
-              <div
-                style={{
-                  background: '#fff',
-                  borderRadius: '9999px',
-                  padding: 8,
-                  boxShadow: '0 1px 2px rgba(0,0,0,0.06)',
-                }}
-              >
-                <CaffeineBar value={caffeine} color={colorDark} />
-              </div>
+            <div
+              style={{
+                justifySelf: 'start',
+                transform: `translateY(${CAFFEINE_Y_OFFSET}px)`,
+              }}
+            >
+              <CaffeineBar value={caffeine} color={colorDark} />
             </div>
 
-            <div style={{ position: 'absolute', bottom: 16, right: 16 }}>
-              <div
-                style={{
-                  background: '#fff',
-                  borderRadius: '9999px',
-                  padding: 8,
-                  boxShadow: '0 1px 2px rgba(0,0,0,0.06)',
-                }}
-              >
-                <FocusChart data={focusData} size={160} colorDark={colorDark} />
-              </div>
+            <div style={{ justifySelf: 'center' }}>
+              <TasteChart
+                tea={tea}
+                size={TASTE_SIZE}
+                iconSizePx={ICON_SIZE}
+                rotationDeg={TASTE_ROTATION_DEG}
+              />
+            </div>
+
+            <div
+              style={{
+                justifySelf: 'end',
+                transform: `translateY(${FOCUS_Y_OFFSET}px)`,
+              }}
+            >
+              <FocusChart data={focusData} size={120} colorDark={colorDark} />
             </div>
           </div>
 
-          <div className={styles.panelBox}>
+          <div>
             <ServeModes tea={tea} />
           </div>
         </div>

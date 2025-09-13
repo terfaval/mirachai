@@ -48,7 +48,7 @@ export default function CaffeineBar({ value, color }: Props) {
       </svg>
       {pct === 0 ? (
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 text-lg font-bold">
-          <div>koffeint-</div>
+          <div>koffein-</div>
           <div>mentes</div>
         </div>
       ) : (

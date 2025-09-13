@@ -16,6 +16,7 @@ interface Props {
   strongColor?: string;          // (unused)
   colorDark?: string;
   iconSizePx?: number;           // ikon méret px-ben
+  rotationDeg?: number;          // diagram elforgatása fokban
 }
 
 const ORDER = [
@@ -59,8 +60,9 @@ export default function TasteChart({
   pointRadiusBase = 15,
   connectByStrongest: _connectByStrongest = true,
   strongColor: _strongColor,
-  colorDark = '#333',
+  colorDark = 'colorDark',
   iconSizePx = 48,
+  rotationDeg = 0,
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
@@ -71,12 +73,15 @@ export default function TasteChart({
     { label: string; value: number; x: number; y: number; color: string } | null
   >(null);
 
+  const rotationRad = (rotationDeg * Math.PI) / 180;
+  
   const allEntries = ORDER.map((k, i) => {
     const raw = N((tea as any)[k]);
     const value = Math.max(0, Math.min(raw, 3));
     const label = k.replace('taste_', '').replace(/_/g, ' ');
     const color = getTasteColor(k);
-    const angle = (i / ORDER.length) * Math.PI * 2 - Math.PI / 2;
+    const angle =
+      (i / ORDER.length) * Math.PI * 2 - Math.PI / 2 + rotationRad;
     const icon = `/icon_${ICON_FILE[k] ?? k.replace('taste_', '')}.svg`;
     return { key: k, label, value: isNaN(value) ? 0 : value, color, angle, icon };
   });
