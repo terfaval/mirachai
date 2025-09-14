@@ -159,16 +159,14 @@ export default function Home({ teas }: HomeProps) {
     return arr;
   }, [filtered, sort, now]);
 
-  const pageSize = 9;
+  const perPage = 9;
 
   const distributed = useMemo(
-    () => distributeByCategory(sorted, pageSize, 3, shuffleSeedRef.current ?? 0),
-    [sorted, pageSize, shuffleSeedRef.current]
+    () => distributeByCategory(sorted, perPage, 3, shuffleSeedRef.current ?? 0),
+    [sorted, perPage, shuffleSeedRef.current]
   );
 
-  const pagination = usePagination(distributed.length, pageSize, 1);
-  const { page, totalPages, setPage } = pagination;
-  const pageItems = useMemo(() => pagination.slice(distributed), [distributed, page, pageSize]);
+  const { page, totalPages, goTo } = usePagination(distributed.length, perPage, 1);
 
   const categories = useMemo(
     () => Array.from(new Set(teas.map((t) => t.category)))
@@ -180,7 +178,7 @@ export default function Home({ teas }: HomeProps) {
     setSelectedCategories((prev) => prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]);
   };
 
-  useEffect(() => { setPage(1); }, [query, selectedCategories, sort]);
+  useEffect(() => { goTo(1); }, [query, selectedCategories, sort]);
 
   useEffect(() => {
     const el = document.getElementById('tea-grid');
@@ -189,8 +187,8 @@ export default function Home({ teas }: HomeProps) {
   }, [page]);
 
   useEffect(() => {
-    (window as any).analytics?.track?.('page_change', { page, pageSize });
-  }, [page, pageSize]);
+    (window as any).analytics?.track?.('page_change', { page, perPage });
+  }, [page, perPage]);
 
   return (
     <>
@@ -209,8 +207,8 @@ export default function Home({ teas }: HomeProps) {
         onClose={() => setFiltersOpen(false)}
         onSelect={(key) => { if (key === 'category') setShowCategorySidebar(true); setFiltersOpen(false); }}
       />
-      <TeaGrid items={pageItems} onTeaClick={setSelectedTea} tilesX={3} tilesY={3} gridId="tea-grid" />
-        <PaginationBar page={page} totalPages={totalPages} onSelect={setPage} aria-controls="tea-grid" />
+      <TeaGrid items={distributed} page={page} perPage={perPage} onTeaClick={setSelectedTea} gridId="tea-grid" />
+        <PaginationBar page={page} totalPages={totalPages} onSelect={goTo} aria-controls="tea-grid" />
 
       {selectedTea && <TeaModal tea={selectedTea} onClose={() => setSelectedTea(null)} />}
     </>

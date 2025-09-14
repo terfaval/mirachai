@@ -6,9 +6,9 @@ import InfoPanelSidebar from './InfoPanelSidebar';
 
 type Props = {
   items: Tea[];
+  page: number;
+  perPage?: number;
   onTeaClick?: (tea: Tea) => void;
-  tilesX?: number;
-  tilesY?: number;
   gridId?: string;
   onTileFocus?: (tea: Tea) => void;
 };
@@ -24,14 +24,20 @@ function compareIdAsc(a: any, b: any) {
 
 export default function TeaGrid({
   items,
+  page,
+  perPage = 9,
   onTeaClick,
-  tilesX = 3,
-  tilesY = 3,
   gridId = 'tea-grid',
   onTileFocus,
 }: Props) {
+  const tilesX = 3;
+  const tilesY = 3;
+  const start = (page - 1) * perPage;
+  const pageItems = [...items]
+    .sort((a, b) => compareIdAsc(a.id, b.id))
+    .slice(start, start + perPage);
   const [panel, setPanel] = useState<PanelKey>('consumption');
-  const [renderTeas, setRenderTeas] = useState<Tea[]>(items);
+  const [renderTeas, setRenderTeas] = useState<Tea[]>(pageItems);
   const [incomingTeas, setIncomingTeas] = useState<Tea[] | null>(null);
   const [phase, setPhase] = useState<'idle' | 'exit' | 'enter'>('idle');
   const [dir, setDir] = useState<1 | -1>(1);
@@ -41,19 +47,19 @@ export default function TeaGrid({
 
   useEffect(() => {
     const same =
-      renderTeas.length === items.length &&
-      renderTeas.every((t, i) => t?.id === items[i]?.id);
+      renderTeas.length === pageItems.length &&
+      renderTeas.every((t, i) => t?.id === pageItems[i]?.id);
     if (same) return;
 
     const newDir =
-      compareIdAsc(items[0]?.id, renderTeas[0]?.id) >= 0 ? 1 : -1;
+      compareIdAsc(pageItems[0]?.id, renderTeas[0]?.id) >= 0 ? 1 : -1;
     setDir(newDir);
-    setIncomingTeas(items);
+    setIncomingTeas(pageItems);
     setPhase('exit');
 
     if (timerRef.current) window.clearTimeout(timerRef.current);
     timerRef.current = window.setTimeout(() => {
-      setRenderTeas(items);
+      setRenderTeas(pageItems);
       setIncomingTeas(null);
       setPhase('enter');
       timerRef.current = window.setTimeout(() => {
@@ -61,7 +67,7 @@ export default function TeaGrid({
         timerRef.current = null;
       }, 320);
     }, 320);
-  }, [items, renderTeas]);
+  }, [pageItems, renderTeas]);
 
   useEffect(() => {
     return () => {

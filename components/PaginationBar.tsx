@@ -1,5 +1,5 @@
-import React from 'react';
-import PagerDots from './PagerDots';
+import { useEffect } from 'react';
+import styles from '../styles/PaginationBar.module.css';
 
 type Props = {
   page: number;
@@ -9,26 +9,34 @@ type Props = {
 };
 
 export default function PaginationBar({ page, totalPages, onSelect, ...a11y }: Props) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') onSelect(Math.max(1, page - 1));
+      if (e.key === 'ArrowRight') onSelect(Math.min(totalPages, page + 1));
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [page, totalPages, onSelect]);
+
   if (totalPages <= 1) return null;
+
   return (
-    <nav className="pager-bar" aria-label="Pagination" {...a11y}>
+    <nav className={styles.pagerBar} aria-label="Pagination" {...a11y}>
       <button
         type="button"
-        onClick={() => onSelect(Math.max(1, page - 1))}
+        className={styles.navBtn}
         aria-label="Previous page"
+        onClick={() => onSelect(Math.max(1, page - 1))}
         disabled={page <= 1}
-      >
-        ‹
-      </button>
-      <PagerDots current={page} total={totalPages} onSelect={onSelect} />
+      />
+      <span className={styles.status}>{page} / {totalPages}</span>
       <button
         type="button"
-        onClick={() => onSelect(Math.min(totalPages, page + 1))}
+        className={styles.navBtn}
         aria-label="Next page"
+        onClick={() => onSelect(Math.min(totalPages, page + 1))}
         disabled={page >= totalPages}
-      >
-        ›
-      </button>
+      />
     </nav>
   );
 }
