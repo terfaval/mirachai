@@ -1,47 +1,176 @@
+/* ---------- Paraméterezés (helyi, CSS Modules-kompatibilis) ---------- */
+.container {
+  /* GRID alapok */
+  --tiles-x: 3;
+  --tiles-y: 3;
+  --tile-h: 160px;
+  --grid-w: 60%;
+
+  /* Pager */
+  --pager-size: 44px;
+  --pager-radius: 12px;
+  --pager-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  --pager-shadow-hover: 0 10px 28px rgba(0,0,0,0.24);
+  --pager-gap: 12px;
+
+  --dot-size: 10px;
+  --dot-gap: 10px;
+
+  /* Animáció */
+  --slide-ms: 320ms;
+  --slide-ease: cubic-bezier(.22,.61,.36,1);
+
+  /* Pager offset a doboz aljához képest */
+  --pager-offset-y: 72px;
+
+  position: relative;
+  width: 100%;
+}
+
+/* opcionális külső igazítás */
 .wrapper {
   display: flex;
   justify-content: center;
 }
 
-.grid {
+/* ---------- Rács-keret ---------- */
+.gridWrap {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 160px);
-  gap: 0;
+  width: var(--grid-w);
   max-height: 100%;
-  width: 60%;
+}
+
+/* ---------- Fő GRID (3×3) – a doboz ---------- */
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--tiles-x), 1fr);
+  grid-template-rows: repeat(var(--tiles-y), var(--tile-h));
+  gap: 0;
+  width: 100%;
+
   border: 6px solid #80350E;
   background: linear-gradient(180deg, #4A2912 0%, #321B0C 80%);
-
-  /* fontos: a háttér csak a border belsejéig érjen */
   background-clip: padding-box;
 
-  /* csak belső árnyék (inset), két rétegben */
   box-shadow:
-    inset -15px 15px 16px rgba(0,0,0,0.9), /* PPT szerinti irány belülre */
+    inset -15px 15px 16px rgba(0,0,0,0.9),
     inset 0 0 10px rgba(0,0,0,0.5);
+
+  transition: transform var(--slide-ms) var(--slide-ease),
+              opacity var(--slide-ms) var(--slide-ease);
 }
 
-.active {
-  font-weight: bold;
+/* Bejövő “ghost” réteg */
+.ghost {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
+/* ---------- Cellák ---------- */
 .cell {
   border: 6px solid #80350E;
   background: linear-gradient(180deg, #4A2912 0%, #321B0C 80%);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* fontos: a háttér csak a border belsejéig érjen */
   background-clip: padding-box;
-
-  /* csak belső árnyék (inset), két rétegben */
   box-shadow:
-    inset -15px 15px 16px rgba(0,0,0,0.9), /* PPT szerinti irány belülre */
+    inset -15px 15px 16px rgba(0,0,0,0.9),
     inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.active { font-weight: bold; }
+
+/* ---------- Irányfüggő animáció ---------- */
+.slideOutLeft  { transform: translateX(-8%); opacity: 0; }
+.slideOutRight { transform: translateX( 8%); opacity: 0; }
+
+.slideInLeft {
+  transform: translateX(-8%);
+  opacity: 0;
+  animation: slideInFromLeft var(--slide-ms) var(--slide-ease) forwards;
+}
+.slideInRight {
+  transform: translateX( 8%);
+  opacity: 0;
+  animation: slideInFromRight var(--slide-ms) var(--slide-ease) forwards;
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-8%); opacity: 0; }
+  to   { transform: translateX(0%);  opacity: 1; }
+}
+@keyframes slideInFromRight {
+  from { transform: translateX(8%); opacity: 0; }
+  to   { transform: translateX(0%); opacity: 1; }
+}
+
+/* ---------- Pager (nyilak + pontok) ---------- */
+.pagerBar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(20px + var(--pager-offset-y));
+  width: var(--grid-w);
+
+  display: grid;
+  grid-template-columns: var(--pager-size) 1fr var(--pager-size);
+  align-items: center;
+  gap: var(--pager-gap);
+  pointer-events: auto;
+}
+
+.navBtn {
+  height: var(--pager-size);
+  width: var(--pager-size);
+  border-radius: var(--pager-radius);
+  border: none;
+  background: #ffffff;
+  box-shadow: var(--pager-shadow);
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--pager-size) * 0.55);
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, opacity 120ms ease;
+  user-select: none;
+  opacity: 0.95;
+}
+.navBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--pager-shadow-hover);
+  background: #fffefd;
+  opacity: 1;
+}
+.navBtn:active { transform: translateY(0); }
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--dot-gap);
+}
+.dot {
+  height: var(--dot-size);
+  width: var(--dot-size);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.35);
+  border: 0;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.25) inset;
+}
+.dot:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.5);
+}
+.dotActive {
+  background: rgba(255,255,255,0.9);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.45) inset;
 }
