@@ -11,7 +11,8 @@ import FilterPanel from '../components/FilterPanel';
 import { filterTeas, Tea } from '../utils/filter';
 import { toStringArray } from '../lib/toStringArray';
 import { distributeByCategory } from '../utils/category-distribution';
-import PagerDots from '@/components/PagerDots';
+import PaginationBar from '../components/PaginationBar';
+import { usePagination } from '../hooks/usePagination';
 
 /* ---------- stabil “véletlen” ---------- */
 function mulberry32(a: number) {
@@ -101,7 +102,6 @@ export default function Home({ teas }: HomeProps) {
   const [selectedTea, setSelectedTea] = useState<Tea | null>(null);
   const [query, setQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [page, setPage] = useState(1);
   const [sort, setSort] = useState<SortKey>('relevanceDesc');
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [showCategorySidebar, setShowCategorySidebar] = useState(false);
@@ -159,20 +159,16 @@ export default function Home({ teas }: HomeProps) {
     return arr;
   }, [filtered, sort, now]);
 
-  const perPage = 9;
+  const pageSize = 9;
 
   const distributed = useMemo(
-  () => distributeByCategory(sorted, perPage, 3, shuffleSeedRef.current ?? 0),
-  [sorted, perPage, shuffleSeedRef.current]
-);
+    () => distributeByCategory(sorted, pageSize, 3, shuffleSeedRef.current ?? 0),
+    [sorted, pageSize, shuffleSeedRef.current]
+  );
 
-  const paginated = useMemo(() => {
-    const slice = distributed.slice((page - 1) * perPage, page * perPage);
-    if (new Set(slice.map((t) => t.category)).size === 1) {
-      return [...slice].sort((a, b) => a.id - b.id);
-    }
-    return slice;
-  }, [distributed, page]);
+  const pagination = usePagination(distributed.length, pageSize, 1);
+  const { page, totalPages, setPage } = pagination;
+  const pageItems = useMemo(() => pagination.slice(distributed), [distributed, page, pageSize]);
 
   const categories = useMemo(
     () => Array.from(new Set(teas.map((t) => t.category)))
@@ -184,7 +180,17 @@ export default function Home({ teas }: HomeProps) {
     setSelectedCategories((prev) => prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]);
   };
 
-  useEffect(() => { setPage(1); }, [query, selectedCategories]);
+  useEffect(() => { setPage(1); }, [query, selectedCategories, sort]);
+
+  useEffect(() => {
+    const el = document.getElementById('tea-grid');
+    el?.focus?.();
+    window.history.replaceState(null, '', `?page=${page}`);
+  }, [page]);
+
+  useEffect(() => {
+    (window as any).analytics?.track?.('page_change', { page, pageSize });
+  }, [page, pageSize]);
 
   return (
     <>
@@ -203,34 +209,9 @@ export default function Home({ teas }: HomeProps) {
         onClose={() => setFiltersOpen(false)}
         onSelect={(key) => { if (key === 'category') setShowCategorySidebar(true); setFiltersOpen(false); }}
       />
-      <TeaGrid teas={paginated} onTeaClick={setSelectedTea} />
-      <div className="pagerBar">
-        {page > 1 && (
-          <button
-            className="pager-prev"
-            aria-label="Előző oldal"
-            onClick={() => setPage(page - 1)}
-          >
-            Előző
-          </button>
-        )}
+      <TeaGrid items={pageItems} onTeaClick={setSelectedTea} tilesX={3} tilesY={3} gridId="tea-grid" />
+        <PaginationBar page={page} totalPages={totalPages} onSelect={setPage} aria-controls="tea-grid" />
 
-        <PagerDots
-          page={page - 1}
-          totalPages={Math.ceil(filtered.length / perPage)}
-          onGoTo={(i) => setPage(i + 1)}
-        />
-
-        {page * perPage < filtered.length && (
-          <button
-            className="pager-next"
-            aria-label="Következő oldal"
-            onClick={() => setPage(page + 1)}
-          >
-            Következő
-          </button>
-        )}
-      </div>
       {selectedTea && <TeaModal tea={selectedTea} onClose={() => setSelectedTea(null)} />}
     </>
   );

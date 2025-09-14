@@ -3,7 +3,7 @@ import brewAll from "../data/brew_profiles.json";
 import equipmentGuide from "../data/equipment_guide.json";
 
 // Ezt a modult csak szerver-komponensek vagy API-route-ok importálják!
-export const BREW_PROFILES = brewAll as BrewTeaProfiles[];
+export const BREW_PROFILES = brewAll as unknown as BrewTeaProfiles[];
 export const EQUIPMENT_GUIDE = equipmentGuide as EquipmentGuide[];
 
 export function listTeaSlugs(): string[] {

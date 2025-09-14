@@ -1,17 +1,17 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import TeaCard, { PanelKey } from './TeaCard';
 import styles from '../styles/TeaGrid.module.css';
 import { Tea } from '../utils/filter';
 import InfoPanelSidebar from './InfoPanelSidebar';
 
-interface Props {
-  teas: Tea[] | Record<string, Tea>;
+type Props = {
+  items: Tea[];
   onTeaClick?: (tea: Tea) => void;
-}
-
-const TILES_X = 3;
-const TILES_Y = 3;
-const TILE_COUNT = TILES_X * TILES_Y;
+  tilesX?: number;
+  tilesY?: number;
+  gridId?: string;
+  onTileFocus?: (tea: Tea) => void;
+};
 
 function compareIdAsc(a: any, b: any) {
   const na = Number(a);
@@ -22,105 +22,88 @@ function compareIdAsc(a: any, b: any) {
   return String(a).localeCompare(String(b), 'hu', { numeric: true });
 }
 
-export default function TeaGrid({ teas, onTeaClick }: Props) {
+export default function TeaGrid({
+  items,
+  onTeaClick,
+  tilesX = 3,
+  tilesY = 3,
+  gridId = 'tea-grid',
+  onTileFocus,
+}: Props) {
   const [panel, setPanel] = useState<PanelKey>('consumption');
-
-  // --- bemenet normalizálása ---
-  const teasArray: Tea[] = useMemo(() => {
-    if (Array.isArray(teas)) return teas;
-    if (teas && typeof teas === 'object') return Object.values(teas);
-    return [];
-  }, [teas]);
-
-  // --- stabil sorrend ---
-  const orderedTeas = useMemo(() => {
-    return [...teasArray].sort((a, b) => compareIdAsc(a?.id, b?.id));
-  }, [teasArray]);
-
-  // --- pagináció állapot ---
-  const totalPages = Math.max(1, Math.ceil(orderedTeas.length / TILE_COUNT));
-  const [page, setPage] = useState(0);
+  const [renderTeas, setRenderTeas] = useState<Tea[]>(items);
+  const [incomingTeas, setIncomingTeas] = useState<Tea[] | null>(null);
   const [phase, setPhase] = useState<'idle' | 'exit' | 'enter'>('idle');
   const [dir, setDir] = useState<1 | -1>(1);
   const timerRef = useRef<number | null>(null);
 
-  const pageSlice = (p: number) => {
-    const start = p * TILE_COUNT;
-    return orderedTeas.slice(start, start + TILE_COUNT);
-  };
+  const cells = Array.from({ length: tilesX * tilesY });
 
-  const [renderTeas, setRenderTeas] = useState<Tea[]>(pageSlice(0));
-  const [incomingTeas, setIncomingTeas] = useState<Tea[] | null>(null);
-
-  // ha változik az elemszám (szülőből több/kevesebb érkezik), reset
   useEffect(() => {
-    setPage(0);
-    setRenderTeas(pageSlice(0));
-    setIncomingTeas(null);
-    setPhase('idle');
-  }, [orderedTeas.length]); // fontos: a pöttyök is ettől frissülnek
+    const same =
+      renderTeas.length === items.length &&
+      renderTeas.every((t, i) => t?.id === items[i]?.id);
+    if (same) return;
 
-  const clearTimers = () => {
-    if (timerRef.current) {
-      window.clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-  };
-
-  const goTo = (nextPage: number, direction: 1 | -1) => {
-    if (phase !== 'idle') return;
-    if (nextPage === page) return;
-    setDir(direction);
-    setIncomingTeas(pageSlice(nextPage));
+    const newDir =
+      compareIdAsc(items[0]?.id, renderTeas[0]?.id) >= 0 ? 1 : -1;
+    setDir(newDir);
+    setIncomingTeas(items);
     setPhase('exit');
 
-    clearTimers();
+    if (timerRef.current) window.clearTimeout(timerRef.current);
     timerRef.current = window.setTimeout(() => {
-      setRenderTeas(pageSlice(nextPage));
+      setRenderTeas(items);
       setIncomingTeas(null);
-      setPage(nextPage);
       setPhase('enter');
-
       timerRef.current = window.setTimeout(() => {
         setPhase('idle');
         timerRef.current = null;
       }, 320);
     }, 320);
-  };
+  }, [items, renderTeas]);
 
-  const next = () => goTo((page + 1) % totalPages, 1);
-  const prev = () => goTo((page - 1 + totalPages) % totalPages, -1);
-
-  const cells = Array.from({ length: TILE_COUNT });
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
+  }, []);
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ ['--tiles-x' as any]: tilesX, ['--tiles-y' as any]: tilesY }}
+    >
       <div className={styles.gridWrap}>
         <InfoPanelSidebar panel={panel} onChange={setPanel} />
 
-        {/* aktív grid */}
         <div
+          id={gridId}
+          role="grid"
+          tabIndex={-1}
           className={[
             styles.grid,
             phase === 'exit' && (dir === 1 ? styles.slideOutLeft : styles.slideOutRight),
             phase === 'enter' && (dir === 1 ? styles.slideInRight : styles.slideInLeft),
-          ].filter(Boolean).join(' ')}
+          ]
+            .filter(Boolean)
+            .join(' ')}
           aria-live="polite"
         >
           {cells.map((_, idx) => {
             const tea = renderTeas[idx];
             const key = tea ? `tea-${tea.id}` : `empty-${idx}`;
             if (!tea) return <div key={key} className={styles.cell} />;
-            const tileX = idx % TILES_X;
-            const tileY = Math.floor(idx / TILES_X);
+            const tileX = idx % tilesX;
+            const tileY = Math.floor(idx / tilesX);
             return (
-              <div key={key} className={styles.cell}>
+              <div key={key} className={styles.cell} onFocus={() => onTileFocus?.(tea)}>
                 <TeaCard
                   tea={tea}
                   tileX={tileX}
                   tileY={tileY}
-                  tilesX={TILES_X}
-                  tilesY={TILES_Y}
+                  tilesX={tilesX}
+                  tilesY={tilesY}
                   onClick={onTeaClick}
                   panel={panel}
                 />
@@ -129,7 +112,6 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
           })}
         </div>
 
-        {/* bejövő grid (animáció idejére) */}
         {incomingTeas && (
           <div
             className={[
@@ -142,16 +124,16 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
               const tea = incomingTeas[idx];
               const key = tea ? `incoming-${tea.id}` : `incoming-empty-${idx}`;
               if (!tea) return <div key={key} className={styles.cell} />;
-              const tileX = idx % TILES_X;
-              const tileY = Math.floor(idx / TILES_X);
+              const tileX = idx % tilesX;
+              const tileY = Math.floor(idx / tilesX);
               return (
-                <div key={key} className={styles.cell}>
+                <div key={key} className={styles.cell} onFocus={() => onTileFocus?.(tea)}>
                   <TeaCard
                     tea={tea}
                     tileX={tileX}
                     tileY={tileY}
-                    tilesX={TILES_X}
-                    tilesY={TILES_Y}
+                    tilesX={tilesX}
+                    tilesY={tilesY}
                     onClick={onTeaClick}
                     panel={panel}
                   />
@@ -161,45 +143,6 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
           </div>
         )}
       </div>
-
-      {/* csak akkor jelenjen meg, ha tényleg több oldal van */}
-      {totalPages > 1 && (
-        <div className={styles.pagerBar}>
-          <button
-            type="button"
-            className={styles.navBtn}
-            onClick={prev}
-            aria-label="Előző oldal"
-            disabled={phase !== 'idle'}
-          >
-            ‹
-          </button>
-
-          <div className={styles.dots} role="tablist" aria-label="Oldalak">
-            {Array.from({ length: totalPages }).map((_, i) => (
-              <button
-                key={`dot-${i}`}
-                type="button"
-                className={[styles.dot, i === page ? styles.dotActive : ''].join(' ')}
-                onClick={() => goTo(i, i > page ? 1 : -1)}
-                aria-label={`${i + 1}. oldal`}
-                aria-current={i === page ? 'page' : undefined}
-                disabled={phase !== 'idle'}
-              />
-            ))}
-          </div>
-
-          <button
-            type="button"
-            className={styles.navBtn}
-            onClick={next}
-            aria-label="Következő oldal"
-            disabled={phase !== 'idle'}
-          >
-            ›
-          </button>
-        </div>
-      )}
     </div>
   );
 }

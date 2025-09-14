@@ -196,6 +196,7 @@ export default function TeaSearchWithFilters({ teas }: { teas?: Tea[] }) {
         Szűrők
       </button>
 
+      // TODO: paginate results with usePagination or add virtualization
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredTeas.map(t => (
           <div key={t.id} className="p-4 rounded-xl border">
