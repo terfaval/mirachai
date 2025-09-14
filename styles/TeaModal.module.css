@@ -2,11 +2,13 @@
 .overlay{
   position: fixed; inset:0; background: rgba(0,0,0,.4);
   display:flex; align-items:center; justify-content:center; z-index: 1000;
+  padding:20px 0;
 }
 .panel{
-  position: relative; width:75%; height:95%; border-radius:24px; overflow:hidden;
+  position: relative; width:75%; max-width:100%; border-radius:24px; overflow:hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
   padding:30px; display:flex; flex-direction:column; box-sizing:border-box;
+  max-height: calc(100vh - 40px);
 }
 /* ── Mandala overlay (SVG mask mozaik) ───────────────────────────── */
 .mandala {
@@ -19,6 +21,8 @@
   mask-image: var(--mandala-url);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
   mask-type: alpha;
 
    /* Kitöltés és megjelenés */
@@ -35,6 +39,7 @@
 .content{
   position:relative;
   flex:1;
+  min-height:0;
   padding: 40px 20px;
   border-radius: 17px;
   z-index:1;
@@ -42,7 +47,7 @@
   flex-direction:column;
   align-items:space-between;
   overflow-y:auto;
-  overflow-x:none;
+  overflow-x:hidden;
   scrollbar-gutter: stable;
 }
 
@@ -169,6 +174,8 @@
   inset: 0;
   z-index: 1;
   justify-content:center;
+  display:flex;
+  align-items:center;
 }
 
 .panelElement {

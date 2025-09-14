@@ -1,6 +1,8 @@
 .pagerBar {
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  left: 12vw;
+  right: 12vw;
   display: grid;
   grid-template-columns: 44px 1fr 44px;
   align-items: center;
