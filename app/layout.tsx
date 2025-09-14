@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "@/styles/pager-global.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

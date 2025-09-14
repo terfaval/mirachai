@@ -11,6 +11,7 @@ import FilterPanel from '../components/FilterPanel';
 import { filterTeas, Tea } from '../utils/filter';
 import { toStringArray } from '../lib/toStringArray';
 import { distributeByCategory } from '../utils/category-distribution';
+import PagerDots from '@/components/PagerDots';
 
 /* ---------- stabil “véletlen” ---------- */
 function mulberry32(a: number) {
@@ -203,9 +204,32 @@ export default function Home({ teas }: HomeProps) {
         onSelect={(key) => { if (key === 'category') setShowCategorySidebar(true); setFiltersOpen(false); }}
       />
       <TeaGrid teas={paginated} onTeaClick={setSelectedTea} />
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
-        {page > 1 && <button onClick={() => setPage(page - 1)}>Előző</button>}
-        {page * perPage < filtered.length && <button onClick={() => setPage(page + 1)}>Következő</button>}
+      <div className="pagerBar">
+        {page > 1 && (
+          <button
+            className="pager-prev"
+            aria-label="Előző oldal"
+            onClick={() => setPage(page - 1)}
+          >
+            Előző
+          </button>
+        )}
+
+        <PagerDots
+          page={page - 1}
+          totalPages={Math.ceil(filtered.length / perPage)}
+          onGoTo={(i) => setPage(i + 1)}
+        />
+
+        {page * perPage < filtered.length && (
+          <button
+            className="pager-next"
+            aria-label="Következő oldal"
+            onClick={() => setPage(page + 1)}
+          >
+            Következő
+          </button>
+        )}
       </div>
       {selectedTea && <TeaModal tea={selectedTea} onClose={() => setSelectedTea(null)} />}
     </>
