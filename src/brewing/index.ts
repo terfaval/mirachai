@@ -113,11 +113,16 @@ function deriveFromTeas(teas: any[]): BrewDoc[] {
 async function loadBrewDocs(basePath = "/data"): Promise<BrewDoc[]> {
   if (!brewCache[basePath]) {
     try {
-      const docs = await loadJSON<BrewDoc[]>(basePath, "brew_profiles.json");
-      if (Array.isArray(docs) && docs.length > 0) {
-        brewCache[basePath] = docs;
+      const docs = await loadJSON<any[]>(basePath, "brew_profiles.json");
+      const valid =
+        Array.isArray(docs) &&
+        docs.length > 0 &&
+        typeof docs[0]?.tea_slug === "string" &&
+        Array.isArray(docs[0]?.profiles);
+      if (valid) {
+        brewCache[basePath] = docs as BrewDoc[];
       } else {
-        throw new Error("empty");
+        throw new Error("invalid");
       }
     } catch {
       const teas = await loadJSON<any[]>(basePath, "teas.json");
