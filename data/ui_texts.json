@@ -1,0 +1,14 @@
+{
+  "brewJourney": {
+    "intro": {
+      "h1": ["Nagyszerű választás!", "Kiváló döntés!", "Ez telitalálat!", "Pont erre volt szükség!"],
+      "lead": ["Kísérlek végig az elkészítésen – pár kattintás és indul a teázás.", "Beállítjuk a módszert és a mennyiséget, aztán jönnek a pontos lépések.", "Minden részletet kiszámolok: víz, idő, arányok, eszközök."]
+    },
+    "timer": {
+      "messages": {
+        "default": ["Közben melegíthetsz egy csészét.", "Egy lassú belégzés… és egy hosszú kilégzés.", "Ha szűrőt használsz, készítsd elő most."]
+      },
+      "finished": ["Fogyaszd egészséggel!", "Egészségedre!", "Kész is – jó teázást!"]
+    }
+  }
+}
