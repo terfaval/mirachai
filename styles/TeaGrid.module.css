@@ -1,12 +1,10 @@
 /* ---------- Paraméterezés (helyi, CSS Modules-kompatibilis) ---------- */
 .container {
-  /* GRID alapok */
   --tiles-x: 3;
   --tiles-y: 3;
   --tile-h: 160px;
   --grid-w: 60%;
 
-  /* Pager */
   --pager-size: 44px;
   --pager-radius: 12px;
   --pager-shadow: 0 6px 18px rgba(0,0,0,0.18);
@@ -16,21 +14,12 @@
   --dot-size: 10px;
   --dot-gap: 10px;
 
-  /* Animáció */
   --slide-ms: 320ms;
   --slide-ease: cubic-bezier(.22,.61,.36,1);
-
-  /* Pager offset a doboz aljához képest */
   --pager-offset-y: 72px;
 
   position: relative;
   width: 100%;
-}
-
-/* opcionális külső igazítás */
-.wrapper {
-  display: flex;
-  justify-content: center;
 }
 
 /* ---------- Rács-keret ---------- */
@@ -41,6 +30,9 @@
   transform: translateX(-50%);
   width: var(--grid-w);
   max-height: 100%;
+
+  /* a pager biztosan fölé kerül */
+  z-index: 10;
 }
 
 /* ---------- Fő GRID (3×3) – a doboz ---------- */
@@ -122,6 +114,9 @@
   grid-template-columns: var(--pager-size) 1fr var(--pager-size);
   align-items: center;
   gap: var(--pager-gap);
+
+  /* a gombok biztosan kattinthatók maradjanak */
+  z-index: 20;
   pointer-events: auto;
 }
 

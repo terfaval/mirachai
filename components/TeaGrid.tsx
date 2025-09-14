@@ -5,7 +5,7 @@ import { Tea } from '../utils/filter';
 import InfoPanelSidebar from './InfoPanelSidebar';
 
 interface Props {
-  teas: Tea[] | Record<string, Tea>;      // ← engedjük az objektumot is
+  teas: Tea[] | Record<string, Tea>;
   onTeaClick?: (tea: Tea) => void;
 }
 
@@ -25,19 +25,19 @@ function compareIdAsc(a: any, b: any) {
 export default function TeaGrid({ teas, onTeaClick }: Props) {
   const [panel, setPanel] = useState<PanelKey>('consumption');
 
-  // 0) bemenet normalizálása TÖMBBÉ
+  // --- bemenet normalizálása ---
   const teasArray: Tea[] = useMemo(() => {
     if (Array.isArray(teas)) return teas;
     if (teas && typeof teas === 'object') return Object.values(teas);
     return [];
   }, [teas]);
 
-  // 1) stabil sorrend
+  // --- stabil sorrend ---
   const orderedTeas = useMemo(() => {
     return [...teasArray].sort((a, b) => compareIdAsc(a?.id, b?.id));
   }, [teasArray]);
 
-  // 2) paginációs állapot
+  // --- pagináció állapot ---
   const totalPages = Math.max(1, Math.ceil(orderedTeas.length / TILE_COUNT));
   const [page, setPage] = useState(0);
   const [phase, setPhase] = useState<'idle' | 'exit' | 'enter'>('idle');
@@ -52,14 +52,13 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
   const [renderTeas, setRenderTeas] = useState<Tea[]>(pageSlice(0));
   const [incomingTeas, setIncomingTeas] = useState<Tea[] | null>(null);
 
-  // 🔧 FONTOS: ha változik a lista hossza (pl. beérkeznek a többiek),
-  // reseteljük az oldalt és újravesszük a szeletet → pontok száma is frissül.
+  // ha változik az elemszám (szülőből több/kevesebb érkezik), reset
   useEffect(() => {
     setPage(0);
     setRenderTeas(pageSlice(0));
     setIncomingTeas(null);
     setPhase('idle');
-  }, [orderedTeas.length]); // csak a hosszra figyelünk (teljes újrarendezésnél is jó)
+  }, [orderedTeas.length]); // fontos: a pöttyök is ettől frissülnek
 
   const clearTimers = () => {
     if (timerRef.current) {
@@ -99,6 +98,7 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
       <div className={styles.gridWrap}>
         <InfoPanelSidebar panel={panel} onChange={setPanel} />
 
+        {/* aktív grid */}
         <div
           className={[
             styles.grid,
@@ -129,6 +129,7 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
           })}
         </div>
 
+        {/* bejövő grid (animáció idejére) */}
         {incomingTeas && (
           <div
             className={[
@@ -161,22 +162,44 @@ export default function TeaGrid({ teas, onTeaClick }: Props) {
         )}
       </div>
 
-      <div className={styles.pagerBar}>
-        <button type="button" className={styles.navBtn} onClick={prev} aria-label="Előző oldal">‹</button>
-        <div className={styles.dots} role="tablist" aria-label="Oldalak">
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <button
-              key={`dot-${i}`}
-              type="button"
-              className={[styles.dot, i === page ? styles.dotActive : ''].join(' ')}
-              onClick={() => goTo(i, i > page ? 1 : -1)}
-              aria-label={`${i + 1}. oldal`}
-              aria-current={i === page ? 'page' : undefined}
-            />
-          ))}
+      {/* csak akkor jelenjen meg, ha tényleg több oldal van */}
+      {totalPages > 1 && (
+        <div className={styles.pagerBar}>
+          <button
+            type="button"
+            className={styles.navBtn}
+            onClick={prev}
+            aria-label="Előző oldal"
+            disabled={phase !== 'idle'}
+          >
+            ‹
+          </button>
+
+          <div className={styles.dots} role="tablist" aria-label="Oldalak">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={`dot-${i}`}
+                type="button"
+                className={[styles.dot, i === page ? styles.dotActive : ''].join(' ')}
+                onClick={() => goTo(i, i > page ? 1 : -1)}
+                aria-label={`${i + 1}. oldal`}
+                aria-current={i === page ? 'page' : undefined}
+                disabled={phase !== 'idle'}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            className={styles.navBtn}
+            onClick={next}
+            aria-label="Következő oldal"
+            disabled={phase !== 'idle'}
+          >
+            ›
+          </button>
         </div>
-        <button type="button" className={styles.navBtn} onClick={next} aria-label="Következő oldal">›</button>
-      </div>
+      )}
     </div>
   );
 }
