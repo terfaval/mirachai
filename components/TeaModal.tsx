@@ -85,7 +85,7 @@ export default function TeaModal({ tea, onClose }: Props) {
         {/* Brew Journey overlay (on top). It has its own fullscreen backdrop. */}
         {brewOpen && (
           <BrewJourney
-            tea={{ slug: teaSlug, name: tea.name }}
+            tea={{ slug: teaSlug, name: tea.name, category: tea.category, colorMain, colorDark }}
             onClose={() => setBrewOpen(false)}
           />
         )}
