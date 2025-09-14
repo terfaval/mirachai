@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import PagerDots from './PagerDots';
 import styles from '../styles/PaginationBar.module.css';
 
 type Props = {
@@ -29,7 +30,7 @@ export default function PaginationBar({ page, totalPages, onSelect, ...a11y }: P
         onClick={() => onSelect(Math.max(1, page - 1))}
         disabled={page <= 1}
       />
-      <span className={styles.status}>{page} / {totalPages}</span>
+      <PagerDots current={page} total={totalPages} onSelect={onSelect} />
       <button
         type="button"
         className={styles.navBtn}

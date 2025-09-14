@@ -5,8 +5,8 @@
   grid-template-columns: 44px 1fr 44px;
   align-items: center;
   gap: 12px;
-  padding: 8px;
-  background: var(--color-bg, #fff);
+  padding: 8px 20px;
+  background: none;
   z-index: 10;
 }
 
@@ -18,24 +18,19 @@
   background: #ffffff;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
   cursor: pointer;
-  position: relative;
+  display: grid;
+  place-items: center;
+}
+.navBtn::after {
+  font-size: 24px;
+  line-height: 1;
+  color: #111;
 }
 
 .navBtn[aria-label='Previous page']::after {
   content: '‹';
-  font-size: 24px;
-  line-height: 1;
-  color: #111;
 }
 
 .navBtn[aria-label='Next page']::after {
   content: '›';
-  font-size: 24px;
-  line-height: 1;
-  color: #111;
-}
-
-.status {
-  text-align: center;
-  font-size: 14px;
 }

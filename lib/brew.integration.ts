@@ -74,8 +74,19 @@ async function getEquipmentJSON() {
   return _equipment!;
 }
 
+function slugify(str: string): string {
+  return String(str)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 function findTea(all: TeaProfiles, slugOrName: string) {
-  return all.find(t => (t.slug || t.id) === slugOrName || t.name === slugOrName);
+  const target = slugify(slugOrName);
+  return all.find((t) => {
+    const slug = t.slug ? slugify(t.slug) : slugify(t.name);
+    return slug === target || String(t.id) === slugOrName || t.name === slugOrName;
+  });
 }
 
 // ---- publikus API ------------------------------------------------------------
@@ -164,7 +175,12 @@ function gramsToTsp(grams: number, teaspoon_g?: number | null): number | null {
 /** (opcionális) leírások – későbbre, ha kell */
 export async function getDescriptionFor(teaSlug: string, methodId: string) {
   const descs = await getDescriptionsJSON();
-  return descs.find(d => (d.tea === teaSlug) && d.method === methodId) || null;
+  const target = slugify(teaSlug);
+  return (
+    descs.find(
+      (d) => slugify(d.tea) === target && d.method === methodId,
+    ) || null
+  );
 }
 
 /** Teljes terv összerakása a UI-nak */

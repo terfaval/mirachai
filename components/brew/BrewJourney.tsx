@@ -15,9 +15,6 @@ export default function BrewJourney({ tea, onClose }:{ tea:{ slug:string; name:s
   return (
     <div role="dialog" aria-modal className="fixed inset-0 z-50 grid place-items-center bg-black/40">
       <div className="w-full max-w-3xl rounded-2xl bg-white p-6 shadow-xl">
-        {stage === 'intro' && (
-          <Intro tea={tea} onDone={()=> setStage('setup')} />
-        )}
         {stage === 'setup' && (
           <Setup
             tea={tea}
