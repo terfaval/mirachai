@@ -68,7 +68,8 @@
 .ghost {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  /* Allow interactions with incoming tiles so clicks open the correct tea */
+  pointer-events: auto;
 }
 
 /* ---------- Cellák ---------- */

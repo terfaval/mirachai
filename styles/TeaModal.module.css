@@ -1,14 +1,32 @@
 /* overlay/panel alap */
 .overlay{
   position: fixed; inset:0; background: rgba(0,0,0,.4);
-  display:flex; align-items:center; justify-content:center; z-index: 1000;
+  display:flex; align-items:flex-start; justify-content:center; z-index: 1000;
   padding:20px 0;
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  /* transparent scrollbar outside panel */
+  scrollbar-color: rgba(0,0,0,0.4) transparent;
 }
+
+.overlay::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overlay::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overlay::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 4px;
+}
+
 .panel{
-  position: relative; width:75%; max-width:100%; border-radius:24px; overflow:hidden;
+  position: relative; width:60%; max-width:100%; border-radius:24px; overflow:hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
   padding:30px; display:flex; flex-direction:column; box-sizing:border-box;
-  max-height: calc(100vh - 40px);
 }
 /* ── Mandala overlay (SVG mask mozaik) ───────────────────────────── */
 .mandala {
@@ -46,9 +64,8 @@
   display:flex;
   flex-direction:column;
   align-items:space-between;
-  overflow-y:auto;
+  overflow-y:visible;
   overflow-x:hidden;
-  scrollbar-gutter: stable;
 }
 
 /* új panelek */
