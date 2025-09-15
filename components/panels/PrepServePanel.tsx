@@ -68,19 +68,21 @@ export default function PrepServePanel({ tea, infoText }: Props) {
 
         {/* 2) KÖZÉPSŐ: csésze PNG */}
         <img
-          src="/colorCup.png"
-          alt=""
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            zIndex: 1,
-            pointerEvents: 'none',
-          }}
-          draggable={false}
-        />
+  src="/colorCup.png"
+  alt=""
+  style={{
+    position: 'absolute',
+    top: '50%',
+    left: '55%',
+    width: '65%',
+    height: '65%',
+    objectFit: 'contain',
+    transform: 'translate(-50%, -50%)', // <<< ez hozza középre
+    zIndex: 1,
+    pointerEvents: 'none',
+  }}
+  draggable={false}
+/>
 
         {/* 3) FELSŐ: a színes „tea” kör */}
         <ColorCup

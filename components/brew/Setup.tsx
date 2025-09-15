@@ -3,14 +3,12 @@ import { motion } from 'framer-motion';
 import { listMethodsForTea, getDescriptionFor } from '../../lib/brew.integration';
 
 export default function Setup({
-  layoutId,
   tea,
   value,
   onChange,
   onNext,
   onBack,
 }:{
-  layoutId:string;
   tea:{ slug:string; name:string };
   value:{ methodId:string|null; volumeMl:number };
   onChange:(v:{ methodId:string|null; volumeMl:number })=>void;
@@ -38,11 +36,10 @@ export default function Setup({
   ];
 
   return (
-    <motion.div
-      layoutId={layoutId}
+    <div
       className="flex h-full w-full flex-col justify-between rounded-2xl bg-white p-6 shadow-xl"
       style={{ width: 'var(--brew-w)', height: 'var(--brew-h)' }}
-      initial={false}
+      data-setup
     >
       <motion.h2 layout className="mb-4 text-center text-lg font-semibold">
         {tea.name}
@@ -122,6 +119,6 @@ export default function Setup({
           Következő lépés
         </button>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
