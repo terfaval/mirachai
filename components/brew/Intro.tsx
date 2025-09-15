@@ -20,7 +20,7 @@ export default function Intro({ layoutId, tea, onDone }:{ layoutId:string; tea:{
       }}
       initial={{ rotateY: 180 }}
       animate={{ rotateY: 360 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
     >
       <MandalaBackground color={tea.colorDark ?? '#000'} category={tea.category ?? ''} />
       <div className="absolute inset-0 grid place-items-center [backface-visibility:hidden]">
