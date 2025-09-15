@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../../styles/TeaModal.module.css';
 import IngredientsStack from '@/components/ingredients/IngredientsStack';
 import TasteChart from './TasteChart';
+import AlternativeTasteChart from './AlternativeTasteChart';
 import FocusChart from './FocusChart';
 import CaffeineBar from '@/components/ingredients/CaffeineBar';
 import ServeModes from '@/components/ServeModes';
@@ -19,7 +20,6 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
 
   // finomhangolás
   const TASTE_SIZE = 300;
-  const INNER_ZERO_SCALE = 0.95;
   const ICON_SIZE = 64;
   const TASTE_ROTATION_DEG = 0; // ízdiagram elforgatása fokban
   const CAFFEINE_Y_OFFSET = -120;  // kávéinfó függőleges eltolása px-ben
@@ -69,6 +69,11 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
             >
               <FocusChart data={focusData} size={120} colorDark={colorDark} />
             </div>
+
+            <div style={{ gridColumn: '1 / -1', justifySelf: 'center' }}>
+            <AlternativeTasteChart tea={tea} />
+          </div>
+
           </div>
 
           <div>

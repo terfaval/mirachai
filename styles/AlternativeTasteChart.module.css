@@ -1,0 +1,64 @@
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.chart {
+  display: block;
+}
+
+.axisLine {
+  stroke: rgba(0, 0, 0, 0.12);
+  stroke-width: 1;
+}
+
+.zeroLine {
+  stroke: rgba(0, 0, 0, 0.35);
+  stroke-width: 1.5;
+}
+
+.tickLine {
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 1;
+}
+
+.rowGuide {
+  stroke: rgba(0, 0, 0, 0.06);
+  stroke-width: 1;
+}
+
+.tickLabel {
+  font-size: 0.75rem;
+  fill: rgba(0, 0, 0, 0.6);
+}
+
+.pairLabel {
+  font-size: 0.75rem;
+  fill: rgba(0, 0, 0, 0.55);
+}
+
+.tasteIcon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--color-light, #ffffff);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.tooltipTitle {
+  font-weight: 600;
+}
