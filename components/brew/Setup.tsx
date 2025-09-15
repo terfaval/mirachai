@@ -1,124 +1,144 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { listMethodsForTea, getDescriptionFor } from '../../lib/brew.integration';
+import MandalaBackground from '../panels/MandalaBackground';
 
-export default function Setup({
+export const FLIP_DUR = 0.9;
+export const FLIP_EASE = [0.22, 1, 0.36, 1] as const;
+export const MID_HOLD = 0.5;
+export const MID_LIFT = 160;
+export const TARGET_LIFT = 280;
+
+type SetupProps = {
+  tea: { slug: string; name: string; category?: string; colorMain?: string; colorDark?: string };
+  value: { methodId: string | null; volumeMl: number };
+  onChange: (v: { methodId: string | null; volumeMl: number }) => void;
+  onNext: () => void;
+  onBack: () => void;
+};
+
+type JourneyTopProps = {
+  tea: SetupProps['tea'];
+  methodId?: string | null;
+  volumeMl?: number;
+  showControls?: boolean;
+  onBack?: () => void;
+  onNext?: () => void;
+};
+
+const formatMethod = (methodId?: string | null) => {
+  if (!methodId) return 'Módszer kiválasztása hamarosan';
+  const cleaned = methodId.replace(/[-_]/g, ' ').trim();
+  if (!cleaned) return 'Módszer kiválasztása hamarosan';
+  return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+};
+
+const formatVolume = (volume?: number) => {
+  if (!volume || Number.isNaN(volume)) return 'Add meg, mennyi teát főznél';
+  return `${volume} ml`;
+};
+
+export function SetupJourneyTop({
   tea,
-  value,
-  onChange,
-  onNext,
+  methodId,
+  volumeMl,
+  showControls = false,
   onBack,
-}:{
-  tea:{ slug:string; name:string };
-  value:{ methodId:string|null; volumeMl:number };
-  onChange:(v:{ methodId:string|null; volumeMl:number })=>void;
-  onNext:()=>void; onBack:()=>void;
-}) {
-  const [methods, setMethods] = useState<Array<{id:string; label:string; one_liner?:string}>>([]);
-  useEffect(()=>{ let alive=true;
-    listMethodsForTea(tea.slug).then(async (m) => {
-      if (!alive) return;
-      const withDesc = await Promise.all(m.map(async (x) => {
-        const d = await getDescriptionFor(tea.slug, x.id);
-        return { ...x, one_liner: d?.one_liner };
-      }));
-      if (alive) setMethods(withDesc);
-    });
-    return ()=>{ alive=false; };
-  }, [tea.slug]);
-
-  const presetVolumes = [
-    { value: 200, label: '200 ml', icon: '/icon_tinycup.svg' },
-    { value: 300, label: '300 ml', icon: '/icon_cup.svg' },
-    { value: 500, label: '500 ml', icon: '/icon_mug.svg' },
-    { value: 1000, label: '1 l', icon: '/icon_bottle.svg' },
-    { value: 2000, label: '2 l', icon: '/icon_teapot.svg' },
-  ];
+  onNext,
+}: JourneyTopProps) {
+  const mainColor = tea.colorMain ?? '#B88E63';
+  const darkColor = tea.colorDark ?? '#2D1E3E';
 
   return (
     <div
-      className="flex h-full w-full flex-col justify-between rounded-2xl bg-white p-6 shadow-xl"
-      style={{ width: 'var(--brew-w)', height: 'var(--brew-h)' }}
-      data-setup
+      className="flex h-full w-full flex-col overflow-hidden rounded-[32px]"
+      style={{ background: `linear-gradient(160deg, ${mainColor} 0%, ${darkColor} 68%)` }}
     >
-      <motion.h2 layout className="mb-4 text-center text-lg font-semibold">
-        {tea.name}
-      </motion.h2>
-      <motion.div layout className="space-y-10 overflow-y-auto">
-        <div>
-          <h2 className="mb-4 text-center text-lg font-semibold">Hogyan szeretnéd elkészíteni a teát?</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {methods.length === 0 && (
-              <div className="text-sm opacity-70">Hiányzó profil</div>
-            )}
-            {methods.map((m) => (
-              <button
-                key={m.id}
-                className={`w-40 rounded-2xl border p-4 text-center transition hover:bg-gray-100 ${
-                  value.methodId === m.id ? 'border-black' : 'border-gray-300'
-                }`}
-                onClick={() => onChange({ ...value, methodId: m.id })}
-              >
-                <img
-                  src={`/icon_${m.id}.svg`}
-                  alt=""
-                  className="mx-auto mb-2 h-12 w-12"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
-                  }}
-                />
-                <div className="font-medium">{m.label}</div>
-                {m.one_liner && (
-                  <div className="mt-1 text-sm opacity-70">{m.one_liner}</div>
-                )}
-              </button>
-            ))}
+      <div className="relative flex flex-col gap-6 px-10 py-12 text-white">
+        <MandalaBackground
+          color={tea.colorDark ?? darkColor}
+          category={tea.category ?? ''}
+          className="max-w-none opacity-40"
+        />
+        <div className="relative z-10 flex flex-col gap-4">
+          <span className="text-xs uppercase tracking-[0.4em] text-white/60">Mirachai Brew Journey</span>
+          <h1 className="text-4xl font-semibold leading-tight">{tea.name}</h1>
+          <p className="max-w-md text-base leading-relaxed text-white/80">
+            Hangoljuk össze az elkészítést. A módszer és a mennyiség beállítása után végigvezetlek majd a
+            főzésen, lépésről lépésre.
+          </p>
+        </div>
+        <div className="relative z-10 flex flex-wrap items-center gap-3 text-sm text-white/70">
+          <span className="rounded-full border border-white/25 px-4 py-1 uppercase tracking-[0.3em]">1. lépés</span>
+          <span className="rounded-full border border-white/10 px-4 py-1">Előkészítés</span>
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-5 bg-white/92 px-10 py-8 text-slate-900 backdrop-blur">
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div className="rounded-3xl border border-black/5 bg-white/90 p-6 shadow-sm">
+            <div className="text-xs uppercase tracking-wide text-slate-500">Módszer</div>
+            <div className="mt-3 text-2xl font-semibold text-slate-900">{formatMethod(methodId)}</div>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              Hamarosan itt listázzuk a különböző elkészítési módokat, részletes ajánlásokkal.
+            </p>
+          </div>
+          <div className="rounded-3xl border border-black/5 bg-white/90 p-6 shadow-sm">
+            <div className="text-xs uppercase tracking-wide text-slate-500">Mennyiség</div>
+            <div className="mt-3 text-2xl font-semibold text-slate-900">{formatVolume(volumeMl)}</div>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              Az arányokat automatikusan számoljuk majd a választott térfogat alapján – könnyű lesz követni.
+            </p>
           </div>
         </div>
 
-        <div>
-          <h2 className="mb-4 text-center text-lg font-semibold">Mennyi teát szeretnél főzni?</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {presetVolumes.map((v) => (
+        <div className="rounded-3xl border border-dashed border-black/10 bg-white/70 p-6 text-sm leading-relaxed text-slate-600">
+          <div className="font-semibold text-slate-700">Felszerelés előkészítése</div>
+          <p className="mt-2">
+            Megmutatjuk, milyen eszközökre lesz szükség, és mikor érdemes előkészíteni őket. Minden lépés előtt kapsz majd
+            jelzést.
+          </p>
+        </div>
+
+        {showControls ? (
+          <div className="mt-auto flex flex-col gap-3 pt-4 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <span>Ez egy előnézet – hamarosan interaktív beállításokkal.</span>
+            <div className="flex gap-2">
               <button
-                key={v.value}
-                className={`w-28 rounded-2xl border p-4 text-center transition hover:bg-gray-100 ${
-                  value.volumeMl === v.value ? 'border-black' : 'border-gray-300'
-                }`}
-                onClick={() => onChange({ ...value, volumeMl: v.value })}
+                type="button"
+                onClick={onBack}
+                className="rounded-full border border-slate-300 px-5 py-2 font-medium text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
               >
-                <img src={v.icon} alt="" className="mx-auto mb-1 h-8 w-8" />
-                <div className="text-sm font-medium">{v.label}</div>
+                Vissza
               </button>
-            ))}
-            <div className="w-28 rounded-2xl border p-4 text-center">
-              <img src="/icon_jug.svg" alt="" className="mx-auto mb-1 h-8 w-8" />
-              <input
-                type="number"
-                min={50}
-                step={10}
-                value={value.volumeMl}
-                onChange={(e) =>
-                  onChange({ ...value, volumeMl: Number(e.target.value) })
-                }
-                className="w-full border-none bg-transparent text-center text-sm focus:outline-none"
-              />
+              <button
+                type="button"
+                onClick={onNext}
+                disabled={!methodId}
+                className="rounded-full bg-slate-900 px-6 py-2 font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Folytatás
+              </button>
             </div>
           </div>
-        </div>
-      </motion.div>
-      <motion.div layout className="mt-6 flex justify-end gap-2">
-        <button className="rounded-xl border px-4 py-2" onClick={onBack}>
-          Vissza
-        </button>
-        <button
-          className="rounded-xl bg-black px-6 py-2 text-white disabled:opacity-50"
-          disabled={!value.methodId}
-          onClick={onNext}
-        >
-          Következő lépés
-        </button>
-      </motion.div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+export default function Setup({ tea, value, onChange, onNext, onBack }: SetupProps) {
+  void onChange;
+  return (
+    <div
+      className="h-full w-full"
+      style={{ marginTop: `${-TARGET_LIFT}px` }}
+    >
+      <SetupJourneyTop
+        tea={tea}
+        methodId={value.methodId}
+        volumeMl={value.volumeMl}
+        showControls
+        onBack={onBack}
+        onNext={onNext}
+      />
     </div>
   );
 }

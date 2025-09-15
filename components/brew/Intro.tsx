@@ -1,12 +1,235 @@
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import MandalaBackground from '../panels/MandalaBackground';
+import { SetupJourneyTop } from './Setup';
+import uiTexts from '../../data/ui_texts.json';
 
-export default function Intro({ tea }:{ tea:{ name:string; category?:string; colorMain?:string; colorDark?:string } }) {
+const FLIP_DUR = 0.9;
+const FLIP_EASE = [0.22, 1, 0.36, 1] as const;
+const MID_HOLD = 0.5;
+const MID_LIFT = 160;
+const TARGET_LIFT = 280;
+
+const fallbackIntro = {
+  h1: [
+    'Nagyszerű választás!',
+    'Kiváló döntés!',
+    'Ez telitalálat!',
+    'Pont erre volt szükség!',
+  ],
+  lead: [
+    'Kísérlek végig az elkészítésen – pár kattintás és indul a teázás.',
+    'Beállítjuk a módszert és a mennyiséget, aztán jönnek a pontos lépések.',
+    'Minden részletet kiszámolok: víz, idő, arányok, eszközök.',
+  ],
+};
+
+type IntroTexts = {
+  brewJourney?: {
+    intro?: {
+      h1?: string[];
+      lead?: string[];
+    };
+  };
+};
+
+type IntroProps = {
+  tea: {
+    slug: string;
+    name: string;
+    category?: string;
+    colorMain?: string;
+    colorDark?: string;
+  };
+  onSetupEnter?: (teaId: string) => void;
+};
+
+type BrewBoxShellProps = {
+  front: ReactNode;
+  back: ReactNode;
+  background: string;
+  onComplete?: () => void;
+};
+
+const introTexts = (uiTexts as IntroTexts)?.brewJourney?.intro;
+
+const usePrefersReducedMotion = () => {
+  const [prefers, setPrefers] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setPrefers(media.matches);
+    update();
+    const handler = () => update();
+
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', handler);
+      return () => media.removeEventListener('change', handler);
+    }
+
+    media.addListener(handler);
+    return () => media.removeListener(handler);
+  }, []);
+
+  return prefers;
+};
+
+const hashStringToSeed = (value: string) => {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < value.length; i += 1) {
+    h ^= value.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+};
+
+const mulberry32 = (seed: number) => {
+  let t = seed >>> 0;
+  return () => {
+    t += 0x6d2b79f5;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+};
+
+const pickWithSeed = (list: string[], rng: () => number, fallback: string) => {
+  if (!list.length) return fallback;
+  const index = Math.floor(rng() * list.length);
+  return list[index] ?? fallback;
+};
+
+function BrewBoxShell({ front, back, background, onComplete }: BrewBoxShellProps) {
+  const [phase, setPhase] = useState<'intro' | 'setup'>('intro');
+  const [animating, setAnimating] = useState(true);
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  useEffect(() => {
+    const holdRatio = prefersReducedMotion ? 0.6 : MID_HOLD;
+    const timer = window.setTimeout(() => setPhase('setup'), holdRatio * FLIP_DUR * 1000);
+    return () => window.clearTimeout(timer);
+  }, [prefersReducedMotion]);
+
   return (
-    <>
-      <MandalaBackground color={tea.colorDark ?? '#000'} category={tea.category ?? ''} />
-      <div className="absolute inset-0 grid place-items-center [backface-visibility:hidden]">
-        <img src="/mirachai_logo.svg" alt="" className="w-32" />
+    <div
+      className="brew-box-shell inline-block"
+      style={{ perspective: 1600, pointerEvents: animating ? 'none' : undefined }}
+    >
+      <style>{`.brew-box-shell__faces.is-animating * { transition: none !important; animation: none !important; }`}</style>
+      <motion.div
+        className="brew-box-shell__inner relative overflow-hidden rounded-[32px] shadow-2xl"
+        style={{
+          width: 'var(--card-w, 480px)',
+          height: 'var(--card-h, 640px)',
+          background,
+          transformStyle: 'preserve-3d',
+          transformPerspective: 1400,
+        }}
+        initial={
+          prefersReducedMotion
+            ? { opacity: 0, scale: 0.94, y: 0 }
+            : { rotateX: 0, y: 0 }
+        }
+        animate={
+          prefersReducedMotion
+            ? { opacity: 1, scale: 1, y: -TARGET_LIFT }
+            : { rotateX: [0, 180, 180], y: [0, -MID_LIFT, -TARGET_LIFT] }
+        }
+        transition={
+          prefersReducedMotion
+            ? { duration: FLIP_DUR, ease: FLIP_EASE }
+            : { duration: FLIP_DUR, ease: FLIP_EASE, times: [0, MID_HOLD, 1] }
+        }
+        onAnimationStart={() => setAnimating(true)}
+        onAnimationComplete={() => {
+          setAnimating(false);
+          setPhase('setup');
+          onComplete?.();
+        }}
+      >
+        <div
+          className={`brew-box-shell__faces absolute inset-0 ${animating ? 'is-animating' : ''}`}
+          aria-live="polite"
+          data-phase={phase}
+          style={{ transformStyle: 'preserve-3d' }}
+        >
+          <div
+            aria-hidden={phase !== 'intro'}
+            className="absolute inset-0"
+            style={{
+              backfaceVisibility: 'hidden',
+              display: prefersReducedMotion && phase !== 'intro' ? 'none' : undefined,
+            }}
+          >
+            {front}
+          </div>
+          <div
+            aria-hidden={phase !== 'setup'}
+            className="absolute inset-0"
+            style={{
+              backfaceVisibility: 'hidden',
+              transform: prefersReducedMotion ? 'none' : 'rotateX(180deg)',
+              display: prefersReducedMotion && phase !== 'setup' ? 'none' : undefined,
+            }}
+          >
+            {back}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+export default function Intro({ tea, onSetupEnter }: IntroProps) {
+  const teaId = tea.slug ?? tea.name ?? 'tea';
+  const copy = useMemo(() => {
+    const seed = hashStringToSeed(teaId);
+    const rng = mulberry32(seed);
+    const h1Source = introTexts?.h1?.length ? introTexts.h1 : fallbackIntro.h1;
+    const leadSource = introTexts?.lead?.length ? introTexts.lead : fallbackIntro.lead;
+    const headline = pickWithSeed(h1Source, rng, fallbackIntro.h1[0]!);
+    const lead = pickWithSeed(leadSource, rng, fallbackIntro.lead[0]!);
+    return { headline, lead };
+  }, [teaId]);
+
+  const mainColor = tea.colorMain ?? '#B88E63';
+  const darkColor = tea.colorDark ?? '#2D1E3E';
+
+  const front = (
+    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden text-center text-white">
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(circle at 50% -20%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.12) 32%, rgba(0,0,0,0.45) 100%), ${mainColor}`,
+        }}
+      />
+      <MandalaBackground
+        color={darkColor}
+        category={tea.category ?? ''}
+        className="max-w-none opacity-35"
+      />
+      <div className="relative z-10 flex flex-col items-center gap-6 px-10">
+        <img src="/mirachai_logo.svg" alt="Mirachai" className="h-20 w-20" />
+        <div className="flex flex-col gap-3">
+          <span className="text-xs uppercase tracking-[0.4em] text-white/70">Brew Journey</span>
+          <h1 className="text-4xl font-semibold leading-tight">{copy.headline}</h1>
+          <p className="max-w-sm text-base leading-relaxed text-white/80">{copy.lead}</p>
+        </div>
+        <div className="rounded-full bg-white/15 px-4 py-1 text-xs uppercase tracking-[0.3em] text-white/85">
+          {tea.name}
+        </div>
       </div>
-    </>
+    </div>
+  );
+
+  const back = <SetupJourneyTop tea={tea} methodId={null} volumeMl={250} />;
+
+  return (
+    <BrewBoxShell
+      front={front}
+      back={back}
+      background={mainColor}
+      onComplete={() => onSetupEnter?.(teaId)}
+    />
   );
 }
