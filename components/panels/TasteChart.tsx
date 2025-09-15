@@ -76,18 +76,32 @@ export default function TasteChart({
 
   const rotationRad = (rotationDeg * Math.PI) / 180;
   
-  const allEntries = ORDER.map((k, i) => {
-    const raw = N((tea as any)[k]);
-    const value = Math.max(0, Math.min(raw, 3));
-    const label = k.replace('taste_', '').replace(/_/g, ' ');
-    const color = getTasteColor(k);
-    const angle =
-      (i / ORDER.length) * Math.PI * 2 - Math.PI / 2 + rotationRad;
-    const icon = `/icon_${ICON_FILE[k] ?? k.replace('taste_', '')}.svg`;
-    return { key: k, label, value: isNaN(value) ? 0 : value, color, angle, icon };
+  const tasteEntries = ORDER.map((key) => {
+    const raw = N((tea as any)[key]);
+    const clamped = Math.max(0, Math.min(raw, 3));
+    const value = Number.isNaN(clamped) ? 0 : clamped;
+    const label = key.replace('taste_', '').replace(/_/g, ' ');
+    const color = getTasteColor(key);
+    const icon = `/icon_${ICON_FILE[key] ?? key.replace('taste_', '')}.svg`;
+    return { key, label, value, color, icon };
   });
 
-  const entries = allEntries.filter((e) => e.value >= minValue);
+  const filteredEntries = tasteEntries.filter(
+    (entry) => entry.value > 0 && entry.value >= minValue,
+  );
+
+  const sortedEntries = [...filteredEntries].sort((a, b) => {
+    if (b.value !== a.value) {
+      return b.value - a.value;
+    }
+    return ORDER.indexOf(a.key) - ORDER.indexOf(b.key);
+  });
+
+  const entries = sortedEntries.map((entry, index, array) => {
+    const total = array.length || 1;
+    const angle = (index / total) * Math.PI * 2 - Math.PI / 2 + rotationRad;
+    return { ...entry, angle };
+  });
 
   const labelRadius = radius + iconSizePx; // ikon távolsága igazodik a méretéhez
   const base = pointRadiusBase;
@@ -108,7 +122,7 @@ export default function TasteChart({
         style={{ background: 'transparent' }}
       >
         {/* Pontok */}
-        {allEntries.map((p) => (
+        {entries.map((p) => (
           <g key={p.key}>
             {[1, 2, 3].map((lvl) => {
               const active = lvl <= p.value;
