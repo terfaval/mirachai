@@ -22,9 +22,7 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
   const TASTE_SIZE = 300;
   const ICON_SIZE = 64;
   const TASTE_ROTATION_DEG = 0; // ízdiagram elforgatása fokban
-  const CAFFEINE_Y_OFFSET = -120;  // kávéinfó függőleges eltolása px-ben
-  const FOCUS_Y_OFFSET = 120;     // fókuszdiagram függőleges eltolása px-ben
-
+  
   return (
     <section className={styles.panelElement} data-panel="tea-dashboard">
       <div style={{ display: 'grid', gap: 24 }}>
@@ -36,23 +34,25 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
           className={styles.panelBox}
           style={{ padding: 24, display: 'grid', gap: 24 }}
         >
+          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+            <CaffeineBar value={caffeine} color={colorDark} />
+          </div>
+
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr auto 1fr',
+              gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)',
+              gap: 24,
               alignItems: 'center',
             }}
           >
             <div
               style={{
-                justifySelf: 'start',
-                transform: `translateY(${CAFFEINE_Y_OFFSET}px)`,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
-              <CaffeineBar value={caffeine} color={colorDark} />
-            </div>
-
-            <div style={{ justifySelf: 'center' }}>
               <TasteChart
                 tea={tea}
                 size={TASTE_SIZE}
@@ -63,17 +63,17 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
 
             <div
               style={{
-                justifySelf: 'end',
-                transform: `translateY(${FOCUS_Y_OFFSET}px)`,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
-              <FocusChart data={focusData} size={120} colorDark={colorDark} />
+              <FocusChart data={focusData} size={TASTE_SIZE} colorDark={colorDark} />
             </div>
-
-            <div style={{ gridColumn: '1 / -1', justifySelf: 'center' }}>
-            <AlternativeTasteChart tea={tea} />
           </div>
 
+          <div style={{ justifySelf: 'center' }}>
+            <AlternativeTasteChart tea={tea} />
           </div>
 
           <div>

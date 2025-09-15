@@ -11,6 +11,7 @@ const DISPLAY_LABELS: Record<string, string> = {
 };
 
 const LEVEL_LABELS = ['gyenge', 'közepes', 'erős'];
+const NO_LEVEL_LABEL = 'nem jellemző';
 
 export default function FocusChart({ data, size = 240, colorDark = '#333' }: Props) {
   const scale = size / 240;
@@ -27,7 +28,10 @@ export default function FocusChart({ data, size = 240, colorDark = '#333' }: Pro
   const normalized = data.map((item) => {
     const value = Math.max(0, Math.min(3, Number(item.value) || 0));
     const displayLabel = DISPLAY_LABELS[item.key] ?? item.label ?? item.key;
-    return { ...item, value, displayLabel };
+    const strengthLevel = Math.max(0, Math.min(3, Math.floor(value)));
+    const levelLabel =
+      strengthLevel > 0 ? LEVEL_LABELS[strengthLevel - 1] : NO_LEVEL_LABEL;
+    return { ...item, value, displayLabel, levelLabel };
   });
 
   return (
@@ -102,18 +106,15 @@ export default function FocusChart({ data, size = 240, colorDark = '#333' }: Pro
             </div>
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
                 textAlign: 'center',
                 fontSize: levelFontSize,
                 color: 'rgba(0,0,0,0.7)',
                 textTransform: 'lowercase',
                 letterSpacing: '0.01em',
+                fontWeight: 600,
               }}
             >
-              {LEVEL_LABELS.map((label) => (
-                <span key={label}>{label}</span>
-              ))}
+              {item.levelLabel}
             </div>
           </div>
         </div>
