@@ -42,8 +42,6 @@ const PAIRS = [
   { positive: 'taste_kesernyés', negative: 'taste_édeskés' },
 ] as const;
 
-const AXIS_TICKS = [-3, -2, -1, 0, 1, 2, 3];
-
 type PairEntry = {
   positiveKey: string;
   negativeKey: string;
@@ -77,13 +75,13 @@ interface Props {
 
 export default function AlternativeTasteChart({
   tea,
-  width = 420,
-  rowHeight = 58,
-  barHeight = 18,
-  iconSize = 44,
-  paddingX = 48,
+  width = 360,
+  rowHeight = 64,
+  barHeight = 24,
+  iconSize = 48,
+  paddingX = 40,
   topMargin = 40,
-  bottomMargin = 52,
+  bottomMargin = 40,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
@@ -116,13 +114,18 @@ export default function AlternativeTasteChart({
 
   const chartHeight = topMargin + pairs.length * rowHeight + bottomMargin;
   const centerX = width / 2;
-  const rawHalfAxis = Math.min(centerX - paddingX, width - paddingX - centerX);
-  const halfAxis = Math.max(rawHalfAxis, 1);
-  const axisStart = centerX - halfAxis;
-  const axisEnd = centerX + halfAxis;
-  const unitWidth = halfAxis / 3;
+  const iconGap = 12;
+  const barGap = 12;
 
-  const iconOffset = iconSize / 2 + 12;
+  const negativeIconCenter = centerX - iconGap / 2 - iconSize / 2;
+  const positiveIconCenter = centerX + iconGap / 2 + iconSize / 2;
+
+  const negativeBarAnchor = negativeIconCenter - iconSize / 2 - barGap;
+  const positiveBarAnchor = positiveIconCenter + iconSize / 2 + barGap;
+
+  const maxNegativeWidth = Math.max(negativeBarAnchor - paddingX, 0);
+  const maxPositiveWidth = Math.max(width - paddingX - positiveBarAnchor, 0);
+  const unitWidth = Math.max(Math.min(maxNegativeWidth, maxPositiveWidth) / 3, 0);
 
   const handleTooltipMove = (event: ReactMouseEvent<Element>) => {
     const rect = containerRef.current?.getBoundingClientRect();
@@ -155,20 +158,8 @@ export default function AlternativeTasteChart({
   const icons = pairs.flatMap((entry, index) => {
     const rowTop = topMargin + index * rowHeight;
     const rowCenter = rowTop + rowHeight / 2;
-    const positiveWidth = entry.positiveValue * unitWidth;
-    const negativeWidth = entry.negativeValue * unitWidth;
-
-    let positiveX = centerX + positiveWidth + iconOffset;
-    if (entry.positiveValue === 0) {
-      positiveX = centerX + iconOffset;
-    }
-    positiveX = Math.min(width - iconSize / 2, positiveX);
-
-    let negativeX = centerX - negativeWidth - iconOffset;
-    if (entry.negativeValue === 0) {
-      negativeX = centerX - iconOffset;
-    }
-    negativeX = Math.max(iconSize / 2, negativeX);
+    const positiveX = positiveIconCenter;
+    const negativeX = negativeIconCenter;
 
     const positiveIcon = {
       key: `icon-${entry.positiveKey}-${index}`,
@@ -207,36 +198,13 @@ export default function AlternativeTasteChart({
         aria-label="Alternatív ízprofil diagram"
       >
         <line
-          x1={axisStart}
-          x2={axisEnd}
-          y1={chartHeight - bottomMargin}
-          y2={chartHeight - bottomMargin}
-          className={styles.axisLine}
+          x1={centerX}
+          x2={centerX}
+          y1={topMargin - 12}
+          y2={chartHeight - bottomMargin + barHeight / 2 + 12}
+          className={styles.zeroLine}
+          aria-hidden="true"
         />
-
-        {AXIS_TICKS.map((tick) => {
-          const x = centerX + tick * unitWidth;
-          const isZero = tick === 0;
-          return (
-            <g key={tick} aria-hidden="true">
-              <line
-                x1={x}
-                x2={x}
-                y1={topMargin - 12}
-                y2={chartHeight - bottomMargin + barHeight / 2 + 12}
-                className={`${styles.tickLine} ${isZero ? styles.zeroLine : ''}`.trim()}
-              />
-              <text
-                x={x}
-                y={chartHeight - bottomMargin + barHeight + 18}
-                textAnchor="middle"
-                className={styles.tickLabel}
-              >
-                {tick}
-              </text>
-            </g>
-          );
-        })}
 
         {pairs.map((entry, index) => {
           const rowTop = topMargin + index * rowHeight;
@@ -244,20 +212,14 @@ export default function AlternativeTasteChart({
           const barY = rowCenter - barHeight / 2;
           const positiveWidth = entry.positiveValue * unitWidth;
           const negativeWidth = entry.negativeValue * unitWidth;
+          const positiveX = positiveBarAnchor;
+          const negativeX = negativeBarAnchor - negativeWidth;
 
           return (
             <g key={`${entry.positiveKey}-${entry.negativeKey}`}>
-              <line
-                x1={axisStart}
-                x2={axisEnd}
-                y1={rowCenter}
-                y2={rowCenter}
-                className={styles.rowGuide}
-                aria-hidden="true"
-              />
               {negativeWidth > 0 && (
                 <rect
-                  x={centerX - negativeWidth}
+                  x={negativeX}
                   y={barY}
                   width={negativeWidth}
                   height={barHeight}
@@ -278,7 +240,7 @@ export default function AlternativeTasteChart({
               )}
               {positiveWidth > 0 && (
                 <rect
-                  x={centerX}
+                  x={positiveX}
                   y={barY}
                   width={positiveWidth}
                   height={barHeight}

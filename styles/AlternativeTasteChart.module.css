@@ -7,34 +7,10 @@
   display: block;
 }
 
-.axisLine {
-  stroke: rgba(0, 0, 0, 0.12);
-  stroke-width: 1;
-}
-
 .zeroLine {
   stroke: rgba(0, 0, 0, 0.35);
-  stroke-width: 1.5;
-}
-
-.tickLine {
-  stroke: rgba(0, 0, 0, 0.08);
-  stroke-width: 1;
-}
-
-.rowGuide {
-  stroke: rgba(0, 0, 0, 0.06);
-  stroke-width: 1;
-}
-
-.tickLabel {
-  font-size: 0.75rem;
-  fill: rgba(0, 0, 0, 0.6);
-}
-
-.pairLabel {
-  font-size: 0.75rem;
-  fill: rgba(0, 0, 0, 0.55);
+  stroke-width: 4;
+  stroke-linecap: round;
 }
 
 .tasteIcon {
