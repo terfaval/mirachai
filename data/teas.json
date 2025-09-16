@@ -4382,7 +4382,7 @@
     "garden": 2,
     "nature": 1,
     "diy-kit": 2,
-    "season_recommended": ["bármelyik"],
+    "season_recommended": ["egész évben"],
     "daypart_recommended": ["este","lefekvés_előtt","étkezés_után"]
   },
   {
@@ -4688,7 +4688,7 @@
     "garden": 3,
     "nature": 2,
     "diy-kit": 1,
-    "season_recommended": ["bármelyik"],
+    "season_recommended": ["egész évben"],
     "daypart_recommended": ["este","lefekvés_előtt"]
   },
   {
@@ -4790,7 +4790,7 @@
     "garden": 3,
     "nature": 1,
     "diy-kit": 1,
-    "season_recommended": ["bármelyik"],
+    "season_recommended": ["egész évben"],
     "daypart_recommended": ["bármikor","este","lefekvés_előtt"]
   },
   {
@@ -5045,7 +5045,7 @@
     "garden": 2,
     "nature": 2,
     "diy-kit": 1,
-    "season_recommended": ["bármelyik"],
+    "season_recommended": ["egész évben"],
     "daypart_recommended": ["bármikor","étkezés_után"]
   },
   {

@@ -23,6 +23,79 @@
   border-radius: 4px;
 }
 
+.cubeScene {
+  position: relative;
+  width: var(--card-w);
+  height: var(--card-h);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.cubeShell {
+  position: relative;
+  width: var(--card-w);
+  height: var(--card-h);
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.cubeShell[data-reduced="true"] {
+  transform-style: flat;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.cubeShell[data-reduced="true"][data-rotating="true"] {
+  opacity: 0.88;
+  transform: scale(0.97);
+}
+
+.cubeShell[data-reduced="true"][data-rotating="false"] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cubeFace {
+  position: absolute;
+  inset: 0;
+  width: var(--card-w);
+  height: var(--card-h);
+  border-radius: 24px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.faceFront {
+  transform: rotateY(0deg) translateZ(calc(var(--card-w) / 2));
+}
+
+.faceRight {
+  transform: rotateY(90deg) translateZ(calc(var(--card-w) / 2));
+}
+
+.faceBack {
+  transform: rotateY(180deg) translateZ(calc(var(--card-w) / 2));
+}
+
+.cubeShell[data-reduced="true"] .cubeFace {
+  transform: none !important;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.cubeShell[data-reduced="true"] .cubeFace[data-active="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+  position: relative;
+}
+
 .panel{
   position: relative; width:60%; max-width:100%; border-radius:24px; overflow:hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
@@ -239,4 +312,182 @@
 .helpButton:hover {
   filter: brightness(1.1);
   transform: translateY(-2px);
+}
+
+.introFace {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.introBackdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.introContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 48px;
+}
+
+.brandBadge {
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.introTitle {
+  margin: 0;
+  font-family: 'Titan One', cursive;
+  font-size: clamp(2.2rem, 2.8vw, 3.1rem);
+}
+
+.introLead {
+  margin: 0;
+  max-width: 46ch;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+.introActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.introPrimary,
+.introGhost,
+.brewBackButton {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 12px 26px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.introPrimary {
+  background: #fff;
+  color: #111;
+  border: none;
+}
+
+.introPrimary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.introGhost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.7);
+  color: #fff;
+}
+
+.introGhost:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.brewFace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 48px;
+  background: linear-gradient(160deg, #ffffff 0%, rgba(255,255,255,0.9) 45%, #f5f6f9 100%);
+  color: #1f1f1f;
+  gap: 32px;
+}
+
+.brewHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brewBadge {
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.08);
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+}
+
+.brewTitle {
+  margin: 0;
+  font-family: 'Titan One', cursive;
+  font-size: clamp(2rem, 2.2vw, 2.6rem);
+}
+
+.brewLead {
+  margin: 0;
+  max-width: 52ch;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.6;
+  color: #3d3d3d;
+}
+
+.brewBody {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.brewCard {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 18px 40px rgba(31,41,55,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brewCardTitle {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1f1f1f;
+}
+
+.brewCardText {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.6;
+  color: #474747;
+}
+
+.brewFooter {
+  margin-top: auto;
+}
+
+.brewBackButton {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.15);
+  color: #1f1f1f;
+}
+
+.brewBackButton:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.98);
 }
