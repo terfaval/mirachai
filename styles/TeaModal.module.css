@@ -514,12 +514,17 @@
 }
 
 .cubeFace .content {
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  min-height: 0;
-  pointer-events: auto;   /* biztos ami biztos */
+  pointer-events: auto;
   position: relative;
   z-index: 1;
+
+  /* ezek oldják meg a „wheel nem jut el ide” jelenséget 3D-ben */
+  contain: paint;               /* új festési kontextus */
+  transform: translateZ(0);     /* saját kompozit layer */
 }
 
 .cubeScene {
