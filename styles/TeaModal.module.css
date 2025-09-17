@@ -41,6 +41,11 @@
   transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
   transform-origin: center center;
+  pointer-events: auto;
+}
+
+.cubeShell[data-rotating="true"] {
+  pointer-events: none;
 }
 
 .cubeShell[data-reduced="true"] {
@@ -68,6 +73,11 @@
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
+  pointer-events: none;
+}
+
+.cubeFace[data-active="true"] {
+  pointer-events: auto;
 }
 
 .faceFront {

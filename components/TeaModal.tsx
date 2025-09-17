@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useMemo, useRef, useState } from 'react';
+import { CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styles from '../styles/TeaModal.module.css';
 import { Tea } from '../utils/filter';
 import HeaderPanel from '@/components/panels/HeaderPanel';
@@ -62,8 +62,36 @@ export default function TeaModal({ tea, onClose }: Props) {
   const [isRotating, setIsRotating] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const cubeSceneRef = useRef<HTMLDivElement | null>(null);
+  const cubeShellRef = useRef<HTMLDivElement | null>(null);
   const introTitleRef = useRef<HTMLHeadingElement | null>(null);
   const brewTitleRef = useRef<HTMLHeadingElement | null>(null);
+  const rotationTimeoutRef = useRef<number | null>(null);
+
+  const clearRotationTimeout = useCallback(() => {
+    if (rotationTimeoutRef.current !== null) {
+      window.clearTimeout(rotationTimeoutRef.current);
+      rotationTimeoutRef.current = null;
+    }
+  }, []);
+
+  const finishRotation = useCallback(() => {
+    clearRotationTimeout();
+    if (cubeShellRef.current) {
+      cubeShellRef.current.setAttribute('data-rotating', 'false');
+    }
+    setIsRotating(false);
+  }, [clearRotationTimeout]);
+
+  const scheduleRotationFallback = useCallback(
+    (duration: number) => {
+      clearRotationTimeout();
+      rotationTimeoutRef.current = window.setTimeout(() => {
+        rotationTimeoutRef.current = null;
+        finishRotation();
+      }, duration);
+    },
+    [clearRotationTimeout, finishRotation],
+  );
 
   const introCopy = useMemo(() => pickIntroCopy(tea.id, introCopyOptions), [tea.id]);
   const brewTea = useMemo(
@@ -83,8 +111,8 @@ export default function TeaModal({ tea, onClose }: Props) {
 
   useEffect(() => {
     setActiveFace('tea');
-    setIsRotating(false);
-  }, [tea]);
+    finishRotation();
+  }, [tea, finishRotation]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -96,10 +124,25 @@ export default function TeaModal({ tea, onClose }: Props) {
   }, []);
 
   useEffect(() => {
-    if (!prefersReducedMotion || !isRotating) return;
-    const timeout = window.setTimeout(() => setIsRotating(false), 400);
-    return () => window.clearTimeout(timeout);
-  }, [prefersReducedMotion, isRotating]);
+    if (!isRotating) {
+      clearRotationTimeout();
+      return;
+    }
+
+    const fallbackDuration = prefersReducedMotion ? 350 : 1100;
+    scheduleRotationFallback(fallbackDuration);
+
+    return clearRotationTimeout;
+  }, [
+    isRotating,
+    prefersReducedMotion,
+    clearRotationTimeout,
+    scheduleRotationFallback,
+  ]);
+
+  useEffect(() => () => {
+    clearRotationTimeout();
+  }, [clearRotationTimeout]);
 
   useEffect(() => {
     if (isRotating) {
@@ -279,6 +322,10 @@ export default function TeaModal({ tea, onClose }: Props) {
   
   const handleFaceChange = (face: CubeFace) => {
     if (face === activeFace) return;
+    clearRotationTimeout();
+    if (cubeShellRef.current) {
+      cubeShellRef.current.setAttribute('data-rotating', 'true');
+    }
     setIsRotating(true);
     setActiveFace(face);
   };
@@ -314,20 +361,24 @@ export default function TeaModal({ tea, onClose }: Props) {
             transform: prefersReducedMotion
               ? undefined
               : `translateZ(calc(var(--card-w) / -2)) rotateY(${rotation}deg)`,
-            pointerEvents: isRotating ? 'none' : undefined,
-          }}
+            }}
+          onClick={(event) => event.stopPropagation()}
           onTransitionEnd={(event) => {
-            if (prefersReducedMotion) {
-              if (event.propertyName === 'opacity') {
-                setIsRotating(false);
-              }
+            if (event.target !== event.currentTarget) {
               return;
             }
-            if (event.propertyName === 'transform') {
-              setIsRotating(false);
+            if (event.propertyName !== 'transform') {
+              return;
             }
+            finishRotation();
           }}
+          ref={cubeShellRef}
         >
+          <div
+            className={`${styles.cubeFace} ${styles.faceFront}`}
+            data-active={activeFace === 'tea' ? 'true' : undefined}
+          >
+          </div>
           <div
             className={`${styles.cubeFace} ${styles.faceFront}`}
             data-active={activeFace === 'tea' ? 'true' : 'false'}
@@ -383,7 +434,7 @@ export default function TeaModal({ tea, onClose }: Props) {
 
           <div
             className={`${styles.cubeFace} ${styles.faceRight}`}
-            data-active={activeFace === 'intro' ? 'true' : 'false'}
+            data-active={activeFace === 'intro' ? 'true' : undefined}
           >
             <div className={styles.introFace} style={{ backgroundColor: colorMain }}>
               <div className={`${styles.backLayer} ${styles.introBackdrop}`}>
@@ -432,7 +483,7 @@ export default function TeaModal({ tea, onClose }: Props) {
 
           <div
             className={`${styles.cubeFace} ${styles.faceBack}`}
-            data-active={activeFace === 'brew' ? 'true' : 'false'}
+            data-active={activeFace === 'brew' ? 'true' : undefined}
           >
             <BrewJourney
               layoutId={brewLayoutId}
