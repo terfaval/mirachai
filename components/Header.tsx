@@ -51,14 +51,14 @@ export default function Header({ query, onChange, onOpenFilters, sort, onChangeS
       <div className={styles.actions}>
         <img
           ref={searchIconRef}
-          src="/search.svg"
+          src="/icons/search.svg"
           alt="Keresés"
           className={styles.icon}
           onClick={() => setSearchOpen((v) => !v)}
         />
         <div ref={sortContainerRef} className={styles.sortContainer}>
           <img
-            src="/sort.svg"
+            src="/icons/sort.svg"
             alt="Rendezés"
             className={styles.icon}
             onClick={() => setSortOpen((v) => !v)}
@@ -88,7 +88,7 @@ export default function Header({ query, onChange, onOpenFilters, sort, onChangeS
           )}
         </div>
         <img
-          src="/filter.svg"
+          src="/icons/filter.svg"
           alt="Szűrés"
           className={styles.icon}
           onClick={onOpenFilters}

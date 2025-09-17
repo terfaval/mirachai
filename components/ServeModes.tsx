@@ -10,25 +10,25 @@ const MODES = [
   {
     key: 'serve_hot',
     label: 'Forrón',
-    svg: '/serve_hot.svg',
+    svg: '/icons/serve_hot.svg',
     color: '#e11d48',
   },
   {
     key: 'serve_lukewarm',
     label: 'Langyosan',
-    svg: '/serve_lukewarm.svg',
+    svg: '/icons/serve_lukewarm.svg',
     color: '#fb923c',
   },
   {
     key: 'serve_iced',
     label: 'Jegesen',
-    svg: '/serve_iced.svg',
+    svg: '/icons/serve_iced.svg',
     color: '#60a5fa',
   },
   {
     key: 'serve_coldbrew',
     label: 'Coldbrew',
-    svg: '/serve_coldbrew.svg',
+    svg: '/icons/serve_coldbrew.svg',
     color: '#4ade80',
   },
 ] as const;

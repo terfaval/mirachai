@@ -7,10 +7,10 @@ interface Props {
 }
 
 const PANELS: { key: PanelKey; icon: string; label: string }[] = [
-  { key: 'category', icon: '/icon_category.svg', label: 'Kategória' },
-  { key: 'timing', icon: '/icon_timing.svg', label: 'Időzítés' },
-  { key: 'prep', icon: '/icon_prep.svg', label: 'Elkészítés' },
-  { key: 'consumption', icon: '/icon_taste.svg', label: 'Fogyasztás' },
+  { key: 'category', icon: '/icons/icon_category.svg', label: 'Kategória' },
+  { key: 'timing', icon: '/icons/icon_timing.svg', label: 'Időzítés' },
+  { key: 'prep', icon: '/icons/icon_prep.svg', label: 'Elkészítés' },
+  { key: 'consumption', icon: '/icons/icon_taste.svg', label: 'Fogyasztás' },
 ];
 
 export default function InfoPanelSidebar({ panel, onChange }: Props) {

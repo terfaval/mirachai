@@ -13,17 +13,17 @@ interface Option {
 }
 
 const OPTIONS: Option[] = [
-  { key: 'category', label: 'Kategória', icon: '/icon_category.svg' },
-  { key: 'ingredients', label: 'Hozzávalók', icon: '/icon_prep.svg' },
-  { key: 'taste', label: 'Íz', icon: '/icon_taste.svg' },
-  { key: 'focus', label: 'Fókusz', icon: '/icon_info.svg' },
-  { key: 'intensity', label: 'Intenzitás', icon: '/icon_timing.svg' },
-  { key: 'steepMin', label: 'SteepMin', icon: '/icon_timing.svg' },
-  { key: 'caffeine', label: 'Koffein', icon: '/icon_info.svg' },
-  { key: 'allergens', label: 'Allergének', icon: '/icon_info.svg' },
-  { key: 'seasons', label: 'Évszakok', icon: '/icon_timing.svg' },
-  { key: 'dayparts', label: 'Napszakok', icon: '/icon_timing.svg' },
-  { key: 'temperature', label: 'Fogyasztási hőmérséklet', icon: '/icon_taste.svg' },
+  { key: 'category', label: 'Kategória', icon: '/icons/icon_category.svg' },
+  { key: 'ingredients', label: 'Hozzávalók', icon: '/icons/icon_prep.svg' },
+  { key: 'taste', label: 'Íz', icon: '/icons/icon_taste.svg' },
+  { key: 'focus', label: 'Fókusz', icon: '/icons/icon_info.svg' },
+  { key: 'intensity', label: 'Intenzitás', icon: '/icons/icon_timing.svg' },
+  { key: 'steepMin', label: 'SteepMin', icon: '/icons/icon_timing.svg' },
+  { key: 'caffeine', label: 'Koffein', icon: '/icons/icon_info.svg' },
+  { key: 'allergens', label: 'Allergének', icon: '/icons/icon_info.svg' },
+  { key: 'seasons', label: 'Évszakok', icon: '/icons/icon_timing.svg' },
+  { key: 'dayparts', label: 'Napszakok', icon: '/icons/icon_timing.svg' },
+  { key: 'temperature', label: 'Fogyasztási hőmérséklet', icon: '/icons/icon_taste.svg' },
 ];
 
 export default function FilterPanel({ open, onClose, onSelect }: Props) {

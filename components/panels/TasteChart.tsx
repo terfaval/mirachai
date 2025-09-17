@@ -82,7 +82,7 @@ export default function TasteChart({
     const value = Number.isNaN(clamped) ? 0 : clamped;
     const label = key.replace('taste_', '').replace(/_/g, ' ');
     const color = getTasteColor(key);
-    const icon = `/icon_${ICON_FILE[key] ?? key.replace('taste_', '')}.svg`;
+    const icon = `/tastes/icon_${ICON_FILE[key] ?? key.replace('taste_', '')}.svg`;
     return { key, label, value, color, icon };
   });
 
