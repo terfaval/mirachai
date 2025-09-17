@@ -4,7 +4,6 @@ import IngredientsStack from '@/components/ingredients/IngredientsStack';
 import TasteChart from './TasteChart';
 import FocusChart from './FocusChart';
 import CaffeineBar from '@/components/ingredients/CaffeineBar';
-import ServeModes from '@/components/ServeModes';
 import { buildIngredients, getFocusOrdered, caffeineToPct } from '@/utils/teaTransforms';
 
 interface Props {
@@ -17,41 +16,39 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
   const focusData = getFocusOrdered(tea);
   const caffeine = caffeineToPct(tea);
 
-  // finomhangolás
+  const description = (tea.fullDescription ?? '').trim();
+
   const TASTE_SIZE = 300;
   const ICON_SIZE = 64;
-  const TASTE_ROTATION_DEG = 0; // ízdiagram elforgatása fokban
-  
+  const TASTE_ROTATION_DEG = 0;
+
   return (
     <section className={styles.panelElement} data-panel="tea-dashboard">
-      <div style={{ display: 'grid', gap: 24 }}>
-        <div className={styles.panelBox}>
-          <IngredientsStack ingredients={ingredients} />
+      <div className={styles.dashboardGrid}>
+        <div
+          className={`${styles.panelBox} ${styles.panelCard}`}
+          style={{ display: 'flex' }}
+        >
+          <IngredientsStack
+            ingredients={ingredients}
+            orientation="vertical"
+          />
         </div>
 
-        <div
-          className={styles.panelBox}
-          style={{ padding: 24, display: 'grid', gap: 24 }}
-        >
-          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <CaffeineBar value={caffeine} color={colorDark} />
-          </div>
+        <div className={styles.dashboardColumn}>
+          {description && (
+            <div className={`${styles.panelBox} ${styles.panelCard}`}>
+              <p className={styles.dashboardDescription}>{description}</p>
+            </div>
+          )}
 
           <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)',
-              gap: 24,
-              alignItems: 'center',
-            }}
+            className={`${styles.panelBox} ${styles.panelCard} ${styles.dashboardTaste}`}
           >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
+            <div className={styles.dashboardCaffeine}>
+              <CaffeineBar value={caffeine} color={colorDark} />
+            </div>
+            <div className={styles.dashboardTasteChart}>
               <TasteChart
                 tea={tea}
                 size={TASTE_SIZE}
@@ -59,20 +56,15 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
                 rotationDeg={TASTE_ROTATION_DEG}
               />
             </div>
-
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <FocusChart data={focusData} size={TASTE_SIZE} colorDark={colorDark} />
-            </div>
           </div>
 
-          <div>
-            <ServeModes tea={tea} />
+          <div className={`${styles.panelBox} ${styles.panelCard}`}>
+            <FocusChart
+              data={focusData}
+              size={TASTE_SIZE}
+              colorDark={colorDark}
+              layout="grid"
+            />
           </div>
         </div>
       </div>

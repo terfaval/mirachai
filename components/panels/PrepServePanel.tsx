@@ -1,7 +1,9 @@
 import React from 'react';
+import styles from '../../styles/TeaModal.module.css';
 import { getTeaColor } from '../../utils/colorMap';
 import PrepInfo from '@/components/panels/PrepInfo';
 import ColorCup from '@/components/ColorCup';
+import ServeModes from '@/components/ServeModes';
 
 type Props = {
   tea: any;
@@ -31,19 +33,20 @@ export default function PrepServePanel({ tea, infoText }: Props) {
   const tableSrc = `/table_background/table_${toSlug(tea?.category ?? '')}.png`;
 
   return (
-    <div
-      style={{
-        position: 'relative', // rétegezéshez kötelező
-        display: 'grid',
-        placeItems: 'center',
-        width: '100%',
-        aspectRatio: '3 / 2',
-        padding: 12,
-        borderRadius: 12,
-        background: 'rgba(0,0,0,0.03)',
-        overflow: 'hidden',
-      }}
-    >
+    <div className={styles.prepServeGrid}>
+      <div
+        style={{
+          position: 'relative',
+          display: 'grid',
+          placeItems: 'center',
+          width: '100%',
+          aspectRatio: '3 / 2',
+          padding: 12,
+          borderRadius: 12,
+          background: 'rgba(0,0,0,0.03)',
+          overflow: 'hidden',
+        }}
+      >
         {/* 1) LEGALSÓ: kategória háttér (table_*.png) */}
         <img
           src={tableSrc}
@@ -53,9 +56,9 @@ export default function PrepServePanel({ tea, infoText }: Props) {
             inset: 0,
             width: '100%',
             height: '100%',
-            objectFit: 'contain',    // ha torzít, tehetsz 'contain'-t
+            objectFit: 'contain', // ha torzít, tehetsz 'contain'-t
             zIndex: 0,
-            opacity: 0.9,          // igény szerint
+            opacity: 0.9, // igény szerint
             pointerEvents: 'none',
           }}
           // fallback: ha hiányzik a kategória-kép
@@ -68,26 +71,26 @@ export default function PrepServePanel({ tea, infoText }: Props) {
 
         {/* 2) KÖZÉPSŐ: csésze PNG */}
         <img
-  src="/colorCup.png"
-  alt=""
-  style={{
-    position: 'absolute',
-    top: '50%',
-    left: '55%',
-    width: '65%',
-    height: '65%',
-    objectFit: 'contain',
-    transform: 'translate(-50%, -50%)', // <<< ez hozza középre
-    zIndex: 1,
-    pointerEvents: 'none',
-  }}
-  draggable={false}
-/>
+          src="/colorCup.png"
+          alt=""
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '55%',
+            width: '65%',
+            height: '65%',
+            objectFit: 'contain',
+            transform: 'translate(-50%, -50%)', // <<< ez hozza középre
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+          draggable={false}
+        />
 
         {/* 3) FELSŐ: a színes „tea” kör */}
         <ColorCup
           color={cupHex}
-          size={CUP_SIZE}    // <<< a „chart”/csésze vizuális mérete
+          size={CUP_SIZE} // <<< a „chart”/csésze vizuális mérete
           teaInsetPct={100}
           teaOpacity={1}
           aria-label={tea?.name ? `Szín: ${tea.name}` : 'Tea szín'}
@@ -99,7 +102,7 @@ export default function PrepServePanel({ tea, infoText }: Props) {
             position: 'absolute',
             top: '50%',
             left: 0,
-            width:"30%",
+            width: '30%',
             transform: 'translateY(-50%)',
             background: cupHex,
             color: '#000',
@@ -122,6 +125,11 @@ export default function PrepServePanel({ tea, infoText }: Props) {
         >
           <PrepInfo tempC={tempC} steepMin={steepMin} />
         </div>
+      </div>
+
+      <div className={`${styles.panelCard} ${styles.prepServeModes}`}>
+        <ServeModes tea={tea} />
+      </div>
     </div>
   );
 }

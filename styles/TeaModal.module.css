@@ -197,7 +197,12 @@
 /* két hasáb */
 .twoCol{ display:grid; grid-template-columns: 1.3fr 1fr; gap:28px; }
 .leftCol, .rightCol{ display:flex; flex-direction:column; gap:20px; }
-@media (max-width: 900px){ .twoCol{ grid-template-columns:1fr; } }
+@media (max-width: 900px){
+  .twoCol{ grid-template-columns:1fr; }
+  .dashboardGrid{ grid-template-columns: 1fr; }
+  .dashboardColumn{ gap: 20px; }
+  .prepServeGrid{ grid-template-columns: 1fr; }
+}
 
 .sectionTitle{
   font-family:'Lato', sans-serif; font-weight:700; text-transform:lowercase; margin:0;
@@ -281,6 +286,66 @@
   border-radius: 12px;
   padding: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.panelCard {
+  background: rgba(255,255,255,0.7);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+}
+
+.dashboardGrid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  align-items: stretch;
+}
+
+.dashboardColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 0;
+}
+
+.dashboardDescription {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0;
+}
+
+.dashboardTaste {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.dashboardCaffeine {
+  align-self: flex-end;
+}
+
+.dashboardTasteChart {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.prepServeGrid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.prepServeModes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .caffeineLabel {

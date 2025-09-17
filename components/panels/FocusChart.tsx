@@ -1,7 +1,9 @@
 import React from 'react';
 
 type Item = { key: string; label: string; value: number };
-type Props = { data: Item[]; size?: number; colorDark?: string };
+type Layout = 'stack' | 'grid';
+
+type Props = { data: Item[]; size?: number; colorDark?: string; layout?: Layout };
 
 const DISPLAY_LABELS: Record<string, string> = {
   immunity: 'Immunitás',
@@ -13,7 +15,12 @@ const DISPLAY_LABELS: Record<string, string> = {
 const LEVEL_LABELS = ['gyenge', 'közepes', 'erős'];
 const NO_LEVEL_LABEL = 'nem jellemző';
 
-export default function FocusChart({ data, size = 240, colorDark = '#333' }: Props) {
+export default function FocusChart({
+  data,
+  size = 240,
+  colorDark = '#333',
+  layout = 'stack',
+}: Props) {
   const scale = size / 240;
   const padding = Math.max(12, 16 * scale);
   const containerGap = Math.max(12, 16 * scale);
@@ -24,6 +31,8 @@ export default function FocusChart({ data, size = 240, colorDark = '#333' }: Pro
   const dotBorder = Math.max(1, 2 * scale);
   const focusFontSize = Math.max(14, 18 * scale);
   const levelFontSize = Math.max(10, 12 * scale);
+  const cardRadius = Math.max(12, 16 * scale);
+  const cardPadding = Math.max(12, 14 * scale);
 
   const normalized = data.map((item) => {
     const value = Math.max(0, Math.min(3, Number(item.value) || 0));
@@ -33,6 +42,86 @@ export default function FocusChart({ data, size = 240, colorDark = '#333' }: Pro
       strengthLevel > 0 ? LEVEL_LABELS[strengthLevel - 1] : NO_LEVEL_LABEL;
     return { ...item, value, displayLabel, levelLabel };
   });
+
+  if (layout === 'grid') {
+    return (
+      <div
+        style={{
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+          gap: containerGap,
+          padding,
+          boxSizing: 'border-box',
+        }}
+      >
+        {normalized.map((item) => (
+          <div
+            key={item.key}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: innerGap,
+              padding: cardPadding,
+              borderRadius: cardRadius,
+              backgroundColor: 'rgba(0,0,0,0.04)',
+            }}
+          >
+            <div
+              style={{
+                fontWeight: 700,
+                fontSize: focusFontSize,
+                textAlign: 'center',
+                textTransform: 'capitalize',
+              }}
+            >
+              {item.displayLabel}
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: columnGap,
+              }}
+              aria-hidden
+            >
+              {[1, 2, 3].map((level) => {
+                const active = level <= item.value;
+                return (
+                  <span
+                    key={level}
+                    style={{
+                      width: dotSize,
+                      height: dotSize,
+                      borderRadius: '50%',
+                      border: `${dotBorder}px solid ${colorDark}`,
+                      backgroundColor: active ? colorDark : 'transparent',
+                      opacity: active ? 1 : 0.2,
+                      display: 'inline-block',
+                      transition: 'opacity 0.2s ease',
+                    }}
+                  />
+                );
+              })}
+            </div>
+            <div
+              style={{
+                textAlign: 'center',
+                fontSize: levelFontSize,
+                color: 'rgba(0,0,0,0.7)',
+                textTransform: 'lowercase',
+                letterSpacing: '0.01em',
+                fontWeight: 600,
+              }}
+            >
+              {item.levelLabel}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div

@@ -4,11 +4,17 @@ import React from "react";
 import { Ingredient } from "../../src/types/tea";
 import { getIngredientColor } from "../../utils/colorMap";
 
+type Orientation = 'horizontal' | 'vertical';
+
 interface Props {
   ingredients: Ingredient[];
+  orientation?: Orientation;
 }
 
-export default function IngredientsStack({ ingredients }: Props) {
+export default function IngredientsStack({
+  ingredients,
+  orientation = 'horizontal',
+}: Props) {
   const safe = Array.isArray(ingredients) ? ingredients : [];
 
   // duplikátumok összegzése és csak pozitív, véges rate-ek használata
@@ -86,9 +92,83 @@ export default function IngredientsStack({ ingredients }: Props) {
     return `radial-gradient(-90deg, ${start}, ${end})`;
   };
 
+  const labelNodes = slices.map((s, idx) => (
+    <div
+      key={`label-${s.name}-${idx}`}
+      className={
+        orientation === 'vertical'
+          ? 'leading-tight rounded-md p-2 text-left'
+          : 'text-center leading-tight rounded-md p-1'
+      }
+      style={{
+        backgroundColor: alphaBg(s.color, 0.6),
+        background: gradientBg(s.color, 0.6),
+        color: textColorFor(s.color),
+      }}
+    >
+      <div className="font-semibold text-base md:text-lg">
+        {Math.round(s.ratePct)}%
+      </div>
+      <div className="text-xs md:text-sm opacity-90">{s.name}</div>
+    </div>
+  ));
+
+  if (orientation === 'vertical') {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flex: 1,
+          alignItems: 'stretch',
+          gap: 16,
+          width: '100%',
+          height: '100%',
+        }}
+      >
+        <div
+          role="img"
+          aria-label="Hozzávalók aránya (összesen 100%)"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            flex: '0 0 120px',
+            maxWidth: '160px',
+            width: '100%',
+            borderRadius: 12,
+            overflow: 'hidden',
+            backgroundColor: '#e5e7eb',
+          }}
+        >
+          {slices.map((s, idx) => (
+            <div
+              key={`${s.name}-${idx}`}
+              style={{
+                flexGrow: s.ratePct,
+                flexBasis: 0,
+                backgroundColor: s.color,
+                background: gradientBg(s.color),
+                minHeight: 6,
+              }}
+            />
+          ))}
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flex: 1,
+            flexDirection: 'column',
+            gap: 12,
+            justifyContent: 'center',
+          }}
+        >
+          {labelNodes}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col justify-center w-full h-full">
-      {/* Sávdiagram */}
       <div
         className="flex w-full h-16 overflow-hidden bg-gray-200 rounded-l-xl rounded-r-xl"
         role="img"
@@ -107,29 +187,11 @@ export default function IngredientsStack({ ingredients }: Props) {
         ))}
       </div>
 
-      {/* Labelek a sáv alatt, egyenlő oszlopokban, középre zárva */}
       <div
         className="grid mt-3 gap-2"
         style={{ gridTemplateColumns: `repeat(${Math.max(slices.length, 1)}, minmax(0, 1fr))` }}
       >
-        {slices.map((s, idx) => (
-          <div
-            key={"label-" + s.name + idx}
-            className="text-center leading-tight rounded-md p-1"
-            style={{
-              backgroundColor: alphaBg(s.color, 0.6),
-              background: gradientBg(s.color, 0.6),
-              color: textColorFor(s.color),
-            }}
-          >
-            {/* FINOMHANG: % méret/weight itt állítható */}
-            <div className="font-semibold text-base md:text-lg">
-              {Math.round(s.ratePct)}%
-            </div>
-            {/* FINOMHANG: név mérete/betűköz, sor-köz itt állítható */}
-            <div className="text-xs md:text-sm opacity-90">{s.name}</div>
-          </div>
-        ))}
+        {labelNodes}
       </div>
     </div>
   );
