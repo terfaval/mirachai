@@ -9,31 +9,42 @@ import PrepServePanel from '@/components/panels/PrepServePanel';
 import { getCategoryColor, getAlternativeColor } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 import uiTexts from '../data/ui_texts.json';
+import { pickIntroCopy, type IntroCopy } from '../utils/introCopy';
 
 type CubeFace = 'tea' | 'intro' | 'brew';
 
-const fallbackIntroCopy = {
-  h1: [
-    'Tea, ami történetet mesél',
-    'Mirāchai – a te szertartásod',
-    'Fedezd fel a Mirāchai világát',
-  ],
-  lead: [
-    'Lépj be a lassú teafőzés univerzumába – minden csészéhez személyre szabott útmutatóval.',
-    'Ismerd meg a Mirāchai teákat, és készítsd el őket pont úgy, ahogy neked jó.',
-    'Kapcsolódj a történetekhez és színekhez – mi végigkísérünk az első kortytól az utolsóig.',
-  ],
+type IntroTextSource = {
+  h1?: unknown;
+  lead?: unknown;
 };
 
-const mulberry32 = (seed: number) => {
-  let t = seed >>> 0;
-  return () => {
-    t += 0x6d2b79f5;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
+const createIntroCopyOptions = (source?: IntroTextSource | null): IntroCopy[] | undefined => {
+  if (!source) {
+    return undefined;
+  }
+
+  const headlines = Array.isArray(source.h1)
+    ? source.h1.filter((text): text is string => typeof text === 'string' && text.trim().length > 0)
+    : [];
+  const leads = Array.isArray(source.lead)
+    ? source.lead.filter((text): text is string => typeof text === 'string' && text.trim().length > 0)
+    : [];
+
+  if (!headlines.length || !leads.length) {
+    return undefined;
+  }
+
+  const copies: IntroCopy[] = [];
+  for (const h1 of headlines) {
+    for (const lead of leads) {
+      copies.push({ h1, lead });
+    }
+  }
+
+  return copies.length ? copies : undefined;
 };
+
+const introCopyOptions = createIntroCopyOptions(uiTexts?.brewJourney?.intro);
 
 interface Props {
   tea: Tea;
@@ -53,30 +64,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const introTitleRef = useRef<HTMLHeadingElement | null>(null);
   const brewTitleRef = useRef<HTMLHeadingElement | null>(null);
 
-  const introCopy = useMemo(() => {
-    const introTexts = uiTexts?.brewJourney?.intro;
-    const headlineSource = Array.isArray(introTexts?.h1) && introTexts.h1.length
-      ? introTexts.h1
-      : fallbackIntroCopy.h1;
-    const leadSource = Array.isArray(introTexts?.lead) && introTexts.lead.length
-      ? introTexts.lead
-      : fallbackIntroCopy.lead;
-
-    const seed = Number.isFinite(tea.id) ? tea.id : 0;
-    const rng = mulberry32(seed);
-    const pick = (list: string[]) => {
-      if (!list.length) {
-        return '';
-      }
-      const index = Math.floor(rng() * list.length);
-      return list[index] ?? list[0]!;
-    };
-
-    const title = pick(headlineSource) || fallbackIntroCopy.h1[0]!;
-    const lead = pick(leadSource) || fallbackIntroCopy.lead[0]!;
-
-    return { title, lead };
-  }, [tea.id]);
+  const introCopy = useMemo(() => pickIntroCopy(tea.id, introCopyOptions), [tea.id]);
 
   useEffect(() => {
     setActiveFace('tea');
@@ -386,7 +374,7 @@ export default function TeaModal({ tea, onClose }: Props) {
                   tabIndex={-1}
                   ref={introTitleRef}
                 >
-                  {introCopy.title}
+                  {introCopy.h1}
                 </h1>
                 <p className={styles.introLead}>{introCopy.lead}</p>
                 <div className={styles.introActions}>

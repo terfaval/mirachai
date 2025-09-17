@@ -3,26 +3,13 @@ import { motion } from 'framer-motion';
 import MandalaBackground from '../panels/MandalaBackground';
 import { SetupJourneyTop } from './Setup';
 import uiTexts from '../../data/ui_texts.json';
+import { pickIntroCopy, type IntroCopy } from '../../utils/introCopy';
 
 const FLIP_DUR = 0.9;
 const FLIP_EASE = [0.22, 1, 0.36, 1] as const;
 const MID_HOLD = 0.5;
 const MID_LIFT = 160;
 const TARGET_LIFT = 280;
-
-const fallbackIntro = {
-  h1: [
-    'Nagyszerű választás!',
-    'Kiváló döntés!',
-    'Ez telitalálat!',
-    'Pont erre volt szükség!',
-  ],
-  lead: [
-    'Kísérlek végig az elkészítésen – pár kattintás és indul a teázás.',
-    'Beállítjuk a módszert és a mennyiséget, aztán jönnek a pontos lépések.',
-    'Minden részletet kiszámolok: víz, idő, arányok, eszközök.',
-  ],
-};
 
 type IntroTexts = {
   brewJourney?: {
@@ -35,6 +22,7 @@ type IntroTexts = {
 
 type IntroProps = {
   tea: {
+    id?: number | string;
     slug: string;
     name: string;
     category?: string;
@@ -51,7 +39,38 @@ type BrewBoxShellProps = {
   onComplete?: () => void;
 };
 
-const introTexts = (uiTexts as IntroTexts)?.brewJourney?.intro;
+type IntroTextSource = {
+  h1?: unknown;
+  lead?: unknown;
+};
+
+const createIntroCopyOptions = (source?: IntroTextSource | null): IntroCopy[] | undefined => {
+  if (!source) {
+    return undefined;
+  }
+
+  const headlines = Array.isArray(source.h1)
+    ? source.h1.filter((text): text is string => typeof text === 'string' && text.trim().length > 0)
+    : [];
+  const leads = Array.isArray(source.lead)
+    ? source.lead.filter((text): text is string => typeof text === 'string' && text.trim().length > 0)
+    : [];
+
+  if (!headlines.length || !leads.length) {
+    return undefined;
+  }
+
+  const copies: IntroCopy[] = [];
+  for (const h1 of headlines) {
+    for (const lead of leads) {
+      copies.push({ h1, lead });
+    }
+  }
+
+  return copies.length ? copies : undefined;
+};
+
+const introCopyOptions = createIntroCopyOptions((uiTexts as IntroTexts)?.brewJourney?.intro);
 
 const usePrefersReducedMotion = () => {
   const [prefers, setPrefers] = useState(false);
@@ -72,31 +91,6 @@ const usePrefersReducedMotion = () => {
   }, []);
 
   return prefers;
-};
-
-const hashStringToSeed = (value: string) => {
-  let h = 2166136261 >>> 0;
-  for (let i = 0; i < value.length; i += 1) {
-    h ^= value.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return h >>> 0;
-};
-
-const mulberry32 = (seed: number) => {
-  let t = seed >>> 0;
-  return () => {
-    t += 0x6d2b79f5;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-};
-
-const pickWithSeed = (list: string[], rng: () => number, fallback: string) => {
-  if (!list.length) return fallback;
-  const index = Math.floor(rng() * list.length);
-  return list[index] ?? fallback;
 };
 
 function BrewBoxShell({ front, back, background, onComplete }: BrewBoxShellProps) {
@@ -181,16 +175,8 @@ function BrewBoxShell({ front, back, background, onComplete }: BrewBoxShellProps
 }
 
 export default function Intro({ tea, onSetupEnter }: IntroProps) {
-  const teaId = tea.slug ?? tea.name ?? 'tea';
-  const copy = useMemo(() => {
-    const seed = hashStringToSeed(teaId);
-    const rng = mulberry32(seed);
-    const h1Source = introTexts?.h1?.length ? introTexts.h1 : fallbackIntro.h1;
-    const leadSource = introTexts?.lead?.length ? introTexts.lead : fallbackIntro.lead;
-    const headline = pickWithSeed(h1Source, rng, fallbackIntro.h1[0]!);
-    const lead = pickWithSeed(leadSource, rng, fallbackIntro.lead[0]!);
-    return { headline, lead };
-  }, [teaId]);
+  const teaId = tea.id ?? tea.slug ?? tea.name ?? 'tea';
+  const copy = useMemo(() => pickIntroCopy(teaId, introCopyOptions), [teaId]);
 
   const mainColor = tea.colorMain ?? '#B88E63';
   const darkColor = tea.colorDark ?? '#2D1E3E';
@@ -212,7 +198,7 @@ export default function Intro({ tea, onSetupEnter }: IntroProps) {
         <img src="/mirachai_logo.svg" alt="Mirachai" className="h-20 w-20" />
         <div className="flex flex-col gap-3">
           <span className="text-xs uppercase tracking-[0.4em] text-white/70">Brew Journey</span>
-          <h1 className="text-4xl font-semibold leading-tight">{copy.headline}</h1>
+          <h1 className="text-4xl font-semibold leading-tight">{copy.h1}</h1>
           <p className="max-w-sm text-base leading-relaxed text-white/80">{copy.lead}</p>
         </div>
         <div className="rounded-full bg-white/15 px-4 py-1 text-xs uppercase tracking-[0.3em] text-white/85">
