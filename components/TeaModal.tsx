@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import { CSSProperties, useEffect, useMemo, useRef, useState } from 'react';
 import styles from '../styles/TeaModal.module.css';
 import { Tea } from '../utils/filter';
 import HeaderPanel from '@/components/panels/HeaderPanel';
@@ -8,8 +8,32 @@ import TeaDashboard from '@/components/panels/TeaDashboard';
 import PrepServePanel from '@/components/panels/PrepServePanel';
 import { getCategoryColor, getAlternativeColor } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
+import uiTexts from '../data/ui_texts.json';
 
 type CubeFace = 'tea' | 'intro' | 'brew';
+
+const fallbackIntroCopy = {
+  h1: [
+    'Tea, ami történetet mesél',
+    'Mirāchai – a te szertartásod',
+    'Fedezd fel a Mirāchai világát',
+  ],
+  lead: [
+    'Lépj be a lassú teafőzés univerzumába – minden csészéhez személyre szabott útmutatóval.',
+    'Ismerd meg a Mirāchai teákat, és készítsd el őket pont úgy, ahogy neked jó.',
+    'Kapcsolódj a történetekhez és színekhez – mi végigkísérünk az első kortytól az utolsóig.',
+  ],
+};
+
+const mulberry32 = (seed: number) => {
+  let t = seed >>> 0;
+  return () => {
+    t += 0x6d2b79f5;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+};
 
 interface Props {
   tea: Tea;
@@ -26,6 +50,33 @@ export default function TeaModal({ tea, onClose }: Props) {
   const [isRotating, setIsRotating] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const cubeSceneRef = useRef<HTMLDivElement | null>(null);
+  const introTitleRef = useRef<HTMLHeadingElement | null>(null);
+  const brewTitleRef = useRef<HTMLHeadingElement | null>(null);
+
+  const introCopy = useMemo(() => {
+    const introTexts = uiTexts?.brewJourney?.intro;
+    const headlineSource = Array.isArray(introTexts?.h1) && introTexts.h1.length
+      ? introTexts.h1
+      : fallbackIntroCopy.h1;
+    const leadSource = Array.isArray(introTexts?.lead) && introTexts.lead.length
+      ? introTexts.lead
+      : fallbackIntroCopy.lead;
+
+    const seed = Number.isFinite(tea.id) ? tea.id : 0;
+    const rng = mulberry32(seed);
+    const pick = (list: string[]) => {
+      if (!list.length) {
+        return '';
+      }
+      const index = Math.floor(rng() * list.length);
+      return list[index] ?? list[0]!;
+    };
+
+    const title = pick(headlineSource) || fallbackIntroCopy.h1[0]!;
+    const lead = pick(leadSource) || fallbackIntroCopy.lead[0]!;
+
+    return { title, lead };
+  }, [tea.id]);
 
   useEffect(() => {
     setActiveFace('tea');
@@ -46,6 +97,18 @@ export default function TeaModal({ tea, onClose }: Props) {
     const timeout = window.setTimeout(() => setIsRotating(false), 400);
     return () => window.clearTimeout(timeout);
   }, [prefersReducedMotion, isRotating]);
+
+  useEffect(() => {
+    if (isRotating) {
+      return;
+    }
+
+    if (activeFace === 'intro') {
+      introTitleRef.current?.focus();
+    } else if (activeFace === 'brew') {
+      brewTitleRef.current?.focus();
+    }
+  }, [activeFace, isRotating]);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -306,18 +369,33 @@ export default function TeaModal({ tea, onClose }: Props) {
                 <MandalaBackground color={colorDark} category={tea.category} />
               </div>
               <div className={styles.introContent}>
-                <div className={styles.brandBadge}>mirāchai</div>
-                <h1 className={styles.introTitle}>Tea, ami történetet mesél</h1>
-                <p className={styles.introLead}>
-                  Fedezd fel a mirāchai világát – a lassú teafőzés örömét, személyre szabva neked.
-                </p>
+                <div className={styles.brandBadge}>
+                  <img
+                    src="/mirachai_logo.svg"
+                    alt="Mirachai"
+                    style={{
+                      width: 'clamp(72px, 10vw, 120px)',
+                      height: 'auto',
+                      filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.25))',
+                      fill: 'white',
+                    }}
+                  />
+                </div>
+                <h1
+                  className={styles.introTitle}
+                  tabIndex={-1}
+                  ref={introTitleRef}
+                >
+                  {introCopy.title}
+                </h1>
+                <p className={styles.introLead}>{introCopy.lead}</p>
                 <div className={styles.introActions}>
                   <button
                     type="button"
                     className={styles.introPrimary}
                     onClick={() => handleFaceChange('brew')}
                   >
-                    Lássuk a főzést
+                    Kezdjük a főzést
                   </button>
                   <button
                     type="button"
@@ -338,7 +416,13 @@ export default function TeaModal({ tea, onClose }: Props) {
             <div className={styles.brewFace}>
               <header className={styles.brewHeader}>
                 <span className={styles.brewBadge}>Brew guide</span>
-                <h2 className={styles.brewTitle}>Mirāchai főzési keret</h2>
+                <h2
+                  className={styles.brewTitle}
+                  tabIndex={-1}
+                  ref={brewTitleRef}
+                >
+                  Mirachai tea útmutató
+                </h2>
                 <p className={styles.brewLead}>
                   Kövesd végig a folyamatot lépésről lépésre – hamarosan részletes időzítővel és recepttel.
                 </p>
