@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from 'react';
+import { CSSProperties, useEffect, useRef, useState } from 'react';
 import styles from '../styles/TeaModal.module.css';
 import { Tea } from '../utils/filter';
 import HeaderPanel from '@/components/panels/HeaderPanel';
@@ -25,6 +25,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const [activeFace, setActiveFace] = useState<CubeFace>('tea');
   const [isRotating, setIsRotating] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const cubeSceneRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setActiveFace('tea');
@@ -46,6 +47,152 @@ export default function TeaModal({ tea, onClose }: Props) {
     return () => window.clearTimeout(timeout);
   }, [prefersReducedMotion, isRotating]);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const sceneEl = cubeSceneRef.current;
+    if (!sceneEl) {
+      return;
+    }
+
+    const faceSelector = `.${styles.cubeFace}[data-active="true"] .${styles.content}`;
+    const getActiveContent = () =>
+      sceneEl.querySelector<HTMLElement>(faceSelector) ?? null;
+
+    const eventTargetsContent = (event: Event, contentEl: HTMLElement) => {
+      const path = 'composedPath' in event ? event.composedPath() : undefined;
+      if (Array.isArray(path) && path.length > 0) {
+        return path.includes(contentEl);
+      }
+      const targetNode = event.target as Node | null;
+      return targetNode ? contentEl.contains(targetNode) : false;
+    };
+
+    const clamp = (value: number, min: number, max: number) =>
+      Math.min(Math.max(value, min), max);
+
+    const normalizeDeltaY = (event: WheelEvent, content: HTMLElement) => {
+      if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
+        return event.deltaY * 16;
+      }
+      if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+        return event.deltaY * content.clientHeight;
+      }
+      return event.deltaY;
+    };
+
+    const handleWheel = (event: WheelEvent) => {
+      const contentEl = getActiveContent();
+      if (!contentEl) {
+        return;
+      }
+
+      if (!eventTargetsContent(event, contentEl)) {
+        return;
+      }
+
+      const maxScroll = contentEl.scrollHeight - contentEl.clientHeight;
+      if (maxScroll <= 0) {
+        return;
+      }
+
+      const deltaY = normalizeDeltaY(event, contentEl);
+      if (deltaY === 0) {
+        return;
+      }
+
+      const nextScroll = clamp(
+        contentEl.scrollTop + deltaY,
+        0,
+        maxScroll,
+      );
+
+      if (nextScroll !== contentEl.scrollTop) {
+        event.preventDefault();
+        contentEl.scrollTop = nextScroll;
+      }
+    };
+
+    let touchStartY: number | null = null;
+    let touchContent: HTMLElement | null = null;
+
+    const handleTouchStart = (event: TouchEvent) => {
+      const contentEl = getActiveContent();
+      if (!contentEl) {
+        touchStartY = null;
+        touchContent = null;
+        return;
+      }
+
+      if (!eventTargetsContent(event, contentEl)) {
+        touchStartY = null;
+        touchContent = null;
+        return;
+      }
+
+      const touch = event.touches[0];
+      if (!touch) {
+        touchStartY = null;
+        touchContent = null;
+        return;
+      }
+
+      touchStartY = touch.clientY;
+      touchContent = contentEl;
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (!touchContent || touchStartY === null) {
+        return;
+      }
+
+      const maxScroll = touchContent.scrollHeight - touchContent.clientHeight;
+      if (maxScroll <= 0) {
+        return;
+      }
+
+      const touch = event.touches[0];
+      if (!touch) {
+        return;
+      }
+
+      const deltaY = touchStartY - touch.clientY;
+      if (deltaY === 0) {
+        return;
+      }
+
+      event.preventDefault();
+      const nextScroll = clamp(
+        touchContent.scrollTop + deltaY,
+        0,
+        maxScroll,
+      );
+      touchContent.scrollTop = nextScroll;
+      touchStartY = touch.clientY;
+    };
+
+    const resetTouch = () => {
+      touchStartY = null;
+      touchContent = null;
+    };
+
+    sceneEl.addEventListener('wheel', handleWheel, { passive: false });
+    sceneEl.addEventListener('touchstart', handleTouchStart, { passive: true });
+    sceneEl.addEventListener('touchmove', handleTouchMove, { passive: false });
+    sceneEl.addEventListener('touchend', resetTouch);
+    sceneEl.addEventListener('touchcancel', resetTouch);
+
+    return () => {
+      sceneEl.removeEventListener('wheel', handleWheel);
+      sceneEl.removeEventListener('touchstart', handleTouchStart);
+      sceneEl.removeEventListener('touchmove', handleTouchMove);
+      sceneEl.removeEventListener('touchend', resetTouch);
+      sceneEl.removeEventListener('touchcancel', resetTouch);
+    };
+  }, [activeFace]);
+  
   const handleFaceChange = (face: CubeFace) => {
     if (face === activeFace) return;
     setIsRotating(true);
@@ -73,7 +220,8 @@ export default function TeaModal({ tea, onClose }: Props) {
         className={styles.cubeScene}
         style={cubeSceneStyle}
         onClick={(event) => event.stopPropagation()}
-      >
+        ref={cubeSceneRef}
+        >
         <div
           className={styles.cubeShell}
           data-rotating={isRotating ? 'true' : 'false'}

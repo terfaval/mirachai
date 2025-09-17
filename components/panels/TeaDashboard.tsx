@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '../../styles/TeaModal.module.css';
 import IngredientsStack from '@/components/ingredients/IngredientsStack';
 import TasteChart from './TasteChart';
-import AlternativeTasteChart from './AlternativeTasteChart';
 import FocusChart from './FocusChart';
 import CaffeineBar from '@/components/ingredients/CaffeineBar';
 import ServeModes from '@/components/ServeModes';
@@ -70,10 +69,6 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
             >
               <FocusChart data={focusData} size={TASTE_SIZE} colorDark={colorDark} />
             </div>
-          </div>
-
-          <div style={{ justifySelf: 'center' }}>
-            <AlternativeTasteChart tea={tea} />
           </div>
 
           <div>
