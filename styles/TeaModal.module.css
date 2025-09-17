@@ -5,6 +5,7 @@
   padding:20px 0;
   overflow-y:auto;
   overflow-x:hidden;
+  touch-action: pan-y;
 
   /* transparent scrollbar outside panel */
   scrollbar-color: rgba(0,0,0,0.4) transparent;
@@ -490,4 +491,49 @@
 .brewBackButton:hover {
   transform: translateY(-2px);
   filter: brightness(0.98);
+}
+
+/* Cube face layout overrides */
+.cubeFace .panel {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; 
+}
+
+.mandala,
+.backLayer {
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  z-index: 1;
+}
+
+.cubeFace .content {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  min-height: 0;
+  pointer-events: auto;   /* biztos ami biztos */
+  position: relative;
+  z-index: 1;
+}
+
+.cubeScene {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.backLayer {
+  display: grid;
+  place-items: center;
+  z-index: 0;
+}
+
+.mandala {
+  margin: 0;
 }

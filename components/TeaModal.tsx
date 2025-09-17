@@ -54,16 +54,24 @@ export default function TeaModal({ tea, onClose }: Props) {
 
   const rotation = activeFace === 'tea' ? 0 : activeFace === 'intro' ? -90 : -180;
 
-  const overlayStyle = {
+  // ---- FIX: bővített típus a custom CSS változókhoz
+  type CubeSceneStyle = CSSProperties & {
+    ['--card-w']?: string;
+    ['--card-h']?: string;
+  };
+
+  const cubeSceneStyle: CubeSceneStyle = {
+    perspective: '1200px',
     '--card-w': '60vw',
     '--card-h': '90vh',
-  } as CSSProperties;
+  };
+  // ----
 
   return (
-    <div className={styles.overlay} onClick={onClose} style={overlayStyle}>
+    <div className={styles.overlay} onClick={onClose}>
       <div
         className={styles.cubeScene}
-        style={{ perspective: '1200px' }}
+        style={cubeSceneStyle}
         onClick={(event) => event.stopPropagation()}
       >
         <div
@@ -74,7 +82,7 @@ export default function TeaModal({ tea, onClose }: Props) {
             transform: prefersReducedMotion
               ? undefined
               : `translateZ(calc(var(--card-w) / -2)) rotateY(${rotation}deg)`,
-            pointerEvents: isRotating ? 'none' : 'auto',
+            pointerEvents: isRotating ? 'none' : undefined,
           }}
           onTransitionEnd={(event) => {
             if (prefersReducedMotion) {
@@ -96,9 +104,6 @@ export default function TeaModal({ tea, onClose }: Props) {
               className={styles.panel}
               style={{
                 backgroundColor: colorMain,
-                width: '100%',
-                maxWidth: '100%',
-                height: '100%',
               }}
             >
               <div className={styles.backLayer} style={{ background: colorMain }}>
@@ -149,7 +154,7 @@ export default function TeaModal({ tea, onClose }: Props) {
             data-active={activeFace === 'intro' ? 'true' : 'false'}
           >
             <div className={styles.introFace} style={{ backgroundColor: colorMain }}>
-              <div className={styles.introBackdrop}>
+              <div className={`${styles.backLayer} ${styles.introBackdrop}`}>
                 <MandalaBackground color={colorDark} category={tea.category} />
               </div>
               <div className={styles.introContent}>
