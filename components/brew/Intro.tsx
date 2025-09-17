@@ -22,7 +22,7 @@ type IntroTexts = {
 
 type IntroProps = {
   tea: {
-    id?: number | string;
+    id?: string;
     slug: string;
     name: string;
     category?: string;
@@ -175,7 +175,7 @@ function BrewBoxShell({ front, back, background, onComplete }: BrewBoxShellProps
 }
 
 export default function Intro({ tea, onSetupEnter }: IntroProps) {
-  const teaId = tea.id ?? tea.slug ?? tea.name ?? 'tea';
+  const teaId = String(tea.id ?? tea.slug ?? tea.name ?? 'tea');
   const copy = useMemo(() => pickIntroCopy(teaId, introCopyOptions), [teaId]);
 
   const mainColor = tea.colorMain ?? '#B88E63';

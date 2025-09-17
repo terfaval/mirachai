@@ -10,6 +10,7 @@ import { getCategoryColor, getAlternativeColor } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 import uiTexts from '../data/ui_texts.json';
 import { pickIntroCopy, type IntroCopy } from '../utils/introCopy';
+import BrewJourney from './brew/BrewJourney';
 
 type CubeFace = 'tea' | 'intro' | 'brew';
 
@@ -65,6 +66,20 @@ export default function TeaModal({ tea, onClose }: Props) {
   const brewTitleRef = useRef<HTMLHeadingElement | null>(null);
 
   const introCopy = useMemo(() => pickIntroCopy(tea.id, introCopyOptions), [tea.id]);
+  const brewTea = useMemo(
+  () => ({
+    ...tea,
+    id: tea.id !== undefined ? String(tea.id) : undefined, // ← mindig string
+    colorMain,
+    colorDark,
+  }),
+  [tea, colorMain, colorDark],
+);
+
+  const brewLayoutId = useMemo(() => {
+    const base = (tea as any).slug ?? tea.id ?? tea.name ?? 'tea';
+    return `brew-${String(base)}`;
+  }, [tea]);
 
   useEffect(() => {
     setActiveFace('tea');
@@ -93,9 +108,27 @@ export default function TeaModal({ tea, onClose }: Props) {
 
     if (activeFace === 'intro') {
       introTitleRef.current?.focus();
-    } else if (activeFace === 'brew') {
-      brewTitleRef.current?.focus();
+    return;
     }
+
+    if (activeFace !== 'brew') {
+      return;
+    }
+
+    if (brewTitleRef.current) {
+      brewTitleRef.current.focus();
+      return;
+    }
+
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      brewTitleRef.current?.focus();
+    }, 0);
+
+    return () => window.clearTimeout(timer);
   }, [activeFace, isRotating]);
 
   useEffect(() => {
@@ -401,50 +434,13 @@ export default function TeaModal({ tea, onClose }: Props) {
             className={`${styles.cubeFace} ${styles.faceBack}`}
             data-active={activeFace === 'brew' ? 'true' : 'false'}
           >
-            <div className={styles.brewFace}>
-              <header className={styles.brewHeader}>
-                <span className={styles.brewBadge}>Brew guide</span>
-                <h2
-                  className={styles.brewTitle}
-                  tabIndex={-1}
-                  ref={brewTitleRef}
-                >
-                  Mirachai tea útmutató
-                </h2>
-                <p className={styles.brewLead}>
-                  Kövesd végig a folyamatot lépésről lépésre – hamarosan részletes időzítővel és recepttel.
-                </p>
-              </header>
-              <div className={styles.brewBody}>
-                <div className={styles.brewCard}>
-                  <h3 className={styles.brewCardTitle}>1. Előkészítés</h3>
-                  <p className={styles.brewCardText}>
-                    Válaszd ki a főzési módot és az adagot. Hamarosan automatikus ajánlásokat kapsz.
-                  </p>
-                </div>
-                <div className={styles.brewCard}>
-                  <h3 className={styles.brewCardTitle}>2. Recept &amp; időzítés</h3>
-                  <p className={styles.brewCardText}>
-                    A Mirāchai lépései végig vezetnek a hőmérséklettől az áztatási időkig.
-                  </p>
-                </div>
-                <div className={styles.brewCard}>
-                  <h3 className={styles.brewCardTitle}>3. Élvezd</h3>
-                  <p className={styles.brewCardText}>
-                    Visszajelzéseddel még pontosabbá tesszük a következő csészét.
-                  </p>
-                </div>
-              </div>
-              <div className={styles.brewFooter}>
-                <button
-                  type="button"
-                  className={styles.brewBackButton}
-                  onClick={() => handleFaceChange('intro')}
-                >
-                  Vissza a márka oldalra
-                </button>
-              </div>
-            </div>
+            <BrewJourney
+              layoutId={brewLayoutId}
+              tea={brewTea}
+              onClose={() => handleFaceChange('intro')}
+              embedded
+              titleRef={brewTitleRef}
+            />
           </div>
         </div>
       </div>
