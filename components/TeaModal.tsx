@@ -63,6 +63,8 @@ export default function TeaModal({ tea, onClose }: Props) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const cubeSceneRef = useRef<HTMLDivElement | null>(null);
   const cubeShellRef = useRef<HTMLDivElement | null>(null);
+  const teaContentRef = useRef<HTMLDivElement | null>(null);
+  const brewContentRef = useRef<HTMLDivElement | null>(null);
   const introTitleRef = useRef<HTMLHeadingElement | null>(null);
   const brewTitleRef = useRef<HTMLHeadingElement | null>(null);
   const rotationTimeoutRef = useRef<number | null>(null);
@@ -144,6 +146,34 @@ export default function TeaModal({ tea, onClose }: Props) {
     clearRotationTimeout();
   }, [clearRotationTimeout]);
 
+  const scrollToTop = useCallback(
+    (element: HTMLElement | null) => {
+      if (!element) {
+        return;
+      }
+
+      const behavior: ScrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+      try {
+        element.scrollTo({ top: 0, behavior });
+      } catch (error) {
+        element.scrollTop = 0;
+      }
+    },
+    [prefersReducedMotion],
+  );
+
+  useEffect(() => {
+    if (activeFace === 'tea') {
+      scrollToTop(teaContentRef.current);
+      return;
+    }
+
+    if (activeFace === 'brew') {
+      scrollToTop(brewContentRef.current);
+    }
+  }, [activeFace, scrollToTop]);
+  
   useEffect(() => {
     if (isRotating) {
       return;
@@ -398,6 +428,7 @@ export default function TeaModal({ tea, onClose }: Props) {
 
               <div
                 className={styles.content}
+                ref={teaContentRef}
                 style={{
                   background: `linear-gradient(180deg, ${colorLight} 0%, #FFFFFF 65%)`,
                 }}
@@ -464,17 +495,17 @@ export default function TeaModal({ tea, onClose }: Props) {
                 <div className={styles.introActions}>
                   <button
                     type="button"
-                    className={styles.introPrimary}
-                    onClick={() => handleFaceChange('brew')}
-                  >
-                    Kezdjük a főzést
-                  </button>
-                  <button
-                    type="button"
                     className={styles.introGhost}
                     onClick={() => handleFaceChange('tea')}
                   >
                     Vissza a teához
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.introPrimary}
+                    onClick={() => handleFaceChange('brew')}
+                  >
+                    Kezdjük a főzést
                   </button>
                 </div>
               </div>
@@ -491,6 +522,7 @@ export default function TeaModal({ tea, onClose }: Props) {
               onClose={() => handleFaceChange('intro')}
               embedded
               titleRef={brewTitleRef}
+              containerRef={brewContentRef}
             />
           </div>
         </div>

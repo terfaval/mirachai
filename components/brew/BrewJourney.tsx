@@ -32,6 +32,7 @@ type BrewJourneyProps = {
   onClose: () => void;
   embedded?: boolean;
   titleRef?: Ref<HTMLHeadingElement>;
+  containerRef?: Ref<HTMLDivElement>;
 };
 
 export default function BrewJourney({
@@ -40,6 +41,7 @@ export default function BrewJourney({
   onClose,
   embedded = false,
   titleRef,
+  containerRef,
 }: BrewJourneyProps) {
   const normalizedTea = useMemo(
     () => ({
@@ -93,7 +95,7 @@ export default function BrewJourney({
       : 'Mirachai tea útmutató';
 
     return (
-      <div className={styles.brewFace}>
+      <div className={styles.brewFace} ref={containerRef}>
         <header className={styles.brewHeader}>
           <span className={styles.brewBadge}>Brew guide</span>
           <h2
