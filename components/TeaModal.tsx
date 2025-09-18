@@ -156,7 +156,7 @@ export default function TeaModal({ tea, onClose }: Props) {
 
       try {
         element.scrollTo({ top: 0, behavior });
-      } catch (error) {
+      } catch {
         element.scrollTop = 0;
       }
     },
@@ -181,7 +181,7 @@ export default function TeaModal({ tea, onClose }: Props) {
 
     if (activeFace === 'intro') {
       introTitleRef.current?.focus();
-    return;
+      return;
     }
 
     if (activeFace !== 'brew') {
@@ -214,7 +214,9 @@ export default function TeaModal({ tea, onClose }: Props) {
       return;
     }
 
-    const faceSelector = `.${styles.cubeFace}[data-active="true"] .${styles.content}`;
+    const faceSelector =
+      `.${styles.cubeFace}[data-active="true"] .${styles.content}, ` +
+      `.${styles.cubeFace}[data-active="true"] .${styles.introContent}`;
     const getActiveContent = () =>
       sceneEl.querySelector<HTMLElement>(faceSelector) ?? null;
 
@@ -353,6 +355,16 @@ export default function TeaModal({ tea, onClose }: Props) {
   const handleFaceChange = (face: CubeFace) => {
     if (face === activeFace) return;
     clearRotationTimeout();
+
+    if (prefersReducedMotion) {
+      setActiveFace(face);
+      if (cubeShellRef.current) {
+        cubeShellRef.current.setAttribute('data-rotating', 'false');
+      }
+      setIsRotating(false);
+      return;
+    }
+
     if (cubeShellRef.current) {
       cubeShellRef.current.setAttribute('data-rotating', 'true');
     }
@@ -404,11 +416,6 @@ export default function TeaModal({ tea, onClose }: Props) {
           }}
           ref={cubeShellRef}
         >
-          <div
-            className={`${styles.cubeFace} ${styles.faceFront}`}
-            data-active={activeFace === 'tea' ? 'true' : undefined}
-          >
-          </div>
           <div
             className={`${styles.cubeFace} ${styles.faceFront}`}
             data-active={activeFace === 'tea' ? 'true' : 'false'}
