@@ -1,4 +1,4 @@
-import { defineConfig } from "vitest/config";
+import { defineConfig, defaultExclude } from "vitest/config";
 import path from "path";
 
 export default defineConfig({
@@ -11,5 +11,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
       "@/styles": path.resolve(__dirname, "styles"),
     },
+  },
+  test: {
+    exclude: [...defaultExclude, "tests/e2e/**"],
   },
 });

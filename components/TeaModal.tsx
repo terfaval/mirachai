@@ -409,7 +409,10 @@ export default function TeaModal({ tea, onClose }: Props) {
             if (event.target !== event.currentTarget) {
               return;
             }
-            if (event.propertyName !== 'transform') {
+            if (
+              event.propertyName !== 'transform' &&
+              event.propertyName !== '-webkit-transform'
+            ) {
               return;
             }
             finishRotation();
