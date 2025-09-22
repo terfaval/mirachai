@@ -1,10 +1,8 @@
 import React from 'react';
 import styles from '../../styles/TeaModal.module.css';
 import IngredientsStack from '@/components/ingredients/IngredientsStack';
-import TasteChart from './TasteChart';
-import FocusChart from './FocusChart';
 import CaffeineBar from '@/components/ingredients/CaffeineBar';
-import { buildIngredients, getFocusOrdered, caffeineToPct } from '@/utils/teaTransforms';
+import { buildIngredients, caffeineToPct } from '@/utils/teaTransforms';
 
 interface Props {
   tea: any;
@@ -13,13 +11,9 @@ interface Props {
 
 export default function TeaDashboard({ tea, colorDark }: Props) {
   const ingredients = buildIngredients(tea);
-  const focusData = getFocusOrdered(tea);
   const caffeine = caffeineToPct(tea);
 
   const description = (tea.fullDescription ?? '').trim();
-
-  const TASTE_SIZE = 220;
-  const TASTE_ROTATION_DEG = 0;
 
   return (
     <section className={styles.panelElement} data-panel="tea-dashboard">
@@ -42,25 +36,6 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
           </div>
         )}
 
-        <div className={styles.dashboardRow}>
-          <div className={`${styles.panelBox} ${styles.panelCard} ${styles.dashboardTasteCard}`}>
-            <TasteChart
-              tea={tea}
-              size={TASTE_SIZE}
-              rotationDeg={TASTE_ROTATION_DEG}
-              showLabels={false}
-            />
-          </div>
-
-          <div className={`${styles.panelBox} ${styles.panelCard} ${styles.dashboardFocusCard}`}>
-            <FocusChart
-              data={focusData}
-              size={TASTE_SIZE}
-              colorDark={colorDark}
-              layout="row"
-            />
-          </div>
-        </div>
       </div>
     </section>
   );

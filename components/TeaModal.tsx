@@ -6,6 +6,7 @@ import DescPanel from '@/components/panels/DescPanel';
 import MoreInfoPanel from '@/components/panels/MoreInfoPanel';
 import TeaDashboard from '@/components/panels/TeaDashboard';
 import PrepServePanel from '@/components/panels/PrepServePanel';
+import TasteFocusPanel from '@/components/panels/TasteFocusPanel';
 import BrewMethodsPanel from '@/components/panels/BrewMethodsPanel';
 import { getCategoryColor, getAlternativeColor } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
@@ -509,6 +510,8 @@ export default function TeaModal({ tea, onClose }: Props) {
                 <div className={styles.spacer} />
                 <div className={styles.spacer} />
                 <TeaDashboard tea={tea} colorDark={colorDark} />
+                <div className={styles.spacer} />
+                <TasteFocusPanel tea={tea} colorDark={colorDark} />
                 <div className={styles.spacer} />
                 {brewMethods.length > 0 ? (
                   <>
