@@ -506,9 +506,8 @@ export default function TeaModal({ tea, onClose }: Props) {
                   origin={tea.origin ?? ''}
                 />
                 <div className={styles.spacer} />
-                <MoreInfoPanel text={tea.fullDescription ?? ''} colorDark={colorDark} />
-                <div className={styles.spacer} />
                 <TeaDashboard tea={tea} colorDark={colorDark} />
+                <div className={styles.spacer} />
                 {brewMethods.length > 0 ? (
                   <>
                     <BrewMethodsPanel
@@ -519,6 +518,7 @@ export default function TeaModal({ tea, onClose }: Props) {
                     <div className={styles.spacer} />
                   </>
                 ) : null}
+                <div className={styles.spacer} />
                 <PrepServePanel tea={tea} infoText={tea.when ?? ''} />
                 <div className={styles.spacer} />
 
