@@ -139,14 +139,18 @@ export default function BrewJourney({
   }
 
   return (
-    <div role="dialog" aria-modal className="fixed inset-0 z-50 grid place-items-center bg-black/40">
+    <div
+      role="dialog"
+      aria-modal
+      data-allow-interaction="true"
+      className="fixed inset-0 z-50 grid place-items-center bg-black/40"
+    >
       <div style={{ perspective: 1200 }}>
         <LayoutGroup>
           {(stage === 'bridge' || stage === 'setup') && (
             <motion.div
               ref={cardRef}
               layoutId={layoutId}
-              data-animating={animating}
               className="relative overflow-hidden rounded-2xl shadow-xl"
               style={{
                 width: 'var(--brew-w)',

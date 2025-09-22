@@ -20,3 +20,17 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
+/*
+  Some legacy transitions toggle a `data-animating="true"` flag on high-level
+  containers to temporarily freeze the page during animations. That blanket
+  selector inadvertently disables interaction for overlays rendered inside
+  those containers. Explicitly opt those interactive layers back in so that
+  modals (like the tea intro) keep working while page transitions run.
+*/
+[data-animating="true"] [data-allow-interaction],
+[data-animating="true"] [data-allow-interaction] * {
+  pointer-events: auto !important;
+  animation: revert !important;
+  transition: revert !important;
+}

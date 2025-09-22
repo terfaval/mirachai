@@ -418,7 +418,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   // ----
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div className={styles.overlay} onClick={onClose} data-allow-interaction="true">
       <div
         className={styles.cubeScene}
         style={cubeSceneStyle}
