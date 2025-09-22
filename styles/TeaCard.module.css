@@ -52,8 +52,8 @@
   mask-size:         calc(100% * var(--tiles-x) * var(--pre))
                      calc(100% * var(--tiles-y) * var(--pre));
 
-  --px: calc((var(--tile-x) / (var(--tiles-x) - 1)));
-  --py: calc((var(--tile-y) / (var(--tiles-y) - 1)));
+  --px: var(--tile-ratio-x, .5);
+  --py: var(--tile-ratio-y, .5);
   --offset: calc((var(--pre) - 1) / (2 * var(--pre)));
 
   -webkit-mask-position:

@@ -123,7 +123,7 @@ export default function FocusChart({
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateColumns: `repeat(auto-fit, minmax(${minColumnWidth}px, 1fr))`,
+          gridTemplateColumns: `repeat(auto-fill, minmax(${minColumnWidth}px, 1fr))`,
           gridAutoRows: '1fr',
           gap: containerGap,
           padding,

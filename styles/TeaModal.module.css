@@ -457,9 +457,14 @@
     flex: 1 1 100%;
   }
 
-  .tasteFocusRow {
-    grid-template-columns: 1fr;
-  }
+  .tasteFocusRow{
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; /* a jobb (Focus) szélesebb lesz */
+  gap: 16px;
+}
+@media (max-width: 960px){
+  .tasteFocusRow{ grid-template-columns: 1fr; } /* mobilon marad egymás alatt */
+}
 
   .focusChartCard {
     padding: 18px;

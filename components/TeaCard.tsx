@@ -41,6 +41,8 @@ export default function TeaCard({
   const colorDark = getCategoryColor(tea.category, 'dark');
   const colorLight = getCategoryColor(tea.category, 'light');
   const mandalaUrl = getMandalaPath(tea.category);
+  const tileRatioX = tilesX > 1 ? tileX / (tilesX - 1) : 0.5;
+  const tileRatioY = tilesY > 1 ? tileY / (tilesY - 1) : 0.5;
   const dotActiveColor = colorDark;
   const dotColor = colorLight;
   const mandalaColor = colorLight;
@@ -130,8 +132,10 @@ export default function TeaCard({
               '--tiles-y': tilesY,
               '--tile-x': tileX,
               '--tile-y': tileY,
+              '--tile-ratio-x': tileRatioX,
+              '--tile-ratio-y': tileRatioY,
               '--mandala-scale': 1,
-              '--mandala-prezoom': 1.5,
+              '--mandala-prezoom': 2.8,
               '--mandala-url': `url(${mandalaUrl})`,
             } as React.CSSProperties
           }

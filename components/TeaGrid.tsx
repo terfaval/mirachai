@@ -11,6 +11,8 @@ type Props = {
   onTeaClick?: (tea: Tea) => void;
   gridId?: string;
   onTileFocus?: (tea: Tea) => void;
+  tilesX?: number;
+  tilesY?: number;
 };
 
 function compareIdAsc(a: any, b: any) {
@@ -25,17 +27,18 @@ function compareIdAsc(a: any, b: any) {
 export default function TeaGrid({
   items,
   page,
-  perPage = 9,
+  perPage,
   onTeaClick,
   gridId = 'tea-grid',
   onTileFocus,
+  tilesX = 3,
+  tilesY = 3,
 }: Props) {
-  const tilesX = 3;
-  const tilesY = 3;
-  const start = (page - 1) * perPage;
+  const effectivePerPage = perPage ?? tilesX * tilesY;
+  const start = (page - 1) * effectivePerPage;
   const pageItems = [...items]
     .sort((a, b) => compareIdAsc(a.id, b.id))
-    .slice(start, start + perPage);
+    .slice(start, start + effectivePerPage);
   const [panel, setPanel] = useState<PanelKey>('consumption');
   const [renderTeas, setRenderTeas] = useState<Tea[]>(pageItems);
   const [incomingTeas, setIncomingTeas] = useState<Tea[] | null>(null);

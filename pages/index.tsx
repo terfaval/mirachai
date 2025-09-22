@@ -9,6 +9,7 @@ import TeaModal from '../components/TeaModal';
 import CategorySidebar from '../components/CategorySidebar';
 import PaginationBar from '../components/PaginationBar';
 import { usePagination } from '../hooks/usePagination';
+import { useTeaGridLayout } from '../hooks/useTeaGridLayout';
 import { toStringArray } from '../lib/toStringArray';
 import {
   normalizeTeas,
@@ -240,12 +241,12 @@ export default function Home({ normalization }: HomeProps) {
     return arr;
   }, [filtered, sort, now]);
 
-  const perPage = 9;
+  const { tilesX, tilesY, perPage } = useTeaGridLayout();
 
   const distributed = useMemo(() => {
     const seed = shuffleSeed ?? 0;
-    return distributeByCategory(sorted, perPage, 3, seed);
-  }, [sorted, perPage, shuffleSeed]);
+    return distributeByCategory(sorted, perPage, tilesX, seed);
+  }, [sorted, perPage, tilesX, shuffleSeed]);
 
   const { page, totalPages, goTo } = usePagination(distributed.length, perPage, 1);
 
@@ -439,8 +440,16 @@ export default function Home({ normalization }: HomeProps) {
         onChange={setFilterState}
         data={dynamicData}
       />
-      <TeaGrid items={distributed} page={page} perPage={perPage} onTeaClick={setSelectedTea} gridId="tea-grid" />
-        <PaginationBar page={page} totalPages={totalPages} onSelect={goTo} aria-controls="tea-grid" />
+      <TeaGrid
+        items={distributed}
+        page={page}
+        perPage={perPage}
+        onTeaClick={setSelectedTea}
+        gridId="tea-grid"
+        tilesX={tilesX}
+        tilesY={tilesY}
+      />
+      <PaginationBar page={page} totalPages={totalPages} onSelect={goTo} aria-controls="tea-grid" />
 
       {selectedTea && <TeaModal tea={selectedTea} onClose={() => setSelectedTea(null)} />}
     </>
