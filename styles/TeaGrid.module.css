@@ -1,13 +1,20 @@
-/* ---------- Paraméterezés (helyi, CSS Modules-kompatibilis) ---------- */
+/* ---------- Paraméterezés (CSS Modules-kompatibilis, teljes drop-in) ---------- */
 .container {
   /* GRID alapok */
   --tiles-x: 3;
   --tiles-y: 3;
+
+  /* kívánt max szélesség (desktop) */
   --grid-w: 70vw;
-  --grid-available-height: max(0px, calc(100vh - 120px));
+
+  /* mennyi hely marad függőlegesen (pl. header/pager miatt) */
+  --grid-available-height: calc(100vh - 120px);
+
+  /* arány a csempékből */
   --grid-aspect: calc(var(--tiles-x) / var(--tiles-y));
-  --grid-width: min(var(--grid-w), calc(var(--grid-available-height) * var(--grid-aspect)));
-  --grid-height: min(var(--grid-available-height), calc(var(--grid-width) / var(--grid-aspect)));
+
+  /* csak vízszintet limitáljuk; a magasságot max-height fogja */
+  --grid-width: min(var(--grid-w), calc(100vw - 32px));
 
   /* Pager */
   --pager-size: 44px;
@@ -36,17 +43,18 @@
   justify-content: center;
 }
 
-/* ---------- Rács-keret ---------- */
+/* ---------- Rács-keret (központosított, aránytartó) ---------- */
 .gridWrap {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: var(--grid-width);
-  height: var(--grid-height);
-  max-width: 100vw;
   max-height: var(--grid-available-height);
-  }
+  height: auto;
+  aspect-ratio: var(--grid-aspect);
+  isolation: isolate; /* opcionális, overlay-khez */
+}
 
 /* ---------- Fő GRID (3×3) – a doboz ---------- */
 .grid {
@@ -57,6 +65,7 @@
   gap: 0;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 
   border: 6px solid #80350E;
   background: linear-gradient(180deg, #4A2912 0%, #321B0C 80%);
@@ -70,12 +79,11 @@
               opacity var(--slide-ms) var(--slide-ease);
 }
 
-/* Bejövő “ghost” réteg */
+/* Bejövő “ghost” réteg (animált next oldal) */
 .ghost {
   position: absolute;
   inset: 0;
-  /* Allow interactions with incoming tiles so clicks open the correct tea */
-  pointer-events: auto;
+  pointer-events: auto; /* hogy a beúszó kártyák kattinthatók legyenek */
 }
 
 /* ---------- Cellák ---------- */
@@ -89,6 +97,7 @@
   box-shadow:
     inset -15px 15px 16px rgba(0,0,0,0.9),
     inset 0 0 10px rgba(0,0,0,0.5);
+  box-sizing: border-box;
 }
 
 .active { font-weight: bold; }
@@ -97,7 +106,7 @@
 .slideOutLeft  { transform: translateX(-8%); opacity: 0; }
 .slideOutRight { transform: translateX( 8%); opacity: 0; }
 
-.slideInLeft {
+.slideInLeft  {
   transform: translateX(-8%);
   opacity: 0;
   animation: slideInFromLeft var(--slide-ms) var(--slide-ease) forwards;
@@ -108,13 +117,13 @@
   animation: slideInFromRight var(--slide-ms) var(--slide-ease) forwards;
 }
 
-@keyframes slideInFromLeft {
+@keyframes slideInFromLeft  {
   from { transform: translateX(-8%); opacity: 0; }
   to   { transform: translateX(0%);  opacity: 1; }
 }
 @keyframes slideInFromRight {
-  from { transform: translateX(8%); opacity: 0; }
-  to   { transform: translateX(0%); opacity: 1; }
+  from { transform: translateX( 8%); opacity: 0; }
+  to   { transform: translateX(0%);  opacity: 1; }
 }
 
 /* ---------- Pager (nyilak + pontok) ---------- */
@@ -123,7 +132,7 @@
   left: 50%;
   transform: translateX(-50%);
   bottom: calc(20px + var(--pager-offset-y));
-  width: var(--grid-width);
+  width: min(var(--grid-w), calc(100vw - 32px));
 
   display: grid;
   grid-template-columns: var(--pager-size) 1fr var(--pager-size);
@@ -182,30 +191,24 @@
   box-shadow: 0 0 0 1px rgba(0,0,0,0.45) inset;
 }
 
+/* ---------- Breakpoint finomhangolás ---------- */
 @media (max-width: 1280px) {
-  .container {
-    --grid-w: 65vw;
-  }
+  .container { --grid-w: 65vw; }
 }
-
 @media (max-width: 1024px) {
-  .container {
-    --grid-w: 65vw;
-  }
+  .container { --grid-w: 65vw; }
 }
-
 @media (max-width: 768px) {
   .container {
     --grid-w: 90vw;
-    --grid-available-height: max(0px, calc(100vh - 110px));
+    --grid-available-height: calc(100vh - 110px);
     --pager-offset-y: 56px;
   }
 }
-
 @media (max-width: 640px) {
   .container {
     --grid-w: 94vw;
-    --grid-available-height: max(0px, calc(100vh - 88px));
+    --grid-available-height: calc(100vh - 88px);
     --pager-offset-y: 40px;
   }
 }
