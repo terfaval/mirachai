@@ -1,0 +1,12 @@
+# Egy vagy több „tétel” fut le egymás után.
+items:
+  - name: "main_background_v1"
+    model: "gpt-image-1"
+    prompt: >
+      natural soft studio background for a tea dashboard;
+      neutral warm paper texture, subtle grain, gentle vignette,
+      room-like depth but minimal detail; no text, no logos.
+    n: 3              # hány variáció
+    size: "1536x1024" # pl. széles háttér
+    # optional: reference
+    # reference_image: "./refs/my_sample.png"   # ha variációt szeretnél

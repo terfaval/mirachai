@@ -1,0 +1,13 @@
+{
+  "name": "image-generator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "imagegen": "node --experimental-modules scripts/imagegen.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "openai": "^4.0.0",
+    "dotenv": "^16.4.0"
+  }
+}
