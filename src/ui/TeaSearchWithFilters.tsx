@@ -1,190 +1,151 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
-import FilterPanel from "./filters/FilterPanel";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import teasJson from "../../data/teas.json";
+import brewProfilesJson from "../../data/brew_profiles.json";
+import FilterPanel from "./filters/FilterPanel";
+import {
+  type NormalizeResult,
+  type RawTea,
+  type BrewProfileDocument,
+  normalizeTeas
+} from "../../lib/normalize";
+import {
+  applyFilters,
+  createEmptyFilterState,
+  hasActiveFilters,
+  type FilterState
+} from "../../lib/tea-filters";
+import { parseFiltersFromSearch, updateUrlWithFilters } from "../../lib/urlSync";
+import { FOCUS_AXES } from "../../lib/normalize";
 
-type Tea = Record<string, any> & { id: number | string; name: string; category?: string };
-
-export type FilterState = {
-  categories: string[];
-  ingredients: string[];
-  tastes: Record<string, number>;
-  focuses: Record<string, number>;
-  intensity?: number;
-  steepMin?: number;
-  caffeine?: number;
-  allergens: string[];
-  dayparts: string[];
-  seasons: string[];
+type Props = {
+  teas?: RawTea[];
+  brewProfiles?: BrewProfileDocument[];
 };
 
-const DEFAULT_FILTERS: FilterState = {
-  categories: [],
-  ingredients: [],
-  tastes: {},
-  focuses: {},
-  allergens: [],
-  dayparts: [],
-  seasons: []
+const arrayEqual = (a: readonly string[], b: readonly string[]) =>
+  a.length === b.length && a.every((val, index) => val === b[index]);
+
+const filtersEqual = (a: FilterState, b: FilterState) =>
+  arrayEqual(a.categories, b.categories) &&
+  arrayEqual(a.subcategories, b.subcategories) &&
+  arrayEqual(a.tastes, b.tastes) &&
+  a.tasteMode === b.tasteMode &&
+  FOCUS_AXES.every(axis => (a.focusMin[axis] ?? 0) === (b.focusMin[axis] ?? 0)) &&
+  arrayEqual(a.intensities, b.intensities) &&
+  arrayEqual(a.caffeine, b.caffeine) &&
+  arrayEqual(a.dayparts, b.dayparts) &&
+  arrayEqual(a.seasons, b.seasons) &&
+  arrayEqual(a.serve, b.serve) &&
+  arrayEqual(a.ingredients, b.ingredients) &&
+  arrayEqual(a.allergensExclude, b.allergensExclude) &&
+  arrayEqual(a.methods, b.methods);
+
+const filterUnique = <T extends string>(values: readonly T[], allowed: Set<T>): T[] => {
+  const result: T[] = [];
+  const seen = new Set<T>();
+  values.forEach(value => {
+    if (!allowed.has(value) || seen.has(value)) return;
+    seen.add(value);
+    result.push(value);
+  });
+  return result;
 };
 
-const slug = (s: string) =>
-  s
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "")
-    .replace(/\s+/g, "_");
+const defaultTeas = teasJson as RawTea[];
+const defaultBrewProfiles = brewProfilesJson as BrewProfileDocument[];
 
-function deriveAllIngredients(teas: Tea[]): string[] {
-  const set = new Set<string>();
-  teas.forEach(t => {
-    Object.entries(t).forEach(([k, v]) => {
-      if (/(ingerdient|ingredient)-\d+/.test(k) && typeof v === "string") {
-        const s = v.trim().toLowerCase();
-        if (s) set.add(s);
-      }
-    });
-  });
-  return Array.from(set).sort();
-}
+export default function TeaSearchWithFilters({ teas, brewProfiles }: Props) {
+  const teaSource = teas ?? defaultTeas;
+  const brewSource = brewProfiles ?? defaultBrewProfiles;
 
-function applyFilters(teas: Tea[], f: FilterState): Tea[] {
-  return teas.filter(t => {
-    if (f.categories.length && !f.categories.includes(t.category || "")) return false;
-
-    if (f.ingredients.length) {
-      const ing = Object.entries(t)
-        .filter(([k]) => /(ingerdient|ingredient)-\d+/.test(k))
-        .map(([, v]) => (typeof v === "string" ? v.toLowerCase().trim() : ""))
-        .filter(Boolean);
-      if (!f.ingredients.every(i => ing.includes(i.toLowerCase()))) return false;
-    }
-
-    for (const [k, val] of Object.entries(f.tastes)) {
-      const key = `taste_${slug(k)}`;
-      const tv = Number(t[key]) || 0;
-      if (tv < val) return false;
-    }
-
-    for (const [k, val] of Object.entries(f.focuses)) {
-      const key = `focus_${slug(k)}`;
-      const tv = Number(t[key]) || 0;
-      if (tv < val) return false;
-    }
-
-    if (f.intensity !== undefined) {
-      const iv = (t as any).intensity;
-      if (iv !== undefined && iv < f.intensity) return false;
-    }
-
-    if (f.steepMin !== undefined) {
-      const sv = (t as any).steepMin;
-      if (sv !== undefined && sv > f.steepMin) return false;
-    }
-
-    if (f.caffeine !== undefined) {
-      const cv = (t as any).caffeine;
-      if (cv !== undefined && cv > f.caffeine) return false;
-    }
-
-    if (f.allergens.length) {
-      for (const al of f.allergens) {
-        const key = `allergen_${slug(al)}`;
-        if ((t as any)[key]) return false;
-      }
-    }
-
-    if (f.dayparts.length) {
-      const ok = f.dayparts.some(d => (t as any)[`daypart_${slug(d)}`]);
-      if (!ok) return false;
-    }
-
-    if (f.seasons.length) {
-      const ok = f.seasons.some(d => (t as any)[`season_${slug(d)}`]);
-      if (!ok) return false;
-    }
-
-    return true;
-  });
-}
-
-export default function TeaSearchWithFilters({ teas }: { teas?: Tea[] }) {
-  const teaList = (teas || (teasJson as Tea[]));
-  const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
-  const [open, setOpen] = useState(false);
-  const [allIngredients, setAllIngredients] = useState<string[]>([]);
-
-  useEffect(() => {
-    async function load() {
-      try {
-        const res = await fetch("/data/ingredients.json");
-        if (res.ok) {
-          setAllIngredients(await res.json());
-          return;
-        }
-      } catch {}
-      setAllIngredients(deriveAllIngredients(teaList));
-    }
-    load();
-  }, [teaList]);
-
-  const allCategories = useMemo(
-    () => Array.from(new Set(teaList.map(t => t.category).filter(Boolean))) as string[],
-    [teaList]
+  const normalization = useMemo<NormalizeResult>(
+    () => normalizeTeas(teaSource, { brewProfiles: brewSource }),
+    [teaSource, brewSource]
   );
 
-  const allTastes = useMemo(() => {
-    const s = new Set<string>();
-    teaList.forEach(t => {
-      Object.keys(t).forEach(k => {
-        if (k.startsWith("taste_")) s.add(k.slice(6));
-      });
-    });
-    return Array.from(s);
-  }, [teaList]);
+  const optionSets = useMemo(() => {
+    return {
+      categories: new Set(normalization.categories.map(option => option.slug)),
+      subcategories: new Set(normalization.subcategories.map(option => option.slug)),
+      tastes: new Set(normalization.tastes.map(option => option.slug)),
+      intensities: new Set(normalization.intensities),
+      caffeine: new Set(normalization.caffeineLevels),
+      dayparts: new Set(normalization.dayparts.map(option => option.slug)),
+      seasons: new Set(normalization.seasons.map(option => option.slug)),
+      serve: new Set(normalization.serveModes.map(option => option.id)),
+      ingredients: new Set(normalization.ingredients),
+      allergens: new Set(normalization.allergens.map(option => option.slug)),
+      methods: new Set(normalization.methods.map(option => option.id))
+    } as const;
+  }, [normalization]);
 
-  const allFocuses = useMemo(() => {
-    const s = new Set<string>();
-    teaList.forEach(t => {
-      Object.keys(t).forEach(k => {
-        if (k.startsWith("focus_")) s.add(k.slice(6));
-      });
-    });
-    return Array.from(s);
-  }, [teaList]);
+  const [filters, setFilters] = useState<FilterState>(() => createEmptyFilterState());
+  const [open, setOpen] = useState(false);
+  const [initialized, setInitialized] = useState(false);
 
-  const allAllergens = useMemo(() => {
-    const s = new Set<string>();
-    teaList.forEach(t => {
-      Object.keys(t).forEach(k => {
-        if (k.startsWith("allergen_")) s.add(k.slice(9));
-      });
-    });
-    return Array.from(s);
-  }, [teaList]);
+  const sanitizeFilters = useCallback(
+    (next: FilterState): FilterState => {
+      const sanitized = createEmptyFilterState();
+      sanitized.tasteMode = next.tasteMode;
 
-  const allDayparts = useMemo(() => {
-    const s = new Set<string>();
-    teaList.forEach(t => {
-      Object.keys(t).forEach(k => {
-        if (k.startsWith("daypart_")) s.add(k.slice(8));
-      });
-    });
-    return Array.from(s);
-  }, [teaList]);
+      sanitized.categories = filterUnique(next.categories, optionSets.categories);
+      sanitized.subcategories = filterUnique(next.subcategories, optionSets.subcategories);
+      sanitized.tastes = filterUnique(next.tastes, optionSets.tastes);
+      sanitized.intensities = filterUnique(next.intensities, optionSets.intensities);
+      sanitized.caffeine = filterUnique(next.caffeine, optionSets.caffeine);
+      sanitized.dayparts = filterUnique(next.dayparts, optionSets.dayparts);
+      sanitized.seasons = filterUnique(next.seasons, optionSets.seasons);
+      sanitized.serve = filterUnique(next.serve, optionSets.serve);
+      const normalizedIngredients = next.ingredients
+        .map(value => value.trim().toLowerCase())
+        .filter(value => optionSets.ingredients.has(value));
+      sanitized.ingredients = filterUnique(normalizedIngredients, optionSets.ingredients);
+      sanitized.allergensExclude = filterUnique(next.allergensExclude, optionSets.allergens);
+      sanitized.methods = filterUnique(next.methods, optionSets.methods);
 
-  const allSeasons = useMemo(() => {
-    const s = new Set<string>();
-    teaList.forEach(t => {
-      Object.keys(t).forEach(k => {
-        if (k.startsWith("season_")) s.add(k.slice(7));
-      });
-    });
-    return Array.from(s);
-  }, [teaList]);
+      const focusMin: FilterState["focusMin"] = {};
+      for (const axis of FOCUS_AXES) {
+        const value = next.focusMin[axis];
+        if (value !== undefined && value > 0) {
+          focusMin[axis] = Math.min(3, Math.max(0, Math.round(value)));
+        }
+      }
+      sanitized.focusMin = focusMin;
 
-  const filteredTeas = useMemo(() => applyFilters(teaList, filters), [teaList, filters]);
+      if (sanitized.tasteMode !== "present" && sanitized.tasteMode !== "dominant") {
+        sanitized.tasteMode = "present";
+      }
+
+      return sanitized;
+    },
+    [optionSets]
+  );
+
+  useEffect(() => {
+    if (initialized) return;
+    const parsed = parseFiltersFromSearch(typeof window === "undefined" ? "" : window.location.search);
+    const sanitized = sanitizeFilters(parsed);
+    setFilters(sanitized);
+    setInitialized(true);
+  }, [initialized, sanitizeFilters]);
+
+  useEffect(() => {
+    if (!initialized) return;
+    setFilters(prev => {
+      const sanitized = sanitizeFilters(prev);
+      return filtersEqual(prev, sanitized) ? prev : sanitized;
+    });
+  }, [sanitizeFilters, initialized]);
+
+  useEffect(() => {
+    if (!initialized) return;
+    updateUrlWithFilters(filters);
+  }, [filters, initialized]);
+
+  const filteredTeas = useMemo(() => applyFilters(normalization.teas, filters), [normalization, filters]);
+  const activeFilters = hasActiveFilters(filters);
 
   return (
     <div className="w-full h-full relative">
@@ -194,14 +155,15 @@ export default function TeaSearchWithFilters({ teas }: { teas?: Tea[] }) {
         className="mb-4 inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-300 bg-white"
       >
         Szűrők
+        {activeFilters && <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />}
       </button>
 
-      // TODO: paginate results with usePagination or add virtualization
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredTeas.map(t => (
-          <div key={t.id} className="p-4 rounded-xl border">
-            <div className="font-medium">{t.name}</div>
-            {t.category && <div className="text-xs text-gray-500">{t.category}</div>}
+        {filteredTeas.map(tea => (
+          <div key={tea.id} className="p-4 rounded-xl border">
+            <div className="font-medium">{tea.name}</div>
+            {tea.category && <div className="text-xs text-gray-500">{tea.category}</div>}
+            {tea.subcategory && <div className="text-xs text-gray-400">{tea.subcategory}</div>}
           </div>
         ))}
       </div>
@@ -211,13 +173,7 @@ export default function TeaSearchWithFilters({ teas }: { teas?: Tea[] }) {
         onClose={() => setOpen(false)}
         value={filters}
         onChange={setFilters}
-        allCategories={allCategories}
-        allIngredients={allIngredients}
-        allTastes={allTastes}
-        allFocuses={allFocuses}
-        allAllergens={allAllergens}
-        allDayparts={allDayparts}
-        allSeasons={allSeasons}
+        data={normalization}
       />
     </div>
   );

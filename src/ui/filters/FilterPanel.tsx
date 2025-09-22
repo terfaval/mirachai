@@ -4,56 +4,83 @@ import MultiSelectDropdown from "./MultiSelectDropdown";
 import Slider from "./Slider";
 import Chip from "./Chip";
 import { getCategoryColors } from "../../utils/colorMap";
+import type { NormalizeResult, TokenValue } from "../../../lib/normalize";
+import {
+  CAFFEINE_BUCKET_OPTIONS,
+  FOCUS_AXIS_LABELS,
+  INTENSITY_BUCKET_OPTIONS,
+  TASTE_MODE_OPTIONS,
+  createEmptyFilterState,
+  type FilterState
+} from "../../../lib/tea-filters";
+import { FOCUS_AXES, type FocusAxis } from "../../../lib/normalize";
 
-export type FilterState = {
-  categories: string[];
-  ingredients: string[];
-  tastes: Record<string, number>;
-  focuses: Record<string, number>;
-  intensity?: number;
-  steepMin?: number;
-  caffeine?: number;
-  allergens: string[];
-  dayparts: string[];
-  seasons: string[];
-};
+type ToggleKey = "subcategories" | "tastes" | "dayparts" | "seasons" | "allergensExclude";
 
 type Props = {
   open: boolean;
   onClose: () => void;
   value: FilterState;
-  onChange: (f: FilterState) => void;
-  allCategories: string[];
-  allIngredients: string[];
-  allTastes: string[];
-  allFocuses: string[];
-  allAllergens: string[];
-  allDayparts: string[];
-  allSeasons: string[];
+  onChange: (next: FilterState) => void;
+  data: NormalizeResult;
 };
 
-const toggle = (arr: string[], v: string) =>
-  arr.includes(v) ? arr.filter(x => x !== v) : [...arr, v];
+const toggleValue = <T extends string>(list: readonly T[], value: T): T[] =>
+  list.includes(value) ? list.filter(item => item !== value) : [...list, value];
 
-export default function FilterPanel({
-  open,
-  onClose,
-  value,
-  onChange,
-  allCategories,
-  allIngredients,
-  allTastes,
-  allFocuses,
-  allAllergens,
-  allDayparts,
-  allSeasons
-}: Props) {
-  const categories = useMemo(
-    () => [...value.categories, ...allCategories.filter(c => !value.categories.includes(c))],
-    [value.categories, allCategories]
+const capitalize = (label: string) => label.charAt(0).toUpperCase() + label.slice(1);
+
+function renderTokenButton(
+  token: TokenValue,
+  selected: boolean,
+  onToggle: () => void,
+  className = ""
+) {
+  return (
+    <button
+      key={token.slug}
+      type="button"
+      onClick={onToggle}
+      className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+        selected ? "bg-gray-900 text-white border-gray-900" : "bg-white hover:bg-gray-50"
+      } ${className}`}
+    >
+      {capitalize(token.label.replace(/_/g, " "))}
+    </button>
+  );
+}
+
+export default function FilterPanel({ open, onClose, value, onChange, data }: Props) {
+  const intensityOptions = useMemo(
+    () => INTENSITY_BUCKET_OPTIONS.filter(option => data.intensities.includes(option.id)),
+    [data.intensities]
+  );
+
+  const caffeineOptions = useMemo(
+    () => CAFFEINE_BUCKET_OPTIONS.filter(option => data.caffeineLevels.includes(option.id)),
+    [data.caffeineLevels]
   );
 
   if (!open) return null;
+
+  const resetFilters = () => onChange(createEmptyFilterState());
+
+  const updateFocus = (axis: FocusAxis, level: number) => {
+    const nextFocus = { ...value.focusMin };
+    if (level <= 0) delete nextFocus[axis];
+    else nextFocus[axis] = level;
+    onChange({ ...value, focusMin: nextFocus });
+  };
+
+  const renderTokenGrid = (tokens: TokenValue[], current: string[], key: ToggleKey) => (
+    <div className="flex flex-wrap gap-2">
+      {tokens.map(token =>
+        renderTokenButton(token, current.includes(token.slug), () =>
+          onChange({ ...value, [key]: toggleValue(current, token.slug) })
+        )
+      )}
+    </div>
+  );
 
   return (
     <>
@@ -61,242 +88,250 @@ export default function FilterPanel({
       <aside className="fixed right-0 top-0 h-screen bg-white z-50 shadow-2xl border-l w-full sm:w-2/3 lg:w-[40vw]">
         <div className="h-full flex flex-col">
           <div className="p-4 flex items-center justify-between border-b">
-            <h3 className="font-semibold">Szűrők</h3>
-            <button onClick={onClose} className="px-2 py-1 rounded-lg border">×</button>
+            <h3 className="font-semibold text-lg">Szűrők</h3>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="px-3 py-1.5 rounded-full border border-gray-300 text-sm hover:bg-gray-50"
+              >
+                Alaphelyzet
+              </button>
+              <button onClick={onClose} className="px-3 py-1.5 rounded-full border text-sm">
+                ×
+              </button>
+            </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-6">
-            {/* Categories */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-8">
             <section>
-              <h4 className="font-medium mb-3">Kategória</h4>
+              <h4 className="font-medium mb-3">Kategóriák</h4>
               <div className="flex flex-wrap gap-2">
-                {categories.map(c => {
-                  const col = getCategoryColors(c);
-                  const selected = value.categories.includes(c);
+                {data.categories.map(category => {
+                  const selected = value.categories.includes(category.slug);
+                  const colors = getCategoryColors(category.label);
                   return (
                     <button
-                      key={c}
+                      key={category.slug}
                       type="button"
                       onClick={() =>
-                        onChange({ ...value, categories: selected ? value.categories.filter(x => x !== c) : [c, ...value.categories] })
+                        onChange({
+                          ...value,
+                          categories: toggleValue(value.categories, category.slug)
+                        })
                       }
-                      onMouseEnter={e => {
-                        if (!selected) e.currentTarget.style.backgroundColor = col.main;
-                      }}
-                      onMouseLeave={e => {
-                        if (!selected) e.currentTarget.style.backgroundColor = "";
-                      }}
+                      className="px-3 py-1.5 rounded-full border text-sm transition-colors"
                       style={{
-                        borderColor: col.dark,
-                        backgroundColor: selected ? col.dark : undefined,
-                        color: selected ? col.white : undefined
+                        borderColor: colors.dark,
+                        backgroundColor: selected ? colors.dark : undefined,
+                        color: selected ? colors.white : undefined
                       }}
-                      className="px-3 py-1.5 rounded-full border text-sm"
                     >
-                      {c}
+                      {category.label}
                     </button>
                   );
                 })}
               </div>
             </section>
 
-            {/* Ingredients */}
             <section>
-              <h4 className="font-medium mb-3">Hozzávalók</h4>
+              <h4 className="font-medium mb-3">Alkategóriák</h4>
+              {renderTokenGrid(data.subcategories, value.subcategories, "subcategories")}
+            </section>
+
+            <section>
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="font-medium">Ízprofil</h4>
+                <div className="flex gap-2">
+                  {TASTE_MODE_OPTIONS.map(option => (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => onChange({ ...value, tasteMode: option.id })}
+                      className={`px-3 py-1.5 rounded-full border text-xs font-medium transition-colors ${
+                        value.tasteMode === option.id
+                          ? "bg-gray-900 text-white border-gray-900"
+                          : "bg-white hover:bg-gray-50"
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {renderTokenGrid(data.tastes, value.tastes, "tastes")}
+            </section>
+
+            <section>
+              <h4 className="font-medium mb-3">Fókusz tengelyek</h4>
+              <div className="grid grid-cols-1 gap-4">
+                {FOCUS_AXES.map(axis => (
+                  <Slider
+                    key={axis}
+                    min={0}
+                    max={3}
+                    step={1}
+                    value={value.focusMin[axis] ?? 0}
+                    onChange={val => updateFocus(axis, val)}
+                    label={FOCUS_AXIS_LABELS[axis]}
+                  />
+                ))}
+              </div>
+            </section>
+
+            {intensityOptions.length > 0 && (
+              <section>
+                <h4 className="font-medium mb-3">Intenzitás</h4>
+                <div className="flex flex-wrap gap-2">
+                  {intensityOptions.map(option => {
+                    const selected = value.intensities.includes(option.id);
+                    return (
+                      <button
+                        key={option.id}
+                        type="button"
+                        onClick={() =>
+                          onChange({
+                            ...value,
+                            intensities: toggleValue(value.intensities, option.id)
+                          })
+                        }
+                        className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                          selected
+                            ? "bg-gray-900 text-white border-gray-900"
+                            : "bg-white hover:bg-gray-50"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
+
+            {caffeineOptions.length > 0 && (
+              <section>
+                <h4 className="font-medium mb-3">Koffein szint</h4>
+                <div className="flex flex-wrap gap-2">
+                  {caffeineOptions.map(option => {
+                    const selected = value.caffeine.includes(option.id);
+                    return (
+                      <button
+                        key={option.id}
+                        type="button"
+                        onClick={() =>
+                          onChange({
+                            ...value,
+                            caffeine: toggleValue(value.caffeine, option.id)
+                          })
+                        }
+                        className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                          selected
+                            ? "bg-gray-900 text-white border-gray-900"
+                            : "bg-white hover:bg-gray-50"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
+
+            <section>
+              <h4 className="font-medium mb-3">Ajánlott napszak</h4>
+              {renderTokenGrid(data.dayparts, value.dayparts, "dayparts")}
+            </section>
+
+            <section>
+              <h4 className="font-medium mb-3">Ajánlott évszak</h4>
+              {renderTokenGrid(data.seasons, value.seasons, "seasons")}
+            </section>
+
+            <section>
+              <h4 className="font-medium mb-3">Szervírozás</h4>
+              <div className="flex flex-wrap gap-2">
+                {data.serveModes.map(mode => {
+                  const selected = value.serve.includes(mode.id);
+                  return (
+                    <button
+                      key={mode.id}
+                      type="button"
+                      onClick={() =>
+                        onChange({ ...value, serve: toggleValue(value.serve, mode.id) })
+                      }
+                      className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                        selected
+                          ? "bg-gray-900 text-white border-gray-900"
+                          : "bg-white hover:bg-gray-50"
+                      }`}
+                    >
+                      {mode.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+
+            <section>
+              <h4 className="font-medium mb-3">Összetevők (OR logika)</h4>
               <Dropdown label="Válassz" wide>
                 <MultiSelectDropdown
-                  items={allIngredients}
+                  items={data.ingredients}
                   selected={value.ingredients}
                   onChange={items => onChange({ ...value, ingredients: items })}
                 />
               </Dropdown>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {value.ingredients.map(i => (
-                  <Chip key={i} label={i} onRemove={() => onChange({ ...value, ingredients: value.ingredients.filter(x => x !== i) })} />
-                ))}
-              </div>
-            </section>
-
-            {/* Tastes */}
-            <section>
-              <h4 className="font-medium mb-3">Íz</h4>
-              <Dropdown label="Adj hozzá">
-                <select
-                  className="w-full px-2 py-1 border rounded-xl"
-                  onChange={e => {
-                    const v = e.target.value;
-                    if (v) {
-                      onChange({ ...value, tastes: { ...value.tastes, [v]: 1 } });
-                      e.target.value = "";
+              <div className="mt-3 flex flex-wrap gap-2">
+                {value.ingredients.map(item => (
+                  <Chip
+                    key={item}
+                    label={item}
+                    onRemove={() =>
+                      onChange({
+                        ...value,
+                        ingredients: value.ingredients.filter(current => current !== item)
+                      })
                     }
-                  }}
-                  value=""
-                >
-                  <option value="">Válassz…</option>
-                  {allTastes.filter(t => !(t in value.tastes)).map(t => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
-              </Dropdown>
-              <div className="mt-2 space-y-2">
-                {Object.entries(value.tastes).map(([t, v]) => (
-                  <div key={t} className="p-2 rounded-xl border flex items-center gap-2">
-                    <span className="capitalize flex-1">{t}</span>
-                    <Slider value={v} min={1} max={3} onChange={val => onChange({ ...value, tastes: { ...value.tastes, [t]: val } })} />
-                    <button
-                      onClick={() => {
-                        const { [t]: _omit, ...rest } = value.tastes;
-                        onChange({ ...value, tastes: rest });
-                      }}
-                      className="px-2"
-                    >
-                      ×
-                    </button>
-                  </div>
+                  />
                 ))}
               </div>
             </section>
 
-            {/* Focus */}
-            <section>
-              <h4 className="font-medium mb-3">Fókusz</h4>
-              <Dropdown label="Adj hozzá">
-                <select
-                  className="w-full px-2 py-1 border rounded-xl"
-                  onChange={e => {
-                    const v = e.target.value;
-                    if (v) {
-                      onChange({ ...value, focuses: { ...value.focuses, [v]: 1 } });
-                      e.target.value = "";
-                    }
-                  }}
-                  value=""
-                >
-                  <option value="">Válassz…</option>
-                  {allFocuses.filter(t => !(t in value.focuses)).map(t => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
-              </Dropdown>
-              <div className="mt-2 space-y-2">
-                {Object.entries(value.focuses).map(([t, v]) => (
-                  <div key={t} className="p-2 rounded-xl border flex items-center gap-2">
-                    <span className="capitalize flex-1">{t}</span>
-                    <Slider value={v} min={1} max={3} onChange={val => onChange({ ...value, focuses: { ...value.focuses, [t]: val } })} />
-                    <button
-                      onClick={() => {
-                        const { [t]: _omit, ...rest } = value.focuses;
-                        onChange({ ...value, focuses: rest });
-                      }}
-                      className="px-2"
-                    >
-                      ×
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </section>
+            {data.allergens.length > 0 && (
+              <section>
+                <h4 className="font-medium mb-3">Allergének kizárása</h4>
+                {renderTokenGrid(data.allergens, value.allergensExclude, "allergensExclude")}
+              </section>
+            )}
 
-            {/* Intensity / Steep / Caffeine */}
-            <section className="flex flex-col gap-4">
-              <Dropdown label="Intenzitás" rightAlign>
-                <Slider value={value.intensity ?? 0} min={0} max={3} onChange={val => onChange({ ...value, intensity: val })} />
-              </Dropdown>
-              <Dropdown label="Áztatás" rightAlign>
-                <Slider value={value.steepMin ?? 0} min={0} max={10} onChange={val => onChange({ ...value, steepMin: val })} />
-              </Dropdown>
-              <Dropdown label="Koffein" rightAlign>
-                <Slider value={value.caffeine ?? 0} min={0} max={3} onChange={val => onChange({ ...value, caffeine: val })} />
-              </Dropdown>
-            </section>
-
-            {/* Allergens */}
-            <section>
-              <h4 className="font-medium mb-3">Allergének</h4>
-              <Dropdown label="Válassz" wide>
-                <div className="grid grid-cols-2 gap-2">
-                  {allAllergens.map(a => {
-                    const selected = value.allergens.includes(a);
+            {data.methods.length > 0 && (
+              <section>
+                <h4 className="font-medium mb-3">Főzési metódus</h4>
+                <div className="flex flex-wrap gap-2">
+                  {data.methods.map(method => {
+                    const selected = value.methods.includes(method.id);
                     return (
                       <button
-                        key={a}
+                        key={method.id}
                         type="button"
-                        onClick={() => onChange({ ...value, allergens: toggle(value.allergens, a) })}
-                        className="px-2 py-1 rounded-lg border text-sm"
-                        style={{ backgroundColor: selected ? "#333" : undefined, color: selected ? "#fff" : undefined }}
+                        onClick={() =>
+                          onChange({ ...value, methods: toggleValue(value.methods, method.id) })
+                        }
+                        className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                          selected
+                            ? "bg-gray-900 text-white border-gray-900"
+                            : "bg-white hover:bg-gray-50"
+                        }`}
                       >
-                        {a}
+                        {method.label}
                       </button>
                     );
                   })}
                 </div>
-              </Dropdown>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {value.allergens.map(a => (
-                  <Chip key={a} label={a} onRemove={() => onChange({ ...value, allergens: value.allergens.filter(x => x !== a) })} />
-                ))}
-              </div>
-            </section>
-
-            {/* Dayparts */}
-            <section>
-              <h4 className="font-medium mb-3">Napszak</h4>
-              <Dropdown label="Válassz" wide>
-                <div className="grid grid-cols-2 gap-2">
-                  {allDayparts.map(a => {
-                    const selected = value.dayparts.includes(a);
-                    return (
-                      <button
-                        key={a}
-                        type="button"
-                        onClick={() => onChange({ ...value, dayparts: toggle(value.dayparts, a) })}
-                        className="px-2 py-1 rounded-lg border text-sm"
-                        style={{ backgroundColor: selected ? "#333" : undefined, color: selected ? "#fff" : undefined }}
-                      >
-                        {a}
-                      </button>
-                    );
-                  })}
-                </div>
-              </Dropdown>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {value.dayparts.map(a => (
-                  <Chip key={a} label={a} onRemove={() => onChange({ ...value, dayparts: value.dayparts.filter(x => x !== a) })} />
-                ))}
-              </div>
-            </section>
-
-            {/* Seasons */}
-            <section>
-              <h4 className="font-medium mb-3">Évszak</h4>
-              <Dropdown label="Válassz" wide>
-                <div className="grid grid-cols-2 gap-2">
-                  {allSeasons.map(a => {
-                    const selected = value.seasons.includes(a);
-                    return (
-                      <button
-                        key={a}
-                        type="button"
-                        onClick={() => onChange({ ...value, seasons: toggle(value.seasons, a) })}
-                        className="px-2 py-1 rounded-lg border text-sm"
-                        style={{ backgroundColor: selected ? "#333" : undefined, color: selected ? "#fff" : undefined }}
-                      >
-                        {a}
-                      </button>
-                    );
-                  })}
-                </div>
-              </Dropdown>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {value.seasons.map(a => (
-                  <Chip key={a} label={a} onRemove={() => onChange({ ...value, seasons: value.seasons.filter(x => x !== a) })} />
-                ))}
-              </div>
-            </section>
+              </section>
+            )}
           </div>
         </div>
       </aside>
