@@ -66,8 +66,10 @@ export default function TasteChart({
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
-  const radius = size * 0.38;
+  const isCompact = !showLabels;
+  const radius = size * (showLabels ? 0.38 : 0.34);
   const step = radius / 3;
+  const spacingFactor = isCompact ? 0.82 : 1;
 
   const [tooltip, setTooltip] = useState<
     { label: string; value: number; color: string; icon: string } | null
@@ -104,7 +106,11 @@ export default function TasteChart({
 
   const labelRadius = radius + (showLabels ? iconSizePx : 0);
   const base = pointRadiusBase;
-  const POINT_RADII = [base * .6, base * .9, base];
+  const radialOffset = base * (isCompact ? 0.6 : 1);
+  const inactiveRadius = Math.max(2, base * (isCompact ? 0.35 : 0.3));
+  const POINT_RADII = isCompact
+    ? [base * 0.55, base * 0.8, base * 0.95]
+    : [base * 0.6, base * 0.9, base];
 
   const textColorFor = (hex?: string) => {
     if (!hex || !/^#/.test(hex)) return '#111';
@@ -135,9 +141,9 @@ export default function TasteChart({
           <g key={p.key}>
             {[1, 2, 3].map((lvl) => {
               const active = lvl <= p.value;
-              const pr = active ? POINT_RADII[lvl - 1] : 3;
-              let r = step * lvl + pr;          // távolság a mérettel arányosan
-              if (lvl === 2) r -= pr * 0.3;     // második szint kicsit beljebb
+              const pr = active ? POINT_RADII[lvl - 1] : inactiveRadius;
+              let r = step * lvl * spacingFactor + radialOffset; // távolság a mérettel arányosan
+              if (lvl === 2) r -= pr * (isCompact ? 0.15 : 0.3);  // második szint kicsit beljebb
               const x = cx + Math.cos(p.angle) * r;
               const y = cy + Math.sin(p.angle) * r;
               const fill = active ? p.color : '#ccc';

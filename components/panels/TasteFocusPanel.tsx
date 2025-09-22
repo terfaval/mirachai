@@ -12,7 +12,8 @@ type TasteFocusRowStyle = React.CSSProperties & {
 
 export default function TasteFocusPanel({ tea, colorDark }: Props) {
   const focusData = getFocusOrdered(tea); // [{key,label,value}] in fixed order
-  const chartSize = 260;
+  const tasteChartSize = 220;
+  const focusChartSize = 200;
   const columnCount = focusData.length + 1;
   const rowStyle: TasteFocusRowStyle = {
     '--tf-col': String(columnCount),
@@ -24,11 +25,12 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
         <div className={`${styles.panelBox} ${styles.tasteFocusCard}`}>
           <TasteChart
             tea={tea}
-            size={chartSize}
+            size={tasteChartSize}
             minValue={1}
-            pointRadiusBase={10}
+            pointRadiusBase={9}
             connectByStrongest
             colorDark={colorDark}
+            showLabels={false}
           />
         </div>
 
@@ -40,7 +42,7 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
           >
             <FocusChart
               data={[focus]}
-              size={chartSize}
+              size={focusChartSize}
               colorDark={colorDark}
               layout="row"
             />

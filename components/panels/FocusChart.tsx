@@ -22,17 +22,17 @@ export default function FocusChart({
   layout = 'stack',
 }: Props) {
   const scale = size / 240;
-  const padding = Math.max(12, 16 * scale);
-  const containerGap = Math.max(12, 16 * scale);
-  const rowGap = Math.max(8, 12 * scale);
-  const innerGap = Math.max(6, rowGap * 0.75);
-  const columnGap = Math.max(8, 12 * scale);
-  const dotSize = Math.max(8, 14 * scale);
-  const dotBorder = Math.max(1, 2 * scale);
-  const focusFontSize = Math.max(14, 18 * scale);
-  const levelFontSize = Math.max(10, 12 * scale);
-  const cardRadius = Math.max(12, 16 * scale);
-  const cardPadding = Math.max(12, 14 * scale);
+  const padding = Math.max(10, 14 * scale);
+  const containerGap = Math.max(8, 14 * scale * 0.9);
+  const rowGap = Math.max(6, 10 * scale);
+  const innerGap = Math.max(4, rowGap * 0.7);
+  const columnGap = Math.max(6, 10 * scale);
+  const dotSize = Math.max(6, 12 * scale);
+  const dotBorder = Math.max(1, 1.6 * scale);
+  const focusFontSize = Math.max(13, 16 * scale);
+  const levelFontSize = Math.max(10, 11 * scale);
+  const cardRadius = Math.max(10, 14 * scale);
+  const cardPadding = Math.max(10, 12 * scale);
 
   const normalized = data.map((item) => {
     const value = Math.max(0, Math.min(3, Number(item.value) || 0));
@@ -43,7 +43,7 @@ export default function FocusChart({
     return { ...item, value, displayLabel, levelLabel };
   });
 
-  const minCardHeight = Math.max(160 * scale, size - padding * 2);
+  const minCardHeight = Math.max(120 * scale, size * 0.65);
 
   const renderCard = (
     item: typeof normalized[number],
@@ -55,11 +55,12 @@ export default function FocusChart({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         gap: innerGap,
         padding: cardPadding,
         borderRadius: cardRadius,
-        backgroundColor: 'rgba(0,0,0,0.04)',
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
         textAlign: 'center',
         height: fillHeight ? '100%' : undefined,
         minHeight: fillHeight ? minCardHeight : undefined,
@@ -116,7 +117,7 @@ export default function FocusChart({
   );
 
   if (layout === 'row') {
-    const minColumnWidth = Math.max(160, 180 * scale);
+    const minColumnWidth = Math.max(140, 180 * scale);
     return (
       <div
         style={{

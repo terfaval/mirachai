@@ -507,8 +507,6 @@ export default function TeaModal({ tea, onClose }: Props) {
                   origin={tea.origin ?? ''}
                 />
                 <div className={styles.spacer} />
-                <div className={styles.spacer} />
-                <div className={styles.spacer} />
                 <TeaDashboard tea={tea} colorDark={colorDark} />
                 <div className={styles.spacer} />
                 <TasteFocusPanel tea={tea} colorDark={colorDark} />
