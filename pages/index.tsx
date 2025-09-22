@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import path from 'path';
 import { promises as fs } from 'fs';
 import TeaGrid from '../components/TeaGrid';
@@ -7,12 +7,24 @@ import Header from '../components/Header';
 import { SortKey } from '../components/sortOptions';
 import TeaModal from '../components/TeaModal';
 import CategorySidebar from '../components/CategorySidebar';
-import FilterPanel from '../components/FilterPanel';
-import { filterTeas, Tea } from '../utils/filter';
-import { toStringArray } from '../lib/toStringArray';
-import { distributeByCategory } from '../utils/category-distribution';
 import PaginationBar from '../components/PaginationBar';
 import { usePagination } from '../hooks/usePagination';
+import { toStringArray } from '../lib/toStringArray';
+import {
+  normalizeTeas,
+  type NormalizeResult,
+  type NormalizedTea,
+  type BrewProfileDocument,
+} from '../lib/normalize';
+import FilterPanel from '../src/ui/filters/FilterPanel';
+import {
+  applyFilters,
+  createEmptyFilterState,
+  hasActiveFilters,
+  type FilterState,
+} from '../lib/tea-filters';
+import { distributeByCategory } from '../utils/category-distribution';
+import type { Tea } from '../utils/filter';
 
 /* ---------- stabil “véletlen” ---------- */
 function mulberry32(a: number) {
@@ -40,7 +52,7 @@ function deterministicShuffle<T extends { id: number | string }>(arr: T[], seed:
 }
 /* -------------------------------------- */
 
-function normalize(str: string): string {
+function normalizeString(str: string): string {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 function getSeason(date: Date): string {
@@ -57,7 +69,7 @@ function seasonDistance(now: Date, season: string): number {
   let dist = start - month; if (dist < 0) dist += 12; return dist;
 }
 function seasonScore(seasons: string[], now: Date): number {
-  const normSeasons = seasons.map((s) => normalize(s));
+  const normSeasons = seasons.map((s) => normalizeString(s));
   const current = getSeason(now);
   if (normSeasons.length === 0) return 0;
   if (normSeasons.length === 1 && normSeasons[0] === current) return 30;
@@ -85,7 +97,7 @@ function daypartPrefs(now: Date): string[] {
   prefs.push('barmikor'); return prefs;
 }
 function daypartScore(dayparts: string[], now: Date): number {
-  const norm = dayparts.map((d) => normalize(d).replace(/\s+/g, '_'));
+  const norm = dayparts.map((d) => normalizeString(d).replace(/\s+/g, '_'));
   const prefs = daypartPrefs(now);
   for (let i = 0; i < prefs.length; i++) if (norm.includes(prefs[i])) return prefs.length - i;
   return 0;
@@ -96,47 +108,118 @@ export function computeRelevance(tea: Tea, now: Date): number {
   return seasonScore(seasons, now) * 10 + daypartScore(dayparts, now);
 }
 
-interface HomeProps { teas: Tea[]; }
+const SEARCH_WEIGHTS: Record<string, number> = {
+  name: 3,
+  category: 2,
+  subcategory: 1,
+  description: 2,
+  mood_short: 2,
+  function: 1,
+  'tag-1': 1,
+  'tag-2': 1,
+  'tag-3': 1,
+  'ingerdient-1': 1,
+  'ingerdient-2': 1,
+  'ingerdient-3': 1,
+  'ingerdient-4': 1,
+  'ingerdient-5': 1,
+  'ingerdient-6': 1,
+  fullDescription: 2,
+  when: 1,
+  origin: 1,
+};
 
-export default function Home({ teas }: HomeProps) {
+type NormalizedTeaForHome = NormalizedTea & Tea;
+type HomeNormalization = Omit<NormalizeResult, 'teas'> & { teas: NormalizedTeaForHome[] };
+
+interface HomeProps { normalization: HomeNormalization; }
+
+export default function Home({ normalization }: HomeProps) {
+  const teas = normalization.teas;
   const [selectedTea, setSelectedTea] = useState<Tea | null>(null);
   const [query, setQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sort, setSort] = useState<SortKey>('relevanceDesc');
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [showCategorySidebar, setShowCategorySidebar] = useState(false);
+  const [filterState, setFilterState] = useState<FilterState>(() => createEmptyFilterState());
+  const [shuffleSeed, setShuffleSeed] = useState<number | null>(null);
+  const hasFiltersActive = useMemo(() => hasActiveFilters(filterState), [filterState]);
 
   // csak kliensen jelöljük, hogy lehet “véletlent” és időt használni
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   // shuffleSeed: csak akkor változik, amikor ÚJ választékot kérsz
-  const shuffleSeedRef = useRef<number | null>(null);
-  const bumpSeed = () => {
-    // kliensen biztonságos, SSR-en nem fut
+  const bumpSeed = useCallback(() => {
     const base = Math.floor(Math.random() * 2 ** 31);
-    // hogy a teas készlet változása is más seedet adjon:
     const poolHash = hash(teas.length + ':' + teas.map(t => t.id).join(','));
-    shuffleSeedRef.current = (base ^ poolHash) >>> 0;
-  };
+    setShuffleSeed((base ^ poolHash) >>> 0);
+  }, [teas]);
   // első mountkor seed generálás
-  useEffect(() => { if (mounted && shuffleSeedRef.current === null) bumpSeed(); }, [mounted]);
+  useEffect(() => { if (mounted && shuffleSeed === null) bumpSeed(); }, [mounted, shuffleSeed, bumpSeed]);
   // ha keresel vagy kategóriát váltasz → új seed (egyszeri újrakeverés)
-  useEffect(() => { if (mounted) bumpSeed(); /* page reset is below */ }, [query, selectedCategories, mounted]);
+  useEffect(
+    () => { if (mounted) bumpSeed(); /* page reset is below */ },
+    [query, selectedCategories, filterState, mounted, bumpSeed],
+  );
 
   // stabil keverés — csak kliensen és csak seedváltáskor
   const shuffledTeas = useMemo(() => {
-    if (!mounted || shuffleSeedRef.current === null) return teas; // SSR: determinisztikus
-    return deterministicShuffle(teas, shuffleSeedRef.current);
-  }, [teas, mounted, shuffleSeedRef.current]);
+    if (!mounted || shuffleSeed === null) return teas; // SSR: determinisztikus
+    return deterministicShuffle(teas, shuffleSeed);
+  }, [teas, mounted, shuffleSeed]);
 
   // szűrés
-  const filtered = useMemo(
-    () => filterTeas(shuffledTeas, query).filter(
-      (t) => selectedCategories.length === 0 || selectedCategories.includes(t.category),
-    ),
-    [shuffledTeas, query, selectedCategories],
-  );
+  const filtered: NormalizedTeaForHome[] = useMemo(() => {
+    const normalizedQuery = query.trim() ? normalizeString(query.trim()) : '';
+    const base = applyFilters(shuffledTeas, filterState) as NormalizedTeaForHome[];
+
+    const categoryFiltered: NormalizedTeaForHome[] =
+      selectedCategories.length === 0
+        ? base
+        : base.filter((t) => (t.category ? selectedCategories.includes(t.category) : false));
+
+    if (!normalizedQuery) return categoryFiltered;
+
+    return categoryFiltered
+      .map((tea) => {
+        let score = 0;
+        const teaRecord = tea as unknown as Record<string, unknown>;
+        for (const [field, weight] of Object.entries(SEARCH_WEIGHTS)) {
+          const value = teaRecord[field];
+          if (!value) continue;
+          if (Array.isArray(value)) {
+            if (
+              value.some(
+                (item) =>
+                  typeof item === 'string' && normalizeString(item).includes(normalizedQuery),
+              )
+            ) {
+              score += weight;
+            }
+            continue;
+          }
+          if (typeof value === 'string' && normalizeString(value).includes(normalizedQuery)) {
+            score += weight;
+          }
+        }
+
+        if (
+          Array.isArray((tea as NormalizedTeaForHome).ingredients) &&
+          (tea as NormalizedTeaForHome).ingredients.some((ingredient) =>
+            normalizeString(ingredient).includes(normalizedQuery),
+          )
+        ) {
+          score += 1;
+        }
+
+        return { tea, score };
+      })
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map((entry) => entry.tea);
+  }, [shuffledTeas, filterState, selectedCategories, query]);
 
   // rendezés
   const now = useMemo(() => (mounted ? new Date() : null), [mounted]);
@@ -161,10 +244,10 @@ export default function Home({ teas }: HomeProps) {
 
   const perPage = 9;
 
-  const distributed = useMemo(
-    () => distributeByCategory(sorted, perPage, 3, shuffleSeedRef.current ?? 0),
-    [sorted, perPage, shuffleSeedRef.current]
-  );
+  const distributed = useMemo(() => {
+    const seed = shuffleSeed ?? 0;
+    return distributeByCategory(sorted, perPage, 3, seed);
+  }, [sorted, perPage, shuffleSeed]);
 
   const { page, totalPages, goTo } = usePagination(distributed.length, perPage, 1);
 
@@ -178,7 +261,7 @@ export default function Home({ teas }: HomeProps) {
     setSelectedCategories((prev) => prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]);
   };
 
-  useEffect(() => { goTo(1); }, [query, selectedCategories, sort]);
+  useEffect(() => { goTo(1); }, [query, selectedCategories, sort, filterState, goTo]);
 
   useEffect(() => {
     const el = document.getElementById('tea-grid');
@@ -202,10 +285,32 @@ export default function Home({ teas }: HomeProps) {
       {showCategorySidebar && (
         <CategorySidebar categories={categories} selected={selectedCategories} onToggle={toggleCategory} />
       )}
+      <div className="px-4 py-3 flex gap-3">
+        <button
+          type="button"
+          onClick={() => setShowCategorySidebar((prev) => !prev)}
+          className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-gray-50"
+        >
+          {showCategorySidebar ? 'Kategóriák elrejtése' : 'Kategóriák'}
+          {selectedCategories.length > 0 && (
+            <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+          )}
+        </button>
+        <button
+          type="button"
+          onClick={() => setFiltersOpen(true)}
+          className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-gray-50"
+        >
+          Szűrők
+          {hasFiltersActive && <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />}
+        </button>
+      </div>
       <FilterPanel
         open={filtersOpen}
         onClose={() => setFiltersOpen(false)}
-        onSelect={(key) => { if (key === 'category') setShowCategorySidebar(true); setFiltersOpen(false); }}
+        value={filterState}
+        onChange={setFilterState}
+        data={normalization}
       />
       <TeaGrid items={distributed} page={page} perPage={perPage} onTeaClick={setSelectedTea} gridId="tea-grid" />
         <PaginationBar page={page} totalPages={totalPages} onSelect={goTo} aria-controls="tea-grid" />
@@ -219,13 +324,18 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const filePath = path.join(process.cwd(), 'data', 'teas.json');
   const jsonData = await fs.readFile(filePath, 'utf8');
   const rawTeas: any[] = JSON.parse(jsonData);
+
   const descPath = path.join(process.cwd(), 'data', 'teas_descriptions.json');
   const descData = await fs.readFile(descPath, 'utf8');
   const descList: any[] = JSON.parse(descData);
   const descMap: Record<number, any> = {};
   for (const d of descList) descMap[d.id] = d;
 
-  const teas: Tea[] = rawTeas.map((t) => {
+  const brewProfilesPath = path.join(process.cwd(), 'data', 'brew_profiles.json');
+  const brewProfilesData = await fs.readFile(brewProfilesPath, 'utf8');
+  const brewProfiles: BrewProfileDocument[] = JSON.parse(brewProfilesData);
+
+  const teasWithDescriptions = rawTeas.map((t) => {
     const d = descMap[t.id] || {};
     return {
       ...t,
@@ -237,15 +347,33 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     };
   });
 
-  const catMap: Record<string, Tea[]> = {};
-  for (const tea of teas) (catMap[tea.category] ||= []).push(tea);
+  const normalizationBase = normalizeTeas(teasWithDescriptions, { brewProfiles });
+  const normalizedTeas = normalizationBase.teas.map((tea) => ({
+    ...tea,
+    season_recommended: toStringArray(tea.season_recommended),
+    daypart_recommended: toStringArray(tea.daypart_recommended),
+  })) as NormalizedTeaForHome[];
 
-  const sorted: Tea[] = [];
-  let idx = 0;
-  for (const cat of Object.keys(catMap)) {
-    const group = catMap[cat].sort((a, b) => a.id - b.id);
-    for (const t of group) { t.mandalaIndex = idx++; sorted.push(t); }
+  const catMap: Record<string, NormalizedTeaForHome[]> = {};
+  for (const tea of normalizedTeas) {
+    const category = tea.category ?? 'Egyéb';
+    (catMap[category] ||= []).push(tea);
   }
 
-  return { props: { teas: sorted } };
+  const sorted: NormalizedTeaForHome[] = [];
+  let idx = 0;
+  for (const cat of Object.keys(catMap)) {
+    const group = catMap[cat].sort((a, b) => Number(a.id) - Number(b.id));
+    for (const t of group) {
+      t.mandalaIndex = idx++;
+      sorted.push(t);
+    }
+  }
+
+  const normalization: HomeNormalization = {
+    ...normalizationBase,
+    teas: sorted,
+  };
+
+  return { props: { normalization } };
 };
