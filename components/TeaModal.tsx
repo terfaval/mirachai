@@ -366,7 +366,16 @@ export default function TeaModal({ tea, onClose }: Props) {
   }, [activeFace]);
   
   const handleFaceChange = (face: CubeFace) => {
+    console.log(
+      'face change requested:',
+      face,
+      'activeFace:',
+      activeFace,
+      'isRotating:',
+      isRotating,
+    );
     if (isRotating || face === activeFace) {
+      console.log('early return');
       return;
     }
 
@@ -526,18 +535,30 @@ export default function TeaModal({ tea, onClose }: Props) {
                   {introCopy.h1}
                 </h1>
                 <p className={styles.introLead}>{introCopy.lead}</p>
-                <div className={styles.introActions}>
+                <div
+                  className={styles.introActions}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    console.log('introActions click', event.target);
+                  }}
+                >
                   <button
                     type="button"
                     className={styles.introGhost}
-                    onClick={() => handleFaceChange('tea')}
+                    onClick={() => {
+                      console.log('introGhost button click');
+                      handleFaceChange('tea');
+                    }}
                   >
                     Vissza a teához
                   </button>
                   <button
                     type="button"
                     className={styles.introPrimary}
-                    onClick={() => handleFaceChange('brew')}
+                    onClick={() => {
+                      console.log('introPrimary button click');
+                      handleFaceChange('brew');
+                    }}
                   >
                     Kezdjük a főzést
                   </button>

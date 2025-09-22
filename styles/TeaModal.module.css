@@ -402,6 +402,7 @@
   align-items: center;
   justify-content: center;
   color: #fff;
+  pointer-events: auto;
 }
 
 .introBackdrop {
@@ -420,6 +421,7 @@
   text-align: center;
   gap: 16px;
   padding: 48px;
+  pointer-events: auto;
 }
 
 .brandBadge {
@@ -450,6 +452,9 @@
   margin-top: 24px;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .introPrimary,
