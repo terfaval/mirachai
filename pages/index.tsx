@@ -16,11 +16,10 @@ import {
   type NormalizedTea,
   type BrewProfileDocument,
 } from '../lib/normalize';
-import FilterPanel from '../src/ui/filters/FilterPanel';
+import FilterPanel, { type FilterPanelData } from '../src/ui/filters/FilterPanel';
 import {
   applyFilters,
   createEmptyFilterState,
-  hasActiveFilters,
   type FilterState,
 } from '../lib/tea-filters';
 import { distributeByCategory } from '../utils/category-distribution';
@@ -141,10 +140,9 @@ export default function Home({ normalization }: HomeProps) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sort, setSort] = useState<SortKey>('relevanceDesc');
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [showCategorySidebar, setShowCategorySidebar] = useState(false);
+  const [showCategorySidebar, _setShowCategorySidebar] = useState(false);
   const [filterState, setFilterState] = useState<FilterState>(() => createEmptyFilterState());
   const [shuffleSeed, setShuffleSeed] = useState<number | null>(null);
-  const hasFiltersActive = useMemo(() => hasActiveFilters(filterState), [filterState]);
 
   // csak kliensen jelöljük, hogy lehet “véletlent” és időt használni
   const [mounted, setMounted] = useState(false);
@@ -257,6 +255,155 @@ export default function Home({ normalization }: HomeProps) {
     [teas],
   );
 
+  const dynamicData = useMemo<FilterPanelData>(() => {
+    const filterWithout = (key: keyof FilterState): FilterState => {
+      const cleared: FilterState = {
+        ...filterState,
+        focusMin: { ...filterState.focusMin },
+      };
+
+      switch (key) {
+        case 'categories':
+          cleared.categories = [];
+          break;
+        case 'subcategories':
+          cleared.subcategories = [];
+          break;
+        case 'tastes':
+          cleared.tastes = [];
+          break;
+        case 'focusMin':
+          cleared.focusMin = {};
+          break;
+        case 'intensities':
+          cleared.intensities = [];
+          break;
+        case 'caffeine':
+          cleared.caffeine = [];
+          break;
+        case 'dayparts':
+          cleared.dayparts = [];
+          break;
+        case 'seasons':
+          cleared.seasons = [];
+          break;
+        case 'serve':
+          cleared.serve = [];
+          break;
+        case 'ingredients':
+          cleared.ingredients = [];
+          break;
+        case 'allergensExclude':
+          cleared.allergensExclude = [];
+          break;
+        case 'methods':
+          cleared.methods = [];
+          break;
+        default:
+          break;
+      }
+
+      return cleared;
+    };
+
+    const teasByFacet = (facet: keyof FilterState) => applyFilters(teas, filterWithout(facet));
+
+    const isNonEmptyString = (value: string | null | undefined): value is string =>
+      typeof value === 'string' && value.length > 0;
+
+    const isDefined = <T,>(value: T | null | undefined): value is T =>
+      value !== null && value !== undefined;
+
+    const availableCategories = new Set(
+      teasByFacet('categories')
+        .map((tea) => tea.categorySlug)
+        .filter(isNonEmptyString),
+    );
+    const categories = normalization.categories.filter((category) => availableCategories.has(category.slug));
+
+    const availableSubcategories = new Set(
+      teasByFacet('subcategories')
+        .map((tea) => tea.subcategorySlug)
+        .filter(isNonEmptyString),
+    );
+    const subcategories = normalization.subcategories.filter((subcategory) =>
+      availableSubcategories.has(subcategory.slug)
+    );
+
+    const availableTastes = new Set(
+      teasByFacet('tastes').flatMap((tea) =>
+        filterState.tasteMode === 'dominant' ? tea.tasteDominant : tea.tastePresent,
+      ),
+    );
+    const tastes = normalization.tastes.filter((taste) => availableTastes.has(taste.slug));
+
+    const availableIntensities = new Set(
+      teasByFacet('intensities')
+        .map((tea) => tea.intensityBucket)
+        .filter(isDefined),
+    );
+    const intensities = normalization.intensities.filter((bucket) => availableIntensities.has(bucket));
+
+    const availableCaffeine = new Set(
+      teasByFacet('caffeine')
+        .map((tea) => tea.caffeineBucket)
+        .filter(isDefined),
+    );
+    const caffeineLevels = normalization.caffeineLevels.filter((bucket) => availableCaffeine.has(bucket));
+
+    const availableDayparts = new Set(
+      teasByFacet('dayparts')
+        .flatMap((tea) => tea.daypartSlugs)
+        .filter(isNonEmptyString),
+    );
+    const dayparts = normalization.dayparts.filter((daypart) => availableDayparts.has(daypart.slug));
+
+    const availableSeasons = new Set(
+      teasByFacet('seasons')
+        .flatMap((tea) => tea.seasonSlugs)
+        .filter(isNonEmptyString),
+    );
+    const seasons = normalization.seasons.filter((season) => availableSeasons.has(season.slug));
+
+    const availableServe = new Set(teasByFacet('serve').flatMap((tea) => tea.serveModes));
+    const serveModes = normalization.serveModes.filter((mode) => availableServe.has(mode.id));
+
+    const availableIngredients = new Set(
+      teasByFacet('ingredients')
+        .flatMap((tea) => tea.ingredients)
+        .filter(isNonEmptyString),
+    );
+    const ingredients = normalization.ingredients.filter((ingredient) => availableIngredients.has(ingredient));
+
+    const availableAllergens = new Set(
+      teasByFacet('allergensExclude')
+        .flatMap((tea) => tea.allergenSlugs)
+        .filter(isNonEmptyString),
+    );
+    const allergens = normalization.allergens.filter((allergen) => availableAllergens.has(allergen.slug));
+
+    const availableMethods = new Set(
+      teasByFacet('methods')
+        .flatMap((tea) => tea.methodIds)
+        .filter(isNonEmptyString),
+    );
+    const methods = normalization.methods.filter((method) => availableMethods.has(method.id));
+
+    return {
+      categories,
+      subcategories,
+      tastes,
+      intensities,
+      caffeineLevels,
+      dayparts,
+      seasons,
+      serveModes,
+      ingredients,
+      allergens,
+      methods,
+    };
+  }, [teas, filterState, normalization]);
+  
   const toggleCategory = (cat: string) => {
     setSelectedCategories((prev) => prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]);
   };
@@ -285,32 +432,12 @@ export default function Home({ normalization }: HomeProps) {
       {showCategorySidebar && (
         <CategorySidebar categories={categories} selected={selectedCategories} onToggle={toggleCategory} />
       )}
-      <div className="px-4 py-3 flex gap-3">
-        <button
-          type="button"
-          onClick={() => setShowCategorySidebar((prev) => !prev)}
-          className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-gray-50"
-        >
-          {showCategorySidebar ? 'Kategóriák elrejtése' : 'Kategóriák'}
-          {selectedCategories.length > 0 && (
-            <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-          )}
-        </button>
-        <button
-          type="button"
-          onClick={() => setFiltersOpen(true)}
-          className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-gray-50"
-        >
-          Szűrők
-          {hasFiltersActive && <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />}
-        </button>
-      </div>
       <FilterPanel
         open={filtersOpen}
         onClose={() => setFiltersOpen(false)}
         value={filterState}
         onChange={setFilterState}
-        data={normalization}
+        data={dynamicData}
       />
       <TeaGrid items={distributed} page={page} perPage={perPage} onTeaClick={setSelectedTea} gridId="tea-grid" />
         <PaginationBar page={page} totalPages={totalPages} onSelect={goTo} aria-controls="tea-grid" />

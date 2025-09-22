@@ -17,12 +17,28 @@ import { FOCUS_AXES, type FocusAxis } from "../../../lib/normalize";
 
 type ToggleKey = "subcategories" | "tastes" | "dayparts" | "seasons" | "allergensExclude";
 
+export type FilterPanelData = Pick<
+  NormalizeResult,
+  |
+    "categories"
+    | "subcategories"
+    | "tastes"
+    | "intensities"
+    | "caffeineLevels"
+    | "dayparts"
+    | "seasons"
+    | "serveModes"
+    | "ingredients"
+    | "allergens"
+    | "methods"
+>;
+
 type Props = {
   open: boolean;
   onClose: () => void;
   value: FilterState;
   onChange: (next: FilterState) => void;
-  data: NormalizeResult;
+  data: FilterPanelData;
 };
 
 const toggleValue = <T extends string>(list: readonly T[], value: T): T[] =>
