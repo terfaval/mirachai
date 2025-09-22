@@ -68,6 +68,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const introTitleRef = useRef<HTMLHeadingElement | null>(null);
   const brewTitleRef = useRef<HTMLHeadingElement | null>(null);
   const rotationTimeoutRef = useRef<number | null>(null);
+  const rotationFailsafeTimeoutRef = useRef<number | null>(null);
 
   const clearRotationTimeout = useCallback(() => {
     if (rotationTimeoutRef.current !== null) {
@@ -76,13 +77,21 @@ export default function TeaModal({ tea, onClose }: Props) {
     }
   }, []);
 
+  const clearRotationFailsafeTimeout = useCallback(() => {
+    if (rotationFailsafeTimeoutRef.current !== null) {
+      window.clearTimeout(rotationFailsafeTimeoutRef.current);
+      rotationFailsafeTimeoutRef.current = null;
+    }
+  }, []);
+
   const finishRotation = useCallback(() => {
     clearRotationTimeout();
+    clearRotationFailsafeTimeout();
     if (cubeShellRef.current) {
       cubeShellRef.current.setAttribute('data-rotating', 'false');
     }
     setIsRotating(false);
-  }, [clearRotationTimeout]);
+  }, [clearRotationTimeout, clearRotationFailsafeTimeout]);
 
   const scheduleRotationFallback = useCallback(
     (duration: number) => {
@@ -142,9 +151,13 @@ export default function TeaModal({ tea, onClose }: Props) {
     scheduleRotationFallback,
   ]);
 
-  useEffect(() => () => {
-    clearRotationTimeout();
-  }, [clearRotationTimeout]);
+  useEffect(
+    () => () => {
+      clearRotationTimeout();
+      clearRotationFailsafeTimeout();
+    },
+    [clearRotationTimeout, clearRotationFailsafeTimeout],
+  );
 
   const scrollToTop = useCallback(
     (element: HTMLElement | null) => {
@@ -355,6 +368,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const handleFaceChange = (face: CubeFace) => {
     if (face === activeFace) return;
     clearRotationTimeout();
+    clearRotationFailsafeTimeout();
 
     if (prefersReducedMotion) {
       setActiveFace(face);
@@ -362,14 +376,23 @@ export default function TeaModal({ tea, onClose }: Props) {
         cubeShellRef.current.setAttribute('data-rotating', 'false');
       }
       setIsRotating(false);
+      clearRotationFailsafeTimeout();
       return;
     }
 
     if (cubeShellRef.current) {
       cubeShellRef.current.setAttribute('data-rotating', 'true');
     }
-    setIsRotating(true);
     setActiveFace(face);
+    setIsRotating(true);
+    if (typeof window !== 'undefined') {
+      // Ultima ratio: 1.5 s múlva biztosan feloldjuk a blokkot
+      clearRotationFailsafeTimeout();
+      rotationFailsafeTimeoutRef.current = window.setTimeout(() => {
+        rotationFailsafeTimeoutRef.current = null;
+        finishRotation();
+      }, 1500);
+    }
   };
 
   const rotation = activeFace === 'tea' ? 0 : activeFace === 'intro' ? -90 : -180;
@@ -421,7 +444,7 @@ export default function TeaModal({ tea, onClose }: Props) {
         >
           <div
             className={`${styles.cubeFace} ${styles.faceFront}`}
-            data-active={activeFace === 'tea' ? 'true' : 'false'}
+            data-active={activeFace === 'tea' ? 'true' : undefined}
           >
             <div
               className={styles.panel}
@@ -481,7 +504,10 @@ export default function TeaModal({ tea, onClose }: Props) {
               <div className={`${styles.backLayer} ${styles.introBackdrop}`}>
                 <MandalaBackground color={colorDark} category={tea.category} />
               </div>
-              <div className={styles.introContent}>
+              <div
+                className={styles.introContent}
+                onClick={(event) => event.stopPropagation()}
+                >
                 <div className={styles.brandBadge}>
                   <img
                     src="/mirachai_logo.svg"
