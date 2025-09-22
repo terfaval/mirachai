@@ -20,13 +20,3 @@ html, body {
 * {
   box-sizing: border-box;
 }
-
-[data-animating="true"] {
-  pointer-events: none;
-}
-
-[data-animating="true"] * {
-  transition: none !important;
-  animation: none !important;
-  pointer-events: none !important;
-}
