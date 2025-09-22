@@ -366,28 +366,26 @@ export default function TeaModal({ tea, onClose }: Props) {
   }, [activeFace]);
   
   const handleFaceChange = (face: CubeFace) => {
-    if (face === activeFace) return;
+    if (isRotating || face === activeFace) {
+      return;
+    }
+
     clearRotationTimeout();
     clearRotationFailsafeTimeout();
 
     if (prefersReducedMotion) {
       setActiveFace(face);
-      if (cubeShellRef.current) {
-        cubeShellRef.current.setAttribute('data-rotating', 'false');
-      }
+      cubeShellRef.current?.setAttribute('data-rotating', 'false');
       setIsRotating(false);
-      clearRotationFailsafeTimeout();
       return;
     }
 
-    if (cubeShellRef.current) {
-      cubeShellRef.current.setAttribute('data-rotating', 'true');
-    }
-    setActiveFace(face);
+    cubeShellRef.current?.setAttribute('data-rotating', 'true');
     setIsRotating(true);
+    setActiveFace(face);
+
     if (typeof window !== 'undefined') {
-      // Ultima ratio: 1.5 s múlva biztosan feloldjuk a blokkot
-      clearRotationFailsafeTimeout();
+      // Failsafe: 1,5 másodperc múlva biztosan feloldjuk a forgást
       rotationFailsafeTimeoutRef.current = window.setTimeout(() => {
         rotationFailsafeTimeoutRef.current = null;
         finishRotation();

@@ -45,13 +45,12 @@
   pointer-events: auto;
 }
 
-.cubeShell[data-rotating="true"] .cubeFace[data-active="true"] {
-  pointer-events: none;
-  cursor: progress;
-}
-
 .cubeShell[data-rotating="false"] .cubeFace[data-active="true"] {
   pointer-events: auto;
+}
+
+.cubeShell[data-rotating="true"] {
+  cursor: progress;
 }
 
 .cubeShell[data-reduced="true"] {
