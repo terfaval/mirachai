@@ -6,11 +6,13 @@ import DescPanel from '@/components/panels/DescPanel';
 import MoreInfoPanel from '@/components/panels/MoreInfoPanel';
 import TeaDashboard from '@/components/panels/TeaDashboard';
 import PrepServePanel from '@/components/panels/PrepServePanel';
+import BrewMethodsPanel from '@/components/panels/BrewMethodsPanel';
 import { getCategoryColor, getAlternativeColor } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 import uiTexts from '../data/ui_texts.json';
 import { pickIntroCopy, type IntroCopy } from '../utils/introCopy';
 import BrewJourney from './brew/BrewJourney';
+import { getBrewMethodsForTea } from '@/utils/brewMethods';
 
 type CubeFace = 'tea' | 'intro' | 'brew';
 
@@ -61,6 +63,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const [activeFace, setActiveFace] = useState<CubeFace>('tea');
   const [isRotating, setIsRotating] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [selectedMethodId, setSelectedMethodId] = useState<string | null>(null);
   const cubeSceneRef = useRef<HTMLDivElement | null>(null);
   const cubeShellRef = useRef<HTMLDivElement | null>(null);
   const teaContentRef = useRef<HTMLDivElement | null>(null);
@@ -105,11 +108,12 @@ export default function TeaModal({ tea, onClose }: Props) {
   );
 
   const introCopy = useMemo(() => pickIntroCopy(tea.id, introCopyOptions), [tea.id]);
+  const brewMethods = useMemo(() => getBrewMethodsForTea(tea), [tea]);
   const brewTea = useMemo(
-  () => ({
-    ...tea,
-    id: tea.id !== undefined ? String(tea.id) : undefined, // ← mindig string
-    colorMain,
+    () => ({
+      ...tea,
+      id: tea.id !== undefined ? String(tea.id) : undefined, // ← mindig string
+      colorMain,
     colorDark,
   }),
   [tea, colorMain, colorDark],
@@ -122,6 +126,7 @@ export default function TeaModal({ tea, onClose }: Props) {
 
   useEffect(() => {
     setActiveFace('tea');
+    setSelectedMethodId(null);
     finishRotation();
   }, [tea, finishRotation]);
 
@@ -365,42 +370,60 @@ export default function TeaModal({ tea, onClose }: Props) {
     };
   }, [activeFace]);
   
-  const handleFaceChange = (face: CubeFace) => {
-    console.log(
-      'face change requested:',
-      face,
-      'activeFace:',
-      activeFace,
-      'isRotating:',
-      isRotating,
-    );
-    if (isRotating || face === activeFace) {
-      console.log('early return');
-      return;
-    }
+  const handleFaceChange = useCallback(
+    (face: CubeFace) => {
+      console.log(
+        'face change requested:',
+        face,
+        'activeFace:',
+        activeFace,
+        'isRotating:',
+        isRotating,
+      );
+      if (isRotating || face === activeFace) {
+        console.log('early return');
+        return;
+      }
 
-    clearRotationTimeout();
-    clearRotationFailsafeTimeout();
+      clearRotationTimeout();
+      clearRotationFailsafeTimeout();
 
-    if (prefersReducedMotion) {
+      if (prefersReducedMotion) {
+        setActiveFace(face);
+        cubeShellRef.current?.setAttribute('data-rotating', 'false');
+        setIsRotating(false);
+        return;
+      }
+
+      cubeShellRef.current?.setAttribute('data-rotating', 'true');
+      setIsRotating(true);
       setActiveFace(face);
-      cubeShellRef.current?.setAttribute('data-rotating', 'false');
-      setIsRotating(false);
-      return;
-    }
 
-    cubeShellRef.current?.setAttribute('data-rotating', 'true');
-    setIsRotating(true);
-    setActiveFace(face);
+      if (typeof window !== 'undefined') {
+        // Failsafe: 1,5 másodperc múlva biztosan feloldjuk a forgást
+        rotationFailsafeTimeoutRef.current = window.setTimeout(() => {
+          rotationFailsafeTimeoutRef.current = null;
+          finishRotation();
+        }, 1500);
+      }
+    },
+    [
+      activeFace,
+      isRotating,
+      clearRotationFailsafeTimeout,
+      clearRotationTimeout,
+      prefersReducedMotion,
+      finishRotation,
+    ],
+  );
 
-    if (typeof window !== 'undefined') {
-      // Failsafe: 1,5 másodperc múlva biztosan feloldjuk a forgást
-      rotationFailsafeTimeoutRef.current = window.setTimeout(() => {
-        rotationFailsafeTimeoutRef.current = null;
-        finishRotation();
-      }, 1500);
-    }
-  };
+  const handleMethodSelect = useCallback(
+    (methodId: string) => {
+      setSelectedMethodId(methodId);
+      handleFaceChange('brew');
+    },
+    [handleFaceChange],
+  );
 
   const rotation = activeFace === 'tea' ? 0 : activeFace === 'intro' ? -90 : -180;
 
@@ -486,7 +509,16 @@ export default function TeaModal({ tea, onClose }: Props) {
                 <MoreInfoPanel text={tea.fullDescription ?? ''} colorDark={colorDark} />
                 <div className={styles.spacer} />
                 <TeaDashboard tea={tea} colorDark={colorDark} />
-                <div className={styles.spacer} />
+                {brewMethods.length > 0 ? (
+                  <>
+                    <BrewMethodsPanel
+                      methods={brewMethods}
+                      onSelect={handleMethodSelect}
+                      selectedId={selectedMethodId}
+                    />
+                    <div className={styles.spacer} />
+                  </>
+                ) : null}
                 <PrepServePanel tea={tea} infoText={tea.when ?? ''} />
                 <div className={styles.spacer} />
 
@@ -576,6 +608,7 @@ export default function TeaModal({ tea, onClose }: Props) {
               tea={brewTea}
               onClose={() => handleFaceChange('intro')}
               embedded
+              initialMethodId={selectedMethodId}
               titleRef={brewTitleRef}
               containerRef={brewContentRef}
             />

@@ -33,6 +33,7 @@ type BrewJourneyProps = {
   embedded?: boolean;
   titleRef?: Ref<HTMLHeadingElement>;
   containerRef?: Ref<HTMLDivElement>;
+  initialMethodId?: string | null;
 };
 
 export default function BrewJourney({
@@ -42,6 +43,7 @@ export default function BrewJourney({
   embedded = false,
   titleRef,
   containerRef,
+  initialMethodId = null,
 }: BrewJourneyProps) {
   const normalizedTea = useMemo(
     () => ({
@@ -53,7 +55,7 @@ export default function BrewJourney({
   const [stage, setStage] = useState<'bridge' | 'setup' | 'plan' | 'timer' | 'finish'>(
     embedded ? 'setup' : 'bridge',
   );
-  const [methodId, setMethodId] = useState<string | null>(null);
+  const [methodId, setMethodId] = useState<string | null>(initialMethodId);
   const [volumeMl, setVolumeMl] = useState<number>(250);
   const [plan, setPlan] = useState<BrewMethodPlan | null>(null);
   const [animating, setAnimating] = useState(false);
@@ -73,6 +75,12 @@ export default function BrewJourney({
     [titleRef],
   );
 
+  useEffect(() => {
+    if (initialMethodId !== methodId) {
+      setMethodId(initialMethodId);
+    }
+  }, [initialMethodId, methodId]);
+  
   useEffect(() => {
     if (embedded) {
       return undefined;

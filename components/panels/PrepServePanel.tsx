@@ -3,7 +3,6 @@ import styles from '../../styles/TeaModal.module.css';
 import { getTeaColor } from '../../utils/colorMap';
 import PrepInfo from '@/components/panels/PrepInfo';
 import ColorCup from '@/components/ColorCup';
-import ServeModes from '@/components/ServeModes';
 
 type Props = {
   tea: any;
@@ -23,113 +22,47 @@ export default function PrepServePanel({ tea, infoText }: Props) {
   const tempC = Number(tea.tempC ?? tea.temperatureC ?? 0) || undefined;
   const steepMin = Number(tea.steepMin ?? tea.steepMinutes ?? 0) || undefined;
 
-  // >>> ColorCup MÉRET: ITT ÁLLÍTSD (px vagy pl. '10rem')
-  const CUP_SIZE: number | string = '25%';
+  const CUP_SIZE: number | string = '50%';
 
   // tea.color lehet címke vagy hex – getTeaColor mindkettőt kezeli
   const cupHex = getTeaColor(tea.color ?? '');
 
   // kategória szerinti háttér
   const tableSrc = `/table_background/table_${toSlug(tea?.category ?? '')}.png`;
+  const info = infoText?.trim();
 
   return (
-    <div className={styles.prepServeGrid}>
-      <div
-        style={{
-          position: 'relative',
-          display: 'grid',
-          placeItems: 'center',
-          width: '100%',
-          aspectRatio: '3 / 2',
-          padding: 12,
-          borderRadius: 12,
-          background: 'rgba(0,0,0,0.03)',
-          overflow: 'hidden',
-        }}
-      >
-        {/* 1) LEGALSÓ: kategória háttér (table_*.png) */}
+    <section className={`${styles.panelCard} ${styles.prepServeCard}`} aria-labelledby="prep-serve-heading">
+      <h3 id="prep-serve-heading" className={styles.sectionTitle}>
+        Előkészítés
+      </h3>
+      <div className={styles.prepServeCanvas}>
         <img
           src={tableSrc}
           alt=""
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain', // ha torzít, tehetsz 'contain'-t
-            zIndex: 0,
-            opacity: 0.9, // igény szerint
-            pointerEvents: 'none',
-          }}
-          // fallback: ha hiányzik a kategória-kép
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src =
-              '/table_background/table_default.png';
+          className={styles.prepServeBackground}
+          onError={(event) => {
+            (event.currentTarget as HTMLImageElement).src = '/table_background/table_default.png';
           }}
           draggable={false}
         />
-
-        {/* 2) KÖZÉPSŐ: csésze PNG */}
-        <img
-          src="/colorCup.png"
-          alt=""
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '55%',
-            width: '65%',
-            height: '65%',
-            objectFit: 'contain',
-            transform: 'translate(-50%, -50%)', // <<< ez hozza középre
-            zIndex: 1,
-            pointerEvents: 'none',
-          }}
-          draggable={false}
-        />
-
-        {/* 3) FELSŐ: a színes „tea” kör */}
-        <ColorCup
-          color={cupHex}
-          size={CUP_SIZE} // <<< a „chart”/csésze vizuális mérete
-          teaInsetPct={100}
-          teaOpacity={1}
-          aria-label={tea?.name ? `Szín: ${tea.name}` : 'Tea szín'}
-        />
-
-        {/* Bal oldali felirat */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: 0,
-            width: '30%',
-            transform: 'translateY(-50%)',
-            background: cupHex,
-            color: '#000',
-            fontWeight: 'bold',
-            padding: '0.25rem 0.75rem',
-            borderRadius: '4px',
-            zIndex: 3,
-          }}
-        >
-          {infoText}
+        <img src="/colorCup.png" alt="" className={styles.prepServeOverlay} draggable={false} />
+        <div className={styles.prepServeCup}>
+          <ColorCup
+            color={cupHex}
+            size={CUP_SIZE}
+            teaInsetPct={100}
+            teaOpacity={1}
+            aria-label={tea?.name ? `Szín: ${tea.name}` : 'Tea szín'}
+          />
         </div>
-
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 8,
-            right: 8,
-            zIndex: 4,
-          }}
-        >
-          <PrepInfo tempC={tempC} steepMin={steepMin} />
+        {info ? <div className={styles.prepServeBadge}>{info}</div> : null}
+      </div>
+      <div className={styles.prepServeDetails}>
+        <div className={styles.prepServeInfoCard}>
+          <PrepInfo tempC={tempC} steepMin={steepMin} colorDark="#1f2937" />
         </div>
       </div>
-
-      <div className={`${styles.panelCard} ${styles.prepServeModes}`}>
-        <ServeModes tea={tea} />
-      </div>
-    </div>
+    </section>
   );
 }

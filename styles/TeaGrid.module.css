@@ -3,8 +3,8 @@
   /* GRID alapok */
   --tiles-x: 3;
   --tiles-y: 3;
-  --tile-h: 160px;
-  --grid-w: 60%;
+  --tile-h: 140px;
+  --grid-w: 70%;
 
   /* Pager */
   --pager-size: 44px;
@@ -36,7 +36,7 @@
 /* ---------- Rács-keret ---------- */
 .gridWrap {
   position: fixed;
-  bottom: 20px;
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   width: var(--grid-w);
