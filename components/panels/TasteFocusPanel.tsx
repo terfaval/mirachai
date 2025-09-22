@@ -10,7 +10,7 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
   const focusData = getFocusOrdered(tea); // [{key,label,value}] in fixed order
   return (
     <section className={styles.panelElement} data-panel="taste-focus">
-      <div style={{ display:'grid', gridTemplateColumns:'60% 40%', gap:24, alignItems:'center' }}>
+      <div className={styles.tasteFocusRow}>
         {/* Taste – left */}
         <div className={styles.panelBox}>
           <TasteChart
