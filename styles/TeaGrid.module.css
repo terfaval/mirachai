@@ -7,6 +7,7 @@
   --grid-available-height: max(0px, calc(100vh - 120px));
   --grid-aspect: calc(var(--tiles-x) / var(--tiles-y));
   --grid-width: min(var(--grid-w), calc(var(--grid-available-height) * var(--grid-aspect)));
+  --grid-height: min(var(--grid-available-height), calc(var(--grid-width) / var(--grid-aspect)));
 
   /* Pager */
   --pager-size: 44px;
@@ -38,12 +39,14 @@
 /* ---------- Rács-keret ---------- */
 .gridWrap {
   position: fixed;
-  bottom: 60px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: var(--grid-w);
-  max-height: 100%;
-}
+  transform: translate(-50%, -50%);
+  width: var(--grid-width);
+  height: var(--grid-height);
+  max-width: 100vw;
+  max-height: var(--grid-available-height);
+  }
 
 /* ---------- Fő GRID (3×3) – a doboz ---------- */
 .grid {
@@ -197,10 +200,6 @@
     --grid-available-height: max(0px, calc(100vh - 110px));
     --pager-offset-y: 56px;
   }
-
-  .gridWrap {
-    bottom: 48px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -208,9 +207,5 @@
     --grid-w: 94vw;
     --grid-available-height: max(0px, calc(100vh - 88px));
     --pager-offset-y: 40px;
-  }
-
-  .gridWrap {
-    bottom: 32px;
   }
 }
