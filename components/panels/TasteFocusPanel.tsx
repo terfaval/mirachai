@@ -6,12 +6,20 @@ import { getFocusOrdered } from '@/utils/teaTransforms';
 
 type Props = { tea: any; colorDark: string };
 
+type TasteFocusRowStyle = React.CSSProperties & {
+  '--tf-col'?: string;
+};
+
 export default function TasteFocusPanel({ tea, colorDark }: Props) {
   const focusData = getFocusOrdered(tea); // [{key,label,value}] in fixed order
   const chartSize = 260;
+  const columnCount = focusData.length + 1;
+  const rowStyle: TasteFocusRowStyle = {
+    '--tf-col': String(columnCount),
+  };
   return (
     <section className={styles.panelElement} data-panel="taste-focus">
-      <div className={styles.tasteFocusRow}>
+      <div className={styles.tasteFocusRow} style={rowStyle}>
         {/* Taste – left */}
         <div className={`${styles.panelBox} ${styles.tasteFocusCard}`}>
           <TasteChart
@@ -25,14 +33,19 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
         </div>
 
         {/* Focus – right */}
-        <div className={`${styles.panelBox} ${styles.tasteFocusCard} ${styles.focusChartCard}`}>
-          <FocusChart
-            data={focusData}
-            size={chartSize}
-            colorDark={colorDark}
-            layout="row"
-          />
-        </div>
+        {focusData.map((focus) => (
+          <div
+            key={focus.key}
+            className={`${styles.panelBox} ${styles.tasteFocusCard} ${styles.focusChartCard}`}
+          >
+            <FocusChart
+              data={[focus]}
+              size={chartSize}
+              colorDark={colorDark}
+              layout="row"
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
