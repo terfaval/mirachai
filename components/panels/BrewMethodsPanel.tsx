@@ -10,6 +10,59 @@ type Props = {
 
 const INITIAL_FALLBACK = '★';
 
+const EQUIPMENT_ICON_MAP: Record<string, string> = {
+  'agar/pecsétgyanta vagy zselésítő': '/teasets/icon_teaready.svg',
+  'bögre': '/teasets/icon_mug.svg',
+  'calabash (tökhéj) vagy bögre': '/teasets/icon_mug.svg',
+  'bombilla (szűrős szívószál)': '/teasets/icon_tinycup.svg',
+  'colbrew üveg': '/teasets/icon_teaready.svg',
+  'csapolófej/pohár': '/teasets/icon_teaready.svg',
+  'csésze': '/teasets/icon_cup.svg',
+  'cukor': '/teasets/icon_sweetening.svg',
+  'finom szita': '/teasets/icon_filter_ok.svg',
+  'finom szűrő': '/teasets/icon_filter_ok.svg',
+  'finom szűrő/papír': '/teasets/icon_filter_ok.svg',
+  'finom szűrő/szűrőpapír': '/teasets/icon_filter_ok.svg',
+  'gaiwan/yi xing kanna': '/teasets/icon_gaiwan.svg',
+  'hőforrás': '/teasets/icon_pot.svg',
+  'hűtő': '/teasets/icon_ice.svg',
+  'jég': '/teasets/icon_ice.svg',
+  'kancsó': '/teasets/icon_jug.svg',
+  'kanál': '/teasets/icon_spoon.svg',
+  'kanál (chashaku)': '/teasets/icon_spoon.svg',
+  'kanál (rétegezéshez)': '/teasets/icon_spoon.svg',
+  'keverőkanál': '/teasets/icon_spoon.svg',
+  'kis lábas': '/teasets/icon_pot.svg',
+  'kis teáskanna koncentrátumhoz': '/teasets/icon_teapot.svg',
+  'kisméretű teáskanna': '/teasets/icon_teapot.svg',
+  'lábas': '/teasets/icon_pot.svg',
+  'matcha tál (chawan)': '/teasets/icon_teaready.svg',
+  'pohár': '/teasets/icon_cup.svg',
+  'pohár/palack': '/teasets/icon_teaready.svg',
+  'n₂ patron': '/teasets/icon_teaready.svg',
+  'nitro whipper vagy mini keg': '/teasets/icon_teaready.svg',
+  'samovár vagy vízmelegítő': '/teasets/icon_pot.svg',
+  'shot pohár': '/teasets/icon_tinycup.svg',
+  'szűrő': '/teasets/icon_filter_ok.svg',
+  'szűrőpapír': '/teasets/icon_filter_ok.svg',
+  'tárolóüveg': '/teasets/icon_teaready.svg',
+  'tej (növényi is lehet)': '/teasets/icon_milkjug.svg',
+  'teáskanna': '/teasets/icon_teapot.svg',
+  'teáskanna vagy lábas': '/teasets/icon_teapot.svg',
+  'tölcsér': '/teasets/icon_filter_no.svg',
+  'vízforraló': '/teasets/icon_pot.svg',
+  'vízkiöntő': '/teasets/icon_jug.svg',
+  'vízmérő/kancsó': '/teasets/icon_jug.svg',
+  'szódás palack vagy szóda': '/teasets/icon_teaready.svg',
+  'zárható edény cold brew-höz': '/teasets/icon_teaready.svg',
+  'zárható üveg': '/teasets/icon_teaready.svg',
+};
+
+function getEquipmentIcon(item: string): string | undefined {
+  const key = item.trim().toLowerCase();
+  return EQUIPMENT_ICON_MAP[key];
+}
+
 export default function BrewMethodsPanel({ methods, onSelect, selectedId }: Props) {
   if (!methods.length) {
     return null;
@@ -59,11 +112,15 @@ export default function BrewMethodsPanel({ methods, onSelect, selectedId }: Prop
                 <div className={styles.brewMethodEquipment}>
                   <span className={styles.equipmentLabel}>Felszerelés</span>
                   <ul className={styles.equipmentList}>
-                    {method.equipment.map((item) => (
-                      <li key={item} className={styles.equipmentItem}>
-                        {item}
-                      </li>
-                    ))}
+                    {method.equipment.map((item) => {
+                      const iconSrc = getEquipmentIcon(item);
+                      return (
+                        <li key={item} className={styles.equipmentItem}>
+                          {iconSrc ? <img src={iconSrc} alt="" className={styles.equipmentIcon} /> : null}
+                          {item}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ) : null}

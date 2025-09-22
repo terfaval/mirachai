@@ -874,9 +874,20 @@
 }
 
 .equipmentItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: 'Lato', sans-serif;
   font-size: 0.95rem;
   color: rgba(17,24,39,0.78);
+}
+
+.equipmentIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.08));
 }
 
 .brewFooter {

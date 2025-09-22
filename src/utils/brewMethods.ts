@@ -21,19 +21,29 @@ type BrewProfileMethod = BrewProfileDocument['methods'] extends Array<infer T>
 type BrewDescriptionDocument = (typeof brewDescriptions)[number];
 
 const METHOD_ICON_MAP: Record<string, string> = {
-  hot_standard: '/icons/serve_hot.svg',
-  iced_flash_chill: '/icons/serve_iced.svg',
-  coldbrew: '/icons/serve_coldbrew.svg',
-  tea_concentrate: '/icons/icon_prep.svg',
-  sparkling_tea: '/icons/icon_timing.svg',
-  nitro_tea: '/icons/icon_info.svg',
-  infused_spirits: '/icons/icon_taste.svg',
-  layered_brew: '/icons/icon_taste.svg',
-  experimental_texture: '/icons/icon_prep.svg',
-  tonic_style: '/icons/icon_info.svg',
+  ayurvedic_decoction: '/methods/icon_ayurvedic_decoction.svg',
+  coldbrew: '/methods/icon_coldbrew.svg',
+  experimental_texture: '/methods/icon_experimental_texture.svg',
+  gongfu: '/methods/icon_standard_hot.svg',
+  hot_standard: '/methods/icon_standard_hot.svg',
+  iced_flash_chill: '/methods/icon_iced_tea.svg',
+  infused_spirits: '/methods/icon_infused_spirit.svg',
+  latte: '/methods/icon_layered_brew.svg',
+  layered_brew: '/methods/icon_layered_brew.svg',
+  matcha_whisking: '/methods/icon_matcha_whisking.svg',
+  moroccan_mint: '/methods/icon_moroccan_mint.svg',
+  nitro_tea: '/methods/icon_nitro_tea.svg',
+  samovar: '/methods/icon_samovar.svg',
+  smoked_tea: '/methods/icon_smoked_tea.svg',
+  sparkling_tea: '/methods/icon_sparkling_tea.svg',
+  stovetop_chai: '/methods/icon_ayurvedic_decoction.svg',
+  tea_concentrate: '/methods/icon_tea_concentrate.svg',
+  tonic_style: '/methods/icon_tonic_style.svg',
+  wellness_shot: '/methods/icon_wellness_shot.svg',
+  yerba_mate: '/methods/icon_yerba_mate.svg',
 };
 
-const METHOD_ICON_FALLBACK = '/icons/icon_prep.svg';
+const METHOD_ICON_FALLBACK = '/methods/icon_standard_hot.svg';
 
 export function getBrewMethodsForTea(tea: Tea): BrewMethodSummary[] {
   const profile = findProfileForTea(tea);
