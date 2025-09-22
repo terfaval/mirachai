@@ -18,52 +18,46 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
 
   const description = (tea.fullDescription ?? '').trim();
 
-  const TASTE_SIZE = 300;
-  const ICON_SIZE = 64;
+  const TASTE_SIZE = 220;
   const TASTE_ROTATION_DEG = 0;
 
   return (
     <section className={styles.panelElement} data-panel="tea-dashboard">
-      <div className={styles.dashboardGrid}>
-        <div
-          className={`${styles.panelBox} ${styles.panelCard}`}
-          style={{ display: 'flex' }}
-        >
-          <IngredientsStack
-            ingredients={ingredients}
-            orientation="vertical"
-          />
-        </div>
-
-        <div className={styles.dashboardColumn}>
-          {description && (
-            <div className={`${styles.panelBox} ${styles.panelCard}`}>
-              <p className={styles.dashboardDescription}>{description}</p>
-            </div>
-          )}
-
-          <div
-            className={`${styles.panelBox} ${styles.panelCard} ${styles.dashboardTaste}`}
-          >
-            <div className={styles.dashboardCaffeine}>
+      <div className={styles.dashboardLayout}>
+        <div className={`${styles.panelBox} ${styles.panelCard} ${styles.dashboardIngredients}`}>
+          <div className={styles.dashboardCaffeineOverlay}>
+            <div className={styles.dashboardCaffeineCard}>
               <CaffeineBar value={caffeine} color={colorDark} />
-            </div>
-            <div className={styles.dashboardTasteChart}>
-              <TasteChart
-                tea={tea}
-                size={TASTE_SIZE}
-                iconSizePx={ICON_SIZE}
-                rotationDeg={TASTE_ROTATION_DEG}
-              />
             </div>
           </div>
 
+          <div className={styles.dashboardIngredientsBar}>
+            <IngredientsStack ingredients={ingredients} orientation="horizontal" />
+          </div>
+        </div>
+
+        {description && (
           <div className={`${styles.panelBox} ${styles.panelCard}`}>
+            <p className={styles.dashboardDescription}>{description}</p>
+          </div>
+        )}
+
+        <div className={styles.dashboardRow}>
+          <div className={`${styles.panelBox} ${styles.panelCard} ${styles.dashboardTasteCard}`}>
+            <TasteChart
+              tea={tea}
+              size={TASTE_SIZE}
+              rotationDeg={TASTE_ROTATION_DEG}
+              showLabels={false}
+            />
+          </div>
+
+          <div className={`${styles.panelBox} ${styles.panelCard} ${styles.dashboardFocusCard}`}>
             <FocusChart
               data={focusData}
               size={TASTE_SIZE}
               colorDark={colorDark}
-              layout="grid"
+              layout="row"
             />
           </div>
         </div>

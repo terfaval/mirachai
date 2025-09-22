@@ -1,7 +1,7 @@
 import styles from '../../styles/TasteChart.module.css';
 import { Tea } from '../../utils/filter';
 import { getTasteColor } from '../../utils/colorMap';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 const N = (v: string | number | null | undefined) =>
   typeof v === 'number' ? v : v != null ? Number(v) : NaN;
@@ -66,13 +66,12 @@ export default function TasteChart({
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
-  const radius = size * 0.3;      // hagyunk helyet az ikonoknak
+  const radius = size * 0.38;
   const step = radius / 3;
 
   const [tooltip, setTooltip] = useState<
-    { label: string; value: number; x: number; y: number; color: string } | null
+    { label: string; value: number; color: string; icon: string } | null
   >(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const rotationRad = (rotationDeg * Math.PI) / 180;
   
@@ -103,13 +102,23 @@ export default function TasteChart({
     return { ...entry, angle };
   });
 
-  const labelRadius = radius + iconSizePx; // ikon távolsága igazodik a méretéhez
+  const labelRadius = radius + (showLabels ? iconSizePx : 0);
   const base = pointRadiusBase;
   const POINT_RADII = [base * .6, base * .9, base];
 
+  const textColorFor = (hex?: string) => {
+    if (!hex || !/^#/.test(hex)) return '#111';
+    const c = hex.slice(1);
+    const normalized = c.length === 3 ? c.split('').map((ch) => ch + ch).join('') : c;
+    const r = parseInt(normalized.slice(0, 2), 16);
+    const g = parseInt(normalized.slice(2, 4), 16);
+    const b = parseInt(normalized.slice(4, 6), 16);
+    const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+    return lum > 0.55 ? '#111' : '#fff';
+  };
+
   return (
     <div
-      ref={containerRef}
       className={styles.container}
       style={{ width: size, height: size }}
     >
@@ -144,32 +153,13 @@ export default function TasteChart({
                   fillOpacity={opacity}
                   onMouseEnter={
                     isTop
-                      ? (e) => {
-                          const rect = containerRef.current?.getBoundingClientRect();
+                      ? () =>
                           setTooltip({
                             label: p.label,
                             value: p.value,
-                            x: e.clientX - (rect?.left ?? 0) + 8,
-                            y: e.clientY - (rect?.top ?? 0) + 8,
                             color: p.color,
-                          });
-                        }
-                      : undefined
-                  }
-                  onMouseMove={
-                    isTop
-                      ? (e) => {
-                          const rect = containerRef.current?.getBoundingClientRect();
-                          setTooltip((t) =>
-                            t
-                              ? {
-                                  ...t,
-                                  x: e.clientX - (rect?.left ?? 0) + 8,
-                                  y: e.clientY - (rect?.top ?? 0) + 8,
-                                }
-                              : t
-                          );
-                        }
+                            icon: p.icon,
+                          })
                       : undefined
                   }
                   onMouseLeave={isTop ? () => setTooltip(null) : undefined}
@@ -202,28 +192,14 @@ export default function TasteChart({
               }
               aria-label={p.label}
               title={p.label}
-              onMouseEnter={(e) => {
-                const rect = containerRef.current?.getBoundingClientRect();
+              onMouseEnter={() =>
                 setTooltip({
                   label: p.label,
                   value: p.value,
-                  x: e.clientX - (rect?.left ?? 0) + 8,
-                  y: e.clientY - (rect?.top ?? 0) + 8,
                   color: p.color,
-                });
-              }}
-              onMouseMove={(e) => {
-                const rect = containerRef.current?.getBoundingClientRect();
-                setTooltip((t) =>
-                  t
-                    ? {
-                        ...t,
-                        x: e.clientX - (rect?.left ?? 0) + 8,
-                        y: e.clientY - (rect?.top ?? 0) + 8,
-                      }
-                    : t
-                );
-              }}
+                  icon: p.icon,
+                })
+              }
               onMouseLeave={() => setTooltip(null)}
             />
           );
@@ -232,14 +208,26 @@ export default function TasteChart({
       {tooltip && (
         <div
           className={styles.tooltip}
-          style={{ left: `${tooltip.x}px`, top: `${tooltip.y}px`, color: tooltip.color, background: 'white' }}
+          style={{
+            backgroundColor: tooltip.color,
+            color: textColorFor(tooltip.color),
+          }}
           role="tooltip"
         >
-          <div className={styles.tooltipTitle}>
-            {STRENGTH_LABELS[tooltip.value]}
-          </div>
-          <div>
-            {tooltip.label} íz
+          <span
+            className={styles.tooltipIcon}
+            style={{
+              backgroundColor: textColorFor(tooltip.color),
+              WebkitMaskImage: `url(${tooltip.icon})`,
+              maskImage: `url(${tooltip.icon})`,
+            }}
+            aria-hidden
+          />
+          <div className={styles.tooltipContent}>
+            <div className={styles.tooltipTitle}>
+              {STRENGTH_LABELS[tooltip.value]}
+            </div>
+            <div className={styles.tooltipLabel}>{tooltip.label} íz</div>
           </div>
         </div>
       )}

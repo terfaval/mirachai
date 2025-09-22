@@ -324,18 +324,10 @@
   box-sizing: border-box;
 }
 
-.dashboardGrid {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  align-items: stretch;
-}
-
-.dashboardColumn {
+.dashboardLayout {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  min-height: 0;
 }
 
 .dashboardDescription {
@@ -346,28 +338,94 @@
   margin: 0;
 }
 
-.dashboardTaste {
+.dashboardIngredients {
+  position: relative;
+  overflow: visible;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  align-items: center;
+  gap: 20px;
+  padding: 40px 24px 32px 160px;
 }
 
-.dashboardCaffeine {
-  align-self: flex-end;
-}
-
-.dashboardTasteChart {
+.dashboardIngredientsBar {
   width: 100%;
+}
+
+.dashboardCaffeineOverlay {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 3;
+}
+
+.dashboardCaffeineCard {
+  background: #fff;
+  border-radius: 999px;
+  padding: 12px;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.prepServeGrid {
-  display: grid;
+.dashboardRow {
+  display: flex;
+  flex-wrap: wrap;
   gap: 24px;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   align-items: stretch;
+}
+
+.dashboardTasteCard {
+  flex: 0 1 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboardFocusCard {
+  flex: 1 1 0%;
+  display: flex;
+  align-items: stretch;
+}
+
+.dashboardFocusCard > div {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .dashboardIngredients {
+    padding: 36px 24px 28px 140px;
+  }
+
+  .dashboardTasteCard {
+    flex: 0 1 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardIngredients {
+    padding: 36px 20px 28px 20px;
+  }
+
+  .dashboardCaffeineOverlay {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .dashboardCaffeineCard {
+    margin-bottom: 12px;
+    border-radius: 32px;
+  }
+
+  .dashboardRow {
+    flex-direction: column;
+  }
+
+  .dashboardTasteCard,
+  .dashboardFocusCard {
+    flex: 1 1 100%;
+  }
 }
 
 .prepServeModes {

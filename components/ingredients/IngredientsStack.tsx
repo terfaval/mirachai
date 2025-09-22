@@ -188,8 +188,11 @@ export default function IngredientsStack({
       </div>
 
       <div
-        className="grid mt-3 gap-2"
-        style={{ gridTemplateColumns: `repeat(${Math.max(slices.length, 1)}, minmax(0, 1fr))` }}
+        className="grid mt-4 gap-3"
+        style={{
+          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+          alignItems: 'stretch',
+        }}
       >
         {labelNodes}
       </div>

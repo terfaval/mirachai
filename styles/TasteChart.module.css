@@ -66,15 +66,45 @@
 
 .tooltip {
   position: absolute;
-  pointer-events: none;
-  background: var(--color-light);
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-weight: 500;
+  pointer-events: none;left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
   white-space: nowrap;
   z-index: 1000;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+}
+
+.tooltipIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.tooltipContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
 }
 
 .tooltipTitle {
   font-weight: 600;
+  text-transform: capitalize;
+}
+
+.tooltipLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
 }

@@ -506,6 +506,8 @@ export default function TeaModal({ tea, onClose }: Props) {
                   origin={tea.origin ?? ''}
                 />
                 <div className={styles.spacer} />
+                <div className={styles.spacer} />
+                <div className={styles.spacer} />
                 <TeaDashboard tea={tea} colorDark={colorDark} />
                 <div className={styles.spacer} />
                 {brewMethods.length > 0 ? (

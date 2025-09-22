@@ -1,7 +1,7 @@
 import React from 'react';
 
 type Item = { key: string; label: string; value: number };
-type Layout = 'stack' | 'grid';
+type Layout = 'stack' | 'grid' | 'row';
 
 type Props = { data: Item[]; size?: number; colorDark?: string; layout?: Layout };
 
@@ -43,6 +43,89 @@ export default function FocusChart({
     return { ...item, value, displayLabel, levelLabel };
   });
 
+  const renderCard = (item: typeof normalized[number]) => (
+    <div
+      key={item.key}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: innerGap,
+        padding: cardPadding,
+        borderRadius: cardRadius,
+        backgroundColor: 'rgba(0,0,0,0.04)',
+        textAlign: 'center',
+      }}
+    >
+      <div
+        style={{
+          fontWeight: 700,
+          fontSize: focusFontSize,
+          textTransform: 'capitalize',
+        }}
+      >
+        {item.displayLabel}
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: columnGap,
+        }}
+        aria-hidden
+      >
+        {[1, 2, 3].map((level) => {
+          const active = level <= item.value;
+          return (
+            <span
+              key={level}
+              style={{
+                width: dotSize,
+                height: dotSize,
+                borderRadius: '50%',
+                border: `${dotBorder}px solid ${colorDark}`,
+                backgroundColor: active ? colorDark : 'transparent',
+                opacity: active ? 1 : 0.2,
+                display: 'inline-block',
+                transition: 'opacity 0.2s ease',
+              }}
+            />
+          );
+        })}
+      </div>
+      <div
+        style={{
+          fontSize: levelFontSize,
+          color: 'rgba(0,0,0,0.7)',
+          textTransform: 'lowercase',
+          letterSpacing: '0.01em',
+          fontWeight: 600,
+        }}
+      >
+        {item.levelLabel}
+      </div>
+    </div>
+  );
+
+  if (layout === 'row') {
+    return (
+      <div
+        style={{
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: `repeat(${normalized.length}, minmax(0, 1fr))`,
+          gap: containerGap,
+          padding,
+          boxSizing: 'border-box',
+          alignItems: 'stretch',
+        }}
+      >
+        {normalized.map(renderCard)}
+      </div>
+    );
+  }
+
   if (layout === 'grid') {
     return (
       <div
@@ -55,70 +138,7 @@ export default function FocusChart({
           boxSizing: 'border-box',
         }}
       >
-        {normalized.map((item) => (
-          <div
-            key={item.key}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: innerGap,
-              padding: cardPadding,
-              borderRadius: cardRadius,
-              backgroundColor: 'rgba(0,0,0,0.04)',
-            }}
-          >
-            <div
-              style={{
-                fontWeight: 700,
-                fontSize: focusFontSize,
-                textAlign: 'center',
-                textTransform: 'capitalize',
-              }}
-            >
-              {item.displayLabel}
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: columnGap,
-              }}
-              aria-hidden
-            >
-              {[1, 2, 3].map((level) => {
-                const active = level <= item.value;
-                return (
-                  <span
-                    key={level}
-                    style={{
-                      width: dotSize,
-                      height: dotSize,
-                      borderRadius: '50%',
-                      border: `${dotBorder}px solid ${colorDark}`,
-                      backgroundColor: active ? colorDark : 'transparent',
-                      opacity: active ? 1 : 0.2,
-                      display: 'inline-block',
-                      transition: 'opacity 0.2s ease',
-                    }}
-                  />
-                );
-              })}
-            </div>
-            <div
-              style={{
-                textAlign: 'center',
-                fontSize: levelFontSize,
-                color: 'rgba(0,0,0,0.7)',
-                textTransform: 'lowercase',
-                letterSpacing: '0.01em',
-                fontWeight: 600,
-              }}
-            >
-              {item.levelLabel}
-            </div>
-          </div>
-        ))}
+        {normalized.map(renderCard)}
       </div>
     );
   }
