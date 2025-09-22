@@ -43,7 +43,12 @@ export default function FocusChart({
     return { ...item, value, displayLabel, levelLabel };
   });
 
-  const renderCard = (item: typeof normalized[number]) => (
+  const minCardHeight = Math.max(160 * scale, size - padding * 2);
+
+  const renderCard = (
+    item: typeof normalized[number],
+    fillHeight = false,
+  ) => (
     <div
       key={item.key}
       style={{
@@ -56,6 +61,8 @@ export default function FocusChart({
         borderRadius: cardRadius,
         backgroundColor: 'rgba(0,0,0,0.04)',
         textAlign: 'center',
+        height: fillHeight ? '100%' : undefined,
+        minHeight: fillHeight ? minCardHeight : undefined,
       }}
     >
       <div
@@ -109,19 +116,23 @@ export default function FocusChart({
   );
 
   if (layout === 'row') {
+    const minColumnWidth = Math.max(160, 180 * scale);
     return (
       <div
         style={{
           width: '100%',
+          height: '100%',
           display: 'grid',
-          gridTemplateColumns: `repeat(${normalized.length}, minmax(0, 1fr))`,
+          gridTemplateColumns: `repeat(auto-fit, minmax(${minColumnWidth}px, 1fr))`,
+          gridAutoRows: '1fr',
           gap: containerGap,
           padding,
           boxSizing: 'border-box',
           alignItems: 'stretch',
+          justifyItems: 'stretch',
         }}
       >
-        {normalized.map(renderCard)}
+        {normalized.map((item) => renderCard(item, true))}
       </div>
     );
   }
@@ -138,7 +149,7 @@ export default function FocusChart({
           boxSizing: 'border-box',
         }}
       >
-        {normalized.map(renderCard)}
+        {normalized.map((item) => renderCard(item))}
       </div>
     );
   }

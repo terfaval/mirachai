@@ -3,7 +3,7 @@
   /* GRID alapok */
   --tiles-x: 3;
   --tiles-y: 3;
-  --tile-h: 140px;
+  --grid-h: 20%;
   --grid-w: 70%;
 
   /* Pager */

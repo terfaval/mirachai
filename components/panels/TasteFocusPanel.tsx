@@ -8,14 +8,15 @@ type Props = { tea: any; colorDark: string };
 
 export default function TasteFocusPanel({ tea, colorDark }: Props) {
   const focusData = getFocusOrdered(tea); // [{key,label,value}] in fixed order
+  const chartSize = 260;
   return (
     <section className={styles.panelElement} data-panel="taste-focus">
       <div className={styles.tasteFocusRow}>
         {/* Taste – left */}
-        <div className={styles.panelBox}>
+        <div className={`${styles.panelBox} ${styles.tasteFocusCard}`}>
           <TasteChart
             tea={tea}
-            size={240}
+            size={chartSize}
             minValue={1}
             pointRadiusBase={10}
             connectByStrongest
@@ -24,8 +25,13 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
         </div>
 
         {/* Focus – right */}
-        <div className={styles.panelBox}>
-          <FocusChart data={focusData} size={240} colorDark={colorDark} />
+        <div className={`${styles.panelBox} ${styles.tasteFocusCard} ${styles.focusChartCard}`}>
+          <FocusChart
+            data={focusData}
+            size={chartSize}
+            colorDark={colorDark}
+            layout="row"
+          />
         </div>
       </div>
     </section>
