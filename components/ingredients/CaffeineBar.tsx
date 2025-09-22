@@ -47,14 +47,14 @@ export default function CaffeineBar({ value, color }: Props) {
         )}
       </svg>
       {pct === 0 ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 text-lg font-bold">
-          <div>koffein-</div>
-          <div>mentes</div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 leading-tight">
+          <div className="font-bold text-[1.5rem] leading-snug">koffein-</div>
+          <div className="font-bold text-[1.5rem] leading-snug">mentes</div>
         </div>
       ) : (
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10">
-          <div className="text-lg font-bold">{Math.round(pct)}%</div>
-          <div className="text-sm">koffein</div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 leading-tight">
+          <div className="font-bold text-[1.5rem] leading-snug">{Math.round(pct)}%</div>
+          <div className="text-sm leading-snug">koffein</div>
         </div>
       )}
     </div>

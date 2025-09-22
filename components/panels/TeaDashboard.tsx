@@ -19,10 +19,8 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
     <section className={styles.panelElement} data-panel="tea-dashboard">
       <div className={styles.dashboardLayout}>
         <div className={`${styles.panelBox} ${styles.panelCard} ${styles.dashboardIngredients}`}>
-          <div className={styles.dashboardCaffeineOverlay}>
-            <div className={styles.dashboardCaffeineCard}>
-              <CaffeineBar value={caffeine} color={colorDark} />
-            </div>
+          <div className={styles.dashboardCaffeineCard}>
+            <CaffeineBar value={caffeine} color={colorDark} />
           </div>
 
           <div className={styles.dashboardIngredientsBar}>

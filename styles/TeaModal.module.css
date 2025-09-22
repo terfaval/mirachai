@@ -372,13 +372,16 @@
   position: relative;
   overflow: visible;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 40px 24px 32px 160px;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 24px;
 }
 
 .dashboardIngredientsBar {
+  flex: 1 1 auto;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .dashboardCaffeineOverlay {
@@ -396,6 +399,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
 }
 
 .dashboardRow {
@@ -424,7 +428,8 @@
 
 @media (max-width: 1024px) {
   .dashboardIngredients {
-    padding: 36px 24px 28px 140px;
+    gap: 24px;
+    padding: 28px 24px;
   }
 
   .dashboardTasteCard {
@@ -434,18 +439,19 @@
 
 @media (max-width: 768px) {
   .dashboardIngredients {
-    padding: 36px 20px 28px 20px;
-  }
-
-  .dashboardCaffeineOverlay {
-    position: relative;
-    top: 0;
-    left: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 32px 20px;
   }
 
   .dashboardCaffeineCard {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     border-radius: 32px;
+  }
+
+  .dashboardIngredientsBar {
+    width: 100%;
   }
 
   .dashboardRow {

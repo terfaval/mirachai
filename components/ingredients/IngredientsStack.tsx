@@ -4,7 +4,7 @@ import React from "react";
 import { Ingredient } from "../../src/types/tea";
 import { getIngredientColor } from "../../utils/colorMap";
 
-type Orientation = 'horizontal' | 'vertical';
+type Orientation = "horizontal" | "vertical";
 
 interface Props {
   ingredients: Ingredient[];
@@ -13,7 +13,7 @@ interface Props {
 
 export default function IngredientsStack({
   ingredients,
-  orientation = 'horizontal',
+  orientation = "horizontal",
 }: Props) {
   const safe = Array.isArray(ingredients) ? ingredients : [];
 
@@ -48,19 +48,6 @@ export default function IngredientsStack({
     slices.push(pool.splice(idx, 1)[0]);
   }
 
-
-  // egyszerű kontrasztos szövegszín (FINOMHANG: küszöböt állíthatod)
-  const textColorFor = (hex?: string) => {
-    if (!hex || !/^#/.test(hex)) return "#fff";
-    const c = hex.slice(1);
-    const n = c.length === 3 ? c.split("").map((ch) => ch + ch).join("") : c;
-    const r = parseInt(n.slice(0, 2), 16);
-    const g = parseInt(n.slice(2, 4), 16);
-    const b = parseInt(n.slice(4, 6), 16);
-    const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-    return lum > 0.55 ? "#111" : "#fff";
-  };
-
   const alphaBg = (hex?: string, alpha = 0.2) => {
     if (!hex || !/^#/.test(hex)) return hex;
     const c = hex.slice(1);
@@ -92,109 +79,130 @@ export default function IngredientsStack({
     return `radial-gradient(-90deg, ${start}, ${end})`;
   };
 
-  const labelNodes = slices.map((s, idx) => (
-    <div
-      key={`label-${s.name}-${idx}`}
-      className={
-        orientation === 'vertical'
-          ? 'leading-tight rounded-md p-2 text-left'
-          : 'text-center leading-tight rounded-md p-1'
-      }
-      style={{
-        backgroundColor: alphaBg(s.color, 0.6),
-        background: gradientBg(s.color, 0.6),
-        color: textColorFor(s.color),
-      }}
-    >
-      <div className="font-semibold text-base md:text-lg">
-        {Math.round(s.ratePct)}%
-      </div>
-      <div className="text-xs md:text-sm opacity-90">{s.name}</div>
-    </div>
-  ));
+  const tooltipClassName = (dir: Orientation) =>
+    dir === "vertical"
+      ? "pointer-events-none absolute left-full top-1/2 z-20 ml-3 flex -translate-y-1/2 -translate-x-2 transform items-center opacity-0 transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100"
+      : "pointer-events-none absolute left-1/2 top-full z-20 mt-3 flex -translate-x-1/2 translate-y-2 transform flex-col items-center opacity-0 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100";
 
-  if (orientation === 'vertical') {
+  const tooltipBody = (slice: Slice) => (
+    <div
+      className="rounded-md bg-slate-900/90 px-3 py-2 text-xs leading-tight text-white shadow-lg"
+      aria-hidden="true"
+    >
+      <div className="text-sm font-semibold leading-tight">{Math.round(slice.ratePct)}%</div>
+      <div className="leading-tight opacity-90">{slice.name}</div>
+    </div>
+  );
+
+  const buildLabel = (slice: Slice) => `${slice.name}: ${Math.round(slice.ratePct)}%`;
+  const radiusValue = 12;
+
+  if (orientation === "vertical") {
     return (
       <div
         style={{
-          display: 'flex',
+          display: "flex",
           flex: 1,
-          alignItems: 'stretch',
-          gap: 16,
-          width: '100%',
-          height: '100%',
+          alignItems: "stretch",
+          width: "100%",
+          height: "100%",
         }}
       >
         <div
           role="img"
           aria-label="Hozzávalók aránya (összesen 100%)"
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            flex: '0 0 120px',
-            maxWidth: '160px',
-            width: '100%',
+            display: "flex",
+            flexDirection: "column",
+            flex: "0 0 120px",
+            maxWidth: "160px",
+            width: "100%",
             borderRadius: 12,
-            overflow: 'hidden',
-            backgroundColor: '#e5e7eb',
+            backgroundColor: "#e5e7eb",
+            position: "relative",
           }}
         >
-          {slices.map((s, idx) => (
-            <div
-              key={`${s.name}-${idx}`}
-              style={{
-                flexGrow: s.ratePct,
-                flexBasis: 0,
-                backgroundColor: s.color,
-                background: gradientBg(s.color),
-                minHeight: 6,
-              }}
-            />
-          ))}
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            flex: 1,
-            flexDirection: 'column',
-            gap: 12,
-            justifyContent: 'center',
-          }}
-        >
-          {labelNodes}
+          {slices.map((s, idx) => {
+            const label = buildLabel(s);
+            const radius: React.CSSProperties = {};
+            if (idx === 0) {
+              radius.borderTopLeftRadius = radiusValue;
+              radius.borderTopRightRadius = radiusValue;
+            }
+            if (idx === slices.length - 1) {
+              radius.borderBottomLeftRadius = radiusValue;
+              radius.borderBottomRightRadius = radiusValue;
+            }
+
+            return (
+              <div
+                key={`${s.name}-${idx}`}
+                className="group relative focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-400"
+                tabIndex={0}
+                title={label}
+                aria-label={label}
+                style={{
+                  flexGrow: s.ratePct,
+                  flexBasis: 0,
+                  backgroundColor: s.color,
+                  background: gradientBg(s.color),
+                  minHeight: 6,
+                  ...radius,
+                }}
+              >
+                <div className={tooltipClassName("vertical")} aria-hidden="true">
+                  {tooltipBody(s)}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col justify-center w-full h-full">
-      <div
-        className="flex w-full h-16 overflow-hidden bg-gray-200 rounded-l-xl rounded-r-xl"
-        role="img"
-        aria-label="Hozzávalók aránya (összesen 100%)"
-      >
-        {slices.map((s, idx) => (
-          <div
-            key={s.name + idx}
-            className="relative h-full"
-            style={{
-              width: `${s.ratePct}%`,
-              backgroundColor: s.color,
-              background: gradientBg(s.color),
-            }}
-          />
-        ))}
-      </div>
+    <div className="flex h-full w-full flex-col justify-center">
+      <div className="relative w-full">
+        <div className="h-16 w-full rounded-2xl bg-gray-200" aria-hidden="true" />
+        <div
+          className="absolute inset-0 flex items-stretch rounded-2xl"
+          role="img"
+          aria-label="Hozzávalók aránya (összesen 100%)"
+        >
+          {slices.map((s, idx) => {
+            const label = buildLabel(s);
+            const radius: React.CSSProperties = {};
+            if (idx === 0) {
+              radius.borderTopLeftRadius = radiusValue;
+              radius.borderBottomLeftRadius = radiusValue;
+            }
+            if (idx === slices.length - 1) {
+              radius.borderTopRightRadius = radiusValue;
+              radius.borderBottomRightRadius = radiusValue;
+            }
 
-      <div
-        className="grid mt-4 gap-3"
-        style={{
-          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-          alignItems: 'stretch',
-        }}
-      >
-        {labelNodes}
+            return (
+              <div
+                key={`${s.name}-${idx}`}
+                className="group relative h-full outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-400"
+                tabIndex={0}
+                title={label}
+                aria-label={label}
+                style={{
+                  width: `${s.ratePct}%`,
+                  backgroundColor: s.color,
+                  background: gradientBg(s.color),
+                  ...radius,
+                }}
+              >
+                <div className={tooltipClassName("horizontal")} aria-hidden="true">
+                  {tooltipBody(s)}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
