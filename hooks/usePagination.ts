@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export function usePagination(totalItems: number, perPage = 9, initialPage = 1) {
   const [page, setPage] = useState(initialPage);
@@ -12,9 +12,20 @@ export function usePagination(totalItems: number, perPage = 9, initialPage = 1) 
   const start = (page - 1) * perPage;
   const end = start + perPage;
 
-  const goTo = (p: number) => setPage(Math.min(Math.max(1, p), totalPages));
-  const next = () => setPage((p) => Math.min(p + 1, totalPages));
-  const prev = () => setPage((p) => Math.max(p - 1, 1));
+  const goTo = useCallback(
+    (p: number) => {
+      setPage(Math.min(Math.max(1, p), totalPages));
+    },
+    [totalPages],
+  );
+
+  const next = useCallback(() => {
+    setPage((p) => Math.min(p + 1, totalPages));
+  }, [totalPages]);
+
+  const prev = useCallback(() => {
+    setPage((p) => Math.max(p - 1, 1));
+  }, []);
 
   return { page, totalPages, perPage, start, end, next, prev, goTo };
 }
