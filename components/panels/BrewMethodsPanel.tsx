@@ -54,7 +54,7 @@ export default function BrewMethodsPanel({ methods, onSelect, selectedId }: Prop
                 <div className={styles.brewMethodTitleGroup}>
                   <h4 className={styles.brewMethodName}>{method.name}</h4>
                   {method.oneLiner ?? method.description ? (
-                    <p className={styles.brewMethodDescription}>{method.oneLiner ?? method.description}</p>
+                    <p className={styles.brewMethodDescription}>{method.oneLiner}</p>
                   ) : null}
                 </div>
               </div>
