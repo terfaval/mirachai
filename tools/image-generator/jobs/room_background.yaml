@@ -1,0 +1,75 @@
+items:
+  - name: "desktop_background_hajnal"
+    reference_images:
+      - "./refs/teagrid_base.png"
+    size: "1536x1024"
+    prompt: >
+      Base composition (fix): cozy teahouse interior with wide space, large windows, and abundant plants along the walls.
+      Center back wall: a wooden counter with a vinyl record player surrounded by plants, a teaset, and a few books.
+      Left side: a small tea table with two chairs under the window, terrace door on the far left.
+      Middle: mostly open and airy space.
+      Right side: tea kitchen with jars, cups, brewing tools, many plants; on the far right, a door next to the kitchen.
+      Walls decorated with framed pictures and a bookshelf.
+      Materials: matte wood, stone counter base, paper-like textures, subtle grain, soft vignette.
+      Dawn light: pale sky outside, faint bluish light filtering through the windows, cool and gentle tones inside.
+      A faint glow on the vinyl player adds a quiet morning mood.
+      without: text, logos, watermarks, people, hands
+
+  - name: "desktop_background_reggel"
+    reference_images:
+      - "./refs/teagrid_base.png"
+    size: "1536x1024"
+    prompt: >
+      Base composition as above (same layout).
+      Materials: matte wood, stone counter base, paper-like textures, subtle grain, soft vignette.
+      Morning light: soft and fresh, gentle highlights across the plants, slight greenish reflection from the outside foliage.
+      On the small table two steaming cups suggest a morning ritual.
+      Calm and welcoming atmosphere.
+      without: text, logos, watermarks, people, hands
+
+  - name: "desktop_background_del"
+    reference_images:
+      - "./refs/teagrid_base.png"
+    size: "1536x1024"
+    prompt: >
+      Base composition as above (same layout).
+      Materials: matte wood, stone counter base, paper-like textures, subtle grain, soft vignette.
+      Noon light: bright and neutral daylight, clear contrast, minimal shadows.
+      Sunlight fills the room evenly, leaves outside vibrant green.
+      Crisp, clear, minimal mood; a small glint of light on the vinyl player lid.
+      without: text, logos, watermarks, people, hands
+
+  - name: "desktop_background_delutan"
+    reference_images:
+      - "./refs/teagrid_base.png"
+    size: "1536x1024"
+    prompt: >
+      Base composition as above (same layout).
+      Materials: matte wood, stone counter base, paper-like textures, subtle grain, soft vignette.
+      Afternoon light: slightly warm tone, long soft shadows stretching across the floor.
+      Relaxed and calm atmosphere.
+      On the tea kitchen counter, a half-open tea box catches a warm highlight.
+      without: text, logos, watermarks, people, hands
+
+  - name: "desktop_background_este"
+    reference_images:
+      - "./refs/teagrid_base.png"
+    size: "1536x1024"
+    prompt: >
+      Base composition as above (same layout).
+      Materials: matte wood, stone counter base, paper-like textures, subtle grain, soft vignette.
+      Evening golden hour: warm glow through the windows, long shadows across the floor, cozy amber atmosphere.
+      A small candle or lamp glows next to the vinyl player, enhancing the warm mood.
+      without: text, logos, watermarks, people, hands
+
+  - name: "desktop_background_ejszaka"
+    reference_images:
+      - "./refs/teagrid_base.png"
+    size: "1536x1024"
+    prompt: >
+      Base composition as above (same layout).
+      Materials: matte wood, stone counter base, paper-like textures, subtle grain, soft vignette.
+      Night: outside dark, inside warmly lit by pendant lamps, countertop lamp, and a few small indirect lights.
+      Pools of amber light highlight the vinyl player and tea kitchen area, cozy atmosphere.
+      Gentle reflections on wood, calm and readable details.
+      without: text, logos, watermarks, people, hands
