@@ -8,6 +8,8 @@ export type BrewMethodSummary = {
   id: string;
   name: string;
   description?: string;
+  oneLiner?: string;
+  gear: string[];
   equipment: string[];
   serveModes: ServeModeMeta[];
   icon: string;
@@ -72,11 +74,8 @@ export function getBrewMethodsForTea(tea: Tea): BrewMethodSummary[] {
         ? ((method as any).notes as string)
         : undefined;
 
-    const equipment = normalizeGear(
-      [
-        ...toArray(description?.meta && (description.meta as any).tools),
-        ...toArray((method as any)?.gear),
-      ].flatMap((value) => {
+    const descriptionToolsRaw = toArray(description?.meta && (description.meta as any).tools).flatMap(
+      (value) => {
         if (typeof value === 'string') {
           return [value];
         }
@@ -84,13 +83,28 @@ export function getBrewMethodsForTea(tea: Tea): BrewMethodSummary[] {
           return [];
         }
         return [String(value)];
-      }),
+      },
     );
+
+    const methodGearRaw = toArray((method as any)?.gear).flatMap((value) => {
+      if (typeof value === 'string') {
+        return [value];
+      }
+      if (value == null) {
+        return [];
+      }
+      return [String(value)];
+    });
+
+    const gear = normalizeGear(methodGearRaw);
+    const equipment = normalizeGear([...methodGearRaw, ...descriptionToolsRaw]);
 
     results.push({
       id: methodId,
       name: formatMethodName(methodId, (method as any)?.title),
       description: oneLiner ?? notes ?? undefined,
+      oneLiner,
+      gear,
       equipment,
       serveModes: getMethodServeModes(
         {

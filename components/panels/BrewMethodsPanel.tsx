@@ -29,7 +29,9 @@ export default function BrewMethodsPanel({ methods, onSelect, selectedId }: Prop
       <div className={`${styles.brewBody} ${styles.brewMethodsGrid}`}>
         {methods.map((method) => {
           const isSelected = selectedId === method.id;
-          const equipmentItems = normalizeGear(method.equipment);
+          const equipmentItems = method.gear?.length
+            ? method.gear
+            : normalizeGear(method.equipment);
           return (
             <button
               type="button"
@@ -51,8 +53,8 @@ export default function BrewMethodsPanel({ methods, onSelect, selectedId }: Prop
                 </div>
                 <div className={styles.brewMethodTitleGroup}>
                   <h4 className={styles.brewMethodName}>{method.name}</h4>
-                  {method.description ? (
-                    <p className={styles.brewMethodDescription}>{method.description}</p>
+                  {method.oneLiner ?? method.description ? (
+                    <p className={styles.brewMethodDescription}>{method.oneLiner ?? method.description}</p>
                   ) : null}
                 </div>
               </div>
