@@ -22,6 +22,10 @@ describe('normalizeGear', () => {
     expect(normalizeGear(['csapolófej/pohár'])).toEqual(['csapolófej']);
   });
 
+  it('keeps tölcsér combined alias as a single item', () => {
+    expect(normalizeGear(['tölcsér'])).toEqual(['tölcsér']);
+  });
+
   it('normalizes soda siphon aliases', () => {
     expect(normalizeGear(['szódás palack vagy szóda'])).toEqual(['szóda palack']);
   });
@@ -41,7 +45,15 @@ describe('normalizeGear', () => {
         "botmixer",
       ]
     `);
-
+    
+    const matcha = normalizeGear(['bambusz ecset (chasen)', 'chawan']);
+    expect(matcha).toMatchInlineSnapshot(`
+      [
+        "bambusz ecset (chasen)",
+        "csésze",
+      ]
+    `);
+    
     const sparklingTea = normalizeGear([
       'szódás palack vagy szóda',
       'mini keg',
@@ -70,12 +82,20 @@ describe('normalizeGear', () => {
       ]
     `);
   });
+
+  it('normalizes annotated gear variants', () => {
+    expect(normalizeGear(['botmixer (habhoz)'])).toEqual(['botmixer']);
+  });
 });
 
 describe('getEquipmentIcon', () => {
   it('resolves agar family to the gel icon', () => {
     expect(getEquipmentIcon('agar')).toBe('/teasets/icon_gel.svg');
     expect(getEquipmentIcon('zselesito')).toBe('/teasets/icon_gel.svg');
+  });
+
+  it('resolves tölcsér family to the funnel icon', () => {
+    expect(getEquipmentIcon('tölcsér')).toBe('/teasets/icon_funnel.svg');
   });
 
   it('distinguishes between gaiwan and yi xing kanna icons', () => {
@@ -87,7 +107,15 @@ describe('getEquipmentIcon', () => {
     expect(getEquipmentIcon('palack')).toBe('/teasets/icon_bottle.svg');
     expect(getEquipmentIcon('szódás palack vagy szóda')).toBe('/teasets/icon_soda.svg');
     expect(getEquipmentIcon('tárolóüveg (befőttes üveg)')).toBe('/teasets/icon_jar.svg');
-    expect(getEquipmentIcon('zárható üveg')).toBe('/teasets/icon_bottle_lock.svg');
+    expect(getEquipmentIcon('zárható üveg')).toBe('/teasets/icon_snapbottle.svg');
+  });
+
+  it('resolves specialty gear to dedicated icons', () => {
+    expect(getEquipmentIcon('mini keg')).toBe('/teasets/icon_minikeg.svg');
+    expect(getEquipmentIcon('N₂ patron')).toBe('/teasets/icon_n2patron.svg');
+    expect(getEquipmentIcon('füstölő pisztoly')).toBe('/teasets/icon_smokegun.svg');
+    expect(getEquipmentIcon('bambusz ecset')).toBe('/teasets/icon_chawan.svg');
+    expect(getEquipmentIcon('botmixer')).toBe('/teasets/icon_smokegun.svg');
   });
 
   it('falls back to the missing icon for unknown items', () => {

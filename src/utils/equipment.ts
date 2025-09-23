@@ -26,8 +26,13 @@ const EQUIPMENT_GROUPS: EquipmentAliasGroup[] = [
   },
   {
     canonicalName: 'csattos palack',
-    icon: `${EQUIPMENT_ICON_BASE}/icon_bottle_lock.svg`,
+    icon: `${EQUIPMENT_ICON_BASE}/icon_snapbottle.svg`,
     aliases: ['csattos palack', 'zárható üveg', 'zárható üveg (csattos palack)'],
+  },
+  {
+    canonicalName: 'bambusz ecset (chasen)',
+    icon: `${EQUIPMENT_ICON_BASE}/icon_chawan.svg`,
+    aliases: ['bambusz ecset (chasen)', 'bambusz ecset', 'chasen'],
   },
   {
     canonicalName: 'csésze',
@@ -91,6 +96,11 @@ const EQUIPMENT_GROUPS: EquipmentAliasGroup[] = [
     aliases: ['kanál', 'keverőkanál', 'kanál (rétegezéshez)'],
   },
   {
+    canonicalName: 'botmixer',
+    icon: `${EQUIPMENT_ICON_BASE}/icon_smokegun.svg`,
+    aliases: ['botmixer', 'botmixer (habhoz)', 'immersion blender'],
+  },
+  {
     canonicalName: 'chashaku',
     icon: `${EQUIPMENT_ICON_BASE}/icon_chashaku.svg`,
     aliases: ['chashaku', 'kanál (chashaku)'],
@@ -115,8 +125,13 @@ const EQUIPMENT_GROUPS: EquipmentAliasGroup[] = [
     ],
   },
   {
+    canonicalName: 'füstölőpisztoly',
+    icon: `${EQUIPMENT_ICON_BASE}/icon_smokegun.svg`,
+    aliases: ['füstölőpisztoly', 'füstölő pisztoly', 'smoke gun'],
+  },
+  {
     canonicalName: 'tölcsér',
-    icon: `${EQUIPMENT_ICON_BASE}/icon_filter_no.svg`,
+    icon: `${EQUIPMENT_ICON_BASE}/icon_funnel.svg`,
     aliases: ['tölcsér'],
   },
   {
@@ -143,6 +158,16 @@ const EQUIPMENT_GROUPS: EquipmentAliasGroup[] = [
     canonicalName: 'csapolófej',
     icon: `${EQUIPMENT_ICON_BASE}/icon_tap.svg`,
     aliases: ['csapolófej', 'csapolófej/pohár'],
+  },
+  {
+    canonicalName: 'mini keg',
+    icon: `${EQUIPMENT_ICON_BASE}/icon_minikeg.svg`,
+    aliases: ['mini keg', 'minikeg'],
+  },
+  {
+    canonicalName: 'N₂ patron',
+    icon: `${EQUIPMENT_ICON_BASE}/icon_n2patron.svg`,
+    aliases: ['N₂ patron', 'N2 patron', 'nitro patron'],
   },
   {
     canonicalName: 'palack',
