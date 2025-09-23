@@ -109,6 +109,20 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error(e);
-  process.exit(1);
+  const msg = (e?.error?.message || e?.message || "").toString();
+  if (e?.status === 403 && msg.includes("must be verified")) {
+    console.error("\n[403] A gpt-image-1 használatához verifikált szervezet kell.");
+    console.error("Lépések:");
+    console.error("  1) OpenAI -> Settings -> Organization -> General -> Verify Organization");
+    console.error("  2) Ellenőrizd a Billinget (org + a project, amelyhez a sk-proj kulcs tartozik).");
+    console.error("  3) Várj pár perc propagációt, majd futtasd újra: npm run imagegen -- jobs/bg.yaml\n");
+    process.exit(2);
+  } else if (e?.status === 400 && e?.param === "size") {
+    console.error("\n[400] Méret hiba. Támogatott: 1024x1024, 1536x1024, 1024x1536, auto.\n");
+    process.exit(2);
+  } else {
+    console.error(e);
+    process.exit(1);
+  }
 });
+
