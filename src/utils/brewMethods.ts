@@ -1,6 +1,7 @@
 import brewProfiles from '@/data/brew_profiles.json';
 import brewDescriptions from '@/data/brew_descriptions.json';
 import type { Tea } from '@/utils/filter';
+import { normalizeGear } from '@/utils/equipment';
 import { getMethodServeModes, type ServeModeMeta } from './serveModes';
 
 export type BrewMethodSummary = {
@@ -71,10 +72,20 @@ export function getBrewMethodsForTea(tea: Tea): BrewMethodSummary[] {
         ? ((method as any).notes as string)
         : undefined;
 
-    const equipment = uniqueStrings([
-      ...toArray(description?.meta && (description.meta as any).tools),
-      ...toArray((method as any)?.gear),
-    ]);
+    const equipment = normalizeGear(
+      [
+        ...toArray(description?.meta && (description.meta as any).tools),
+        ...toArray((method as any)?.gear),
+      ].flatMap((value) => {
+        if (typeof value === 'string') {
+          return [value];
+        }
+        if (value == null) {
+          return [];
+        }
+        return [String(value)];
+      }),
+    );
 
     results.push({
       id: methodId,
@@ -174,24 +185,6 @@ function toArray(value: unknown): unknown[] {
     return [];
   }
   return [value];
-}
-
-function uniqueStrings(values: unknown[]): string[] {
-  const seen = new Set<string>();
-  const result: string[] = [];
-  for (const value of values) {
-    const text = typeof value === 'string' ? value.trim() : String(value ?? '').trim();
-    if (!text) {
-      continue;
-    }
-    const key = text.toLowerCase();
-    if (seen.has(key)) {
-      continue;
-    }
-    seen.add(key);
-    result.push(text);
-  }
-  return result;
 }
 
 function slugify(value: unknown): string {

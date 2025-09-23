@@ -135,7 +135,7 @@ export default function TeaCard({
               '--tile-ratio-x': tileRatioX,
               '--tile-ratio-y': tileRatioY,
               '--mandala-scale': 1,
-              '--mandala-prezoom': 2.8,
+              '--mandala-prezoom': 2.3,
               '--mandala-url': `url(${mandalaUrl})`,
             } as React.CSSProperties
           }
