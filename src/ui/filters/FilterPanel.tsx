@@ -4,6 +4,7 @@ import MultiSelectDropdown from "./MultiSelectDropdown";
 import Slider from "./Slider";
 import Chip from "./Chip";
 import { getCategoryColors } from "../../utils/colorMap";
+import { getMethodIcon } from "@/utils/brewMethods";
 import type { NormalizeResult, TokenValue } from "../../../lib/normalize";
 import {
   CAFFEINE_BUCKET_OPTIONS,
@@ -31,7 +32,9 @@ export type FilterPanelData = Pick<
     | "ingredients"
     | "allergens"
     | "methods"
->;
+> & {
+  methodCounts?: Record<string, number>;
+};
 
 type Props = {
   open: boolean;
@@ -328,6 +331,9 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                 <div className="flex flex-wrap gap-2">
                   {data.methods.map(method => {
                     const selected = value.methods.includes(method.id);
+                    const count = data.methodCounts ? data.methodCounts[method.id] ?? 0 : undefined;
+                    const disabled = count !== undefined && count <= 0;
+                    const iconSrc = getMethodIcon(method.id);
                     return (
                       <button
                         key={method.id}
@@ -335,13 +341,23 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                         onClick={() =>
                           onChange({ ...value, methods: toggleValue(value.methods, method.id) })
                         }
-                        className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm transition-colors ${
                           selected
                             ? "bg-gray-900 text-white border-gray-900"
-                            : "bg-white hover:bg-gray-50"
+                            : disabled
+                              ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
+                              : "bg-white hover:bg-gray-50"
                         }`}
+                        disabled={disabled}
+                        title={method.label}
                       >
-                        {method.label}
+                        {iconSrc ? <img src={iconSrc} alt="" className="h-5 w-5" aria-hidden /> : null}
+                        <span className="flex-1 truncate text-left">{method.label}</span>
+                        {count !== undefined ? (
+                          <span className="ml-auto text-xs font-medium text-gray-500">
+                            {count}
+                          </span>
+                        ) : null}
                       </button>
                     );
                   })}

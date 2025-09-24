@@ -49,6 +49,11 @@ const METHOD_ICON_MAP: Record<string, string> = {
 
 const METHOD_ICON_FALLBACK = '/methods/icon_standard_hot.svg';
 
+export function getMethodIcon(methodId: string): string {
+  const normalized = methodId.trim().toLowerCase();
+  return METHOD_ICON_MAP[normalized] ?? METHOD_ICON_FALLBACK;
+}
+
 export function getBrewMethodsForTea(tea: Tea): BrewMethodSummary[] {
   const profile = findProfileForTea(tea);
   if (!profile || !Array.isArray(profile.methods)) {
@@ -115,7 +120,7 @@ export function getBrewMethodsForTea(tea: Tea): BrewMethodSummary[] {
         },
         tea,
       ),
-      icon: guessMethodIcon(methodId),
+      icon: getMethodIcon(methodId),
     });
   }
 
@@ -185,11 +190,6 @@ function formatMethodName(methodId: string, title?: unknown): string {
     .filter((segment) => segment.length > 0)
     .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
     .join(' ');
-}
-
-function guessMethodIcon(methodId: string): string {
-  const normalized = methodId.toLowerCase();
-  return METHOD_ICON_MAP[normalized] ?? METHOD_ICON_FALLBACK;
 }
 
 function toArray(value: unknown): unknown[] {

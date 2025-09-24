@@ -27,7 +27,13 @@ const EQUIPMENT_GROUPS: EquipmentAliasGroup[] = [
   {
     canonicalName: 'csattos palack',
     icon: `${EQUIPMENT_ICON_BASE}/icon_snapbottle.svg`,
-    aliases: ['csattos palack', 'zárható üveg', 'zárható üveg (csattos palack)'],
+    aliases: [
+      'csattos palack',
+      'zárható üveg',
+      'zárható üveg (csattos palack)',
+      'fermentáló palack',
+      'fermentáló palack (PET vagy flip-top)',
+    ],
   },
   {
     canonicalName: 'bambusz ecset (chasen)',
@@ -177,6 +183,7 @@ const EQUIPMENT_GROUPS: EquipmentAliasGroup[] = [
       'pohár/palack',
       'pohár / palack',
       'colbrew üveg',
+      'coldbrew üveg',
       'zárható edény cold brew-höz',
     ],
   },

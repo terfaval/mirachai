@@ -383,12 +383,19 @@ export default function Home({ normalization }: HomeProps) {
     );
     const allergens = normalization.allergens.filter((allergen) => availableAllergens.has(allergen.slug));
 
-    const availableMethods = new Set(
-      teasByFacet('methods')
-        .flatMap((tea) => tea.methodIds)
-        .filter(isNonEmptyString),
+    const methodCountMap = new Map<string, number>();
+    for (const tea of teasByFacet('methods')) {
+      const ids = Array.isArray((tea as any).methodIds) ? (tea as any).methodIds : [];
+      for (const rawId of ids) {
+        const id = typeof rawId === 'string' ? rawId.trim() : String(rawId ?? '').trim();
+        if (!id) continue;
+        methodCountMap.set(id, (methodCountMap.get(id) ?? 0) + 1);
+      }
+    }
+    const methods = normalization.methods.filter(
+      (method) => (methodCountMap.get(method.id) ?? 0) > 0,
     );
-    const methods = normalization.methods.filter((method) => availableMethods.has(method.id));
+    const methodCounts = Object.fromEntries(methodCountMap.entries());
 
     return {
       categories,
@@ -402,6 +409,7 @@ export default function Home({ normalization }: HomeProps) {
       ingredients,
       allergens,
       methods,
+      methodCounts,
     };
   }, [teas, filterState, normalization]);
   

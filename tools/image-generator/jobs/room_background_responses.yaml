@@ -1,0 +1,53 @@
+# Reference-based room backgrounds: same room, lighting-only changes.
+project_model: gpt-image-1
+project_reference: "./refs/teagrid_base.png"      # 1) fixed room layout reference (must exist)
+style_reference: "./refs/background_noon.png"     # 2) style/palette hint (optional but recommended)
+project_sizes: ["desktop_wide"]                   # 1536x1024
+project_n: 1
+
+# Full, fixed room composition (do NOT change)
+project_base_prompt: >
+  Cozy teahouse interior, full room in a single wide composition.
+  Large windows on the left wall with a terrace door at the far left.
+  Center back wall: wooden counter with a vinyl record player, a teaset and a few books.
+  Right side: tea kitchen with jars, cups, brewing tools, many plants; a door on the far right.
+  Walls decorated with framed pictures and a bookshelf.
+  Materials: matte wood, stone counter base, paper-like textures, subtle grain, soft vignette.
+  Wide, readable layout with generous negative space in the middle.
+
+project_negative: "text, logos, watermarks, people, hands"
+
+items:
+  - name: "desktop_background_hajnal"   # Dawn
+    light: >
+      Dawn light: pale sky outside, faint bluish early light filtering through the windows.
+      Cool, gentle tones, very soft contrast. A tiny, faint standby glow on the record player only.
+
+  - name: "desktop_background_reggel"   # Morning
+    light: >
+      Morning light: soft and fresh. Gentle highlights ripple across leaves and tabletops.
+      Slight greenish bounce from outside foliage. Two steaming cups on the small table suggest a morning ritual.
+
+  - name: "desktop_background_del"      # Noon
+    light: >
+      Noon light: bright, strong yet diffused sunlight filling the room evenly.
+      Clear contrast without harsh clipping. In the sunbeams a subtle veil of floating dust motes is visible,
+      softly sparkling in the air.
+
+  - name: "desktop_background_delutan"  # Afternoon
+    light: >
+      Afternoon light: slightly warm tone. Longer, soft shadows stretching across the floor.
+      Calm, relaxed atmosphere, balanced exposure across the room.
+
+  - name: "desktop_background_este"     # Evening golden hour
+    light: >
+      Evening golden hour: warm amber light pours through the windows, long soft shadows.
+      Add a small table lamp near the record player at **low intensity (~10–15%)**;
+      the lamp gently accents surfaces without overpowering the sunset.
+
+  - name: "desktop_background_ejszaka"  # Night
+    light: >
+      Night: outside dark. Turn on only low, warm practical lights:
+      two pendant lights and a subtle countertop lamp at **low intensity (5–15%)**.
+      Create small pools of amber light around the record player and tea kitchen; overall dim, intimate atmosphere,
+      deep yet readable shadows; no blown highlights.
