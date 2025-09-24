@@ -331,6 +331,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -917,6 +950,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -1195,6 +1261,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -1785,6 +1884,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -2133,6 +2265,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -2793,6 +2958,39 @@
         "notes": [
           "A bombilla maga a szűrő; a 'maté-kör' élmény része a sok újratöltés."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -3380,6 +3578,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": false,
@@ -3970,6 +4201,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -5283,6 +5547,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -5563,6 +5860,39 @@
         "notes": [
           "A bombilla maga a szűrő; a 'maté-kör' élmény része a sok újratöltés."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -6489,6 +6819,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -6832,6 +7195,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -7357,6 +7753,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -7700,6 +8129,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -8043,6 +8505,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -9055,6 +9550,39 @@
         "notes": [
           "A bombilla maga a szűrő; a 'maté-kör' élmény része a sok újratöltés."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -9579,6 +10107,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -10136,6 +10697,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -11028,6 +11622,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -11716,6 +12343,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -12059,6 +12719,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -13080,6 +13773,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -13943,6 +14669,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -14960,6 +15719,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -15726,6 +16518,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -16069,6 +16894,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -16480,6 +17338,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -16789,6 +17680,39 @@
         "notes": [
           "A bombilla maga a szűrő; a 'maté-kör' élmény része a sok újratöltés."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -17064,6 +17988,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -18018,6 +18975,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -18361,6 +19351,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -18674,6 +19697,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -19300,6 +20356,39 @@
         "notes": [
           "A bombilla maga a szűrő; a 'maté-kör' élmény része a sok újratöltés."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -20136,6 +21225,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -20513,6 +21635,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -21351,6 +22506,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -21760,6 +22948,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -22100,6 +23321,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -22624,6 +23878,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -23488,6 +24775,39 @@
         "notes": [
           "A bombilla maga a szűrő; a 'maté-kör' élmény része a sok újratöltés."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -24078,6 +25398,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -24489,6 +25842,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -25106,6 +26492,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -25630,6 +27049,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -26526,6 +27978,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -26869,6 +28354,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -27527,6 +29045,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -28294,6 +29845,39 @@
         "notes": [
           "A bombilla maga a szűrő; a 'maté-kör' élmény része a sok újratöltés."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -28569,6 +30153,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -29436,6 +31053,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -29710,6 +31360,39 @@
         "notes": [
           "A bombilla maga a szűrő; a 'maté-kör' élmény része a sok újratöltés."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -30696,6 +32379,39 @@
         "notes": [
           "Hidegen is fogyasztható; jégre öntve frissítő."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -31072,6 +32788,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": false,
@@ -31449,6 +33198,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -32041,6 +33823,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -32844,6 +34659,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -33369,6 +35217,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -33986,6 +35867,39 @@
         "notes": [
           "Relax/energizáló profil szerint válassz növényt."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,
@@ -34393,6 +36307,39 @@
         "notes": [
           "Kiváló alap latte-hoz, jeges teához, mocktailokhoz."
         ]
+      },
+      {
+        "method_id": "fermentea",
+        "title": "Fermentea – könnyű, pezsgős teaerjesztés (2–3 nap)",
+        "filter_required": true,
+        "use_filter_default": true,
+        "ratio": "alap főzet szerint + 20–30 g cukor / 1 L",
+        "gear": [
+          "teáskanna vagy coldbrew üveg",
+          "szűrő",
+          "fermentáló palack (PET vagy flip-top)",
+          "tölcsér"
+        ],
+        "steps": [
+          "Készíts 1 liter erősebb teaalapot (forró vagy coldbrew a tea profilja szerint).",
+          "Édesítsd 20–30 g cukorral (2–3% w/v), majd hűtsd 24–26°C-ra.",
+          "Adj hozzá indítót: 2–3 ek gyömbérbug, vagy 80–100 ml kombucha, vagy 2–3 ek kefír savó.",
+          "Palackozd, zárd le. Szobahőn erjeszd 24–72 órát; naponta egyszer nyisd ki röviden a nyomás miatt.",
+          "Ha elég szénsavas és ízlik, hűtsd be és szűrd/fejtsd le. Fogyasztásig hűtve tárold."
+        ],
+        "sweetener_optional": false,
+        "milk_optional": false,
+        "allow_no_filter": false,
+        "preheat_vessel": false,
+        "pre_rinse": false,
+        "water_type": "medium",
+        "yield_ml": 1000,
+        "leaf_fragmentation": "medium",
+        "caution_notes": [
+          "Nyomásveszély: csak olyan palackot használj, ami bírja a szénsavat. Naponta röviden \"büfiztesd\".",
+          "Higiénia: minden eszköz legyen tiszta; erjedés után hűtve tárold."
+        ],
+        "notes": "Gyümölcsös/herbál teákkal működik a legjobban. Erősen csípős vagy tejes/latte jellegű keverékek kevésbé ajánlottak."
       }
     ],
     "use_filter_default": true,

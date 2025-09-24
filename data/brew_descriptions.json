@@ -26350,5 +26350,772 @@
         "pohár/palack"
       ]
     }
+  },
+  {
+    "tea": "Szolid Optimizmus",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Rövid Kitérő",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Barátságos Köd",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Mini Ünnep",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Kis Idő",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Apró Zárás",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Oolong Harmónia",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Krizantém Harmat",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Mező Frissessége",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Latin Energia",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Derűs Kanyar",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Ezeregy Rózsa",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Karácsonyi Szilva",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Reggeli Restart",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Nappforduló Fény",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Anyagcsere Tűz",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Szív ereje",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Kukorica Napfény",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Pandan Kókusz Álom",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Nyitott Ablak",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Kis Csavar",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Jáde Légzés",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Sakura Csend",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Marokkói Napfény",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Északi Bogyómező",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Afrikai Naplemente",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Sivatagi Szellő",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Andoki Fény",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Amazonas Zöldje",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Megérdemelt Szünet",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Tiszta Hang",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Nyitott Jegy",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Mini Csoda",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Rejtett Tartalék",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Könnyed Kanyar",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Derűs Kitérő",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Túlélőcsomag",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Alap Derű",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Váratlan Mosoly",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Finom Fordulat",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Finom Reset",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Finom Kikapcs",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Kalahári Hajnal",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Szavanna Sóhaj",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Kilifi Part",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Tavaszi Nyitány",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Mediterrán Rakpart",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Tereré Lendület",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Guayusa Ébresztő",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Morada Szikra",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Andoki Pörkölés",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Jégvörös Latte",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Fehér Szellő",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Yuzu Sencha Szellő",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Ume–Shiso Derű",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Karkadé Oázis",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Beduin Csend",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Za’atar Szellő",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
+  },
+  {
+    "tea": "Licsi Liget",
+    "method": "fermentea",
+    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
+    "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
+    "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
+    "caution_text": "Nyomásveszély: használj erős palackot és naponta \"büfiztesd\". Tisztaság kritikus; készre érve hűtve tárold, 5–7 napon belül fogyaszd.",
+    "meta": {
+      "added_by": "assistant",
+      "version": 1
+    }
   }
 ]
