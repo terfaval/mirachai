@@ -1,18 +1,18 @@
-// Headless image generation via OpenAI Responses API + image_generation tool
-// Reference-based variants: stable room layout, only lighting/style changes.
+// Headless image generation via OpenAI Images API (prompt-only, stable now)
+// Why prompt-only? Your current SDK rejects Responses image tool + edits.
+// We'll keep composition explicit in the prompt so the room stays consistent.
 //
-// Usage:
+// Usage examples:
 //   node scripts/imagegen_responses.js jobs/room_background_responses.yaml
+//   node scripts/imagegen_responses.js jobs/room_background_responses.yaml --only desktop_background_del
+//   node scripts/imagegen_responses.js jobs/room_background_responses.yaml --n 2 --size 1024x1024
+//   node scripts/imagegen_responses.js jobs/room_background_responses.yaml --dry
 //
-// Requirements:
-//   - Node 18+
-//   - npm i openai js-yaml dotenv sharp
-//   - OPENAI_API_KEY in .env.local or env
-//
-// Notes:
-//   - Two refs supported: project_reference (layout), style_reference (palette/texture)
-//   - Sizes: desktop_wide(1536x1024) | mobile_tall(1024x1536) | square(1024x1024)
-//   - Output: generated/<timestamp>/<item>/<size>/*.png
+// Switches:
+//   --only <itemName>    Run only a single item by name
+//   --n <int>            Override number of images per item (default from YAML)
+//   --size <WxH>         Override size for all (must be 1024x1024|1536x1024|1024x1536)
+//   --dry                Dry-run: show what would be generated, but don't call the API
 
 import fs from "fs";
 import path from "path";
@@ -87,33 +87,6 @@ async function postCropIfNeeded(filePath, postCropSize) {
   console.log(`      - post-crop saved: ${outPath}`);
 }
 
-function fileToDataUri(filePath) {
-  const abs = path.isAbsolute(filePath) ? filePath : path.join(process.cwd(), filePath);
-  if (!fs.existsSync(abs)) throw new Error(`Missing file: ${filePath}`);
-  const ext = path.extname(abs).toLowerCase().replace(".", "");
-  const mime = (ext === "jpg" || ext === "jpeg") ? "image/jpeg"
-             : (ext === "png") ? "image/png"
-             : "application/octet-stream";
-  const b64 = fs.readFileSync(abs).toString("base64");
-  return `data:${mime};base64,${b64}`;
-}
-
-// Robust extractor across possible SDK shapes
-function extractImagesFromResponses(resp) {
-  const out = [];
-  const arr = resp?.output ?? resp?.data ?? [];
-  for (const item of arr) {
-    const content = item?.content || [];
-    for (const c of content) {
-      const img = c?.image || c?.["image"];
-      if (!img) continue;
-      if (img.url) out.push({ url: img.url });
-      if (img.b64_json) out.push({ b64_json: img.b64_json });
-    }
-  }
-  return out;
-}
-
 function openaiClient() {
   if (!process.env.OPENAI_API_KEY) {
     console.error("Missing OPENAI_API_KEY in .env.local or environment.");
@@ -122,7 +95,19 @@ function openaiClient() {
   return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 }
 
-async function runJob(jobPath) {
+function parseArgs(argv) {
+  const out = { only: null, n: null, size: null, dry: false };
+  for (let i = 3; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === "--dry") out.dry = true;
+    else if (a === "--only") out.only = argv[++i] || null;
+    else if (a === "--n") out.n = parseInt(argv[++i] || "NaN", 10);
+    else if (a === "--size") out.size = argv[++i] || null;
+  }
+  return out;
+}
+
+async function runJob(jobPath, cli) {
   const openai = openaiClient();
 
   const jobAbs = path.isAbsolute(jobPath) ? jobPath : path.join(process.cwd(), jobPath);
@@ -130,82 +115,92 @@ async function runJob(jobPath) {
   const job = yaml.load(raw);
 
   const outRoot = path.join(process.cwd(), "generated", stamp());
-  await ensureDir(outRoot);
+  if (!cli.dry) await ensureDir(outRoot);
 
+  // project defaults
   const model = job?.project_model || "gpt-image-1";
-  const n = Number(job?.project_n ?? 1);
+  const defaultN = Number(job?.project_n ?? 1);
   const projectSizes = job?.project_sizes?.length ? job.project_sizes : ["desktop_wide"];
   const sizeStrings = projectSizes.map(resolveSize);
-  const baseRef = job?.project_reference;
-  const styleRef = job?.style_reference;
-  const baseDataUri = fileToDataUri(baseRef);
-  const styleDataUri = styleRef ? fileToDataUri(styleRef) : null;
 
-  const basePrompt = (job?.project_base_prompt || "").toString().trim();
+  const basePromptBlock = (job?.project_base_prompt || "").toString().trim();
   const negative = (job?.project_negative || "text, logos, watermarks, people, hands").toString();
+  const styleReferenceNote = job?.style_reference
+    ? `Style reference hint: keep closer to the palette, shading and subtle texture of the SECOND reference image (${job.style_reference}).`
+    : "";
+
   const items = Array.isArray(job?.items) ? job.items : [];
 
-  if (!baseRef) {
-    console.error("project_reference is required in YAML (path to your base room image).");
-    process.exit(2);
+  // filter by --only
+  const runItems = cli.only ? items.filter(x => x.name === cli.only) : items;
+
+  if (!runItems.length) {
+    console.warn(cli.only
+      ? `No item found by name: ${cli.only}`
+      : "No items in YAML.");
+    return;
   }
 
-  for (const item of items) {
+  for (const item of runItems) {
     const name = String(item.name || "noname").trim();
     if (!name) continue;
 
-    const sizes = (item.sizes?.length ? item.sizes
-                 : item.size ? [item.size]
-                 : sizeStrings).map(resolveSize);
+    // sizes (CLI override has precedence)
+    const baseSizes = (item.sizes?.length ? item.sizes
+                    : item.size ? [item.size]
+                    : sizeStrings).map(resolveSize);
+    const sizes = cli.size ? [resolveSize(cli.size)] : baseSizes;
 
+    // n (CLI override)
+    const n = Number.isInteger(cli.n) && cli.n > 0 ? cli.n : Number(item.n ?? defaultN);
+
+    // LIGHTING
     const light = (item.light || "").toString().trim();
     if (!light) { console.warn(`Skip "${name}" — missing 'light'.`); continue; }
 
+    // Build FULL prompt (explicit layout every time for consistency)
     const fullPrompt =
-`${basePrompt}
+`FULL ROOM, single wide composition, consistent layout across all variants.
+${basePromptBlock}
 
 Lighting:
 ${light}
 
-Keep room layout consistent with the FIRST reference image.
-Adopt palette, shading and subtle texture cues from the SECOND reference image (do not change layout).
+${styleReferenceNote}
 without: ${negative}`.trim();
 
     console.log(`\n→ ${name}`);
     console.log(`   model=${model}, n=${n}, sizes=${sizes.join(", ")}`);
 
     const itemOut = path.join(outRoot, name);
-    await ensureDir(itemOut);
+    if (!cli.dry) await ensureDir(itemOut);
 
     for (const size of sizes) {
       const sizeOut = path.join(itemOut, size);
-      await ensureDir(sizeOut);
+      if (!cli.dry) await ensureDir(sizeOut);
       console.log(`   • base @ ${size}  (n=${n})`);
 
       try {
-        const content = [
-          { type: "input_text", text: fullPrompt },
-          { type: "input_image", image_url: baseDataUri },
-        ];
-        if (styleDataUri) {
-          content.push({ type: "input_image", image_url: styleDataUri });
+        if (cli.dry) {
+          console.log("      - [dry] would call images.generate with prompt & size");
+          continue;
         }
 
-        const resp = await openai.responses.create({
+        // Prompt-only generate (compatible with your SDK)
+        const res = await openai.images.generate({
           model,
-          input: [{ role: "user", content }],
-          tools: [{ type: "image_generation", parameters: { size, n } }],
+          prompt: fullPrompt,
+          size,
+          n
         });
 
-        const images = extractImagesFromResponses(resp);
-        if (!images.length) {
+        if (!res?.data?.length) {
           console.warn(`      - [warn] no images returned (${name}/${size})`);
-          // optional: console.dir(resp, {depth:6});
           continue;
         }
 
         let idx = 0;
-        for (const img of images) {
+        for (const img of res.data) {
           const fname = `${name}__${size}__${String(idx + 1).padStart(2, "0")}.png`;
           const fpath = path.join(sizeOut, fname);
 
@@ -233,14 +228,15 @@ without: ${negative}`.trim();
     }
   }
 
-  console.log(`\n✔ Done. Output root: ${path.relative(process.cwd(), outRoot)}`);
+  if (!cli.dry) console.log(`\n✔ Done. Output root: ${path.relative(process.cwd(), outRoot)}`);
 }
 
 (async function main() {
   const jobFile = process.argv[2];
   if (!jobFile) {
-    console.error("Usage: node scripts/imagegen_responses.js <job.yaml>");
+    console.error("Usage: node scripts/imagegen_responses.js <job.yaml> [--only name] [--n 1] [--size 1536x1024] [--dry]");
     process.exit(1);
   }
-  await runJob(jobFile);
+  const cli = parseArgs(process.argv);
+  await runJob(jobFile, cli);
 })();

@@ -1,53 +1,92 @@
-# Reference-based room backgrounds: same room, lighting-only changes.
 project_model: gpt-image-1
-project_reference: "./refs/teagrid_base.png"      # 1) fixed room layout reference (must exist)
-style_reference: "./refs/background_noon.png"     # 2) style/palette hint (optional but recommended)
-project_sizes: ["desktop_wide"]                   # 1536x1024
+project_sizes: ["desktop_wide"]       # 1536x1024
 project_n: 1
+post_crop: "1536x1024"
 
-# Full, fixed room composition (do NOT change)
 project_base_prompt: >
-  Cozy teahouse interior, full room in a single wide composition.
-  Large windows on the left wall with a terrace door at the far left.
-  Center back wall: wooden counter with a vinyl record player, a teaset and a few books.
-  Right side: tea kitchen with jars, cups, brewing tools, many plants; a door on the far right.
-  Walls decorated with framed pictures and a bookshelf.
-  Materials: matte wood, stone counter base, paper-like textures, subtle grain, soft vignette.
-  Wide, readable layout with generous negative space in the middle.
+  Urban Scandinavian–bohemian teahouse interior, FULL ROOM wide composition.
 
-project_negative: "text, logos, watermarks, people, hands"
+  STRUCTURE:
+  - LEFT WALL: a large window with thin wooden frames dividing it into 6 panes.
+    Through the window: leafy balcony plants and the sky visible above urban greenery.
+  - BACK WALL: a long wooden counter with a vintage vinyl record player in the center,
+    surrounded by teasets, jars, and books.
+    Above and beside: shelves filled with plants (trailing vines, hanging pots, upright greens),
+    intermixed with framed tea-themed prints, calligraphy, and vintage teabox-style graphics.
+  - RIGHT WALL: open shelving with cups, teapots, brewing tools, stacked boxes, and more plants.
+    A narrow wooden door on the far right wall.
+  - FLOOR: a large colorful woven rug (muted red, blue, and green tones in traditional geometric style),
+    placed at the center; the rug’s size, design and position remain identical across all variants.
+  - SEATING: low tea tables with floor cushions; along the window wall, a simple padded wooden bench.
+
+  MATERIALS:
+  - Pale wood for furniture, shelves, and window frames.
+  - Matte stone or concrete counter base.
+  - Paper-like walls, light linen fabrics.
+  - Industrial pendant lamps: two round, black metal shades with downward-facing covers.
+
+  DECOR:
+  - Plants abundant but varied, not jungle-like; spilling softly from shelves and corners.
+  - Framed artworks: botanical tea illustrations, vintage tea packaging, Asian-inspired calligraphy.
+  - Cozy details but not cluttered.
+
+  CAMERA:
+  - Pulled slightly back, showing more ceiling with pendant lamps and more wooden floor with the colorful rug.
+  - Framing remains identical horizontally; do not add new objects at the side edges.
+  - Only extend visible vertical space (ceiling and floor).
+
+  LIGHTING RULE:
+  - Daytime: abundant natural daylight through the window, shadows across the colorful rug.
+  - After dusk: warm pendant lamps and lit candles on tables and counter.
+  - Shadows and highlights respond naturally to the time of day.
+
+  RENDERING STYLE:
+  Illustrative, painterly look with soft shading and gentle textures,
+  slightly reminiscent of Ghibli anime or lofi background illustrations.
+  Not cartoonish, not exaggerated; maintain realistic proportions but
+  add warmth, hand-painted atmosphere and layered details.
+
+project_negative: "text, logos, watermarks, people, hands, added props, rearranged furniture"
 
 items:
-  - name: "desktop_background_hajnal"   # Dawn
+  - name: "desktop_background_hajnal"
     light: >
-      Dawn light: pale sky outside, faint bluish early light filtering through the windows.
-      Cool, gentle tones, very soft contrast. A tiny, faint standby glow on the record player only.
+      Dawn: faint bluish pre-sunrise light filtering through the 6-pane window.
+      Exterior balcony plants in silhouette against pale sky.
+      Interior lamps OFF, candles present but UNLIT.
+      Very soft, low-contrast shadows across the colorful rug and floor.
+      A tiny standby glow on the vinyl player.
 
-  - name: "desktop_background_reggel"   # Morning
+  - name: "desktop_background_reggel"
     light: >
-      Morning light: soft and fresh. Gentle highlights ripple across leaves and tabletops.
-      Slight greenish bounce from outside foliage. Two steaming cups on the small table suggest a morning ritual.
+      Morning: fresh daylight with golden edges. Sunbeams stream through the large window panes,
+      illuminating plants and creating long soft shadows on the rug.
+      Gentle reflections on cups and jars. Candles UNLIT.
+      Crisp, invigorating atmosphere with airy highlights.
 
-  - name: "desktop_background_del"      # Noon
+  - name: "desktop_background_del"
     light: >
-      Noon light: bright, strong yet diffused sunlight filling the room evenly.
-      Clear contrast without harsh clipping. In the sunbeams a subtle veil of floating dust motes is visible,
-      softly sparkling in the air.
+      Noon: bright, neutral daylight fills the entire room evenly.
+      Shadows short and soft-edged. Rug pattern clearly visible.
+      Plants appear vibrant and well-lit, shelves evenly illuminated.
+      Candles UNLIT. Atmosphere clean, airy, balanced.
 
-  - name: "desktop_background_delutan"  # Afternoon
+  - name: "desktop_background_delutan"
     light: >
-      Afternoon light: slightly warm tone. Longer, soft shadows stretching across the floor.
-      Calm, relaxed atmosphere, balanced exposure across the room.
+      Afternoon: warmer tone of sunlight, coming in from a lower angle through the window.
+      Long, calm shadows stretch across the rug. Leaves catch golden edges.
+      Candles UNLIT. Atmosphere relaxed, slightly introspective.
 
-  - name: "desktop_background_este"     # Evening golden hour
+  - name: "desktop_background_este"
     light: >
-      Evening golden hour: warm amber light pours through the windows, long soft shadows.
-      Add a small table lamp near the record player at **low intensity (~10–15%)**;
-      the lamp gently accents surfaces without overpowering the sunset.
+      Evening golden hour: rich amber light pours through the window panes, long dramatic shadows.
+      A small table lamp near the record player ON (~15%, 2700K).
+      Candles on counter and tables LIT (~1800K), adding flickering pools of warm light.
+      Rug catches both sunset stripes and candle halos. Cozy, intimate mood.
 
-  - name: "desktop_background_ejszaka"  # Night
+  - name: "desktop_background_ejszaka"
     light: >
-      Night: outside dark. Turn on only low, warm practical lights:
-      two pendant lights and a subtle countertop lamp at **low intensity (5–15%)**.
-      Create small pools of amber light around the record player and tea kitchen; overall dim, intimate atmosphere,
-      deep yet readable shadows; no blown highlights.
+      Night: outside completely dark, only balcony plants faintly outlined against the night sky.
+      Two pendant lamps ON (~15%, 2400K), small countertop lamp ON (~10%).
+      All candles LIT (~1800K), creating warm glows on surfaces and soft halos on the rug.
+      Deep shadows, inky corners, warm intimate atmosphere around the record player and tea tables.
