@@ -4,7 +4,7 @@
   left: 12vw;
   right: 12vw;
   display: grid;
-  grid-template-columns: 44px 1fr 44px;
+  grid-template-columns: 36px 1fr 36px;
   align-items: center;
   gap: 12px;
   padding: 8px 20px;
@@ -13,26 +13,33 @@
 }
 
 .navBtn {
-  height: 44px;
-  width: 44px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  background: transparent;
+  box-shadow: none;
   cursor: pointer;
   display: grid;
   place-items: center;
-}
-.navBtn::after {
-  font-size: 24px;
-  line-height: 1;
-  color: #111;
+  color: #fff;
 }
 
-.navBtn[aria-label='Previous page']::after {
-  content: '‹';
+.navBtn::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(-135deg);
 }
 
 .navBtn[aria-label='Next page']::after {
-  content: '›';
+  transform: rotate(45deg);
+}
+
+.navBtn:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
