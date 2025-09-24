@@ -6,6 +6,15 @@ import { useState } from 'react';
 const N = (v: string | number | null | undefined) =>
   typeof v === 'number' ? v : v != null ? Number(v) : NaN;
 
+type ChartItem = {
+  key: string;
+  label: string;
+  value: number;
+  color: string;
+  icon?: string;
+  tooltipSuffix?: string;
+};
+
 interface Props {
   tea: Tea;
   size?: number;
@@ -17,6 +26,8 @@ interface Props {
   colorDark?: string;
   iconSizePx?: number;           // ikon méret px-ben
   rotationDeg?: number;          // diagram elforgatása fokban
+  dataOverride?: ChartItem[];    // külső adatforrás (pl. fókusz)
+  tooltipLabelSuffix?: string;   // tooltip második sor
 }
 
 const ORDER = [
@@ -60,9 +71,11 @@ export default function TasteChart({
   pointRadiusBase = 15,
   connectByStrongest: _connectByStrongest = true,
   strongColor: _strongColor,
-  colorDark = 'colorDark',
+  colorDark: _colorDark = 'colorDark',
   iconSizePx = 48,
   rotationDeg = 0,
+  dataOverride,
+  tooltipLabelSuffix = 'íz',
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
@@ -72,31 +85,40 @@ export default function TasteChart({
   const spacingFactor = isCompact ? 0.82 : 1;
 
   const [tooltip, setTooltip] = useState<
-    { label: string; value: number; color: string; icon: string } | null
+    { label: string; value: number; color: string; icon?: string; suffix: string } | null
   >(null);
 
   const rotationRad = (rotationDeg * Math.PI) / 180;
   
-  const tasteEntries = ORDER.map((key) => {
-    const raw = N((tea as any)[key]);
-    const clamped = Math.max(0, Math.min(raw, 3));
-    const value = Number.isNaN(clamped) ? 0 : clamped;
-    const label = key.replace('taste_', '').replace(/_/g, ' ');
-    const color = getTasteColor(key);
-    const icon = `/tastes/icon_${ICON_FILE[key] ?? key.replace('taste_', '')}.svg`;
-    return { key, label, value, color, icon };
+  const tasteEntries = dataOverride
+    ? dataOverride.map((entry) => ({
+        ...entry,
+        label: entry.label ?? entry.key,
+        tooltipSuffix: entry.tooltipSuffix ?? tooltipLabelSuffix,
+      }))
+    : ORDER.map((key) => {
+        const raw = N((tea as any)[key]);
+        const clamped = Math.max(0, Math.min(raw, 3));
+        const value = Number.isNaN(clamped) ? 0 : clamped;
+        const label = key.replace('taste_', '').replace(/_/g, ' ');
+        const color = getTasteColor(key);
+        const icon = `/tastes/icon_${ICON_FILE[key] ?? key.replace('taste_', '')}.svg`;
+        return { key, label, value, color, icon, tooltipSuffix: tooltipLabelSuffix };
+      });
+
+  const filteredEntries = tasteEntries.filter((entry) => {
+    const value = Number.isFinite(entry.value) ? entry.value : 0;
+    return value > 0 && value >= minValue;
   });
 
-  const filteredEntries = tasteEntries.filter(
-    (entry) => entry.value > 0 && entry.value >= minValue,
-  );
-
-  const sortedEntries = [...filteredEntries].sort((a, b) => {
-    if (b.value !== a.value) {
-      return b.value - a.value;
-    }
-    return ORDER.indexOf(a.key) - ORDER.indexOf(b.key);
-  });
+  const sortedEntries = dataOverride
+    ? filteredEntries
+    : [...filteredEntries].sort((a, b) => {
+        if (b.value !== a.value) {
+          return b.value - a.value;
+        }
+        return ORDER.indexOf(a.key) - ORDER.indexOf(b.key);
+      });
 
   const entries = sortedEntries.map((entry, index, array) => {
     const total = array.length || 1;
@@ -149,12 +171,19 @@ export default function TasteChart({
               const fill = active ? p.color : '#ccc';
               const opacity = active ? 0.9 : 1;
               const isTop = active && lvl === p.value;
+              const base = pr;
+              const height = pr * 1.7;
+              const topY = y - height * 0.45;
+              const bottomY = y + height * 0.55;
+              const points = [
+                `${x - base},${topY}`,
+                `${x + base},${topY}`,
+                `${x},${bottomY}`,
+              ].join(' ');
               return (
-                <circle
+                <polygon
                   key={lvl}
-                  cx={x}
-                  cy={y}
-                  r={pr}
+                  points={points}
                   fill={fill}
                   fillOpacity={opacity}
                   onMouseEnter={
@@ -165,6 +194,7 @@ export default function TasteChart({
                             value: p.value,
                             color: p.color,
                             icon: p.icon,
+                            suffix: p.tooltipSuffix ?? tooltipLabelSuffix,
                           })
                       : undefined
                   }
@@ -181,7 +211,7 @@ export default function TasteChart({
         entries.map((p) => {
           const lx = cx + Math.cos(p.angle) * labelRadius;
           const ly = cy + Math.sin(p.angle) * labelRadius;
-          return (
+          return p.icon ? (
             <span
               key={`ico-${p.key}`}
               className={styles.tasteIcon}
@@ -204,11 +234,12 @@ export default function TasteChart({
                   value: p.value,
                   color: p.color,
                   icon: p.icon,
+                  suffix: p.tooltipSuffix ?? tooltipLabelSuffix,
                 })
               }
               onMouseLeave={() => setTooltip(null)}
             />
-          );
+          ) : null;
         })}
 
       {tooltip && (
@@ -220,20 +251,22 @@ export default function TasteChart({
           }}
           role="tooltip"
         >
-          <span
-            className={styles.tooltipIcon}
-            style={{
-              backgroundColor: textColorFor(tooltip.color),
-              WebkitMaskImage: `url(${tooltip.icon})`,
-              maskImage: `url(${tooltip.icon})`,
-            }}
-            aria-hidden
-          />
+          {tooltip.icon && (
+            <span
+              className={styles.tooltipIcon}
+              style={{
+                backgroundColor: textColorFor(tooltip.color),
+                WebkitMaskImage: `url(${tooltip.icon})`,
+                maskImage: `url(${tooltip.icon})`,
+              }}
+              aria-hidden
+            />
+          )}
           <div className={styles.tooltipContent}>
             <div className={styles.tooltipTitle}>
-              {STRENGTH_LABELS[tooltip.value]}
+              {`${STRENGTH_LABELS[tooltip.value]} ${tooltip.label}`.trim()}
             </div>
-            <div className={styles.tooltipLabel}>{tooltip.label} íz</div>
+            <div className={styles.tooltipLabel}>{tooltip.suffix}</div>
           </div>
         </div>
       )}

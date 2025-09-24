@@ -27,6 +27,13 @@ const FLAVOR_KEYS = [
 
 const INTENSITY_MAP: Record<string, number> = { enyhe: 1, közepes: 2, erős: 3 };
 
+const FOCUS_KEYS = [
+  { key: 'immunity', label: 'immunitás', color: '#1E9E7A' },
+  { key: 'relax', label: 'relaxáció', color: '#7C3AED' },
+  { key: 'focus', label: 'fókusz', color: '#EA580C' },
+  { key: 'detox', label: 'detox', color: '#0EA5E9' },
+] as const;
+
 const SEASON_NAMES = ['tavasz', 'nyár', 'ősz', 'tél'] as const;
 
 const DAY_NAMES = ['reggel', 'délután', 'este'] as const;
@@ -54,8 +61,14 @@ export default function TeaCard({
     })
     .filter((f) => f.value > 0);
 
-  const flavors = allFlavors.slice().sort((a, b) => b.value - a.value).slice(0, 3);
   const showChart = allFlavors.length > 0;
+
+  const focusEntries = FOCUS_KEYS.map(({ key, label, color }) => {
+    const value = Number((tea as any)[`focus_${key}`]) || 0;
+    return { key: `focus_${key}`, label, value: Math.max(0, Math.min(3, value)), color };
+  }).filter((entry) => entry.value > 0);
+
+  const showFocusChart = focusEntries.length > 0;
 
   // intenzitás
   const intensityLevel = INTENSITY_MAP[tea.intensity ?? ''] ?? 0;
@@ -145,26 +158,26 @@ export default function TeaCard({
         {panel === 'consumption' && (
           <div className={styles.info}>
             <div className={styles.tasteBox}>
-              <ul className={styles.flavorList}>
-                {flavors.map((f) => (
-                  <li key={f.name}>
-                    <span className={styles.flavorValue}>{f.value}</span>
-                    <span
-                      className={styles.flavorName}
-                      style={{ color: getTasteColor(`taste_${f.name}`) }}
-                    >
-                      {f.name}
-                    </span>
-                  </li>
-                ))}
-              </ul>
               {showChart && (
                 <TasteChart
                   tea={tea}
-                  size={68}
+                  size={64}
                   minValue={1}
                   pointRadiusBase={6}
                   showLabels={false}
+                  rotationDeg={-90}
+                />
+              )}
+              {showFocusChart && (
+                <TasteChart
+                  tea={tea}
+                  size={64}
+                  minValue={1}
+                  pointRadiusBase={6}
+                  showLabels={false}
+                  rotationDeg={-90}
+                  dataOverride={focusEntries}
+                  tooltipLabelSuffix="hatás"
                 />
               )}
             </div>
