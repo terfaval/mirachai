@@ -26,7 +26,7 @@
   {
     "tea": "Szolid Optimizmus",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -51,7 +51,7 @@
   {
     "tea": "Szolid Optimizmus",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áz…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -123,7 +123,7 @@
   {
     "tea": "Rövid Kitérő",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Kóstolással igazíts a saját ízlésedhez.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -148,7 +148,7 @@
   {
     "tea": "Rövid Kitérő",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Kóstolással igazíts a saját ízlésedhez.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -196,7 +196,7 @@
   {
     "tea": "Barátságos Köd",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -269,7 +269,7 @@
   {
     "tea": "Mini Ünnep",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -294,7 +294,7 @@
   {
     "tea": "Mini Ünnep",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áz…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -344,7 +344,7 @@
   {
     "tea": "Kis Idő",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -421,7 +421,7 @@
   {
     "tea": "Apró Zárás",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet. Zöld teánál a túl forró ví…",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -446,7 +446,7 @@
   {
     "tea": "Apró Zárás",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet. Zöld teánál a túl forró ví…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -517,7 +517,7 @@
   {
     "tea": "Oolong Harmónia",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Virágos tónusok tisztán maradnak. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Oolongnál a több rövid leöntés (gongfu) szépen építi az aromát.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -613,7 +613,7 @@
   {
     "tea": "Krizantém Harmat",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. Virágos tónusok tisztán maradnak. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 1-3 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -638,7 +638,7 @@
   {
     "tea": "Krizantém Harmat",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. Virágos tónusok tisztán maradnak. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -880,7 +880,7 @@
   {
     "tea": "Mező Frissessége",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -905,7 +905,7 @@
   {
     "tea": "Mező Frissessége",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -955,7 +955,7 @@
   {
     "tea": "Latin Energia",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  A fűszer élesebb, de üdítő. Lágy, desszertes lecsengés. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -1130,7 +1130,7 @@
   {
     "tea": "Derűs Kanyar",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -1155,7 +1155,7 @@
   {
     "tea": "Derűs Kanyar",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édes.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -1203,7 +1203,7 @@
   {
     "tea": "Ezeregy Rózsa",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Virágos tónusok tisztán maradnak. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -1228,7 +1228,7 @@
   {
     "tea": "Ezeregy Rózsa",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Virágos tónusok tisztán maradnak. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áz…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -1300,7 +1300,7 @@
   {
     "tea": "Karácsonyi Szilva",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  A fűszer élesebb, de üdítő. Lágy, desszertes lecsengés. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -1349,7 +1349,7 @@
   {
     "tea": "Reggeli Restart",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -1374,7 +1374,7 @@
   {
     "tea": "Reggeli Restart",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -1422,7 +1422,7 @@
   {
     "tea": "Nappforduló Fény",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Virágos tónusok tisztán maradnak. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -1447,7 +1447,7 @@
   {
     "tea": "Nappforduló Fény",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Virágos tónusok tisztán maradnak. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -1616,7 +1616,7 @@
   {
     "tea": "Anyagcsere Tűz",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet. Zöld teánál a túl forró ví…",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -1641,7 +1641,7 @@
   {
     "tea": "Anyagcsere Tűz",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet. Zöld teánál a túl forró ví…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -1713,7 +1713,7 @@
   {
     "tea": "Szív ereje",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -1738,7 +1738,7 @@
   {
     "tea": "Szív ereje",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áz…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -1810,7 +1810,7 @@
   {
     "tea": "Kukorica Napfény",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -1835,7 +1835,7 @@
   {
     "tea": "Kukorica Napfény",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -2004,7 +2004,7 @@
   {
     "tea": "Pandan Kókusz Álom",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. Lágy, desszertes lecsengés. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -2029,7 +2029,7 @@
   {
     "tea": "Pandan Kókusz Álom",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. Lágy, desszertes lecsengés. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -2130,7 +2130,7 @@
   {
     "tea": "Nyitott Ablak",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -2155,7 +2155,7 @@
   {
     "tea": "Nyitott Ablak",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édes.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -2203,7 +2203,7 @@
   {
     "tea": "Kis Csavar",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -2228,7 +2228,7 @@
   {
     "tea": "Kis Csavar",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -2350,7 +2350,7 @@
   {
     "tea": "Jáde Légzés",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. Virágos tónusok tisztán maradnak. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 1-3 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -2375,7 +2375,7 @@
   {
     "tea": "Jáde Légzés",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. Virágos tónusok tisztán maradnak. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -2520,7 +2520,7 @@
   {
     "tea": "Sakura Csend",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. Virágos tónusok tisztán maradnak. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 1-3 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -2545,7 +2545,7 @@
   {
     "tea": "Sakura Csend",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. Virágos tónusok tisztán maradnak. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -2739,7 +2739,7 @@
   {
     "tea": "Marokkói Napfény",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -2764,7 +2764,7 @@
   {
     "tea": "Marokkói Napfény",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -2885,7 +2885,7 @@
   {
     "tea": "Északi Bogyómező",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -2910,7 +2910,7 @@
   {
     "tea": "Északi Bogyómező",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -2958,7 +2958,7 @@
   {
     "tea": "Afrikai Naplemente",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Lágy, desszertes lecsengés. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 4-6 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -2983,7 +2983,7 @@
   {
     "tea": "Afrikai Naplemente",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Lágy, desszertes lecsengés. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3031,7 +3031,7 @@
   {
     "tea": "Sivatagi Szellő",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3056,7 +3056,7 @@
   {
     "tea": "Sivatagi Szellő",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3104,7 +3104,7 @@
   {
     "tea": "Andoki Fény",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3129,7 +3129,7 @@
   {
     "tea": "Andoki Fény",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édes.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3177,7 +3177,7 @@
   {
     "tea": "Amazonas Zöldje",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3202,7 +3202,7 @@
   {
     "tea": "Amazonas Zöldje",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3322,7 +3322,7 @@
   {
     "tea": "Megérdemelt Szünet",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3347,7 +3347,7 @@
   {
     "tea": "Megérdemelt Szünet",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3395,7 +3395,7 @@
   {
     "tea": "Tiszta Hang",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3420,7 +3420,7 @@
   {
     "tea": "Tiszta Hang",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3468,7 +3468,7 @@
   {
     "tea": "Nyitott Jegy",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 1-2 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3493,7 +3493,7 @@
   {
     "tea": "Nyitott Jegy",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3565,7 +3565,7 @@
   {
     "tea": "Mini Csoda",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet. Zöld teánál a túl forró ví…",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3590,7 +3590,7 @@
   {
     "tea": "Mini Csoda",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet. Zöld teánál a túl forró ví…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3686,7 +3686,7 @@
   {
     "tea": "Rejtett Tartalék",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3711,7 +3711,7 @@
   {
     "tea": "Rejtett Tartalék",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édes.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3759,7 +3759,7 @@
   {
     "tea": "Könnyed Kanyar",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3784,7 +3784,7 @@
   {
     "tea": "Könnyed Kanyar",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3880,7 +3880,7 @@
   {
     "tea": "Derűs Kitérő",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3905,7 +3905,7 @@
   {
     "tea": "Derűs Kitérő",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -3953,7 +3953,7 @@
   {
     "tea": "Túlélőcsomag",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -3978,7 +3978,7 @@
   {
     "tea": "Túlélőcsomag",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édes.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áz…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -4026,7 +4026,7 @@
   {
     "tea": "Alap Derű",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Kóstolással igazíts a saját ízlésedhez.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -4051,7 +4051,7 @@
   {
     "tea": "Alap Derű",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Kóstolással igazíts a saját ízlésedhez.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -4123,7 +4123,7 @@
   {
     "tea": "Váratlan Mosoly",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -4148,7 +4148,7 @@
   {
     "tea": "Váratlan Mosoly",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -4295,7 +4295,7 @@
   {
     "tea": "Finom Fordulat",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -4320,7 +4320,7 @@
   {
     "tea": "Finom Fordulat",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -4392,7 +4392,7 @@
   {
     "tea": "Finom Reset",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -4417,7 +4417,7 @@
   {
     "tea": "Finom Reset",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -4465,7 +4465,7 @@
   {
     "tea": "Finom Kikapcs",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -4490,7 +4490,7 @@
   {
     "tea": "Finom Kikapcs",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -4611,7 +4611,7 @@
   {
     "tea": "Kalahári Hajnal",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Lágy, desszertes lecsengés. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -4636,7 +4636,7 @@
   {
     "tea": "Kalahári Hajnal",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Lágy, desszertes lecsengés. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áz…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -4708,7 +4708,7 @@
   {
     "tea": "Szavanna Sóhaj",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Lágy, desszertes lecsengés. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -4733,7 +4733,7 @@
   {
     "tea": "Szavanna Sóhaj",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Lágy, desszertes lecsengés. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -4878,7 +4878,7 @@
   {
     "tea": "Kilifi Part",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Lágy, desszertes lecsengés. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -4903,7 +4903,7 @@
   {
     "tea": "Kilifi Part",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Lágy, desszertes lecsengés. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áz…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -4951,7 +4951,7 @@
   {
     "tea": "Tavaszi Nyitány",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Virágos tónusok tisztán maradnak. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -4976,7 +4976,7 @@
   {
     "tea": "Tavaszi Nyitány",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Virágos tónusok tisztán maradnak. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -5050,7 +5050,7 @@
   {
     "tea": "Mediterrán Rakpart",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -5075,7 +5075,7 @@
   {
     "tea": "Mediterrán Rakpart",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áz…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -5196,7 +5196,7 @@
   {
     "tea": "Tereré Lendület",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -5221,7 +5221,7 @@
   {
     "tea": "Tereré Lendület",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -5269,7 +5269,7 @@
   {
     "tea": "Guayusa Ébresztő",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -5294,7 +5294,7 @@
   {
     "tea": "Guayusa Ébresztő",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édes.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -5415,7 +5415,7 @@
   {
     "tea": "Morada Szikra",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -5440,7 +5440,7 @@
   {
     "tea": "Morada Szikra",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édes.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív. Citrushéj kesernyéje hosszú áz…",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -5488,7 +5488,7 @@
   {
     "tea": "Andoki Pörkölés",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Lágy, desszertes lecsengés. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 3-5 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Maténál ~80–85°C is elegendő; forróbb víz kesernyésíthet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -5708,7 +5708,7 @@
   {
     "tea": "Jégvörös Latte",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A fűszer élesebb, de üdítő. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -5733,7 +5733,7 @@
   {
     "tea": "Jégvörös Latte",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Csípős él kisimul, az édesség előlép. A hűtő tudja: a türelem édes.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -5780,7 +5780,7 @@
   {
     "tea": "Fehér Szellő",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -5805,7 +5805,7 @@
   {
     "tea": "Fehér Szellő",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -5853,7 +5853,7 @@
   {
     "tea": "Yuzu Sencha Szellő",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 1-3 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -5878,7 +5878,7 @@
   {
     "tea": "Yuzu Sencha Szellő",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet. Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -5950,7 +5950,7 @@
   {
     "tea": "Ume–Shiso Derű",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Tisztább, zöld él nélkül. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "90°C • 1-3 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -5975,7 +5975,7 @@
   {
     "tea": "Ume–Shiso Derű",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  Tisztább, zöld él nélkül. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Zöld teánál a túl forró víz kesernyét okoz.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -6096,7 +6096,7 @@
   {
     "tea": "Karkadé Oázis",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. Virágos tónusok tisztán maradnak. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -6121,7 +6121,7 @@
   {
     "tea": "Karkadé Oázis",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. Virágos tónusok tisztán maradnak. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 240-480 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Hibiszkusznál 4–8 óra is elegendő lehet. Hibiszkusz savasság: rövidíts a forró áztatáson, ha túl intenzív.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -6193,7 +6193,7 @@
   {
     "tea": "Beduin Csend",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -6315,7 +6315,7 @@
   {
     "tea": "Za’atar Szellő",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra.  Friss, piros gyümölcsös érzet. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 5-7 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -6340,7 +6340,7 @@
   {
     "tea": "Za’atar Szellő",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség.  A sav visszafogottabb, a gyümölcs simább. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -6388,7 +6388,7 @@
   {
     "tea": "Licsi Liget",
     "method": "iced_flash_chill",
-    "one_liner": "Savak előre, kesernye hátra. A jég azt kéri: higgadjunk le.",
+    "one_liner": "Savak előre, kesernye hátra. Gyorsan hűtött jegestea.",
     "long": "95°C • 2-4 perc • dupla levél / 250 ml (erősebb alap) • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Készíts koncentrált forró főzetet (dupla levél) → Töltsd tele a poharat/kancsót jéggel → Öntsd rá a forró főzetet, keverd, és azonnal fogyaszd",
     "filter_text": "Szűrő kötelező.",
@@ -6413,7 +6413,7 @@
   {
     "tea": "Licsi Liget",
     "method": "coldbrew",
-    "one_liner": "Lágyabb sav, kerekebb édesség. A hűtő tudja: a türelem édesít.",
+    "one_liner": "Lágyabb sav, kerekebb édesség. Lassú áztatás főzés nélkül.",
     "long": "4°C • 360-720 perc • 1.5× levél / 250 ml • 250 ml\nJegyzet: Citrushéj kesernyéje hosszú áztatásnál felerősödhet.",
     "steps_text": "Hideg vízzel öntsd fel a leveleket → Hűtőben áztasd 6–12 órát → Szűrd le, jégre töltve tálald",
     "filter_text": "Szűrő kötelező.",
@@ -26354,7 +26354,7 @@
   {
     "tea": "Szolid Optimizmus",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26367,7 +26367,7 @@
   {
     "tea": "Rövid Kitérő",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26380,7 +26380,7 @@
   {
     "tea": "Barátságos Köd",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26393,7 +26393,7 @@
   {
     "tea": "Mini Ünnep",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26406,7 +26406,7 @@
   {
     "tea": "Kis Idő",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26419,7 +26419,7 @@
   {
     "tea": "Apró Zárás",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26432,7 +26432,7 @@
   {
     "tea": "Oolong Harmónia",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26445,7 +26445,7 @@
   {
     "tea": "Krizantém Harmat",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26458,7 +26458,7 @@
   {
     "tea": "Mező Frissessége",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26471,7 +26471,7 @@
   {
     "tea": "Latin Energia",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26484,7 +26484,7 @@
   {
     "tea": "Derűs Kanyar",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26497,7 +26497,7 @@
   {
     "tea": "Ezeregy Rózsa",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26510,7 +26510,7 @@
   {
     "tea": "Karácsonyi Szilva",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26523,7 +26523,7 @@
   {
     "tea": "Reggeli Restart",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26536,7 +26536,7 @@
   {
     "tea": "Nappforduló Fény",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26549,7 +26549,7 @@
   {
     "tea": "Anyagcsere Tűz",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26562,7 +26562,7 @@
   {
     "tea": "Szív ereje",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26575,7 +26575,7 @@
   {
     "tea": "Kukorica Napfény",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26588,7 +26588,7 @@
   {
     "tea": "Pandan Kókusz Álom",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26601,7 +26601,7 @@
   {
     "tea": "Nyitott Ablak",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26614,7 +26614,7 @@
   {
     "tea": "Kis Csavar",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26627,7 +26627,7 @@
   {
     "tea": "Jáde Légzés",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26640,7 +26640,7 @@
   {
     "tea": "Sakura Csend",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26653,7 +26653,7 @@
   {
     "tea": "Marokkói Napfény",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26666,7 +26666,7 @@
   {
     "tea": "Északi Bogyómező",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26679,7 +26679,7 @@
   {
     "tea": "Afrikai Naplemente",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26692,7 +26692,7 @@
   {
     "tea": "Sivatagi Szellő",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26705,7 +26705,7 @@
   {
     "tea": "Andoki Fény",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26718,7 +26718,7 @@
   {
     "tea": "Amazonas Zöldje",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26731,7 +26731,7 @@
   {
     "tea": "Megérdemelt Szünet",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26744,7 +26744,7 @@
   {
     "tea": "Tiszta Hang",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26757,7 +26757,7 @@
   {
     "tea": "Nyitott Jegy",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26770,7 +26770,7 @@
   {
     "tea": "Mini Csoda",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26783,7 +26783,7 @@
   {
     "tea": "Rejtett Tartalék",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26796,7 +26796,7 @@
   {
     "tea": "Könnyed Kanyar",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26809,7 +26809,7 @@
   {
     "tea": "Derűs Kitérő",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26822,7 +26822,7 @@
   {
     "tea": "Túlélőcsomag",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26835,7 +26835,7 @@
   {
     "tea": "Alap Derű",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26848,7 +26848,7 @@
   {
     "tea": "Váratlan Mosoly",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26861,7 +26861,7 @@
   {
     "tea": "Finom Fordulat",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26874,7 +26874,7 @@
   {
     "tea": "Finom Reset",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26887,7 +26887,7 @@
   {
     "tea": "Finom Kikapcs",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26900,7 +26900,7 @@
   {
     "tea": "Kalahári Hajnal",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26913,7 +26913,7 @@
   {
     "tea": "Szavanna Sóhaj",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26926,7 +26926,7 @@
   {
     "tea": "Kilifi Part",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26939,7 +26939,7 @@
   {
     "tea": "Tavaszi Nyitány",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26952,7 +26952,7 @@
   {
     "tea": "Mediterrán Rakpart",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26965,7 +26965,7 @@
   {
     "tea": "Tereré Lendület",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26978,7 +26978,7 @@
   {
     "tea": "Guayusa Ébresztő",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -26991,7 +26991,7 @@
   {
     "tea": "Morada Szikra",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -27004,7 +27004,7 @@
   {
     "tea": "Andoki Pörkölés",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -27017,7 +27017,7 @@
   {
     "tea": "Jégvörös Latte",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -27030,7 +27030,7 @@
   {
     "tea": "Fehér Szellő",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -27043,7 +27043,7 @@
   {
     "tea": "Yuzu Sencha Szellő",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -27056,7 +27056,7 @@
   {
     "tea": "Ume–Shiso Derű",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -27069,7 +27069,7 @@
   {
     "tea": "Karkadé Oázis",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -27082,7 +27082,7 @@
   {
     "tea": "Beduin Csend",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -27095,7 +27095,7 @@
   {
     "tea": "Za’atar Szellő",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",
@@ -27108,7 +27108,7 @@
   {
     "tea": "Licsi Liget",
     "method": "fermentea",
-    "one_liner": "Könnyű, enyhén szénsavas, gyümölcsös–teás frissítő 1–3 nap alatt.",
+    "one_liner": "Enyhén alkoholos és szénsavas, gyümölcsös–teás frissítő.",
     "long": "Erjesztett tea-alapú spritz: erősebb főzetet készítünk, 2–3% cukorral édesítjük, majd gyömbérbuggal/kombuchával vagy kefír savóval beoltva 24–72 órát érleljük. Az eredmény könnyű buborék, tiszta teás karakterrel.",
     "steps_text": "1) Készíts 1 L erősebb teaalapot (forrón vagy coldbrew módszerrel). 2) Édesítsd 20–30 g cukorral, hűtsd 24–26°C-ra. 3) Adj hozzá 2–3 ek gyömbérbugot VAGY 80–100 ml kombuchát VAGY 2–3 ek kefír savót. 4) Palackozd (PET/flip-top), szobahőn 24–72 óra; naponta röviden nyisd ki. 5) Hűtsd be, szűrd/fejtsd le, majd fogyaszd.",
     "filter_text": "Szűrés palackozás előtt és után is ajánlott a tiszta, fényes italért.",

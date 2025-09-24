@@ -28,6 +28,7 @@ const METHOD_ICON_MAP: Record<string, string> = {
   coldbrew: '/methods/icon_coldbrew.svg',
   experimental_texture: '/methods/icon_experimental_texture.svg',
   gongfu: '/methods/icon_standard_hot.svg',
+  fermentea: '/methods/icon_fermentea.svg',
   hot_standard: '/methods/icon_standard_hot.svg',
   iced_flash_chill: '/methods/icon_iced_tea.svg',
   infused_spirits: '/methods/icon_infused_spirit.svg',
