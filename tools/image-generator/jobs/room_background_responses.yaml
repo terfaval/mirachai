@@ -1,7 +1,6 @@
 project_model: gpt-image-1
 project_sizes: ["desktop_wide"]       # 1536x1024
 project_n: 1
-post_crop: "1536x1024"
 
 project_base_prompt: >
   Urban Scandinavian–bohemian teahouse interior, FULL ROOM wide composition.
@@ -12,7 +11,8 @@ project_base_prompt: >
   - BACK WALL: a long wooden counter with a vintage vinyl record player in the center,
     surrounded by teasets, jars, and books.
     Above and beside: shelves filled with plants (trailing vines, hanging pots, upright greens),
-    intermixed with framed tea-themed prints, calligraphy, and vintage teabox-style graphics.
+    intermixed with framed tea-themed posters, vintage teabox illustrations,
+    and Asian calligraphy for "tea".
   - RIGHT WALL: open shelving with cups, teapots, brewing tools, stacked boxes, and more plants.
     A narrow wooden door on the far right wall.
   - FLOOR: a large colorful woven rug (muted red, blue, and green tones in traditional geometric style),
@@ -27,11 +27,13 @@ project_base_prompt: >
 
   DECOR:
   - Plants abundant but varied, not jungle-like; spilling softly from shelves and corners.
-  - Framed artworks: botanical tea illustrations, vintage tea packaging, Asian-inspired calligraphy.
+  - Framed artworks: tea-themed posters, botanical tea illustrations, calligraphy.
   - Cozy details but not cluttered.
 
-  CAMERA:
-  - Pulled slightly back, showing more ceiling with pendant lamps and more wooden floor with the colorful rug.
+  CAMERA / PERSPECTIVE:
+  - Wide-angle but natural perspective, slightly pulled back and at a higher viewpoint.
+  - Show more ceiling with pendant lamps and more wooden floor with the colorful rug.
+  - Depth of the room visible, immersive interior perspective.
   - Framing remains identical horizontally; do not add new objects at the side edges.
   - Only extend visible vertical space (ceiling and floor).
 
@@ -41,10 +43,10 @@ project_base_prompt: >
   - Shadows and highlights respond naturally to the time of day.
 
   RENDERING STYLE:
-  Illustrative, painterly look with soft shading and gentle textures,
-  slightly reminiscent of Ghibli anime or lofi background illustrations.
-  Not cartoonish, not exaggerated; maintain realistic proportions but
-  add warmth, hand-painted atmosphere and layered details.
+  Semi-realistic painterly look:
+  Maintain warm hand-painted atmosphere but with more realistic details
+  in wood grain, fabric textures, pottery shine, and plant leaves.
+  Still soft, cozy, slightly Ghibli/lofi inspired, but less stylized and more lifelike.
 
 project_negative: "text, logos, watermarks, people, hands, added props, rearranged furniture"
 
