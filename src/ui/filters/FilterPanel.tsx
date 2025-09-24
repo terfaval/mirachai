@@ -4,6 +4,9 @@ import MultiSelectDropdown from "./MultiSelectDropdown";
 import Slider from "./Slider";
 import Chip from "./Chip";
 import { getCategoryColors } from "../../utils/colorMap";
+import { getMandalaPath } from "../../../utils/mandala";
+import { getTasteIcon } from "../../utils/tasteIcons";
+import { SERVE_MODE_DEFINITIONS } from "../../utils/serveModes";
 import { getMethodIcon } from "@/utils/brewMethods";
 import type { NormalizeResult, TokenValue } from "../../../lib/normalize";
 import {
@@ -53,17 +56,26 @@ function renderTokenButton(
   token: TokenValue,
   selected: boolean,
   onToggle: () => void,
-  className = ""
+  className = "",
+  icon?: { src: string; alt?: string },
 ) {
   return (
     <button
       key={token.slug}
       type="button"
       onClick={onToggle}
-      className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+      className={`px-3 py-1.5 rounded-full border text-sm transition-colors flex items-center gap-2 ${
         selected ? "bg-gray-900 text-white border-gray-900" : "bg-white hover:bg-gray-50"
       } ${className}`}
     >
+      {icon ? (
+        <img
+          src={icon.src}
+          alt={icon.alt ?? ""}
+          className="h-5 w-5"
+          aria-hidden={icon.alt ? undefined : true}
+        />
+      ) : null}
       {capitalize(token.label.replace(/_/g, " "))}
     </button>
   );
@@ -91,13 +103,23 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
     onChange({ ...value, focusMin: nextFocus });
   };
 
-  const renderTokenGrid = (tokens: TokenValue[], current: string[], key: ToggleKey) => (
+  const renderTokenGrid = (
+    tokens: TokenValue[],
+    current: string[],
+    key: ToggleKey,
+    iconFor?: (token: TokenValue) => { src: string; alt?: string } | null,
+  ) => (
     <div className="flex flex-wrap gap-2">
-      {tokens.map(token =>
-        renderTokenButton(token, current.includes(token.slug), () =>
-          onChange({ ...value, [key]: toggleValue(current, token.slug) })
-        )
-      )}
+      {tokens.map(token => {
+        const icon = iconFor ? iconFor(token) : null;
+        return renderTokenButton(
+          token,
+          current.includes(token.slug),
+          () => onChange({ ...value, [key]: toggleValue(current, token.slug) }),
+          "",
+          icon ?? undefined,
+        );
+      })}
     </div>
   );
 
@@ -129,6 +151,7 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                 {data.categories.map(category => {
                   const selected = value.categories.includes(category.slug);
                   const colors = getCategoryColors(category.label);
+                  const icon = getMandalaPath(category.label);
                   return (
                     <button
                       key={category.slug}
@@ -139,13 +162,14 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                           categories: toggleValue(value.categories, category.slug)
                         })
                       }
-                      className="px-3 py-1.5 rounded-full border text-sm transition-colors"
+                      className="px-3 py-1.5 rounded-full border text-sm transition-colors flex items-center gap-2"
                       style={{
                         borderColor: colors.dark,
                         backgroundColor: selected ? colors.dark : undefined,
                         color: selected ? colors.white : undefined
                       }}
                     >
+                      <img src={icon} alt="" className="h-6 w-6 rounded-full border border-white/30" aria-hidden />
                       {category.label}
                     </button>
                   );
@@ -178,7 +202,10 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                   ))}
                 </div>
               </div>
-              {renderTokenGrid(data.tastes, value.tastes, "tastes")}
+              {renderTokenGrid(data.tastes, value.tastes, "tastes", token => ({
+                src: getTasteIcon(token.slug),
+                alt: token.label,
+              }))}
             </section>
 
             <section>
@@ -273,6 +300,7 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
               <div className="flex flex-wrap gap-2">
                 {data.serveModes.map(mode => {
                   const selected = value.serve.includes(mode.id);
+                  const meta = SERVE_MODE_DEFINITIONS[mode.id];
                   return (
                     <button
                       key={mode.id}
@@ -280,12 +308,13 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                       onClick={() =>
                         onChange({ ...value, serve: toggleValue(value.serve, mode.id) })
                       }
-                      className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                      className={`px-3 py-1.5 rounded-full border text-sm transition-colors flex items-center gap-2 ${
                         selected
                           ? "bg-gray-900 text-white border-gray-900"
                           : "bg-white hover:bg-gray-50"
                       }`}
                     >
+                      {meta ? <img src={meta.icon} alt="" className="h-5 w-5" aria-hidden /> : null}
                       {mode.label}
                     </button>
                   );

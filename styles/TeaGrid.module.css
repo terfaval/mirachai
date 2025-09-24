@@ -37,6 +37,66 @@
   width: 100%;
 }
 
+.activeSelectionBar {
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: max(120px, calc(50% - (var(--grid-width) / var(--grid-aspect)) / 2 - 72px));
+  width: var(--grid-width);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  pointer-events: auto;
+  z-index: 20;
+}
+
+.activeSelectionCard {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  color: #1f2937;
+  backdrop-filter: blur(2px);
+}
+
+.activeSelectionIcon {
+  height: 22px;
+  width: 22px;
+  object-fit: contain;
+}
+
+.activeSelectionLabel {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.activeSelectionRemove {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activeSelectionRemove:hover {
+  color: #111827;
+}
+
 /* opcionális külső igazítás */
 .wrapper {
   display: flex;

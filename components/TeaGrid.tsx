@@ -6,6 +6,14 @@ import InfoPanelSidebar from './InfoPanelSidebar';
 import BrowseToolsSidebar from './BrowseToolsSidebar';
 import { SortKey } from './sortOptions';
 
+export type ActiveSelection = {
+  id: string;
+  label: string;
+  onRemove: () => void;
+  icon?: string;
+  iconAlt?: string;
+};
+
 type Props = {
   items: Tea[];
   page: number;
@@ -21,6 +29,7 @@ type Props = {
   onChangeSort: (key: SortKey) => void;
   onOpenFilters: () => void;
   activeFilterCount: number;
+  activeSelections?: ActiveSelection[];
 };
 
 function compareIdAsc(a: any, b: any) {
@@ -47,6 +56,7 @@ export default function TeaGrid({
   onChangeSort,
   onOpenFilters,
   activeFilterCount,
+  activeSelections = [], 
 }: Props) {
   const effectivePerPage = perPage ?? tilesX * tilesY;
   const start = (page - 1) * effectivePerPage;
@@ -97,6 +107,31 @@ export default function TeaGrid({
       className={styles.container}
       style={{ ['--tiles-x' as any]: tilesX, ['--tiles-y' as any]: tilesY }}
     >
+      {activeSelections.length > 0 && (
+        <div className={styles.activeSelectionBar}>
+          {activeSelections.map((item) => (
+            <div key={item.id} className={styles.activeSelectionCard}>
+              {item.icon ? (
+                <img
+                  src={item.icon}
+                  alt={item.iconAlt ?? ''}
+                  className={styles.activeSelectionIcon}
+                  aria-hidden={item.iconAlt ? undefined : true}
+                />
+              ) : null}
+              <span className={styles.activeSelectionLabel}>{item.label}</span>
+              <button
+                type="button"
+                className={styles.activeSelectionRemove}
+                onClick={item.onRemove}
+                aria-label={`\u201E${item.label}\u201D eltávolítása`}
+              >
+                ×
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
       <div className={styles.gridWrap}>
         <InfoPanelSidebar panel={panel} onChange={setPanel} />
         <BrowseToolsSidebar

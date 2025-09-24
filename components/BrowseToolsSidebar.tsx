@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SearchBar from './SearchBar';
 import { SortKey, sortOptions } from './sortOptions';
 import styles from '../styles/BrowseToolsSidebar.module.css';
@@ -24,7 +24,6 @@ export default function BrowseToolsSidebar({
   const [sortOpen, setSortOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const activeSort = useMemo(() => sortOptions.find((opt) => opt.key === sort), [sort]);
   const sortActive = sort !== 'relevanceDesc';
   const filtersActive = activeFilterCount > 0;
 
@@ -85,10 +84,7 @@ export default function BrowseToolsSidebar({
             <img src="/icons/sort.svg" alt="Rendezés" className={styles.icon} />
             <div className={styles.textWrap}>
               <span className={styles.label}>Rendezés</span>
-              {sortActive && activeSort && (
-                <span className={styles.value}>{activeSort.label}</span>
-              )}
-            </div>
+              </div>
           </button>
           {sortOpen && (
             <div id="browse-sort-panel" className={styles.sortPanel}>
@@ -125,10 +121,7 @@ export default function BrowseToolsSidebar({
             <img src="/icons/filter.svg" alt="Szűrés" className={styles.icon} />
             <div className={styles.textWrap}>
               <span className={styles.label}>Szűrők</span>
-              {filtersActive && (
-                <span className={styles.value}>+{activeFilterCount}</span>
-              )}
-            </div>
+              </div>
           </button>
         </div>
       </div>

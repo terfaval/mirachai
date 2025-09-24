@@ -2,9 +2,9 @@ import { GetStaticProps } from 'next';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import path from 'path';
 import { promises as fs } from 'fs';
-import TeaGrid from '../components/TeaGrid';
+import TeaGrid, { type ActiveSelection } from '../components/TeaGrid';
 import Header from '../components/Header';
-import { SortKey } from '../components/sortOptions';
+import { SortKey, sortOptions } from '../components/sortOptions';
 import TeaModal from '../components/TeaModal';
 import CategorySidebar from '../components/CategorySidebar';
 import PaginationBar from '../components/PaginationBar';
@@ -16,6 +16,7 @@ import {
   type NormalizeResult,
   type NormalizedTea,
   type BrewProfileDocument,
+  type FocusAxis,
 } from '../lib/normalize';
 import FilterPanel, { type FilterPanelData } from '../src/ui/filters/FilterPanel';
 import {
@@ -23,9 +24,15 @@ import {
   createEmptyFilterState,
   type FilterState,
   countActiveFilters,
+  CAFFEINE_BUCKET_OPTIONS,
+  FOCUS_AXIS_LABELS,
+  INTENSITY_BUCKET_OPTIONS,
 } from '../lib/tea-filters';
 import { distributeByCategory } from '../utils/category-distribution';
 import type { Tea } from '../utils/filter';
+import { getMandalaPath } from '../utils/mandala';
+import { getTasteIcon } from '@/utils/tasteIcons';
+import { SERVE_MODE_DEFINITIONS } from '@/utils/serveModes';
 
 /* ---------- stabil “véletlen” ---------- */
 function mulberry32(a: number) {
@@ -135,6 +142,19 @@ type HomeNormalization = Omit<NormalizeResult, 'teas'> & { teas: NormalizedTeaFo
 
 interface HomeProps { normalization: HomeNormalization; }
 
+type FilterArrayKey =
+  | 'categories'
+  | 'subcategories'
+  | 'tastes'
+  | 'intensities'
+  | 'caffeine'
+  | 'dayparts'
+  | 'seasons'
+  | 'serve'
+  | 'ingredients'
+  | 'allergensExclude'
+  | 'methods';
+
 export default function Home({ normalization }: HomeProps) {
   const teas = normalization.teas;
   const [selectedTea, setSelectedTea] = useState<Tea | null>(null);
@@ -145,6 +165,32 @@ export default function Home({ normalization }: HomeProps) {
   const [showCategorySidebar, _setShowCategorySidebar] = useState(false);
   const [filterState, setFilterState] = useState<FilterState>(() => createEmptyFilterState());
   const [shuffleSeed, setShuffleSeed] = useState<number | null>(null);
+
+  const clearSort = useCallback(() => setSort('relevanceDesc'), [setSort]);
+
+  const removeFromFilterArray = useCallback(
+    <K extends FilterArrayKey>(key: K, value: FilterState[K][number]) => {
+      setFilterState(prev => {
+        const current = prev[key];
+        const next = current.filter(item => item !== value) as FilterState[K];
+        if (next.length === current.length) return prev;
+        return { ...prev, [key]: next };
+      });
+    },
+    [setFilterState],
+  );
+
+  const clearFocusAxis = useCallback(
+    (axis: FocusAxis) => {
+      setFilterState(prev => {
+        if (prev.focusMin[axis] === undefined) return prev;
+        const nextFocus = { ...prev.focusMin };
+        delete nextFocus[axis];
+        return { ...prev, focusMin: nextFocus };
+      });
+    },
+    [setFilterState],
+  );
 
   // csak kliensen jelöljük, hogy lehet “véletlent” és időt használni
   const [mounted, setMounted] = useState(false);
@@ -415,6 +461,200 @@ export default function Home({ normalization }: HomeProps) {
       methodCounts,
     };
   }, [teas, filterState, normalization]);
+
+  const categoryLabels = useMemo(
+    () => new Map(normalization.categories.map((category) => [category.slug, category.label])),
+    [normalization.categories],
+  );
+  const subcategoryLabels = useMemo(
+    () =>
+      new Map(normalization.subcategories.map((subcategory) => [subcategory.slug, subcategory.label])),
+    [normalization.subcategories],
+  );
+  const tasteLabels = useMemo(
+    () => new Map(normalization.tastes.map((taste) => [taste.slug, taste.label])),
+    [normalization.tastes],
+  );
+  const daypartLabels = useMemo(
+    () => new Map(normalization.dayparts.map((daypart) => [daypart.slug, daypart.label])),
+    [normalization.dayparts],
+  );
+  const seasonLabels = useMemo(
+    () => new Map(normalization.seasons.map((season) => [season.slug, season.label])),
+    [normalization.seasons],
+  );
+  const serveLabels = useMemo(
+    () => new Map(normalization.serveModes.map((mode) => [mode.id, mode.label])),
+    [normalization.serveModes],
+  );
+  const allergenLabels = useMemo(
+    () => new Map(normalization.allergens.map((allergen) => [allergen.slug, allergen.label])),
+    [normalization.allergens],
+  );
+  const methodLabels = useMemo(
+    () => new Map(normalization.methods.map((method) => [method.id, method.label])),
+    [normalization.methods],
+  );
+  const intensityLabels = useMemo(() => {
+    const map = new Map<string, string>();
+    INTENSITY_BUCKET_OPTIONS.forEach((option) => map.set(option.id, option.label));
+    return map;
+  }, []);
+  const caffeineLabels = useMemo(() => {
+    const map = new Map<string, string>();
+    CAFFEINE_BUCKET_OPTIONS.forEach((option) => map.set(option.id, option.label));
+    return map;
+  }, []);
+  const activeSortOption = useMemo(() => sortOptions.find((option) => option.key === sort), [sort]);
+
+  const activeSelections = useMemo<ActiveSelection[]>(() => {
+    const chips: ActiveSelection[] = [];
+
+    if (sort !== 'relevanceDesc') {
+      chips.push({
+        id: `sort-${sort}`,
+        label: activeSortOption?.label ?? 'Rendezés',
+        icon: '/icons/sort.svg',
+        onRemove: clearSort,
+      });
+    }
+
+    for (const slug of filterState.categories) {
+      const label = categoryLabels.get(slug) ?? slug;
+      chips.push({
+        id: `category-${slug}`,
+        label: `Kategória: ${label}`,
+        icon: getMandalaPath(label),
+        onRemove: () => removeFromFilterArray('categories', slug),
+      });
+    }
+
+    for (const slug of filterState.subcategories) {
+      const label = subcategoryLabels.get(slug) ?? slug;
+      chips.push({
+        id: `subcategory-${slug}`,
+        label: `Alkategória: ${label}`,
+        onRemove: () => removeFromFilterArray('subcategories', slug),
+      });
+    }
+
+    const tastePrefix = filterState.tasteMode === 'dominant' ? 'Domináns íz' : 'Íz';
+    for (const slug of filterState.tastes) {
+      const label = tasteLabels.get(slug) ?? slug;
+      chips.push({
+        id: `taste-${slug}`,
+        label: `${tastePrefix}: ${label}`,
+        icon: getTasteIcon(slug),
+        onRemove: () => removeFromFilterArray('tastes', slug),
+      });
+    }
+
+    Object.entries(filterState.focusMin).forEach(([axisKey, level]) => {
+      const axis = axisKey as FocusAxis;
+      if (!level || level <= 0) return;
+      const axisLabel = FOCUS_AXIS_LABELS[axis] ?? axis;
+      chips.push({
+        id: `focus-${axis}`,
+        label: `Fókusz – ${axisLabel} ≥ ${level}`,
+        icon: '/icons/icon_info.svg',
+        onRemove: () => clearFocusAxis(axis),
+      });
+    });
+
+    for (const bucket of filterState.intensities) {
+      const label = intensityLabels.get(bucket) ?? bucket;
+      chips.push({
+        id: `intensity-${bucket}`,
+        label: `Intenzitás: ${label}`,
+        onRemove: () => removeFromFilterArray('intensities', bucket),
+      });
+    }
+
+    for (const level of filterState.caffeine) {
+      const label = caffeineLabels.get(level) ?? level;
+      chips.push({
+        id: `caffeine-${level}`,
+        label: `Koffein: ${label}`,
+        onRemove: () => removeFromFilterArray('caffeine', level),
+      });
+    }
+
+    for (const slug of filterState.dayparts) {
+      const label = daypartLabels.get(slug) ?? slug;
+      chips.push({
+        id: `daypart-${slug}`,
+        label: `Napszak: ${label}`,
+        onRemove: () => removeFromFilterArray('dayparts', slug),
+      });
+    }
+
+    for (const slug of filterState.seasons) {
+      const label = seasonLabels.get(slug) ?? slug;
+      chips.push({
+        id: `season-${slug}`,
+        label: `Évszak: ${label}`,
+        onRemove: () => removeFromFilterArray('seasons', slug),
+      });
+    }
+
+    for (const mode of filterState.serve) {
+      const label = serveLabels.get(mode) ?? mode;
+      const meta = SERVE_MODE_DEFINITIONS[mode];
+      chips.push({
+        id: `serve-${mode}`,
+        label: `Szervírozás: ${label}`,
+        icon: meta?.icon,
+        onRemove: () => removeFromFilterArray('serve', mode),
+      });
+    }
+
+    for (const ingredient of filterState.ingredients) {
+      const base = ingredient.replace(/_/g, ' ');
+      const label = base.charAt(0).toUpperCase() + base.slice(1);
+      chips.push({
+        id: `ingredient-${ingredient}`,
+        label: `Összetevő: ${label}`,
+        onRemove: () => removeFromFilterArray('ingredients', ingredient),
+      });
+    }
+
+    for (const slug of filterState.allergensExclude) {
+      const label = allergenLabels.get(slug) ?? slug;
+      chips.push({
+        id: `allergen-${slug}`,
+        label: `Allergén nélkül: ${label}`,
+        onRemove: () => removeFromFilterArray('allergensExclude', slug),
+      });
+    }
+
+    for (const id of filterState.methods) {
+      const label = methodLabels.get(id) ?? id;
+      chips.push({
+        id: `method-${id}`,
+        label: `Metódus: ${label}`,
+        onRemove: () => removeFromFilterArray('methods', id),
+      });
+    }
+
+    return chips;
+  }, [
+    sort,
+    activeSortOption,
+    filterState,
+    categoryLabels,
+    subcategoryLabels,
+    tasteLabels,
+    daypartLabels,
+    seasonLabels,
+    serveLabels,
+    allergenLabels,
+    methodLabels,
+    intensityLabels,
+    caffeineLabels,
+    clearSort,
+    removeFromFilterArray,
+    clearFocusAxis,
+  ]);
   
   const toggleCategory = (cat: string) => {
     setSelectedCategories((prev) => prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]);
@@ -459,6 +699,7 @@ export default function Home({ normalization }: HomeProps) {
         onChangeSort={setSort}
         onOpenFilters={() => setFiltersOpen(true)}
         activeFilterCount={activeFilterCount}
+        activeSelections={activeSelections}
       />
       <PaginationBar page={page} totalPages={totalPages} onSelect={goTo} aria-controls="tea-grid" />
 
