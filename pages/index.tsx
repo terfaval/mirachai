@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import path from 'path';
 import { promises as fs } from 'fs';
 import TeaGrid, { type ActiveSelection } from '../components/TeaGrid';
@@ -33,7 +34,7 @@ import type { Tea as FilterTea } from '../utils/filter';
 import { getMandalaPath } from '../utils/mandala';
 import { getTasteIcon } from '@/utils/tasteIcons';
 import { SERVE_MODE_DEFINITIONS } from '@/utils/serveModes';
-import { computeRelevance, tieBreak, type RelevanceCtx, type Tea as RelevanceTea } from '../utils/relevance';
+import { computeRelevance, tieBreak, type Tea as RelevanceTea } from '../utils/relevance';
 
 /* ---------- stabil “véletlen” ---------- */
 function mulberry32(a: number) {
@@ -86,17 +87,6 @@ const SEARCH_WEIGHTS: Record<string, number> = {
   origin: 1,
 };
 
-function sortByRelevance<T extends RelevanceTea>(items: T[], seedISODate: string, hourLocal?: number): T[] {
-  const ctx: RelevanceCtx = { seedISODate, hourLocal };
-  return items
-    .slice()
-    .sort((a, b) => {
-      const ar = computeRelevance(a, ctx);
-      const br = computeRelevance(b, ctx);
-      return ar !== br ? br - ar : tieBreak(a, b);
-    });
-}
-
 type NormalizedTeaForHome = NormalizedTea & FilterTea & RelevanceTea;
 type HomeNormalization = Omit<NormalizeResult, 'teas'> & { teas: NormalizedTeaForHome[] };
 
@@ -120,6 +110,7 @@ type FilterArrayKey =
 
 export default function Home({ normalization, seedNowISODate }: HomeProps) {
   const teas = normalization.teas;
+  const { query: routerQuery } = useRouter();
   const [selectedTea, setSelectedTea] = useState<FilterTea | null>(null);
   const [query, setQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -128,7 +119,14 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   const [showCategorySidebar, _setShowCategorySidebar] = useState(false);
   const [filterState, setFilterState] = useState<FilterState>(() => createEmptyFilterState());
   const [shuffleSeed, setShuffleSeed] = useState<number | null>(null);
-  const [hourLocal, setHourLocal] = useState<number | undefined>(undefined);
+  
+  const hourLocal = useMemo(() => {
+    if (typeof routerQuery.hour === 'string') {
+      const h = Number(routerQuery.hour);
+      if (!Number.isNaN(h)) return Math.max(0, Math.min(23, h));
+    }
+    return new Date().getHours();
+  }, [routerQuery.hour]);
 
   const clearSort = useCallback(() => setSort('relevanceDesc'), [setSort]);
 
@@ -159,23 +157,6 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   // csak kliensen jelöljük, hogy lehet “véletlent” és időt használni
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    if (!mounted) return;
-    const params = new URLSearchParams(window.location.search);
-    const debugHour = params.get('hourLocal') ?? params.get('hour');
-    let nextHour: number | undefined;
-    if (debugHour !== null) {
-      const parsed = Number(debugHour);
-      if (!Number.isNaN(parsed)) {
-        nextHour = Math.max(0, Math.min(23, Math.floor(parsed)));
-      }
-    }
-    if (nextHour === undefined) {
-      nextHour = new Date().getHours();
-    }
-    setHourLocal((prev) => (prev === nextHour ? prev : nextHour));
-  }, [mounted]);
 
   // shuffleSeed: csak akkor változik, amikor ÚJ választékot kérsz
   const bumpSeed = useCallback(() => {
@@ -249,6 +230,16 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   }, [shuffledTeas, filterState, selectedCategories, query]);
 
   // rendezés
+  const relevanceSorted = useMemo(() => {
+    const ctx = { seedISODate: seedNowISODate, hourLocal };
+    const sorted = filtered.slice().sort((a, b) => {
+      const ar = computeRelevance(a, ctx);
+      const br = computeRelevance(b, ctx);
+      return ar !== br ? br - ar : tieBreak(a, b);
+    });
+    return sorted;
+  }, [filtered, seedNowISODate, hourLocal]);
+
   const sorted = useMemo(() => {
     if (sort === 'nameAsc') {
       return [...filtered].sort((a, b) => {
@@ -297,10 +288,10 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
       });
     }
     if (sort === 'relevanceDesc') {
-      return sortByRelevance(filtered, seedNowISODate, hourLocal);
+      return relevanceSorted;
     }
     return [...filtered];
-  }, [filtered, sort, seedNowISODate, hourLocal]);
+  }, [filtered, sort, relevanceSorted]);
 
   const { tilesX, tilesY, perPage } = useTeaGridLayout();
 

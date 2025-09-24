@@ -58,7 +58,7 @@ function seasonScore(tea: Tea, ctx: RelevanceCtx): number {
   if (!rec.length) return 0;
   let best = 0;
   for (const s of rec) {
-    if (s === "egész évben") { best = Math.max(best, 25); continue; }
+    if (s === "egész évben") { best = Math.max(best, 20); continue; }
     const d = nearSeason(nowS, s);
     best = Math.max(best, d===0?100 : d===1?50 : d===2?15 : 0);
   }
@@ -72,9 +72,9 @@ function daypartScore(tea: Tea, ctx: RelevanceCtx): number {
   if (rec.includes("étkezés_után") && isPostMealPreferred(ctx.hourLocal)) special = Math.max(special, 25);
   if (rec.includes("lefekvés_előtt")) {
     const h = ctx.hourLocal ?? 12;
-    if (h >= 21 || h <= 1) special = Math.max(special, 30);
+    if (h >= 21 || h <= 1) special = Math.max(special, 40);
   }
-  if (rec.includes("bármikor")) return Math.max(15, special);
+  if (rec.includes("bármikor")) return Math.max(10, special);
   const neighbors: Record<Daypart, Daypart[]> = {
     reggel:["délelőtt"],
     délelőtt:["reggel","kora_délután"],
@@ -86,7 +86,7 @@ function daypartScore(tea: Tea, ctx: RelevanceCtx): number {
     bármikor:[]
   };
   const exact = rec.includes(now) ? 40 : 0;
-  const neighbor = exact ? 0 : (neighbors[now]?.some(n => rec.includes(n)) ? 20 : 0);
+  const neighbor = exact ? 0 : (neighbors[now]?.some(n => rec.includes(n)) ? 10 : 0);
   return Math.max(exact + neighbor, special);
 }
 function servingScore(tea: Tea, ctx: RelevanceCtx): number {
@@ -102,7 +102,10 @@ function caffeineScore(tea: Tea, ctx: RelevanceCtx): number {
   const c = tea.caffeine_pct ?? 0;
   const h = ctx.hourLocal ?? 12;
   if (h <= 11) return Math.min(30, Math.round(c * 0.3));
-  if (h >= 17) return -Math.min(100, Math.round(c * 1.0));
+  if (h >= 17) {
+    if (c === 0) return 20;
+    return -Math.min(100, Math.round(c * 1.0));
+  }
   return 0;
 }
 export function computeRelevance(tea: Tea, ctx: RelevanceCtx): number {
