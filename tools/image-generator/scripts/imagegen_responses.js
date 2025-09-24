@@ -191,7 +191,7 @@ without: ${negative}`.trim();
           model,
           prompt: fullPrompt,
           size,
-          n
+          n: 1
         });
 
         if (!res?.data?.length) {
@@ -199,19 +199,23 @@ without: ${negative}`.trim();
           continue;
         }
 
-        let idx = 0;
-        for (const img of res.data) {
-          const fname = `${name}__${size}__${String(idx + 1).padStart(2, "0")}.png`;
-          const fpath = path.join(sizeOut, fname);
-
-          if (img.url) await saveFromUrl(img.url, fpath);
-          else if (img.b64_json) await saveFromB64(img.b64_json, fpath);
-          else { console.warn(`      - [skip] no url/b64_json (${name}/${size}/${idx})`); idx++; continue; }
-
-          console.log(`      - saved: ${path.relative(process.cwd(), fpath)}`);
-          await postCropIfNeeded(fpath, item.post_crop || job.post_crop);
-          idx++;
+        // Csak az első képet mentjük
+        const img = res.data[0];
+        const fname = `${name}__${size}.png`;
+        const fpath = path.join(sizeOut, fname);
+        
+        if (img.url) {
+            await saveFromUrl(img.url, fpath);
+          } else if (img.b64_json) { 
+            await saveFromB64(img.b64_json, fpath);
+          } else { 
+            console.warn(`      - [skip] no url/b64_json (${name}/${size})`);
+            continue; 
         }
+
+        console.log(`      - saved: ${path.relative(process.cwd(), fpath)}`);
+          await postCropIfNeeded(fpath, item.post_crop || job.post_crop);
+
       } catch (e) {
         const msg = (e?.error?.message || e?.message || "").toString();
         if (e?.status === 403 && msg.includes("must be verified")) {
