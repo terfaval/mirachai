@@ -60,9 +60,7 @@ export default function TeaGrid({
 }: Props) {
   const effectivePerPage = perPage ?? tilesX * tilesY;
   const start = (page - 1) * effectivePerPage;
-  const pageItems = [...items]
-    .sort((a, b) => compareIdAsc(a.id, b.id))
-    .slice(start, start + effectivePerPage);
+  const pageItems = items.slice(start, start + effectivePerPage);
   const [panel, setPanel] = useState<PanelKey>('consumption');
   const [renderTeas, setRenderTeas] = useState<Tea[]>(pageItems);
   const [incomingTeas, setIncomingTeas] = useState<Tea[] | null>(null);

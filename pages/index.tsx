@@ -29,10 +29,11 @@ import {
   INTENSITY_BUCKET_OPTIONS,
 } from '../lib/tea-filters';
 import { distributeByCategory } from '../utils/category-distribution';
-import type { Tea } from '../utils/filter';
+import type { Tea as FilterTea } from '../utils/filter';
 import { getMandalaPath } from '../utils/mandala';
 import { getTasteIcon } from '@/utils/tasteIcons';
 import { SERVE_MODE_DEFINITIONS } from '@/utils/serveModes';
+import { computeRelevance, tieBreak, type RelevanceCtx, type Tea as RelevanceTea } from '../utils/relevance';
 
 /* ---------- stabil “véletlen” ---------- */
 function mulberry32(a: number) {
@@ -63,58 +64,6 @@ function deterministicShuffle<T extends { id: number | string }>(arr: T[], seed:
 function normalizeString(str: string): string {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
-function getSeason(date: Date): string {
-  const m = date.getMonth(); const d = date.getDate();
-  if (m < 2 || (m === 2 && d < 21)) return 'tel';
-  if (m < 5 || (m === 5 && d < 21)) return 'tavasz';
-  if (m < 8 || (m === 8 && d < 22)) return 'nyar';
-  if (m < 11 || (m === 11 && d < 21)) return 'osz';
-  return 'tel';
-}
-const SEASON_START: Record<string, number> = { tel: 11, tavasz: 2, nyar: 5, osz: 8 };
-function seasonDistance(now: Date, season: string): number {
-  const month = now.getMonth(); const start = SEASON_START[season];
-  let dist = start - month; if (dist < 0) dist += 12; return dist;
-}
-function seasonScore(seasons: string[], now: Date): number {
-  const normSeasons = seasons.map((s) => normalizeString(s));
-  const current = getSeason(now);
-  if (normSeasons.length === 0) return 0;
-  if (normSeasons.length === 1 && normSeasons[0] === current) return 30;
-  if (normSeasons.includes(current)) {
-    let minDist = 12;
-    for (const s of normSeasons) { if (s === current) continue;
-      const d = seasonDistance(now, s); if (d < minDist) minDist = d; }
-    let score = 20 - minDist;
-    if (normSeasons.length >= 3) score -= 5;
-    return Math.max(0, score);
-  }
-  let minDist = 12;
-  for (const s of normSeasons) { const d = seasonDistance(now, s); if (d < minDist) minDist = d; }
-  return Math.max(0, 10 - minDist);
-}
-function daypartPrefs(now: Date): string[] {
-  const h = now.getHours(); const prefs: string[] = [];
-  if (h >= 20 || h < 4) prefs.push('lefekves_elott');
-  if ((h >= 12 && h <= 13) || (h >= 18 && h <= 21)) prefs.push('etkezes_utan');
-  if (h >= 4 && h < 10) prefs.push('reggel');
-  if (h >= 10 && h < 12) prefs.push('delelott');
-  if (h >= 12 && h < 14) prefs.push('kora_delutan');
-  if (h >= 14 && h < 18) prefs.push('delutan');
-  if (h >= 18 && h < 22) prefs.push('este');
-  prefs.push('barmikor'); return prefs;
-}
-function daypartScore(dayparts: string[], now: Date): number {
-  const norm = dayparts.map((d) => normalizeString(d).replace(/\s+/g, '_'));
-  const prefs = daypartPrefs(now);
-  for (let i = 0; i < prefs.length; i++) if (norm.includes(prefs[i])) return prefs.length - i;
-  return 0;
-}
-export function computeRelevance(tea: Tea, now: Date): number {
-  const seasons = toStringArray(tea.season_recommended);
-  const dayparts = toStringArray(tea.daypart_recommended);
-  return seasonScore(seasons, now) * 10 + daypartScore(dayparts, now);
-}
 
 const SEARCH_WEIGHTS: Record<string, number> = {
   name: 3,
@@ -137,10 +86,24 @@ const SEARCH_WEIGHTS: Record<string, number> = {
   origin: 1,
 };
 
-type NormalizedTeaForHome = NormalizedTea & Tea;
+function sortByRelevance<T extends RelevanceTea>(items: T[], seedISODate: string, hourLocal?: number): T[] {
+  const ctx: RelevanceCtx = { seedISODate, hourLocal };
+  return items
+    .slice()
+    .sort((a, b) => {
+      const ar = computeRelevance(a, ctx);
+      const br = computeRelevance(b, ctx);
+      return ar !== br ? br - ar : tieBreak(a, b);
+    });
+}
+
+type NormalizedTeaForHome = NormalizedTea & FilterTea & RelevanceTea;
 type HomeNormalization = Omit<NormalizeResult, 'teas'> & { teas: NormalizedTeaForHome[] };
 
-interface HomeProps { normalization: HomeNormalization; }
+interface HomeProps {
+  normalization: HomeNormalization;
+  seedNowISODate: string;
+}
 
 type FilterArrayKey =
   | 'categories'
@@ -155,9 +118,9 @@ type FilterArrayKey =
   | 'allergensExclude'
   | 'methods';
 
-export default function Home({ normalization }: HomeProps) {
+export default function Home({ normalization, seedNowISODate }: HomeProps) {
   const teas = normalization.teas;
-  const [selectedTea, setSelectedTea] = useState<Tea | null>(null);
+  const [selectedTea, setSelectedTea] = useState<FilterTea | null>(null);
   const [query, setQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sort, setSort] = useState<SortKey>('relevanceDesc');
@@ -165,6 +128,7 @@ export default function Home({ normalization }: HomeProps) {
   const [showCategorySidebar, _setShowCategorySidebar] = useState(false);
   const [filterState, setFilterState] = useState<FilterState>(() => createEmptyFilterState());
   const [shuffleSeed, setShuffleSeed] = useState<number | null>(null);
+  const [hourLocal, setHourLocal] = useState<number | undefined>(undefined);
 
   const clearSort = useCallback(() => setSort('relevanceDesc'), [setSort]);
 
@@ -195,6 +159,23 @@ export default function Home({ normalization }: HomeProps) {
   // csak kliensen jelöljük, hogy lehet “véletlent” és időt használni
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const params = new URLSearchParams(window.location.search);
+    const debugHour = params.get('hourLocal') ?? params.get('hour');
+    let nextHour: number | undefined;
+    if (debugHour !== null) {
+      const parsed = Number(debugHour);
+      if (!Number.isNaN(parsed)) {
+        nextHour = Math.max(0, Math.min(23, Math.floor(parsed)));
+      }
+    }
+    if (nextHour === undefined) {
+      nextHour = new Date().getHours();
+    }
+    setHourLocal((prev) => (prev === nextHour ? prev : nextHour));
+  }, [mounted]);
 
   // shuffleSeed: csak akkor változik, amikor ÚJ választékot kérsz
   const bumpSeed = useCallback(() => {
@@ -268,31 +249,64 @@ export default function Home({ normalization }: HomeProps) {
   }, [shuffledTeas, filterState, selectedCategories, query]);
 
   // rendezés
-  const now = useMemo(() => (mounted ? new Date() : null), [mounted]);
   const sorted = useMemo(() => {
-    const arr = [...filtered];
-    if (sort === 'nameAsc') return arr.sort((a, b) => a.name.localeCompare(b.name, 'hu', { sensitivity: 'base' }));
-    if (sort === 'nameDesc') return arr.sort((a, b) => b.name.localeCompare(a.name, 'hu', { sensitivity: 'base' }));
+    if (sort === 'nameAsc') {
+      return [...filtered].sort((a, b) => {
+        const cmp = (a.name || '').localeCompare(b.name || '', 'hu', { sensitivity: 'base' });
+        return cmp !== 0 ? cmp : a.id - b.id;
+      });
+    }
+    if (sort === 'nameDesc') {
+      return [...filtered].sort((a, b) => {
+        const cmp = (b.name || '').localeCompare(a.name || '', 'hu', { sensitivity: 'base' });
+        return cmp !== 0 ? cmp : a.id - b.id;
+      });
+    }
     if (sort === 'intensityAsc' || sort === 'intensityDesc') {
       const map: Record<string, number> = { enyhe: 1, 'közepes': 2, 'erős': 3 };
-      arr.sort((a, b) => (map[a.intensity || ''] || 0) - (map[b.intensity || ''] || 0));
-      if (sort === 'intensityDesc') arr.reverse();
-      return arr;
+      const compareAsc = (a: NormalizedTeaForHome, b: NormalizedTeaForHome) => {
+        const av = map[a.intensity || ''] || 0;
+        const bv = map[b.intensity || ''] || 0;
+        if (av !== bv) return av - bv;
+        return tieBreak(a, b);
+      };
+      if (sort === 'intensityAsc') {
+        return [...filtered].sort(compareAsc);
+      }
+      return [...filtered].sort((a, b) => {
+        const av = map[a.intensity || ''] || 0;
+        const bv = map[b.intensity || ''] || 0;
+        if (av !== bv) return bv - av;
+        return tieBreak(a, b);
+      });
     }
-    if (sort === 'steepMinAsc') return arr.sort((a, b) => (a.steepMin || 0) - (b.steepMin || 0));
-    if (sort === 'steepMinDesc') return arr.sort((a, b) => (b.steepMin || 0) - (a.steepMin || 0));
+    if (sort === 'steepMinAsc') {
+      return [...filtered].sort((a, b) => {
+        const av = a.steepMin ?? Number.POSITIVE_INFINITY;
+        const bv = b.steepMin ?? Number.POSITIVE_INFINITY;
+        if (av !== bv) return av - bv;
+        return tieBreak(a, b);
+      });
+    }
+    if (sort === 'steepMinDesc') {
+      return [...filtered].sort((a, b) => {
+        const av = a.steepMin ?? Number.NEGATIVE_INFINITY;
+        const bv = b.steepMin ?? Number.NEGATIVE_INFINITY;
+        if (av !== bv) return bv - av;
+        return tieBreak(a, b);
+      });
+    }
     if (sort === 'relevanceDesc') {
-      if (!now) return arr; // SSR: ne függjön az időtől
-      return arr.sort((a, b) => computeRelevance(b, now) - computeRelevance(a, now));
+      return sortByRelevance(filtered, seedNowISODate, hourLocal);
     }
-    return arr;
-  }, [filtered, sort, now]);
+    return [...filtered];
+  }, [filtered, sort, seedNowISODate, hourLocal]);
 
   const { tilesX, tilesY, perPage } = useTeaGridLayout();
 
   const distributed = useMemo(() => {
-    const seed = shuffleSeed ?? 0;
-    return distributeByCategory(sorted, perPage, tilesX, seed);
+    if (!shuffleSeed) return sorted;
+    return distributeByCategory(sorted, perPage, tilesX, shuffleSeed);
   }, [sorted, perPage, tilesX, shuffleSeed]);
 
   const { page, totalPages, goTo } = usePagination(distributed.length, perPage, 1);
@@ -709,6 +723,7 @@ export default function Home({ normalization }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const seedNowISODate = new Date().toISOString().slice(0, 10);
   const filePath = path.join(process.cwd(), 'data', 'teas.json');
   const jsonData = await fs.readFile(filePath, 'utf8');
   const rawTeas: any[] = JSON.parse(jsonData);
@@ -763,5 +778,5 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     teas: sorted,
   };
 
-  return { props: { normalization } };
+  return { props: { normalization, seedNowISODate } };
 };

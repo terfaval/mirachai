@@ -171,19 +171,12 @@ export default function TasteChart({
               const fill = active ? p.color : '#ccc';
               const opacity = active ? 0.9 : 1;
               const isTop = active && lvl === p.value;
-              const base = pr;
-              const height = pr * 1.7;
-              const topY = y - height * 0.45;
-              const bottomY = y + height * 0.55;
-              const points = [
-                `${x - base},${topY}`,
-                `${x + base},${topY}`,
-                `${x},${bottomY}`,
-              ].join(' ');
               return (
-                <polygon
+                <circle
                   key={lvl}
-                  points={points}
+                  cx={x}
+                  cy={y}
+                  r={pr}
                   fill={fill}
                   fillOpacity={opacity}
                   onMouseEnter={
