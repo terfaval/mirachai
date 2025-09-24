@@ -3,11 +3,15 @@ project_sizes: ["desktop_wide"]       # 1536x1024
 project_n: 1
 
 project_base_prompt: >
+  STRICTLY front-facing, flat symmetrical view of a cozy tea room.
   Urban Scandinavian–bohemian teahouse interior, FULL ROOM wide composition.
+  Camera position centered, eye-level, full room visible.
+  No angled perspective, no rotation, no tilt.
 
   STRUCTURE:
-  - LEFT WALL: a large window with thin wooden frames dividing it into 6 panes.
+  - LEFT WALL: entirely a large window with thin wooden frames dividing it into 6 panes.
     Through the window: leafy balcony plants and the sky visible above urban greenery.
+    On the windowsill: a steaming tea mug catching light.
   - BACK WALL: a long wooden counter with a vintage vinyl record player in the center,
     surrounded by teasets, jars, and books.
     Above and beside: shelves filled with plants (trailing vines, hanging pots, upright greens),
@@ -31,16 +35,13 @@ project_base_prompt: >
   - Cozy details but not cluttered.
 
   CAMERA / PERSPECTIVE:
-  - Wide-angle but natural perspective, slightly pulled back and at a higher viewpoint.
-  - Show more ceiling with pendant lamps and more wooden floor with the colorful rug.
-  - Depth of the room visible, immersive interior perspective.
-  - Framing remains identical horizontally; do not add new objects at the side edges.
-  - Only extend visible vertical space (ceiling and floor).
-
-  LIGHTING RULE:
-  - Daytime: abundant natural daylight through the window, shadows across the colorful rug.
-  - After dusk: warm pendant lamps and lit candles on tables and counter.
-  - Shadows and highlights respond naturally to the time of day.
+  DO NOT change camera, angle, or viewpoint.
+  Strictly front-facing composition.
+  Wide-angle but natural perspective, slightly pulled back and at a higher viewpoint.
+  Show both ceiling with pendant lamps and wooden floor with the colorful rug.
+  Depth of the room visible, immersive interior perspective.
+  Framing remains identical horizontally; do not add new objects at the side edges.
+  Only extend visible vertical space (ceiling and floor).
 
   RENDERING STYLE:
   Semi-realistic painterly look:
@@ -51,44 +52,83 @@ project_base_prompt: >
 project_negative: "text, logos, watermarks, people, hands, added props, rearranged furniture"
 
 items:
-  - name: "desktop_background_hajnal"
+  - name: "desktop_background_dawn"
     light: >
-      Dawn: faint bluish pre-sunrise light filtering through the 6-pane window.
-      Exterior balcony plants in silhouette against pale sky.
-      Interior lamps OFF, candles present but UNLIT.
-      Very soft, low-contrast shadows across the colorful rug and floor.
-      A tiny standby glow on the vinyl player.
+      Strictly front-facing composition.
+      Dawn: faint bluish pre-sunrise light flooding through the full window.
+      Exterior balcony plants silhouetted against pale sky.
+      Interior lamps OFF, candles UNLIT.
+      Very soft, low-contrast shadows across rug and floor.
+      Cold bluish tint (~4000K), faint illumination but room still clearly visible.
+      Vinyl player standby glow ON.
+      Tea mug on windowsill steaming, faintly catching the cold blue light.
+      Strictly symmetrical, central vanishing point at the back wall. 
+      Left wall fully visible with window, right wall fully visible with shelving. 
+      Do not crop or rotate.
 
-  - name: "desktop_background_reggel"
+  - name: "desktop_background_morning"
     light: >
-      Morning: fresh daylight with golden edges. Sunbeams stream through the large window panes,
-      illuminating plants and creating long soft shadows on the rug.
-      Gentle reflections on cups and jars. Candles UNLIT.
-      Crisp, invigorating atmosphere with airy highlights.
+      Strictly front-facing composition.
+      Morning: brilliant golden sunlight pours through the window panes,
+      strong sunbeams illuminate plants and floor, casting long but soft-edged shadows.
+      High-contrast highlights sparkle on jars, cups and teapots.
+      Warm golden tint (~5000K–5500K).
+      Candles UNLIT. Airy, crisp atmosphere with vivid highlights.
+      Tea mug on windowsill steaming in golden glow.
+      Strictly symmetrical, central vanishing point at the back wall. 
+      Left wall fully visible with window, right wall fully visible with shelving. 
+      Do not crop or rotate.
 
-  - name: "desktop_background_del"
+  - name: "desktop_background_noon"
     light: >
-      Noon: bright, neutral daylight fills the entire room evenly.
-      Shadows short and soft-edged. Rug pattern clearly visible.
-      Plants appear vibrant and well-lit, shelves evenly illuminated.
-      Candles UNLIT. Atmosphere clean, airy, balanced.
+      Strictly front-facing composition.
+      Noon: bright neutral daylight floods the room evenly, high-intensity illumination.
+      Rug colors and patterns vividly clear, every detail visible.
+      Plants vibrant, shelves evenly lit without harsh shadows.
+      Neutral daylight tint (~5600K).
+      Candles UNLIT.
+      Tea mug on windowsill steaming, clearly visible in daylight.
+      Strictly symmetrical, central vanishing point at the back wall. 
+      Left wall fully visible with window, right wall fully visible with shelving. 
+      Do not crop or rotate.
 
-  - name: "desktop_background_delutan"
+  - name: "desktop_background_afternoon"
     light: >
-      Afternoon: warmer tone of sunlight, coming in from a lower angle through the window.
-      Long, calm shadows stretch across the rug. Leaves catch golden edges.
-      Candles UNLIT. Atmosphere relaxed, slightly introspective.
+      Strictly front-facing composition.
+      Afternoon: low warm golden sunlight streams through the window.
+      Strong directional light with long dramatic shadows stretching across rug and furniture.
+      Leaves edged with glowing gold, highlights warm and saturated.
+      Golden tint (~4500K).
+      Candles UNLIT. Cozy, reflective mood.
+      Tea mug on windowsill steaming, rim catching warm sunlight.
+      Strictly symmetrical, central vanishing point at the back wall. 
+      Left wall fully visible with window, right wall fully visible with shelving. 
+      Do not crop or rotate.
 
-  - name: "desktop_background_este"
+  - name: "desktop_background_evening"
     light: >
-      Evening golden hour: rich amber light pours through the window panes, long dramatic shadows.
-      A small table lamp near the record player ON (~15%, 2700K).
-      Candles on counter and tables LIT (~1800K), adding flickering pools of warm light.
-      Rug catches both sunset stripes and candle halos. Cozy, intimate mood.
+      Strictly front-facing composition.
+      Evening golden hour: room bathed in deep amber light, sunlight stripes clearly visible across rug.
+      Strong contrast between warm highlights and cooler shadows.
+      Counter lamp ON (~15%, 2700K).
+      A few candles on tables LIT (~1800K), glowing visibly with soft halos.
+      Rug and shelves illuminated by both sunset stripes and candlelight.
+      Tea mug on windowsill steaming in mixed golden and candle glow.
+      Strictly symmetrical, central vanishing point at the back wall. 
+      Left wall fully visible with window, right wall fully visible with shelving. 
+      Do not crop or rotate.
 
-  - name: "desktop_background_ejszaka"
+  - name: "desktop_background_night"
     light: >
-      Night: outside completely dark, only balcony plants faintly outlined against the night sky.
-      Two pendant lamps ON (~15%, 2400K), small countertop lamp ON (~10%).
-      All candles LIT (~1800K), creating warm glows on surfaces and soft halos on the rug.
-      Deep shadows, inky corners, warm intimate atmosphere around the record player and tea tables.
+      Strictly front-facing composition.
+      Night: deep blue sky outside with bright crescent moon and visible stars.
+      Strong moonlight floods in through the window panes, cool silver-blue highlights on rug and floor.
+      Inside: pendant lamps ON (~20%, 2400K), casting clear bright cones of warm light.
+      All candles strongly LIT (~1800K), creating glowing pools on surfaces, rug, and shelves.
+      Mixed illumination: warm candle and lamp glow balanced with cool moonlight at the window.
+      Interior clearly visible despite night setting, cozy and magical atmosphere.
+      Tea mug on windowsill steaming, catching both moonlight and candle glow.
+      Strictly symmetrical, central vanishing point at the back wall. 
+      Left wall fully visible with window, right wall fully visible with shelving. 
+      Do not crop or rotate.
+

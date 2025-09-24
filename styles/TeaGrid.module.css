@@ -204,11 +204,17 @@
     --grid-available-height: calc(100vh - 110px);
     --pager-offset-y: 56px;
   }
+  .gridWrap {
+    top: 56%;
+  }
 }
 @media (max-width: 640px) {
   .container {
     --grid-w: 94vw;
     --grid-available-height: calc(100vh - 88px);
     --pager-offset-y: 40px;
+  }
+  .gridWrap {
+    top: 56%;
   }
 }
