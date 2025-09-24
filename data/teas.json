@@ -48,7 +48,7 @@
     "nature": 1,
     "diy-kit": 1,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, bármikor"
+    "daypart_recommended": "délután"
   },
   {
     "id": 2,
@@ -150,7 +150,7 @@
     "nature": 2,
     "diy-kit": 1,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, étkezés_után, bármikor"
+    "daypart_recommended": "délután, étkezés_után"
   },
   {
     "id": 4,
@@ -201,7 +201,7 @@
     "nature": 1,
     "diy-kit": 1,
     "season_recommended": "tavasz, nyár",
-    "daypart_recommended": "délután, este, étkezés_után, bármikor"
+    "daypart_recommended": "délután, este, étkezés_után"
   },
   {
     "id": 5,
@@ -252,7 +252,7 @@
     "nature": 1,
     "diy-kit": 3,
     "season_recommended": "tavasz, nyár",
-    "daypart_recommended": "délután, este, étkezés_után, bármikor"
+    "daypart_recommended": "délután, este, étkezés_után"
   },
   {
     "id": 6,
@@ -354,7 +354,7 @@
     "nature": 2,
     "diy-kit": 1,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, étkezés_után, bármikor"
+    "daypart_recommended": "délután, étkezés_után"
   },
   {
     "id": 8,
@@ -1119,7 +1119,7 @@
     "nature": 2,
     "diy-kit": 3,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, este, étkezés_után, bármikor"
+    "daypart_recommended": "délután, este, étkezés_után"
   },
   {
     "id": 23,
@@ -1272,7 +1272,7 @@
     "nature": 3,
     "diy-kit": 2,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, bármikor"
+    "daypart_recommended": "délután"
   },
   {
     "id": 26,
@@ -1680,7 +1680,7 @@
     "nature": 3,
     "diy-kit": 3,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, bármikor"
+    "daypart_recommended": "délután"
   },
   {
     "id": 34,
@@ -1731,7 +1731,7 @@
     "nature": 1,
     "diy-kit": 2,
     "season_recommended": "tavasz, nyár",
-    "daypart_recommended": "étkezés_után, bármikor"
+    "daypart_recommended": "étkezés_után"
   },
   {
     "id": 35,
@@ -2037,7 +2037,7 @@
     "nature": 2,
     "diy-kit": 2,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, bármikor"
+    "daypart_recommended": "délután"
   },
   {
     "id": 41,
@@ -2088,7 +2088,7 @@
     "nature": 3,
     "diy-kit": 1,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, bármikor"
+    "daypart_recommended": "délután"
   },
   {
     "id": 42,
@@ -2496,7 +2496,7 @@
     "nature": 3,
     "diy-kit": 3,
     "season_recommended": "ősz, tél",
-    "daypart_recommended": "étkezés_után, bármikor"
+    "daypart_recommended": "étkezés_után"
   },
   {
     "id": 50,
@@ -2700,7 +2700,7 @@
   "nature": 2,
   "diy-kit": 1,
   "season_recommended": ["tavasz","ősz"],
-  "daypart_recommended": ["bármikor","étkezés_után"]
+  "daypart_recommended": ["étkezés_után"]
 },
   {
     "id": 54,
@@ -2751,7 +2751,7 @@
     "nature": 3,
     "diy-kit": 1,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, bármikor"
+    "daypart_recommended": "délután"
   },
   {
     "id": 55,
@@ -3210,7 +3210,7 @@
     "nature": 3,
     "diy-kit": 1,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, este, étkezés_után, bármikor"
+    "daypart_recommended": "délután, este, étkezés_után"
   },
   {
     "id": 64,
@@ -3465,7 +3465,7 @@
     "nature": 2,
     "diy-kit": 1,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, este, étkezés_után, bármikor"
+    "daypart_recommended": "délután, este, étkezés_után"
   },
   {
     "id": 69,
@@ -3669,7 +3669,7 @@
     "nature": 2,
     "diy-kit": 2,
     "season_recommended": "ősz, tél",
-    "daypart_recommended": "étkezés_után, bármikor"
+    "daypart_recommended": "étkezés_után"
   },
   {
     "id": 73,
@@ -3822,7 +3822,7 @@
     "nature": 3,
     "diy-kit": 3,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, bármikor"
+    "daypart_recommended": "délután"
   },
   {
     "id": 76,
@@ -3975,7 +3975,7 @@
     "nature": 1,
     "diy-kit": 1,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "étkezés_után, bármikor"
+    "daypart_recommended": "étkezés_után"
   },
   {
     "id": 79,
@@ -4179,7 +4179,7 @@
     "nature": 3,
     "diy-kit": 2,
     "season_recommended": "tavasz, nyár, ősz, tél",
-    "daypart_recommended": "délután, bármikor"
+    "daypart_recommended": "délután"
   },
   {
     "id": 83,
@@ -4332,7 +4332,7 @@
     "nature": 2,
     "diy-kit": 2,
     "season_recommended": ["tavasz","nyár"],
-    "daypart_recommended": ["bármikor","délután"]
+    "daypart_recommended": ["délután"]
   },
   {
     "id": 86,
@@ -4434,7 +4434,7 @@
     "nature": 2,
     "diy-kit": 1,
     "season_recommended": ["tavasz","nyár"],
-    "daypart_recommended": ["bármikor","délután"]
+    "daypart_recommended": ["délután"]
   },
   {
     "id": 88,
@@ -4485,7 +4485,7 @@
     "nature": 3,
     "diy-kit": 2,
     "season_recommended": ["ősz","tél"],
-    "daypart_recommended": ["bármikor","étkezés_után"]
+    "daypart_recommended": ["étkezés_után"]
   },
   {
     "id": 89,
@@ -4587,7 +4587,7 @@
     "nature": 2,
     "diy-kit": 3,
     "season_recommended": ["tavasz","nyár"],
-    "daypart_recommended": ["bármikor","délután"]
+    "daypart_recommended": ["délután"]
   },
   {
     "id": 91,
@@ -4638,7 +4638,7 @@
     "nature": 2,
     "diy-kit": 1,
     "season_recommended": ["tavasz"],
-    "daypart_recommended": ["bármikor","délután","étkezés_után"]
+    "daypart_recommended": ["délután","étkezés_után"]
   },
   {
     "id": 92,
@@ -4740,7 +4740,7 @@
     "nature": 2,
     "diy-kit": 2,
     "season_recommended": ["tavasz","nyár","ősz","tél"],
-    "daypart_recommended": ["bármikor","délután","étkezés_után"]
+    "daypart_recommended": ["délután","étkezés_után"]
   },
   {
     "id": 94,
@@ -4791,7 +4791,7 @@
     "nature": 1,
     "diy-kit": 1,
     "season_recommended": ["egész évben"],
-    "daypart_recommended": ["bármikor","este","lefekvés_előtt"]
+    "daypart_recommended": ["este","lefekvés_előtt"]
   },
   {
   "id": 95,
@@ -4995,7 +4995,7 @@
     "nature": 3,
     "diy-kit": 2,
     "season_recommended": ["ősz","tél"],
-    "daypart_recommended": ["bármikor","étkezés_után"]
+    "daypart_recommended": ["étkezés_után"]
   },
   {
     "id": 99,
@@ -5046,7 +5046,7 @@
     "nature": 2,
     "diy-kit": 1,
     "season_recommended": ["egész évben"],
-    "daypart_recommended": ["bármikor","étkezés_után"]
+    "daypart_recommended": ["étkezés_után"]
   },
   {
     "id": 100,
@@ -5097,7 +5097,7 @@
     "nature": 3,
     "diy-kit": 2,
     "season_recommended": ["tavasz","nyár"],
-    "daypart_recommended": ["bármikor","délután"]
+    "daypart_recommended": ["délután"]
   },
   {
     "id": 101,
@@ -5250,7 +5250,7 @@
     "nature": 3,
     "diy-kit": 2,
     "season_recommended": ["ősz","tél"],
-    "daypart_recommended": ["bármikor","délután","étkezés_után"]
+    "daypart_recommended": ["délután","étkezés_után"]
   },
   {
     "id": 104,
@@ -5301,7 +5301,7 @@
     "nature": 2,
     "diy-kit": 2,
     "season_recommended": ["tavasz","nyár"],
-    "daypart_recommended": ["bármikor","délután"]
+    "daypart_recommended": ["délután"]
   },
   {
     "id": 105,
@@ -5658,7 +5658,7 @@
     "nature": 3,
     "diy-kit": 2,
     "season_recommended": ["tavasz","nyár"],
-    "daypart_recommended": ["bármikor","délután"]
+    "daypart_recommended": ["délután"]
   },
   {
     "id": 112,
@@ -5760,7 +5760,7 @@
     "nature": 2,
     "diy-kit": 2,
     "season_recommended": ["tavasz","ősz"],
-    "daypart_recommended": ["bármikor","étkezés_után"]
+    "daypart_recommended": ["étkezés_után"]
   },
   {
     "id": 114,
@@ -5862,7 +5862,7 @@
     "nature": 3,
     "diy-kit": 1,
     "season_recommended": ["tavasz","nyár"],
-    "daypart_recommended": ["bármikor","délután"]
+    "daypart_recommended": ["délután"]
   },
   {
     "id": 116,
