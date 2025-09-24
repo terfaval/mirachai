@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useRouter } from 'next/router';
 import path from 'path';
 import { promises as fs } from 'fs';
@@ -119,6 +119,86 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   const [showCategorySidebar, _setShowCategorySidebar] = useState(false);
   const [filterState, setFilterState] = useState<FilterState>(() => createEmptyFilterState());
   const [shuffleSeed, setShuffleSeed] = useState<number | null>(null);
+
+  const fullscreenRef = useRef<HTMLDivElement | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const enterFullscreen = useCallback(() => {
+    const el = fullscreenRef.current;
+    if (!el) return;
+    const request: (() => Promise<void> | void) | undefined =
+      el.requestFullscreen ??
+      (el as any).webkitRequestFullscreen ??
+      (el as any).mozRequestFullScreen ??
+      (el as any).msRequestFullscreen;
+    if (request) {
+      try {
+        const result = request.call(el);
+        if (result && typeof (result as Promise<void>).catch === 'function') {
+          (result as Promise<void>).catch(() => {});
+        }
+      } catch {
+        /* nyeljük el a hibát, ha nem támogatott */
+      }
+    }
+  }, []);
+
+  const exitFullscreen = useCallback(() => {
+    const exit: (() => Promise<void> | void) | undefined =
+      document.exitFullscreen ??
+      (document as any).webkitExitFullscreen ??
+      (document as any).mozCancelFullScreen ??
+      (document as any).msExitFullscreen;
+    if (exit) {
+      try {
+        const result = exit.call(document);
+        if (result && typeof (result as Promise<void>).catch === 'function') {
+          (result as Promise<void>).catch(() => {});
+        }
+      } catch {
+        /* figyelmen kívül hagyjuk */
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleChange = () => {
+      const fullscreenElement =
+        document.fullscreenElement ??
+        (document as any).webkitFullscreenElement ??
+        (document as any).mozFullScreenElement ??
+        (document as any).msFullscreenElement ??
+        null;
+      setIsFullscreen(Boolean(fullscreenElement));
+    };
+
+    document.addEventListener('fullscreenchange', handleChange);
+    document.addEventListener('webkitfullscreenchange', handleChange as EventListener);
+    document.addEventListener('mozfullscreenchange', handleChange as EventListener);
+    document.addEventListener('MSFullscreenChange', handleChange as EventListener);
+    handleChange();
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleChange);
+      document.removeEventListener('webkitfullscreenchange', handleChange as EventListener);
+      document.removeEventListener('mozfullscreenchange', handleChange as EventListener);
+      document.removeEventListener('MSFullscreenChange', handleChange as EventListener);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        if (filtersOpen) return;
+        if (isFullscreen) {
+          exitFullscreen();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [filtersOpen, isFullscreen, exitFullscreen]);
   
   const hourLocal = useMemo(() => {
     if (typeof routerQuery.hour === 'string') {
@@ -296,9 +376,9 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   const { tilesX, tilesY, perPage } = useTeaGridLayout();
 
   const distributed = useMemo(() => {
-    if (!shuffleSeed) return sorted;
+    if (!shuffleSeed || sort !== 'relevanceDesc') return sorted;
     return distributeByCategory(sorted, perPage, tilesX, shuffleSeed);
-  }, [sorted, perPage, tilesX, shuffleSeed]);
+  }, [sorted, perPage, tilesX, shuffleSeed, sort]);
 
   const { page, totalPages, goTo } = usePagination(distributed.length, perPage, 1);
 
@@ -678,7 +758,7 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   }, [page, perPage]);
 
   return (
-    <>
+    <div ref={fullscreenRef} className="relative min-h-screen">
       <Header />
       {showCategorySidebar && (
         <CategorySidebar categories={categories} selected={selectedCategories} onToggle={toggleCategory} />
@@ -705,11 +785,24 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
         onOpenFilters={() => setFiltersOpen(true)}
         activeFilterCount={activeFilterCount}
         activeSelections={activeSelections}
+        onEnterFullscreen={enterFullscreen}
+        isFullscreen={isFullscreen}
       />
       <PaginationBar page={page} totalPages={totalPages} onSelect={goTo} aria-controls="tea-grid" />
 
       {selectedTea && <TeaModal tea={selectedTea} onClose={() => setSelectedTea(null)} />}
-    </>
+      {isFullscreen && (
+        <button
+          type="button"
+          onClick={exitFullscreen}
+          className="fixed top-4 right-4 z-[100] flex items-center gap-2 rounded-full border border-white/80 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg transition hover:bg-white/90"
+          aria-label="Kilépés a teljes képernyőből"
+        >
+          <span aria-hidden className="text-lg leading-none">×</span>
+          <span>Kilépés</span>
+        </button>
+      )}
+    </div>
   );
 }
 

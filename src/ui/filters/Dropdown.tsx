@@ -25,7 +25,7 @@ export default function Dropdown({label, hint, children, rightAlign, wide}:Props
       <button
         type="button"
         onClick={()=>setOpen(o=>!o)}
-        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 text-sm"
+        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 text-sm focus:outline-none"
       >
         <span>{label}</span>
         <svg className={`w-4 h-4 transition-transform ${open?"rotate-180":""}`} viewBox="0 0 24 24" fill="none">

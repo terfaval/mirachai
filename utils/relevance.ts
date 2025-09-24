@@ -24,6 +24,99 @@ export interface RelevanceCtx {
 function parseList<T extends string>(v?: string | T[]): T[] {
   if (!v) return []; return Array.isArray(v) ? v : v.split(",").map(s=>s.trim()).filter(Boolean) as T[];
 }
+// --- NORMALIZATION HELPERS ---
+
+// ékezetek eltávolítása, pont/underscore/kötőjel egységesítése
+function foldKey(s: string) {
+  return s
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")  // remove accents
+    .replace(/[.\-]/g, " ")                            // - . -> space
+    .replace(/\s+/g, " ")                              // collapse spaces
+    .trim();
+}
+
+// Daypart aliasok -> kanonikus Daypart
+const DAYPART_ALIASES: Record<string, Daypart> = {
+  // canonical keys (már fold-olt)
+  "reggel": "reggel",
+  "delelott": "délelőtt",
+  "kora delutan": "kora_délután",
+  "delutan": "délután",
+  "este": "este",
+  "lefekves elott": "lefekvés_előtt",
+  "etkezes utan": "étkezés_után",
+  "barmikor": "bármikor",
+
+  // közkeletű aliasok
+  "egesz nap": "bármikor",
+  "egesznap": "bármikor",
+  "egesznapos": "bármikor",
+  "egesznapon": "bármikor",
+  "egesz napon": "bármikor",
+
+  "kora-delutan": "kora_délután",
+  "kora_delutan": "kora_délután",
+
+  "lefekves előtt": "lefekvés_előtt",  // vegyes ékezet
+  "lefekves-elott": "lefekvés_előtt",
+  "lefekves_elott": "lefekvés_előtt",
+};
+
+// Season aliasok -> kanonikus Season
+const SEASON_ALIASES: Record<string, Season> = {
+  "tavasz": "tavasz",
+  "nyar": "nyár",
+  "osz": "ősz",
+  "tel": "tél",
+  "egesz evben": "egész évben",
+  "egesz ev": "egész évben",
+  "egesz evre": "egész évben",
+  "egesz év": "egész évben",
+};
+
+function parseDayparts(v?: string | Daypart[]): Daypart[] {
+  const raw = parseList<string>(v);
+  const out: Daypart[] = [];
+  for (const s of raw) {
+    const k = foldKey(s);
+    const norm = DAYPART_ALIASES[k];
+    if (norm) out.push(norm);
+    // ha már kanonikus formában jött (pl. "délután"), illesszük be:
+    else if ((["reggel","délelőtt","kora_délután","délután","este","lefekvés_előtt","étkezés_után","bármikor"] as Daypart[]).includes(s as Daypart)) {
+      out.push(s as Daypart);
+    }
+  }
+  return Array.from(new Set(out)); // uniq
+}
+
+function parseSeasons(v?: string | Season[]): Season[] {
+  const raw = parseList<string>(v);
+  const out: Season[] = [];
+  for (const s of raw) {
+    const k = foldKey(s);
+    const norm = SEASON_ALIASES[k];
+    if (norm) out.push(norm);
+    // ha már kanonikus (pl. "nyár"), hagyjuk
+    else if ((["tavasz","nyár","ősz","tél","egész évben"] as Season[]).includes(s as Season)) {
+      out.push(s as Season);
+    }
+  }
+  return Array.from(new Set(out)); // uniq
+}
+
+// helpers – specificity
+function specFactorByCount(k: number, base = 1): number {
+  // 1 → 1.00, 2 → 0.88, 3 → 0.76, 4+ → 0.68
+  if (k <= 1) return 1 * base;
+  if (k === 2) return 0.88 * base;
+  if (k === 3) return 0.76 * base;
+  return 0.68 * base;
+}
+
+function unique<T extends string>(arr: T[]): T[] {
+  return Array.from(new Set(arr));
+}
 function getSeasonFromISO(iso: string): Exclude<Season,"egész évben"> {
   const m = new Date(iso + "T12:00:00").getMonth() + 1;
   if (m>=3 && m<=5) return "tavasz";
@@ -54,57 +147,111 @@ function isPostMealPreferred(hour?: number) {
 
 function seasonScore(tea: Tea, ctx: RelevanceCtx): number {
   const nowS = getSeasonFromISO(ctx.seedISODate);
-  const rec = parseList<Season>(tea.season_recommended);
-  if (!rec.length) return 0;
-  let best = 0;
+  const recAll = parseSeasons(tea.season_recommended);  // <— ITT
+  if (!recAll.length) return 0;
+
+  if (recAll.includes("egész évben")) return 10;
+
+  const rec = unique(recAll as Exclude<Season, "egész évben">[]);
+  let bestBase = 0;
   for (const s of rec) {
-    if (s === "egész évben") { best = Math.max(best, 20); continue; }
     const d = nearSeason(nowS, s);
-    best = Math.max(best, d===0?100 : d===1?50 : d===2?15 : 0);
+    bestBase = Math.max(bestBase, d === 0 ? 85 : d === 1 ? 45 : d === 2 ? 12 : 0);
   }
-  return best;
+  const factor = specFactorByCount(rec.length);
+  return Math.round(bestBase * factor);
 }
+
 function daypartScore(tea: Tea, ctx: RelevanceCtx): number {
   const now = currentDaypart(ctx.hourLocal);
-  const rec = parseList<Daypart>(tea.daypart_recommended);
-  if (!rec.length) return 0;
+  const recAll = parseDayparts(tea.daypart_recommended); // <— ITT
+  if (!recAll.length) return 0;
+
+  // Speciális bónuszok (nem skálázzuk specificitással)
   let special = 0;
-  if (rec.includes("étkezés_után") && isPostMealPreferred(ctx.hourLocal)) special = Math.max(special, 25);
-  if (rec.includes("lefekvés_előtt")) {
-    const h = ctx.hourLocal ?? 12;
-    if (h >= 21 || h <= 1) special = Math.max(special, 40);
+  if (recAll.includes("étkezés_után") && isPostMealPreferred(ctx.hourLocal)) {
+    special = Math.max(special, 25);
   }
-  if (rec.includes("bármikor")) return Math.max(10, special);
-  const neighbors: Record<Daypart, Daypart[]> = {
-    reggel:["délelőtt"],
-    délelőtt:["reggel","kora_délután"],
-    kora_délután:["délelőtt","délután","étkezés_után"],
-    délután:["kora_délután","este","étkezés_után"],
-    este:["délután","lefekvés_előtt","étkezés_után"],
-    lefekvés_előtt:["este"],
-    étkezés_után:["kora_délután","délután","este"],
-    bármikor:[]
+  if (recAll.includes("lefekvés_előtt")) {
+    const h = ctx.hourLocal ?? 12;
+    if (h >= 21 || h <= 1) special = Math.max(special, 45);
+  }
+  if (recAll.includes("bármikor")) {
+    return Math.max(8, special);
+  }
+
+  const baseSet: Daypart[] = recAll.filter(
+    (d): d is Daypart => d !== "étkezés_után" && d !== "lefekvés_előtt" && d !== "bármikor"
+  );
+
+  const neighbors: Record<Daypart, ReadonlyArray<Daypart>> = {
+    reggel: ["délelőtt"],
+    délelőtt: ["reggel","kora_délután"],
+    kora_délután: ["délelőtt","délután","étkezés_után"],
+    délután: ["kora_délután","este","étkezés_után"],
+    este: ["délután","lefekvés_előtt","étkezés_után"],
+    lefekvés_előtt: ["este"],
+    étkezés_után: ["kora_délután","délután","este"],
+    bármikor: []
   };
-  const exact = rec.includes(now) ? 40 : 0;
-  const neighbor = exact ? 0 : (neighbors[now]?.some(n => rec.includes(n)) ? 10 : 0);
-  return Math.max(exact + neighbor, special);
+
+  const opposites: Record<Daypart, ReadonlyArray<Daypart>> = {
+    reggel: ["este","lefekvés_előtt"],
+    délelőtt: ["lefekvés_előtt"],
+    kora_délután: ["lefekvés_előtt"],
+    délután: ["lefekvés_előtt"],
+    este: ["reggel"],
+    lefekvés_előtt: ["reggel","délelőtt","kora_délután"],
+    étkezés_után: [],
+    bármikor: []
+  };
+
+  const exact = baseSet.includes(now) ? 60 : 0;
+  const neighbor = exact ? 0 : ((neighbors[now] ?? []).some(n => baseSet.includes(n)) ? 12 : 0);
+  const oppositeHit = (opposites[now] ?? []).some(n => baseSet.includes(n));
+  const oppositePenalty = oppositeHit ? -40 : 0;
+
+  const specFactor = specFactorByCount(baseSet.length);
+  const base = Math.round((exact + neighbor + oppositePenalty) * specFactor);
+
+  return Math.max(base, special);
 }
+
 function servingScore(tea: Tea, ctx: RelevanceCtx): number {
   const s = getSeasonFromISO(ctx.seedISODate);
-  const icedOK = tea.serve_iced==="TRUE" || tea.serve_coldbrew==="TRUE";
-  const hotOK  = tea.serve_hot==="TRUE" || tea.serve_lukewarm==="TRUE";
-  if (s === "nyár") { if (icedOK) return 25; if (!hotOK) return -10; }
-  else if (s === "tél") { if (hotOK) return 15; if (icedOK) return -10; }
-  else { if (icedOK || hotOK) return 8; }
+  const h = ctx.hourLocal ?? 12;
+  const icedOK = tea.serve_iced === "TRUE" || tea.serve_coldbrew === "TRUE";
+  const hotOK  = tea.serve_hot === "TRUE" || tea.serve_lukewarm === "TRUE";
+
+  // Este (20:00+): forró preferált
+  if (h >= 20 || h < 6) {
+    if (hotOK) return 12;
+    if (icedOK) return -12;
+  }
+
+  // Nappali: szezon szerinti preferencia
+  if (s === "nyár") {
+    if (icedOK) return 25;
+    if (!hotOK) return -10;
+  } else if (s === "tél") {
+    if (hotOK) return 15;
+    if (icedOK) return -10;
+  } else {
+    if (icedOK || hotOK) return 8;
+  }
   return 0;
 }
 function caffeineScore(tea: Tea, ctx: RelevanceCtx): number {
   const c = tea.caffeine_pct ?? 0;
   const h = ctx.hourLocal ?? 12;
+
+  // Reggel: enyhe plusz koffeinre
   if (h <= 11) return Math.min(30, Math.round(c * 0.3));
+
+  // Este: nagy bünti, koffeinmentes külön jutalom
   if (h >= 17) {
-    if (c === 0) return 20;
-    return -Math.min(100, Math.round(c * 1.0));
+    if (c === 0) return 30;                       // esti 0% bónusz
+    return -Math.min(150, Math.round(c * 1.5));   // brutál bünti
   }
   return 0;
 }

@@ -30,6 +30,8 @@ type Props = {
   onOpenFilters: () => void;
   activeFilterCount: number;
   activeSelections?: ActiveSelection[];
+  onEnterFullscreen: () => void;
+  isFullscreen: boolean;
 };
 
 function compareIdAsc(a: any, b: any) {
@@ -56,7 +58,9 @@ export default function TeaGrid({
   onChangeSort,
   onOpenFilters,
   activeFilterCount,
-  activeSelections = [], 
+  activeSelections = [],
+  onEnterFullscreen,
+  isFullscreen,
 }: Props) {
   const effectivePerPage = perPage ?? tilesX * tilesY;
   const start = (page - 1) * effectivePerPage;
@@ -139,6 +143,8 @@ export default function TeaGrid({
           onChangeSort={onChangeSort}
           onOpenFilters={onOpenFilters}
           activeFilterCount={activeFilterCount}
+          onEnterFullscreen={onEnterFullscreen}
+          isFullscreen={isFullscreen}
         />
 
         <div

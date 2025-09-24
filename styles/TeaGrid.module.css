@@ -107,6 +107,8 @@
 
 /* ---------- Rács-keret (központosított, aránytartó) ---------- */
 .gridWrap {
+  --sidebar-offset: 150px;
+  
   position: fixed;
   top: 50%;
   left: 50%;

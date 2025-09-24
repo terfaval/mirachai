@@ -10,6 +10,8 @@ type Props = {
   onChangeSort: (value: SortKey) => void;
   onOpenFilters: () => void;
   activeFilterCount: number;
+  onEnterFullscreen: () => void;
+  isFullscreen: boolean;
 };
 
 export default function BrowseToolsSidebar({
@@ -19,6 +21,8 @@ export default function BrowseToolsSidebar({
   onChangeSort,
   onOpenFilters,
   activeFilterCount,
+  onEnterFullscreen,
+  isFullscreen,
 }: Props) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [sortOpen, setSortOpen] = useState(false);
@@ -124,6 +128,20 @@ export default function BrowseToolsSidebar({
               </div>
           </button>
         </div>
+      {!isFullscreen && (
+          <div className={styles.item}>
+            <button
+              type="button"
+              className={styles.button}
+              onClick={onEnterFullscreen}
+            >
+              <img src="/icons/fullscreen.svg" alt="Teljes képernyő" className={styles.icon} />
+              <div className={styles.textWrap}>
+                <span className={styles.label}>Teljes képernyő</span>
+              </div>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

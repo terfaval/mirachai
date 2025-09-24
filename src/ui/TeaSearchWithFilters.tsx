@@ -152,7 +152,7 @@ export default function TeaSearchWithFilters({ teas, brewProfiles }: Props) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="mb-4 inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-300 bg-white"
+        className="mb-4 inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-300 bg-white focus:outline-none"
       >
         Szűrők
         {activeFilters && <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />}

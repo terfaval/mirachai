@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import Dropdown from "./Dropdown";
 import MultiSelectDropdown from "./MultiSelectDropdown";
 import Slider from "./Slider";
@@ -92,6 +92,19 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
     [data.caffeineLevels]
   );
 
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open, onClose]);
+
   if (!open) return null;
 
   const resetFilters = () => onChange(createEmptyFilterState());
@@ -134,11 +147,11 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
               <button
                 type="button"
                 onClick={resetFilters}
-                className="px-3 py-1.5 rounded-full border border-gray-300 text-sm hover:bg-gray-50"
+                className="px-3 py-1.5 rounded-full border border-gray-300 text-sm hover:bg-gray-50 focus:outline-none"
               >
                 Alaphelyzet
               </button>
-              <button onClick={onClose} className="px-3 py-1.5 rounded-full border text-sm">
+              <button onClick={onClose} className="px-3 py-1.5 rounded-full border text-sm focus:outline-none">
                 ×
               </button>
             </div>
@@ -162,7 +175,7 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                           categories: toggleValue(value.categories, category.slug)
                         })
                       }
-                      className="px-3 py-1.5 rounded-full border text-sm transition-colors flex items-center gap-2"
+                      className="px-3 py-1.5 rounded-full border text-sm transition-colors flex items-center gap-2 focus:outline-none"
                       style={{
                         borderColor: colors.dark,
                         backgroundColor: selected ? colors.dark : undefined,
@@ -191,7 +204,7 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                       key={option.id}
                       type="button"
                       onClick={() => onChange({ ...value, tasteMode: option.id })}
-                      className={`px-3 py-1.5 rounded-full border text-xs font-medium transition-colors ${
+                      className={`px-3 py-1.5 rounded-full border text-xs font-medium transition-colors focus:outline-none ${
                         value.tasteMode === option.id
                           ? "bg-gray-900 text-white border-gray-900"
                           : "bg-white hover:bg-gray-50"
@@ -241,7 +254,7 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                             intensities: toggleValue(value.intensities, option.id)
                           })
                         }
-                        className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                        className={`px-3 py-1.5 rounded-full border text-sm transition-colors flex items-center gap-2 focus:outline-none ${
                           selected
                             ? "bg-gray-900 text-white border-gray-900"
                             : "bg-white hover:bg-gray-50"
@@ -271,7 +284,7 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                             caffeine: toggleValue(value.caffeine, option.id)
                           })
                         }
-                        className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                        className={`px-3 py-1.5 rounded-full border text-sm transition-colors focus:outline-none ${
                           selected
                             ? "bg-gray-900 text-white border-gray-900"
                             : "bg-white hover:bg-gray-50"
@@ -308,7 +321,7 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                       onClick={() =>
                         onChange({ ...value, serve: toggleValue(value.serve, mode.id) })
                       }
-                      className={`px-3 py-1.5 rounded-full border text-sm transition-colors flex items-center gap-2 ${
+                      className={`px-3 py-1.5 rounded-full border text-sm transition-colors flex items-center gap-2 focus:outline-none ${
                         selected
                           ? "bg-gray-900 text-white border-gray-900"
                           : "bg-white hover:bg-gray-50"
@@ -370,7 +383,7 @@ export default function FilterPanel({ open, onClose, value, onChange, data }: Pr
                         onClick={() =>
                           onChange({ ...value, methods: toggleValue(value.methods, method.id) })
                         }
-                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm transition-colors focus:outline-none ${
                           selected
                             ? "bg-gray-900 text-white border-gray-900"
                             : disabled

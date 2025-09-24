@@ -1,8 +1,8 @@
 .container {
   position: absolute;
-  right: -150px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: -190px;
+  top: 0;
+  transform: none;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

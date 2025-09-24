@@ -33,7 +33,7 @@ export default function MultiSelectDropdown({items, selected, onChange, placehol
             key={it}
             type="button"
             onClick={()=>toggle(it)}
-            className={`w-full text-left px-3 py-2 rounded-lg border ${selected.includes(it) ? "bg-gray-900 text-white border-gray-900" : "bg-white hover:bg-gray-50 border-gray-200"}`}
+            className={`w-full text-left px-3 py-2 rounded-lg border focus:outline-none ${selected.includes(it) ? "bg-gray-900 text-white border-gray-900" : "bg-white hover:bg-gray-50 border-gray-200"}`}
           >
             {it}
           </button>
