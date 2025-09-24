@@ -22,6 +22,7 @@ import {
   applyFilters,
   createEmptyFilterState,
   type FilterState,
+  countActiveFilters,
 } from '../lib/tea-filters';
 import { distributeByCategory } from '../utils/category-distribution';
 import type { Tea } from '../utils/filter';
@@ -250,6 +251,8 @@ export default function Home({ normalization }: HomeProps) {
 
   const { page, totalPages, goTo } = usePagination(distributed.length, perPage, 1);
 
+  const activeFilterCount = useMemo(() => countActiveFilters(filterState), [filterState]);
+
   const categories = useMemo(
     () => Array.from(new Set(teas.map((t) => t.category)))
       .sort((a, b) => a.localeCompare(b, 'hu', { sensitivity: 'base' })),
@@ -431,13 +434,7 @@ export default function Home({ normalization }: HomeProps) {
 
   return (
     <>
-      <Header
-        query={query}
-        onChange={setQuery}
-        onOpenFilters={() => setFiltersOpen(true)}
-        sort={sort}
-        onChangeSort={setSort}
-      />
+      <Header />
       {showCategorySidebar && (
         <CategorySidebar categories={categories} selected={selectedCategories} onToggle={toggleCategory} />
       )}
@@ -456,6 +453,12 @@ export default function Home({ normalization }: HomeProps) {
         gridId="tea-grid"
         tilesX={tilesX}
         tilesY={tilesY}
+        query={query}
+        onQueryChange={setQuery}
+        sort={sort}
+        onChangeSort={setSort}
+        onOpenFilters={() => setFiltersOpen(true)}
+        activeFilterCount={activeFilterCount}
       />
       <PaginationBar page={page} totalPages={totalPages} onSelect={goTo} aria-controls="tea-grid" />
 

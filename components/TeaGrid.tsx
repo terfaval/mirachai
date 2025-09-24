@@ -3,6 +3,8 @@ import TeaCard, { PanelKey } from './TeaCard';
 import styles from '../styles/TeaGrid.module.css';
 import { Tea } from '../utils/filter';
 import InfoPanelSidebar from './InfoPanelSidebar';
+import BrowseToolsSidebar from './BrowseToolsSidebar';
+import { SortKey } from './sortOptions';
 
 type Props = {
   items: Tea[];
@@ -13,6 +15,12 @@ type Props = {
   onTileFocus?: (tea: Tea) => void;
   tilesX?: number;
   tilesY?: number;
+  query: string;
+  onQueryChange: (value: string) => void;
+  sort: SortKey;
+  onChangeSort: (key: SortKey) => void;
+  onOpenFilters: () => void;
+  activeFilterCount: number;
 };
 
 function compareIdAsc(a: any, b: any) {
@@ -33,6 +41,12 @@ export default function TeaGrid({
   onTileFocus,
   tilesX = 3,
   tilesY = 3,
+  query,
+  onQueryChange,
+  sort,
+  onChangeSort,
+  onOpenFilters,
+  activeFilterCount,
 }: Props) {
   const effectivePerPage = perPage ?? tilesX * tilesY;
   const start = (page - 1) * effectivePerPage;
@@ -85,6 +99,14 @@ export default function TeaGrid({
     >
       <div className={styles.gridWrap}>
         <InfoPanelSidebar panel={panel} onChange={setPanel} />
+        <BrowseToolsSidebar
+          query={query}
+          onChangeQuery={onQueryChange}
+          sort={sort}
+          onChangeSort={onChangeSort}
+          onOpenFilters={onOpenFilters}
+          activeFilterCount={activeFilterCount}
+        />
 
         <div
           id={gridId}

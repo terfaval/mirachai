@@ -1,0 +1,142 @@
+.container {
+  position: absolute;
+  right: -150px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1000;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.item {
+  position: relative;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.8));
+  transition: transform 0.2s ease;
+}
+
+.button:hover .icon,
+.button:focus-visible .icon,
+.active .icon,
+.hasValue .icon {
+  transform: scale(1.1);
+}
+
+.active {}
+
+.hasValue {}
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.button:hover .label,
+.button:focus-visible .label,
+.active .label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.value {
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.searchPanel {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  filter: brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.55));
+}
+
+.searchPanel :global(.search) {
+  width: min(40vw, 280px);
+}
+
+.sortPanel {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 220px;
+}
+
+.sortPanel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sortPanel td {
+  padding: 0;
+}
+
+.sortPanel button {
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.sortPanel button:hover,
+.selected {
+  background: rgba(128, 53, 14, 0.12);
+}
+
+@media (max-width: 1280px) {
+  .container {
+    right: -130px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    display: none;
+  }
+}

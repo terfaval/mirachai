@@ -165,3 +165,22 @@ export function hasActiveFilters(filters: FilterState): boolean {
     filters.methods.length > 0
   );
 }
+
+export function countActiveFilters(filters: FilterState): number {
+  let count = 0;
+
+  count += filters.categories.length;
+  count += filters.subcategories.length;
+  count += filters.tastes.length;
+  count += Object.values(filters.focusMin).filter(value => value !== undefined && value > 0).length;
+  count += filters.intensities.length;
+  count += filters.caffeine.length;
+  count += filters.dayparts.length;
+  count += filters.seasons.length;
+  count += filters.serve.length;
+  count += filters.ingredients.length;
+  count += filters.allergensExclude.length;
+  count += filters.methods.length;
+
+  return count;
+}

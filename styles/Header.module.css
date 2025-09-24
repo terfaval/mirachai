@@ -1,107 +1,13 @@
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   padding: 10px 80px 10px 40px;
   position: relative;
 }
 
 .logo {
-  height: 120px;         /* nagyobb logo */
+  height: 120px;
   filter: brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.55));
   position: relative;
   z-index: 1001;
-}
-
-.actions {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-}
-
-.icon {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  filter: brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.55));
-  transition: transform 0.2s;
-}
-
-.icon:hover {
-  transform: scale(1.1);
-}
-
-.searchWrapper {
-  position: absolute;
-  top: 50%;
-  right: 240px;
-  transform: translate(0, -50%);
-  width: 0%;
-  padding: 0px;
-  max-width: 40vw;
-  overflow: hidden;
-  transition: width 0.3s ease;
-  filter: brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.55));
-  z-index: 500;
-}
-
-.open {
-  width: 100%;
-}
-
-.iconContainer {
-  position: relative;
-  display: flex;
-}
-
-.tooltip {
-  visibility: hidden;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  color: #FFF;
-  background: transparent;
-  font-size: 0.75rem;
-  padding: 2px 4px;
-  white-space: nowrap;
-}
-
-.iconContainer:hover .tooltip {
-  visibility: visible;
-}
-
-.sortContainer {
-  position: relative;
-}
-
-.sortPanel {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  width: 250px;
-  background: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border-collapse: collapse;
-  z-index: 400;
-}
-
-.sortPanel td {
-  padding: 4px 8px;
-}
-
-.sortPanel td button {
-  width: 100%;
-  text-align: left;
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-
-.sortPanel td button:hover {
-  background: #f0f0f0;
-}
-
-.active {
-  font-weight: bold;
 }
