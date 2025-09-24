@@ -39,10 +39,12 @@
 
 .activeSelectionBar {
   position: fixed;
-  top: 0%;
   left: 50%;
-  transform: translateX(-50%);
-  top: max(120px, calc(50% - (var(--grid-width) / var(--grid-aspect)) / 2 - 72px));
+  transform: translateX(-52%);
+  top: max(
+    calc(var(--pager-offset-y) - 5%),
+    calc(50% - (var(--grid-width) / var(--grid-aspect)) / 2 - var(--pager-offset-y))
+  );
   width: var(--grid-width);
   display: flex;
   flex-wrap: wrap;

@@ -128,6 +128,7 @@
   border-radius: 8px;
   padding: 3px 2px;
   margin-bottom: 0px;
+  --taste-chart-size: 48px;
 }
 
 .flavorList {
@@ -164,8 +165,8 @@
 
 /* ha a radar komponens adható data attribútummal, ez a méret állandó marad */
 .tasteBox :where(svg) {
-  width: 56px !important;
-  height: 56px !important;
+  width: var(--taste-chart-size) !important;
+  height: var(--taste-chart-size) !important;
 }
 
 .intensity {

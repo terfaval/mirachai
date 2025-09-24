@@ -3,7 +3,7 @@ import styles from '../styles/TeaCard.module.css';
 import { Tea } from '../utils/filter';
 import { getCategoryColor, getTasteColor } from '../utils/colorMap';
 import { getMandalaPath } from '../utils/mandala';
-import TasteChart from './TasteChart';
+import TasteChart from './panels/TasteChart';
 import QuarterDonut, { Segment } from './QuarterDonut';
 import DayDonut, { DaySegment } from './DayDonut';
 import { toStringArray } from '../lib/toStringArray';
@@ -45,7 +45,6 @@ export default function TeaCard({
   const tileRatioY = tilesY > 1 ? tileY / (tilesY - 1) : 0.5;
   const dotActiveColor = colorDark;
   const dotColor = colorLight;
-  const mandalaColor = colorLight;
 
   // ízek (top 3 lista + min. 3 esetén radar chart)
   const allFlavors = FLAVOR_KEYS
@@ -159,7 +158,15 @@ export default function TeaCard({
                   </li>
                 ))}
               </ul>
-              {showChart && <TasteChart tea={tea} size={50} showLabels={false} />}
+              {showChart && (
+                <TasteChart
+                  tea={tea}
+                  size={68}
+                  minValue={1}
+                  pointRadiusBase={6}
+                  showLabels={false}
+                />
+              )}
             </div>
             <div className={styles.intensity}>
               <div className={styles.dots}>
