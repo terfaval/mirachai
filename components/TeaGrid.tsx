@@ -91,11 +91,23 @@ export default function TeaGrid({
   const [dir, setDir] = useState<1 | -1>(1);
   const timerRef = useRef<number | null>(null);
 
-  const cells = Array.from({ length: tilesX * tilesY });
+  const cells = Array.from({ length: isMobile ? 2 : tilesX * tilesY });
+  const layoutTilesX = isMobile ? 1 : tilesX;
+  const layoutTilesY = isMobile ? 2 : tilesY;
   const decorativeTilesX = isMobile ? 3 : tilesX;
   const decorativeTilesY = isMobile ? 3 : tilesY;
+  const displayTeas = isMobile ? pageItems : renderTeas;
 
   useEffect(() => {
+    if (isMobile) {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      timerRef.current = null;
+      setRenderTeas(pageItems);
+      setIncomingTeas(null);
+      setPhase('idle');
+      return;
+    }
+
     const same =
       renderTeas.length === pageItems.length &&
       renderTeas.every((t, i) => t?.id === pageItems[i]?.id);
@@ -117,7 +129,7 @@ export default function TeaGrid({
         timerRef.current = null;
       }, 320);
     }, 320);
-  }, [pageItems, renderTeas]);
+  }, [isMobile, pageItems, renderTeas]);
 
   useEffect(() => {
     return () => {
@@ -127,7 +139,7 @@ export default function TeaGrid({
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production' || !isMobile) return;
-    const visibleCount = renderTeas.filter(Boolean).length;
+    const visibleCount = displayTeas.filter(Boolean).length;
     console.assert(
       visibleCount <= 2,
       `TeaGrid: mobil nézetben legfeljebb 2 tea jelenhet meg, most ${visibleCount} darab érkezett.`,
@@ -139,7 +151,7 @@ export default function TeaGrid({
         `TeaGrid: mobil animáció közben legfeljebb 2 új tea érkezhet, most ${incomingCount} darab érkezett.`,
       );
     }
-  }, [incomingTeas, isMobile, renderTeas]);
+  }, [displayTeas, incomingTeas, isMobile]);
 
   return (
     <div
@@ -203,19 +215,19 @@ export default function TeaGrid({
 
         <div className={styles.gridContent} aria-hidden={false}>
           {cells.map((_, idx) => {
-            const tea = renderTeas[idx];
+            const tea = displayTeas[idx];
             const key = tea ? `tea-${tea.id}` : `empty-${idx}`;
             if (!tea) return <div key={key} className={styles.cell} />;
-            const tileX = idx % tilesX;
-            const tileY = Math.floor(idx / tilesX);
+            const tileX = layoutTilesX > 0 ? idx % layoutTilesX : 0;
+            const tileY = layoutTilesX > 0 ? Math.floor(idx / layoutTilesX) : 0;
             return (
               <div key={key} className={styles.cell} onFocus={() => onTileFocus?.(tea)}>
                 <TeaCard
                   tea={tea}
                   tileX={tileX}
                   tileY={tileY}
-                  tilesX={tilesX}
-                  tilesY={tilesY}
+                  tilesX={layoutTilesX}
+                  tilesY={layoutTilesY}
                   onClick={onTeaClick}
                   panel={panel}
                 />
@@ -224,7 +236,7 @@ export default function TeaGrid({
           })}
         </div>
 
-        {incomingTeas && (
+        {!isMobile && incomingTeas && (
           <div
             className={[
               styles.gridContent,
