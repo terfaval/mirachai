@@ -1,12 +1,10 @@
 .header {
   display: flex;
   justify-content: flex-start;
-  padding: 10px 40px 10px 80px;
   position: relative;
 }
 
 .logo {
-  height: 120px;
   filter: brightness(0) invert(1) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.55));
   position: relative;
   z-index: 1001;

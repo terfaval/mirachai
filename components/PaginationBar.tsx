@@ -2,14 +2,23 @@ import { useEffect } from 'react';
 import PagerDots from './PagerDots';
 import styles from '../styles/PaginationBar.module.css';
 
+type PaginationBarVariant = 'fluid' | 'sticky';
+
 type Props = {
   page: number;
   totalPages: number;
   onSelect: (p: number) => void;
   'aria-controls'?: string;
+  variant?: PaginationBarVariant;
 };
 
-export default function PaginationBar({ page, totalPages, onSelect, ...a11y }: Props) {
+export default function PaginationBar({
+  page,
+  totalPages,
+  onSelect,
+  variant = 'sticky',
+  ...a11y
+}: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') onSelect(Math.max(1, page - 1));
@@ -21,8 +30,12 @@ export default function PaginationBar({ page, totalPages, onSelect, ...a11y }: P
 
   if (totalPages <= 1) return null;
 
+  const className = [styles.pagerBar, variant === 'fluid' ? styles.fluid : '']
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <nav className={styles.pagerBar} aria-label="Pagination" {...a11y}>
+    <nav className={className} aria-label="Pagination" {...a11y}>
       <button
         type="button"
         className={styles.navBtn}
