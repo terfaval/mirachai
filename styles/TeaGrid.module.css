@@ -143,6 +143,45 @@
               opacity var(--slide-ms) var(--slide-ease);
 }
 
+/* Alap: a tartalomréteg ráfekszik a keretre */
+.gridContent {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--tiles-x), 1fr);
+  grid-template-rows: repeat(var(--tiles-y), 1fr);
+  gap: 0;
+  pointer-events: none;
+}
+
+.gridContent > .cell {
+  pointer-events: auto;
+}
+
+/* Bejövő “ghost” réteg (animált next oldal) */
+.ghost {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* === MOBIL LAYOUT (≤768px): 1 oszlop × 2 sor, de DESKTOP CSEMPE-MÉRET === */
+@media (max-width: 768px) {
+  .gridContent {
+    width: calc(100% / 3);
+    height: calc(100% * (2 / 3));
+    left: calc((100% - (100% / 3)) / 2);
+    top: calc((100% - (100% * (2 / 3))) / 2);
+    grid-template-columns: 1fr !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+    gap: 0 !important;
+  }
+
+  .ghost {
+    display: none !important;
+  }
+}
+
 /* Bejövő “ghost” réteg (animált next oldal) */
 .ghost {
   position: absolute;

@@ -62,7 +62,26 @@ export default function TeaGrid({
   onEnterFullscreen,
   isFullscreen,
 }: Props) {
-  const effectivePerPage = perPage ?? tilesX * tilesY;
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(max-width: 768px)');
+    const apply = (e: MediaQueryList | MediaQueryListEvent) => {
+      setIsMobile('matches' in e ? e.matches : (e as MediaQueryList).matches);
+    };
+    apply(mq);
+    mq.addEventListener?.('change', apply);
+    // @ts-ignore
+    mq.addListener?.(apply);
+    return () => {
+      mq.removeEventListener?.('change', apply);
+      // @ts-ignore
+      mq.removeListener?.(apply);
+    };
+  }, []);
+
+  const basePerPage = perPage ?? tilesX * tilesY;
+  const effectivePerPage = isMobile ? 2 : basePerPage;
   const start = (page - 1) * effectivePerPage;
   const pageItems = items.slice(start, start + effectivePerPage);
   const [panel, setPanel] = useState<PanelKey>('category');
@@ -159,7 +178,9 @@ export default function TeaGrid({
             .filter(Boolean)
             .join(' ')}
           aria-live="polite"
-        >
+        />
+
+        <div className={styles.gridContent} aria-hidden={false}>
           {cells.map((_, idx) => {
             const tea = renderTeas[idx];
             const key = tea ? `tea-${tea.id}` : `empty-${idx}`;
@@ -185,10 +206,11 @@ export default function TeaGrid({
         {incomingTeas && (
           <div
             className={[
-              styles.grid,
+              styles.gridContent,
               styles.ghost,
               dir === 1 ? styles.slideInRight : styles.slideInLeft,
             ].join(' ')}
+            aria-hidden
           >
             {cells.map((_, idx) => {
               const tea = incomingTeas[idx];
