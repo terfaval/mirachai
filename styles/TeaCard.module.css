@@ -118,16 +118,16 @@
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, 1fr);
-  align-items: end;
-  gap: 6px;
+  align-items: center;
+  gap: 12px;
 }
 
 .chartCard {
-  --taste-chart-size: clamp(46px, 6.4vw, 56px);
-  --chart-card-height: clamp(58px, 8vw, 72px);
+  --taste-chart-size: clamp(42px, 5.4vw, 50px);
+  --chart-card-height: clamp(40px, 6.4vw, 62px);
   background: var(--color-light);
   border-radius: 8px;
-  padding: 6px;
+  padding: 6px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,7 +135,7 @@
   position: relative;
   overflow: visible;
   min-height: var(--chart-card-height);
-  align-self: end;
+  align-self: center;
   text-align: center;
 }
 
