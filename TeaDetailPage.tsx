@@ -11,6 +11,7 @@ import ColorCup from './components/ColorCup';
 import SimpleProgress from './components/SimpleProgress';
 import ServeModes from './components/ServeModes';
 import { getTeaColor } from './utils/colorMap';
+import { scaleTea } from './lib/teaScaling';
 
 interface Props {
   tea: Tea;
@@ -23,6 +24,8 @@ export default function TeaDetailPage({ tea, categoryColors }: Props) {
   const descClass = tea.descriptionDisplayAsTitanOne
     ? 'font-display lowercase'
     : 'font-sans';
+    const scaled = scaleTea(tea as any, { cups: 1, strengthMultiplier: 1 });
+  const ingredientItems = scaled.perIngredient;
   return (
     <div className="max-w-screen-lg mx-auto p-4">
       <TeaTitle name={tea.name} />
@@ -44,7 +47,7 @@ export default function TeaDetailPage({ tea, categoryColors }: Props) {
           {tea.description}
         </p>
       )}
-      <IngredientsStack ingredients={tea.ingredients} />
+      <IngredientsStack items={ingredientItems} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-8 items-center">
         <ColorCup color={getTeaColor(tea.name)} />
         <div className="space-y-4">

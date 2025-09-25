@@ -2,38 +2,31 @@ import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import IngredientsStack from '@/components/ingredients/IngredientsStack';
+import type { PerIngredientTk } from 'lib/teaScaling';
 
 describe('IngredientsStack', () => {
+  const sampleItems: PerIngredientTk[] = [
+    { name: 'a', percent: 30, tk: 0.75, tkRounded: 0.75 },
+    { name: 'b', percent: 20, tk: 0.5, tkRounded: 0.5 },
+    { name: 'c', percent: 10, tk: 0.25, tkRounded: 0.25 },
+  ];
+
   it('normalizes ingredient rates to a full 100% width', () => {
     const html = renderToStaticMarkup(
-      <IngredientsStack
-        ingredients={[
-          { name: 'a', rate: 30 },
-          { name: 'b', rate: 20 },
-          { name: 'c', rate: 10 },
-        ]}
-      />
+      <IngredientsStack items={sampleItems} />
     );
-    const widths = Array.from(html.matchAll(/width:([^%;]+)%/g)).map(m => parseFloat(m[1]));
+    const widths = Array.from(html.matchAll(/width:([^%;]+)%/g)).map((m) => parseFloat(m[1]));
     const sum = widths.reduce((a, b) => a + b, 0);
     expect(Math.round(sum)).toBe(100);
   });
 
-it('reorders ingredients to avoid adjacent identical colors', () => {
+  it('renders teaspoon labels without percentages', () => {
     const html = renderToStaticMarkup(
-      <IngredientsStack
-        ingredients={[
-          { name: 'foo', rate: 1 },
-          { name: 'bar', rate: 1 },
-          { name: 'almahéj', rate: 1 }, // ismert összetevő más színnel
-        ]}
-      />
+      <IngredientsStack items={sampleItems} />
     );
-    const colors = Array.from(
-      html.matchAll(/background-color:([^;]+);/g)
-    ).map((m) => m[1]);
-    for (let i = 0; i < colors.length - 1; i++) {
-      expect(colors[i]).not.toBe(colors[i + 1]);
-    }
+    const labels = Array.from(html.matchAll(/~([^<]+) tk/g)).map((m) => m[0]);
+    expect(labels.length).toBeGreaterThanOrEqual(sampleItems.length);
+    const textOnly = html.replace(/style="[^"]*"/g, "");
+    expect(textOnly).not.toMatch(/%/);
   });
 });

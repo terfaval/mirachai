@@ -1,208 +1,252 @@
 // IngredientsStack.tsx
 
 import React from "react";
-import { Ingredient } from "../../src/types/tea";
 import { getIngredientColor } from "../../utils/colorMap";
+import type { PerIngredientTk } from "lib/teaScaling";
 
 type Orientation = "horizontal" | "vertical";
 
 interface Props {
-  ingredients: Ingredient[];
+  items: PerIngredientTk[];
   orientation?: Orientation;
 }
 
-export default function IngredientsStack({
-  ingredients,
-  orientation = "horizontal",
-}: Props) {
-  const safe = Array.isArray(ingredients) ? ingredients : [];
+function formatTkLabel(value: number) {
+  const normalized = Number(value.toFixed(2));
+  return `~${normalized} tk`;
+}
 
-  // duplikátumok összegzése és csak pozitív, véges rate-ek használata
-  const grouped = safe.reduce((map, it) => {
-    const rate = Number.isFinite(it.rate) && it.rate > 0 ? it.rate : 0;
-    if (rate > 0) {
-      map.set(it.name, (map.get(it.name) ?? 0) + rate);
-    }
-    return map;
-  }, new Map<string, number>());
-  const total = Array.from(grouped.values()).reduce((s, v) => s + v, 0) || 1;
-  interface Slice {
-    name: string;
-    ratePct: number;
-    color: string;
+const alphaBg = (hex?: string, alpha = 0.2) => {
+  if (!hex || !/^#/.test(hex)) return hex;
+  const c = hex.slice(1);
+  const n = c.length === 3 ? c.split("").map((ch) => ch + ch).join("") : c;
+  const r = parseInt(n.slice(0, 2), 16);
+  const g = parseInt(n.slice(2, 4), 16);
+  const b = parseInt(n.slice(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
+const adjustColor = (hex?: string, amt = 0) => {
+  if (!hex || !/^#/.test(hex)) return hex ?? "";
+  const c = hex.slice(1);
+  const n = c.length === 3 ? c.split("").map((ch) => ch + ch).join("") : c;
+  const r = Math.max(0, Math.min(255, parseInt(n.slice(0, 2), 16) + amt));
+  const g = Math.max(0, Math.min(255, parseInt(n.slice(2, 4), 16) + amt));
+  const b = Math.max(0, Math.min(255, parseInt(n.slice(4, 6), 16) + amt));
+  return `#${[r, g, b]
+    .map((v) => v.toString(16).padStart(2, "0"))
+    .join("")}`;
+};
+
+const gradientBg = (hex?: string, alpha?: number) => {
+  if (!hex || !/^#/.test(hex)) return hex ?? "";
+  const light = adjustColor(hex, 20);
+  const dark = adjustColor(hex, -30);
+  const start = alpha !== undefined ? alphaBg(light, alpha) : light;
+  const end = alpha !== undefined ? alphaBg(dark, alpha) : dark;
+  return `radial-gradient(-90deg, ${start}, ${end})`;
+};
+
+const normalize = (items: PerIngredientTk[]): PerIngredientTk[] => {
+  const positive = items.filter((item) => Number.isFinite(item.percent) && item.percent > 0);
+  if (!positive.length) {
+    return items;
   }
-
-  const initialSlices: Slice[] = Array.from(grouped.entries()).map(([name, rate]) => ({
-    name,
-    ratePct: (rate / total) * 100,
-    color: getIngredientColor(name),
+  const sum = positive.reduce((total, item) => total + item.percent, 0);
+  if (!sum) {
+    return positive;
+  }
+  return positive.map((item) => ({
+    ...item,
+    percent: (item.percent / sum) * 100,
   }));
+};
 
-  // egyszerű rendezés: próbálja meg elkerülni az azonos színű szomszédokat
-  const slices: Slice[] = [];
-  const pool = [...initialSlices];
+const reorderForContrast = (items: PerIngredientTk[]): PerIngredientTk[] => {
+  const pool = [...items];
+  const result: PerIngredientTk[] = [];
   while (pool.length) {
-    const prev = slices[slices.length - 1];
-    let idx = pool.findIndex((s) => s.color !== prev?.color);
-    if (idx === -1) idx = 0; // ha nincs eltérő szín, vesszük az elsőt
-    slices.push(pool.splice(idx, 1)[0]);
+    const prev = result[result.length - 1];
+    const prevColor = prev ? getIngredientColor(prev.name) : null;
+    let idx = pool.findIndex((item) => getIngredientColor(item.name) !== prevColor);
+    if (idx === -1) {
+      idx = 0;
+    }
+    result.push(pool.splice(idx, 1)[0]!);
   }
+  return result;
+};
 
-  const alphaBg = (hex?: string, alpha = 0.2) => {
-    if (!hex || !/^#/.test(hex)) return hex;
-    const c = hex.slice(1);
-    const n = c.length === 3 ? c.split("").map((ch) => ch + ch).join("") : c;
-    const r = parseInt(n.slice(0, 2), 16);
-    const g = parseInt(n.slice(2, 4), 16);
-    const b = parseInt(n.slice(4, 6), 16);
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-  };
-  
-  const adjustColor = (hex?: string, amt = 0) => {
-    if (!hex || !/^#/.test(hex)) return hex ?? "";
-    const c = hex.slice(1);
-    const n = c.length === 3 ? c.split("").map((ch) => ch + ch).join("") : c;
-    const r = Math.max(0, Math.min(255, parseInt(n.slice(0, 2), 16) + amt));
-    const g = Math.max(0, Math.min(255, parseInt(n.slice(2, 4), 16) + amt));
-    const b = Math.max(0, Math.min(255, parseInt(n.slice(4, 6), 16) + amt));
-    return `#${[r, g, b]
-      .map((v) => v.toString(16).padStart(2, "0"))
-      .join("")}`;
-  };
-
-  const gradientBg = (hex?: string, alpha?: number) => {
-    if (!hex || !/^#/.test(hex)) return hex ?? "";
-    const light = adjustColor(hex, 20);
-    const dark = adjustColor(hex, -30);
-    const start = alpha !== undefined ? alphaBg(light, alpha) : light;
-    const end = alpha !== undefined ? alphaBg(dark, alpha) : dark;
-    return `radial-gradient(-90deg, ${start}, ${end})`;
-  };
-
-  const tooltipClassName = (dir: Orientation) =>
-    dir === "vertical"
-      ? "pointer-events-none absolute left-full top-1/2 z-20 ml-3 flex -translate-y-1/2 -translate-x-2 transform items-center opacity-0 transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100"
-      : "pointer-events-none absolute left-1/2 top-full z-20 mt-3 flex -translate-x-1/2 translate-y-2 transform flex-col items-center opacity-0 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100";
-
-  const tooltipBody = (slice: Slice) => (
-    <div
-      className="rounded-md bg-slate-900/90 px-3 py-2 text-xs leading-tight text-white shadow-lg"
-      aria-hidden="true"
-    >
-      <div className="text-sm font-semibold leading-tight">{Math.round(slice.ratePct)}%</div>
-      <div className="leading-tight opacity-90">{slice.name}</div>
-    </div>
-  );
-
-  const buildLabel = (slice: Slice) => `${slice.name}: ${Math.round(slice.ratePct)}%`;
-  const radiusValue = 12;
+export default function IngredientsStack({ items, orientation = "horizontal" }: Props) {
+  const normalized = reorderForContrast(normalize(Array.isArray(items) ? items : []));
+  if (!normalized.length) {
+    return null;
+  }
 
   if (orientation === "vertical") {
     return (
       <div
         style={{
           display: "flex",
-          flex: 1,
-          alignItems: "stretch",
+          flexDirection: "column",
           width: "100%",
-          height: "100%",
+          gap: 8,
         }}
       >
         <div
-          role="img"
-          aria-label="Hozzávalók aránya (összesen 100%)"
           style={{
             display: "flex",
             flexDirection: "column",
-            flex: "0 0 120px",
-            maxWidth: "160px",
-            width: "100%",
-            borderRadius: 12,
-            backgroundColor: "#e5e7eb",
-            position: "relative",
+            borderRadius: 16,
+            overflow: "hidden",
+            background: "#e5e7eb",
           }}
         >
-          {slices.map((s, idx) => {
-            const label = buildLabel(s);
+          {normalized.map((item, index) => {
+            const color = getIngredientColor(item.name);
             const radius: React.CSSProperties = {};
-            if (idx === 0) {
-              radius.borderTopLeftRadius = radiusValue;
-              radius.borderTopRightRadius = radiusValue;
+            if (index === 0) {
+              radius.borderTopLeftRadius = 16;
+              radius.borderTopRightRadius = 16;
             }
-            if (idx === slices.length - 1) {
-              radius.borderBottomLeftRadius = radiusValue;
-              radius.borderBottomRightRadius = radiusValue;
+            if (index === normalized.length - 1) {
+              radius.borderBottomLeftRadius = 16;
+              radius.borderBottomRightRadius = 16;
             }
-
+            const label = formatTkLabel(item.tkRounded);
             return (
               <div
-                key={`${s.name}-${idx}`}
-                className="group relative focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-400"
-                tabIndex={0}
-                title={label}
-                aria-label={label}
+                key={`${item.name}-${index}`}
                 style={{
-                  flexGrow: s.ratePct,
-                  flexBasis: 0,
-                  backgroundColor: s.color,
-                  background: gradientBg(s.color),
-                  minHeight: 6,
+                  flexGrow: item.percent,
+                  padding: "12px 16px",
+                  position: "relative",
+                  background: gradientBg(color),
                   ...radius,
                 }}
+                aria-label={`${item.name}: ${label}`}
               >
-                <div className={tooltipClassName("vertical")} aria-hidden="true">
-                  {tooltipBody(s)}
-                </div>
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    fontWeight: 600,
+                    background: alphaBg("#ffffff", 0.85),
+                    color: "#0f172a",
+                    borderRadius: 999,
+                    padding: "2px 10px",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {label}
+                </span>
               </div>
             );
           })}
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(${normalized.length}, minmax(0,1fr))`,
+            gap: 12,
+          }}
+        >
+          {normalized.map((item, index) => (
+            <div key={`${item.name}-label-${index}`} style={{ textAlign: "center" }}>
+              <div style={{ fontWeight: 600 }}>{item.name}</div>
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex h-full w-full flex-col justify-center">
-      <div className="relative w-full">
-        <div className="h-16 w-full rounded-2xl bg-gray-200" aria-hidden="true" />
-        <div
-          className="absolute inset-0 flex items-stretch rounded-2xl"
-          role="img"
-          aria-label="Hozzávalók aránya (összesen 100%)"
-        >
-          {slices.map((s, idx) => {
-            const label = buildLabel(s);
-            const radius: React.CSSProperties = {};
-            if (idx === 0) {
-              radius.borderTopLeftRadius = radiusValue;
-              radius.borderBottomLeftRadius = radiusValue;
-            }
-            if (idx === slices.length - 1) {
-              radius.borderTopRightRadius = radiusValue;
-              radius.borderBottomRightRadius = radiusValue;
-            }
-
-            return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          borderRadius: 24,
+          background: "#e5e7eb",
+          overflow: "visible",
+          minHeight: 64,
+        }}
+        aria-label="Hozzávalók aránya"
+      >
+        {normalized.map((item, index) => {
+          const color = getIngredientColor(item.name);
+          const radius: React.CSSProperties = {};
+          if (index === 0) {
+            radius.borderTopLeftRadius = 24;
+            radius.borderBottomLeftRadius = 24;
+          }
+          if (index === normalized.length - 1) {
+            radius.borderTopRightRadius = 24;
+            radius.borderBottomRightRadius = 24;
+          }
+          const width = `${item.percent}%`;
+          const label = formatTkLabel(item.tkRounded);
+          return (
+            <div
+              key={`${item.name}-${index}`}
+              style={{
+                position: "relative",
+                width,
+                minWidth: 0,
+              }}
+              aria-label={`${item.name}: ${label}`}
+            >
               <div
-                key={`${s.name}-${idx}`}
-                className="group relative h-full outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-400"
-                tabIndex={0}
-                title={label}
-                aria-label={label}
                 style={{
-                  width: `${s.ratePct}%`,
-                  backgroundColor: s.color,
-                  background: gradientBg(s.color),
+                  position: "absolute",
+                  inset: 0,
+                  background: gradientBg(color),
                   ...radius,
                 }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  pointerEvents: "none",
+                }}
               >
-                <div className={tooltipClassName("horizontal")} aria-hidden="true">
-                  {tooltipBody(s)}
-                </div>
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    fontWeight: 600,
+                    background: alphaBg("#ffffff", 0.85),
+                    color: "#0f172a",
+                    borderRadius: 999,
+                    padding: "2px 10px",
+                    whiteSpace: "nowrap",
+                    boxShadow: "0 1px 2px rgba(15,23,42,0.12)",
+                  }}
+                >
+                  {label}
+                </span>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
+      </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${normalized.length}, minmax(0,1fr))`,
+          gap: 12,
+        }}
+      >
+        {normalized.map((item, index) => (
+          <div key={`${item.name}-legend-${index}`} style={{ textAlign: "center" }}>
+            <div style={{ fontWeight: 600 }}>{item.name}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
