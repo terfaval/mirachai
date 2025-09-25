@@ -92,6 +92,8 @@ export default function TeaGrid({
   const timerRef = useRef<number | null>(null);
 
   const cells = Array.from({ length: tilesX * tilesY });
+  const decorativeTilesX = isMobile ? 3 : tilesX;
+  const decorativeTilesY = isMobile ? 3 : tilesY;
 
   useEffect(() => {
     const same =
@@ -123,10 +125,29 @@ export default function TeaGrid({
     };
   }, []);
 
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production' || !isMobile) return;
+    const visibleCount = renderTeas.filter(Boolean).length;
+    console.assert(
+      visibleCount <= 2,
+      `TeaGrid: mobil nézetben legfeljebb 2 tea jelenhet meg, most ${visibleCount} darab érkezett.`,
+    );
+    if (incomingTeas) {
+      const incomingCount = incomingTeas.filter(Boolean).length;
+      console.assert(
+        incomingCount <= 2,
+        `TeaGrid: mobil animáció közben legfeljebb 2 új tea érkezhet, most ${incomingCount} darab érkezett.`,
+      );
+    }
+  }, [incomingTeas, isMobile, renderTeas]);
+
   return (
     <div
       className={styles.container}
-      style={{ ['--tiles-x' as any]: tilesX, ['--tiles-y' as any]: tilesY }}
+      style={{
+        ['--tiles-x' as any]: decorativeTilesX,
+        ['--tiles-y' as any]: decorativeTilesY,
+      }}
     >
       {activeSelections.length > 0 && (
         <div className={styles.activeSelectionBar}>

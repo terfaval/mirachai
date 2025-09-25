@@ -32,6 +32,7 @@ interface Props {
   includeZeroValues?: boolean;   // azokat is rajzolja ki, ahol az érték 0
   variant?: 'dots' | 'petals';   // megjelenési mód
   fullWidth?: boolean;           // szülő szélességéhez igazodik (tooltip középre)
+  compactTooltip?: boolean;      // kisebb tipográfia a tooltipben
 }
 
 const ORDER = [
@@ -83,6 +84,7 @@ export default function TasteChart({
   includeZeroValues = false,
   variant = 'dots',
   fullWidth = false,
+  compactTooltip = false,
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
@@ -354,7 +356,11 @@ export default function TasteChart({
 
       {tooltip && (
         <div
-          className={styles.tooltip}
+          className={
+            [styles.tooltip, compactTooltip ? styles.tooltipCompact : null]
+              .filter(Boolean)
+              .join(' ')
+          }
           style={{
             backgroundColor: tooltip.color,
             color: textColorFor(tooltip.color),

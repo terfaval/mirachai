@@ -129,12 +129,13 @@ export default function TeaCard({
                 {showChart ? (
                   <TasteChart
                     tea={tea}
-                    size={64}
+                    size={50}
                     minValue={1}
                     pointRadiusBase={6}
                     showLabels={false}
                     rotationDeg={-90}
                     fullWidth
+                    compactTooltip
                   />
                 ) : (
                   <div className={styles.chartPlaceholder}>—</div>
@@ -155,7 +156,7 @@ export default function TeaCard({
               <div className={`${styles.chartCard} ${styles.focusCard}`}>
                 <TasteChart
                   tea={tea}
-                  size={64}
+                  size={50}
                   minValue={0}
                   pointRadiusBase={6}
                   showLabels={false}
@@ -164,6 +165,7 @@ export default function TeaCard({
                   tooltipLabelSuffix="hatás"
                   includeZeroValues
                   fullWidth
+                  compactTooltip
                 />
                 {!hasFocusData && (
                   <div className={styles.chartHint}>nincs fókusz adat</div>

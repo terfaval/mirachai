@@ -167,7 +167,34 @@
 
 /* === MOBIL LAYOUT (≤768px): 1 oszlop × 2 sor, de DESKTOP CSEMPE-MÉRET === */
 @media (max-width: 768px) {
+  .container {
+    --grid-w: 90vw;
+    --grid-available-height: calc(100vh);
+    --pager-offset-y: 56px;
+
+    position: relative !important;
+    inset: unset !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    padding-inline: 12px;
+  }
+
+  .gridWrap {
+    top: 50% !important;
+  }
+
+  .grid {
+    transition: none !important;
+    animation: none !important;
+  }
+
   .gridContent {
+    position: absolute;
+    inset: 0;
+    display: grid;
     width: calc(100% / 3);
     height: calc(100% * (2 / 3));
     left: calc((100% - (100% / 3)) / 2);
@@ -179,6 +206,12 @@
 
   .ghost {
     display: none !important;
+  }
+
+  .pagerBar,
+  .pagerWrap {
+    position: static !important;
+    margin-top: 12px !important;
   }
 }
 
