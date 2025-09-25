@@ -144,30 +144,9 @@
 }
 
 /* Alap: a tartalomréteg ráfekszik a keretre */
-.gridContent {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: repeat(var(--tiles-x), 1fr);
-  grid-template-rows: repeat(var(--tiles-y), 1fr);
-  gap: 0;
-  pointer-events: none;
-}
-
-.gridContent > .cell {
-  pointer-events: auto;
-}
-
-/* Bejövő “ghost” réteg (animált next oldal) */
-.ghost {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
 @media (max-width: 768px) {
   .container {
-    --grid-w: 90vw;
+    --grid-w: 100vw;
     --grid-available-height: calc(100vh);
     --pager-offset-y: 56px;
 
@@ -192,19 +171,14 @@
     width: var(--grid-width);
   }
 
-  .gridContent {
-    width: calc(100% / 3);
-    height: calc(100% * (2 / 3));
-    left: calc((100% - (100% / 3)) / 2);
-    top: calc((100% - (100% * 2 / 3)) / 2);
-
-    grid-template-columns: 1fr !important;
-    grid-template-rows: repeat(2, 1fr) !important;
-    gap: 0 !important;
-  }
-
   .ghost {
     display: none !important;
+  }
+
+  .cell {
+    border: none;
+    box-shadow: none;
+    background: none;
   }
 
   .activeSelectionBar {
@@ -235,6 +209,20 @@
   position: absolute;
   inset: 0;
   pointer-events: auto; /* hogy a beúszó kártyák kattinthatók legyenek */
+}
+
+.gridContent {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--tiles-x), 1fr);
+  grid-template-rows: repeat(var(--tiles-y), 1fr);
+  gap: 0;
+  pointer-events: none;
+}
+
+.gridContent > .cell {
+  pointer-events: auto;
 }
 
 /* ---------- Cellák ---------- */
@@ -351,6 +339,29 @@
 }
 
 @media (max-width: 1024px) {
+  .activeSelectionBar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    margin-bottom: 8px;
+    background: var(--surface, rgba(255, 255, 255, 0.8));
+    backdrop-filter: blur(4px);
+    left: 0;
+    right: 0;
+    transform: none;
+    width: auto;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 768px) {
+  .container { 
+    --grid-w: 60vw;
+    --grid-h: 90vh; }
+}
+
+@media (max-width: 768px) {
   .activeSelectionBar {
     position: sticky;
     top: 0;

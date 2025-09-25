@@ -91,12 +91,17 @@ export default function TeaGrid({
   const [dir, setDir] = useState<1 | -1>(1);
   const timerRef = useRef<number | null>(null);
 
-  const cells = Array.from({ length: isMobile ? 2 : tilesX * tilesY });
-  const layoutTilesX = isMobile ? 1 : tilesX;
-  const layoutTilesY = isMobile ? 2 : tilesY;
+  const cells = Array.from({ length: tilesX * tilesY });
+  const layoutTilesX = tilesX;
+  const layoutTilesY = tilesY;
   const decorativeTilesX = isMobile ? 3 : tilesX;
   const decorativeTilesY = isMobile ? 3 : tilesY;
   const displayTeas = isMobile ? pageItems : renderTeas;
+
+  const mobilePositions = [
+    { column: '2', row: '2', tileX: 1, tileY: 1 },
+    { column: '2', row: '3', tileX: 1, tileY: 2 },
+  ];
 
   useEffect(() => {
     if (isMobile) {
@@ -214,26 +219,51 @@ export default function TeaGrid({
         />
 
         <div className={styles.gridContent} aria-hidden={false}>
-          {cells.map((_, idx) => {
-            const tea = displayTeas[idx];
-            const key = tea ? `tea-${tea.id}` : `empty-${idx}`;
-            if (!tea) return <div key={key} className={styles.cell} />;
-            const tileX = layoutTilesX > 0 ? idx % layoutTilesX : 0;
-            const tileY = layoutTilesX > 0 ? Math.floor(idx / layoutTilesX) : 0;
-            return (
-              <div key={key} className={styles.cell} onFocus={() => onTileFocus?.(tea)}>
-                <TeaCard
-                  tea={tea}
-                  tileX={tileX}
-                  tileY={tileY}
-                  tilesX={layoutTilesX}
-                  tilesY={layoutTilesY}
-                  onClick={onTeaClick}
-                  panel={panel}
-                />
-              </div>
-            );
-          })}
+          {isMobile
+            ? displayTeas.map((tea, idx) => {
+                if (!tea) return null;
+                const position = mobilePositions[idx];
+                if (!position) return null;
+                const key = `tea-${tea.id}`;
+                return (
+                  <div
+                    key={key}
+                    className={styles.cell}
+                    style={{ gridColumn: position.column, gridRow: position.row }}
+                    onFocus={() => onTileFocus?.(tea)}
+                  >
+                    <TeaCard
+                      tea={tea}
+                      tileX={position.tileX}
+                      tileY={position.tileY}
+                      tilesX={layoutTilesX}
+                      tilesY={layoutTilesY}
+                      onClick={onTeaClick}
+                      panel={panel}
+                    />
+                  </div>
+                );
+              })
+            : cells.map((_, idx) => {
+                const tea = displayTeas[idx];
+                const key = tea ? `tea-${tea.id}` : `empty-${idx}`;
+                if (!tea) return <div key={key} className={styles.cell} />;
+                const tileX = layoutTilesX > 0 ? idx % layoutTilesX : 0;
+                const tileY = layoutTilesX > 0 ? Math.floor(idx / layoutTilesX) : 0;
+                return (
+                  <div key={key} className={styles.cell} onFocus={() => onTileFocus?.(tea)}>
+                    <TeaCard
+                      tea={tea}
+                      tileX={tileX}
+                      tileY={tileY}
+                      tilesX={layoutTilesX}
+                      tilesY={layoutTilesY}
+                      onClick={onTeaClick}
+                      panel={panel}
+                    />
+                  </div>
+                );
+              })}
         </div>
 
         {!isMobile && incomingTeas && (
