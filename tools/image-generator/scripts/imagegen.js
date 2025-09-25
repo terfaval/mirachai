@@ -1,6 +1,8 @@
 // Headless képgenerátor OpenAI-hoz (gpt-image-1)
 // Használat:
 //   node scripts/imagegen.js jobs/example.yaml
+//   node scripts/imagegen.js jobs/tabletop.yaml --only tabletop_andoki_lendulet --n 2
+//   node scripts/imagegen.js jobs/tabletop.yaml --size 1536x1024 --dry
 //
 // Főbb képességek:
 //  - Stílus presetek (project_style) + lokális felülírás
@@ -18,7 +20,6 @@ import OpenAI from "openai";
 import yaml from "js-yaml";
 import dotenv from "dotenv";
 import sharp from "sharp";
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -145,7 +146,20 @@ function resolveSize(sizeOrPreset) {
   return SIZE_PRESETS.desktop_wide;
 }
 
-async function runJob(jobPath) {
+// ---- CLI kapcsolók ----
+function parseArgs(argv) {
+  const out = { only: null, n: null, size: null, dry: false };
+  for (let i = 3; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === "--dry") out.dry = true;
+    else if (a === "--only") out.only = argv[++i] || null;
+    else if (a === "--n") out.n = parseInt(argv[++i] || "NaN", 10);
+    else if (a === "--size") out.size = argv[++i] || null;
+  }
+  return out;
+}
+
+async function runJob(jobPath, cli) {
   if (!process.env.OPENAI_API_KEY) {
     console.error("Missing OPENAI_API_KEY. Állítsd be a .env.local-ban vagy környezeti változóként.");
     process.exit(1);
@@ -158,21 +172,31 @@ async function runJob(jobPath) {
 
   // kimeneti gyökér
   const rootOut = path.join(process.cwd(), "generated", stamp());
-  await ensureDir(rootOut);
+  if (!cli.dry) await ensureDir(rootOut);
 
   // project-szintű defaultok
   const projectStyle = job?.project_style || "";           // egységes Mirachai-stílus
   const projectNegative = job?.project_negative || "";     // pl. "text, logos, watermarks, people"
   const projectVariants = job?.project_variants || [];     // pl. ["morning","noon","evening"]
-  const projectSizes = job?.project_sizes || ["desktop_wide"]; // preset nevek vagy konkrét méret stringek
+  const projectSizes = (job?.project_sizes?.length ? job.project_sizes : ["desktop_wide"]).map(resolveSize);
   const projectN = Number(job?.project_n ?? 1);
   const projectModel = job?.project_model || "gpt-image-1";
   const projectStyleMode = job?.project_style_mode ?? null; // nincs explicit API paraméter
 
-  const items = job?.items || [];
+  let items = job?.items || [];
   if (!Array.isArray(items) || items.length === 0) {
     console.warn("Nincs items a YAML-ban.");
     return;
+  }
+
+  // --only szűrés SZIGORÚAN: ha nincs találat, hibával kilép
+  if (cli.only) {
+    const filtered = items.filter(x => String(x.name || "").trim() === cli.only.trim());
+    if (!filtered.length) {
+      console.error(`[only] Nem található item ezzel a névvel: "${cli.only}". Ellenőrizd a YAML 'name' mezőjét.`);
+      process.exit(3);
+    }
+    items = filtered;
   }
 
   for (const item of items) {
@@ -181,10 +205,16 @@ async function runJob(jobPath) {
 
     // per-item override-ok
     const model = item.model || projectModel;
-    const n = Number(item.n ?? projectN);
-    const sizes = (item.sizes?.length ? item.sizes
-             : item.size ? [item.size]
-             : projectSizes).map(resolveSize);
+
+    // n: CLI override elsőbbség, majd item.n, végül projectN
+    const nFromCli = Number.isInteger(cli.n) && cli.n > 0 ? cli.n : null;
+    const n = nFromCli ?? Number(item.n ?? projectN);
+
+    // méret: CLI override elsőbbség
+    const sizes = (cli.size ? [cli.size] : (item.sizes?.length ? item.sizes
+                   : item.size ? [item.size]
+                   : projectSizes)).map(resolveSize);
+
     const variants = (item.variants?.length ? item.variants : projectVariants);
     const styleMode = item.style_mode || projectStyleMode;
 
@@ -196,17 +226,17 @@ async function runJob(jobPath) {
     const style = [projectStyle, item.style || ""].filter(Boolean).join("\n");
     const negative = [projectNegative, item.negative || ""].filter(Boolean).join(", ");
 
-    // referencia képek / maszk
+    // referencia képek / maszk (jelen script prompt-only generál)
     const refImages = prepareRefImages(item.reference_images);
     const maskPath = item.mask ? (path.isAbsolute(item.mask) ? item.mask : path.join(process.cwd(), item.mask)) : null;
     const useMask = maskPath && fs.existsSync(maskPath);
 
     console.log(`\n→ ${itemName}`);
-    console.log(`   model=${model}, n=${n}, sizes=${sizes.join(", ")}, variants=${variants.join(", ") || "-"}`);
+    console.log(`   model=${model}, n=${n}${nFromCli ? " (CLI override)" : ""}, sizes=${sizes.join(", ")}, variants=${variants.join(", ") || "-"}`);
 
     // kimeneti mappa: /itemName
     const itemOut = path.join(rootOut, itemName);
-    await ensureDir(itemOut);
+    if (!cli.dry) await ensureDir(itemOut);
 
     // ha nincs variáns, úgy kezeljük, mintha egy "base" lenne
     const effectiveVariants = variants.length ? variants : ["base"];
@@ -221,74 +251,75 @@ async function runJob(jobPath) {
       });
 
       const variantOut = path.join(itemOut, variant);
-      await ensureDir(variantOut);
+      if (!cli.dry) await ensureDir(variantOut);
 
       for (const size of sizes) {
         const sizeOut = path.join(variantOut, size);
-        await ensureDir(sizeOut);
+        if (!cli.dry) await ensureDir(sizeOut);
 
         console.log(`   • ${variant} @ ${size}  (n=${n})`);
 
         try {
-  // PROMPT-ONLY hívás (nincs image/mask param az images.generate-ben!)
-  const genPayload = { model, prompt, n, size };
-  const res = await openai.images.generate(genPayload);
+          if (cli.dry) {
+            console.log("      - [dry] would call images.generate with prompt & size");
+            continue;
+          }
 
-  // ---- GUARD: ha nincs adat, ne próbálj menteni (ez akadályozza meg az üres fájlokat) ----
-  if (!res?.data?.length) {
-    console.warn(`      - [warn] nincs visszaadott kép (${itemName}/${variant}/${size})`);
-    continue; // ugrik a következő méretre/variánsra
-  }
+          // PROMPT-ONLY hívás (nincs image/mask param az images.generate-ben!)
+          const genPayload = { model, prompt, n, size };
+          const res = await openai.images.generate(genPayload);
 
-  // ---- Mentés ----
-  let idx = 0;
-  for (const img of res.data) {
-    const fname = `${itemName}__${variant}__${size}__${String(idx + 1).padStart(2, "0")}.png`;
-    const fpath = path.join(sizeOut, fname);
+          if (!res?.data?.length) {
+            console.warn(`      - [warn] nincs visszaadott kép (${itemName}/${variant}/${size})`);
+            continue;
+          }
 
-    if (img.url) {
-      await saveFromUrl(img.url, fpath);
-    } else if (img.b64_json) {
-      await saveFromB64(img.b64_json, fpath);
-    } else {
-      console.warn(`      - [skip] nincs url/b64_json (${itemName}/${variant}/${size}/${idx})`);
-      idx++;
-      continue;
-    }
-    console.log(`      - saved: ${path.relative(process.cwd(), fpath)}`);
+          let idx = 0;
+          for (const img of res.data) {
+            const fname = `${itemName}__${variant}__${size}__${String(idx + 1).padStart(2, "0")}.png`;
+            const fpath = path.join(sizeOut, fname);
 
-    // opcionális, ha kértél post-crop-ot YAML-ban
-    await postCropIfNeeded(fpath, item.post_crop || job.post_crop);
-    idx++;
-  }
-} catch (e) {
-  const msg = (e?.error?.message || e?.message || "").toString();
-  if (e?.status === 403 && msg.includes("must be verified")) {
-    console.error("\n[403] A gpt-image-1 használatához verifikált szervezet kell.");
-    console.error("OpenAI Console: Settings → Organization → Verify + Billing ellenőrzés.");
-    process.exit(2);
-  } else if (e?.status === 400 && e?.param === "size") {
-    console.error("\n[400] Méret hiba. Támogatott: 1024x1024, 1536x1024, 1024x1536, vagy presetek: desktop_wide, mobile_tall, square.\n");
-    process.exit(2);
-  } else {
-    console.error(e);
-    // ha szeretnéd, itt NE lépj ki azonnal, hanem menj tovább a következő itemre:
-    // continue;
-    process.exit(1);
-  }
-}
+            if (img.url) {
+              await saveFromUrl(img.url, fpath);
+            } else if (img.b64_json) {
+              await saveFromB64(img.b64_json, fpath);
+            } else {
+              console.warn(`      - [skip] nincs url/b64_json (${itemName}/${variant}/${size}/${idx})`);
+              idx++;
+              continue;
+            }
+            console.log(`      - saved: ${path.relative(process.cwd(), fpath)}`);
+
+            await postCropIfNeeded(fpath, item.post_crop || job.post_crop);
+            idx++;
+          }
+        } catch (e) {
+          const msg = (e?.error?.message || e?.message || "").toString();
+          if (e?.status === 403 && msg.includes("must be verified")) {
+            console.error("\n[403] A gpt-image-1 használatához verifikált szervezet kell.");
+            console.error("OpenAI Console: Settings → Organization → Verify + Billing ellenőrzés.");
+            process.exit(2);
+          } else if (e?.status === 400 && e?.param === "size") {
+            console.error("\n[400] Méret hiba. Támogatott: 1024x1024, 1536x1024, 1024x1536, vagy presetek: desktop_wide, mobile_tall, square.\n");
+            process.exit(2);
+          } else {
+            console.error(e);
+            process.exit(1);
+          }
+        }
       }
     }
   }
 
-  console.log(`\n✔ Done. Output root: ${path.relative(process.cwd(), rootOut)}`);
+  if (!cli.dry) console.log(`\n✔ Done. Output root: ${path.relative(process.cwd(), rootOut)}`);
 }
 
 (async function main() {
   const jobFile = process.argv[2];
   if (!jobFile) {
-    console.error("Usage: node scripts/imagegen.js <job.yaml>");
+    console.error("Usage: node scripts/imagegen.js <job.yaml> [--only name] [--n 2] [--size 1536x1024] [--dry]");
     process.exit(1);
   }
-  await runJob(jobFile);
+  const cli = parseArgs(process.argv);
+  await runJob(jobFile, cli);
 })();
