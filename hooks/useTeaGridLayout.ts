@@ -12,7 +12,7 @@ type LayoutPreset = {
 };
 
 const DESKTOP_BREAKPOINT = 1024;
-const PHONE_BREAKPOINT = 640;
+const PHONE_BREAKPOINT = 768;
 
 const DESKTOP_LAYOUT: LayoutPreset = { tilesX: 3, tilesY: 3 };
 const TABLET_LAYOUT: LayoutPreset = { tilesX: 2, tilesY: 2 };

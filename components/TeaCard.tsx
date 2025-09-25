@@ -29,10 +29,10 @@ const FLAVOR_KEYS = [
 const INTENSITY_MAP: Record<string, number> = { enyhe: 1, közepes: 2, erős: 3 };
 
 const FOCUS_KEYS = [
-  { key: 'immunity', label: 'immunitás', color: '#1E9E7A' },
-  { key: 'relax', label: 'relaxáció', color: '#7C3AED' },
-  { key: 'focus', label: 'fókusz', color: '#EA580C' },
-  { key: 'detox', label: 'detox', color: '#0EA5E9' },
+  { key: 'immunity', label: 'immunitás', color: '#58BFA4' },
+  { key: 'relax', label: 'relaxáció', color: '#B5A4F5' },
+  { key: 'focus', label: 'fókusz', color: '#F2A86C' },
+  { key: 'detox', label: 'detox', color: '#6CC6E5' },
 ] as const;
 
 const SEASON_NAMES = ['tavasz', 'nyár', 'ősz', 'tél'] as const;
@@ -65,7 +65,7 @@ export default function TeaCard({
   const focusEntries = FOCUS_KEYS.map(({ key, label, color }) => {
     const value = Number((tea as any)[`focus_${key}`]) || 0;
     return { key: `focus_${key}`, label, value: Math.max(0, Math.min(3, value)), color };
-  }).filter((entry) => entry.value > 0);
+  });
 
   const showFocusChart = focusEntries.length > 0;
 
@@ -124,41 +124,45 @@ export default function TeaCard({
 
         {panel === 'consumption' && (
           <div className={styles.info}>
-            <div className={styles.tasteBox}>
+            <div className={styles.chartRow}>
               {showChart && (
-                <TasteChart
-                  tea={tea}
-                  size={64}
-                  minValue={1}
-                  pointRadiusBase={6}
-                  showLabels={false}
-                  rotationDeg={-90}
-                />
-              )}
-              {showFocusChart && (
-                <TasteChart
-                  tea={tea}
-                  size={64}
-                  minValue={1}
-                  pointRadiusBase={6}
-                  showLabels={false}
-                  rotationDeg={-90}
-                  dataOverride={focusEntries}
-                  tooltipLabelSuffix="hatás"
-                />
-              )}
-            </div>
-            <div className={styles.intensity}>
-              <div className={styles.dots}>
-                {[1, 2, 3].map((i) => (
-                  <span
-                    key={`intensity-${i}`}
-                    className={styles.dot}
-                    style={{ background: i <= intensityLevel ? dotActiveColor : dotColor }}
+                <div className={styles.chartCard}>
+                  <TasteChart
+                    tea={tea}
+                    size={50}
+                    minValue={1}
+                    pointRadiusBase={6}
+                    showLabels={false}
+                    rotationDeg={-90}
                   />
-                ))}
+                </div>
+              )}
+              <div className={`${styles.chartCard} ${styles.intensityCard}`}>
+                <div className={styles.dots}>
+                  {[1, 2, 3].map((i) => (
+                    <span
+                      key={`intensity-${i}`}
+                      className={styles.dot}
+                      style={{ background: i <= intensityLevel ? dotActiveColor : dotColor }}
+                    />
+                  ))}
+                </div>
+                <div className={styles.intensityLabel}>{tea.intensity}</div>
               </div>
-              <div className={styles.intensityLabel}>{tea.intensity}</div>
+              {showFocusChart && (
+                <div className={styles.chartCard}>
+                  <TasteChart
+                    tea={tea}
+                    size={50}
+                    minValue={0}
+                    pointRadiusBase={6}
+                    showLabels={false}
+                    rotationDeg={-90}
+                    dataOverride={focusEntries}
+                    tooltipLabelSuffix="hatás"
+                  />
+                </div>
+              )}
             </div>
           </div>
         )}

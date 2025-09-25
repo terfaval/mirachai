@@ -28,6 +28,8 @@ interface Props {
   rotationDeg?: number;          // diagram elforgatása fokban
   dataOverride?: ChartItem[];    // külső adatforrás (pl. fókusz)
   tooltipLabelSuffix?: string;   // tooltip második sor
+  includeZero?: boolean;         // 0 értékek megtartása (fókusz)
+  variant?: 'dots' | 'petals';   // megjelenési mód
 }
 
 const ORDER = [
@@ -76,6 +78,8 @@ export default function TasteChart({
   rotationDeg = 0,
   dataOverride,
   tooltipLabelSuffix = 'íz',
+  includeZero = false,
+  variant = 'dots',
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
@@ -108,6 +112,9 @@ export default function TasteChart({
 
   const filteredEntries = tasteEntries.filter((entry) => {
     const value = Number.isFinite(entry.value) ? entry.value : 0;
+    if (includeZero) {
+      return value >= minValue;
+    }
     return value > 0 && value >= minValue;
   });
 
@@ -145,6 +152,143 @@ export default function TasteChart({
     return lum > 0.55 ? '#111' : '#fff';
   };
 
+  const applyAlpha = (hex: string | undefined, alpha: number) => {
+    if (!hex || !/^#/.test(hex)) return `rgba(0, 0, 0, ${alpha})`;
+    const normalized =
+      hex.length === 4
+        ? hex
+            .slice(1)
+            .split('')
+            .map((ch) => ch + ch)
+            .join('')
+        : hex.slice(1);
+    const r = parseInt(normalized.slice(0, 2), 16);
+    const g = parseInt(normalized.slice(2, 4), 16);
+    const b = parseInt(normalized.slice(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  };
+
+  const renderDots = () => (
+    <>
+      {entries.map((p) => (
+        <g key={p.key}>
+          {[1, 2, 3].map((lvl) => {
+            const active = lvl <= p.value;
+            const pr = active ? POINT_RADII[lvl - 1] : inactiveRadius;
+            let r = step * lvl * spacingFactor + radialOffset; // távolság a mérettel arányosan
+            if (lvl === 2) r -= pr * (isCompact ? 0.15 : 0.3); // második szint kicsit beljebb
+            const x = cx + Math.cos(p.angle) * r;
+            const y = cy + Math.sin(p.angle) * r;
+            const fill = active ? p.color : '#ccc';
+            const opacity = active ? 0.9 : 1;
+            const isTop = active && lvl === p.value;
+            return (
+              <circle
+                key={lvl}
+                cx={x}
+                cy={y}
+                r={pr}
+                fill={fill}
+                fillOpacity={opacity}
+                onMouseEnter={
+                  isTop
+                    ? () =>
+                        setTooltip({
+                          label: p.label,
+                          value: p.value,
+                          color: p.color,
+                          icon: p.icon,
+                          suffix: p.tooltipSuffix ?? tooltipLabelSuffix,
+                        })
+                    : undefined
+                }
+                onMouseLeave={isTop ? () => setTooltip(null) : undefined}
+              />
+            );
+          })}
+        </g>
+      ))}
+    </>
+  );
+
+  const renderPetals = () => {
+    const baseInner = radialOffset + step * (isCompact ? 0.25 : 0.35);
+    const baseOuter =
+      radialOffset +
+      step * 3 * spacingFactor +
+      pointRadiusBase * (isCompact ? 0.55 : 0.7);
+    const sweepAngle = (2 * Math.PI) / 4; // ~120° körcikk
+
+    const buildArc = (
+      innerRadius: number,
+      outerRadius: number,
+      start: number,
+      end: number,
+    ) => {
+      const clampRadius = (r: number) => Math.max(0, r);
+      const r0 = clampRadius(innerRadius);
+      const r1 = clampRadius(Math.max(innerRadius + 1, outerRadius));
+      const startOuter = {
+        x: cx + Math.cos(start) * r1,
+        y: cy + Math.sin(start) * r1,
+      };
+      const endOuter = {
+        x: cx + Math.cos(end) * r1,
+        y: cy + Math.sin(end) * r1,
+      };
+      const startInner = {
+        x: cx + Math.cos(end) * r0,
+        y: cy + Math.sin(end) * r0,
+      };
+      const endInner = {
+        x: cx + Math.cos(start) * r0,
+        y: cy + Math.sin(start) * r0,
+      };
+      const largeArcFlag = end - start > Math.PI ? 1 : 0;
+      return [
+        `M ${startOuter.x} ${startOuter.y}`,
+        `A ${r1} ${r1} 0 ${largeArcFlag} 1 ${endOuter.x} ${endOuter.y}`,
+        `L ${startInner.x} ${startInner.y}`,
+        `A ${r0} ${r0} 0 ${largeArcFlag} 0 ${endInner.x} ${endInner.y}`,
+        'Z',
+      ].join(' ');
+    };
+
+    return entries.map((p) => {
+      const ratio = Math.max(0, Math.min(1, p.value / 4));
+      const startAngle = p.angle - sweepAngle / 2;
+      const endAngle = p.angle + sweepAngle / 2;
+      const overlayOuter = baseInner + (baseOuter - baseInner) * ratio;
+      const overlayVisible = ratio > 0;
+
+      return (
+        <g key={p.key}>
+          <path
+            d={buildArc(baseInner, baseOuter, startAngle, endAngle)}
+            fill={applyAlpha(p.color, isCompact ? 0.18 : 0.15)}
+            aria-hidden
+          />
+          {overlayVisible && (
+            <path
+              d={buildArc(baseInner, overlayOuter, startAngle, endAngle)}
+              fill={p.color}
+              onMouseEnter={() =>
+                setTooltip({
+                  label: p.label,
+                  value: p.value,
+                  color: p.color,
+                  icon: p.icon,
+                  suffix: p.tooltipSuffix ?? tooltipLabelSuffix,
+                })
+              }
+              onMouseLeave={() => setTooltip(null)}
+            />
+          )}
+        </g>
+      );
+    });
+  };
+
   return (
     <div
       className={styles.container}
@@ -158,45 +302,7 @@ export default function TasteChart({
         aria-label="ízprofil diagram"
         style={{ background: 'transparent' }}
       >
-        {/* Pontok */}
-        {entries.map((p) => (
-          <g key={p.key}>
-            {[1, 2, 3].map((lvl) => {
-              const active = lvl <= p.value;
-              const pr = active ? POINT_RADII[lvl - 1] : inactiveRadius;
-              let r = step * lvl * spacingFactor + radialOffset; // távolság a mérettel arányosan
-              if (lvl === 2) r -= pr * (isCompact ? 0.15 : 0.3);  // második szint kicsit beljebb
-              const x = cx + Math.cos(p.angle) * r;
-              const y = cy + Math.sin(p.angle) * r;
-              const fill = active ? p.color : '#ccc';
-              const opacity = active ? 0.9 : 1;
-              const isTop = active && lvl === p.value;
-              return (
-                <circle
-                  key={lvl}
-                  cx={x}
-                  cy={y}
-                  r={pr}
-                  fill={fill}
-                  fillOpacity={opacity}
-                  onMouseEnter={
-                    isTop
-                      ? () =>
-                          setTooltip({
-                            label: p.label,
-                            value: p.value,
-                            color: p.color,
-                            icon: p.icon,
-                            suffix: p.tooltipSuffix ?? tooltipLabelSuffix,
-                          })
-                      : undefined
-                  }
-                  onMouseLeave={isTop ? () => setTooltip(null) : undefined}
-                />
-              );
-            })}
-          </g>
-        ))}
+        {variant === 'petals' ? renderPetals() : renderDots()}
       </svg>
 
       {/* Ikonok a korábbi szövegcímkék helyén – CSS maszkkal színezve */}
