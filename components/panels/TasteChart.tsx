@@ -442,16 +442,14 @@ export default function TasteChart({
               .join(' ')
           }
           style={{
-            backgroundColor: tooltip.color,
-            color: textColorFor(tooltip.color),
-          }}
+            '--tooltip-accent': tooltip.color,
+          } as CSSProperties}
           role="tooltip"
         >
           {tooltip.icon && (
             <span
               className={styles.tooltipIcon}
               style={{
-                backgroundColor: textColorFor(tooltip.color),
                 WebkitMaskImage: `url(${tooltip.icon})`,
                 maskImage: `url(${tooltip.icon})`,
               }}

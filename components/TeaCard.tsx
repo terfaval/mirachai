@@ -201,7 +201,7 @@ export default function TeaCard({
                     fullWidth
                     compactTooltip
                     tooltipFormatter={tasteTooltipFormatter}
-                    tooltipDelayMs={200}
+                    tooltipDelayMs={1000}
                     triggerOnContainerHover
                   />
                 ) : (

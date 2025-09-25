@@ -133,15 +133,10 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   min-height: var(--chart-card-height);
   align-self: center;
   text-align: center;
-}
-
-.tasteCard,
-.focusCard {
-  overflow: visible;
 }
 
 .intensityCard {
