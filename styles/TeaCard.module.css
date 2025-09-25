@@ -20,7 +20,7 @@
   text-align: left;      /* KO: középre rendezés – olvashatóbb így */
   transition: transform .18s ease, box-shadow .18s ease;
   transform-origin: center;
-  overflow: hidden;
+  overflow: visible;     /* tooltip ne vágódjon le */
   cursor: pointer;
   isolation: isolate;
   -webkit-font-smoothing: antialiased;
@@ -130,6 +130,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: visible;
 }
 
 .intensityCard {

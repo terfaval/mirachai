@@ -134,6 +134,7 @@ export default function TeaCard({
                     pointRadiusBase={6}
                     showLabels={false}
                     rotationDeg={-90}
+                    fullWidth
                   />
                 ) : (
                   <div className={styles.chartPlaceholder}>—</div>
@@ -162,6 +163,7 @@ export default function TeaCard({
                   dataOverride={focusEntries}
                   tooltipLabelSuffix="hatás"
                   includeZeroValues
+                  fullWidth
                 />
                 {!hasFocusData && (
                   <div className={styles.chartHint}>nincs fókusz adat</div>

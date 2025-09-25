@@ -49,6 +49,22 @@
   display: inline-block;
 }
 
+.fullWidth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.fullWidth .chart {
+  flex: 0 0 auto;
+}
+
+.fullWidth .tooltip {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .chart {
   display: block;
 }

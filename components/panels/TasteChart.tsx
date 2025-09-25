@@ -2,6 +2,7 @@ import styles from '../../styles/TasteChart.module.css';
 import { Tea } from '../../utils/filter';
 import { getTasteColor } from '../../utils/colorMap';
 import { useState } from 'react';
+import type { CSSProperties } from 'react';
 
 const N = (v: string | number | null | undefined) =>
   typeof v === 'number' ? v : v != null ? Number(v) : NaN;
@@ -30,6 +31,7 @@ interface Props {
   tooltipLabelSuffix?: string;   // tooltip második sor
   includeZeroValues?: boolean;   // azokat is rajzolja ki, ahol az érték 0
   variant?: 'dots' | 'petals';   // megjelenési mód
+  fullWidth?: boolean;           // szülő szélességéhez igazodik (tooltip középre)
 }
 
 const ORDER = [
@@ -80,6 +82,7 @@ export default function TasteChart({
   tooltipLabelSuffix = 'íz',
   includeZeroValues = false,
   variant = 'dots',
+  fullWidth = false,
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
@@ -289,10 +292,18 @@ export default function TasteChart({
     });
   };
 
+  const containerClassName = fullWidth
+    ? `${styles.container} ${styles.fullWidth}`
+    : styles.container;
+
+  const containerStyle: CSSProperties = fullWidth
+    ? { width: '100%', height: size }
+    : { width: size, height: size };
+
   return (
     <div
-      className={styles.container}
-      style={{ width: size, height: size }}
+      className={containerClassName}
+      style={containerStyle}
     >
       <svg
         width={size}
