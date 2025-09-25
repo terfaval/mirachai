@@ -81,7 +81,7 @@ export default function AppBackground({ desktopUrl, mobileUrl, className }: Prop
         el.style.backgroundColor = '';
         el.style.backgroundImage = `url(${displayUrl})`;
         el.style.backgroundRepeat = 'no-repeat';
-        el.style.backgroundSize = 'cover';
+        el.style.backgroundSize = isMobile ? '125%' : 'cover';
         el.style.backgroundPosition = 'center';
         el.style.backgroundAttachment = attachment;
       } else {

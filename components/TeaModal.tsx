@@ -62,6 +62,25 @@ export default function TeaModal({ tea, onClose }: Props) {
   const colorMain = getCategoryColor(tea.category, 'main') ?? '#CCCCCC';
   const colorAlternative = getAlternativeColor(tea.category);
 
+  // ⟵ MOBIL LOGIKA a modal méretezéshez
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(max-width: 768px)');
+    const apply = (e: MediaQueryList | MediaQueryListEvent) => {
+      setIsMobile('matches' in e ? e.matches : (e as MediaQueryList).matches);
+    };
+    apply(mq);
+    mq.addEventListener?.('change', apply);
+    // @ts-ignore
+    mq.addListener?.(apply);
+    return () => {
+      mq.removeEventListener?.('change', apply);
+      // @ts-ignore
+      mq.removeListener?.(apply);
+    };
+  }, []);
+  
   const [activeFace, setActiveFace] = useState<CubeFace>('tea');
   const [isRotating, setIsRotating] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -451,8 +470,10 @@ export default function TeaModal({ tea, onClose }: Props) {
 
   const cubeSceneStyle: CubeSceneStyle = {
     perspective: '1200px',
-    '--card-w': '60vw',
-    '--card-h': '90vh',
+    // Desktopon marad “kártya” méret, mobilon full-bleed (safe-area nélkül),
+    // a CSS még finomít (padding, radius, stb.)
+    '--card-w': isMobile ? '80vw' : '60vw',
+    '--card-h': isMobile ? '90dvh' : '90vh',
   };
   // ----
 

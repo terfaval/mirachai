@@ -26,13 +26,26 @@ html, body {
   background-position: center;
 }
 
-@media (max-width: 768) {
+@media (max-width: 768px) {
+  html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #f7f2eb;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  /* Enlarge the background image slightly so it appears more zoomed in */
+  background-size: 145%;
+  color: #000;
+};
+
   .app-bg-fixed {
-    background-attachment: scroll !important;
-    background-size: cover;
-    background-size: 130%;
-    background-position: center;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 }
 
 * {
