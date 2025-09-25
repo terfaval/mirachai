@@ -2,8 +2,7 @@ import React from 'react';
 import styles from '../../styles/TeaModal.module.css';
 import IngredientsStack from '@/components/ingredients/IngredientsStack';
 import CaffeineBar from '@/components/ingredients/CaffeineBar';
-import { caffeineToPct } from '@/utils/teaTransforms';
-import { scaleTea } from 'lib/teaScaling';
+import { buildIngredients, caffeineToPct } from '@/utils/teaTransforms';
 
 interface Props {
   tea: any;
@@ -11,8 +10,7 @@ interface Props {
 }
 
 export default function TeaDashboard({ tea, colorDark }: Props) {
-  const scaled = scaleTea(tea, { cups: 1, strengthMultiplier: 1 });
-  const ingredients = scaled.perIngredient;
+  const ingredients = buildIngredients(tea);
   const caffeine = caffeineToPct(tea);
 
   const description = (tea.fullDescription ?? '').trim();
@@ -26,7 +24,7 @@ export default function TeaDashboard({ tea, colorDark }: Props) {
           </div>
 
           <div className={styles.dashboardIngredientsBar}>
-            <IngredientsStack items={ingredients} orientation="horizontal" />
+            <IngredientsStack ingredients={ingredients} orientation="horizontal" />
           </div>
         </div>
 

@@ -15,8 +15,12 @@ interface ColorEntry {
 
 const DEFAULT_COLOR = '#6B4226';
 
-const norm = (s: string) =>
-  s.trim().toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+const norm = (s?: string) =>
+  (s ?? '')
+    .trim()
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '');
 
 type ColorVariant = keyof Omit<ColorEntry, 'category'>;
 const isHex = (s?: string) => !!s && /^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(s);

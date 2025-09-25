@@ -91,16 +91,16 @@ export default function TeaGrid({
   const [dir, setDir] = useState<1 | -1>(1);
   const timerRef = useRef<number | null>(null);
 
-  const cells = Array.from({ length: tilesX * tilesY });
-  const layoutTilesX = tilesX;
-  const layoutTilesY = tilesY;
+  const layoutTilesX = isMobile ? 3 : tilesX;
+  const layoutTilesY = isMobile ? 3 : tilesY;
+  const cells = Array.from({ length: layoutTilesX * layoutTilesY });
   const decorativeTilesX = isMobile ? 3 : tilesX;
   const decorativeTilesY = isMobile ? 3 : tilesY;
   const displayTeas = isMobile ? pageItems : renderTeas;
 
-  const mobilePositions = [
-    { column: '2', row: '2', tileX: 1, tileY: 1 },
-    { column: '2', row: '3', tileX: 1, tileY: 2 },
+  const mobileSlots = [
+    { col: 2, row: 2 },
+    { col: 2, row: 3 },
   ];
 
   useEffect(() => {
@@ -222,20 +222,22 @@ export default function TeaGrid({
           {isMobile
             ? displayTeas.map((tea, idx) => {
                 if (!tea) return null;
-                const position = mobilePositions[idx];
-                if (!position) return null;
+                const slot = mobileSlots[idx];
+                if (!slot) return null;
                 const key = `tea-${tea.id}`;
+                const gridColumn = `${slot.col} / ${slot.col + 1}`;
+                const gridRow = `${slot.row} / ${slot.row + 1}`;
                 return (
                   <div
                     key={key}
                     className={styles.cell}
-                    style={{ gridColumn: position.column, gridRow: position.row }}
+                    style={{ gridColumn, gridRow }}
                     onFocus={() => onTileFocus?.(tea)}
                   >
                     <TeaCard
                       tea={tea}
-                      tileX={position.tileX}
-                      tileY={position.tileY}
+                      tileX={slot.col - 1}
+                      tileY={slot.row - 1}
                       tilesX={layoutTilesX}
                       tilesY={layoutTilesY}
                       onClick={onTeaClick}

@@ -230,6 +230,14 @@ async function runJob(jobPath, cli) {
     const refImages = prepareRefImages(item.reference_images);
     const maskPath = item.mask ? (path.isAbsolute(item.mask) ? item.mask : path.join(process.cwd(), item.mask)) : null;
     const useMask = maskPath && fs.existsSync(maskPath);
+    if (refImages) {
+      console.warn("      - [info] reference_images megadva, de prompt-only módban figyelmen kívül marad.");
+    }
+    if (maskPath && !useMask) {
+      console.warn(`      - [info] mask megadva (${maskPath}), de a fájl nem található – kihagyva.`);
+    } else if (useMask) {
+      console.warn("      - [info] mask megadva, de prompt-only módban nincs használva.");
+    }
 
     console.log(`\n→ ${itemName}`);
     console.log(`   model=${model}, n=${n}${nFromCli ? " (CLI override)" : ""}, sizes=${sizes.join(", ")}, variants=${variants.join(", ") || "-"}`);

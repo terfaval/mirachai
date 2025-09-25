@@ -143,67 +143,6 @@
               opacity var(--slide-ms) var(--slide-ease);
 }
 
-/* Alap: a tartalomréteg ráfekszik a keretre */
-@media (max-width: 768px) {
-  .container {
-    --grid-w: 100vw;
-    --grid-available-height: calc(100vh);
-    --pager-offset-y: 56px;
-
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    width: 100%;
-    max-width: none;
-    height: auto;
-    min-height: auto;
-    display: block;
-    margin: 0 auto;
-    padding-inline: 12px;
-  }
-
-  .gridWrap {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: var(--grid-width);
-  }
-
-  .ghost {
-    display: none !important;
-  }
-
-  .cell {
-    border: none;
-    box-shadow: none;
-    background: none;
-  }
-
-  .activeSelectionBar {
-    position: sticky;
-    top: 0;
-    z-index: 30;
-    margin-bottom: 8px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: none;
-    left: 0;
-    right: 0;
-    transform: none;
-    width: auto;
-    padding: 12px;
-    box-sizing: border-box;
-  }
-
-  .pagerBar,
-  .pagerWrap {
-    position: static !important;
-    margin-top: 12px !important;
-    padding-bottom: env(safe-area-inset-bottom, 12px);
-  }
-}
-
 /* Bejövő “ghost” réteg (animált next oldal) */
 .ghost {
   position: absolute;
@@ -357,7 +296,7 @@
 
 @media (max-width: 768px) {
   .container { 
-    --grid-w: 60vw;
+    --grid-w: 70vw;
     --grid-h: 90vh; }
 }
 
