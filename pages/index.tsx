@@ -7,7 +7,6 @@ import TeaGrid, { type ActiveSelection } from '../components/TeaGrid';
 import Header from '../components/Header';
 import { SortKey, sortOptions } from '../components/sortOptions';
 import TeaModal from '../components/TeaModal';
-import CategorySidebar from '../components/CategorySidebar';
 import PaginationBar from '../components/PaginationBar';
 import { usePagination } from '../hooks/usePagination';
 import { useTeaGridLayout } from '../hooks/useTeaGridLayout';
@@ -113,10 +112,8 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   const { query: routerQuery } = useRouter();
   const [selectedTea, setSelectedTea] = useState<FilterTea | null>(null);
   const [query, setQuery] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sort, setSort] = useState<SortKey>('relevanceDesc');
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [showCategorySidebar, _setShowCategorySidebar] = useState(false);
   const [filterState, setFilterState] = useState<FilterState>(() => createEmptyFilterState());
   const [shuffleSeed, setShuffleSeed] = useState<number | null>(null);
 
@@ -246,10 +243,10 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   }, [teas]);
   // első mountkor seed generálás
   useEffect(() => { if (mounted && shuffleSeed === null) bumpSeed(); }, [mounted, shuffleSeed, bumpSeed]);
-  // ha keresel vagy kategóriát váltasz → új seed (egyszeri újrakeverés)
+  // ha keresel vagy szűrőt módosítasz → új seed (egyszeri újrakeverés)
   useEffect(
     () => { if (mounted) bumpSeed(); /* page reset is below */ },
-    [query, selectedCategories, filterState, mounted, bumpSeed],
+    [query, filterState, mounted, bumpSeed],
   );
 
   // stabil keverés — csak kliensen és csak seedváltáskor
@@ -263,14 +260,9 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
     const normalizedQuery = query.trim() ? normalizeString(query.trim()) : '';
     const base = applyFilters(shuffledTeas, filterState) as NormalizedTeaForHome[];
 
-    const categoryFiltered: NormalizedTeaForHome[] =
-      selectedCategories.length === 0
-        ? base
-        : base.filter((t) => (t.category ? selectedCategories.includes(t.category) : false));
+    if (!normalizedQuery) return base;
 
-    if (!normalizedQuery) return categoryFiltered;
-
-    return categoryFiltered
+    return base
       .map((tea) => {
         let score = 0;
         const teaRecord = tea as unknown as Record<string, unknown>;
@@ -307,7 +299,7 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
       .filter((entry) => entry.score > 0)
       .sort((a, b) => b.score - a.score)
       .map((entry) => entry.tea);
-  }, [shuffledTeas, filterState, selectedCategories, query]);
+  }, [shuffledTeas, filterState, query]);
 
   // rendezés
   const relevanceSorted = useMemo(() => {
@@ -394,12 +386,6 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   const { page, totalPages, goTo } = usePagination(distributed.length, perPage, 1);
 
   const activeFilterCount = useMemo(() => countActiveFilters(filterState), [filterState]);
-
-  const categories = useMemo(
-    () => Array.from(new Set(teas.map((t) => t.category)))
-      .sort((a, b) => a.localeCompare(b, 'hu', { sensitivity: 'base' })),
-    [teas],
-  );
 
   const dynamicData = useMemo<FilterPanelData>(() => {
     const filterWithout = (key: keyof FilterState): FilterState => {
@@ -752,11 +738,7 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
     clearFocusAxis,
   ]);
   
-  const toggleCategory = (cat: string) => {
-    setSelectedCategories((prev) => prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]);
-  };
-
-  useEffect(() => { goTo(1); }, [query, selectedCategories, sort, filterState, goTo]);
+  useEffect(() => { goTo(1); }, [query, sort, filterState, goTo]);
 
   useEffect(() => {
     const el = document.getElementById('tea-grid');
@@ -771,9 +753,6 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   return (
     <div ref={fullscreenRef} className="relative min-h-screen">
       <Header />
-      {showCategorySidebar && (
-        <CategorySidebar categories={categories} selected={selectedCategories} onToggle={toggleCategory} />
-      )}
       <FilterPanel
         open={filtersOpen}
         onClose={() => setFiltersOpen(false)}
