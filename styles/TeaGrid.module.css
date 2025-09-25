@@ -165,53 +165,55 @@
   pointer-events: none;
 }
 
-/* === MOBIL LAYOUT (≤768px): 1 oszlop × 2 sor, de DESKTOP CSEMPE-MÉRET === */
 @media (max-width: 768px) {
   .container {
     --grid-w: 90vw;
     --grid-available-height: calc(100vh);
     --pager-offset-y: 56px;
 
-    position: relative !important;
-    inset: unset !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    width: 100% !important;
-    height: auto !important;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: auto;
+    display: block;
+    margin: 0 auto;
     padding-inline: 12px;
   }
 
   .gridWrap {
-    top: 50% !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--grid-width);
   }
 
   .grid {
-    transition: none !important;
-    animation: none !important;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    gap: 8px;
+    width: 100%;
+    height: auto;
+    min-height: 1px;
   }
 
-  .gridContent {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    width: calc(100% / 3);
-    height: calc(100% * (2 / 3));
-    left: calc((100% - (100% / 3)) / 2);
-    top: calc((100% - (100% * (2 / 3))) / 2);
-    grid-template-columns: 1fr !important;
-    grid-template-rows: repeat(2, 1fr) !important;
-    gap: 0 !important;
+  .activeSelectionBar {
+    padding-inline: 12px;
   }
 
   .ghost {
-    display: none !important;
+    display: none;
   }
 
   .pagerBar,
   .pagerWrap {
-    position: static !important;
-    margin-top: 12px !important;
+    position: static;
+    margin-top: 12px;
   }
 }
 
@@ -334,30 +336,6 @@
 @media (max-width: 1024px) {
   .container { --grid-w: 65vw; }
 }
-@media (max-width: 768px) {
-  .container {
-    --grid-w: 90vw;
-    --grid-available-height: calc(100vh);
-    --pager-offset-y: 56px;
-  }
-  .grid {
-    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-    gap: 0px !important;
-  }
-  .gridWrap {
-    top: 56%;
-  }
-}
-@media (max-width: 640px) {
-  .container {
-    --grid-w: 94vw;
-    --grid-available-height: calc(100vh - 88px);
-    --pager-offset-y: 40px;
-  }
-  .gridWrap {
-    top: 56%;
-  }
-}
 
 @media (max-width: 1024px) {
   .activeSelectionBar {
@@ -373,67 +351,5 @@
     width: auto;
     padding: 12px;
     box-sizing: border-box;
-  }
-}
-
-/* === MOBIL FALLOVER A GRIDHEZ — DESKTOPOT NEM BÁNTJA === */
-@media (max-width: 640px) {
-  .container {
-    position: relative !important;
-    inset: unset !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-
-    width: 100% !important;
-    max-width: none !important;
-    height: auto !important;
-    min-height: auto !important;
-
-    display: block !important;
-    padding-inline: 12px;
-    margin: 0 auto;
-  }
-
-  .activeSelectionBar {
-    padding-inline: 12px;
-  }
-
-  .grid {
-    display: grid !important;
-    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-    grid-auto-rows: auto;
-    gap: 0px !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 1px;
-  }
-
-  .grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    grid-template-rows: none;
-    grid-auto-rows: auto;
-    gap: 8px !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 1px;
-  }
-
-  .ghost {
-    display: none !important;
-  }
-
-  .pagerBar,
-  .pagerWrap {
-    position: static !important;
-    margin-top: 12px !important;
-  }
-}
-
-/* Tablet biztonsági háló (ha 641–768 között is előjön): */
-@media (min-width: 641px) and (max-width: 768px) {
-  .container {
-    transform: none;
   }
 }

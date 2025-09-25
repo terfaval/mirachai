@@ -18,7 +18,7 @@ export default function AppBackground({ desktopUrl, mobileUrl, className }: Prop
       return;
     }
 
-    const mq = window.matchMedia('(max-width: 640px)');
+    const mq = window.matchMedia('(max-width: 768px)');
 
     const apply = (event: MediaQueryList | MediaQueryListEvent) => {
       const matches = 'matches' in event ? event.matches : (event as MediaQueryList).matches;

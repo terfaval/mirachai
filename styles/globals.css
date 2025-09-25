@@ -26,7 +26,7 @@ html, body {
   background-position: center;
 }
 
-@media (max-width: 786px) {
+@media (max-width: 768) {
   .app-bg-fixed {
     background-attachment: scroll !important;
     background-size: cover;
