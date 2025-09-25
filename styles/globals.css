@@ -20,6 +20,16 @@ html, body {
   color: #000;
 }
 
+@media (max-width: 1024px) and (orientation: portrait) {
+  html, body {
+    background-image: url("/mobile_background/mobile_background.png");
+    background-size: cover;
+    background-size: 115%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
 
 * {
   box-sizing: border-box;
