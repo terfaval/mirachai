@@ -23,6 +23,7 @@
   overflow: visible;     /* tooltip ne vágódjon le */
   cursor: pointer;
   isolation: isolate;
+  z-index: 0;            /* alap réteg, tooltip emeléshez szükséges */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -31,6 +32,12 @@
   transform: scale(1.03);
   /* lágyabb, nem feketedik el */
   box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  z-index: 5;            /* tooltip a szomszéd csempék fölé kerül */
+}
+
+.wrapper:focus-within .card,
+.card:focus {
+  z-index: 5;
 }
 
 /* ========== MANDALA OVERLAY ========== */
