@@ -1,12 +1,13 @@
 // components/TeaCard.tsx
 import styles from '../styles/TeaCard.module.css';
 import { Tea } from '../utils/filter';
-import { getCategoryColor, getTasteColor } from '../utils/colorMap';
+import { getCategoryColor } from '../utils/colorMap';
 import { getMandalaPath } from '../utils/mandala';
 import TasteChart from './panels/TasteChart';
 import QuarterDonut, { Segment } from './QuarterDonut';
-import DayDonut, { DaySegment } from './DayDonut';
+import DayDonut from './DayDonut';
 import { toStringArray } from '../lib/toStringArray';
+import { buildDaySegments } from '@/utils/teaTransforms';
 
 export type PanelKey = 'consumption' | 'category' | 'timing' | 'prep';
 
@@ -35,8 +36,6 @@ const FOCUS_KEYS = [
 ] as const;
 
 const SEASON_NAMES = ['tavasz', 'nyár', 'ősz', 'tél'] as const;
-
-const DAY_NAMES = ['reggel', 'délután', 'este'] as const;
 
 export default function TeaCard({
   tea,
@@ -83,39 +82,7 @@ export default function TeaCard({
   const seasonText = seasons.length === 4 ? 'egész évben' : seasons.join(', ');
 
   // napszakok – kördiagram + szövegezés + megjegyzések
-  const rawDayparts = toStringArray(tea.daypart_recommended);
-  let hasAfterMeal = false;
-  let hasBeforeSleep = false;
-  const daySet = new Set<string>();
-  rawDayparts.forEach((d) => {
-    if (d === 'kora_délután') {
-      daySet.add('délután');
-      } else if (d === 'délelőtt') {
-      daySet.add('reggel');
-    } else if (d === 'étkezés_után') {
-      hasAfterMeal = true;
-    } else if (d === 'lefekvés_előtt') {
-      hasBeforeSleep = true;
-      daySet.add('este');
-    } else if (d === 'bármikor') {
-      DAY_NAMES.forEach((n) => daySet.add(n));
-    } else {
-      daySet.add(d);
-    }
-  });
-  if (hasAfterMeal) DAY_NAMES.forEach((n) => daySet.add(n));
-
-  const daySegments: DaySegment[] = [
-    { key: 'reggel', start: 0, end: 1, color: '#fff', active: daySet.has('reggel') },
-    { key: 'délután', start: 1, end: 2, color: '#fff', active: daySet.has('délután') },
-    { key: 'este', start: 2, end: 3, color: '#fff', active: daySet.has('este') },
-  ];
-
-  let dayText = '';
-  if (hasAfterMeal) dayText = 'étkezés után';
-  else if (hasBeforeSleep) dayText = 'lefekvés előtt';
-  else if (DAY_NAMES.every((n) => daySet.has(n))) dayText = 'egész nap';
-  else dayText = DAY_NAMES.filter((n) => daySet.has(n)).join(', ');
+  const { segments: daySegments, text: dayText } = buildDaySegments(tea, '#fff');
 
   // előkészítés – hőfok / áztatás
   const temp = Number.isFinite(tea.tempC) ? (tea.tempC as number) : 0;
@@ -210,12 +177,12 @@ export default function TeaCard({
         {panel === 'timing' && (
           <div className={styles.timingPanel}>
             <div className={`${styles.chartPanel} ${styles.seasonChart}`}>
-              <QuarterDonut segments={seasonSegments} size={40} />
+              <QuarterDonut segments={seasonSegments} size={40} rotation={-45} />
               <div className={styles.chartLabel}>{seasonText || '—'}</div>
             </div>
             <div className={styles.chartPanel}>
               <div className={styles.dayChart}>
-                <DayDonut segments={daySegments} size={40} max={3} rotation={-90} />
+                <DayDonut segments={daySegments} size={40} max={5} rotation={-90} />
               </div>
               <div className={styles.chartLabel}>{dayText || '—'}</div>
             </div>

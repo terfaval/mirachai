@@ -44,13 +44,19 @@ export default function HeaderPanel({ tea, colorDark }: Props) {
           <QuarterDonut
             segments={seasonSegs}
             inactiveColor="rgba(0,0,0,0.08)"
+            rotation={-45}
           />
           <span style={{ fontSize:'0.8rem', lineHeight:1, color:colorDark }}>
             {seasonText || '—'}
           </span>
         </div>
         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:4 }}>
-          <DayDonut segments={daySegs} inactiveColor="rgba(0,0,0,0.08)" />
+          <DayDonut
+            segments={daySegs}
+            inactiveColor="rgba(0,0,0,0.08)"
+            max={5}
+            rotation={-90}
+          />
           <span style={{ fontSize:'0.8rem', lineHeight:1, color:colorDark }}>
             {dayText || '—'}
           </span>

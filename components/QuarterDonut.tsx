@@ -11,6 +11,7 @@ interface Props {
   segments: Segment[];
   size?: number;
   inactiveColor?: string;
+  rotation: number;
 }
 
 export default function QuarterDonut({ segments, size = 50, inactiveColor = 'rgba(255,255,255,0.2)' }: Props) {

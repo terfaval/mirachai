@@ -320,6 +320,16 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
     return sorted;
   }, [filtered, seedNowISODate, hourLocal]);
 
+  useEffect(() => {
+    // fejlesztéshez: nézd meg, tényleg átmegy-e az óra
+    console.debug('[relevance ctx]', {
+      seedNowISODate,
+      hourLocal,
+      sort,
+      filteredCount: filtered.length,
+    });
+  }, [seedNowISODate, hourLocal, sort, filtered.length]);
+  
   const sorted = useMemo(() => {
     if (sort === 'nameAsc') {
       return [...filtered].sort((a, b) => {
@@ -376,7 +386,8 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
   const { tilesX, tilesY, perPage } = useTeaGridLayout();
 
   const distributed = useMemo(() => {
-    if (!shuffleSeed || sort !== 'relevanceDesc') return sorted;
+    if (sort === 'relevanceDesc') return sorted;
+    if (!shuffleSeed) return sorted;
     return distributeByCategory(sorted, perPage, tilesX, shuffleSeed);
   }, [sorted, perPage, tilesX, shuffleSeed, sort]);
 
