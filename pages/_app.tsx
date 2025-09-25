@@ -1,44 +1,43 @@
 import type { AppProps } from 'next/app';
-import { useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import AppBackground from '@/components/AppBackground';
 import '../styles/globals.css';
 import '@/styles/pager-global.css';
 
+const resolveBackgroundSuffix = () => {
+  const hour = new Date().getHours();
+
+  if (hour >= 5 && hour < 8) return 'dawn';
+  if (hour >= 8 && hour < 11) return 'morning';
+  if (hour >= 11 && hour < 14) return 'noon';
+  if (hour >= 14 && hour < 17) return 'afternoon';
+  if (hour >= 17 && hour < 19) return 'evening';
+  return 'night';
+};
+
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const [backgroundSuffix, setBackgroundSuffix] = useState<string>('night');
+
   useEffect(() => {
-    const setBackground = (url: string) => {
-      const targets = [document.documentElement, document.body];
-      targets.forEach((el) => {
-        el.style.backgroundImage = url;
-      });
-    };
+    const apply = () => setBackgroundSuffix(resolveBackgroundSuffix());
+    apply();
+    const interval = window.setInterval(apply, 60 * 60 * 1000);
 
-    const updateBackground = () => {
-      const hour = new Date().getHours();
-      let suffix = '';
-      if (hour >= 5 && hour < 8) {
-        suffix = 'dawn';
-      } else if (hour >= 8 && hour < 11) {
-        suffix = 'morning';
-      } else if (hour >= 11 && hour < 14) {
-        suffix = 'noon';
-      } else if (hour >= 14 && hour < 17) {
-        suffix = 'afternoon';
-      } else if (hour >= 17 && hour < 19) {
-        suffix = 'evening';
-      } else {
-        suffix = 'night';
-      }
-      setBackground(`url('/desktop_background/desktop_background_${suffix}.png')`);
-    };
-
-    updateBackground();
-    const interval = setInterval(updateBackground, 60 * 60 * 1000);
-
-    return () => clearInterval(interval);
+    return () => window.clearInterval(interval);
   }, []);
+
+  const desktopUrl = useMemo(
+    () => `/desktop_background/desktop_background_${backgroundSuffix}.png`,
+    [backgroundSuffix],
+  );
 
   return (
     <>
+      <AppBackground
+        className="app-bg-fixed"
+        desktopUrl={desktopUrl}
+        mobileUrl="/mobile_background/mobile_background.png"
+      />
       <Component {...pageProps} />
     </>
   );

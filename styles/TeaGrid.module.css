@@ -300,15 +300,23 @@
   }
 }
 
+/* === MOBIL FALLOVER A GRIDHEZ — DESKTOPOT NEM BÁNTJA === */
 @media (max-width: 640px) {
   .container {
-    position: relative;
-    width: 100%;
+    position: relative !important;
+    inset: unset !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: auto !important;
+
+    display: block !important;
     padding-inline: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: stretch;
+    margin: 0 auto;
   }
 
   .activeSelectionBar {
@@ -316,26 +324,42 @@
   }
 
   .gridWrap {
-    position: static;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: 100%;
-    max-height: none;
-    height: auto;
-    aspect-ratio: auto;
-    isolation: auto;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    isolation: auto !important;
   }
 
   .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     grid-template-rows: none;
     grid-auto-rows: auto;
-    gap: 8px;
-    height: auto;
+    gap: 8px !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 1px;
   }
 
   .ghost {
-    display: none;
+    display: none !important;
+  }
+
+  .pagerBar,
+  .pagerWrap {
+    position: static !important;
+    margin-top: 12px !important;
+  }
+}
+
+/* Tablet biztonsági háló (ha 641–768 között is előjön): */
+@media (min-width: 641px) and (max-width: 768px) {
+  .container {
+    transform: none;
   }
 }
