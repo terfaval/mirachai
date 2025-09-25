@@ -91,16 +91,21 @@ export default function TeaGrid({
   const [dir, setDir] = useState<1 | -1>(1);
   const timerRef = useRef<number | null>(null);
 
-  const layoutTilesX = isMobile ? 3 : tilesX;
-  const layoutTilesY = isMobile ? 3 : tilesY;
+  // ⚠️ Mobilon 1×2-es rács, hogy a két kártya kitöltse a dobozt
+  const layoutTilesX = isMobile ? 1 : tilesX;
+  const layoutTilesY = isMobile ? 2 : tilesY;
   const cells = Array.from({ length: layoutTilesX * layoutTilesY });
-  const decorativeTilesX = isMobile ? 3 : tilesX;
-  const decorativeTilesY = isMobile ? 3 : tilesY;
+
+  // dísz / maszk méretezéséhez ugyanazok a számok
+  const decorativeTilesX = layoutTilesX;
+  const decorativeTilesY = layoutTilesY;
+
   const displayTeas = isMobile ? pageItems : renderTeas;
 
+  // ⚠️ Mobil slotok: 1/1 és 1/2 (felső és alsó fél)
   const mobileSlots = [
-    { col: 2, row: 2 },
-    { col: 2, row: 3 },
+    { col: 1, row: 1 },
+    { col: 1, row: 2 },
   ];
 
   useEffect(() => {
@@ -225,7 +230,7 @@ export default function TeaGrid({
                 const slot = mobileSlots[idx];
                 if (!slot) return null;
                 const key = `tea-${tea.id}`;
-                const gridColumn = `${slot.col} / ${slot.col + 1}`;
+                const gridColumn = '1 / -1';            // ⟵ teljes szélesség
                 const gridRow = `${slot.row} / ${slot.row + 1}`;
                 return (
                   <div
