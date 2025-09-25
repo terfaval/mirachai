@@ -265,12 +265,12 @@
 @media (max-width: 768px) {
   .container {
     --grid-w: 90vw;
-    --grid-available-height: calc(100vh - 110px);
+    --grid-available-height: calc(100vh);
     --pager-offset-y: 56px;
   }
   .grid {
     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-    gap: 12px !important;
+    gap: 0px !important;
   }
   .gridWrap {
     top: 56%;
@@ -330,9 +330,8 @@
   .grid {
     display: grid !important;
     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-    grid-template-rows: none;
     grid-auto-rows: auto;
-    gap: 12px !important;
+    gap: 0px !important;
     width: 100% !important;
     height: auto !important;
     min-height: 1px;
