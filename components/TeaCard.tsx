@@ -67,7 +67,7 @@ export default function TeaCard({
     return { key: `focus_${key}`, label, value: Math.max(0, Math.min(3, value)), color };
   });
 
-  const showFocusChart = focusEntries.length > 0;
+  const hasFocusData = focusEntries.some((entry) => entry.value > 0);
 
   // intenzitás
   const intensityLevel = INTENSITY_MAP[tea.intensity ?? ''] ?? 0;
@@ -125,18 +125,20 @@ export default function TeaCard({
         {panel === 'consumption' && (
           <div className={styles.info}>
             <div className={styles.chartRow}>
-              {showChart && (
-                <div className={styles.chartCard}>
+              <div className={styles.chartCard}>
+                {showChart ? (
                   <TasteChart
                     tea={tea}
-                    size={50}
+                    size={64}
                     minValue={1}
                     pointRadiusBase={6}
                     showLabels={false}
                     rotationDeg={-90}
                   />
-                </div>
-              )}
+                ) : (
+                  <div className={styles.chartPlaceholder}>—</div>
+                )}
+              </div>
               <div className={`${styles.chartCard} ${styles.intensityCard}`}>
                 <div className={styles.dots}>
                   {[1, 2, 3].map((i) => (
@@ -149,20 +151,22 @@ export default function TeaCard({
                 </div>
                 <div className={styles.intensityLabel}>{tea.intensity}</div>
               </div>
-              {showFocusChart && (
-                <div className={styles.chartCard}>
-                  <TasteChart
-                    tea={tea}
-                    size={50}
-                    minValue={0}
-                    pointRadiusBase={6}
-                    showLabels={false}
-                    rotationDeg={-90}
-                    dataOverride={focusEntries}
-                    tooltipLabelSuffix="hatás"
-                  />
-                </div>
-              )}
+              <div className={`${styles.chartCard} ${styles.focusCard}`}>
+                <TasteChart
+                  tea={tea}
+                  size={64}
+                  minValue={0}
+                  pointRadiusBase={6}
+                  showLabels={false}
+                  rotationDeg={-90}
+                  dataOverride={focusEntries}
+                  tooltipLabelSuffix="hatás"
+                  includeZeroValues
+                />
+                {!hasFocusData && (
+                  <div className={styles.chartHint}>nincs fókusz adat</div>
+                )}
+              </div>
             </div>
           </div>
         )}

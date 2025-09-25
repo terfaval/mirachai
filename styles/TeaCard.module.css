@@ -138,6 +138,28 @@
   padding: 6px;
 }
 
+.focusCard {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chartPlaceholder {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: .75rem;
+  color: rgba(0, 0, 0, .45);
+}
+
+.chartHint {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: .65rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: rgba(0, 0, 0, .4);
+}
+
 .flavorList {
   list-style: none;
   padding: 0;
@@ -171,16 +193,9 @@
 }
 
 /* ha a radar komponens adható data attribútummal, ez a méret állandó marad */
-.tasteBox :where(svg) {
+.chartCard :where(svg) {
   width: var(--taste-chart-size) !important;
   height: var(--taste-chart-size) !important;
-}
-
-.intensity {
-  display: grid;
-  grid-template-rows: auto auto;
-  justify-items: end;
-  row-gap: 4px;
 }
 
 .dots {

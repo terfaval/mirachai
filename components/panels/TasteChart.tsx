@@ -28,7 +28,7 @@ interface Props {
   rotationDeg?: number;          // diagram elforgatása fokban
   dataOverride?: ChartItem[];    // külső adatforrás (pl. fókusz)
   tooltipLabelSuffix?: string;   // tooltip második sor
-  includeZero?: boolean;         // 0 értékek megtartása (fókusz)
+  includeZeroValues?: boolean;   // azokat is rajzolja ki, ahol az érték 0
   variant?: 'dots' | 'petals';   // megjelenési mód
 }
 
@@ -78,7 +78,7 @@ export default function TasteChart({
   rotationDeg = 0,
   dataOverride,
   tooltipLabelSuffix = 'íz',
-  includeZero = false,
+  includeZeroValues = false,
   variant = 'dots',
 }: Props) {
   const cx = size / 2;
@@ -112,7 +112,7 @@ export default function TasteChart({
 
   const filteredEntries = tasteEntries.filter((entry) => {
     const value = Number.isFinite(entry.value) ? entry.value : 0;
-    if (includeZero) {
+    if (includeZeroValues) {
       return value >= minValue;
     }
     return value > 0 && value >= minValue;
