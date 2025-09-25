@@ -1,0 +1,258 @@
+project_model: gpt-image-1
+project_sizes: ["desktop_wide"]   # 1536x1024
+project_n: 1
+project_negative: "text, logos, watermarks, people, hands, angled perspective, clutter, objects in table center"
+
+project_base_prompt: >
+  STRICT top-down view of a rectangular wooden tea table.
+  Camera centered directly above. Table surface fully visible with clean edges.
+  The CENTER of the table must remain EMPTY (no objects placed).
+  Objects only along the outer edges and corners. Arrangement organic and RANDOMIZED, never perfectly symmetrical.
+  No tea tools or obvious brewing equipment; allow only small everyday bits (spoon, ice, citrus slice) if mentioned.
+  Semi-realistic painterly rendering with soft hand-painted textures, rich wood grain, detailed textiles,
+  lifelike plants/fruits/stones. Cozy, atmospheric, slight Ghibli/lofi inspiration but lifelike clarity.
+  Lighting can be natural interior light; keep soft believable shadows, do not over-contrast.
+
+items:
+  # -------------------------
+  # ÁLOM KAPU
+  # -------------------------
+  - name: "tabletop_alom_kapu"
+    # n: 4
+    prompt: >
+      PALETTE: main #C8B8DB, light #E5DEED, dark #2D1E3E, complementary #CBDBB8, alternative #D9B8DB, white #FFFFFF.
+      TEXTILES (pick ONE per image, vary across outputs):
+      - soft lavender runner along one long edge with subtle sheen
+      - wrinkled pastel-lilac cloth bunch in a corner
+      - full pale cloth covering most of the table, center left clear
+      - folded square napkin with minimal embroidered motif
+      OBJECTS (vary selection and balance; no tea tools):
+      - calming botanicals: linden blossom, chamomile heads, dry petals in tiny clusters
+      - soft elements: white feathers, smooth white pebbles
+      - small dreamy totems: moon-shaped stone, tiny glass bead scatter
+      - optional: single teaspoon near edge
+      IMPORTANT: Each output is a distinct variant with different textile treatment and object balance. Keep center empty.
+
+  # -------------------------
+  # AFRIKA FRISSESSÉGEI
+  # -------------------------
+  - name: "tabletop_afrika_frissessegei"
+    # n: 4
+    prompt: >
+      PALETTE: main #E26B39, light #F7DFD4, dark #521F0A, complementary #39B0E2, alternative #E2BC39, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - bright orange geometric cloth running along a long edge
+      - sand-beige cloth with bold border pattern wrinkled in a corner
+      - large sun-washed fabric covering most of the table, center clear
+      - folded stripe napkin with thin blue accent
+      OBJECTS (vary per image):
+      - tropical cues: dried hibiscus petals, pineapple bits (illustrative), dates pieces
+      - citrus peel curls, ginger slices, baobab powder pinch (dusty accent)
+      - natural accents: palm leaf segment, wooden bead strand, smooth brown seeds
+      - optional: teaspoon or 1–2 ice pieces near edge
+      IMPORTANT: Distinct variants via textile + object balance; center stays empty.
+
+  # -------------------------
+  # ÉVSZAKOK ZAMATA
+  # -------------------------
+  - name: "tabletop_evszakok_zamata"
+    # n: 4
+    prompt: >
+      PALETTE: main #6DA544, light #E4EFDC, dark #2B421A, complementary #7C44A5, alternative #44A54A, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - green runner with subtle herringbone along one edge
+      - wrinkled mossy cloth bunch in a corner
+      - wide seasonal patchwork fabric covering most area, center clear
+      - folded napkin with tiny leaf motif
+      OBJECTS (mix seasons, vary per image):
+      - spring: tender leaves, blossom sprigs
+      - summer: berries (elderberry/blackcurrant look), citrus peel
+      - autumn: small pinecone, dry maple/oak leaves
+      - winter: star-anise, cinnamon bark fragment
+      - neutral: polished pebble, thin twig
+      IMPORTANT: Each output differs in textile treatment and which seasonal elements dominate; center empty.
+
+  # -------------------------
+  # EURÓPAI GYÓGYFŰVEK
+  # -------------------------
+  - name: "tabletop_europai_gyogyfuvek"
+    # n: 4
+    prompt: >
+      PALETTE: main #8AA88A, light #E2E9E2, dark #273527, complementary #A88AA8, alternative #8AA898, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - muted sage runner along a long edge
+      - wrinkled grey-green cloth bunch in a corner
+      - full pale-green cloth covering most area, center clear
+      - folded linen square (sage tone) with simple hem stitch
+      OBJECTS (vary per image):
+      - classic herbs: thyme sprigs, chamomile heads, lavender, nettle leaves
+      - small apothecary mood: tiny corked vial (no label), wooden seed bowl
+      - natural: smooth pebble, pressed leaf, tiny twig bundle
+      - optional: teaspoon near edge
+      IMPORTANT: Distinct textile + herb balance each time; keep center empty.
+
+  # -------------------------
+  # ANDOKI LENDÜLET
+  # -------------------------
+  - name: "tabletop_andoki_lendulet"
+    # n: 4
+    prompt: >
+      PALETTE: main #2A9DAF, light #D7F0F4, dark #10434B, complementary #AF3C2A, alternative #2A5DAF, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - blue–green woven cloth along one long edge (visible folds)
+      - wrinkled turquoise cloth bunch in a corner
+      - broad fabric covering most of table (teal), center clear
+      - folded square napkin with thin red accent stitch
+      OBJECTS (vary per image; energizing Andean hint):
+      - cacao nib scatter (sometimes many, sometimes few)
+      - 1–2 bright red chilies placed apart
+      - 2–5 deep-green leaves (clustered or spread)
+      - small carved stone totem, tiny “mountain-shaped” rock
+      - bead scatter (ochre/red), optional: spoon or 1–2 ice near edge
+      IMPORTANT: Each output must differ via textile treatment and object balance. Center always empty.
+
+  # -------------------------
+  # FINOM VÉDELEM
+  # -------------------------
+  - name: "tabletop_finom_vedelem"
+    # n: 4
+    prompt: >
+      PALETTE: main #B23A48, light #F1DADD, dark #46151B, complementary #3AB2A4, alternative #B2663A, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - deep burgundy runner along a long edge
+      - wrinkled crimson cloth bunch in a corner
+      - large wine-red fabric covering most area, center left clear
+      - folded napkin with delicate floral embroidery
+      OBJECTS (vary per image):
+      - rose hips (heaps or just a few), thyme sprigs, protective herb mix
+      - dry petals (rose/chamomile/lavender hints)
+      - small brass candleholder (unlit), polished dark pebble
+      - optional: teaspoon near edge
+      IMPORTANT: Distinct variants each time; center must stay empty.
+
+  # -------------------------
+  # CSENDES IDŐ
+  # -------------------------
+  - name: "tabletop_csendes_ido"
+    # n: 4
+    prompt: >
+      PALETTE: main #AAB9C3, light #E2E6E9, dark #263036, complementary #C3B4AA, alternative #AAADC3, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - misty blue-grey runner along one long edge
+      - wrinkled soft-grey cloth bunch in a corner
+      - large desaturated cloth covering most of table, center clear
+      - folded napkin with minimal stitched border
+      OBJECTS (vary per image; tranquil mood):
+      - dried lavender sprigs, pale petals, tiny white stones
+      - pressed leaf, small wooden bead cluster
+      - optional: tiny candleholder (unlit), teaspoon near edge
+      IMPORTANT: Keep variants calm but distinct via textile + object balance; center empty.
+
+  # -------------------------
+  # TISZTA FÓKUSZ
+  # -------------------------
+  - name: "tabletop_tiszta_fokusz"
+    # n: 4
+    prompt: >
+      PALETTE: main #EBCB4A, light #F8F1D3, dark #554507, complementary #4A6AEB, alternative #BEEB4A, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - bright yellow cloth strip along one long edge
+      - wrinkled lemon-yellow bunch in a corner
+      - wide light fabric covering most area, center clear
+      - folded napkin with tiny blue edging
+      OBJECTS (vary per image; crisp, alert):
+      - citrus slices/peel, rosemary sprigs, juniper berries
+      - small polished stones, seed scatter
+      - optional: teaspoon or 1–2 ice near edge
+      IMPORTANT: Each output distinct in textile treatment and which objects dominate; center clear.
+
+  # -------------------------
+  # INDIAI CHAI
+  # -------------------------
+  - name: "tabletop_indiai_chai"
+    # n: 4
+    prompt: >
+      PALETTE: main #A0522D, light #F2E1D9, dark #492413, complementary #2D7BA0, alternative #A0892D, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - warm brown-gold cloth along one edge
+      - wrinkled cinnamon-toned bunch in a corner
+      - large earthy fabric covering most area, center clear
+      - folded napkin with tiny paisley motif
+      OBJECTS (vary per image; spice-forward, no teaware):
+      - cinnamon bark, star anise, cardamom pods, ginger coins
+      - jasmine petals, dried rose bits, tiny brass trinket
+      - optional: teaspoon near edge
+      IMPORTANT: Distinct spice balance + textile variant each time; center empty.
+
+  # -------------------------
+  # HŰS KORTYOK
+  # -------------------------
+  - name: "tabletop_hus_kortyok"
+    # n: 4
+    prompt: >
+      PALETTE: main #7EC8E3, light #D7ECF4, dark #0F3C4D, complementary #E3997E, alternative #7E98E3, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - cool blue runner along one edge
+      - wrinkled pale-blue cloth bunch in a corner
+      - broader chilled fabric covering most area, center clear
+      - folded napkin with thin coral accent
+      OBJECTS (vary per image; refreshing vibe):
+      - mint sprigs, lemon/lime slices, berry scatter
+      - clear ice pieces (2–6), condensation cues on nearby surface
+      - smooth glassy pebble, sea shell accent (optional)
+      - optional: teaspoon near edge
+      IMPORTANT: Distinct textile + object balance each output; center empty.
+
+  # -------------------------
+  # JAPÁN ZÖLD
+  # -------------------------
+  - name: "tabletop_japan_zold"
+    # n: 4
+    prompt: >
+      PALETTE: main #5A8F3B, light #E3EFDC, dark #29421A, complementary #703B8F, alternative #3B8F44, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - muted green runner along a long edge
+      - wrinkled moss-green cloth bunch in a corner
+      - broad pale-green fabric covering most area, center clear
+      - folded square linen with minimal stitch
+      OBJECTS (vary per image; nature-poetic):
+      - cherry blossom petals (light scatter), tender bamboo leaves
+      - polished river stone, pine needle sprinkle
+      - tiny twig with buds; optional: 1–2 rice grains (symbolic)
+      IMPORTANT: Distinct variants with textile treatment and object balance; center remains empty.
+
+  # -------------------------
+  # KÖZEL-KELET ILLATA
+  # -------------------------
+  - name: "tabletop_kozel_kelet_illata"
+    # n: 4
+    prompt: >
+      PALETTE: main #C89B3C, light #F2EAD9, dark #493813, complementary #3C69C8, alternative #B2C83C, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - golden cloth with subtle sheen along one edge
+      - wrinkled sand-gold bunch in a corner
+      - large warm fabric covering most area, center clear
+      - folded napkin with tiny geometric border
+      OBJECTS (vary per image; bazaar warmth):
+      - dates pieces, pistachios, pomegranate seeds scatter
+      - rose petals, cardamom pods, small brass ornament
+      - optional: teaspoon near edge
+      IMPORTANT: Each output distinct via textile + object balance; center empty.
+
+  # -------------------------
+  # KÍNAI KLASSZIKUS
+  # -------------------------
+  - name: "tabletop_kinai_klasszikus"
+    # n: 4
+    prompt: >
+      PALETTE: main #317873, light #DCEFEE, dark #1A423F, complementary #783136, alternative #315B78, white #FFFFFF.
+      TEXTILES (pick ONE):
+      - deep green-grey runner along a long edge
+      - wrinkled dark-teal cloth bunch in a corner
+      - wide desaturated fabric covering most area, center clear
+      - folded square linen with minimal red stitch accent
+      OBJECTS (vary per image; restrained, scholarly):
+      - chrysanthemum petals, jasmine blossoms, goji-like red berries (few)
+      - polished dark stone, carved wood chip, thin bamboo sliver
+      - optional: teaspoon near edge
+      IMPORTANT: Distinct variant each time via textile + object balance; keep center empty.
