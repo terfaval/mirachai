@@ -14,6 +14,7 @@ import uiTexts from '../data/ui_texts.json';
 import { pickIntroCopy, type IntroCopy } from '../utils/introCopy';
 import BrewJourney from './brew/BrewJourney';
 import { getBrewMethodsForTea } from '@/utils/brewMethods';
+import { slugify } from '@/lib/normalize';
 
 type CubeFace = 'tea' | 'intro' | 'brew';
 
@@ -125,6 +126,20 @@ export default function TeaModal({ tea, onClose }: Props) {
     return `brew-${String(base)}`;
   }, [tea]);
 
+  const categoryStillLifeImage = useMemo(() => {
+    if (!tea?.category) {
+      return undefined;
+    }
+
+    const slug = slugify(String(tea.category));
+    if (!slug) {
+      return undefined;
+    }
+
+    const underscored = slug.replace(/-/g, '_');
+    return `/still_life/stilllife_${underscored}.png`;
+  }, [tea?.category]);
+  
   useEffect(() => {
     setActiveFace('tea');
     setSelectedMethodId(null);
@@ -503,7 +518,7 @@ export default function TeaModal({ tea, onClose }: Props) {
                   description={tea.description ?? ''}
                   colorDark={colorDark}
                   categoryColor={colorMain}
-                  imageSrc="/tea-sample-1.png"
+                  imageSrc={categoryStillLifeImage}
                   origin={tea.origin ?? ''}
                 />
                 <div className={styles.spacer} />

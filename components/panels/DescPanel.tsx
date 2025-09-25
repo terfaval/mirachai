@@ -5,11 +5,17 @@ type Props = {
   description: string;
   colorDark: string;
   categoryColor: string;
-  imageSrc: string;
+  imageSrc?: string;
   origin?: string;
 };
 
-export default function DescPanel({ description, colorDark, categoryColor, imageSrc = '/background_backup.png', origin }: Props) {
+export default function DescPanel({
+  description,
+  colorDark,
+  categoryColor,
+  imageSrc = '/background_backup.png',
+  origin,
+}: Props) {
   return (
     <div style={{ display:'grid', gridTemplateColumns:'40% 60%', gap:16, minHeight:220 }}>
       <div style={{ background: colorDark, color:'#fff', padding:'20px 24px', fontSize:'1.4rem', lineHeight:1.5, borderRadius:12, alignContent:'center' }}>
