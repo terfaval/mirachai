@@ -1,7 +1,7 @@
 import styles from '../../styles/TasteChart.module.css';
 import { Tea } from '../../utils/filter';
 import { getTasteColor } from '../../utils/colorMap';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 
 const N = (v: string | number | null | undefined) =>
@@ -14,6 +14,11 @@ type ChartItem = {
   color: string;
   icon?: string;
   tooltipSuffix?: string;
+};
+
+type TooltipListContent = {
+  title?: string;
+  lines: string[];
 };
 
 interface Props {
@@ -33,6 +38,9 @@ interface Props {
   variant?: 'dots' | 'petals';   // megjelenési mód
   fullWidth?: boolean;           // szülő szélességéhez igazodik (tooltip középre)
   compactTooltip?: boolean;      // kisebb tipográfia a tooltipben
+  tooltipFormatter?: (entries: ChartItem[]) => TooltipListContent | null; // egyedi tooltip
+  tooltipDelayMs?: number;       // késleltetés a tooltip megjelenítése előtt
+  triggerOnContainerHover?: boolean; // teljes konténerre figyeli a hover eseményt
 }
 
 const ORDER = [
@@ -85,6 +93,9 @@ export default function TasteChart({
   variant = 'dots',
   fullWidth = false,
   compactTooltip = false,
+  tooltipFormatter,
+  tooltipDelayMs = 0,
+  triggerOnContainerHover = false,
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
@@ -93,9 +104,29 @@ export default function TasteChart({
   const step = radius / 3;
   const spacingFactor = isCompact ? 0.82 : 1;
 
-  const [tooltip, setTooltip] = useState<
-    { label: string; value: number; color: string; icon?: string; suffix: string } | null
-  >(null);
+  type TooltipState =
+    | {
+        type: 'default';
+        label: string;
+        value: number;
+        color: string;
+        icon?: string;
+        suffix: string;
+      }
+    | ({ type: 'list' } & TooltipListContent);
+
+  const [tooltip, setTooltip] = useState<TooltipState | null>(null);
+  const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hoverDelay = Math.max(0, tooltipDelayMs ?? 0);
+  const isContainerHoverTrigger =
+    triggerOnContainerHover && typeof tooltipFormatter === 'function';
+
+  const clearHoverTimeout = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  };
 
   const rotationRad = (rotationDeg * Math.PI) / 180;
   
@@ -138,6 +169,22 @@ export default function TasteChart({
     return { ...entry, angle };
   });
 
+  const showFormattedTooltip = () => {
+    if (!tooltipFormatter) {
+      return;
+    }
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    const formatted = tooltipFormatter(sortedEntries);
+    if (formatted && formatted.lines.length > 0) {
+      setTooltip({ type: 'list', ...formatted });
+    } else {
+      setTooltip(null);
+    }
+  };
+
   const labelRadius = radius + (showLabels ? iconSizePx : 0);
   const base = pointRadiusBase;
   const radialOffset = base * (isCompact ? 0.6 : 1);
@@ -173,6 +220,61 @@ export default function TasteChart({
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   };
 
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+        hoverTimeoutRef.current = null;
+      }
+    };
+  }, []);
+
+  const handleTooltipEnter = (entry: ChartItem) => {
+    if (isContainerHoverTrigger) {
+      return;
+    }
+
+    if (entry.value <= 0) {
+      return;
+    }
+
+    if (tooltipFormatter) {
+      showFormattedTooltip();
+      return;
+    }
+
+    setTooltip({
+      type: 'default',
+      label: entry.label,
+      value: entry.value,
+      color: entry.color,
+      icon: entry.icon,
+      suffix: entry.tooltipSuffix ?? tooltipLabelSuffix,
+    });
+  };
+
+  const hideTooltip = () => {
+    clearHoverTimeout();
+    setTooltip(null);
+  };
+
+  const handleContainerEnter = () => {
+    if (!isContainerHoverTrigger) {
+      return;
+    }
+    clearHoverTimeout();
+    hoverTimeoutRef.current = setTimeout(() => {
+      showFormattedTooltip();
+    }, hoverDelay);
+  };
+
+  const handleContainerLeave = () => {
+    if (!isContainerHoverTrigger) {
+      return;
+    }
+    hideTooltip();
+  };
+
   const renderDots = () => (
     <>
       {entries.map((p) => (
@@ -195,19 +297,9 @@ export default function TasteChart({
                 r={pr}
                 fill={fill}
                 fillOpacity={opacity}
-                onMouseEnter={
-                  isTop
-                    ? () =>
-                        setTooltip({
-                          label: p.label,
-                          value: p.value,
-                          color: p.color,
-                          icon: p.icon,
-                          suffix: p.tooltipSuffix ?? tooltipLabelSuffix,
-                        })
-                    : undefined
+                onMouseEnter={!isContainerHoverTrigger && isTop ? () => handleTooltipEnter(p) : undefined
                 }
-                onMouseLeave={isTop ? () => setTooltip(null) : undefined}
+                onMouseLeave={!isContainerHoverTrigger && isTop ? hideTooltip : undefined}
               />
             );
           })}
@@ -277,16 +369,10 @@ export default function TasteChart({
             <path
               d={buildArc(baseInner, overlayOuter, startAngle, endAngle)}
               fill={p.color}
-              onMouseEnter={() =>
-                setTooltip({
-                  label: p.label,
-                  value: p.value,
-                  color: p.color,
-                  icon: p.icon,
-                  suffix: p.tooltipSuffix ?? tooltipLabelSuffix,
-                })
+              onMouseEnter={
+                !isContainerHoverTrigger ? () => handleTooltipEnter(p) : undefined
               }
-              onMouseLeave={() => setTooltip(null)}
+              onMouseLeave={!isContainerHoverTrigger ? hideTooltip : undefined}
             />
           )}
         </g>
@@ -306,6 +392,8 @@ export default function TasteChart({
     <div
       className={containerClassName}
       style={containerStyle}
+      onMouseEnter={isContainerHoverTrigger ? handleContainerEnter : undefined}
+      onMouseLeave={isContainerHoverTrigger ? handleContainerLeave : undefined}
     >
       <svg
         width={size}
@@ -340,21 +428,13 @@ export default function TasteChart({
               }
               aria-label={p.label}
               title={p.label}
-              onMouseEnter={() =>
-                setTooltip({
-                  label: p.label,
-                  value: p.value,
-                  color: p.color,
-                  icon: p.icon,
-                  suffix: p.tooltipSuffix ?? tooltipLabelSuffix,
-                })
-              }
-              onMouseLeave={() => setTooltip(null)}
+              onMouseEnter={!isContainerHoverTrigger ? () => handleTooltipEnter(p) : undefined}
+              onMouseLeave={!isContainerHoverTrigger ? hideTooltip : undefined}
             />
           ) : null;
         })}
 
-      {tooltip && (
+      {tooltip?.type === 'default' && (
         <div
           className={
             [styles.tooltip, compactTooltip ? styles.tooltipCompact : null]
@@ -384,6 +464,26 @@ export default function TasteChart({
             </div>
             <div className={styles.tooltipLabel}>{tooltip.suffix}</div>
           </div>
+        </div>
+      )}
+    
+    {tooltip?.type === 'list' && tooltip.lines.length > 0 && (
+        <div
+          className={
+            [styles.tooltipList, compactTooltip ? styles.tooltipListCompact : null]
+              .filter(Boolean)
+              .join(' ')
+          }
+          role="tooltip"
+        >
+          {tooltip.title && <div className={styles.tooltipListTitle}>{tooltip.title}</div>}
+          <ul className={styles.tooltipListItems}>
+            {tooltip.lines.map((line, index) => (
+              <li key={index} className={styles.tooltipListItem}>
+                {line}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>

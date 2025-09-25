@@ -37,6 +37,70 @@ const FOCUS_KEYS = [
 
 const SEASON_NAMES = ['tavasz', 'nyár', 'ősz', 'tél'] as const;
 
+const STRENGTH_TEXT: Record<number, string> = { 1: 'enyhe', 2: 'közepes', 3: 'erős' };
+
+type TooltipEntry = { label: string; value: number };
+
+const joinWithAnd = (items: string[]) => {
+  if (items.length === 0) return '';
+  if (items.length === 1) return items[0];
+  if (items.length === 2) return `${items[0]} és ${items[1]}`;
+  const head = items.slice(0, -1).join(', ');
+  const tail = items[items.length - 1];
+  return `${head} és ${tail}`;
+};
+
+const buildGroupedTooltip = (
+  entries: TooltipEntry[],
+  { lowercaseLabels = false }: { lowercaseLabels?: boolean } = {},
+) => {
+  const groups = new Map<number, string[]>();
+
+  entries.forEach((entry) => {
+    const raw = entry.value ?? 0;
+    if (!Number.isFinite(raw)) return;
+    const rounded = Math.max(0, Math.min(3, Math.round(raw)));
+    if (rounded <= 0) return;
+
+    const label = lowercaseLabels ? entry.label.toLowerCase() : entry.label;
+    const trimmed = label.trim();
+    if (!trimmed) return;
+
+    const bucket = groups.get(rounded);
+    if (bucket) {
+      bucket.push(trimmed);
+    } else {
+      groups.set(rounded, [trimmed]);
+    }
+  });
+
+  if (groups.size === 0) {
+    return null;
+  }
+
+  const strengths = Array.from(groups.keys()).sort((a, b) => b - a);
+  const lines = strengths
+    .map((strength) => {
+      const items = groups.get(strength) ?? [];
+      if (items.length === 0) return '';
+      const joined = joinWithAnd(items);
+      const prefix = STRENGTH_TEXT[strength];
+      if (!prefix) {
+        return joined;
+      }
+      return joined ? `${prefix} ${joined}` : prefix;
+    })
+    .filter((line) => line.length > 0);
+
+  return lines.length > 0 ? { lines } : null;
+};
+
+const tasteTooltipFormatter = (entries: TooltipEntry[]) =>
+  buildGroupedTooltip(entries, { lowercaseLabels: true });
+
+const focusTooltipFormatter = (entries: TooltipEntry[]) =>
+  buildGroupedTooltip(entries, { lowercaseLabels: true });
+
 export default function TeaCard({
   tea,
   tileX, tileY, tilesX, tilesY,
@@ -125,7 +189,7 @@ export default function TeaCard({
         {panel === 'consumption' && (
           <div className={styles.info}>
             <div className={styles.chartRow}>
-              <div className={styles.chartCard}>
+              <div className={`${styles.chartCard} ${styles.tasteCard}`}>
                 {showChart ? (
                   <TasteChart
                     tea={tea}
@@ -136,6 +200,9 @@ export default function TeaCard({
                     rotationDeg={-90}
                     fullWidth
                     compactTooltip
+                    tooltipFormatter={tasteTooltipFormatter}
+                    tooltipDelayMs={200}
+                    triggerOnContainerHover
                   />
                 ) : (
                   <div className={styles.chartPlaceholder}>—</div>
@@ -166,6 +233,9 @@ export default function TeaCard({
                   includeZeroValues
                   fullWidth
                   compactTooltip
+                  tooltipFormatter={focusTooltipFormatter}
+                  tooltipDelayMs={200}
+                  triggerOnContainerHover
                 />
                 {!hasFocusData && (
                   <div className={styles.chartHint}>nincs fókusz adat</div>
