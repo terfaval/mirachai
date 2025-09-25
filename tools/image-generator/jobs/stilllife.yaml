@@ -1,0 +1,130 @@
+project_model: gpt-image-1
+project_sizes: ["desktop_wide"]
+project_n: 1
+project_negative: "text, logos, watermarks, people, hands"
+project_style: >
+  Semi-realistic painterly still life,
+  horizontal wide composition,
+  detailed textures (wood, ceramic, fabric, plants),
+  cozy hand-painted atmosphere.
+
+items:
+  - name: "stilllife_alom_kapu"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: dark ceramic teapot with steam, one cup half-filled.
+      Textile: soft violet cloth draped under set.
+      Complementary: sprigs of lavender, small dreamcatcher-like totem,
+      candleholder with unlit candle.
+      Palette: soft purples (#C8B8DB) and complementary green accents.
+      Lighting: warm candle glow mixed with gentle twilight.
+
+  - name: "stilllife_afrika_frissessegei"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: terracotta teapot with carved patterns, two cups.
+      Textile: vibrant orange-red woven cloth.
+      Complementary: citrus slices, hibiscus petals, carved wooden figure.
+      Palette: earthy orange (#E26B39) with blue complementary details.
+      Lighting: bright midday sunlight, vivid contrasts.
+
+  - name: "stilllife_evszakok_zamata"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: green ceramic teapot, one cup steaming.
+      Textile: rustic linen with leafy motif.
+      Complementary: seasonal fruits (apple slice, berry cluster),
+      oak leaf, small carved branch totem.
+      Palette: fresh green (#6DA544) with purple complementary.
+      Lighting: natural daylight, fresh and crisp.
+
+  - name: "stilllife_europai_gyogyfvek"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: light ceramic teapot, one matching cup.
+      Textile: muted green-gray cloth, wrinkled.
+      Complementary: chamomile blossoms, thyme sprigs, mortar and pestle.
+      Palette: sage green (#8AA88A) with lavender accents.
+      Lighting: soft morning light, gentle shadows.
+
+  - name: "stilllife_andoki_lendulet"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: rustic dark teapot, two cups.
+      Textile: blue-green woven cloth.
+      Complementary: cacao nibs in bowl, red chili pepper,
+      carved stone totem, tiny mountain rock.
+      Palette: teal (#2A9DAF) with earthy reds.
+      Lighting: warm afternoon light.
+
+  - name: "stilllife_finom_vedelem"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: warm brown ceramic teapot, two cups.
+      Textile: deep red woven cloth.
+      Complementary: rose hips, thyme sprigs, brass candleholder.
+      Palette: deep red (#B23A48) with green complementary.
+      Lighting: cozy protective afternoon glow.
+
+  - name: "stilllife_csendes_ido"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: gray-blue teapot, small matching cup.
+      Textile: pale gray cloth folded.
+      Complementary: dried lavender, open book, hourglass.
+      Palette: cool gray-blue (#AAB9C3) with beige accents.
+      Lighting: soft evening light, tranquil mood.
+
+  - name: "stilllife_tiszta_fokusz"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: golden glazed teapot, one cup shining.
+      Textile: bright yellow cloth corner.
+      Complementary: quill pen, lemon slice, polished stone.
+      Palette: golden yellow (#EBCB4A) with blue complementary.
+      Lighting: crisp morning sunlight.
+
+  - name: "stilllife_indiai_chai"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: brass teapot, two small cups with frothy chai.
+      Textile: warm brown patterned cloth.
+      Complementary: cinnamon sticks, star anise, carved wooden box.
+      Palette: spiced brown (#A0522D) with teal complementary.
+      Lighting: warm indoor glow.
+
+  - name: "stilllife_hus_kortyok"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: glass teapot with iced tea, one tall glass with ice cubes.
+      Textile: cool blue cloth casually draped.
+      Complementary: mint sprigs, citrus slices, small ice bowl.
+      Palette: cool blue (#7EC8E3) with coral accents.
+      Lighting: bright daylight, refreshing clarity.
+
+  - name: "stilllife_japan_zold"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: Japanese kyusu teapot with green glaze, small yunomi cup.
+      Textile: simple green woven mat.
+      Complementary: fresh tea leaves, bamboo whisk, small bonsai figure.
+      Palette: deep green (#5A8F3B) with purple complementary.
+      Lighting: serene daylight, balanced.
+
+  - name: "stilllife_kozel_kelet_illata"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: ornate brass teapot, small cup with saucer.
+      Textile: golden patterned fabric.
+      Complementary: cardamom pods, dates, small lantern.
+      Palette: golden ochre (#C89B3C) with blue complementary.
+      Lighting: warm evening glow.
+
+  - name: "stilllife_kinai_klasszikus"
+    prompt: >
+      STILL LIFE, wide painterly style.
+      Main: dark green porcelain teapot, two cups.
+      Textile: jade-colored cloth.
+      Complementary: calligraphy scroll, plum blossoms, small jade figurine.
+      Palette: jade green (#317873) with burgundy accents.
+      Lighting: balanced daylight, calm atmosphere.

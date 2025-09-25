@@ -1,9 +1,7 @@
-import { getBrewMethodsForTea } from '@/lib/data/brew.server';
+import { NextRequest } from 'next/server';
+import { readBrewProfiles } from '@/lib/data/brew.server'; // vagy ami a teljes listát adja
 
-export async function GET(
-  _req: Request,
-  { params }: { params: { id: string } },
-) {
-  const brew = await getBrewMethodsForTea(params.id);
-  return Response.json(brew);
+export async function GET(_req: NextRequest) {
+  const profiles = await readBrewProfiles();    // ha nincs ilyen, csinálj egy listázó függvényt
+  return Response.json(profiles);
 }
