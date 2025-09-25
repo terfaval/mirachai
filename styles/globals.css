@@ -30,6 +30,7 @@ html, body {
   .app-bg-fixed {
     background-attachment: scroll !important;
     background-size: cover;
+    background-size: 130%;
     background-position: center;
   }
 }
