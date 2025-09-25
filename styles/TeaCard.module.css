@@ -198,6 +198,22 @@
   color: rgba(0,0,0,.9);
 }
 
+@media (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+    height: 80%;
+  }
+
+  .card {
+    border-radius: 18px;
+    padding: 18px 16px 14px;
+  }
+
+  .info {
+    padding-top: 12px;
+  }
+}
+
 .flavorName {
   font-family: 'Lato', sans-serif;
   font-weight: 700;

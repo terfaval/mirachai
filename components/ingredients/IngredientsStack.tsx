@@ -15,7 +15,14 @@ export default function IngredientsStack({
   ingredients,
   orientation = "horizontal",
 }: Props) {
-  const safe = Array.isArray(ingredients) ? ingredients : [];
+  const safe = Array.isArray(ingredients)
+    ? ingredients.filter((item): item is Ingredient => {
+        if (!item) return false;
+        const { name, rate } = item as Partial<Ingredient>;
+        if (typeof name !== "string" || !name.trim()) return false;
+        return Number.isFinite(rate) && (rate as number) > 0;
+      })
+    : [];
 
   // duplikátumok összegzése és csak pozitív, véges rate-ek használata
   const grouped = safe.reduce((map, it) => {

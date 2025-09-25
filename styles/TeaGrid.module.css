@@ -295,9 +295,26 @@
 }
 
 @media (max-width: 768px) {
-  .container { 
-    --grid-w: 70vw;
-    --grid-h: 90vh; }
+  .container {
+    --grid-w: min(70vw, 420px);
+    --grid-available-height: calc(110vh - 140px);
+  }
+
+  .gridWrap {
+    width: var(--grid-width);
+    height: min(calc(var(--grid-width) * 1.28), var(--grid-available-height));
+    aspect-ratio: auto;
+  }
+
+  .grid {
+    padding: 10px 8px;
+    border-width: 4px;
+  }
+
+  .cell {
+    border-width: 4px;
+    padding: 6px;
+  }
 }
 
 @media (max-width: 768px) {
