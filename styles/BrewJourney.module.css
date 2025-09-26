@@ -764,3 +764,53 @@
     padding-right: 0;
   }
 }
+
+/* === FIXED RIGHT-SIDE HUD === */
+@media (min-width: 1024px) {
+  /* fő tartalom kapjon helyet a HUD-nak */
+  .journeyContent:not([data-external-hud='true']) {
+    padding-right: 360px; /* HUD szélessége + légrés */
+  }
+
+  /* maga a HUD-panel fixen a jobb oldalon */
+  .journeyContent:not([data-external-hud='true']) .hud:not([data-variant='external']) {
+    position: fixed;
+    top: 28px;
+    right: 28px;
+    width: 320px;
+    max-height: calc(100% - 56px);
+    overflow-y: auto;
+    z-index: 20;
+
+    /* oszlop-elrendezés */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    order: initial; /* ne a flex-rend számítson */
+    align-self: initial;
+  }
+
+  /* az egyes HUD-dobozok */
+  .hudItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(17, 24, 39, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* mobilon / kisebb kijelzőn ne legyen fix */
+@media (max-width: 1023.98px) {
+  .journeyContent:not([data-external-hud='true']) {
+    padding-right: 0;
+  }
+  .journeyContent .hud:not([data-variant='external']) {
+    position: static;
+    width: auto;
+    max-height: none;
+  }
+}
