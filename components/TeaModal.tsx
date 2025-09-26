@@ -134,12 +134,11 @@ export default function TeaModal({ tea, onClose }: Props) {
   const brewTea = useMemo(
     () => ({
       ...tea,
-      id: tea.id !== undefined ? String(tea.id) : undefined, // ← mindig string
       colorMain,
-    colorDark,
-  }),
-  [tea, colorMain, colorDark],
-);
+      colorDark,
+    }),
+    [tea, colorMain, colorDark],
+  );
 
   const brewLayoutId = useMemo(() => {
     const base = (tea as any).slug ?? tea.id ?? tea.name ?? 'tea';
@@ -585,15 +584,6 @@ export default function TeaModal({ tea, onClose }: Props) {
                 <PrepServePanel tea={tea} infoText={tea.when ?? ''} />
                 <div className={styles.spacer} />
 
-                <button
-                  type="button"
-                  className={styles.helpButton}
-                  style={{ backgroundColor: colorAlternative }}
-                  onClick={() => handleFaceChange('intro')}
-                  aria-label="Segítünk elkészíteni"
-                >
-                  Főzzük meg!
-                </button>
               </div>
             </div>
           </div>
@@ -670,7 +660,6 @@ export default function TeaModal({ tea, onClose }: Props) {
                 tea={brewTea}
                 methodId={brew.methodId ?? undefined}
                 onExit={handleBrewExit}
-                embedded
                 titleRef={brewTitleRef}
                 containerRef={brewContentRef}
               />
