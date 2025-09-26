@@ -460,13 +460,14 @@ export default function TeaModal({ tea, onClose }: Props) {
 
   const handleBrewStart = useCallback(
     (methodId: string | null | undefined) => {
-      if (methodId) {
-        setSelectedMethodId(methodId);
+      const resolvedMethodId = methodId ?? brewMethods[0]?.id ?? null;
+      if (resolvedMethodId) {
+        setSelectedMethodId(resolvedMethodId);
       }
-      setBrew({ methodId: methodId ?? null });
+      setBrew({ methodId: resolvedMethodId });
       handleFaceChange('brew');
     },
-    [handleFaceChange],
+    [brewMethods, handleFaceChange],
   );
 
   const handleBrewExit = useCallback(() => {
