@@ -1,0 +1,518 @@
+.panelRoot {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: #111827;
+  color: #f9fafb;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.panelBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 24px;
+  overflow: hidden;
+}
+
+.stepWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 0;
+}
+
+.stepHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stepBadge {
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.stepTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.stepLead {
+  margin: 0;
+  color: rgba(249, 250, 251, 0.75);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+.methodGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  overflow: auto;
+  padding: 4px;
+  flex: 1;
+}
+
+.methodCard {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(17, 24, 39, 0.72);
+  color: inherit;
+  text-align: left;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.methodCard[data-selected='true'] {
+  border-color: rgba(252, 211, 77, 0.8);
+  background: rgba(120, 53, 15, 0.55);
+  transform: translateY(-2px);
+}
+
+.methodCard:focus-visible,
+.methodCard:hover {
+  border-color: rgba(252, 211, 77, 0.6);
+}
+
+.methodCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.methodCardHeader {
+  display: flex;
+  gap: 12px;
+}
+
+.methodIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 10px;
+}
+
+.methodLabel {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.methodOneLiner,
+.methodDescription {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(249, 250, 251, 0.75);
+}
+
+.stepFooter {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.secondaryButton,
+.primaryButton {
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(249, 250, 251, 0.9);
+}
+
+.primaryButton {
+  background: #f97316;
+  color: #111827;
+}
+
+.secondaryButton:hover,
+.secondaryButton:focus-visible {
+  transform: translateY(-1px);
+}
+
+.primaryButton:hover,
+.primaryButton:focus-visible {
+  transform: translateY(-1px);
+}
+
+.primaryButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.volumeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.volumeButton {
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid transparent;
+  color: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.volumeButton[data-selected='true'] {
+  border-color: rgba(252, 211, 77, 0.8);
+  background: rgba(120, 53, 15, 0.5);
+}
+
+.volumeCustom {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-align: center;
+  color: rgba(249, 250, 251, 0.55);
+}
+
+.volumeInputRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 12px 18px;
+  border-radius: 16px;
+}
+
+.hiddenLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.volumeInput {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  width: 100px;
+  text-align: right;
+}
+
+.volumeInput:focus {
+  outline: none;
+}
+
+.volumeSuffix {
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.gearListWrapper {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 18px;
+  overflow: auto;
+}
+
+.gearList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gearItem {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gearFallback {
+  margin: 0;
+  color: rgba(249, 250, 251, 0.7);
+}
+
+.filterNotice {
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterNotice[data-state='required'] {
+  border: 1px solid rgba(248, 113, 113, 0.7);
+}
+
+.filterNotice[data-state='optional'] {
+  border: 1px solid rgba(74, 222, 128, 0.7);
+}
+
+.filterNotice[data-state='suggested'] {
+  border: 1px solid rgba(251, 191, 36, 0.7);
+}
+
+.waterLeafPanel {
+  flex: 1;
+  background: rgba(17, 24, 39, 0.6);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  outline: none;
+}
+
+.waterLeafAmounts {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.amountBlock {
+  flex: 1;
+  min-width: 180px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.amountLabel {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(249, 250, 251, 0.6);
+}
+
+.amountValue {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.amountHints {
+  display: flex;
+  gap: 12px;
+  color: rgba(249, 250, 251, 0.7);
+}
+
+.tempBadge {
+  align-self: flex-start;
+  margin-top: auto;
+  background: rgba(251, 191, 36, 0.2);
+  color: rgba(251, 191, 36, 0.95);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.preheatNotice {
+  padding: 12px 16px;
+  background: rgba(251, 146, 60, 0.15);
+  border-left: 3px solid rgba(251, 146, 60, 0.6);
+  border-radius: 12px;
+}
+
+.ratioBox {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ratioHint {
+  margin: 0;
+  color: rgba(249, 250, 251, 0.6);
+  font-size: 14px;
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sliderLabel {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.slider {
+  flex: 1;
+}
+
+.noteBox {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.noteBox h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.noteBox ul {
+  margin: 0;
+  padding-left: 20px;
+  color: rgba(249, 250, 251, 0.75);
+}
+
+.steepPanel {
+  flex: 1;
+  background: rgba(17, 24, 39, 0.6);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.steepRange {
+  font-weight: 600;
+}
+
+.steepHint {
+  color: rgba(250, 204, 21, 0.8);
+}
+
+.timerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.timerDisplay {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.timerControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.noTimerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.cautionBox {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.cautionBox h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.cautionBox ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.finishPanel {
+  flex: 1;
+  background: rgba(17, 24, 39, 0.6);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.finishMessage {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.finishFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .panelBody {
+    padding: 20px;
+  }
+
+  .stepTitle {
+    font-size: 24px;
+  }
+
+  .stepLead {
+    font-size: 15px;
+  }
+
+  .methodGrid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .stepFooter,
+  .finishFooter {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .secondaryButton,
+  .primaryButton {
+    width: 100%;
+    text-align: center;
+  }
+}

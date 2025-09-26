@@ -85,7 +85,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const [isRotating, setIsRotating] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [selectedMethodId, setSelectedMethodId] = useState<string | null>(null);
-  const [brew, setBrew] = useState<{ methodId: string } | null>(null);
+  const [brew, setBrew] = useState<{ methodId: string | null } | null>(null);
   const cubeSceneRef = useRef<HTMLDivElement | null>(null);
   const cubeShellRef = useRef<HTMLDivElement | null>(null);
   const teaContentRef = useRef<HTMLDivElement | null>(null);
@@ -467,11 +467,10 @@ export default function TeaModal({ tea, onClose }: Props) {
 
   const handleBrewStart = useCallback(
     (methodId: string | null | undefined) => {
-      if (!methodId) {
-        return;
+      if (methodId) {
+        setSelectedMethodId(methodId);
       }
-      setSelectedMethodId(methodId);
-      setBrew({ methodId });
+      setBrew({ methodId: methodId ?? null });
       handleFaceChange('brew');
     },
     [handleFaceChange],
@@ -669,7 +668,7 @@ export default function TeaModal({ tea, onClose }: Props) {
               <BrewJourney
                 layoutId={brewLayoutId}
                 tea={brewTea}
-                methodId={brew.methodId}
+                methodId={brew.methodId ?? undefined}
                 onExit={handleBrewExit}
                 embedded
                 titleRef={brewTitleRef}
