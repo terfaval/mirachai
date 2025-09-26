@@ -1,6 +1,9 @@
 import { MutableRefObject, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { Beaker, Droplet, Filter as FilterIcon } from 'lucide-react';
+import MandalaBackground from '@/components/panels/MandalaBackground';
 import StepFinish from './setup/StepFinish';
-import StepGearFilter from './setup/StepGearFilter';
+import StepGearFilter, { getFilterState, type FilterState, type GearInfo } from './setup/StepGearFilter';
 import StepMethod from './setup/StepMethod';
 import StepSteep from './setup/StepSteep';
 import StepVolume from './setup/StepVolume';
@@ -9,8 +12,12 @@ import brewProfiles from '@/data/brew_profiles.json';
 import styles from '@/styles/BrewJourney.module.css';
 import { slugify } from '@/lib/normalize';
 import type { Tea } from '@/utils/filter';
+import { getBrewMethodsForTea, type BrewMethodSummary } from '@/utils/brewMethods';
 
 type StepKey = 'method' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
+
+const STEP_ORDER: StepKey[] = ['method', 'volume', 'gear', 'water', 'steep', 'finish'];
+const DEFAULT_VOLUME = 250;
 
 type BrewJourneyProps = {
   layoutId?: string;
@@ -28,6 +35,12 @@ type BrewMethodProfile = TeaProfileDocument['methods'] extends Array<infer M>
     : never
   : never;
 
+type InitialParams = {
+  method: string | null;
+  volume: number | null;
+  phase: 'setup' | 'steep' | 'finish' | null;
+};
+
 function isMutableRef<T>(ref: Ref<T> | undefined | null): ref is MutableRefObject<T> {
   return Boolean(ref && typeof ref === 'object' && 'current' in ref);
 }
@@ -41,10 +54,46 @@ function mergeRefs<T>(...refs: Array<Ref<T> | undefined | null>) {
       if (typeof ref === 'function') {
         ref(node);
       } else if (isMutableRef(ref)) {
-        ref.current = node;
+        (ref as MutableRefObject<T>).current = node;
       }
     }
   };
+}
+
+function clampVolume(value: number | null | undefined): number {
+  if (value == null || Number.isNaN(value)) {
+    return DEFAULT_VOLUME;
+  }
+  return Math.min(2000, Math.max(30, value));
+}
+
+function readInitialParams(): InitialParams {
+  if (typeof window === 'undefined') {
+    return { method: null, volume: null, phase: null };
+  }
+  const params = new URLSearchParams(window.location.search);
+  const method = params.get('method');
+  const volumeRaw = params.get('ml');
+  const phaseRaw = params.get('phase');
+  const parsedVolume = volumeRaw != null ? Number.parseInt(volumeRaw, 10) : Number.NaN;
+  const phase: InitialParams['phase'] =
+    phaseRaw === 'setup' || phaseRaw === 'steep' || phaseRaw === 'finish' ? (phaseRaw as InitialParams['phase']) : null;
+
+  return {
+    method: method ?? null,
+    volume: Number.isFinite(parsedVolume) ? parsedVolume : null,
+    phase,
+  };
+}
+
+function resolveInitialStep(phase: InitialParams['phase'], hasMethod: boolean): StepKey {
+  if (phase === 'steep') {
+    return hasMethod ? 'steep' : 'method';
+  }
+  if (phase === 'finish') {
+    return hasMethod ? 'finish' : 'method';
+  }
+  return hasMethod ? 'volume' : 'method';
 }
 
 function findTeaProfile(tea: Tea): TeaProfileDocument | undefined {
@@ -108,32 +157,31 @@ function computePhase(step: StepKey): 'setup' | 'steep' | 'finish' {
 
 export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, onExit, titleRef, containerRef }: BrewJourneyProps) {
   void layoutId;
+  const initialParams = useMemo(() => readInitialParams(), []);
+  const initialMethodFromUrl = initialParams.method;
+  const resolvedInitialMethod = initialMethodFromUrl ?? (initialMethodId ?? null);
+
+  const [selectedMethodId, setSelectedMethodId] = useState<string | null>(() => resolvedInitialMethod);
+  const [volumeMl, setVolumeMl] = useState<number>(() => clampVolume(initialParams.volume ?? DEFAULT_VOLUME));
+  const [currentStep, setCurrentStep] = useState<StepKey>(() =>
+    resolveInitialStep(initialParams.phase, resolvedInitialMethod != null),
+  );
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
   const profile = useMemo(() => findTeaProfile(tea), [tea]);
-  const [selectedMethodId, setSelectedMethodId] = useState<string | null>(initialMethodId ?? null);
-  const [volumeMl, setVolumeMl] = useState<number>(250);
-  const [currentStep, setCurrentStep] = useState<StepKey>(initialMethodId ? 'volume' : 'method');
-
-  const containerNodeRef = useRef<HTMLDivElement | null>(null);
-  const mergedContainerRef = mergeRefs<HTMLDivElement>(containerRef, containerNodeRef);
-
+  const methodSummaries = useMemo<BrewMethodSummary[]>(() => getBrewMethodsForTea(tea), [tea]);
   const methodProfile = useMemo(() => findMethod(profile, selectedMethodId), [profile, selectedMethodId]);
 
-  const steps: StepKey[] = useMemo(() => {
-    if (!selectedMethodId) {
-      return ['method', 'volume', 'gear', 'water', 'steep', 'finish'];
-    }
-    return ['volume', 'gear', 'water', 'steep', 'finish'];
-  }, [selectedMethodId]);
+  const mergedContainerRef = useMemo(() => mergeRefs<HTMLDivElement>(containerRef), [containerRef]);
 
   const ensureValidStep = useCallback(
     (step: StepKey) => {
-      const available = new Set<StepKey>(steps);
-      if (available.has(step)) {
-        return step;
+      if (!selectedMethodId && step !== 'method') {
+        return 'method';
       }
-      return steps[0] ?? 'method';
+      return STEP_ORDER.includes(step) ? step : 'method';
     },
-    [steps],
+    [selectedMethodId],
   );
 
   useEffect(() => {
@@ -141,44 +189,24 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
   }, [ensureValidStep]);
 
   useEffect(() => {
-    if (selectedMethodId && !methodProfile) {
-      setSelectedMethodId(null);
-      setCurrentStep('method');
-    }
-  }, [methodProfile, selectedMethodId]);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') {
+    if (!selectedMethodId) {
       return;
     }
-    const params = new URLSearchParams(window.location.search);
-    const methodParam = params.get('method');
-    const volumeParam = params.get('ml');
-    const phaseParam = params.get('phase');
-
-    if (methodParam && methodParam !== selectedMethodId) {
-      const methodExists = findMethod(profile, methodParam) != null;
-      if (methodExists) {
-        setSelectedMethodId(methodParam);
-      }
+    const exists = methodSummaries.some((summary) => summary.id === selectedMethodId);
+    if (!exists) {
+      setSelectedMethodId(null);
+      setCurrentStep('method');
+      setToastMessage('Ez a módszer nem elérhető ehhez a teához');
     }
+  }, [selectedMethodId, methodSummaries]);
 
-    if (volumeParam) {
-      const parsed = Number.parseInt(volumeParam, 10);
-      if (!Number.isNaN(parsed) && parsed > 0) {
-        setVolumeMl(parsed);
-      }
+  useEffect(() => {
+    if (!toastMessage) {
+      return;
     }
-
-    if (phaseParam === 'steep') {
-      setCurrentStep(ensureValidStep('steep'));
-    } else if (phaseParam === 'finish') {
-      setCurrentStep(ensureValidStep('finish'));
-    } else if (phaseParam === 'setup') {
-      setCurrentStep(ensureValidStep(selectedMethodId ? 'volume' : 'method'));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const timeout = window.setTimeout(() => setToastMessage(null), 4000);
+    return () => window.clearTimeout(timeout);
+  }, [toastMessage]);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -195,6 +223,22 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
     window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
   }, [selectedMethodId, volumeMl, currentStep]);
 
+  const goToStep = useCallback(
+    (step: StepKey) => {
+      setCurrentStep(ensureValidStep(step));
+    },
+    [ensureValidStep],
+  );
+
+  const goBack = useCallback(() => {
+    const index = STEP_ORDER.indexOf(currentStep);
+    if (index > 0) {
+      goToStep(STEP_ORDER[index - 1]);
+      return;
+    }
+    onExit();
+  }, [currentStep, goToStep, onExit]);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -204,142 +248,272 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  });
+  }, [goBack]);
 
-  const goToStep = useCallback(
-    (step: StepKey) => {
-      setCurrentStep(ensureValidStep(step));
+  const handleMethodSelect = useCallback((method: string) => {
+    setSelectedMethodId(method);
+    setCurrentStep('volume');
+  }, []);
+
+  const handleVolumeSubmit = useCallback(
+    (volume: number) => {
+      setVolumeMl(clampVolume(volume));
+      goToStep('gear');
     },
-    [ensureValidStep],
+    [goToStep],
   );
 
-  const goBack = useCallback(() => {
-    const index = steps.indexOf(currentStep);
-    if (index > 0) {
-      goToStep(steps[index - 1]);
-      return;
-    }
-    onExit();
-  }, [currentStep, goToStep, onExit, steps]);
-
-  const handleMethodSelect = useCallback(
-    (method: string) => {
-      setSelectedMethodId(method);
-      setCurrentStep('volume');
-    },
-    [],
+  const gearInfo = useMemo<GearInfo>(
+    () => ({
+      gear: normalizeArray(methodProfile?.gear),
+      filterRequired: Boolean((methodProfile as any)?.filter_required),
+      allowNoFilter: Boolean((methodProfile as any)?.allow_no_filter),
+      hasProfile: Boolean(methodProfile),
+    }),
+    [methodProfile],
   );
-
-  const handleVolumeSubmit = useCallback((volume: number) => {
-    setVolumeMl(volume);
-    goToStep('gear');
-  }, [goToStep]);
-
-  const gearInfo = useMemo(() => {
-    const gear = normalizeArray(methodProfile?.gear);
-    const filterRequired = Boolean((methodProfile as any)?.filter_required);
-    const allowNoFilter = Boolean((methodProfile as any)?.allow_no_filter);
-    return { gear, filterRequired, allowNoFilter };
-  }, [methodProfile]);
 
   const methodLabel = useMemo(() => {
+    if (!selectedMethodId) {
+      return 'Még nincs kiválasztva';
+    }
     if (!methodProfile) {
-      return selectedMethodId ?? 'Ismeretlen módszer';
+      return selectedMethodId
+        .split(/[-_]+/)
+        .filter(Boolean)
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join(' ');
     }
     const title = (methodProfile as any)?.title;
     if (typeof title === 'string' && title.trim().length > 0) {
       return title.trim();
     }
-    return (selectedMethodId ?? '')
+    return selectedMethodId
       .split(/[-_]+/)
       .filter(Boolean)
       .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
       .join(' ');
   }, [methodProfile, selectedMethodId]);
 
+  const methodSummary = useMemo(() => {
+    if (!selectedMethodId) {
+      return null;
+    }
+    return methodSummaries.find((entry) => entry.id === selectedMethodId) ?? null;
+  }, [methodSummaries, selectedMethodId]);
+
+  const notes = useMemo(() => normalizeArray((methodProfile as any)?.notes), [methodProfile]);
+  const cautionNotes = useMemo(() => normalizeArray((methodProfile as any)?.caution_notes), [methodProfile]);
+
   const headerRef = useRef<HTMLHeadingElement | null>(null);
-  const mergedTitleRef = mergeRefs<HTMLHeadingElement>(titleRef, headerRef);
+  const mergedTitleRef = useMemo(() => mergeRefs<HTMLHeadingElement>(titleRef, headerRef), [titleRef]);
 
   useEffect(() => {
     headerRef.current?.focus();
   }, [currentStep]);
 
-  const notes = useMemo(() => normalizeArray((methodProfile as any)?.notes), [methodProfile]);
-  const cautionNotes = useMemo(() => normalizeArray((methodProfile as any)?.caution_notes), [methodProfile]);
+  const filterState = selectedMethodId && gearInfo.hasProfile ? getFilterState(gearInfo) : null;
+  const filterLabelMap: Record<FilterState, string> = {
+    required: 'Kötelező',
+    optional: 'Választható',
+    suggested: 'Javasolt',
+  };
+  const filterAssistMap: Record<FilterState, string> = {
+    required: 'Szűrő nélkül nem ajánlott.',
+    optional: 'Ha szeretnéd, elhagyható.',
+    suggested: 'Javasolt a tiszta csészéhez.',
+  };
 
-  useEffect(() => {
-    const node = containerNodeRef.current;
-    if (!node) {
-      return;
-    }
-    node.scrollTop = 0;
-  }, [currentStep]);
+  let filterTitle = 'Válassz módszert';
+  let filterAssist = 'A módszer kiválasztása után jelenik meg.';
+  let filterBadge: FilterState | null = null;
+  if (selectedMethodId && gearInfo.hasProfile && filterState) {
+    filterBadge = filterState;
+    filterTitle = filterLabelMap[filterState];
+    filterAssist = filterAssistMap[filterState];
+  } else if (selectedMethodId && !gearInfo.hasProfile) {
+    filterTitle = 'Nincs adat';
+    filterAssist = 'Ehhez a módszerhez nem találtunk szűrő információt.';
+  }
+
+  const methodTitle = methodSummary?.name ?? methodLabel;
+  const methodAssist =
+    methodSummary?.oneLiner ?? methodSummary?.description ?? (selectedMethodId ? 'Módszer kiválasztva.' : 'Válaszd ki, hogyan főzzük.');
+  const volumeAssist = currentStep === 'volume' ? 'Most állítod be.' : 'Bármikor módosíthatod a mennyiséget.';
+
+  const prefersReducedMotion = useReducedMotion();
+  const motionVariants = useMemo(
+    () =>
+      prefersReducedMotion
+        ? {
+            initial: { opacity: 0 },
+            animate: { opacity: 1 },
+            exit: { opacity: 0 },
+          }
+        : {
+            initial: { opacity: 0, x: 24 },
+            animate: { opacity: 1, x: 0 },
+            exit: { opacity: 0, x: -24 },
+          },
+    [prefersReducedMotion],
+  );
+  const motionTransition = useMemo(
+    () => ({
+      duration: prefersReducedMotion ? 0.18 : 0.32,
+      ease: prefersReducedMotion ? 'linear' : [0.16, 1, 0.3, 1],
+    }),
+    [prefersReducedMotion],
+  );
+
+  const mainColor = tea.colorMain ?? '#1f2937';
+  const darkColor = tea.colorDark ?? '#0f172a';
+  const category = ((tea as any)?.category ?? (tea as any)?.Category ?? tea.category ?? '') as string;
+  const backdropStyle = useMemo(
+    () => ({
+      background: `radial-gradient(circle at 50% -20%, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.16) 36%, rgba(0,0,0,0.5) 100%), ${mainColor}`,
+    }),
+    [mainColor],
+  );
+
+  let stepContent: JSX.Element | null = null;
+  switch (currentStep) {
+    case 'method':
+      stepContent = (
+        <StepMethod
+          tea={tea}
+          selectedMethodId={selectedMethodId}
+          onSelect={setSelectedMethodId}
+          onNext={handleMethodSelect}
+          onBack={goBack}
+        />
+      );
+      break;
+    case 'volume':
+      stepContent = <StepVolume defaultVolume={volumeMl} onSubmit={handleVolumeSubmit} onBack={goBack} />;
+      break;
+    case 'gear':
+      stepContent = <StepGearFilter info={gearInfo} onBack={goBack} onNext={() => goToStep('water')} />;
+      break;
+    case 'water':
+      stepContent = (
+        <StepWaterAndLeaf
+          volumeMl={volumeMl}
+          ratio={(methodProfile as any)?.ratio}
+          tempC={(methodProfile as any)?.tempC}
+          preheat={Boolean((methodProfile as any)?.preheat_vessel)}
+          notes={notes}
+          onBack={goBack}
+          onNext={() => {
+            goToStep('steep');
+          }}
+        />
+      );
+      break;
+    case 'steep':
+      stepContent = (
+        <StepSteep
+          steep={(methodProfile as any)?.steepMin ?? null}
+          steepSeconds={(methodProfile as any)?.time_s ?? null}
+          timerHint={(methodProfile as any)?.timer_hint ?? null}
+          caution={cautionNotes}
+          onBack={goBack}
+          onNext={() => goToStep('finish')}
+        />
+      );
+      break;
+    case 'finish':
+      stepContent = (
+        <StepFinish
+          teaName={tea.name}
+          methodLabel={methodLabel}
+          finishMessage={(methodProfile as any)?.finish_message ?? null}
+          notes={notes}
+          onRestart={() => goToStep(selectedMethodId ? 'volume' : 'method')}
+          onClose={onExit}
+        />
+      );
+      break;
+    default:
+      stepContent = null;
+  }
+
+  const methodIcon = methodSummary?.icon ? (
+    <img src={methodSummary.icon} alt="" className={styles.hudMethodIcon} />
+  ) : (
+    <Beaker aria-hidden="true" className={styles.hudIcon} />
+  );
 
   return (
-    <div className={styles.panelRoot} ref={mergedContainerRef}>
-      <div className={styles.panelBody}>
-        <div className={styles.stepHeader}>
-          <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
-          <h2 className={styles.stepTitle} tabIndex={-1} ref={mergedTitleRef}>
-            {tea.name}
-          </h2>
-          <p className={styles.stepLead}>Lépésről lépésre vezetünk végig a kiválasztott módszeren.</p>
+    <div className={styles.journeyRoot} ref={mergedContainerRef}>
+      <div className={styles.journeyBackdrop} aria-hidden="true">
+        <div className={styles.journeyBackdropImage} style={backdropStyle} />
+        <MandalaBackground color={darkColor} category={category} className={styles.journeyMandala} />
+        <div className={styles.journeyBackdropTint} />
+      </div>
+
+      <div className={styles.journeyContent}>
+        <div className={styles.panelRoot}>
+          <div className={styles.stepHeader}>
+            <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
+            <h2 className={styles.stepTitle} tabIndex={-1} ref={mergedTitleRef}>
+              {tea.name}
+            </h2>
+            <p className={styles.stepLead}>Lépésről lépésre vezetünk végig a kiválasztott módszeren.</p>
+          </div>
+          <div className={styles.stageArea}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentStep}
+                className={styles.stepMotion}
+                variants={motionVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={motionTransition}
+              >
+                {stepContent}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
-        {currentStep === 'method' ? (
-          <StepMethod
-            tea={tea}
-            selectedMethodId={selectedMethodId}
-            onSelect={setSelectedMethodId}
-            onNext={handleMethodSelect}
-            onBack={goBack}
-          />
-        ) : null}
-
-        {currentStep === 'volume' ? (
-          <StepVolume defaultVolume={volumeMl} onSubmit={handleVolumeSubmit} onBack={goBack} />
-        ) : null}
-
-        {currentStep === 'gear' ? (
-          <StepGearFilter info={gearInfo} onBack={goBack} onNext={() => goToStep('water')} />
-        ) : null}
-
-        {currentStep === 'water' ? (
-          <StepWaterAndLeaf
-            volumeMl={volumeMl}
-            ratio={(methodProfile as any)?.ratio}
-            tempC={(methodProfile as any)?.tempC}
-            preheat={Boolean((methodProfile as any)?.preheat_vessel)}
-            notes={notes}
-            onBack={goBack}
-            onNext={() => {
-              goToStep('steep');
-            }}
-          />
-        ) : null}
-
-        {currentStep === 'steep' ? (
-          <StepSteep
-            steep={(methodProfile as any)?.steepMin ?? null}
-            steepSeconds={(methodProfile as any)?.time_s ?? null}
-            timerHint={(methodProfile as any)?.timer_hint ?? null}
-            caution={cautionNotes}
-            onBack={goBack}
-            onNext={() => goToStep('finish')}
-          />
-        ) : null}
-
-        {currentStep === 'finish' ? (
-          <StepFinish
-            teaName={tea.name}
-            methodLabel={methodLabel}
-            finishMessage={(methodProfile as any)?.finish_message ?? null}
-            notes={notes}
-            onRestart={() => goToStep(selectedMethodId ? 'volume' : 'method')}
-            onClose={onExit}
-          />
-        ) : null}
+        <aside className={styles.hud} data-filter-state={filterBadge ?? undefined}>
+          <div className={styles.hudItem}>
+            <div className={styles.hudIconWrap}>{methodIcon}</div>
+            <div className={styles.hudText}>
+              <span className={styles.hudLabel}>Módszer</span>
+              <span className={styles.hudValue}>{methodTitle}</span>
+              <span className={styles.hudAssist}>{methodAssist}</span>
+            </div>
+          </div>
+          <div className={styles.hudItem}>
+            <div className={styles.hudIconWrap}>
+              <Droplet aria-hidden="true" className={styles.hudIcon} />
+            </div>
+            <div className={styles.hudText}>
+              <span className={styles.hudLabel}>Mennyiség</span>
+              <span className={styles.hudValue}>{`${volumeMl} ml`}</span>
+              <span className={styles.hudAssist}>{volumeAssist}</span>
+            </div>
+          </div>
+          <div className={styles.hudItem} data-state={filterBadge ?? undefined}>
+            <div className={styles.hudIconWrap}>
+              <FilterIcon aria-hidden="true" className={styles.hudIcon} />
+            </div>
+            <div className={styles.hudText}>
+              <span className={styles.hudLabel}>Szűrő</span>
+              <span className={styles.hudValue}>{filterTitle}</span>
+              <span className={styles.hudAssist}>{filterAssist}</span>
+            </div>
+          </div>
+        </aside>
       </div>
+
+      {toastMessage ? (
+        <div className={styles.toast} role="status" aria-live="polite">
+          {toastMessage}
+        </div>
+      ) : null}
     </div>
   );
 }

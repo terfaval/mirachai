@@ -639,8 +639,7 @@ export default function TeaModal({ tea, onClose }: Props) {
                     type="button"
                     className={styles.introPrimary}
                     onClick={() => {
-                      const fallbackMethod = selectedMethodId ?? brewMethods[0]?.id ?? null;
-                      handleBrewStart(fallbackMethod);
+                      handleBrewStart(undefined);
                     }}
                   >
                     Kezdjük a főzést

@@ -1,21 +1,68 @@
-.panelRoot {
+.journeyRoot {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background: #111827;
-  color: #f9fafb;
   border-radius: 24px;
+  overflow: hidden;
+  color: #f9fafb;
+}
+
+.journeyBackdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   overflow: hidden;
 }
 
-.panelBody {
+.journeyBackdropImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.85);
+}
+
+.journeyMandala {
+  position: absolute !important;
+  inset: -20% !important;
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+  filter: blur(2px) !important;
+}
+
+.journeyBackdropTint {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(18px);
+}
+
+.journeyContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 28px;
+  height: 100%;
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+.panelRoot {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 32px;
   gap: 24px;
-  overflow: hidden;
+  background: rgba(17, 24, 39, 0.78);
+  color: inherit;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(18px);
+  min-height: 0;
 }
 
 .stepWrapper {
@@ -23,6 +70,27 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-height: 0;
+  padding-bottom: 16px;
+}
+
+.stageArea {
+  flex: 1;
+  position: relative;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.stepMotion {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.stepMotion > * {
+  flex: 1;
+  display: flex;
   min-height: 0;
 }
 
@@ -124,11 +192,117 @@
   color: rgba(249, 250, 251, 0.75);
 }
 
+.hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(18px);
+  order: -1;
+}
+
+.hudItem {
+  flex: 1 1 160px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 12px 14px;
+  min-width: 0;
+}
+
+.hudItem[data-state='required'] {
+  border: 1px solid rgba(248, 113, 113, 0.65);
+}
+
+.hudItem[data-state='optional'] {
+  border: 1px solid rgba(74, 222, 128, 0.45);
+}
+
+.hudItem[data-state='suggested'] {
+  border: 1px solid rgba(251, 191, 36, 0.55);
+}
+
+.hudIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hudIcon {
+  width: 24px;
+  height: 24px;
+  color: rgba(251, 191, 36, 0.9);
+}
+
+.hudMethodIcon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.hudText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.hudLabel {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(249, 250, 251, 0.6);
+}
+
+.hudValue {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.hudAssist {
+  font-size: 12px;
+  color: rgba(249, 250, 251, 0.65);
+  line-height: 1.4;
+}
+
+.toast {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f9fafb;
+  font-weight: 600;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 5;
+}
+
 .stepFooter {
   margin-top: auto;
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  position: sticky;
+  bottom: 0;
+  padding-top: 16px;
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0) 0%, rgba(17, 24, 39, 0.85) 60%, rgba(17, 24, 39, 0.95) 100%);
+  backdrop-filter: blur(6px);
 }
 
 .secondaryButton,
@@ -396,6 +570,25 @@
   margin: 0;
   padding-left: 20px;
   color: rgba(249, 250, 251, 0.75);
+}
+
+@media (min-width: 768px) {
+  .journeyContent {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .hud {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: min(280px, 100%);
+    align-self: stretch;
+    order: 1;
+  }
+
+  .hudItem {
+    flex: 0 0 auto;
+  }
 }
 
 .steepPanel {
