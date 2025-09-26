@@ -90,6 +90,10 @@ export default function TeaModal({ tea, onClose }: Props) {
   const cubeShellRef = useRef<HTMLDivElement | null>(null);
   const teaContentRef = useRef<HTMLDivElement | null>(null);
   const brewContentRef = useRef<HTMLDivElement | null>(null);
+  const [brewHudPortalNode, setBrewHudPortalNode] = useState<HTMLDivElement | null>(null);
+  const assignBrewHudPortal = useCallback((node: HTMLDivElement | null) => {
+    setBrewHudPortalNode(node);
+  }, []);
   const introTitleRef = useRef<HTMLHeadingElement | null>(null);
   const brewTitleRef = useRef<HTMLHeadingElement | null>(null);
   const rotationTimeoutRef = useRef<number | null>(null);
@@ -500,7 +504,11 @@ export default function TeaModal({ tea, onClose }: Props) {
   // ----
 
   return (
-    <div className={styles.overlay} onClick={onClose} data-allow-interaction="true">
+    <div
+      className={`${styles.overlay} ${brewActive ? styles.overlayBrewActive : ''}`}
+      onClick={onClose}
+      data-allow-interaction="true"
+    >
       <div
         className={`${styles.cubeScene} ${brewActive ? styles.brewActive : ''}`}
         style={cubeSceneStyle}
