@@ -1,4 +1,5 @@
 import { MutableRefObject, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 import StepFinish from './setup/StepFinish';
@@ -200,10 +201,18 @@ function filterIconSrc(state: FilterState | null): string {
   return '/teasets/icon_filter_ok.svg'; // optional
 }
 
-export function BrewHud({ info, variant = 'default' }: { info: BrewHudInfo; variant?: 'default' | 'external' }) {
+export function BrewHud({
+  info,
+  variant = 'default',
+  className,
+}: {
+  info: BrewHudInfo;
+  variant?: 'default' | 'external';
+  className?: string;
+}) {
   return (
     <aside
-      className={styles.hud}
+      className={clsx(styles.hud, className)}
       data-filter-state={info.filterState ?? undefined}
       data-variant={variant}
     >

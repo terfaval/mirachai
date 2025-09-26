@@ -168,13 +168,6 @@ export default function TeaModal({ tea, onClose }: Props) {
   }, [tea, finishRotation]);
 
   useEffect(() => {
-    if (selectedMethodId || !brewMethods.length) {
-      return;
-    }
-    setSelectedMethodId(brewMethods[0]?.id ?? null);
-  }, [brewMethods, selectedMethodId]);
-
-  useEffect(() => {
     if (typeof window === 'undefined') return;
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
     const updatePreference = () => setPrefersReducedMotion(query.matches);
@@ -518,6 +511,7 @@ export default function TeaModal({ tea, onClose }: Props) {
     >
       <div
         className={styles.overlayContent}
+        data-brew-active={brewActive ? 'true' : undefined}
         style={cardDimensionVars}
         onClick={(event) => event.stopPropagation()}
       >
@@ -702,7 +696,7 @@ export default function TeaModal({ tea, onClose }: Props) {
         {brewHudInfo ? (
           <div className={styles.brewHudDock} onClick={(event) => event.stopPropagation()}>
             <div className={styles.brewHudInner}>
-              <BrewHud info={brewHudInfo} variant="external" />
+              <BrewHud info={brewHudInfo} variant="external" className={styles.brewHud} />
             </div>
           </div>
         ) : null}

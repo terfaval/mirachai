@@ -6,7 +6,7 @@ import { getEquipmentIcon, normalizeGear } from '@/utils/equipment';
 type Props = {
   methods: BrewMethodSummary[];
   onSelect: (methodId: string) => void;
-  onStart?: (methodId: string) => void;
+  onStart?: (methodId: string | null | undefined) => void;
   selectedId?: string | null;
 };
 
@@ -111,11 +111,10 @@ export default function BrewMethodsPanel({ methods, onSelect, onStart, selectedI
           type="button"
           className={styles.brewMethodsStart}
           onClick={() => {
-            if (selectedMethod && onStart) {
-              onStart(selectedMethod.id);
+            if (onStart) {
+              onStart(selectedMethod ? selectedMethod.id : null);
             }
           }}
-          disabled={!selectedMethod || !onStart}
         >
           Kezdjük a főzést
         </button>

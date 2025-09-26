@@ -27,10 +27,26 @@
   width: min(100%, var(--card-w, 100%));
 }
 
+.overlayContent[data-brew-active='true'] {
+  gap: 20px;
+}
+
 .brewHudDock {
   width: min(100%, var(--card-w, 100%));
   display: flex;
   justify-content: center;
+}
+
+.brewHudInner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.brewHud {
+  width: 100%;
+  max-height: calc(var(--card-h, 90vh) * 0.67);
 }
 
 .brewHudInner {
@@ -60,6 +76,36 @@
   perspective: 1200px;
   --brew-activation: 0;
 }
+
+@media (min-width: 1100px) {
+  .overlayContent[data-brew-active='true'] {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+    width: min(100%, calc(var(--card-w, 100%) + clamp(260px, 28vw, 360px) + 32px));
+  }
+
+  .overlayContent[data-brew-active='true'] .cubeScene {
+    flex: 0 0 var(--card-w);
+  }
+
+  .overlayContent[data-brew-active='true'] .brewHudDock {
+    flex: 0 0 clamp(260px, 28vw, 360px);
+    width: clamp(260px, 28vw, 360px);
+    align-self: flex-start;
+    justify-content: flex-start;
+  }
+
+  .overlayContent[data-brew-active='true'] .brewHudInner {
+    justify-content: flex-start;
+  }
+
+  .overlayContent[data-brew-active='true'] .brewHud {
+    height: calc(var(--card-h, 90vh) * 0.67);
+    max-height: calc(var(--card-h, 90vh) * 0.67);
+  }
+}
+
 
 .cubeScene.brewActive {
   --brew-activation: 1;
