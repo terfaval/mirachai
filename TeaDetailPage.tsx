@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tea } from './src/types/tea';
+import { Ingredient, Tea } from './src/types/tea';
 import TeaTitle from './components/TeaTitle';
 import CategoryPills from './components/CategoryPills';
 import TasteChart from './components/panels/TasteChart';
@@ -25,7 +25,10 @@ export default function TeaDetailPage({ tea, categoryColors }: Props) {
     ? 'font-display lowercase'
     : 'font-sans';
     const scaled = scaleTea(tea as any, { cups: 1, strengthMultiplier: 1 });
-  const ingredientItems = scaled.perIngredient;
+  const ingredientItems: Ingredient[] = scaled.perIngredient.map(({ name, percent }) => ({
+    name,
+    rate: percent,
+  }));
   return (
     <div className="max-w-screen-lg mx-auto p-4">
       <TeaTitle name={tea.name} />
@@ -47,7 +50,7 @@ export default function TeaDetailPage({ tea, categoryColors }: Props) {
           {tea.description}
         </p>
       )}
-      <IngredientsStack items={ingredientItems} />
+      <IngredientsStack ingredients={ingredientItems} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-8 items-center">
         <ColorCup color={getTeaColor(tea.name)} />
         <div className="space-y-4">
