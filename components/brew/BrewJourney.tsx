@@ -1,5 +1,5 @@
 import { MutableRefObject, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Beaker, Droplet, Filter as FilterIcon } from 'lucide-react';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 import StepFinish from './setup/StepFinish';
@@ -41,6 +41,37 @@ type InitialParams = {
   volume: number | null;
   phase: 'setup' | 'steep' | 'finish' | null;
 };
+
+function usePrefersReducedMotion(): boolean {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleChange = () => {
+      setPrefersReducedMotion(mediaQuery.matches);
+    };
+
+    handleChange();
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => {
+        mediaQuery.removeEventListener('change', handleChange);
+      };
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => {
+      mediaQuery.removeListener(handleChange);
+    };
+  }, []);
+
+  return prefersReducedMotion;
+}
 
 function isMutableRef<T>(ref: Ref<T> | undefined | null): ref is MutableRefObject<T> {
   return Boolean(ref && typeof ref === 'object' && 'current' in ref);
@@ -342,7 +373,7 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
     methodSummary?.oneLiner ?? methodSummary?.description ?? (selectedMethodId ? 'Módszer kiválasztva.' : 'Válaszd ki, hogyan főzzük.');
   const volumeAssist = currentStep === 'volume' ? 'Most állítod be.' : 'Bármikor módosíthatod a mennyiséget.';
 
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = usePrefersReducedMotion();
   const motionVariants = useMemo(
     () =>
       prefersReducedMotion

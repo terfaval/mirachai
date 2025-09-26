@@ -8,4 +8,6 @@ declare module "lucide-react" {
   export const RotateCcw: any;
   export const SlidersHorizontal: any;
   export const Filter: any;
+  export const Beaker: any;
+  export const Droplet: any;
 }
