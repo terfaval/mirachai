@@ -57,6 +57,14 @@
   flex-direction: column;
 }
 
+@media (min-width: 960px) {
+  .journeyContent:not([data-external-hud='true']) {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 28px;
+  }
+}
+
 .panelRoot {
   flex: 1;
   display: flex;
@@ -78,6 +86,8 @@
   gap: 24px;
   min-height: 0;
   padding-bottom: 16px;
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
 .stageArea {
@@ -92,6 +102,7 @@
   flex: 1;
   display: flex;
   min-height: 0;
+  overflow: hidden;
 }
 
 .stepMotion > * {
@@ -106,6 +117,13 @@
   gap: 12px;
 }
 
+.stepHeaderRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
 .stepBadge {
   align-self: flex-start;
   font-size: 12px;
@@ -116,6 +134,15 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.85);
+}
+
+.journeyTitle {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .stepTitle {
@@ -200,14 +227,16 @@
 
 .hud {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-direction: column;
+  gap: 12px;
   padding: 18px 20px;
   border-radius: 22px;
   background: rgba(15, 23, 42, 0.72);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(18px);
   order: -1;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 .hud[data-variant='external'] {
@@ -215,15 +244,18 @@
   width: 100%;
 }
 
-.hudItem {
-  flex: 1 1 160px;
+.hud {
   display: flex;
+  flex-direction: column;
   gap: 12px;
-  align-items: flex-start;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 12px 14px;
-  min-width: 0;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(18px);
+  order: -1;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 .hudItem[data-state='required'] {
@@ -584,25 +616,8 @@
 }
 
 @media (min-width: 768px) {
-  .journeyContent {
-    flex-direction: row;
-    align-items: stretch;
-  }
-
   .journeyContent[data-external-hud='true'] {
     flex-direction: column;
-  }
-
-  .hud {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: min(280px, 100%);
-    align-self: stretch;
-    order: 1;
-  }
-
-  .hudItem {
-    flex: 0 0 auto;
   }
 
   .hud[data-variant='external'] {
@@ -615,6 +630,15 @@
 
   .hud[data-variant='external'] .hudItem {
     flex: 1 1 0%;
+  }
+}
+
+@media (min-width: 960px) {
+  .journeyContent:not([data-external-hud='true']) .hud {
+    order: 0;
+    width: 320px;
+    max-width: 360px;
+    align-self: stretch;
   }
 }
 
@@ -734,5 +758,9 @@
   .primaryButton {
     width: 100%;
     text-align: center;
+  }
+
+  .stepWrapper {
+    padding-right: 0;
   }
 }

@@ -20,6 +20,15 @@ type StepKey = 'method' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
 const STEP_ORDER: StepKey[] = ['method', 'volume', 'gear', 'water', 'steep', 'finish'];
 const DEFAULT_VOLUME = 250;
 
+const JOURNEY_LEAD_COPY: Record<StepKey, string> = {
+  method: 'Válaszd ki a hozzád illő elkészítési módot, hogy személyre szabott útmutatót kapj.',
+  volume: 'Add meg, mennyi teát készítesz, így minden arány pontos lesz.',
+  gear: 'Ellenőrizd, milyen eszközökre lesz szükséged ehhez a főzési módszerhez.',
+  water: 'Állítsd be a víz- és levélarányokat, majd készítsd elő a teát.',
+  steep: 'Kövesd az áztatási időt és a tippeket a tökéletes eredményért.',
+  finish: 'Nézd át az összefoglalót, és élvezd a frissen elkészült teát.',
+};
+
 export type BrewHudInfo = {
   methodIconSrc: string;
   methodIconVariant: 'method' | 'default';
@@ -531,6 +540,7 @@ export default function BrewJourney({
   const volumeIcon = volumeIconSrc(volumeMl, selectedMethodId);
   const volumeValue = `${volumeMl} ml`;
   const filterIcon = filterIconSrc(filterBadge);
+  const journeyLead = JOURNEY_LEAD_COPY[currentStep] ?? JOURNEY_LEAD_COPY.method;
 
   const hudInfo = useMemo<BrewHudInfo>(
     () => ({
@@ -591,11 +601,13 @@ export default function BrewJourney({
       >
         <div className={styles.panelRoot}>
           <div className={styles.stepHeader}>
-            <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
-            <h2 className={styles.stepTitle} tabIndex={-1} ref={mergedTitleRef}>
-              {tea.name}
-            </h2>
-            <p className={styles.stepLead}>Lépésről lépésre vezetünk végig a kiválasztott módszeren.</p>
+            <div className={styles.stepHeaderRow}>
+              <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
+              <h2 className={styles.journeyTitle} tabIndex={-1} ref={mergedTitleRef}>
+                {tea.name}
+              </h2>
+            </div>
+            <p className={styles.stepLead}>{journeyLead}</p>
           </div>
           <div className={styles.stageArea}>
             <AnimatePresence mode="wait">
