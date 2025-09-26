@@ -46,14 +46,14 @@ export default function StepGearFilter({ info, onNext, onBack }: StepGearFilterP
         )}
       </div>
 
-      <div className={styles.filterNotice} data-state={filterRequired ? 'required' : allowNoFilter ? 'optional' : 'suggested'}>
+      <div className={styles.filterNotice} data-state={filterRequired ? 'required' : allowNoFilter ? 'optional' : 'not_needed'}>
         <h4>Szűrő használata</h4>
         {filterRequired ? (
           <p>Ehhez a recepthez kötelező a szűrő. Nélküle a tea túl zavaros vagy erős lenne.</p>
         ) : allowNoFilter ? (
           <p>Használhatsz szűrőt, de ha szeretnéd, elhagyható – a profil engedi a direkt kiöntést.</p>
         ) : (
-          <p>Javasolt a szűrő használata a tiszta csészéhez, de szükség esetén megpróbálhatod nélküle is.</p>
+          <p>Ehhez a módszerhez nincs szükség szűrőre – bátran készítsd el nélküle is.</p>
         )}
       </div>
 

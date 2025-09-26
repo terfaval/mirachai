@@ -1,5 +1,5 @@
 // lib/brew.filter.ts
-export type FilterState = 'required' | 'optional' | 'suggested';
+export type FilterState = 'required' | 'optional' | 'not_needed';
 
 export interface GearInfoLike {
   filter_required?: boolean | null;
@@ -12,7 +12,7 @@ export interface GearInfoLike {
  * Egységes szűrő-állapot levezetés a brew profilból.
  * - Ha filter_required === true -> 'required'
  * - Ha allow_no_filter === true -> 'optional'
- * - Egyéb esetben -> 'suggested'
+ * - Egyéb esetben -> 'not_needed'
  */
 export function getFilterState(gear?: GearInfoLike | null): FilterState {
   const filterRequired =
@@ -24,5 +24,5 @@ export function getFilterState(gear?: GearInfoLike | null): FilterState {
 
   if (filterRequired === true) return 'required';
   if (allowNoFilter === true) return 'optional';
-  return 'suggested';
+  return 'not_needed';
 }

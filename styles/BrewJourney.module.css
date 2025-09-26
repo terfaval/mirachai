@@ -223,7 +223,7 @@
   border: 1px solid rgba(74, 222, 128, 0.45);
 }
 
-.hudItem[data-state='suggested'] {
+.hudItem[data-state='not_needed'] {
   border: 1px solid rgba(251, 191, 36, 0.55);
 }
 
@@ -458,7 +458,7 @@
   border: 1px solid rgba(74, 222, 128, 0.7);
 }
 
-.filterNotice[data-state='suggested'] {
+.filterNotice[data-state='not_needed'] {
   border: 1px solid rgba(251, 191, 36, 0.7);
 }
 

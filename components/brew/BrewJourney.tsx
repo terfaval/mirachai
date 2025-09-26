@@ -1,6 +1,5 @@
 import { MutableRefObject, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Beaker, Droplet, Filter as FilterIcon } from 'lucide-react';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 import StepFinish from './setup/StepFinish';
 import StepGearFilter, { type GearInfo } from './setup/StepGearFilter';
@@ -14,6 +13,7 @@ import styles from '@/styles/BrewJourney.module.css';
 import { slugify } from '@/lib/normalize';
 import type { Tea } from '@/utils/filter';
 import { getBrewMethodsForTea, type BrewMethodSummary } from '@/utils/brewMethods';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 
 type StepKey = 'method' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
 
@@ -41,37 +41,6 @@ type InitialParams = {
   volume: number | null;
   phase: 'setup' | 'steep' | 'finish' | null;
 };
-
-function usePrefersReducedMotion(): boolean {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const handleChange = () => {
-      setPrefersReducedMotion(mediaQuery.matches);
-    };
-
-    handleChange();
-
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', handleChange);
-      return () => {
-        mediaQuery.removeEventListener('change', handleChange);
-      };
-    }
-
-    mediaQuery.addListener(handleChange);
-    return () => {
-      mediaQuery.removeListener(handleChange);
-    };
-  }, []);
-
-  return prefersReducedMotion;
-}
 
 function isMutableRef<T>(ref: Ref<T> | undefined | null): ref is MutableRefObject<T> {
   return Boolean(ref && typeof ref === 'object' && 'current' in ref);
@@ -185,6 +154,26 @@ function computePhase(step: StepKey): 'setup' | 'steep' | 'finish' {
     return 'finish';
   }
   return 'setup';
+}
+
+function methodFallbackIconSrc(): string {
+  return '/teasets/icon_teapot.svg';
+}
+
+function volumeIconSrc(volumeMl: number, selectedMethodId?: string | null): string {
+  const method = selectedMethodId ?? '';
+  if (/coldbrew|bottle|snap|infused|ferment/i.test(method)) return '/teasets/icon_bottle.svg';
+  if (volumeMl <= 120) return '/teasets/icon_tinycup.svg';
+  if (volumeMl <= 350) return '/teasets/icon_cup.svg';
+  if (volumeMl <= 600) return '/teasets/icon_mug.svg';
+  if (volumeMl <= 900) return '/teasets/icon_jug.svg';
+  return '/teasets/icon_teapot.svg';
+}
+
+function filterIconSrc(state: FilterState | null): string {
+  if (state === 'required') return '/teasets/icon_filter_ok.svg';
+  if (state === 'not_needed') return '/teasets/icon_filter_no.svg';
+  return '/teasets/icon_filter_ok.svg'; // optional
 }
 
 export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, onExit, titleRef, containerRef }: BrewJourneyProps) {
@@ -348,12 +337,12 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
   const filterLabelMap: Record<FilterState, string> = {
     required: 'Kötelező',
     optional: 'Választható',
-    suggested: 'Javasolt',
+    not_needed: 'Nem szükséges',
   };
   const filterAssistMap: Record<FilterState, string> = {
     required: 'Szűrő nélkül nem ajánlott.',
     optional: 'Ha szeretnéd, elhagyható.',
-    suggested: 'Javasolt a tiszta csészéhez.',
+    not_needed: 'Ehhez a módszerhez nem kell szűrő.',
   };
 
   let filterTitle = 'Válassz módszert';
@@ -472,7 +461,7 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
   const methodIcon = methodSummary?.icon ? (
     <img src={methodSummary.icon} alt="" className={styles.hudMethodIcon} />
   ) : (
-    <Beaker aria-hidden="true" className={styles.hudIcon} />
+    <img src={methodFallbackIconSrc()} alt="" className={styles.hudIcon} />
   );
 
   return (
@@ -520,7 +509,7 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
           </div>
           <div className={styles.hudItem}>
             <div className={styles.hudIconWrap}>
-              <Droplet aria-hidden="true" className={styles.hudIcon} />
+              <img src={volumeIconSrc(volumeMl, selectedMethodId)} alt="" className={styles.hudIcon} />
             </div>
             <div className={styles.hudText}>
               <span className={styles.hudLabel}>Mennyiség</span>
@@ -530,7 +519,7 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
           </div>
           <div className={styles.hudItem} data-state={filterBadge ?? undefined}>
             <div className={styles.hudIconWrap}>
-              <FilterIcon aria-hidden="true" className={styles.hudIcon} />
+              <img src={filterIconSrc(filterBadge)} alt="" className={styles.hudIcon} />
             </div>
             <div className={styles.hudText}>
               <span className={styles.hudLabel}>Szűrő</span>
