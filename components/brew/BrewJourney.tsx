@@ -3,7 +3,8 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Beaker, Droplet, Filter as FilterIcon } from 'lucide-react';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 import StepFinish from './setup/StepFinish';
-import StepGearFilter, { getFilterState, type FilterState, type GearInfo } from './setup/StepGearFilter';
+import StepGearFilter, { type GearInfo } from './setup/StepGearFilter';
+import { getFilterState, type FilterState } from '@/lib/brew.filter';
 import StepMethod from './setup/StepMethod';
 import StepSteep from './setup/StepSteep';
 import StepVolume from './setup/StepVolume';
@@ -312,7 +313,7 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
     headerRef.current?.focus();
   }, [currentStep]);
 
-  const filterState = selectedMethodId && gearInfo.hasProfile ? getFilterState(gearInfo) : null;
+  const filterState = selectedMethodId && methodProfile ? getFilterState(methodProfile as any) : null;
   const filterLabelMap: Record<FilterState, string> = {
     required: 'Kötelező',
     optional: 'Választható',

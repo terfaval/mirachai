@@ -5,6 +5,7 @@ export type GearInfo = {
   gear: string[];
   filterRequired: boolean;
   allowNoFilter: boolean;
+  hasProfile: boolean;
 };
 
 type StepGearFilterProps = {
