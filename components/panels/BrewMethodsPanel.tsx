@@ -6,24 +6,29 @@ import { getEquipmentIcon, normalizeGear } from '@/utils/equipment';
 type Props = {
   methods: BrewMethodSummary[];
   onSelect: (methodId: string) => void;
+  onStart?: (methodId: string) => void;
   selectedId?: string | null;
 };
 
 const INITIAL_FALLBACK = '★';
 
-export default function BrewMethodsPanel({ methods, onSelect, selectedId }: Props) {
+export default function BrewMethodsPanel({ methods, onSelect, onStart, selectedId }: Props) {
   if (!methods.length) {
     return null;
   }
+
+  const selectedMethod = selectedId
+    ? methods.find((method) => method.id === selectedId)
+    : null;
 
   return (
     <section className={`${styles.panelCard} ${styles.brewMethodsPanel}`} aria-labelledby="brew-methods-heading">
       <div className={styles.brewMethodsHeader}>
         <h3 id="brew-methods-heading" className={styles.sectionTitle}>
-          Főzési módok
+          Készítsd el te is!
         </h3>
         <p className={styles.brewMethodsLead}>
-          Nézd át a Mirāchai ajánlott elkészítéseit, és válassz egyet a részletes főzési útmutatóhoz.
+          Válassz egy elkészítési módot és már induli is a részletes főzési útmutató!
         </p>
       </div>
       <div className={`${styles.brewBody} ${styles.brewMethodsGrid}`}>
@@ -100,6 +105,20 @@ export default function BrewMethodsPanel({ methods, onSelect, selectedId }: Prop
             </button>
           );
         })}
+      </div>
+      <div className={styles.brewMethodsActions}>
+        <button
+          type="button"
+          className={styles.brewMethodsStart}
+          onClick={() => {
+            if (selectedMethod && onStart) {
+              onStart(selectedMethod.id);
+            }
+          }}
+          disabled={!selectedMethod || !onStart}
+        >
+          Kezdjük a főzést
+        </button>
       </div>
     </section>
   );

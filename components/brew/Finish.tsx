@@ -2,10 +2,15 @@ import React from 'react';
 import ui from '../../data/ui_texts.json';
 const pick = (arr:string[], fallback:string)=> (arr && arr.length ? arr[Math.floor(Math.random()*arr.length)] : fallback);
 
-export default function Finish({ tea, onRestart, onClose }:{
-  tea:{ name:string }; onRestart?:()=>void; onClose:()=>void;
+export default function Finish({ tea, message, onRestart, onClose }:{
+  tea:{ name:string };
+  message?: string | null;
+  onRestart?:()=>void;
+  onClose:()=>void;
 }) {
-  const title = pick(ui.brewJourney.timer.finished, 'Fogyaszd egészséggel!');
+  const title = message && message.trim().length > 0
+    ? message
+    : pick(ui.brewJourney.timer.finished, 'Fogyaszd egészséggel!');
   return (
     <div className="grid place-items-center gap-3 text-center">
       <h2 className="text-2xl font-semibold">{title}</h2>

@@ -32,6 +32,15 @@
   justify-content: center;
   align-items: stretch;
   perspective: 1200px;
+  --brew-activation: 0;
+}
+
+.cubeScene.brewActive {
+  --brew-activation: 1;
+}
+
+.brewActive {
+  --brew-activation: 1;
 }
 
 .cubeShell {
@@ -692,6 +701,8 @@
   background: linear-gradient(160deg, #ffffff 0%, rgba(255,255,255,0.9) 45%, #f5f6f9 100%);
   color: #1f1f1f;
   gap: 32px;
+  box-shadow: 0 24px 60px rgba(31, 41, 55, calc(0.18 * var(--brew-activation)));
+  transition: box-shadow 0.35s ease;
 }
 
 .brewHeader {
@@ -730,6 +741,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+}
+
+.brewBodySingle {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .brewCard {
@@ -779,6 +796,36 @@
 
 .brewMethodsGrid {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.brewMethodsActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.brewMethodsStart {
+  border: none;
+  border-radius: 999px;
+  background: #111827;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 14px 28px rgba(17, 24, 39, 0.18);
+}
+
+.brewMethodsStart:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.brewMethodsStart:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .brewMethodCard {
@@ -909,6 +956,18 @@
 .brewBackButton:hover {
   transform: translateY(-2px);
   filter: brightness(0.98);
+}
+
+.brewIntroWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.brewStandalone {
+  max-width: min(90vw, 960px);
+  width: 100%;
 }
 
 /* Cube face layout overrides */

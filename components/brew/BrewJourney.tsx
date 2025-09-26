@@ -1,26 +1,25 @@
 import React, {
-  type MutableRefObject,
-  type Ref,
-  useMemo,
+  MutableRefObject,
+  Ref,
+  useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
-  useCallback,
 } from 'react';
-// @ts-ignore framer-motion types may miss LayoutGroup
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import Intro from './Intro';
 import Setup from './Setup';
 import RecipeCard from './RecipeCard';
 import Timer from './Timer';
 import Finish from './Finish';
-import type { BrewMethodPlan } from '../../lib/brew.integration';
-import { FLIP_DUR, FLIP_EASE, HOLD_MS } from './constants';
-import { lockSize } from '@/utils/lockSize';
 import styles from '../../styles/TeaModal.module.css';
+import { buildPlanFor, type BrewMethodPlan } from '../../lib/brew.integration';
+import { slugify } from '@/lib/normalize';
+
+type Phase = 'intro' | 'setup' | 'recipe' | 'timer' | 'finish';
 
 type BrewJourneyProps = {
-  layoutId: string;
+  layoutId?: string; // reserved for future motion layout sync
   tea: {
     slug?: string;
     id?: string;
@@ -29,38 +28,73 @@ type BrewJourneyProps = {
     colorMain?: string;
     colorDark?: string;
   };
-  onClose: () => void;
+  methodId: string;
+  onExit: () => void;
   embedded?: boolean;
   titleRef?: Ref<HTMLHeadingElement>;
   containerRef?: Ref<HTMLDivElement>;
-  initialMethodId?: string | null;
 };
+
+type BrewPlanState = {
+  plan: BrewMethodPlan | null;
+  loading: boolean;
+  error: string | null;
+};
+
+const previousPhase: Record<Phase, Phase | null> = {
+  intro: null,
+  setup: 'intro',
+  recipe: 'setup',
+  timer: 'recipe',
+  finish: 'timer',
+};
+
+const isPhase = (value: string | null): value is Phase =>
+  value === 'intro' ||
+  value === 'setup' ||
+  value === 'recipe' ||
+  value === 'timer' ||
+  value === 'finish';
 
 export default function BrewJourney({
   layoutId,
   tea,
-  onClose,
+  methodId,
+  onExit,
   embedded = false,
   titleRef,
   containerRef,
-  initialMethodId = null,
 }: BrewJourneyProps) {
+  void layoutId; // reserved for future layout animations
+
   const normalizedTea = useMemo(
     () => ({
       ...tea,
-      slug: tea.slug ?? String(tea.id ?? tea.name ?? 'tea'),
+      slug: tea.slug ?? (tea.id ? String(tea.id) : slugify(tea.name ?? 'tea')),
     }),
     [tea],
   );
-  const [stage, setStage] = useState<'bridge' | 'setup' | 'plan' | 'timer' | 'finish'>(
-    embedded ? 'setup' : 'bridge',
-  );
-  const [methodId, setMethodId] = useState<string | null>(initialMethodId);
+
+  const teaSlug = useMemo(() => {
+    if (normalizedTea.slug && normalizedTea.slug.trim().length > 0) {
+      return normalizedTea.slug;
+    }
+    if (normalizedTea.name) {
+      return slugify(normalizedTea.name);
+    }
+    if (normalizedTea.id) {
+      return slugify(String(normalizedTea.id));
+    }
+    return '';
+  }, [normalizedTea.id, normalizedTea.name, normalizedTea.slug]);
+
+  const [phase, setPhase] = useState<Phase>('intro');
   const [volumeMl, setVolumeMl] = useState<number>(250);
-  const [plan, setPlan] = useState<BrewMethodPlan | null>(null);
-  const [animating, setAnimating] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [autoForward, setAutoForward] = useState(!embedded);
+  const [planState, setPlanState] = useState<BrewPlanState>({ plan: null, loading: false, error: null });
+  const [refreshToken, setRefreshToken] = useState(0);
+
+  const hydratedFromQueryRef = useRef(false);
+
   const mergedTitleRef = useCallback(
     (node: HTMLHeadingElement | null) => {
       if (!titleRef) {
@@ -75,165 +109,238 @@ export default function BrewJourney({
     [titleRef],
   );
 
+  const mergedContainerRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (!containerRef) {
+        return;
+      }
+      if (typeof containerRef === 'function') {
+        containerRef(node);
+        return;
+      }
+      (containerRef as MutableRefObject<HTMLDivElement | null>).current = node;
+    },
+    [containerRef],
+  );
+
   useEffect(() => {
-    if (initialMethodId !== methodId) {
-      setMethodId(initialMethodId);
+    if (typeof window === 'undefined' || hydratedFromQueryRef.current) {
+      return;
     }
-  }, [initialMethodId, methodId]);
-  
+    hydratedFromQueryRef.current = true;
+    const params = new URLSearchParams(window.location.search);
+    const volumeParam = params.get('volume');
+    if (volumeParam) {
+      const parsed = Number.parseInt(volumeParam, 10);
+      if (!Number.isNaN(parsed) && parsed > 0) {
+        setVolumeMl(parsed);
+      }
+    }
+    const phaseParam = params.get('phase');
+    if (isPhase(phaseParam)) {
+      setPhase(phaseParam);
+    }
+  }, []);
+
   useEffect(() => {
-    if (embedded) {
-      return undefined;
+    setPhase('intro');
+    setPlanState({ plan: null, loading: false, error: null });
+    setRefreshToken(0);
+  }, [methodId, teaSlug]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const url = new URL(window.location.href);
+    if (methodId) {
+      url.searchParams.set('method', methodId);
+    }
+    url.searchParams.set('phase', phase);
+    url.searchParams.set('volume', String(volumeMl));
+    window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+  }, [methodId, phase, volumeMl]);
+
+  useEffect(() => {
+    if (!methodId || !teaSlug) {
+      setPlanState({ plan: null, loading: false, error: 'Ehhez a módszerhez nem találtunk receptet.' });
+      return;
     }
 
-    if (stage === 'bridge' && autoForward) {
-      const t = setTimeout(() => {
-        setStage('setup');
-        setAutoForward(false);
-      }, FLIP_DUR * 1000 + HOLD_MS);
-      return () => clearTimeout(t);
+    let active = true;
+    setPlanState((prev) => ({ ...prev, loading: true, error: null }));
+
+    (async () => {
+      try {
+        const plan = await buildPlanFor(teaSlug, methodId, volumeMl);
+        if (!active) {
+          return;
+        }
+        if (!plan) {
+          setPlanState({ plan: null, loading: false, error: 'Ez a főzési módszer nem érhető el ehhez a teához.' });
+          return;
+        }
+        setPlanState({ plan, loading: false, error: null });
+      } catch (error) {
+        if (!active) {
+          return;
+        }
+        console.error('Failed to build brew plan', error);
+        setPlanState({
+          plan: null,
+          loading: false,
+          error: 'Nem sikerült betölteni a főzési tervet. Próbáld újra később.',
+        });
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [methodId, teaSlug, volumeMl, refreshToken]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') {
+        return;
+      }
+      if (phase === 'intro') {
+        event.preventDefault();
+        onExit();
+        return;
+      }
+      const previous = previousPhase[phase];
+      if (previous) {
+        event.preventDefault();
+        setPhase(previous);
+      } else {
+        onExit();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [phase, onExit]);
+
+  const brewTitle = normalizedTea?.name
+    ? `Mirāchai ${normalizedTea.name} – Brew Journey`
+    : 'Mirāchai Brew Journey';
+
+  const handleIntroComplete = useCallback(() => {
+    setPhase('setup');
+  }, []);
+
+  const handleRestart = useCallback(() => {
+    setPhase('setup');
+    setPlanState((prev) => ({ ...prev, plan: null }));
+  }, []);
+
+  const handlePlanRetry = useCallback(() => {
+    setPlanState((prev) => ({ ...prev, error: null }));
+    setRefreshToken((token) => token + 1);
+  }, []);
+
+  const renderPhase = () => {
+    if (phase === 'intro') {
+      return (
+        <div className={styles.brewIntroWrapper}>
+          <Intro tea={normalizedTea} onSetupEnter={handleIntroComplete} />
+        </div>
+      );
     }
 
-    return undefined;
-  }, [stage, autoForward, embedded]);
+    if (phase === 'setup') {
+      return (
+        <Setup
+          tea={normalizedTea}
+          value={{ methodId, volumeMl }}
+          onChange={() => undefined}
+          onNext={() => setPhase('recipe')}
+          onBack={() => setPhase('intro')}
+        />
+      );
+    }
 
-  if (embedded) {
-    const brewTitle = normalizedTea?.name
-      ? `Mirachai ${normalizedTea.name} útmutató`
-      : 'Mirachai tea útmutató';
+    if (phase === 'recipe') {
+      return (
+        <RecipeCard
+          plan={planState.plan}
+          isLoading={planState.loading}
+          error={planState.error}
+          onBack={() => setPhase('setup')}
+          onStart={(plan) => {
+            setPlanState((prev) => ({ ...prev, plan }));
+            setPhase('timer');
+          }}
+          onRetry={handlePlanRetry}
+        />
+      );
+    }
+
+    if (phase === 'timer' && planState.plan) {
+      return (
+        <Timer
+          plan={planState.plan}
+          onBack={() => setPhase('recipe')}
+          onDone={() => setPhase('finish')}
+        />
+      );
+    }
 
     return (
-      <div className={styles.brewFace} ref={containerRef}>
-        <header className={styles.brewHeader}>
-          <span className={styles.brewBadge}>Brew guide</span>
-          <h2
-            className={styles.brewTitle}
-            tabIndex={-1}
-            ref={titleRef ? mergedTitleRef : undefined}
-          >
-            {brewTitle}
-          </h2>
-          <p className={styles.brewLead}>
-            Kövesd végig a folyamatot lépésről lépésre – hamarosan részletes időzítővel és recepttel.
-          </p>
-        </header>
-        <div className={styles.brewBody}>
-          <div className={styles.brewCard}>
-            <h3 className={styles.brewCardTitle}>1. Előkészítés</h3>
-            <p className={styles.brewCardText}>
-              Válaszd ki a főzési módot és az adagot. Hamarosan automatikus ajánlásokat kapsz.
-            </p>
+      <Finish
+        tea={normalizedTea}
+        message={planState.plan?.finish_message ?? null}
+        onRestart={handleRestart}
+        onClose={onExit}
+      />
+    );
+  };
+
+  const content = renderPhase();
+  const bodyClassName = phase === 'intro' || phase === 'setup' ? styles.brewBodySingle : styles.brewBody;
+
+  if (!embedded) {
+    return (
+      <div
+        role="dialog"
+        aria-modal
+        data-allow-interaction="true"
+        className="fixed inset-0 z-50 grid place-items-center bg-black/40"
+      >
+        <div className={styles.brewStandalone}>
+          <div className={styles.brewFace}>
+            <header className={styles.brewHeader}>
+              <span className={styles.brewBadge}>Brew guide</span>
+              <h2 className={styles.brewTitle}>{brewTitle}</h2>
+              <p className={styles.brewLead}>
+                Kövesd végig a Mirāchai lépéseit – az intro után jön az előkészítés, majd a részletes recept és az időzítő.
+              </p>
+            </header>
+            <div className={bodyClassName}>{content}</div>
           </div>
-          <div className={styles.brewCard}>
-            <h3 className={styles.brewCardTitle}>2. Recept &amp; időzítés</h3>
-            <p className={styles.brewCardText}>
-              A Mirāchai lépései végig vezetnek a hőmérséklettől az áztatási időkig.
-            </p>
-          </div>
-          <div className={styles.brewCard}>
-            <h3 className={styles.brewCardTitle}>3. Élvezd</h3>
-            <p className={styles.brewCardText}>
-              Visszajelzéseddel még pontosabbá tesszük a következő csészét.
-            </p>
-          </div>
-        </div>
-        <div className={styles.brewFooter}>
-          <button type="button" className={styles.brewBackButton} onClick={onClose}>
-            Vissza a márka oldalra
-          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <div
-      role="dialog"
-      aria-modal
-      data-allow-interaction="true"
-      className="fixed inset-0 z-50 grid place-items-center bg-black/40"
-    >
-      <div style={{ perspective: 1200 }}>
-        <LayoutGroup>
-          {(stage === 'bridge' || stage === 'setup') && (
-            <motion.div
-              ref={cardRef}
-              layoutId={layoutId}
-              className="relative overflow-hidden rounded-2xl shadow-xl"
-              style={{
-                width: 'var(--brew-w)',
-                height: 'var(--brew-h)',
-                backgroundColor: normalizedTea.colorMain,
-                transformStyle: 'preserve-3d',
-                backfaceVisibility: 'hidden',
-              }}
-              initial={{ rotateY: 180 }}
-              animate={{ rotateY: stage === 'bridge' ? 360 : 0 }}
-              transition={{ duration: FLIP_DUR, ease: FLIP_EASE }}
-              onAnimationStart={() => {
-                setAnimating(true);
-                lockSize(cardRef.current, true);
-              }}
-              onAnimationComplete={() => {
-                lockSize(cardRef.current, false);
-                setAnimating(false);
-              }}
-            >
-              {stage === 'bridge' && <Intro tea={normalizedTea} />}
-              {stage === 'setup' && !animating && (
-                <motion.div
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="h-full w-full"
-                >
-                  <Setup
-                    tea={normalizedTea}
-                    value={{ methodId, volumeMl }}
-                    onChange={(v) => {
-                      setMethodId(v.methodId);
-                      setVolumeMl(v.volumeMl);
-                    }}
-                    onNext={() => setStage('plan')}
-                    onBack={() => setStage('bridge')}
-                  />
-                </motion.div>
-              )}
-            </motion.div>
-          )}
-          <AnimatePresence mode="wait">
-            {stage === 'plan' && methodId && (
-              <RecipeCard
-                tea={normalizedTea}
-                methodId={methodId}
-                volumeMl={volumeMl}
-                onBack={() => setStage('setup')}
-                onStart={(p) => {
-                  setPlan(p);
-                  setStage('timer');
-                }}
-              />
-            )}
-            {stage === 'timer' && plan && (
-              <Timer
-                plan={plan}
-                onBack={() => setStage('plan')}
-                onDone={() => setStage('finish')}
-              />
-            )}
-            {stage === 'finish' && (
-              <Finish
-                tea={normalizedTea}
-                onClose={onClose}
-                onRestart={() => {
-                  setStage('setup');
-                  setPlan(null);
-                }}
-              />
-            )}
-          </AnimatePresence>
-        </LayoutGroup>
-      </div>
+    <div className={styles.brewFace} ref={mergedContainerRef}>
+      {phase !== 'intro' ? (
+        <header className={styles.brewHeader}>
+          <span className={styles.brewBadge}>Brew guide</span>
+          <h2 className={styles.brewTitle} tabIndex={-1} ref={mergedTitleRef}>
+            {brewTitle}
+          </h2>
+          <p className={styles.brewLead}>
+            Lépésről lépésre vezetünk végig a főzésen – vissza is léphetsz bármikor, az Esc billentyűvel pedig gyorsan
+            ugorhatsz az előző szakaszra.
+          </p>
+        </header>
+      ) : null}
+      <div className={bodyClassName}>{content}</div>
     </div>
   );
 }

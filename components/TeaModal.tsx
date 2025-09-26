@@ -85,6 +85,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const [isRotating, setIsRotating] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [selectedMethodId, setSelectedMethodId] = useState<string | null>(null);
+  const [brew, setBrew] = useState<{ methodId: string } | null>(null);
   const cubeSceneRef = useRef<HTMLDivElement | null>(null);
   const cubeShellRef = useRef<HTMLDivElement | null>(null);
   const teaContentRef = useRef<HTMLDivElement | null>(null);
@@ -162,8 +163,16 @@ export default function TeaModal({ tea, onClose }: Props) {
   useEffect(() => {
     setActiveFace('tea');
     setSelectedMethodId(null);
+    setBrew(null);
     finishRotation();
   }, [tea, finishRotation]);
+
+  useEffect(() => {
+    if (selectedMethodId || !brewMethods.length) {
+      return;
+    }
+    setSelectedMethodId(brewMethods[0]?.id ?? null);
+  }, [brewMethods, selectedMethodId]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -452,15 +461,30 @@ export default function TeaModal({ tea, onClose }: Props) {
     ],
   );
 
-  const handleMethodSelect = useCallback(
-    (methodId: string) => {
+  const handleMethodSelect = useCallback((methodId: string) => {
+    setSelectedMethodId(methodId);
+  }, []);
+
+  const handleBrewStart = useCallback(
+    (methodId: string | null | undefined) => {
+      if (!methodId) {
+        return;
+      }
       setSelectedMethodId(methodId);
+      setBrew({ methodId });
       handleFaceChange('brew');
     },
     [handleFaceChange],
   );
 
+  const handleBrewExit = useCallback(() => {
+    setBrew(null);
+    handleFaceChange('tea');
+  }, [handleFaceChange]);
+
   const rotation = activeFace === 'tea' ? 0 : activeFace === 'intro' ? -90 : -180;
+
+  const brewActive = brew != null;
 
   // ---- FIX: bővített típus a custom CSS változókhoz
   type CubeSceneStyle = CSSProperties & {
@@ -480,7 +504,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   return (
     <div className={styles.overlay} onClick={onClose} data-allow-interaction="true">
       <div
-        className={styles.cubeScene}
+        className={`${styles.cubeScene} ${brewActive ? styles.brewActive : ''}`}
         style={cubeSceneStyle}
         onClick={(event) => event.stopPropagation()}
         ref={cubeSceneRef}
@@ -553,6 +577,7 @@ export default function TeaModal({ tea, onClose }: Props) {
                       methods={brewMethods}
                       onSelect={handleMethodSelect}
                       selectedId={selectedMethodId}
+                      onStart={handleBrewStart}
                     />
                     <div className={styles.spacer} />
                   </>
@@ -610,14 +635,12 @@ export default function TeaModal({ tea, onClose }: Props) {
                   className={styles.introActions}
                   onClick={(event) => {
                     event.stopPropagation();
-                    console.log('introActions click', event.target);
                   }}
                 >
                   <button
                     type="button"
                     className={styles.introGhost}
                     onClick={() => {
-                      console.log('introGhost button click');
                       handleFaceChange('tea');
                     }}
                   >
@@ -627,8 +650,8 @@ export default function TeaModal({ tea, onClose }: Props) {
                     type="button"
                     className={styles.introPrimary}
                     onClick={() => {
-                      console.log('introPrimary button click');
-                      handleFaceChange('brew');
+                      const fallbackMethod = selectedMethodId ?? brewMethods[0]?.id ?? null;
+                      handleBrewStart(fallbackMethod);
                     }}
                   >
                     Kezdjük a főzést
@@ -642,15 +665,29 @@ export default function TeaModal({ tea, onClose }: Props) {
             className={`${styles.cubeFace} ${styles.faceBack}`}
             data-active={activeFace === 'brew' ? 'true' : undefined}
           >
-            <BrewJourney
-              layoutId={brewLayoutId}
-              tea={brewTea}
-              onClose={() => handleFaceChange('intro')}
-              embedded
-              initialMethodId={selectedMethodId}
-              titleRef={brewTitleRef}
-              containerRef={brewContentRef}
-            />
+            {brew ? (
+              <BrewJourney
+                layoutId={brewLayoutId}
+                tea={brewTea}
+                methodId={brew.methodId}
+                onExit={handleBrewExit}
+                embedded
+                titleRef={brewTitleRef}
+                containerRef={brewContentRef}
+              />
+            ) : (
+              <div className={styles.brewFace} ref={brewContentRef}>
+                <header className={styles.brewHeader}>
+                  <span className={styles.brewBadge}>Brew guide</span>
+                  <h2 className={styles.brewTitle} tabIndex={-1} ref={brewTitleRef}>
+                    Válassz főzési módot a kezdéshez
+                  </h2>
+                  <p className={styles.brewLead}>
+                    Jelöld ki a kedvenc elkészítési módszert, majd indítsd el a Mirāchai Brew Journey-t a részletes útmutatóhoz.
+                  </p>
+                </header>
+              </div>
+            )}
           </div>
         </div>
       </div>
