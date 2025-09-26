@@ -12,7 +12,7 @@ import { getCategoryColor, getAlternativeColor } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 import uiTexts from '../data/ui_texts.json';
 import { pickIntroCopy, type IntroCopy } from '../utils/introCopy';
-import BrewJourney from './brew/BrewJourney';
+import BrewJourney, { BrewHud, type BrewHudInfo } from './brew/BrewJourney';
 import { getBrewMethodsForTea } from '@/utils/brewMethods';
 import { slugify } from '@/lib/normalize';
 
@@ -86,14 +86,11 @@ export default function TeaModal({ tea, onClose }: Props) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [selectedMethodId, setSelectedMethodId] = useState<string | null>(null);
   const [brew, setBrew] = useState<{ methodId: string | null } | null>(null);
+  const [brewHudInfo, setBrewHudInfo] = useState<BrewHudInfo | null>(null);
   const cubeSceneRef = useRef<HTMLDivElement | null>(null);
   const cubeShellRef = useRef<HTMLDivElement | null>(null);
   const teaContentRef = useRef<HTMLDivElement | null>(null);
   const brewContentRef = useRef<HTMLDivElement | null>(null);
-  const [brewHudPortalNode, setBrewHudPortalNode] = useState<HTMLDivElement | null>(null);
-  const assignBrewHudPortal = useCallback((node: HTMLDivElement | null) => {
-    setBrewHudPortalNode(node);
-  }, []);
   const introTitleRef = useRef<HTMLHeadingElement | null>(null);
   const brewTitleRef = useRef<HTMLHeadingElement | null>(null);
   const rotationTimeoutRef = useRef<number | null>(null);
@@ -481,8 +478,13 @@ export default function TeaModal({ tea, onClose }: Props) {
 
   const handleBrewExit = useCallback(() => {
     setBrew(null);
+    setBrewHudInfo(null);
     handleFaceChange('tea');
   }, [handleFaceChange]);
+
+  const handleHudChange = useCallback((info: BrewHudInfo | null) => {
+    setBrewHudInfo(info);
+  }, []);
 
   const rotation = activeFace === 'tea' ? 0 : activeFace === 'intro' ? -90 : -180;
 
@@ -503,6 +505,11 @@ export default function TeaModal({ tea, onClose }: Props) {
   };
   // ----
 
+  const cardDimensionVars = {
+    '--card-w': cubeSceneStyle['--card-w'],
+    '--card-h': cubeSceneStyle['--card-h'],
+  } as CSSProperties;
+  
   return (
     <div
       className={`${styles.overlay} ${brewActive ? styles.overlayBrewActive : ''}`}
@@ -510,10 +517,15 @@ export default function TeaModal({ tea, onClose }: Props) {
       data-allow-interaction="true"
     >
       <div
-        className={`${styles.cubeScene} ${brewActive ? styles.brewActive : ''}`}
-        style={cubeSceneStyle}
+        className={styles.overlayContent}
+        style={cardDimensionVars}
         onClick={(event) => event.stopPropagation()}
-        ref={cubeSceneRef}
+      >
+        <div
+          className={`${styles.cubeScene} ${brewActive ? styles.brewActive : ''}`}
+          style={cubeSceneStyle}
+          onClick={(event) => event.stopPropagation()}
+          ref={cubeSceneRef}
         >
         <div
           className={styles.cubeShell}
@@ -669,6 +681,7 @@ export default function TeaModal({ tea, onClose }: Props) {
                 onExit={handleBrewExit}
                 titleRef={brewTitleRef}
                 containerRef={brewContentRef}
+                onHudChange={handleHudChange}
               />
             ) : (
               <div className={styles.brewFace} ref={brewContentRef}>
@@ -685,6 +698,14 @@ export default function TeaModal({ tea, onClose }: Props) {
             )}
           </div>
         </div>
+      </div>
+        {brewHudInfo ? (
+          <div className={styles.brewHudDock} onClick={(event) => event.stopPropagation()}>
+            <div className={styles.brewHudInner}>
+              <BrewHud info={brewHudInfo} variant="external" />
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

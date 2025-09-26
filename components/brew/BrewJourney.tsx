@@ -20,6 +20,20 @@ type StepKey = 'method' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
 const STEP_ORDER: StepKey[] = ['method', 'volume', 'gear', 'water', 'steep', 'finish'];
 const DEFAULT_VOLUME = 250;
 
+export type BrewHudInfo = {
+  methodIconSrc: string;
+  methodIconVariant: 'method' | 'default';
+  methodTitle: string;
+  methodAssist: string;
+  volumeIconSrc: string;
+  volumeValue: string;
+  volumeAssist: string;
+  filterIconSrc: string;
+  filterState: FilterState | null;
+  filterTitle: string;
+  filterAssist: string;
+};
+
 type BrewJourneyProps = {
   layoutId?: string;
   tea: Tea & { colorMain?: string; colorDark?: string };
@@ -27,6 +41,7 @@ type BrewJourneyProps = {
   onExit: () => void;
   titleRef?: Ref<HTMLHeadingElement>;
   containerRef?: Ref<HTMLDivElement>;
+  onHudChange?: (info: BrewHudInfo | null) => void;
 };
 
 type TeaProfileDocument = (typeof brewProfiles)[number];
@@ -176,7 +191,60 @@ function filterIconSrc(state: FilterState | null): string {
   return '/teasets/icon_filter_ok.svg'; // optional
 }
 
-export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, onExit, titleRef, containerRef }: BrewJourneyProps) {
+export function BrewHud({ info, variant = 'default' }: { info: BrewHudInfo; variant?: 'default' | 'external' }) {
+  return (
+    <aside
+      className={styles.hud}
+      data-filter-state={info.filterState ?? undefined}
+      data-variant={variant}
+    >
+      <div className={styles.hudItem}>
+        <div className={styles.hudIconWrap}>
+          <img
+            src={info.methodIconSrc}
+            alt=""
+            className={info.methodIconVariant === 'method' ? styles.hudMethodIcon : styles.hudIcon}
+          />
+        </div>
+        <div className={styles.hudText}>
+          <span className={styles.hudLabel}>Módszer</span>
+          <span className={styles.hudValue}>{info.methodTitle}</span>
+          <span className={styles.hudAssist}>{info.methodAssist}</span>
+        </div>
+      </div>
+      <div className={styles.hudItem}>
+        <div className={styles.hudIconWrap}>
+          <img src={info.volumeIconSrc} alt="" className={styles.hudIcon} />
+        </div>
+        <div className={styles.hudText}>
+          <span className={styles.hudLabel}>Mennyiség</span>
+          <span className={styles.hudValue}>{info.volumeValue}</span>
+          <span className={styles.hudAssist}>{info.volumeAssist}</span>
+        </div>
+      </div>
+      <div className={styles.hudItem} data-state={info.filterState ?? undefined}>
+        <div className={styles.hudIconWrap}>
+          <img src={info.filterIconSrc} alt="" className={styles.hudIcon} />
+        </div>
+        <div className={styles.hudText}>
+          <span className={styles.hudLabel}>Szűrő</span>
+          <span className={styles.hudValue}>{info.filterTitle}</span>
+          <span className={styles.hudAssist}>{info.filterAssist}</span>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+export default function BrewJourney({
+  layoutId,
+  tea,
+  methodId: initialMethodId,
+  onExit,
+  titleRef,
+  containerRef,
+  onHudChange,
+}: BrewJourneyProps) {
   void layoutId;
   const initialParams = useMemo(() => readInitialParams(), []);
   const initialMethodFromUrl = initialParams.method;
@@ -458,11 +526,56 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
       stepContent = null;
   }
 
-  const methodIcon = methodSummary?.icon ? (
-    <img src={methodSummary.icon} alt="" className={styles.hudMethodIcon} />
-  ) : (
-    <img src={methodFallbackIconSrc()} alt="" className={styles.hudIcon} />
+  const methodIconSrc = methodSummary?.icon ?? methodFallbackIconSrc();
+  const methodIconVariant: BrewHudInfo['methodIconVariant'] = methodSummary?.icon ? 'method' : 'default';
+  const volumeIcon = volumeIconSrc(volumeMl, selectedMethodId);
+  const volumeValue = `${volumeMl} ml`;
+  const filterIcon = filterIconSrc(filterBadge);
+
+  const hudInfo = useMemo<BrewHudInfo>(
+    () => ({
+      methodIconSrc,
+      methodIconVariant,
+      methodTitle,
+      methodAssist,
+      volumeIconSrc: volumeIcon,
+      volumeValue,
+      volumeAssist,
+      filterIconSrc: filterIcon,
+      filterState: filterBadge,
+      filterTitle,
+      filterAssist,
+    }),
+    [
+      methodIconSrc,
+      methodIconVariant,
+      methodTitle,
+      methodAssist,
+      volumeIcon,
+      volumeValue,
+      volumeAssist,
+      filterIcon,
+      filterBadge,
+      filterTitle,
+      filterAssist,
+    ],
   );
+
+  useEffect(() => {
+    if (!onHudChange) {
+      return;
+    }
+    onHudChange(hudInfo);
+  }, [hudInfo, onHudChange]);
+
+  useEffect(() => {
+    if (!onHudChange) {
+      return;
+    }
+    return () => {
+      onHudChange(null);
+    };
+  }, [onHudChange]);
 
   return (
     <div className={styles.journeyRoot} ref={mergedContainerRef}>
@@ -472,7 +585,10 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
         <div className={styles.journeyBackdropTint} />
       </div>
 
-      <div className={styles.journeyContent}>
+      <div
+        className={styles.journeyContent}
+        data-external-hud={onHudChange ? 'true' : undefined}
+      >
         <div className={styles.panelRoot}>
           <div className={styles.stepHeader}>
             <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
@@ -498,36 +614,7 @@ export default function BrewJourney({ layoutId, tea, methodId: initialMethodId, 
           </div>
         </div>
 
-        <aside className={styles.hud} data-filter-state={filterBadge ?? undefined}>
-          <div className={styles.hudItem}>
-            <div className={styles.hudIconWrap}>{methodIcon}</div>
-            <div className={styles.hudText}>
-              <span className={styles.hudLabel}>Módszer</span>
-              <span className={styles.hudValue}>{methodTitle}</span>
-              <span className={styles.hudAssist}>{methodAssist}</span>
-            </div>
-          </div>
-          <div className={styles.hudItem}>
-            <div className={styles.hudIconWrap}>
-              <img src={volumeIconSrc(volumeMl, selectedMethodId)} alt="" className={styles.hudIcon} />
-            </div>
-            <div className={styles.hudText}>
-              <span className={styles.hudLabel}>Mennyiség</span>
-              <span className={styles.hudValue}>{`${volumeMl} ml`}</span>
-              <span className={styles.hudAssist}>{volumeAssist}</span>
-            </div>
-          </div>
-          <div className={styles.hudItem} data-state={filterBadge ?? undefined}>
-            <div className={styles.hudIconWrap}>
-              <img src={filterIconSrc(filterBadge)} alt="" className={styles.hudIcon} />
-            </div>
-            <div className={styles.hudText}>
-              <span className={styles.hudLabel}>Szűrő</span>
-              <span className={styles.hudValue}>{filterTitle}</span>
-              <span className={styles.hudAssist}>{filterAssist}</span>
-            </div>
-          </div>
-        </aside>
+        {onHudChange ? null : <BrewHud info={hudInfo} />}
       </div>
 
       {toastMessage ? (

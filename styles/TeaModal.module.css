@@ -18,6 +18,24 @@
   transition: background 0.25s ease, backdrop-filter 0.25s ease;
 }
 
+.overlayContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: min(100%, var(--card-w, 100%));
+}
+
+.brewHudDock {
+  width: min(100%, var(--card-w, 100%));
+  display: flex;
+  justify-content: center;
+}
+
+.brewHudInner {
+  width: 100%;
+}
 
 .overlay::-webkit-scrollbar {
   width: 8px;
