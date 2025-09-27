@@ -27,6 +27,7 @@ import { slugify } from '@/lib/normalize';
 import type { Tea } from '@/utils/filter';
 import { getBrewMethodsForTea, type BrewMethodSummary } from '@/utils/brewMethods';
 import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
+import { buildIngredients } from '@/utils/teaTransforms';
 
 type StepKey = 'method' | 'instructions' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
 
@@ -548,6 +549,7 @@ export default function BrewJourney({
   }, [methodSteps]);
 
   const notes = useMemo(() => normalizeArray((methodProfile as any)?.notes), [methodProfile]);
+  const teaIngredients = useMemo(() => buildIngredients(tea), [tea]);
   const cautionNotes = useMemo(() => normalizeArray((methodProfile as any)?.caution_notes), [methodProfile]);
 
   const headerRef = useRef<HTMLHeadingElement | null>(null);
@@ -662,6 +664,7 @@ export default function BrewJourney({
           tempC={(methodProfile as any)?.tempC}
           preheat={Boolean((methodProfile as any)?.preheat_vessel)}
           notes={notes}
+          ingredients={teaIngredients}
           onBack={goBack}
           onNext={() => {
             goToStep('steep');

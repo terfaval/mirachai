@@ -859,6 +859,27 @@
   flex-wrap: wrap;
 }
 
+.ingredientsLabelGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ingredientsLabel {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(249, 250, 251, 0.6);
+}
+
+.ingredientsPercent {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(249, 250, 251, 0.55);
+  text-transform: none;
+}
+
 .ingredientsLabel {
   font-size: 12px;
   letter-spacing: 0.2em;
