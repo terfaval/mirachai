@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import clsx from 'clsx';
 import styles from '@/styles/BrewJourney.module.css';
 import { useStepFooter } from '../BrewJourney';
 
@@ -8,11 +9,19 @@ type StepVolumeProps = {
   onBack: () => void;
 };
 
-const PRESET_VOLUMES = [250, 300, 350, 400, 500, 750, 1000];
+const PRESET_VOLUMES = [
+  { value: 120, label: '120 ml', icon: '/teasets/icon_tinycup.svg', description: 'Mini csésze' },
+  { value: 250, label: '250 ml', icon: '/teasets/icon_cup.svg', description: 'Csésze' },
+  { value: 500, label: '500 ml', icon: '/teasets/icon_mug.svg', description: 'Bögre' },
+  { value: 750, label: '750 ml', icon: '/teasets/icon_bottle.svg', description: 'Palack' },
+  { value: 1000, label: '1000 ml', icon: '/teasets/icon_jug.svg', description: 'Kancsó' },
+];
+
+const PRESET_VOLUME_VALUES = PRESET_VOLUMES.map((option) => option.value);
 
 const clampVolume = (value: number | null | undefined): number => {
   if (value == null || Number.isNaN(value)) {
-    return PRESET_VOLUMES[0];
+    return PRESET_VOLUME_VALUES[0];
   }
   return Math.min(2000, Math.max(30, value));
 };
@@ -33,7 +42,7 @@ export default function StepVolume({ defaultVolume, onSubmit, onBack }: StepVolu
     }
   }, []);
 
-  const formattedPresets = useMemo(() => PRESET_VOLUMES.map((value) => ({ value, label: `${value} ml` })), []);
+  const presetOptions = useMemo(() => PRESET_VOLUMES, []);
 
   const isValid = Number.isFinite(volume) && volume >= 30 && volume <= 2000;
 
@@ -84,42 +93,47 @@ export default function StepVolume({ defaultVolume, onSubmit, onBack }: StepVolu
   return (
     <form className={styles.stepWrapper} onSubmit={handleSubmit} id={formId}>
       <div className={styles.volumeGrid}>
-        {formattedPresets.map((preset) => {
+        {presetOptions.map((preset) => {
           const isSelected = preset.value === volume;
           return (
             <button
               key={preset.value}
               type="button"
-              className={styles.volumeButton}
+              className={clsx(styles.volumeTile, styles.volumeButton)}
               data-selected={isSelected ? 'true' : undefined}
               onClick={() => handlePresetClick(preset.value)}
             >
-              {preset.label}
+              <span className={styles.volumeButtonIcon}>
+                <img src={preset.icon} alt="" />
+              </span>
+              <span className={styles.volumeValue}>{preset.label}</span>
+              <span className={styles.volumeDescription}>{preset.description}</span>
             </button>
           );
         })}
-      </div>
 
-      <div className={styles.volumeCustom}> vagy add meg kézzel </div>
-
-      <div className={styles.volumeInputRow}>
-        <label htmlFor="brew-volume" className={styles.hiddenLabel}>
-          Mennyiség milliliterben
-        </label>
-        <input
-          id="brew-volume"
-          ref={inputRef}
-          type="number"
-          min={30}
-          max={2000}
-          step={10}
-          className={styles.volumeInput}
-          value={Number.isNaN(volume) ? '' : volume}
-          onChange={handleInputChange}
-          inputMode="numeric"
-          required
-        />
-        <span className={styles.volumeSuffix}>ml</span>
+        <div className={clsx(styles.volumeTile, styles.volumeCustomCard)}>
+          <span className={styles.volumeCustomTitle}>Más mennyiség</span>
+          <div className={styles.volumeInputRow}>
+            <label htmlFor="brew-volume" className={styles.hiddenLabel}>
+              Mennyiség milliliterben
+            </label>
+            <input
+              id="brew-volume"
+              ref={inputRef}
+              type="number"
+              min={30}
+              max={2000}
+              step={10}
+              className={styles.volumeInput}
+              value={Number.isNaN(volume) ? '' : volume}
+              onChange={handleInputChange}
+              inputMode="numeric"
+              required
+            />
+            <span className={styles.volumeSuffix}>ml</span>
+          </div>
+        </div>
       </div>
     </form>
   );

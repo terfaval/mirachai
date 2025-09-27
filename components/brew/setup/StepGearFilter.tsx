@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef } from 'react';
+import clsx from 'clsx';
 import styles from '@/styles/BrewJourney.module.css';
 import { useStepFooter } from '../BrewJourney';
+import { getEquipmentIcon } from '@/utils/equipment';
 
 export type GearInfo = {
   gear: string[];
@@ -43,12 +45,16 @@ export default function StepGearFilter({ info, onNext, onBack }: StepGearFilterP
     <div className={styles.stepWrapper}>
       <div className={styles.gearListWrapper}>
         {gear.length ? (
-          <ul className={styles.gearList}>
-            {gear.map((item) => (
-              <li key={item} className={styles.gearItem}>
-                {item}
-              </li>
-            ))}
+          <ul className={styles.gearGrid}>
+            {gear.map((item) => {
+              const iconSrc = getEquipmentIcon(item);
+              return (
+                <li key={item} className={clsx(styles.volumeTile, styles.gearCard)}>
+                  {iconSrc ? <img src={iconSrc} alt="" className={styles.gearIcon} /> : null}
+                  <span className={styles.gearName}>{item}</span>
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <p className={styles.gearFallback}>Ehhez a módszerhez nincs megadott extra eszköz.</p>

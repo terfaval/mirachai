@@ -671,12 +671,10 @@ export default function BrewJourney({
           <div className={styles.panelRoot}>
             <div className={styles.stepHeader}>
               <div className={styles.stepHeaderRow}>
-                <div className={styles.stepTitleGroup}>
-                  <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
-                  <h2 className={styles.journeyTitle} tabIndex={-1} ref={mergedTitleRef}>
-                    {tea.name}
-                  </h2>
-                </div>
+                <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
+                <h2 className={styles.journeyTitle} tabIndex={-1} ref={mergedTitleRef}>
+                  {tea.name}
+                </h2>
                 <div className={styles.stepProgress} aria-label={`Lépés ${stepIndex + 1} / ${totalSteps}`}>
                   <span className={styles.stepProgressCount}>
                     {stepIndex + 1} / {totalSteps}

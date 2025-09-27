@@ -126,21 +126,25 @@
 }
 
 .stepHeaderRow {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 12px 16px;
 }
 
-.stepTitleGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+@media (max-width: 720px) {
+  .stepHeaderRow {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+  }
+
+  .stepProgress {
+    justify-self: stretch;
+  }
 }
 
 .stepBadge {
-  align-self: flex-start;
+  align-self: stretch;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -384,9 +388,6 @@
   gap: 16px;
   position: sticky;
   bottom: 0;
-  padding-top: 16px;
-  background: linear-gradient(180deg, rgba(17, 24, 39, 0) 0%, rgba(17, 24, 39, 0.85) 60%, rgba(17, 24, 39, 0.95) 100%);
-  backdrop-filter: blur(6px);
 }
 
 .secondaryButton,
@@ -428,19 +429,35 @@
 
 .volumeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.volumeTile {
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
 }
 
 .volumeButton {
-  border-radius: 18px;
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid transparent;
+  appearance: none;
   color: inherit;
-  font-weight: 600;
   font-size: 16px;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.volumeButton:focus-visible {
+  outline: 2px solid rgba(251, 191, 36, 0.7);
+  outline-offset: 2px;
 }
 
 .volumeButton[data-selected='true'] {
@@ -448,12 +465,41 @@
   background: rgba(120, 53, 15, 0.5);
 }
 
-.volumeCustom {
+.volumeButtonIcon {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volumeButtonIcon img {
+  width: 100%;
+  height: 100%;
+}
+
+.volumeValue {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.volumeDescription {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.volumeCustomCard {
+  align-items: stretch;
+  gap: 12px;
+}
+
+.volumeCustomTitle {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 0.3em;
-  text-align: center;
-  color: rgba(249, 250, 251, 0.55);
+  color: rgba(249, 250, 251, 0.7);
 }
 
 .volumeInputRow {
@@ -464,6 +510,10 @@
   background: rgba(255, 255, 255, 0.06);
   padding: 12px 18px;
   border-radius: 16px;
+}
+
+.volumeCustomCard .volumeInputRow {
+  align-self: stretch;
 }
 
 .hiddenLabel {
@@ -504,20 +554,30 @@
   overflow: auto;
 }
 
-.gearList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.gearGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.gearItem {
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(17, 24, 39, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.gearCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.gearIcon {
+  width: 44px;
+  height: 44px;
+}
+
+.gearName {
+  font-weight: 600;
 }
 
 .gearFallback {
