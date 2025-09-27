@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styles from '@/styles/BrewJourney.module.css';
 import { parseRatio, scaleByVolume, type ParsedRatio } from '@/lib/brew.ratio';
+import { getIngredientColor } from '../../../utils/colorMap';
 import { useStepFooter } from '../BrewJourney';
 
 function formatNumber(value: number | null | undefined, unit: string): string | null {
@@ -145,28 +146,25 @@ export default function StepWaterAndLeaf({
     [scaled.grams, scaled.tablespoons, scaled.teaspoons, unitMode],
   );
 
-  const strengthEnabled = parsedRatio.kind === 'range' || parsedRatio.kind === 'parts';
-  const ratioDescription = parsedRatio.raw;
-
   const totalTeaDisplay = buildTeaAmountDisplay(1);
-  const { primaryTeaAmount, teaHints, alternateTeaDisplay, gramsText, spoonText } = totalTeaDisplay;
-  const normalizedAlternateTea =
-    alternateTeaDisplay && alternateTeaDisplay !== primaryTeaAmount ? alternateTeaDisplay : null;
+  const { primaryTeaAmount, teaHints, gramsText, spoonText } = totalTeaDisplay;
   const canUseGrams = gramsText != null;
   const canUseSpoons = spoonText != null;
   const showUnitToggle = canUseGrams && canUseSpoons;
-  const hasNumericRatio = scaled.grams != null;
-
+  
   const ingredientDisplays = useMemo(
     () =>
       normalizedIngredients.map((item, index) => {
         const fraction = item.rate / 100;
         const { primaryTeaAmount: ingredientPrimary, alternateTeaDisplay: ingredientAlternate } =
           buildTeaAmountDisplay(fraction);
+        const percentValue = Number.isFinite(item.rate) ? Math.max(0, Math.min(item.rate, 100)) : null;
         return {
           key: `${item.name}-${index}`,
           name: item.name,
           percent: formatPercent(item.rate),
+          percentValue,
+          color: getIngredientColor(item.name),
           primary: ingredientPrimary,
           alternate:
             ingredientAlternate && ingredientAlternate !== ingredientPrimary ? ingredientAlternate : null,
@@ -251,73 +249,35 @@ export default function StepWaterAndLeaf({
             {ingredientDisplays.length ? (
               ingredientDisplays.map((item) => (
                 <div className={styles.ingredientsRow} key={item.key}>
-                  <div className={styles.ingredientsLabelGroup}>
-                    <span className={styles.ingredientsLabel}>{item.name}</span>
-                    {item.percent ? <span className={styles.ingredientsPercent}>{item.percent}</span> : null}
+                  <div className={styles.ingredientsDetails}>
+                    <div className={styles.ingredientsLabelGroup}>
+                      <span className={styles.ingredientsLabel}>{item.name}</span>
+                      {item.percent ? <span className={styles.ingredientsPercent}>{item.percent}</span> : null}
+                    </div>
+                    <span className={styles.ingredientsValue}>
+                      {item.primary}
+                      {item.alternate ? <span className={styles.ingredientsAlt}>({item.alternate})</span> : null}
+                    </span>
                   </div>
-                  <span className={styles.ingredientsValue}>
-                    {item.primary}
-                    {item.alternate ? <span className={styles.ingredientsAlt}>({item.alternate})</span> : null}
-                  </span>
+                  {item.percentValue != null ? (
+                    <div className={styles.ingredientsChart} aria-hidden="true">
+                      <div
+                        className={styles.ingredientsChartFill}
+                        style={{ width: `${item.percentValue}%`, backgroundColor: item.color }}
+                      />
+                    </div>
+                  ) : null}
                 </div>
               ))
             ) : (
-              <div className={styles.ingredientsRow}>
-                <span className={styles.ingredientsLabel}>Tea levél</span>
-                <span className={styles.ingredientsValue}>
-                  {primaryTeaAmount}
-                  {normalizedAlternateTea ? (
-                    <span className={styles.ingredientsAlt}>({normalizedAlternateTea})</span>
-                  ) : null}
-                </span>
-              </div>
+              <div className={styles.ingredientsEmpty}>A profil nem tartalmaz részletezett hozzávalókat.</div>
             )}
-            <div className={styles.ingredientsRow}>
-              <span className={styles.ingredientsLabel}>Tea levél</span>
-              <span className={styles.ingredientsValue}>
-                {primaryTeaAmount}
-                {alternateTeaDisplay ? (
-                  <span className={styles.ingredientsAlt}>({alternateTeaDisplay})</span>
-                ) : null}
-              </span>
-            </div>
-            <div className={styles.ingredientsRow}>
-              <span className={styles.ingredientsLabel}>Víz</span>
-              <span className={styles.ingredientsValue}>
-                {volumeMl} ml
-                {typeof tempC === 'number' ? ` · ${tempC}°C` : ''}
-              </span>
-            </div>
           </div>
         </div>
 
         {preheat ? (
           <div className={styles.preheatNotice}>A profil előmelegített eszközt javasol – melegítsd át a kannát vagy a csészét.</div>
         ) : null}
-
-        <div className={styles.ratioBox}>
-          <h4>Profil szerinti arány</h4>
-          <p>{ratioDescription || 'Nincs megadott arány – a leírást kövesd.'}</p>
-          {!hasNumericRatio ? (
-            <p className={styles.ratioHint}>A profil nem adott meg pontos grammozást – igazodj a leíráshoz és saját ízlésedhez.</p>
-          ) : null}
-          {strengthEnabled ? (
-            <div className={styles.sliderRow}>
-              <label htmlFor="ratio-strength" className={styles.sliderLabel}>
-                Intenzitás
-              </label>
-              <input
-                id="ratio-strength"
-                type="range"
-                min={0}
-                max={100}
-                value={Math.round(strength * 100)}
-                onChange={(event) => setStrength(Number(event.target.value) / 100)}
-                className={styles.slider}
-              />
-            </div>
-          ) : null}
-        </div>
 
         {noteList.length ? (
           <div className={styles.noteBox}>
