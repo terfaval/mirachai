@@ -13,6 +13,7 @@ export type BrewMethodSummary = {
   equipment: string[];
   serveModes: ServeModeMeta[];
   icon: string;
+  stepsText?: string;
 };
 
 type BrewProfileDocument = (typeof brewProfiles)[number];
@@ -121,6 +122,7 @@ export function getBrewMethodsForTea(tea: Tea): BrewMethodSummary[] {
         tea,
       ),
       icon: getMethodIcon(methodId),
+      stepsText: typeof description?.steps_text === 'string' ? description.steps_text : undefined,
     });
   }
 

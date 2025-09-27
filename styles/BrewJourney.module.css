@@ -619,6 +619,80 @@
   color: rgba(249, 250, 251, 0.7);
 }
 
+.instructionsPanel {
+  flex: 1;
+  background: rgba(17, 24, 39, 0.6);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  outline: none;
+}
+
+.instructionsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.instructionsHeader h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.instructionsIntro {
+  margin: 0;
+  color: rgba(249, 250, 251, 0.75);
+  line-height: 1.5;
+}
+
+.instructionsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  counter-reset: instruction-step;
+}
+
+.instructionsListItem {
+  counter-increment: instruction-step;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 16px 16px 16px 56px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.instructionsListItem::before {
+  content: counter(instruction-step);
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(251, 191, 36, 0.2);
+  color: rgba(251, 191, 36, 0.95);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.instructionsFallback {
+  margin: 0;
+  color: rgba(249, 250, 251, 0.75);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px;
+  line-height: 1.6;
+}
+
 .filterNotice {
   padding: 16px;
   border-radius: 16px;

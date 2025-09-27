@@ -38,7 +38,7 @@ export default function StepMethod({ tea, selectedMethodId, onSelect, onNext, on
           }}
           disabled={!selectedMethodId}
         >
-          Tovább a mennyiséghez
+          Tovább a lépésekhez
         </button>
       </footer>
     ),

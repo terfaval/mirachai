@@ -16,6 +16,7 @@ import MandalaBackground from '@/components/panels/MandalaBackground';
 import StepFinish from './setup/StepFinish';
 import StepGearFilter, { type GearInfo } from './setup/StepGearFilter';
 import { getFilterState, type FilterState } from '@/lib/brew.filter';
+import StepInstructions from './setup/StepInstructions';
 import StepMethod from './setup/StepMethod';
 import StepSteep from './setup/StepSteep';
 import StepVolume from './setup/StepVolume';
@@ -27,13 +28,14 @@ import type { Tea } from '@/utils/filter';
 import { getBrewMethodsForTea, type BrewMethodSummary } from '@/utils/brewMethods';
 import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 
-type StepKey = 'method' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
+type StepKey = 'method' | 'instructions' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
 
-const STEP_ORDER: StepKey[] = ['method', 'volume', 'gear', 'water', 'steep', 'finish'];
+const STEP_ORDER: StepKey[] = ['method', 'instructions', 'volume', 'gear', 'water', 'steep', 'finish'];
 const DEFAULT_VOLUME = 250;
 
 const JOURNEY_LEAD_COPY: Record<StepKey, string> = {
   method: 'Válaszd ki a hozzád illő elkészítési módot, hogy személyre szabott útmutatót kapj.',
+  instructions: 'Kövesd végig a módszer lépéseit, mielőtt beállítod a mennyiségeket.',
   volume: 'Add meg, mennyi teát készítesz, így minden arány pontos lesz.',
   gear: 'Ellenőrizd, milyen eszközökre lesz szükséged ehhez a főzési módszerhez.',
   water: 'Állítsd be a víz- és levélarányokat, majd készítsd elő a teát.',
@@ -43,6 +45,7 @@ const JOURNEY_LEAD_COPY: Record<StepKey, string> = {
 
 const STEP_SHORT_TITLES: Record<StepKey, string> = {
   method: 'Módszer',
+  instructions: 'Lépések',
   volume: 'Mennyiség',
   gear: 'Kellékek',
   water: 'Forralás',
@@ -152,7 +155,7 @@ function resolveInitialStep(phase: InitialParams['phase'], hasMethod: boolean): 
   if (phase === 'finish') {
     return hasMethod ? 'finish' : 'method';
   }
-  return hasMethod ? 'volume' : 'method';
+  return hasMethod ? 'instructions' : 'method';
 }
 
 function findTeaProfile(tea: Tea): TeaProfileDocument | undefined {
@@ -413,7 +416,7 @@ export default function BrewJourney({
   const handleMethodSelect = useCallback((method: string) => {
     setSelectedMethodId(method);
     setHasConfirmedVolume(false);
-    setCurrentStep('volume');
+    setCurrentStep('instructions');
   }, []);
 
   const handleVolumeSubmit = useCallback(
@@ -463,6 +466,23 @@ export default function BrewJourney({
     }
     return methodSummaries.find((entry) => entry.id === selectedMethodId) ?? null;
   }, [methodSummaries, selectedMethodId]);
+
+  const stepsFromDescription = useMemo(() => {
+    if (!methodSummary?.stepsText) {
+      return [] as string[];
+    }
+    return methodSummary.stepsText
+      .split(/→/g)
+      .map((step) => step.replace(/\s+/g, ' ').trim())
+      .filter((step) => step.length > 0);
+  }, [methodSummary]);
+
+  const methodSteps = useMemo(() => {
+    if (stepsFromDescription.length > 0) {
+      return stepsFromDescription;
+    }
+    return normalizeArray((methodProfile as any)?.steps);
+  }, [methodProfile, stepsFromDescription]);
 
   const notes = useMemo(() => normalizeArray((methodProfile as any)?.notes), [methodProfile]);
   const cautionNotes = useMemo(() => normalizeArray((methodProfile as any)?.caution_notes), [methodProfile]);
@@ -544,6 +564,17 @@ export default function BrewJourney({
         />
       );
       break;
+    case 'instructions':
+      stepContent = (
+        <StepInstructions
+          methodTitle={methodTitle}
+          description={methodSummary?.oneLiner ?? methodSummary?.description ?? null}
+          steps={methodSteps}
+          onBack={goBack}
+          onNext={() => goToStep('volume')}
+        />
+      );
+      break;
     case 'volume':
       stepContent = <StepVolume defaultVolume={volumeMl} onSubmit={handleVolumeSubmit} onBack={goBack} />;
       break;
@@ -609,7 +640,8 @@ export default function BrewJourney({
       volumeValue,
       filterIconSrc: filterIcon,
       filterState: filterBadge,
-      filterTitle,showMethod: Boolean(selectedMethodId),
+      filterTitle,
+      showMethod: Boolean(selectedMethodId),
       showVolume: hasConfirmedVolume,
       showFilter: filterBadge != null,
     }),
