@@ -41,6 +41,15 @@ const JOURNEY_LEAD_COPY: Record<StepKey, string> = {
   finish: 'Nézd át az összefoglalót, és élvezd a frissen elkészült teát.',
 };
 
+const STEP_SHORT_TITLES: Record<StepKey, string> = {
+  method: 'Módszer',
+  volume: 'Mennyiség',
+  gear: 'Kellékek',
+  water: 'Forralás',
+  steep: 'Áztatás',
+  finish: 'Kész',
+};
+
 export type BrewHudInfo = {
   methodIconSrc: string;
   methodIconVariant: 'method' | 'default';
@@ -212,8 +221,8 @@ function methodFallbackIconSrc(): string {
 function volumeIconSrc(volumeMl: number, selectedMethodId?: string | null): string {
   const method = selectedMethodId ?? '';
   if (/coldbrew|bottle|snap|infused|ferment/i.test(method)) return '/teasets/icon_bottle.svg';
-  if (volumeMl <= 120) return '/teasets/icon_tinycup.svg';
-  if (volumeMl <= 350) return '/teasets/icon_cup.svg';
+  if (volumeMl <= 200) return '/teasets/icon_tinycup.svg';
+  if (volumeMl <= 300) return '/teasets/icon_cup.svg';
   if (volumeMl <= 600) return '/teasets/icon_mug.svg';
   if (volumeMl <= 900) return '/teasets/icon_jug.svg';
   return '/teasets/icon_teapot.svg';
@@ -653,6 +662,8 @@ export default function BrewJourney({
     [stepIndex],
   );
 
+  const stepTitle = STEP_SHORT_TITLES[currentStep];
+  
   const [footerContent, setFooterContent] = useState<ReactNode | null>(null);
 
   return (
@@ -671,10 +682,12 @@ export default function BrewJourney({
           <div className={styles.panelRoot}>
             <div className={styles.stepHeader}>
               <div className={styles.stepHeaderRow}>
-                <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
-                <h2 className={styles.journeyTitle} tabIndex={-1} ref={mergedTitleRef}>
-                  {tea.name}
-                </h2>
+                <span className={styles.stepBadge}>Brew Journey</span>
+                <div className={styles.stepTitleWrap}>
+                  <h2 className={styles.journeyTitle} tabIndex={-1} ref={mergedTitleRef}>
+                    {stepTitle}
+                  </h2>
+                </div>
                 <div className={styles.stepProgress} aria-label={`Lépés ${stepIndex + 1} / ${totalSteps}`}>
                   <span className={styles.stepProgressCount}>
                     {stepIndex + 1} / {totalSteps}

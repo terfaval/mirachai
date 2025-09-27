@@ -10,8 +10,8 @@ type StepVolumeProps = {
 };
 
 const PRESET_VOLUMES = [
-  { value: 120, label: '120 ml', icon: '/teasets/icon_tinycup.svg', description: 'Mini csésze' },
-  { value: 250, label: '250 ml', icon: '/teasets/icon_cup.svg', description: 'Csésze' },
+  { value: 200, label: '200 ml', icon: '/teasets/icon_tinycup.svg', description: 'Apró csésze' },
+  { value: 300, label: '300 ml', icon: '/teasets/icon_cup.svg', description: 'Csésze' },
   { value: 500, label: '500 ml', icon: '/teasets/icon_mug.svg', description: 'Bögre' },
   { value: 750, label: '750 ml', icon: '/teasets/icon_bottle.svg', description: 'Palack' },
   { value: 1000, label: '1000 ml', icon: '/teasets/icon_jug.svg', description: 'Kancsó' },

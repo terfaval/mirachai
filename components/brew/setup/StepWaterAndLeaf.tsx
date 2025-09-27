@@ -50,14 +50,42 @@ export default function StepWaterAndLeaf({ volumeMl, ratio, tempC, preheat, note
   }, []);
 
   const scaled = useMemo(() => scaleByVolume(volumeMl, parsedRatio, { strength }), [volumeMl, parsedRatio, strength]);
+  const [unitMode, setUnitMode] = useState<'grams' | 'spoons'>('grams');
+  useEffect(() => {
+    setUnitMode((mode) => {
+      const hasSpoon = scaled.teaspoons != null || scaled.tablespoons != null;
+      if (scaled.grams == null && hasSpoon) {
+        return 'spoons';
+      }
+      if (!hasSpoon && scaled.grams != null) {
+        return 'grams';
+      }
+      return mode;
+    });
+  }, [scaled.grams, scaled.tablespoons, scaled.teaspoons]);
   const noteList = useMemo(() => normalizeNotes(notes), [notes]);
 
   const strengthEnabled = parsedRatio.kind === 'range' || parsedRatio.kind === 'parts';
   const ratioDescription = parsedRatio.raw;
 
   const gramsText = formatNumber(scaled.grams, ' g');
-  const tspText = scaled.teaspoons != null ? `${scaled.teaspoons} tk` : null;
-  const tbspText = scaled.tablespoons != null ? `${scaled.tablespoons} ek` : null;
+  const spoonHints: string[] = [];
+  if (scaled.teaspoons != null) {
+    spoonHints.push(`${scaled.teaspoons} tk`);
+  }
+  if (scaled.tablespoons != null) {
+    spoonHints.push(`${scaled.tablespoons} ek`);
+  }
+  const spoonText = spoonHints.length ? spoonHints.join(' · ') : null;
+  const primaryTeaAmount =
+    unitMode === 'spoons' ? spoonText ?? gramsText ?? '–' : gramsText ?? spoonText ?? '–';
+  const teaHints = unitMode === 'spoons' ? (gramsText ? [gramsText] : []) : spoonHints;
+  const alternateTeaAmount = unitMode === 'spoons' ? gramsText : spoonText;
+  const alternateTeaDisplay =
+    alternateTeaAmount && alternateTeaAmount !== primaryTeaAmount ? alternateTeaAmount : null;
+  const canUseGrams = gramsText != null;
+  const canUseSpoons = spoonText != null;
+  const showUnitToggle = canUseGrams && canUseSpoons;
   const hasNumericRatio = scaled.grams != null;
 
   const footer = useMemo(
@@ -87,18 +115,68 @@ export default function StepWaterAndLeaf({ volumeMl, ratio, tempC, preheat, note
         <div className={styles.waterLeafAmounts}>
           <div className={styles.amountBlock}>
             <span className={styles.amountLabel}>Tea levél</span>
-            {gramsText ? <span className={styles.amountValue}>{gramsText}</span> : <span className={styles.amountValue}>–</span>}
-            <div className={styles.amountHints}>
-              {tspText ? <span>{tspText}</span> : null}
-              {tbspText ? <span>{tbspText}</span> : null}
-            </div>
+            <span className={styles.amountValue}>{primaryTeaAmount}</span>
+            {teaHints.length ? (
+              <div className={styles.amountHints}>
+                {teaHints.map((hint) => (
+                  <span key={hint}>{hint}</span>
+                ))}
+              </div>
+            ) : null}
           </div>
           <div className={styles.amountBlock}>
             <span className={styles.amountLabel}>Víz</span>
-            <span className={styles.amountValue}>{volumeMl} ml</span>
-            {typeof tempC === 'number' ? (
-              <span className={styles.tempBadge}>{tempC}°C</span>
+            <div className={styles.amountValueRow}>
+              <span className={styles.amountValue}>{volumeMl} ml</span>
+              {typeof tempC === 'number' ? <span className={styles.tempBadge}>{tempC}°C</span> : null}
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.ingredientsBox}>
+          <div className={styles.ingredientsHeader}>
+            <h4>Hozzávalók</h4>
+            {showUnitToggle ? (
+              <div className={styles.unitToggle} role="group" aria-label="Tea mértékegysége">
+                <button
+                  type="button"
+                  className={styles.unitToggleButton}
+                  data-active={unitMode === 'grams' ? 'true' : undefined}
+                  aria-pressed={unitMode === 'grams'}
+                  onClick={() => setUnitMode('grams')}
+                >
+                  Gramm
+                </button>
+                <button
+                  type="button"
+                  className={styles.unitToggleButton}
+                  data-active={unitMode === 'spoons' ? 'true' : undefined}
+                  aria-pressed={unitMode === 'spoons'}
+                  onClick={() => setUnitMode('spoons')}
+                >
+                  Kanál
+                </button>
+              </div>
             ) : null}
+          </div>
+
+          <div className={styles.ingredientsList}>
+            <div className={styles.ingredientsRow}>
+              <span className={styles.ingredientsLabel}>Tea levél</span>
+              <span className={styles.ingredientsValue}>
+                {primaryTeaAmount}
+                {alternateTeaDisplay ? (
+                  <span className={styles.ingredientsAlt}>({alternateTeaDisplay})</span>
+                ) : null}
+              </span>
+            </div>
+            <div className={styles.ingredientsRow}>
+              <span className={styles.ingredientsLabel}>Víz</span>
+              <span className={styles.ingredientsValue}>
+                {volumeMl} ml
+                {typeof tempC === 'number' ? ` · ${tempC}°C` : ''}
+              </span>
+            </div>
           </div>
         </div>
 

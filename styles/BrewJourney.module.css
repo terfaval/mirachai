@@ -127,7 +127,7 @@
 
 .stepHeaderRow {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 12px 16px;
 }
@@ -135,7 +135,7 @@
 @media (max-width: 720px) {
   .stepHeaderRow {
     grid-template-columns: minmax(0, 1fr);
-    justify-items: start;
+    justify-items: center;
   }
 
   .stepProgress {
@@ -153,6 +153,9 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.85);
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
 }
 
 .journeyTitle {
@@ -162,17 +165,44 @@
   letter-spacing: -0.01em;
   text-transform: none;
   color: #f9fafb;
+  text-align: center;
+}
+
+.stepTitleWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+  justify-self: center;
+}
+
+.stepSubtitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(249, 250, 251, 0.7);
 }
 
 .stepProgress {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-left: auto;
   padding: 8px 14px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  justify-self: end;
+}
+
+@media (max-width: 720px) {
+  .stepBadge {
+    justify-self: center;
+  }
+
+  .stepProgress {
+    justify-self: center;
+  }
 }
 
 .stepProgressCount {
@@ -476,6 +506,8 @@
 .volumeButtonIcon img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .volumeValue {
@@ -574,6 +606,8 @@
 .gearIcon {
   width: 44px;
   height: 44px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .gearName {
@@ -634,6 +668,13 @@
   gap: 6px;
 }
 
+.amountValueRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .amountLabel {
   font-size: 14px;
   text-transform: uppercase;
@@ -653,8 +694,9 @@
 }
 
 .tempBadge {
-  align-self: flex-start;
-  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(251, 191, 36, 0.2);
   color: rgba(251, 191, 36, 0.95);
   padding: 6px 12px;
@@ -676,6 +718,92 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.ingredientsBox {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ingredientsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.ingredientsHeader h4 {
+  margin: 0;
+}
+
+.unitToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px;
+  border-radius: 999px;
+}
+
+.unitToggleButton {
+  border: none;
+  background: transparent;
+  color: rgba(249, 250, 251, 0.75);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.unitToggleButton[data-active='true'] {
+  background: rgba(249, 115, 22, 0.35);
+  color: #f9fafb;
+}
+
+.unitToggleButton:focus-visible {
+  outline: 2px solid rgba(249, 250, 251, 0.8);
+  outline-offset: 2px;
+}
+
+.ingredientsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ingredientsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ingredientsLabel {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(249, 250, 251, 0.6);
+}
+
+.ingredientsValue {
+  font-weight: 600;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.ingredientsAlt {
+  font-size: 14px;
+  color: rgba(249, 250, 251, 0.65);
 }
 
 .ratioHint {
