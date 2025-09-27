@@ -12,11 +12,16 @@ import { getCategoryColor, getAlternativeColor } from '../utils/colorMap';
 import MandalaBackground from '@/components/panels/MandalaBackground';
 import uiTexts from '../data/ui_texts.json';
 import { pickIntroCopy, type IntroCopy } from '../utils/introCopy';
-import BrewJourney, { BrewHud, type BrewHudInfo } from './brew/BrewJourney';
+import BrewJourney, {
+  BrewHud,
+  type BrewHudInfo,
+  type BrewReviewRequest,
+} from './brew/BrewJourney';
 import { getBrewMethodsForTea } from '@/utils/brewMethods';
 import { slugify } from '@/lib/normalize';
+import ReviewForm, { type ReviewFormSubmission } from '@/components/brew/ReviewForm';
 
-type CubeFace = 'tea' | 'intro' | 'brew';
+type CubeFace = 'tea' | 'intro' | 'brew' | 'review';
 
 type IntroTextSource = {
   h1?: unknown;
@@ -87,12 +92,15 @@ export default function TeaModal({ tea, onClose }: Props) {
   const [selectedMethodId, setSelectedMethodId] = useState<string | null>(null);
   const [brew, setBrew] = useState<{ methodId: string | null } | null>(null);
   const [brewHudInfo, setBrewHudInfo] = useState<BrewHudInfo | null>(null);
+  const [reviewContext, setReviewContext] = useState<BrewReviewRequest | null>(null);
   const cubeSceneRef = useRef<HTMLDivElement | null>(null);
   const cubeShellRef = useRef<HTMLDivElement | null>(null);
   const teaContentRef = useRef<HTMLDivElement | null>(null);
   const brewContentRef = useRef<HTMLDivElement | null>(null);
+  const reviewContentRef = useRef<HTMLDivElement | null>(null);
   const introTitleRef = useRef<HTMLHeadingElement | null>(null);
   const brewTitleRef = useRef<HTMLHeadingElement | null>(null);
+  const reviewTitleRef = useRef<HTMLHeadingElement | null>(null);
   const rotationTimeoutRef = useRef<number | null>(null);
   const rotationFailsafeTimeoutRef = useRef<number | null>(null);
 
@@ -164,6 +172,7 @@ export default function TeaModal({ tea, onClose }: Props) {
     setActiveFace('tea');
     setSelectedMethodId(null);
     setBrew(null);
+    setReviewContext(null);
     finishRotation();
   }, [tea, finishRotation]);
 
@@ -224,6 +233,11 @@ export default function TeaModal({ tea, onClose }: Props) {
       return;
     }
 
+    if (activeFace === 'review') {
+      scrollToTop(reviewContentRef.current);
+      return;
+    }
+
     if (activeFace === 'brew') {
       scrollToTop(brewContentRef.current);
     }
@@ -239,6 +253,11 @@ export default function TeaModal({ tea, onClose }: Props) {
       return;
     }
 
+    if (activeFace === 'review') {
+      reviewTitleRef.current?.focus();
+      return;
+    }
+    
     if (activeFace !== 'brew') {
       return;
     }
@@ -271,7 +290,8 @@ export default function TeaModal({ tea, onClose }: Props) {
 
     const faceSelector =
       `.${styles.cubeFace}[data-active="true"] .${styles.content}, ` +
-      `.${styles.cubeFace}[data-active="true"] .${styles.introContent}`;
+      `.${styles.cubeFace}[data-active="true"] .${styles.introContent}, ` +
+      `.${styles.cubeFace}[data-active="true"] .${styles.reviewContent}`;
     const getActiveContent = () =>
       sceneEl.querySelector<HTMLElement>(faceSelector) ?? null;
 
@@ -465,6 +485,7 @@ export default function TeaModal({ tea, onClose }: Props) {
         setSelectedMethodId(resolvedMethodId);
       }
       setBrew({ methodId: resolvedMethodId });
+      setReviewContext(null);
       handleFaceChange('brew');
     },
     [brewMethods, handleFaceChange],
@@ -473,6 +494,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   const handleBrewExit = useCallback(() => {
     setBrew(null);
     setBrewHudInfo(null);
+    setReviewContext(null);
     handleFaceChange('tea');
   }, [handleFaceChange]);
 
@@ -480,7 +502,36 @@ export default function TeaModal({ tea, onClose }: Props) {
     setBrewHudInfo(info);
   }, []);
 
-  const rotation = activeFace === 'tea' ? 0 : activeFace === 'intro' ? -90 : -180;
+  const handleReviewRequest = useCallback(
+    (request: BrewReviewRequest) => {
+      setReviewContext(request);
+      setBrew(null);
+      setBrewHudInfo(null);
+      handleFaceChange('review');
+    },
+    [handleFaceChange],
+  );
+
+  const handleReviewCancel = useCallback(() => {
+    setReviewContext(null);
+    handleFaceChange('tea');
+  }, [handleFaceChange]);
+
+  const handleReviewSubmit = useCallback(
+    (submission: ReviewFormSubmission) => {
+      if (reviewContext) {
+        console.log('Review submitted', { reviewContext, submission });
+      } else {
+        console.log('Review submitted', { submission });
+      }
+      setReviewContext(null);
+      handleFaceChange('tea');
+    },
+    [handleFaceChange, reviewContext],
+  );
+
+  const rotation =
+    activeFace === 'tea' ? 0 : activeFace === 'intro' ? -90 : activeFace === 'brew' ? -180 : -270;
 
   const brewActive = brew != null;
 
@@ -674,6 +725,7 @@ export default function TeaModal({ tea, onClose }: Props) {
                 tea={brewTea}
                 methodId={brew.methodId ?? undefined}
                 onExit={handleBrewExit}
+                onReview={handleReviewRequest}
                 titleRef={brewTitleRef}
                 containerRef={brewContentRef}
                 onHudChange={handleHudChange}
@@ -691,6 +743,51 @@ export default function TeaModal({ tea, onClose }: Props) {
                 </header>
               </div>
             )}
+          </div>
+          <div
+            className={`${styles.cubeFace} ${styles.faceLeft}`}
+            data-active={activeFace === 'review' ? 'true' : undefined}
+          >
+            <div className={styles.reviewFace} style={{ backgroundColor: colorMain }}>
+              <div className={`${styles.backLayer} ${styles.reviewBackdrop}`}>
+                <MandalaBackground color={colorDark} category={tea.category} />
+              </div>
+              <div
+                className={styles.reviewContent}
+                ref={reviewContentRef}
+                onClick={(event) => event.stopPropagation()}
+                style={{
+                  background: `linear-gradient(180deg, ${colorLight} 0%, #FFFFFF 65%)`,
+                }}
+              >
+                <span className={styles.reviewBadge}>Visszajelzés</span>
+                <h2 className={styles.reviewTitle} tabIndex={-1} ref={reviewTitleRef}>
+                  Értékeld a főzést és a teát
+                </h2>
+                <p className={styles.reviewLead}>
+                  Oszd meg, mennyire segített a Mirāchai útmutató és milyen élményt adott a tea.
+                </p>
+                {reviewContext ? (
+                  <ReviewForm
+                    teaName={reviewContext.teaName}
+                    methodLabel={reviewContext.methodLabel}
+                    onSubmit={handleReviewSubmit}
+                    onCancel={handleReviewCancel}
+                  />
+                ) : (
+                  <div className={styles.reviewPlaceholder}>
+                    <p>Most nincs aktív főzet, amit értékelhetnél.</p>
+                    <button
+                      type="button"
+                      className={styles.reviewPlaceholderButton}
+                      onClick={handleReviewCancel}
+                    >
+                      Vissza a teához
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

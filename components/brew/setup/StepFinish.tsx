@@ -7,7 +7,7 @@ type StepFinishProps = {
   methodLabel: string;
   finishMessage?: string | null;
   notes?: Array<string | null | undefined> | string | null;
-  onRestart: () => void;
+  onReview: () => void;
   onClose: () => void;
 };
 
@@ -29,7 +29,7 @@ export default function StepFinish({
   methodLabel,
   finishMessage,
   notes,
-  onRestart,
+  onReview,
   onClose,
 }: StepFinishProps) {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -63,11 +63,11 @@ export default function StepFinish({
       </div>
 
       <footer className={styles.finishFooter}>
-        <button type="button" className={styles.secondaryButton} onClick={onRestart}>
-          Vissza a teához
+        <button type="button" className={styles.secondaryButton} onClick={onReview}>
+          Értékelem
         </button>
         <button type="button" className={styles.primaryButton} onClick={onClose} ref={buttonRef}>
-          Újra főzöm
+          Vissza a teához
         </button>
       </footer>
     </div>

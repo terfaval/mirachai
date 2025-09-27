@@ -67,6 +67,14 @@ export type BrewHudInfo = {
   showFilter: boolean;
 };
 
+export type BrewReviewRequest = {
+  teaId: string | number;
+  teaName: string;
+  methodId: string | null;
+  methodLabel: string;
+  methodTitle: string;
+};
+
 const StepFooterContext = createContext<(content: ReactNode | null) => void>(() => {});
 
 export function useStepFooter(content: ReactNode | null) {
@@ -85,6 +93,7 @@ type BrewJourneyProps = {
   tea: Tea & { colorMain?: string; colorDark?: string };
   methodId?: string | null;
   onExit: () => void;
+  onReview?: (request: BrewReviewRequest) => void;
   titleRef?: Ref<HTMLHeadingElement>;
   containerRef?: Ref<HTMLDivElement>;
   onHudChange?: (info: BrewHudInfo | null) => void;
@@ -319,6 +328,7 @@ export default function BrewJourney({
   tea,
   methodId: initialMethodId,
   onExit,
+  onReview,
   titleRef,
   containerRef,
   onHudChange,
@@ -516,6 +526,13 @@ export default function BrewJourney({
   }
 
   const methodTitle = methodSummary?.name ?? methodLabel;
+  const teaIdentifier = useMemo<string | number>(() => {
+    const rawId = (tea as any)?.id;
+    if (rawId == null) {
+      return tea.name;
+    }
+    return rawId as string | number;
+  }, [tea]);
   useEffect(() => {
     if (STEP_ORDER.indexOf(currentStep) > STEP_ORDER.indexOf('volume')) {
       setHasConfirmedVolume(true);
@@ -620,7 +637,15 @@ export default function BrewJourney({
           methodLabel={methodLabel}
           finishMessage={(methodProfile as any)?.finish_message ?? null}
           notes={notes}
-          onRestart={() => goToStep(selectedMethodId ? 'volume' : 'method')}
+          onReview={() => {
+            onReview?.({
+              teaId: teaIdentifier,
+              teaName: tea.name,
+              methodId: selectedMethodId ?? null,
+              methodLabel,
+              methodTitle,
+            });
+          }}
           onClose={onExit}
         />
       );
