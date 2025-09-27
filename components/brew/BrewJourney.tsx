@@ -282,7 +282,12 @@ export function BrewHud({
 
   if (info.showFilter) {
     items.push(
-      <div className={styles.hudItem} data-state={info.filterState ?? undefined} key="filter">
+      <div
+        className={styles.hudItem}
+        data-state={info.filterState ?? undefined}
+        data-filter="true"
+        key="filter"
+      >
         <div className={styles.hudIconWrap}>
           <img src={info.filterIconSrc} alt="" className={styles.hudIcon} />
         </div>

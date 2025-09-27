@@ -926,14 +926,16 @@
   .hud[data-variant='external'] {
     width: 100%;
     align-self: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 16px;
+    flex-direction: column;
   }
 
   .hud[data-variant='external'] .hudItem {
-    flex: 1 1 0%;
+    flex: none;
   }
+}
+
+.hudItem[data-filter='true'] {
+  margin-top: auto;
 }
 
 @media (min-width: 960px) {
