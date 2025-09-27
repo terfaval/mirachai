@@ -28,6 +28,7 @@ import type { Tea } from '@/utils/filter';
 import { getBrewMethodsForTea, type BrewMethodSummary } from '@/utils/brewMethods';
 import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 import { buildIngredients } from '@/utils/teaTransforms';
+import { normalizeInstructionSteps } from './normalizeSteps';
 
 type StepKey = 'method' | 'instructions' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
 
@@ -59,7 +60,8 @@ export type BrewHudInfo = {
   methodIconVariant: 'method' | 'default';
   methodTitle: string;
   stepsIconSrc: string;
-  stepsValue: string;
+  steps: string[];
+  stepsSummary: string | null;
   volumeIconSrc: string;
   volumeValue: string;
   filterIconSrc: string;
@@ -291,7 +293,17 @@ export function BrewHud({
         </div>
         <div className={styles.hudText}>
           <span className={styles.hudLabel}>Lépések</span>
-          <span className={styles.hudValue}>{info.stepsValue}</span>
+          {info.steps.length ? (
+            <ol className={styles.hudStepsList}>
+              {info.steps.map((step, index) => (
+                <li key={index} className={styles.hudStepsListItem}>
+                  {step}
+                </li>
+              ))}
+            </ol>
+          ) : info.stepsSummary ? (
+            <span className={styles.hudValue}>{info.stepsSummary}</span>
+          ) : null}
         </div>
       </div>,
     );
@@ -535,18 +547,16 @@ export default function BrewJourney({
     return normalizeArray((methodProfile as any)?.steps);
   }, [methodProfile, stepsFromDescription]);
 
+  const normalizedSteps = useMemo(() => normalizeInstructionSteps(methodSteps), [methodSteps]);
+
   const methodStepsSummary = useMemo(() => {
-    if (!methodSteps.length) {
+    if (!normalizedSteps.length) {
       return null;
     }
-    const normalized = methodSteps.map((step) => step.replace(/\s+/g, ' ').trim()).filter((step) => step.length > 0);
-    if (!normalized.length) {
-      return null;
-    }
-    const preview = normalized.slice(0, 3);
+    const preview = normalizedSteps.slice(0, 3);
     const summary = preview.join(' → ');
-    return normalized.length > preview.length ? `${summary}…` : summary;
-  }, [methodSteps]);
+    return normalizedSteps.length > preview.length ? `${summary}…` : summary;
+  }, [normalizedSteps]);
 
   const notes = useMemo(() => normalizeArray((methodProfile as any)?.notes), [methodProfile]);
   const teaIngredients = useMemo(() => buildIngredients(tea), [tea]);
@@ -711,7 +721,6 @@ export default function BrewJourney({
   const methodIconSrc = methodSummary?.icon ?? methodFallbackIconSrc();
   const methodIconVariant: BrewHudInfo['methodIconVariant'] = methodSummary?.icon ? 'method' : 'default';
   const stepsIcon = stepsIconSrc();
-  const stepsValue = methodStepsSummary ?? '';
   const volumeIcon = volumeIconSrc(volumeMl, selectedMethodId);
   const volumeValue = `${volumeMl} ml`;
   const filterIcon = filterIconSrc(filterBadge);
@@ -723,14 +732,15 @@ export default function BrewJourney({
       methodIconVariant,
       methodTitle,
       stepsIconSrc: stepsIcon,
-      stepsValue,
+      steps: normalizedSteps,
+      stepsSummary: methodStepsSummary,
       volumeIconSrc: volumeIcon,
       volumeValue,
       filterIconSrc: filterIcon,
       filterState: filterBadge,
       filterTitle,
       showMethod: Boolean(selectedMethodId),
-      showSteps: hasReviewedInstructions && methodStepsSummary != null,
+      showSteps: hasReviewedInstructions && normalizedSteps.length > 0,
       showVolume: hasConfirmedVolume,
       showFilter: filterBadge != null,
     }),
@@ -744,9 +754,9 @@ export default function BrewJourney({
       methodIconVariant,
       methodStepsSummary,
       methodTitle,
+      normalizedSteps,
       selectedMethodId,
       stepsIcon,
-      stepsValue,
       volumeIcon,
       volumeValue,
     ],

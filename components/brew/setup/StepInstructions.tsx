@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 import styles from '@/styles/BrewJourney.module.css';
 import { useStepFooter } from '../BrewJourney';
+import { normalizeInstructionSteps } from '../normalizeSteps';
 
 type StepInstructionsProps = {
   methodTitle: string;
@@ -10,17 +11,8 @@ type StepInstructionsProps = {
   onBack: () => void;
 };
 
-function normalizeSteps(steps: string[]): string[] {
-  return steps
-    .map((step) => step.trim())
-    .filter((step) => step.length > 0)
-    .map((step) => step.replace(/\s+/g, ' '))
-    .map((step) => step.replace(/^\d+[.)]\s*/, ''))
-    .map((step) => step.replace(/^[•*-]\s*/, ''));
-}
-
 export default function StepInstructions({ methodTitle, description, steps, onNext, onBack }: StepInstructionsProps) {
-  const list = useMemo(() => normalizeSteps(steps), [steps]);
+  const list = useMemo(() => normalizeInstructionSteps(steps), [steps]);
   const focusRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
