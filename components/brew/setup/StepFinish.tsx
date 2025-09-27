@@ -41,15 +41,14 @@ export default function StepFinish({
 
   return (
     <div className={styles.stepWrapper}>
-      <header className={styles.stepHeader}>
-        <span className={styles.stepBadge}>6 / 6</span>
-        <h3 className={styles.stepTitle}>Készen van a {teaName}!</h3>
-        <p className={styles.stepLead}>
-          Gratulálunk, végigmentél a {methodLabel.toLowerCase()} lépésein. Szűrd le, tálald és élvezd a teát.
-        </p>
-      </header>
 
       <div className={styles.finishPanel}>
+        <div className={styles.finishIntroBlock}>
+          <h3 className={styles.finishHeading}>Készen van a {teaName}!</h3>
+          <p className={styles.finishIntro}>
+            Gratulálunk, végigmentél a {methodLabel.toLowerCase()} lépésein. Szűrd le, tálald és élvezd a teát.
+          </p>
+        </div>
         {finishMessage ? <p className={styles.finishMessage}>{finishMessage}</p> : null}
         {normalizedNotes.length ? (
           <div className={styles.noteBox}>

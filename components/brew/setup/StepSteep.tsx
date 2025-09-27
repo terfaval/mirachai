@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import styles from '@/styles/BrewJourney.module.css';
 import { shouldShowTimer } from '@/lib/brew.ratio';
+import { useStepFooter } from '../BrewJourney';
 
 function parseSteepRange(input: unknown): { min: number | null; max: number | null } {
   if (typeof input === 'number') {
@@ -129,16 +130,26 @@ export default function StepSteep({ steep, steepSeconds, timerHint, onNext, onBa
         ? `${Math.round(secondsAsMinutes * 10) / 10} perc`
         : 'A profil részletei szerint';
 
+  const footer = useMemo(
+    () => (
+      <footer className={styles.stepFooter}>
+        <button type="button" className={styles.secondaryButton} onClick={onBack}>
+          Vissza
+        </button>
+        {!showTimer ? null : (
+          <button type="button" className={styles.primaryButton} onClick={onNext}>
+            Léptetés a befejezésre
+          </button>
+        )}
+      </footer>
+    ),
+    [onBack, onNext, showTimer],
+  );
+
+  useStepFooter(footer);
+
   return (
     <div className={styles.stepWrapper}>
-      <header className={styles.stepHeader}>
-        <span className={styles.stepBadge}>5 / 6</span>
-        <h3 className={styles.stepTitle}>Áztatás</h3>
-        <p className={styles.stepLead}>
-          Kövesd a javasolt áztatási időt. Ha szeretnél kísérletezni, rövidítheted vagy hosszabbíthatod az időtartamot.
-        </p>
-      </header>
-
       <div className={styles.steepPanel}>
         <div className={styles.steepRange}>Ajánlott idő: {steepText}</div>
         {timerHint ? <div className={styles.steepHint}>Leöntés javaslat: {timerHint}</div> : null}
@@ -193,16 +204,6 @@ export default function StepSteep({ steep, steepSeconds, timerHint, onNext, onBa
         ) : null}
       </div>
 
-      <footer className={styles.stepFooter}>
-        <button type="button" className={styles.secondaryButton} onClick={onBack}>
-          Vissza
-        </button>
-        {!showTimer ? null : (
-          <button type="button" className={styles.primaryButton} onClick={onNext}>
-            Léptetés a befejezésre
-          </button>
-        )}
-      </footer>
     </div>
   );
 }

@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import styles from '@/styles/BrewJourney.module.css';
+import { useStepFooter } from '../BrewJourney';
 
 export type GearInfo = {
   gear: string[];
@@ -22,16 +23,24 @@ export default function StepGearFilter({ info, onNext, onBack }: StepGearFilterP
     nextRef.current?.focus();
   }, []);
 
+  const footer = useMemo(
+    () => (
+      <footer className={styles.stepFooter}>
+        <button type="button" className={styles.secondaryButton} onClick={onBack}>
+          Vissza
+        </button>
+        <button type="button" className={styles.primaryButton} onClick={onNext} ref={nextRef}>
+          Jöhet a víz és a levél
+        </button>
+      </footer>
+    ),
+    [onBack, onNext],
+  );
+
+  useStepFooter(footer);
+
   return (
     <div className={styles.stepWrapper}>
-      <header className={styles.stepHeader}>
-        <span className={styles.stepBadge}>3 / 6</span>
-        <h3 className={styles.stepTitle}>Ellenőrizd a felszerelést</h3>
-        <p className={styles.stepLead}>
-          A profil alapján ezekre az eszközökre lesz szükség. Készítsd elő őket, hogy a főzés közben ne kelljen keresgélni.
-        </p>
-      </header>
-
       <div className={styles.gearListWrapper}>
         {gear.length ? (
           <ul className={styles.gearList}>
@@ -56,15 +65,6 @@ export default function StepGearFilter({ info, onNext, onBack }: StepGearFilterP
           <p>Ehhez a módszerhez nincs szükség szűrőre – bátran készítsd el nélküle is.</p>
         )}
       </div>
-
-      <footer className={styles.stepFooter}>
-        <button type="button" className={styles.secondaryButton} onClick={onBack}>
-          Vissza
-        </button>
-        <button type="button" className={styles.primaryButton} onClick={onNext} ref={nextRef}>
-          Jöhet a víz és a levél
-        </button>
-      </footer>
     </div>
   );
 }

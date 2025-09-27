@@ -1,5 +1,6 @@
-import { ChangeEvent, FormEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import styles from '@/styles/BrewJourney.module.css';
+import { useStepFooter } from '../BrewJourney';
 
 type StepVolumeProps = {
   defaultVolume: number | null;
@@ -19,6 +20,7 @@ const clampVolume = (value: number | null | undefined): number => {
 export default function StepVolume({ defaultVolume, onSubmit, onBack }: StepVolumeProps) {
   const [volume, setVolume] = useState<number>(clampVolume(defaultVolume));
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const formId = useId();
 
   useEffect(() => {
     setVolume(clampVolume(defaultVolume));
@@ -63,16 +65,24 @@ export default function StepVolume({ defaultVolume, onSubmit, onBack }: StepVolu
     setVolume(parsed);
   };
 
-  return (
-    <form className={styles.stepWrapper} onSubmit={handleSubmit}>
-      <header className={styles.stepHeader}>
-        <span className={styles.stepBadge}>2 / 6</span>
-        <h3 className={styles.stepTitle}>Mekkora adagot főznél?</h3>
-        <p className={styles.stepLead}>
-          A Mirāchai a teljes főzést ehhez a mennyiséghez igazítja. Később bármikor visszaléphetsz és módosíthatod.
-        </p>
-      </header>
+  const footer = useMemo(
+    () => (
+      <footer className={styles.stepFooter}>
+        <button type="button" className={styles.secondaryButton} onClick={onBack}>
+          Vissza
+        </button>
+        <button type="submit" form={formId} className={styles.primaryButton} disabled={!isValid}>
+          Tovább a felszereléshez
+        </button>
+      </footer>
+    ),
+    [formId, isValid, onBack],
+  );
 
+  useStepFooter(footer);
+
+  return (
+    <form className={styles.stepWrapper} onSubmit={handleSubmit} id={formId}>
       <div className={styles.volumeGrid}>
         {formattedPresets.map((preset) => {
           const isSelected = preset.value === volume;
@@ -111,15 +121,6 @@ export default function StepVolume({ defaultVolume, onSubmit, onBack }: StepVolu
         />
         <span className={styles.volumeSuffix}>ml</span>
       </div>
-
-      <footer className={styles.stepFooter}>
-        <button type="button" className={styles.secondaryButton} onClick={onBack}>
-          Vissza
-        </button>
-        <button type="submit" className={styles.primaryButton} disabled={!isValid}>
-          Tovább a felszereléshez
-        </button>
-      </footer>
     </form>
   );
 }

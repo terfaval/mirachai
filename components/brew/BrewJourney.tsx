@@ -1,4 +1,15 @@
-import { MutableRefObject, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  MutableRefObject,
+  ReactNode,
+  Ref,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import MandalaBackground from '@/components/panels/MandalaBackground';
@@ -34,15 +45,28 @@ export type BrewHudInfo = {
   methodIconSrc: string;
   methodIconVariant: 'method' | 'default';
   methodTitle: string;
-  methodAssist: string;
   volumeIconSrc: string;
   volumeValue: string;
-  volumeAssist: string;
   filterIconSrc: string;
   filterState: FilterState | null;
   filterTitle: string;
-  filterAssist: string;
+  showMethod: boolean;
+  showVolume: boolean;
+  showFilter: boolean;
 };
+
+const StepFooterContext = createContext<(content: ReactNode | null) => void>(() => {});
+
+export function useStepFooter(content: ReactNode | null) {
+  const setFooter = useContext(StepFooterContext);
+
+  useEffect(() => {
+    setFooter(content);
+    return () => {
+      setFooter(null);
+    };
+  }, [content, setFooter]);
+}
 
 type BrewJourneyProps = {
   layoutId?: string;
@@ -210,13 +234,11 @@ export function BrewHud({
   variant?: 'default' | 'external';
   className?: string;
 }) {
-  return (
-    <aside
-      className={clsx(styles.hud, className)}
-      data-filter-state={info.filterState ?? undefined}
-      data-variant={variant}
-    >
-      <div className={styles.hudItem}>
+  const items: ReactNode[] = [];
+
+  if (info.showMethod) {
+    items.push(
+      <div className={styles.hudItem} key="method">
         <div className={styles.hudIconWrap}>
           <img
             src={info.methodIconSrc}
@@ -227,29 +249,50 @@ export function BrewHud({
         <div className={styles.hudText}>
           <span className={styles.hudLabel}>Módszer</span>
           <span className={styles.hudValue}>{info.methodTitle}</span>
-          <span className={styles.hudAssist}>{info.methodAssist}</span>
-        </div>
-      </div>
-      <div className={styles.hudItem}>
+          </div>
+      </div>,
+    );
+  }
+
+  if (info.showVolume) {
+    items.push(
+      <div className={styles.hudItem} key="volume">
         <div className={styles.hudIconWrap}>
           <img src={info.volumeIconSrc} alt="" className={styles.hudIcon} />
         </div>
         <div className={styles.hudText}>
           <span className={styles.hudLabel}>Mennyiség</span>
           <span className={styles.hudValue}>{info.volumeValue}</span>
-          <span className={styles.hudAssist}>{info.volumeAssist}</span>
-        </div>
-      </div>
-      <div className={styles.hudItem} data-state={info.filterState ?? undefined}>
+          </div>
+      </div>,
+    );
+  }
+
+  if (info.showFilter) {
+    items.push(
+      <div className={styles.hudItem} data-state={info.filterState ?? undefined} key="filter">
         <div className={styles.hudIconWrap}>
           <img src={info.filterIconSrc} alt="" className={styles.hudIcon} />
         </div>
         <div className={styles.hudText}>
           <span className={styles.hudLabel}>Szűrő</span>
           <span className={styles.hudValue}>{info.filterTitle}</span>
-          <span className={styles.hudAssist}>{info.filterAssist}</span>
-        </div>
-      </div>
+          </div>
+      </div>,
+    );
+  }
+
+  if (!items.length) {
+    return null;
+  }
+
+  return (
+    <aside
+      className={clsx(styles.hud, className)}
+      data-filter-state={info.showFilter ? info.filterState ?? undefined : undefined}
+      data-variant={variant}
+    >
+      {items}
     </aside>
   );
 }
@@ -270,6 +313,7 @@ export default function BrewJourney({
 
   const [selectedMethodId, setSelectedMethodId] = useState<string | null>(() => resolvedInitialMethod);
   const [volumeMl, setVolumeMl] = useState<number>(() => clampVolume(initialParams.volume ?? DEFAULT_VOLUME));
+  const [hasConfirmedVolume, setHasConfirmedVolume] = useState<boolean>(() => initialParams.volume != null);
   const [currentStep, setCurrentStep] = useState<StepKey>(() =>
     resolveInitialStep(initialParams.phase, resolvedInitialMethod != null),
   );
@@ -359,12 +403,14 @@ export default function BrewJourney({
 
   const handleMethodSelect = useCallback((method: string) => {
     setSelectedMethodId(method);
+    setHasConfirmedVolume(false);
     setCurrentStep('volume');
   }, []);
 
   const handleVolumeSubmit = useCallback(
     (volume: number) => {
       setVolumeMl(clampVolume(volume));
+      setHasConfirmedVolume(true);
       goToStep('gear');
     },
     [goToStep],
@@ -425,28 +471,22 @@ export default function BrewJourney({
     optional: 'Választható',
     not_needed: 'Nem szükséges',
   };
-  const filterAssistMap: Record<FilterState, string> = {
-    required: 'Szűrő nélkül nem ajánlott.',
-    optional: 'Ha szeretnéd, elhagyható.',
-    not_needed: 'Ehhez a módszerhez nem kell szűrő.',
-  };
 
   let filterTitle = 'Válassz módszert';
-  let filterAssist = 'A módszer kiválasztása után jelenik meg.';
   let filterBadge: FilterState | null = null;
   if (selectedMethodId && gearInfo.hasProfile && filterState) {
     filterBadge = filterState;
     filterTitle = filterLabelMap[filterState];
-    filterAssist = filterAssistMap[filterState];
   } else if (selectedMethodId && !gearInfo.hasProfile) {
     filterTitle = 'Nincs adat';
-    filterAssist = 'Ehhez a módszerhez nem találtunk szűrő információt.';
   }
 
   const methodTitle = methodSummary?.name ?? methodLabel;
-  const methodAssist =
-    methodSummary?.oneLiner ?? methodSummary?.description ?? (selectedMethodId ? 'Módszer kiválasztva.' : 'Válaszd ki, hogyan főzzük.');
-  const volumeAssist = currentStep === 'volume' ? 'Most állítod be.' : 'Bármikor módosíthatod a mennyiséget.';
+  useEffect(() => {
+    if (STEP_ORDER.indexOf(currentStep) > STEP_ORDER.indexOf('volume')) {
+      setHasConfirmedVolume(true);
+    }
+  }, [currentStep]);
 
   const prefersReducedMotion = usePrefersReducedMotion();
   const motionVariants = useMemo(
@@ -556,27 +596,25 @@ export default function BrewJourney({
       methodIconSrc,
       methodIconVariant,
       methodTitle,
-      methodAssist,
       volumeIconSrc: volumeIcon,
       volumeValue,
-      volumeAssist,
       filterIconSrc: filterIcon,
       filterState: filterBadge,
-      filterTitle,
-      filterAssist,
+      filterTitle,showMethod: Boolean(selectedMethodId),
+      showVolume: hasConfirmedVolume,
+      showFilter: filterBadge != null,
     }),
     [
+      filterBadge,
+      filterIcon,
+      filterTitle,
+      hasConfirmedVolume,
       methodIconSrc,
       methodIconVariant,
       methodTitle,
-      methodAssist,
+      selectedMethodId,
       volumeIcon,
       volumeValue,
-      volumeAssist,
-      filterIcon,
-      filterBadge,
-      filterTitle,
-      filterAssist,
     ],
   );
 
@@ -596,6 +634,27 @@ export default function BrewJourney({
     };
   }, [onHudChange]);
 
+  const totalSteps = STEP_ORDER.length;
+  const stepIndex = Math.max(0, STEP_ORDER.indexOf(currentStep));
+
+  const stepDots = useMemo(
+    () =>
+      STEP_ORDER.map((step, index) => (
+        <span
+          key={step}
+          className={clsx(
+            styles.stepDot,
+            index < stepIndex ? styles.stepDotCompleted : undefined,
+            index === stepIndex ? styles.stepDotCurrent : undefined,
+          )}
+          aria-hidden="true"
+        />
+      )),
+    [stepIndex],
+  );
+
+  const [footerContent, setFooterContent] = useState<ReactNode | null>(null);
+
   return (
     <div className={styles.journeyRoot} ref={mergedContainerRef}>
       <div className={styles.journeyBackdrop} aria-hidden="true">
@@ -608,31 +667,44 @@ export default function BrewJourney({
         className={styles.journeyContent}
         data-external-hud={onHudChange ? 'true' : undefined}
       >
-        <div className={styles.panelRoot}>
-          <div className={styles.stepHeader}>
-            <div className={styles.stepHeaderRow}>
-              <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
-              <h2 className={styles.journeyTitle} tabIndex={-1} ref={mergedTitleRef}>
-                {tea.name}
-              </h2>
+        <div className={styles.panelColumn}>
+          <div className={styles.panelRoot}>
+            <div className={styles.stepHeader}>
+              <div className={styles.stepHeaderRow}>
+                <div className={styles.stepTitleGroup}>
+                  <span className={styles.stepBadge}>Mirāchai Brew Journey</span>
+                  <h2 className={styles.journeyTitle} tabIndex={-1} ref={mergedTitleRef}>
+                    {tea.name}
+                  </h2>
+                </div>
+                <div className={styles.stepProgress} aria-label={`Lépés ${stepIndex + 1} / ${totalSteps}`}>
+                  <span className={styles.stepProgressCount}>
+                    {stepIndex + 1} / {totalSteps}
+                  </span>
+                  <div className={styles.stepProgressDots}>{stepDots}</div>
+                </div>
+              </div>
             </div>
-            <p className={styles.stepLead}>{journeyLead}</p>
+            <div className={styles.stageArea}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStep}
+                  className={styles.stepMotion}
+                  variants={motionVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={motionTransition}
+                >
+                  <StepFooterContext.Provider value={setFooterContent}>
+                    {stepContent}
+                  </StepFooterContext.Provider>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-          <div className={styles.stageArea}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentStep}
-                className={styles.stepMotion}
-                variants={motionVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                transition={motionTransition}
-              >
-                {stepContent}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+
+          {footerContent}
         </div>
 
         {onHudChange ? null : <BrewHud info={hudInfo} />}

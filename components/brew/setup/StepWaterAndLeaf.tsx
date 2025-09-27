@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import styles from '@/styles/BrewJourney.module.css';
 import { parseRatio, scaleByVolume, type ParsedRatio } from '@/lib/brew.ratio';
+import { useStepFooter } from '../BrewJourney';
 
 function formatNumber(value: number | null | undefined, unit: string): string | null {
   if (value == null || Number.isNaN(value)) {
@@ -59,16 +60,29 @@ export default function StepWaterAndLeaf({ volumeMl, ratio, tempC, preheat, note
   const tbspText = scaled.tablespoons != null ? `${scaled.tablespoons} ek` : null;
   const hasNumericRatio = scaled.grams != null;
 
+  const footer = useMemo(
+    () => (
+      <footer className={styles.stepFooter}>
+        <button type="button" className={styles.secondaryButton} onClick={onBack}>
+          Vissza
+        </button>
+        <button
+          type="button"
+          className={styles.primaryButton}
+          ref={nextRef}
+          onClick={() => onNext({ parsedRatio, strength })}
+        >
+          Indulhat az áztatás
+        </button>
+      </footer>
+    ),
+    [onBack, onNext, parsedRatio, strength],
+  );
+
+  useStepFooter(footer);
+
   return (
     <div className={styles.stepWrapper}>
-      <header className={styles.stepHeader}>
-        <span className={styles.stepBadge}>4 / 6</span>
-        <h3 className={styles.stepTitle}>Víz és levél arány</h3>
-        <p className={styles.stepLead}>
-          A tea profiljának arányai alapján kiszámoltuk, mennyi levelet érdemes használni ehhez a mennyiséghez.
-        </p>
-      </header>
-
       <div className={styles.waterLeafPanel} tabIndex={-1} ref={focusRef}>
         <div className={styles.waterLeafAmounts}>
           <div className={styles.amountBlock}>
@@ -128,19 +142,6 @@ export default function StepWaterAndLeaf({ volumeMl, ratio, tempC, preheat, note
         ) : null}
       </div>
 
-      <footer className={styles.stepFooter}>
-        <button type="button" className={styles.secondaryButton} onClick={onBack}>
-          Vissza
-        </button>
-        <button
-          type="button"
-          className={styles.primaryButton}
-          ref={nextRef}
-          onClick={() => onNext({ parsedRatio, strength })}
-        >
-          Indulhat az áztatás
-        </button>
-      </footer>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { getBrewMethodsForTea, type BrewMethodSummary } from '@/utils/brewMethods';
 import styles from '@/styles/BrewJourney.module.css';
 import type { Tea } from '@/utils/filter';
+import { useStepFooter } from '../BrewJourney';
 
 type StepMethodProps = {
   tea: Tea;
@@ -21,16 +22,33 @@ export default function StepMethod({ tea, selectedMethodId, onSelect, onNext, on
     }
   }, []);
 
+  const footer = useMemo(
+    () => (
+      <footer className={styles.stepFooter}>
+        <button type="button" className={styles.secondaryButton} onClick={onBack}>
+          Vissza
+        </button>
+        <button
+          type="button"
+          className={styles.primaryButton}
+          onClick={() => {
+            if (selectedMethodId) {
+              onNext(selectedMethodId);
+            }
+          }}
+          disabled={!selectedMethodId}
+        >
+          Tovább a mennyiséghez
+        </button>
+      </footer>
+    ),
+    [onBack, onNext, selectedMethodId],
+  );
+
+  useStepFooter(footer);
+
   return (
     <div className={styles.stepWrapper}>
-      <header className={styles.stepHeader}>
-        <span className={styles.stepBadge}>1 / 6</span>
-        <h3 className={styles.stepTitle}>Válassz elkészítési módot</h3>
-        <p className={styles.stepLead}>
-          A tea profilja alapján ezek a módszerek érhetők el. Válassz egyet, hogy a Mirāchai végigvezessen a főzésen.
-        </p>
-      </header>
-
       <div className={styles.methodGrid}>
         {methods.map((method, index) => {
           const isSelected = method.id === selectedMethodId;
@@ -59,24 +77,6 @@ export default function StepMethod({ tea, selectedMethodId, onSelect, onNext, on
           );
         })}
       </div>
-
-      <footer className={styles.stepFooter}>
-        <button type="button" className={styles.secondaryButton} onClick={onBack}>
-          Vissza
-        </button>
-        <button
-          type="button"
-          className={styles.primaryButton}
-          onClick={() => {
-            if (selectedMethodId) {
-              onNext(selectedMethodId);
-            }
-          }}
-          disabled={!selectedMethodId}
-        >
-          Tovább a mennyiséghez
-        </button>
-      </footer>
     </div>
   );
 }
