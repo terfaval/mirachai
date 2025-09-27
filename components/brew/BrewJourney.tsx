@@ -57,12 +57,15 @@ export type BrewHudInfo = {
   methodIconSrc: string;
   methodIconVariant: 'method' | 'default';
   methodTitle: string;
+  stepsIconSrc: string;
+  stepsValue: string;
   volumeIconSrc: string;
   volumeValue: string;
   filterIconSrc: string;
   filterState: FilterState | null;
   filterTitle: string;
   showMethod: boolean;
+  showSteps: boolean;
   showVolume: boolean;
   showFilter: boolean;
 };
@@ -230,6 +233,10 @@ function methodFallbackIconSrc(): string {
   return '/teasets/icon_teapot.svg';
 }
 
+function stepsIconSrc(): string {
+  return '/teasets/icon_teaready.svg';
+}
+
 function volumeIconSrc(volumeMl: number, selectedMethodId?: string | null): string {
   const method = selectedMethodId ?? '';
   if (/coldbrew|bottle|snap|infused|ferment/i.test(method)) return '/teasets/icon_bottle.svg';
@@ -275,6 +282,20 @@ export function BrewHud({
     );
   }
 
+  if (info.showSteps) {
+    items.push(
+      <div className={styles.hudItem} key="steps">
+        <div className={styles.hudIconWrap}>
+          <img src={info.stepsIconSrc} alt="" className={styles.hudIcon} />
+        </div>
+        <div className={styles.hudText}>
+          <span className={styles.hudLabel}>Lépések</span>
+          <span className={styles.hudValue}>{info.stepsValue}</span>
+        </div>
+      </div>,
+    );
+  }
+
   if (info.showVolume) {
     items.push(
       <div className={styles.hudItem} key="volume">
@@ -284,7 +305,7 @@ export function BrewHud({
         <div className={styles.hudText}>
           <span className={styles.hudLabel}>Mennyiség</span>
           <span className={styles.hudValue}>{info.volumeValue}</span>
-          </div>
+        </div>
       </div>,
     );
   }
@@ -303,7 +324,7 @@ export function BrewHud({
         <div className={styles.hudText}>
           <span className={styles.hudLabel}>Szűrő</span>
           <span className={styles.hudValue}>{info.filterTitle}</span>
-          </div>
+        </div>
       </div>,
     );
   }
@@ -337,14 +358,21 @@ export default function BrewJourney({
   const initialParams = useMemo(() => readInitialParams(), []);
   const initialMethodFromUrl = initialParams.method;
   const resolvedInitialMethod = initialMethodFromUrl ?? (initialMethodId ?? null);
+  const initialStep = useMemo(
+    () => resolveInitialStep(initialParams.phase, resolvedInitialMethod != null),
+    [initialParams, resolvedInitialMethod],
+  );
 
   const [selectedMethodId, setSelectedMethodId] = useState<string | null>(() => resolvedInitialMethod);
   const [volumeMl, setVolumeMl] = useState<number>(() => clampVolume(initialParams.volume ?? DEFAULT_VOLUME));
   const [hasConfirmedVolume, setHasConfirmedVolume] = useState<boolean>(() => initialParams.volume != null);
-  const [currentStep, setCurrentStep] = useState<StepKey>(() =>
-    resolveInitialStep(initialParams.phase, resolvedInitialMethod != null),
+  const [hasReviewedInstructions, setHasReviewedInstructions] = useState<boolean>(
+    () => STEP_ORDER.indexOf(initialStep) > STEP_ORDER.indexOf('instructions'),
   );
+  const [currentStep, setCurrentStep] = useState<StepKey>(initialStep);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const lastMethodIdRef = useRef<string | null>(resolvedInitialMethod);
 
   const profile = useMemo(() => findTeaProfile(tea), [tea]);
   const methodSummaries = useMemo<BrewMethodSummary[]>(() => getBrewMethodsForTea(tea), [tea]);
@@ -385,6 +413,13 @@ export default function BrewJourney({
     const timeout = window.setTimeout(() => setToastMessage(null), 4000);
     return () => window.clearTimeout(timeout);
   }, [toastMessage]);
+
+  useEffect(() => {
+    if (lastMethodIdRef.current !== selectedMethodId) {
+      lastMethodIdRef.current = selectedMethodId;
+      setHasReviewedInstructions(false);
+    }
+  }, [selectedMethodId]);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -499,6 +534,19 @@ export default function BrewJourney({
     return normalizeArray((methodProfile as any)?.steps);
   }, [methodProfile, stepsFromDescription]);
 
+  const methodStepsSummary = useMemo(() => {
+    if (!methodSteps.length) {
+      return null;
+    }
+    const normalized = methodSteps.map((step) => step.replace(/\s+/g, ' ').trim()).filter((step) => step.length > 0);
+    if (!normalized.length) {
+      return null;
+    }
+    const preview = normalized.slice(0, 3);
+    const summary = preview.join(' → ');
+    return normalized.length > preview.length ? `${summary}…` : summary;
+  }, [methodSteps]);
+
   const notes = useMemo(() => normalizeArray((methodProfile as any)?.notes), [methodProfile]);
   const cautionNotes = useMemo(() => normalizeArray((methodProfile as any)?.caution_notes), [methodProfile]);
 
@@ -534,6 +582,9 @@ export default function BrewJourney({
     return rawId as string | number;
   }, [tea]);
   useEffect(() => {
+    if (STEP_ORDER.indexOf(currentStep) > STEP_ORDER.indexOf('instructions')) {
+      setHasReviewedInstructions(true);
+    }
     if (STEP_ORDER.indexOf(currentStep) > STEP_ORDER.indexOf('volume')) {
       setHasConfirmedVolume(true);
     }
@@ -656,6 +707,8 @@ export default function BrewJourney({
 
   const methodIconSrc = methodSummary?.icon ?? methodFallbackIconSrc();
   const methodIconVariant: BrewHudInfo['methodIconVariant'] = methodSummary?.icon ? 'method' : 'default';
+  const stepsIcon = stepsIconSrc();
+  const stepsValue = methodStepsSummary ?? '';
   const volumeIcon = volumeIconSrc(volumeMl, selectedMethodId);
   const volumeValue = `${volumeMl} ml`;
   const filterIcon = filterIconSrc(filterBadge);
@@ -666,12 +719,15 @@ export default function BrewJourney({
       methodIconSrc,
       methodIconVariant,
       methodTitle,
+      stepsIconSrc: stepsIcon,
+      stepsValue,
       volumeIconSrc: volumeIcon,
       volumeValue,
       filterIconSrc: filterIcon,
       filterState: filterBadge,
       filterTitle,
       showMethod: Boolean(selectedMethodId),
+      showSteps: hasReviewedInstructions && methodStepsSummary != null,
       showVolume: hasConfirmedVolume,
       showFilter: filterBadge != null,
     }),
@@ -680,10 +736,14 @@ export default function BrewJourney({
       filterIcon,
       filterTitle,
       hasConfirmedVolume,
+      hasReviewedInstructions,
       methodIconSrc,
       methodIconVariant,
+      methodStepsSummary,
       methodTitle,
       selectedMethodId,
+      stepsIcon,
+      stepsValue,
       volumeIcon,
       volumeValue,
     ],
