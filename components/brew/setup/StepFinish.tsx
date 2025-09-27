@@ -64,10 +64,10 @@ export default function StepFinish({
 
       <footer className={styles.finishFooter}>
         <button type="button" className={styles.secondaryButton} onClick={onRestart}>
-          Újra főzöm
+          Vissza a teához
         </button>
         <button type="button" className={styles.primaryButton} onClick={onClose} ref={buttonRef}>
-          Vissza a teához
+          Újra főzöm
         </button>
       </footer>
     </div>
