@@ -16,7 +16,6 @@ import MandalaBackground from '@/components/panels/MandalaBackground';
 import StepFinish from './setup/StepFinish';
 import StepGearFilter, { type GearInfo } from './setup/StepGearFilter';
 import { getFilterState, type FilterState } from '@/lib/brew.filter';
-import StepInstructions from './setup/StepInstructions';
 import StepMethod from './setup/StepMethod';
 import StepSteep from './setup/StepSteep';
 import StepVolume from './setup/StepVolume';
@@ -30,14 +29,13 @@ import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 import { buildIngredients } from '@/utils/teaTransforms';
 import { normalizeInstructionSteps } from './normalizeSteps';
 
-type StepKey = 'method' | 'instructions' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
+type StepKey = 'method' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
 
-const STEP_ORDER: StepKey[] = ['method', 'instructions', 'volume', 'gear', 'water', 'steep', 'finish'];
+const STEP_ORDER: StepKey[] = ['method', 'volume', 'gear', 'water', 'steep', 'finish'];
 const DEFAULT_VOLUME = 250;
 
 const JOURNEY_LEAD_COPY: Record<StepKey, string> = {
   method: 'Válaszd ki a hozzád illő elkészítési módot, hogy személyre szabott útmutatót kapj.',
-  instructions: 'Kövesd végig a módszer lépéseit, mielőtt beállítod a mennyiségeket.',
   volume: 'Add meg, mennyi teát készítesz, így minden arány pontos lesz.',
   gear: 'Ellenőrizd, milyen eszközökre lesz szükséged ehhez a főzési módszerhez.',
   water: 'Állítsd be a víz- és levélarányokat, majd készítsd elő a teát.',
@@ -47,7 +45,6 @@ const JOURNEY_LEAD_COPY: Record<StepKey, string> = {
 
 const STEP_SHORT_TITLES: Record<StepKey, string> = {
   method: 'Módszer',
-  instructions: 'Lépések',
   volume: 'Mennyiség',
   gear: 'Kellékek',
   water: 'Forralás',
@@ -170,7 +167,7 @@ function resolveInitialStep(phase: InitialParams['phase'], hasMethod: boolean): 
   if (phase === 'finish') {
     return hasMethod ? 'finish' : 'method';
   }
-  return hasMethod ? 'instructions' : 'method';
+  return hasMethod ? 'volume' : 'method';
 }
 
 function findTeaProfile(tea: Tea): TeaProfileDocument | undefined {
@@ -285,6 +282,20 @@ export function BrewHud({
     );
   }
 
+  if (info.showVolume) {
+    items.push(
+      <div className={styles.hudItem} key="volume">
+        <div className={styles.hudIconWrap}>
+          <img src={info.volumeIconSrc} alt="" className={styles.hudIcon} />
+        </div>
+        <div className={styles.hudText}>
+          <span className={styles.hudLabel}>Mennyiség</span>
+          <span className={styles.hudValue}>{info.volumeValue}</span>
+        </div>
+      </div>,
+    );
+  }
+
   if (info.showSteps) {
     items.push(
       <div className={styles.hudItem} key="steps">
@@ -304,20 +315,6 @@ export function BrewHud({
           ) : info.stepsSummary ? (
             <span className={styles.hudValue}>{info.stepsSummary}</span>
           ) : null}
-        </div>
-      </div>,
-    );
-  }
-
-  if (info.showVolume) {
-    items.push(
-      <div className={styles.hudItem} key="volume">
-        <div className={styles.hudIconWrap}>
-          <img src={info.volumeIconSrc} alt="" className={styles.hudIcon} />
-        </div>
-        <div className={styles.hudText}>
-          <span className={styles.hudLabel}>Mennyiség</span>
-          <span className={styles.hudValue}>{info.volumeValue}</span>
         </div>
       </div>,
     );
@@ -379,8 +376,8 @@ export default function BrewJourney({
   const [selectedMethodId, setSelectedMethodId] = useState<string | null>(() => resolvedInitialMethod);
   const [volumeMl, setVolumeMl] = useState<number>(() => clampVolume(initialParams.volume ?? DEFAULT_VOLUME));
   const [hasConfirmedVolume, setHasConfirmedVolume] = useState<boolean>(() => initialParams.volume != null);
-  const [hasReviewedInstructions, setHasReviewedInstructions] = useState<boolean>(
-    () => STEP_ORDER.indexOf(initialStep) > STEP_ORDER.indexOf('instructions'),
+  const [hasUnlockedSteps, setHasUnlockedSteps] = useState<boolean>(
+    () => STEP_ORDER.indexOf(initialStep) > STEP_ORDER.indexOf('gear'),
   );
   const [currentStep, setCurrentStep] = useState<StepKey>(initialStep);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -430,7 +427,7 @@ export default function BrewJourney({
   useEffect(() => {
     if (lastMethodIdRef.current !== selectedMethodId) {
       lastMethodIdRef.current = selectedMethodId;
-      setHasReviewedInstructions(false);
+      setHasUnlockedSteps(false);
     }
   }, [selectedMethodId]);
 
@@ -479,7 +476,8 @@ export default function BrewJourney({
   const handleMethodSelect = useCallback((method: string) => {
     setSelectedMethodId(method);
     setHasConfirmedVolume(false);
-    setCurrentStep('instructions');
+    setHasUnlockedSteps(false);
+    setCurrentStep('volume');
   }, []);
 
   const handleVolumeSubmit = useCallback(
@@ -594,11 +592,11 @@ export default function BrewJourney({
     return rawId as string | number;
   }, [tea]);
   useEffect(() => {
-    if (STEP_ORDER.indexOf(currentStep) > STEP_ORDER.indexOf('instructions')) {
-      setHasReviewedInstructions(true);
-    }
     if (STEP_ORDER.indexOf(currentStep) > STEP_ORDER.indexOf('volume')) {
       setHasConfirmedVolume(true);
+    }
+    if (STEP_ORDER.indexOf(currentStep) > STEP_ORDER.indexOf('gear')) {
+      setHasUnlockedSteps(true);
     }
   }, [currentStep]);
 
@@ -649,22 +647,20 @@ export default function BrewJourney({
         />
       );
       break;
-    case 'instructions':
-      stepContent = (
-        <StepInstructions
-          methodTitle={methodTitle}
-          description={methodSummary?.oneLiner ?? methodSummary?.description ?? null}
-          steps={methodSteps}
-          onBack={goBack}
-          onNext={() => goToStep('volume')}
-        />
-      );
-      break;
     case 'volume':
       stepContent = <StepVolume defaultVolume={volumeMl} onSubmit={handleVolumeSubmit} onBack={goBack} />;
       break;
     case 'gear':
-      stepContent = <StepGearFilter info={gearInfo} onBack={goBack} onNext={() => goToStep('water')} />;
+      stepContent = (
+        <StepGearFilter
+          info={gearInfo}
+          methodTitle={methodTitle}
+          methodDescription={methodSummary?.oneLiner ?? methodSummary?.description ?? null}
+          steps={methodSteps}
+          onBack={goBack}
+          onNext={() => goToStep('water')}
+        />
+      );
       break;
     case 'water':
       stepContent = (
@@ -740,7 +736,7 @@ export default function BrewJourney({
       filterState: filterBadge,
       filterTitle,
       showMethod: Boolean(selectedMethodId),
-      showSteps: hasReviewedInstructions && normalizedSteps.length > 0,
+      showSteps: currentStep !== 'gear' && hasUnlockedSteps && normalizedSteps.length > 0,
       showVolume: hasConfirmedVolume,
       showFilter: filterBadge != null,
     }),
@@ -749,7 +745,8 @@ export default function BrewJourney({
       filterIcon,
       filterTitle,
       hasConfirmedVolume,
-      hasReviewedInstructions,
+      currentStep,
+      hasUnlockedSteps,
       methodIconSrc,
       methodIconVariant,
       methodStepsSummary,
