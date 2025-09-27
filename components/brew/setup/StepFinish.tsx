@@ -63,11 +63,11 @@ export default function StepFinish({
       </div>
 
       <footer className={styles.finishFooter}>
-        <button type="button" className={styles.secondaryButton} onClick={onReview}>
-          Értékelem
-        </button>
-        <button type="button" className={styles.primaryButton} onClick={onClose} ref={buttonRef}>
+        <button type="button" className={styles.secondaryButton} onClick={onClose}>
           Vissza a teához
+        </button>
+        <button type="button" className={styles.primaryButton} onClick={onReview} ref={buttonRef}>
+          Értékelem
         </button>
       </footer>
     </div>

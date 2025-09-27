@@ -515,7 +515,8 @@ export default function TeaModal({ tea, onClose }: Props) {
   const handleReviewCancel = useCallback(() => {
     setReviewContext(null);
     handleFaceChange('tea');
-  }, [handleFaceChange]);
+  onClose();
+  }, [handleFaceChange, onClose]);
 
   const handleReviewSubmit = useCallback(
     (submission: ReviewFormSubmission) => {
@@ -526,8 +527,9 @@ export default function TeaModal({ tea, onClose }: Props) {
       }
       setReviewContext(null);
       handleFaceChange('tea');
+      onClose();
     },
-    [handleFaceChange, reviewContext],
+    [handleFaceChange, onClose, reviewContext],
   );
 
   const rotation =
