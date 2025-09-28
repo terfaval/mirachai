@@ -49,23 +49,21 @@ export default function StepGearFilter({ info, methodTitle, methodDescription, s
 
   return (
     <div className={styles.stepWrapper}>
-      <div className={styles.gearListWrapper}>
-        {gear.length ? (
-          <ul className={styles.gearGrid}>
-            {gear.map((item) => {
-              const iconSrc = getEquipmentIcon(item);
-              return (
-                <li key={item} className={clsx(styles.volumeTile, styles.gearCard)}>
-                  {iconSrc ? <img src={iconSrc} alt="" className={styles.gearIcon} /> : null}
-                  <span className={styles.gearName}>{item}</span>
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <p className={styles.gearFallback}>Ehhez a módszerhez nincs megadott extra eszköz.</p>
-        )}
-      </div>
+      {gear.length ? (
+        <ul className={styles.gearGrid}>
+          {gear.map((item) => {
+            const iconSrc = getEquipmentIcon(item);
+            return (
+              <li key={item} className={clsx(styles.volumeTile, styles.gearCard)}>
+                {iconSrc ? <img src={iconSrc} alt="" className={styles.gearIcon} /> : null}
+                <span className={styles.gearName}>{item}</span>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className={styles.gearFallback}>Ehhez a módszerhez nincs megadott extra eszköz.</p>
+      )}
 
       <div className={styles.instructionsPanel}>
         <header className={styles.instructionsHeader}>
