@@ -971,6 +971,54 @@
   gap: 16px;
 }
 
+.mixingCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mixingTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.mixingDescription {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(249, 250, 251, 0.75);
+}
+
+.mixingList {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.mixingRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mixingLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(249, 250, 251, 0.6);
+}
+
+.mixingValue {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(249, 250, 251, 0.92);
+}
+
 .servingTitle {
   margin: 0;
   font-size: 18px;

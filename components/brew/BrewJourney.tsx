@@ -700,6 +700,9 @@ export default function BrewJourney({
           methodLabel={methodLabel}
           methodId={selectedMethodId}
           finishMessage={(methodProfile as any)?.finish_message ?? null}
+          mixing={(methodProfile as any)?.mixing ?? null}
+          gellingPct={(methodProfile as any)?.gelling_pct ?? null}
+          foamingPct={(methodProfile as any)?.foaming_pct ?? null}
           notes={notes}
           onReview={() => {
             onReview?.({

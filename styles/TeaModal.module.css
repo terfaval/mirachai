@@ -477,25 +477,26 @@
 
 .focusGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: clamp(12px, 1.8vw, 20px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 1.4vw, 16px);
 }
 
 .tasteFocusCard {
-  background: none;
-  border-radius: 20px;
-  padding: clamp(12px, 1.8vw, 20px);
-  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: clamp(10px, 1.4vw, 14px);
+  border-radius: 16px;
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+  color: rgba(15, 23, 42, 0.85);
   height: 100%;
   box-sizing: border-box;
 }
 
 .focusChartCard {
   align-items: stretch;
-  padding: clamp(12px, 1.8vw, 20px);
 }
 
 .focusChartCard > div {

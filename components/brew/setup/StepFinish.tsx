@@ -16,9 +16,29 @@ type StepFinishProps = {
   methodLabel: string;
   methodId?: string | null;
   finishMessage?: string | null;
+  mixing?: MixingInfo | null;
+  gellingPct?: GellingPct | null;
+  foamingPct?: FoamingPct | null;
   notes?: Array<string | null | undefined> | string | null;
   onReview: () => void;
   onClose: () => void;
+};
+
+type MixingInfo = {
+  type?: 'sparkling' | 'texture' | 'layered' | 'samovar' | string | null;
+  concentrate_strength?: string | null;
+  serve_dilution?: string | null;
+  base_strengths?: string | null;
+  notes?: string | null;
+};
+
+type GellingPct = {
+  agar_min_pct?: number | null;
+  agar_max_pct?: number | null;
+};
+
+type FoamingPct = {
+  lecithin_pct?: number | null;
 };
 
 function normalizeNotes(value: StepFinishProps['notes']): string[] {
@@ -39,6 +59,9 @@ export default function StepFinish({
   methodLabel,
   methodId,
   finishMessage,
+  mixing,
+  gellingPct,
+  foamingPct,
   notes,
   onReview,
   onClose,
@@ -93,10 +116,103 @@ export default function StepFinish({
           </p>
         </div>
         {finishMessage ? <p className={styles.finishMessage}>{finishMessage}</p> : null}
+        <MixingInfoCard mixing={mixing} gellingPct={gellingPct} foamingPct={foamingPct} />
         <ServingInfoCard info={servingInfo} />
       </div>
     </div>
   );
+}
+
+function MixingInfoCard({
+  mixing,
+  gellingPct,
+  foamingPct,
+}: {
+  mixing?: MixingInfo | null;
+  gellingPct?: GellingPct | null;
+  foamingPct?: FoamingPct | null;
+}) {
+  if (!mixing || typeof mixing !== 'object') {
+    return null;
+  }
+
+  const type = mixing.type ?? undefined;
+  if (type !== 'sparkling' && type !== 'texture' && type !== 'layered' && type !== 'samovar') {
+    return null;
+  }
+
+  const rows: Array<{ label: string; value: string }> = [];
+  let description: string | null = null;
+
+  const pushRow = (label: string, value?: string | null | undefined) => {
+    if (!value) {
+      return;
+    }
+    const text = typeof value === 'string' ? value.trim() : '';
+    if (text.length === 0) {
+      return;
+    }
+    rows.push({ label, value: text });
+  };
+
+  if (type === 'sparkling') {
+    description = 'Koncentrátum készítése, majd hígítás szénsavas vízzel.';
+    pushRow('Koncentrátum erősség', mixing.concentrate_strength);
+    pushRow('Felszolgálási hígítás', mixing.serve_dilution);
+  } else if (type === 'samovar') {
+    description = 'Erős koncentrátum készítése, felöntés forró vízzel.';
+    pushRow('Koncentrátum erősség', mixing.concentrate_strength);
+    pushRow('Felszolgálási hígítás', mixing.serve_dilution);
+  } else if (type === 'texture') {
+    description = 'Alapfőzet textúrázása.';
+    const minAgar = gellingPct?.agar_min_pct;
+    const maxAgar = gellingPct?.agar_max_pct;
+    if (typeof minAgar === 'number' && typeof maxAgar === 'number') {
+      rows.push({ label: 'Agar', value: `${formatPercentage(minAgar)}%–${formatPercentage(maxAgar)}%` });
+    }
+    const lecithin = foamingPct?.lecithin_pct;
+    if (typeof lecithin === 'number') {
+      rows.push({ label: 'Lecitin', value: `${formatPercentage(lecithin)}%` });
+    }
+    pushRow('Megjegyzés', mixing.notes);
+  } else if (type === 'layered') {
+    description = 'Két (vagy több) külön erősségű alap rétegezve.';
+    const baseStrengths = (mixing.base_strengths ?? '').trim();
+    if (baseStrengths.length > 0) {
+      const notes = (mixing.notes ?? '').trim();
+      rows.push({
+        label: 'Alaperősségek',
+        value: notes.length > 0 ? `${baseStrengths} — ${notes}` : baseStrengths,
+      });
+    }
+  }
+
+  if (!description || rows.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className={styles.mixingCard} aria-label="Keverés">
+      <h4 className={styles.mixingTitle}>Keverés</h4>
+      <p className={styles.mixingDescription}>{description}</p>
+      <dl className={styles.mixingList}>
+        {rows.map((row) => (
+          <div key={`${row.label}:${row.value}`} className={styles.mixingRow}>
+            <dt className={styles.mixingLabel}>{row.label}</dt>
+            <dd className={styles.mixingValue}>{row.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
+}
+
+function formatPercentage(value: number): string {
+  const normalized = Number(value);
+  if (!Number.isFinite(normalized)) {
+    return '';
+  }
+  return normalized.toString();
 }
 
 type ServingTranslations = {
