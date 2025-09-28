@@ -1,12 +1,13 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
+import { computeGramsPer100Ml, parseSimpleRatio, validateBrewProfiles } from '@/lib/brew.profileUtils';
 import { slugify } from '@/lib/normalize';
 import { readTeas, type Tea } from '@/lib/data/teas.server';
 import { normalizeGear } from '@/utils/equipment';
 import { getMethodServeModes } from '@/utils/serveModes';
 import { getMethodIcon } from '@/utils/brewMethods';
-import type { BrewMethodSummary } from '@/types/brewMethods';
+import type { BrewMethodMixingSummary, BrewMethodRatioSummary, BrewMethodSummary } from '@/types/brewMethods';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const BREW_PROFILES_PATH = path.join(DATA_DIR, 'brew_profiles.json');
@@ -40,7 +41,9 @@ async function readJsonFile<T>(filePath: string): Promise<T> {
 }
 
 export async function readBrewProfiles(): Promise<BrewProfileDocument[]> {
-  return readJsonFile<BrewProfileDocument[]>(BREW_PROFILES_PATH);
+  const profiles = await readJsonFile<BrewProfileDocument[]>(BREW_PROFILES_PATH);
+  validateBrewProfiles(profiles, 'lib/data/brew.server.ts');
+  return profiles;
 }
 
 export async function readBrewDescriptions(): Promise<BrewDescriptionDocument[]> {
@@ -112,6 +115,58 @@ function findProfileForTea(
   return undefined;
 }
 
+function buildRatioSummary(method: BrewProfileMethod): BrewMethodRatioSummary | undefined {
+  const ratioRaw = (method as any)?.ratio;
+  if (typeof ratioRaw !== 'string' || ratioRaw.trim().length === 0) {
+    return undefined;
+  }
+  const ratioText = ratioRaw.trim();
+  const parsed = parseSimpleRatio(ratioText);
+  const gPer100 = computeGramsPer100Ml(parsed);
+  return {
+    text: ratioText,
+    gPer100ml: gPer100 ?? null,
+  };
+}
+
+function buildMixingSummary(method: BrewProfileMethod): BrewMethodMixingSummary | null {
+  const raw = (method as any)?.mixing;
+  if (!raw || typeof raw !== 'object') {
+    return null;
+  }
+  const type = String((raw as any).type ?? '').trim().toLowerCase();
+  if (type === 'sparkling') {
+    return {
+      type: 'sparkling',
+      concentrateStrength: typeof (raw as any).concentrate_strength === 'string'
+        ? (raw as any).concentrate_strength
+        : null,
+      serveDilution: typeof (raw as any).serve_dilution === 'string' ? (raw as any).serve_dilution : null,
+    };
+  }
+  if (type === 'texture') {
+    const gelling = (method as any)?.gelling_pct ?? {};
+    const foaming = (method as any)?.foaming_pct ?? {};
+    const agarMin = typeof gelling?.agar_min_pct === 'number' ? gelling.agar_min_pct : null;
+    const agarMax = typeof gelling?.agar_max_pct === 'number' ? gelling.agar_max_pct : null;
+    const lecithin = typeof foaming?.lecithin_pct === 'number' ? foaming.lecithin_pct : null;
+    return {
+      type: 'texture',
+      agarMinPct: agarMin,
+      agarMaxPct: agarMax,
+      lecithinPct: lecithin,
+    };
+  }
+  if (type === 'layered') {
+    return {
+      type: 'layered',
+      baseStrengths: typeof (raw as any).base_strengths === 'string' ? (raw as any).base_strengths : null,
+      notes: typeof (raw as any).notes === 'string' ? (raw as any).notes : null,
+    };
+  }
+  return null;
+}
+
 function buildMethodSummaries(
   profile: BrewProfileDocument,
   descriptions: BrewDescriptionDocument[],
@@ -171,6 +226,8 @@ function buildMethodSummaries(
         tea,
       ),
       icon: getMethodIcon(methodId),
+      ratio: buildRatioSummary(method),
+      mixing: buildMixingSummary(method),
     });
   }
 

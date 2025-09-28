@@ -2943,7 +2943,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -2967,7 +2967,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -3627,7 +3632,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -3651,7 +3656,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -3921,7 +3931,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -3945,7 +3955,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -4280,7 +4295,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -4304,7 +4319,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -4575,7 +4595,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -4599,7 +4619,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -4799,7 +4824,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -4823,7 +4848,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -5080,7 +5110,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -5104,7 +5134,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -5361,7 +5396,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -5385,7 +5420,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -6371,7 +6411,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -6395,7 +6435,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -9855,7 +9900,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -9879,7 +9924,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -11096,7 +11146,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -11120,7 +11170,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -11421,7 +11476,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -11445,7 +11500,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -11702,7 +11762,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -11726,7 +11786,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -12061,7 +12126,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -12085,7 +12150,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -14312,7 +14382,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -14336,7 +14406,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -14664,7 +14739,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -14688,7 +14763,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -14889,7 +14969,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -14913,7 +14993,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -15248,7 +15333,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -15272,7 +15357,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -16338,7 +16428,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -16362,7 +16452,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -16662,7 +16757,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -16686,7 +16781,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -18037,7 +18137,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -18061,7 +18161,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -19405,7 +19510,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -19429,7 +19534,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -19764,7 +19874,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -19788,7 +19898,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -21181,7 +21296,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -21205,7 +21320,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -22554,7 +22674,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -22578,7 +22698,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -23465,7 +23590,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -23489,7 +23614,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -26961,7 +27091,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -26985,7 +27115,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -27316,7 +27451,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -27340,7 +27475,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -30610,7 +30750,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -30634,7 +30774,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -30863,7 +31008,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -30887,7 +31032,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -33104,7 +33254,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -33128,7 +33278,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -34237,7 +34392,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -34261,7 +34416,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -34667,7 +34827,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -34691,7 +34851,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -34963,7 +35128,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -34987,7 +35152,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -35322,7 +35492,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -35346,7 +35516,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -35618,7 +35793,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -35642,7 +35817,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -35873,7 +36053,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -35897,7 +36077,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -37141,7 +37326,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -37165,7 +37350,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",
@@ -37926,7 +38116,7 @@
         "allow_no_filter": false,
         "tempC": 95,
         "steepMin": "5-10",
-        "ratio": "erős koncentrátum: 1:5–1:7; fogyasztáskor 1 rész tea + 2–3 rész forró víz",
+        "ratio": "9 g : 250 ml",
         "yield_ml": 300,
         "water_type": "frissen forralt, szűrt",
         "leaf_fragmentation": "levél",
@@ -37950,7 +38140,12 @@
         ],
         "notes": [
           "Cukor/citrom opcionális; fekete teák a legklasszikusabbak."
-        ]
+        ],
+        "mixing": {
+        "type": "samovar",
+        "concentrate_strength": "1 : 3–1 : 5",
+        "serve_dilution": "1 : 2–4 (concentrate : hot water)"
+      }
       },
       {
         "method_id": "smoked_tea",

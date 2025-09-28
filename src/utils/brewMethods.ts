@@ -1,20 +1,16 @@
 import brewProfiles from '@/data/brew_profiles.json';
 import brewDescriptions from '@/data/brew_descriptions.json';
+import { computeGramsPer100Ml, parseSimpleRatio, validateBrewProfiles } from '@/lib/brew.profileUtils';
+import type {
+  BrewMethodMixingSummary,
+  BrewMethodRatioSummary,
+  BrewMethodSummary,
+} from '@/types/brewMethods';
 import type { Tea } from '@/utils/filter';
 import { normalizeGear } from '@/utils/equipment';
-import { getMethodServeModes, type ServeModeMeta } from './serveModes';
+import { getMethodServeModes } from './serveModes';
 
-export type BrewMethodSummary = {
-  id: string;
-  name: string;
-  description?: string;
-  oneLiner?: string;
-  gear: string[];
-  equipment: string[];
-  serveModes: ServeModeMeta[];
-  icon: string;
-  stepsText?: string;
-};
+export type { BrewMethodSummary } from '@/types/brewMethods';
 
 type BrewProfileDocument = (typeof brewProfiles)[number];
 type BrewProfileMethod = BrewProfileDocument['methods'] extends Array<infer T>
@@ -23,6 +19,8 @@ type BrewProfileMethod = BrewProfileDocument['methods'] extends Array<infer T>
     : never
   : never;
 type BrewDescriptionDocument = (typeof brewDescriptions)[number];
+
+validateBrewProfiles(brewProfiles, 'src/utils/brewMethods.ts');
 
 const METHOD_ICON_MAP: Record<string, string> = {
   ayurvedic_decoction: '/methods/icon_ayurvedic_decoction.svg',
@@ -53,6 +51,58 @@ const METHOD_ICON_FALLBACK = '/methods/icon_standard_hot.svg';
 export function getMethodIcon(methodId: string): string {
   const normalized = methodId.trim().toLowerCase();
   return METHOD_ICON_MAP[normalized] ?? METHOD_ICON_FALLBACK;
+}
+
+function buildRatioSummary(method: BrewProfileMethod): BrewMethodRatioSummary | undefined {
+  const ratioRaw = (method as any)?.ratio;
+  if (typeof ratioRaw !== 'string' || ratioRaw.trim().length === 0) {
+    return undefined;
+  }
+  const ratioText = ratioRaw.trim();
+  const parsed = parseSimpleRatio(ratioText);
+  const gPer100 = computeGramsPer100Ml(parsed);
+  return {
+    text: ratioText,
+    gPer100ml: gPer100 ?? null,
+  };
+}
+
+function buildMixingSummary(method: BrewProfileMethod): BrewMethodMixingSummary | null {
+  const raw = (method as any)?.mixing;
+  if (!raw || typeof raw !== 'object') {
+    return null;
+  }
+  const type = String((raw as any).type ?? '').trim().toLowerCase();
+  if (type === 'sparkling') {
+    return {
+      type: 'sparkling',
+      concentrateStrength: typeof (raw as any).concentrate_strength === 'string'
+        ? (raw as any).concentrate_strength
+        : null,
+      serveDilution: typeof (raw as any).serve_dilution === 'string' ? (raw as any).serve_dilution : null,
+    };
+  }
+  if (type === 'texture') {
+    const gelling = (method as any)?.gelling_pct ?? {};
+    const foaming = (method as any)?.foaming_pct ?? {};
+    const agarMin = typeof gelling?.agar_min_pct === 'number' ? gelling.agar_min_pct : null;
+    const agarMax = typeof gelling?.agar_max_pct === 'number' ? gelling.agar_max_pct : null;
+    const lecithin = typeof foaming?.lecithin_pct === 'number' ? foaming.lecithin_pct : null;
+    return {
+      type: 'texture',
+      agarMinPct: agarMin,
+      agarMaxPct: agarMax,
+      lecithinPct: lecithin,
+    };
+  }
+  if (type === 'layered') {
+    return {
+      type: 'layered',
+      baseStrengths: typeof (raw as any).base_strengths === 'string' ? (raw as any).base_strengths : null,
+      notes: typeof (raw as any).notes === 'string' ? (raw as any).notes : null,
+    };
+  }
+  return null;
 }
 
 export function getBrewMethodsForTea(tea: Tea): BrewMethodSummary[] {
@@ -122,6 +172,8 @@ export function getBrewMethodsForTea(tea: Tea): BrewMethodSummary[] {
         tea,
       ),
       icon: getMethodIcon(methodId),
+      ratio: buildRatioSummary(method),
+      mixing: buildMixingSummary(method),
       stepsText: typeof description?.steps_text === 'string' ? description.steps_text : undefined,
     });
   }

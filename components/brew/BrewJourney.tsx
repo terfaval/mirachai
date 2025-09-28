@@ -21,6 +21,7 @@ import StepSteep from './setup/StepSteep';
 import StepVolume from './setup/StepVolume';
 import StepWaterAndLeaf from './setup/StepWaterAndLeaf';
 import brewProfiles from '@/data/brew_profiles.json';
+import { validateBrewProfiles } from '@/lib/brew.profileUtils';
 import styles from '@/styles/BrewJourney.module.css';
 import { slugify } from '@/lib/normalize';
 import type { Tea } from '@/utils/filter';
@@ -30,6 +31,8 @@ import { buildIngredients } from '@/utils/teaTransforms';
 import { normalizeInstructionSteps } from './normalizeSteps';
 
 type StepKey = 'method' | 'volume' | 'gear' | 'water' | 'steep' | 'finish';
+
+validateBrewProfiles(brewProfiles, 'components/brew/BrewJourney.tsx');
 
 const STEP_ORDER: StepKey[] = ['method', 'volume', 'gear', 'water', 'steep', 'finish'];
 const DEFAULT_VOLUME = 250;
@@ -695,6 +698,7 @@ export default function BrewJourney({
         <StepFinish
           teaName={tea.name}
           methodLabel={methodLabel}
+          methodId={selectedMethodId}
           finishMessage={(methodProfile as any)?.finish_message ?? null}
           notes={notes}
           onReview={() => {

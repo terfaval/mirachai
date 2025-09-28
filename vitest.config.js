@@ -7,6 +7,7 @@ export default defineConfig({
       "@/components/PagerDots": path.resolve(__dirname, "/components/PagerDots.tsx"),
       "@/components": path.resolve(__dirname, "components"),
       "@/data": path.resolve(__dirname, "data"),
+      "@/lib": path.resolve(__dirname, "lib"),
       "@/utils/teaTransforms": path.resolve(__dirname, "src/utils/teaTransforms"),
       "@/utils/brewMethods": path.resolve(__dirname, "src/utils/brewMethods"),
       "@/utils/serveModes": path.resolve(__dirname, "src/utils/serveModes"),

@@ -1080,6 +1080,70 @@
   color: rgba(17,24,39,0.7);
 }
 
+.brewMethodMetaBlock {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.brewMethodMetaLabel {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(17,24,39,0.45);
+}
+
+.brewMethodRatioValues {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.brewMethodRatioMain {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.brewMethodRatioHint {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(17,24,39,0.6);
+}
+
+.brewMethodMetaList {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brewMethodMetaRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brewMethodMetaRow dt {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.brewMethodMetaRow dd {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(17,24,39,0.75);
+  text-align: right;
+}
+
 .brewMethodEquipment {
   display: flex;
   flex-direction: column;

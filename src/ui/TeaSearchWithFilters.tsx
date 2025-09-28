@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import teasJson from "../../data/teas.json";
 import brewProfilesJson from "../../data/brew_profiles.json";
+import { validateBrewProfiles } from "@/lib/brew.profileUtils";
 import FilterPanel from "./filters/FilterPanel";
 import {
   type NormalizeResult,
@@ -55,6 +56,8 @@ const filterUnique = <T extends string>(values: readonly T[], allowed: Set<T>): 
 
 const defaultTeas = teasJson as RawTea[];
 const defaultBrewProfiles = brewProfilesJson as BrewProfileDocument[];
+
+validateBrewProfiles(defaultBrewProfiles, "src/ui/TeaSearchWithFilters.tsx");
 
 export default function TeaSearchWithFilters({ teas, brewProfiles }: Props) {
   const teaSource = teas ?? defaultTeas;

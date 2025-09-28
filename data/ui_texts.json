@@ -10,5 +10,32 @@
       },
       "finished": ["Fogyaszd egészséggel!", "Egészségedre!", "Kész is – jó teázást!"]
     }
+  },
+  "serving": {
+    "title": "Hogyan fogyaszd?",
+    "temperature": {
+      "label": "Hőmérséklet",
+      "hot": "Meleg",
+      "cold": "Hideg",
+      "either": "Meleg vagy hideg"
+    },
+    "sweetening": {
+      "label": "Édesítés",
+      "unsweetened": "Édesítés nélkül",
+      "light_honey": "Kevés mézzel",
+      "sugar_syrup": "Cukorsziruppal",
+      "fruit_slices": "Gyümölcsszeletekkel",
+      "no_recommendation": "Nincs ajánlás"
+    },
+    "garnish": {
+      "label": "Díszítés",
+      "none": "Nincs",
+      "mint_leaf": "Mentalevél",
+      "citrus": "Citrus",
+      "optional": "Opcionális"
+    },
+    "notes": {
+      "label": "Megjegyzés"
+    }
   }
 }

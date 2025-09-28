@@ -967,6 +967,48 @@
   color: rgba(249, 250, 251, 0.75);
 }
 
+.servingCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.servingTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.servingList {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.servingRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.servingLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(249, 250, 251, 0.6);
+}
+
+.servingValue {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(249, 250, 251, 0.92);
+}
+
 @media (min-width: 768px) {
   .journeyContent[data-external-hud='true'] {
     flex-direction: column;

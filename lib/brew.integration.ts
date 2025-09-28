@@ -1,3 +1,5 @@
+import { computeGramsPer100Ml, parseSimpleRatio, validateBrewProfiles } from './brew.profileUtils';
+
 /**
  * Brew integration facade
  * Egységes belépési pont a UI-nak: method-list, plan build, equipment howto.
@@ -51,14 +53,16 @@ type TeaProfiles = Array<{
 type BrewDescriptions = Array<{
   tea: string; method: string; one_liner?: string; steps_text?: string;
 }>;
+type EquipmentItem = { code: string; name: string; desc?: string; steps?: string[] };
 
 let _profiles: TeaProfiles | null = null;
 let _descs: BrewDescriptions | null = null;
-let _equipment: Array<{code:string; name:string; desc?:string; steps?:string[]}> | null = null;
+let _equipment: Array<EquipmentItem> | null = null;
 
 async function getProfilesJSON(): Promise<TeaProfiles> {
   if (_profiles) return _profiles;
   _profiles = await loadJSON<TeaProfiles>('brew_profiles.json');
+  validateBrewProfiles(_profiles, 'lib/brew.integration.ts');
   return _profiles!;
 }
 async function getDescriptionsJSON(): Promise<BrewDescriptions> {
@@ -67,9 +71,9 @@ async function getDescriptionsJSON(): Promise<BrewDescriptions> {
   catch { _descs = []; }
   return _descs!;
 }
-async function getEquipmentJSON() {
+async function getEquipmentJSON(): Promise<Array<EquipmentItem>> {
   if (_equipment) return _equipment;
-  try { _equipment = await loadJSON<typeof _equipment>('equipment_guide.json'); }
+  try { _equipment = await loadJSON<Array<EquipmentItem>>('equipment_guide.json'); }
   catch { _equipment = []; }
   return _equipment!;
 }
@@ -107,27 +111,11 @@ export async function listMethodsForTea(teaSlug: string): Promise<Array<{id:stri
   return out;
 }
 
-/** Ratio string → g/100ml + opcionális teaspoon gramm */
-function parseRatioToGramsPer100ml(ratio: string): { g_per_100ml: number | null; tsp_g_hint?: number | null } {
-  const s = ratio.toLowerCase();
-
-  // 1) „X g / Y ml” (bárhol a szövegben, akár zárójelben)
-  let m = s.match(/([\d.,]+)\s*g\s*\/\s*([\d.,]+)\s*ml/);
-  if (m) {
-    const g = parseFloat(m[1].replace(',','.'));
-    const ml = parseFloat(m[2].replace(',','.'));
-    if (g > 0 && ml > 0) return { g_per_100ml: (g / ml) * 100 };
-  }
-
-  // 2) „1 tk (~2 g) / 250 ml”
-  m = s.match(/~\s*([\d.,]+)\s*g\s*\/\s*250\s*ml/);
-  if (m) {
-    const g = parseFloat(m[1].replace(',','.'));
-    return { g_per_100ml: (g / 250) * 100, tsp_g_hint: g };
-  }
-
-  // 3) ha csak arány (1:6 stb.) lenne, de nincs g/ml konkrétan → nem számolunk (adatainkban van g/ml)
-  return { g_per_100ml: null };
+/** Ratio string → g/100ml (gramm/ml alapú) */
+function parseRatioToGramsPer100ml(ratio: string): { g_per_100ml: number | null; tsp_g_hint: number | null } {
+  const parsed = parseSimpleRatio(ratio);
+  const gPer100 = computeGramsPer100Ml(parsed);
+  return { g_per_100ml: gPer100 ?? null, tsp_g_hint: null };
 }
 
 /** "a-b" perc/szám → másodperc (középérték), multi infusions → CSV hint */

@@ -1,3 +1,5 @@
+import { computeGramsPer100Ml, parseSimpleRatio, validateBrewProfiles } from '@/lib/brew.profileUtils';
+
 /*
  * Brewing data integration API
  * Provides functions to access tea brewing profiles and equipment guides.
@@ -78,6 +80,115 @@ function slugify(str: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+type RawBrewProfileDocument = {
+  id?: number | string;
+  slug?: string;
+  name?: string;
+  methods?: Array<Record<string, unknown>>;
+};
+
+function parseSteepTimeSeconds(method: Record<string, unknown>): number | undefined {
+  if (typeof method.time_s === 'number' && Number.isFinite(method.time_s)) {
+    return method.time_s;
+  }
+  if (Array.isArray(method.multi_infusions) && method.multi_infusions.length) {
+    return undefined;
+  }
+  const raw = method.steepMin;
+  if (typeof raw === 'number' && Number.isFinite(raw)) {
+    return Math.round(raw * 60);
+  }
+  if (typeof raw === 'string' && raw.trim().length > 0) {
+    const rangeMatch = raw.match(/(\d+(?:[.,]\d+)?)\s*[-–]\s*(\d+(?:[.,]\d+)?)/);
+    if (rangeMatch) {
+      const a = Number.parseFloat(rangeMatch[1].replace(',', '.'));
+      const b = Number.parseFloat(rangeMatch[2].replace(',', '.'));
+      if (Number.isFinite(a) && Number.isFinite(b)) {
+        return Math.round(((a + b) / 2) * 60);
+      }
+    }
+    const single = Number.parseFloat(raw.replace(',', '.'));
+    if (Number.isFinite(single)) {
+      return Math.round(single * 60);
+    }
+  }
+  return undefined;
+}
+
+function normalizeBrewDocsFromJson(raw: RawBrewProfileDocument[]): BrewDoc[] {
+  return raw.map((profile) => {
+    const teaName = typeof profile.name === 'string' && profile.name.trim().length > 0
+      ? profile.name.trim()
+      : String(profile.id ?? '').trim() || 'Ismeretlen tea';
+    const slugSource = (profile.slug ?? profile.id ?? teaName) as string | number;
+    const teaSlug = slugify(String(slugSource ?? teaName));
+    const seenMethods = new Set<string>();
+    const methods = Array.isArray(profile.methods) ? profile.methods : [];
+    const normalizedMethods: BrewProfile[] = [];
+
+    for (const entry of methods) {
+      if (!entry || typeof entry !== 'object') {
+        continue;
+      }
+      const methodIdRaw = (entry as any).method_id;
+      const methodId = typeof methodIdRaw === 'string' ? methodIdRaw.trim() : String(methodIdRaw ?? '').trim();
+      if (!methodId || seenMethods.has(methodId)) {
+        continue;
+      }
+
+      const ratioText = typeof (entry as any).ratio === 'string' ? (entry as any).ratio : null;
+      const ratioParsed = parseSimpleRatio(ratioText);
+      const ratioPer100 = computeGramsPer100Ml(ratioParsed);
+      if (ratioPer100 == null) {
+        continue;
+      }
+
+      const tempRaw = (entry as any).tempC;
+      const temp = typeof tempRaw === 'number'
+        ? tempRaw
+        : Number.parseFloat(String(tempRaw ?? ''));
+      const multiInfusions = Array.isArray((entry as any).multi_infusions)
+        ? (entry as any).multi_infusions
+            .map((value: unknown) => Number(value))
+            .filter((value: number) => Number.isFinite(value) && value > 0)
+        : undefined;
+      const timeSeconds = parseSteepTimeSeconds(entry as Record<string, unknown>);
+      const rounding = typeof (entry as any).rounding_g === 'number' ? (entry as any).rounding_g : 0.1;
+      const finishMessage = typeof (entry as any).finish_message === 'string' ? (entry as any).finish_message : undefined;
+      const flavorSuggestions = Array.isArray((entry as any).flavor_suggestions)
+        ? ((entry as any).flavor_suggestions as FlavorSuggestion[])
+        : undefined;
+      const targetVolume = typeof (entry as any).yield_ml === 'number' ? (entry as any).yield_ml : undefined;
+
+      normalizedMethods.push({
+        profile_id: methodId,
+        label: typeof (entry as any).title === 'string' && (entry as any).title.trim().length
+          ? (entry as any).title.trim()
+          : methodId,
+        equipment: [],
+        water_temp_c: Number.isFinite(temp) ? temp : 95,
+        ratio_g_per_100ml: ratioPer100,
+        time_s: timeSeconds,
+        time_h: typeof (entry as any).time_h === 'string' ? (entry as any).time_h : undefined,
+        multi_infusions: multiInfusions && multiInfusions.length ? multiInfusions : undefined,
+        rounding_g: rounding,
+        notes_per_step: undefined,
+        finish_message: finishMessage,
+        flavor_suggestions: flavorSuggestions,
+        target_volume_ml_default: targetVolume,
+      });
+      seenMethods.add(methodId);
+    }
+
+    return {
+      tea_slug: teaSlug || slugify(teaName),
+      tea_name: teaName,
+      grams_per_tsp: { measured: null, estimated: 2 },
+      profiles: normalizedMethods,
+    };
+  });
+}
+
 function deriveFromTeas(teas: any[]): BrewDoc[] {
   const docs: BrewDoc[] = teas.map((t) => {
     const slug = slugify(t.name);
@@ -113,17 +224,12 @@ function deriveFromTeas(teas: any[]): BrewDoc[] {
 async function loadBrewDocs(basePath = "/data"): Promise<BrewDoc[]> {
   if (!brewCache[basePath]) {
     try {
-      const docs = await loadJSON<any[]>(basePath, "brew_profiles.json");
-      const valid =
-        Array.isArray(docs) &&
-        docs.length > 0 &&
-        typeof docs[0]?.tea_slug === "string" &&
-        Array.isArray(docs[0]?.profiles);
-      if (valid) {
-        brewCache[basePath] = docs as BrewDoc[];
-      } else {
+      const docs = await loadJSON<RawBrewProfileDocument[]>(basePath, "brew_profiles.json");
+      if (!Array.isArray(docs)) {
         throw new Error("invalid");
       }
+      validateBrewProfiles(docs, 'src/brewing/index.ts');
+      brewCache[basePath] = normalizeBrewDocsFromJson(docs);
     } catch {
       const teas = await loadJSON<any[]>(basePath, "teas.json");
       brewCache[basePath] = deriveFromTeas(teas);
