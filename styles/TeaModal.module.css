@@ -416,11 +416,11 @@
 }
 
 .tasteChartColumn {
-  flex: 0 0 auto;
+  flex: 0 0 clamp(180px, 18vw, 240px);
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: clamp(8px, 1.2vw, 12px);
+  justify-content: center;
+  padding: clamp(6px, 1vw, 10px);
 }
 
 .tasteChartColumn > div {
@@ -431,17 +431,17 @@
 .tasteHighlightsGrid {
   flex: 1 1 260px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: clamp(12px, 1.8vw, 20px);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(8px, 1.4vw, 16px);
   align-content: flex-start;
 }
 
 .tasteHighlightCard {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: clamp(12px, 1.6vw, 18px);
-  border-radius: 18px;
+  gap: 10px;
+  padding: clamp(10px, 1.4vw, 14px);
+  border-radius: 16px;
   background: rgba(248, 250, 252, 0.9);
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
@@ -449,9 +449,9 @@
 }
 
 .tasteHighlightIcon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
   background-color: var(--taste-accent, rgba(15, 23, 42, 0.7));
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
@@ -463,7 +463,7 @@
 
 .tasteHighlightText {
   font-family: 'Lato', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.3;
   text-transform: lowercase;
 }
