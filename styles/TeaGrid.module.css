@@ -37,6 +37,18 @@
   width: 100%;
 }
 
+@media (min-width: 1400px) {
+  .container {
+    --grid-w: min(62vw, 1120px);;
+  }
+}
+
+@media (min-width: 1800px) {
+  .container {
+    --grid-w: min(54vw, 1180px);
+  }
+}
+
 .activeSelectionBar {
   position: fixed;
   left: 50%;

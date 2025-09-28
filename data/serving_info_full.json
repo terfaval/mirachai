@@ -1,0 +1,128 @@
+{
+  "experimental_texture": {
+    "temperature": "either",
+    "sweetening": "no_recommendation",
+    "garnish": "optional",
+    "notes": "Textúra-kísérlet: a szervírozás módszerfüggő."
+  },
+  "hot_standard": {
+    "temperature": "hot",
+    "sweetening": "unsweetened",
+    "garnish": "none",
+    "notes": "Fogyasztás melegen, tisztán."
+  },
+  "tea_concentrate": {
+    "temperature": "either",
+    "sweetening": "sugar_syrup",
+    "garnish": "optional",
+    "notes": "Koncentrátum: 1 rész tea + 2–4 rész alap (tej/szóda/koktél)."
+  },
+  "infused_spirits": {
+    "temperature": "either",
+    "sweetening": "no_recommendation",
+    "garnish": "optional",
+    "notes": "Koktél-/mocktail-alap; a végital receptje határozza meg."
+  },
+  "tonic_style": {
+    "temperature": "either",
+    "sweetening": "sugar_syrup",
+    "garnish": "citrus",
+    "notes": "Tonikos/herbál jelleg; enyhe édesítés és citrus jól áll."
+  },
+  "fermentea": {
+    "temperature": "cold",
+    "sweetening": "no_recommendation",
+    "garnish": "optional",
+    "notes": "Erjesztett, enyhén szénsavas; jól behűtve tálald."
+  },
+  "iced_flash_chill": {
+    "temperature": "cold",
+    "sweetening": "light_honey",
+    "garnish": "mint_leaf",
+    "notes": "Jegesre hűtve, kevés mézzel és mentalevéllel."
+  },
+  "layered_brew": {
+    "temperature": "cold",
+    "sweetening": "sugar_syrup",
+    "garnish": "optional",
+    "notes": "Rétegezve, sziruppal és jéggel."
+  },
+  "sparkling_tea": {
+    "temperature": "cold",
+    "sweetening": "fruit_slices",
+    "garnish": "citrus",
+    "notes": "Szódával hígítva, citrus/gyümölcs díszítéssel."
+  },
+  "coldbrew": {
+    "temperature": "cold",
+    "sweetening": "sugar_syrup",
+    "garnish": "citrus",
+    "notes": "Hűtve, enyhén édesítve (szirup), citruskarikával."
+  },
+  "nitro_tea": {
+    "temperature": "cold",
+    "sweetening": "unsweetened",
+    "garnish": "none",
+    "notes": "Nitrogénnel csapolva, krémes textúrával; tisztán ajánlott."
+  },
+  "samovar": {
+    "temperature": "hot",
+    "sweetening": "unsweetened",
+    "garnish": "optional",
+    "notes": "Forrón, vízzel hígítva; citrus/cukor opcionális."
+  },
+  "smoked_tea": {
+    "temperature": "hot",
+    "sweetening": "unsweetened",
+    "garnish": "none",
+    "notes": "Forrón, füstölt pohárban; édesítés nem szükséges."
+  },
+  "ayurvedic_decoction": {
+    "temperature": "hot",
+    "sweetening": "sugar_syrup",
+    "garnish": "optional",
+    "notes": "Melegen; méz/citrom/tej ízlés szerint."
+  },
+  "wellness_shot": {
+    "temperature": "either",
+    "sweetening": "sugar_syrup",
+    "garnish": "citrus",
+    "notes": "Kis adagban; citrom/méz kiegyensúlyozhatja a csípősséget."
+  },
+  "latte": {
+    "temperature": "either",
+    "sweetening": "no_recommendation",
+    "garnish": "optional",
+    "notes": "Nincs specifikus tálalási ajánlás."
+  },
+  "stovetop_chai": {
+    "temperature": "either",
+    "sweetening": "no_recommendation",
+    "garnish": "optional",
+    "notes": "Nincs specifikus tálalási ajánlás."
+  },
+  "yerba_mate": {
+    "temperature": "hot",
+    "sweetening": "unsweetened",
+    "garnish": "none",
+    "notes": "~75–80°C vízzel, tisztán; opcionálisan cukorral."
+  },
+  "moroccan_mint": {
+    "temperature": "either",
+    "sweetening": "no_recommendation",
+    "garnish": "optional",
+    "notes": "Nincs specifikus tálalási ajánlás."
+  },
+  "gongfu": {
+    "temperature": "either",
+    "sweetening": "no_recommendation",
+    "garnish": "optional",
+    "notes": "Nincs specifikus tálalási ajánlás."
+  },
+  "matcha_whisking": {
+    "temperature": "either",
+    "sweetening": "no_recommendation",
+    "garnish": "optional",
+    "notes": "Nincs specifikus tálalási ajánlás."
+  }
+}
