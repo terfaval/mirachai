@@ -41,6 +41,7 @@ interface Props {
   tooltipFormatter?: (entries: ChartItem[]) => TooltipListContent | null; // egyedi tooltip
   tooltipDelayMs?: number;       // késleltetés a tooltip megjelenítése előtt
   triggerOnContainerHover?: boolean; // teljes konténerre figyeli a hover eseményt
+  disableTooltip?: boolean;      // tooltip kikapcsolása
 }
 
 const ORDER = [
@@ -96,6 +97,7 @@ export default function TasteChart({
   tooltipFormatter,
   tooltipDelayMs = 0,
   triggerOnContainerHover = false,
+  disableTooltip = false,
 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
@@ -120,8 +122,13 @@ export default function TasteChart({
   const hoverDelay = Math.max(0, tooltipDelayMs ?? 0);
   const isContainerHoverTrigger =
     triggerOnContainerHover && typeof tooltipFormatter === 'function';
+  const tooltipEnabled = !disableTooltip;
 
   const clearHoverTimeout = () => {
+    if (!tooltipEnabled) {
+      return;
+    }
+
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
       hoverTimeoutRef.current = null;
@@ -173,11 +180,19 @@ export default function TasteChart({
     if (!tooltipFormatter) {
       return;
     }
+    if (!tooltipEnabled) {
+      return;
+    }
+
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
       hoverTimeoutRef.current = null;
     }
     const formatted = tooltipFormatter(sortedEntries);
+    if (!tooltipEnabled) {
+      return;
+    }
+
     if (formatted && formatted.lines.length > 0) {
       setTooltip({ type: 'list', ...formatted });
     } else {
@@ -230,7 +245,7 @@ export default function TasteChart({
   }, []);
 
   const handleTooltipEnter = (entry: ChartItem) => {
-    if (isContainerHoverTrigger) {
+    if (!tooltipEnabled || isContainerHoverTrigger) {
       return;
     }
 
@@ -254,12 +269,16 @@ export default function TasteChart({
   };
 
   const hideTooltip = () => {
+    if (!tooltipEnabled) {
+      return;
+    }
+
     clearHoverTimeout();
     setTooltip(null);
   };
 
   const handleContainerEnter = () => {
-    if (!isContainerHoverTrigger) {
+    if (!tooltipEnabled || !isContainerHoverTrigger) {
       return;
     }
     clearHoverTimeout();
@@ -269,7 +288,7 @@ export default function TasteChart({
   };
 
   const handleContainerLeave = () => {
-    if (!isContainerHoverTrigger) {
+    if (!tooltipEnabled || !isContainerHoverTrigger) {
       return;
     }
     hideTooltip();
@@ -297,9 +316,16 @@ export default function TasteChart({
                 r={pr}
                 fill={fill}
                 fillOpacity={opacity}
-                onMouseEnter={!isContainerHoverTrigger && isTop ? () => handleTooltipEnter(p) : undefined
+                onMouseEnter={
+                  tooltipEnabled && !isContainerHoverTrigger && isTop
+                    ? () => handleTooltipEnter(p)
+                    : undefined
                 }
-                onMouseLeave={!isContainerHoverTrigger && isTop ? hideTooltip : undefined}
+                onMouseLeave={
+                  tooltipEnabled && !isContainerHoverTrigger && isTop
+                    ? hideTooltip
+                    : undefined
+                }
               />
             );
           })}
@@ -370,9 +396,13 @@ export default function TasteChart({
               d={buildArc(baseInner, overlayOuter, startAngle, endAngle)}
               fill={p.color}
               onMouseEnter={
-                !isContainerHoverTrigger ? () => handleTooltipEnter(p) : undefined
+                tooltipEnabled && !isContainerHoverTrigger
+                  ? () => handleTooltipEnter(p)
+                  : undefined
               }
-              onMouseLeave={!isContainerHoverTrigger ? hideTooltip : undefined}
+              onMouseLeave={
+                tooltipEnabled && !isContainerHoverTrigger ? hideTooltip : undefined
+              }
             />
           )}
         </g>
@@ -392,8 +422,12 @@ export default function TasteChart({
     <div
       className={containerClassName}
       style={containerStyle}
-      onMouseEnter={isContainerHoverTrigger ? handleContainerEnter : undefined}
-      onMouseLeave={isContainerHoverTrigger ? handleContainerLeave : undefined}
+      onMouseEnter={
+        tooltipEnabled && isContainerHoverTrigger ? handleContainerEnter : undefined
+      }
+      onMouseLeave={
+        tooltipEnabled && isContainerHoverTrigger ? handleContainerLeave : undefined
+      }
     >
       <svg
         width={size}
@@ -428,13 +462,19 @@ export default function TasteChart({
               }
               aria-label={p.label}
               title={p.label}
-              onMouseEnter={!isContainerHoverTrigger ? () => handleTooltipEnter(p) : undefined}
-              onMouseLeave={!isContainerHoverTrigger ? hideTooltip : undefined}
+              onMouseEnter={
+                tooltipEnabled && !isContainerHoverTrigger
+                  ? () => handleTooltipEnter(p)
+                  : undefined
+              }
+              onMouseLeave={
+                tooltipEnabled && !isContainerHoverTrigger ? hideTooltip : undefined
+              }
             />
           ) : null;
         })}
 
-      {tooltip?.type === 'default' && (
+      {tooltipEnabled && tooltip?.type === 'default' && (
         <div
           className={
             [styles.tooltip, compactTooltip ? styles.tooltipCompact : null]
@@ -465,7 +505,7 @@ export default function TasteChart({
         </div>
       )}
     
-    {tooltip?.type === 'list' && tooltip.lines.length > 0 && (
+      {tooltipEnabled && tooltip?.type === 'list' && tooltip.lines.length > 0 && (
         <div
           className={
             [styles.tooltipList, compactTooltip ? styles.tooltipListCompact : null]

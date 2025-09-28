@@ -401,12 +401,84 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.06);
 }
 
-.tasteFocusRow {
-  display: grid;
-  grid-template-columns: repeat(var(--tf-col, 2), minmax(0, 1fr));
-  gap: clamp(10px, 5px, 1px);
+.tastePanelBox {
+  border-radius: 22px;
+  padding: clamp(16px, 2vw, 28px);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.tastePanelContent {
+  display: flex;
+  flex-wrap: wrap;
   align-items: stretch;
-  grid-auto-rows: 1fr;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.tasteChartColumn {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(8px, 1.2vw, 12px);
+}
+
+.tasteChartColumn > div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.tasteHighlightsGrid {
+  flex: 1 1 260px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: clamp(12px, 1.8vw, 20px);
+  align-content: flex-start;
+}
+
+.tasteHighlightCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: clamp(12px, 1.6vw, 18px);
+  border-radius: 18px;
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.tasteHighlightIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background-color: var(--taste-accent, rgba(15, 23, 42, 0.7));
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.tasteHighlightText {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-transform: lowercase;
+}
+
+.focusPanelBox {
+  border-radius: 22px;
+  padding: clamp(16px, 2vw, 28px);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.focusGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: clamp(12px, 1.8vw, 20px);
 }
 
 .tasteFocusCard {
@@ -548,19 +620,40 @@
     flex: 1 1 100%;
   }
 
-  .tasteFocusRow{
-  display: grid;
-  grid-template-columns: 1fr 1.2fr; /* a jobb (Focus) szélesebb lesz */
-  gap: 16px;
-}
-@media (max-width: 960px){
-  .tasteFocusRow{ grid-template-columns: 1fr; } /* mobilon marad egymás alatt */
-}
+  .tastePanelContent {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .tasteChartColumn {
+    justify-content: center;
+  }
+
+  .tasteHighlightsGrid {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .focusGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
 
   .focusChartCard {
     padding: 18px;
   }
 }
+
+@media (max-width: 600px) {
+  .focusGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tasteHighlightsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 .prepServeModes {
   display: flex;
@@ -1340,14 +1433,36 @@
   }
 
   /* fókusz/íz kártyák */
-  .tasteFocusRow{
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .tastePanelBox,
+  .focusPanelBox {
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
   }
+
+  .tastePanelContent {
+    gap: 16px;
+  }
+
+  .tasteHighlightsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 14px;
+  }
+
+  .tasteHighlightCard,
   .tasteFocusCard,
-  .focusChartCard{
+  .focusChartCard {
     padding: 14px;
     border-radius: 12px;
+  }
+
+  .tasteHighlightIcon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .focusGrid {
+    gap: 14px;
   }
 
   /* főzés (brew) oldal kompakt */
