@@ -9,6 +9,7 @@ import {
   type ServingSweetening,
   type ServingGarnish,
 } from '@/utils/servingInfo';
+import { useStepFooter } from '../BrewJourney';
 
 type StepFinishProps = {
   teaName: string;
@@ -66,9 +67,24 @@ export default function StepFinish({
     buttonRef.current?.focus();
   }, []);
 
+  const footer = useMemo(
+    () => (
+      <footer className={styles.finishFooter}>
+        <button type="button" className={styles.secondaryButton} onClick={onClose}>
+          Vissza a teához
+        </button>
+        <button type="button" className={styles.primaryButton} onClick={onReview} ref={buttonRef}>
+          Értékelem
+        </button>
+      </footer>
+    ),
+    [onClose, onReview],
+  );
+
+  useStepFooter(footer);
+
   return (
     <div className={styles.stepWrapper}>
-
       <div className={styles.finishPanel}>
         <div className={styles.finishIntroBlock}>
           <h3 className={styles.finishHeading}>Készen van a {teaName}!</h3>
@@ -79,15 +95,6 @@ export default function StepFinish({
         {finishMessage ? <p className={styles.finishMessage}>{finishMessage}</p> : null}
         <ServingInfoCard info={servingInfo} />
       </div>
-
-      <footer className={styles.finishFooter}>
-        <button type="button" className={styles.secondaryButton} onClick={onClose}>
-          Vissza a teához
-        </button>
-        <button type="button" className={styles.primaryButton} onClick={onReview} ref={buttonRef}>
-          Értékelem
-        </button>
-      </footer>
     </div>
   );
 }
