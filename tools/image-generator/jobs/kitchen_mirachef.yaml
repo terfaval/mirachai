@@ -1,0 +1,80 @@
+project_model: gpt-image-1
+project_sizes: ["desktop_wide"]
+project_n: 1
+
+project_base_prompt: >
+  STRICTLY front-facing, flat symmetrical view of the SAME Mirachai Mediterranean-Balkan style kitchen interior.
+  Always keep the exact same layout and furniture across all variants.
+  Style: semi-realistic painterly background with cinematic light, luminous natural colors,
+  warm wooden textures, rustic Mediterranean charm. Subtle magical realism allowed (tiny sparkles in light, glowing steam),
+  but understated. Strictly symmetrical, central vanishing point at the back wall. Do not crop or rotate.
+  No people, no text, no logos.
+
+project_negative: "logos, watermarks, people, hands, CGI plastic look, clutter, missing or rearranged furniture, sterile look"
+
+items:
+  - name: "kitchen_background_dawn"
+    light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME kitchen.
+      Left side: slightly more open space, hints of transition toward another room.
+      Right side: closed wall, more compact and intimate.
+      Back wall: rustic pale Mediterranean tiles, faintly worn, warm cream-beige tones with subtle pattern.
+      Center: metallic kitchen counter with built-in oven and sink. Above: wooden shelves with books, potted herbs, small plants, ceramic bowls, and spice jars.
+      On the counter: utensil holder with wooden spoons and ladles, a cutting board with vegetables, and a steaming kettle.
+      Floor: light wooden planks, clean but warmly worn.
+      High narrow horizontal window strip above the tiled wall, allowing faint light inside.
+      Dawn: pale bluish-grey glow outside, faint cool light filtering through the window strip.
+      Pendant lamp OFF. On the counter, two small candles lit beside the steaming kettle, soft golden halos.
+      Magical realism: faint drifting light motes in the cool dawn air.
+
+  - name: "kitchen_background_morning"
+    light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME kitchen.
+      Left side open, right side closed, same fixed layout.
+      Back wall: rustic pale Mediterranean tiles, same shelves with books, herbs, plants, ceramics, spices.
+      Center: metallic counter with oven and sink, shelves above.
+      Counter details: utensil holder with tools, cutting board with vegetables, steaming kettle.
+      Floor: light wooden planks. High narrow window strip letting in sunlight.
+      Morning: bright golden sunlight beams in through the window strip, casting warm streaks across tiles and counter.
+      Shadows soft-edged, plants and jars glowing in sunlight.
+      Pendant lamp OFF. Steam from kettle catches golden sparkles, dust motes visible in beams.
+
+  - name: "kitchen_background_noon"
+    light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME kitchen.
+      Layout unchanged: left open, right closed, back tiled wall with metallic counter, oven, sink, wooden shelves with books, plants, jars.
+      Counter with utensil holder, cutting board, steaming kettle unchanged.
+      Floor wooden, narrow high window above letting light in.
+      Noon: bright neutral daylight floods evenly, high clarity.
+      Every detail crisp: tile patterns, wood grain, vegetables on board.
+      Pendant lamp OFF. Steam rising cleanly, faint shimmer on metallic surfaces.
+
+  - name: "kitchen_background_afternoon"
+    light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME kitchen.
+      Layout unchanged. Back wall tiles, metallic counter, oven, sink, shelves with books, plants, jars.
+      Utensils in holder, cutting board with vegetables, steaming kettle on counter.
+      Wooden floor, narrow high window.
+      Afternoon: low warm sunlight streams in from window, strong angled beams across tiles and floor.
+      Long dramatic shadows, plants edged with golden glow.
+      Pendant lamp OFF. Faint shimmer in the air as if light vibrates gently in warm haze.
+
+  - name: "kitchen_background_evening"
+    light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME kitchen.
+      Same fixed layout: back tiled wall, metallic counter with oven and sink, wooden shelves with books, herbs, ceramics.
+      Counter with utensils, cutting board, steaming kettle. Wooden floor, narrow window.
+      Evening: orange-pink sky outside, sunset glow filtering in, soft amber light stripes on tiles and counter.
+      Pendant lamp ON dim (~20%). A few candles lit on the counter.
+      Tea steam mixes with candle halos. Subtle magical flickers like tiny fireflies in shadowed corners.
+
+  - name: "kitchen_background_night"
+    light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME kitchen.
+      Same fixed layout. Back wall tiled, metallic counter with oven and sink, wooden shelves with books, plants, jars.
+      Countertop details unchanged: utensils, cutting board, steaming kettle.
+      Wooden floor, narrow high window strip showing deep indigo sky with stars faintly visible.
+      Night: faint moonlight enters through the window, silver-blue highlights on tiles and sink.
+      Pendant lamp ON (~40% warm glow), counter candles LIT, mixing with cool moonlight.
+      Steam reflects tiny star-like sparkles, magical but subtle.
+      Calm, cozy, Mediterranean-Balkan night atmosphere.
