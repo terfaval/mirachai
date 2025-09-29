@@ -3,7 +3,6 @@ import styles from '../styles/TeaModal.module.css';
 import { Tea } from '../utils/filter';
 import HeaderPanel from '@/components/panels/HeaderPanel';
 import DescPanel from '@/components/panels/DescPanel';
-import MoreInfoPanel from '@/components/panels/MoreInfoPanel';
 import TeaDashboard from '@/components/panels/TeaDashboard';
 import PrepServePanel from '@/components/panels/PrepServePanel';
 import TasteFocusPanel from '@/components/panels/TasteFocusPanel';

@@ -1,18 +1,5 @@
+// scripts/imagegen_responses.js
 // Headless image generation via OpenAI Images API (prompt-only, stable now)
-// Why prompt-only? Your current SDK rejects Responses image tool + edits.
-// We'll keep composition explicit in the prompt so the room stays consistent.
-//
-// Usage examples:
-//   node scripts/imagegen_responses.js jobs/room_background_responses.yaml
-//   node scripts/imagegen_responses.js jobs/room_background_responses.yaml --only desktop_background_del
-//   node scripts/imagegen_responses.js jobs/room_background_responses.yaml --n 2 --size 1024x1024
-//   node scripts/imagegen_responses.js jobs/room_background_responses.yaml --dry
-//
-// Switches:
-//   --only <itemName>    Run only a single item by name
-//   --n <int>            Override number of images per item (default from YAML)
-//   --size <WxH>         Override size for all (must be 1024x1024|1536x1024|1024x1536)
-//   --dry                Dry-run: show what would be generated, but don't call the API
 
 import fs from "fs";
 import path from "path";
@@ -95,16 +82,47 @@ function openaiClient() {
   return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 }
 
+// ---- NEW: CLI switches to simplify outputs ----
 function parseArgs(argv) {
-  const out = { only: null, n: null, size: null, dry: false };
+  const out = {
+    only: null,
+    n: null,
+    size: null,       // ha nem adsz meg semmit, marad a 1536x1024 (desktop_wide)
+    dry: false,
+    // ↓↓↓ ALAPÉRTELMEZÉSEK, HOGY NE KELLJEN FLAG
+    flat: true,
+    outDir: "assets/images",
+    noStamp: true,
+    noSizeInName: true,
+    overwrite: false,
+  };
   for (let i = 3; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--dry") out.dry = true;
     else if (a === "--only") out.only = argv[++i] || null;
     else if (a === "--n") out.n = parseInt(argv[++i] || "NaN", 10);
     else if (a === "--size") out.size = argv[++i] || null;
+    else if (a === "--flat") out.flat = true;
+    else if (a === "--out") out.outDir = argv[++i] || null;
+    else if (a === "--no-stamp") out.noStamp = true;
+    else if (a === "--no-size-in-name") out.noSizeInName = true;
+    else if (a === "--overwrite") out.overwrite = true;
   }
   return out;
+}
+
+async function uniquePath(baseDir, baseName, overwrite) {
+  let candidate = path.join(baseDir, baseName);
+  if (overwrite) return candidate;
+  if (!fs.existsSync(candidate)) return candidate;
+  const ext = path.extname(baseName);
+  const stem = baseName.slice(0, -ext.length);
+  let i = 1;
+  while (true) {
+    candidate = path.join(baseDir, `${stem}-${i}${ext}`);
+    if (!fs.existsSync(candidate)) return candidate;
+    i++;
+  }
 }
 
 async function runJob(jobPath, cli) {
@@ -114,7 +132,10 @@ async function runJob(jobPath, cli) {
   const raw = await fs.promises.readFile(jobAbs, "utf8");
   const job = yaml.load(raw);
 
-  const outRoot = path.join(process.cwd(), "generated", stamp());
+  // ---- NEW: output root control ----
+  const baseOut = cli.outDir ? path.isAbsolute(cli.outDir) ? cli.outDir : path.join(process.cwd(), cli.outDir)
+                             : path.join(process.cwd(), "generated");
+  const outRoot = cli.noStamp ? baseOut : path.join(baseOut, stamp());
   if (!cli.dry) await ensureDir(outRoot);
 
   // project defaults
@@ -172,12 +193,14 @@ without: ${negative}`.trim();
     console.log(`\n→ ${name}`);
     console.log(`   model=${model}, n=${n}, sizes=${sizes.join(", ")}`);
 
-    const itemOut = path.join(outRoot, name);
-    if (!cli.dry) await ensureDir(itemOut);
+    // ---- NEW: simplified folder layout ----
+    const itemOut = cli.flat ? outRoot : path.join(outRoot, name);
+    if (!cli.dry && !cli.flat) await ensureDir(itemOut);
 
     for (const size of sizes) {
-      const sizeOut = path.join(itemOut, size);
-      if (!cli.dry) await ensureDir(sizeOut);
+      const sizeOut = cli.flat ? itemOut : path.join(itemOut, size);
+      if (!cli.dry && !cli.flat) await ensureDir(sizeOut);
+
       console.log(`   • base @ ${size}  (n=${n})`);
 
       try {
@@ -199,22 +222,29 @@ without: ${negative}`.trim();
           continue;
         }
 
-        // Csak az első képet mentjük
         const img = res.data[0];
-        const fname = `${name}__${size}.png`;
-        const fpath = path.join(sizeOut, fname);
-        
-        if (img.url) {
-            await saveFromUrl(img.url, fpath);
-          } else if (img.b64_json) { 
-            await saveFromB64(img.b64_json, fpath);
-          } else { 
-            console.warn(`      - [skip] no url/b64_json (${name}/${size})`);
-            continue; 
+
+        // ---- NEW: filename strategy ----
+        let baseName;
+        if (cli.noSizeInName) {
+          baseName = `${name}.png`;
+        } else {
+          baseName = `${name}__${size}.png`;
         }
 
-        console.log(`      - saved: ${path.relative(process.cwd(), fpath)}`);
-          await postCropIfNeeded(fpath, item.post_crop || job.post_crop);
+        const outPath = await uniquePath(sizeOut, baseName, cli.overwrite);
+
+        if (img.url) {
+          await saveFromUrl(img.url, outPath);
+        } else if (img.b64_json) {
+          await saveFromB64(img.b64_json, outPath);
+        } else {
+          console.warn(`      - [skip] no url/b64_json (${name}/${size})`);
+          continue;
+        }
+
+        console.log(`      - saved: ${path.relative(process.cwd(), outPath)}`);
+        await postCropIfNeeded(outPath, item.post_crop || job.post_crop);
 
       } catch (e) {
         const msg = (e?.error?.message || e?.message || "").toString();
@@ -238,7 +268,7 @@ without: ${negative}`.trim();
 (async function main() {
   const jobFile = process.argv[2];
   if (!jobFile) {
-    console.error("Usage: node scripts/imagegen_responses.js <job.yaml> [--only name] [--n 1] [--size 1536x1024] [--dry]");
+    console.error("Usage: node scripts/imagegen_responses.js <job.yaml> [--only name] [--n 1] [--size 1536x1024] [--dry] [--flat] [--out <dir>] [--no-stamp] [--no-size-in-name] [--overwrite]");
     process.exit(1);
   }
   const cli = parseArgs(process.argv);

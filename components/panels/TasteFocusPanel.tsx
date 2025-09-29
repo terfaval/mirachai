@@ -122,33 +122,29 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
                   </div>
                 );
               })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.panelElement} data-panel="focus">
-        <div className={`${styles.panelBox} ${styles.focusPanelBox}`}>
-          <div className={styles.focusGrid}>
-            {focusData.map((focus) => (
-              <div
-                key={focus.key}
-                className={`${styles.tasteFocusCard} ${styles.focusChartCard}`}
-              >
-                <FocusChart
-                  data={[focus]}
-                  size={focusChartSize}
-                  colorDark={colorDark}
-                  layout="row"
-                />
+            <div className={styles.focusHighlightsRow}>
+                {focusData.map((focus) => (
+                  <div
+                    key={focus.key}
+                    className={`${styles.tasteFocusCard} ${styles.focusChartCard} ${styles.focusHighlightCard}`}
+                  >
+                    <FocusChart
+                      data={[focus]}
+                      size={focusChartSize}
+                      colorDark={colorDark}
+                      layout="row"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
     </>
   );
 }
+
 
 // Notes:
 // - We rely on TasteChart extended props (minValue, pointRadiusBase, connectByStrongest, colorDark).

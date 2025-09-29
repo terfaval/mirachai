@@ -409,31 +409,41 @@
 }
 
 .tastePanelContent {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: minmax(0, clamp(180px, 18vw, 240px)) minmax(0, 1fr);
+  align-items: flex-start;
   gap: clamp(16px, 2vw, 32px);
 }
 
 .tasteChartColumn {
-  flex: 0 0 clamp(180px, 18vw, 240px);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   padding: clamp(6px, 1vw, 10px);
 }
 
 .tasteChartColumn > div {
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .tasteHighlightsGrid {
-  flex: 1 1 260px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: clamp(8px, 1.4vw, 16px);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: clamp(8px, 1.4vw, 18px);
   align-content: flex-start;
+  width: 100%;
+}
+
+.focusHighlightsRow {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(8px, 1.4vw, 16px);
+  padding-top: clamp(8px, 1vw, 14px);
 }
 
 .tasteHighlightCard {
@@ -478,7 +488,7 @@
 .focusGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(8px, 1.4vw, 16px);
+  gap: clamp(8px, 1.4vw, 18px);
 }
 
 .tasteFocusCard {
@@ -502,6 +512,11 @@
 .focusChartCard > div {
   width: 100%;
   height: 100%;
+}
+
+.focusHighlightCard {
+  flex: 1 1 clamp(140px, 18vw, 220px);
+  max-width: clamp(160px, 24vw, 240px);
 }
 
 .panelCard {
@@ -622,11 +637,12 @@
   }
 
   .tastePanelContent {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
   .tasteChartColumn {
+    align-items: center;
     justify-content: center;
   }
 
@@ -1512,3 +1528,4 @@
     transform: translateZ(0);
   }
 }
+
