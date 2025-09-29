@@ -11,9 +11,11 @@ type LayoutPreset = {
   tilesY: number;
 };
 
+const LARGE_DESKTOP_BREAKPOINT = 1440;
 const DESKTOP_BREAKPOINT = 1024;
 const PHONE_BREAKPOINT = 768;
 
+const LARGE_DESKTOP_LAYOUT: LayoutPreset = { tilesX: 3, tilesY: 4 };
 const DESKTOP_LAYOUT: LayoutPreset = { tilesX: 3, tilesY: 3 };
 const TABLET_LAYOUT: LayoutPreset = { tilesX: 2, tilesY: 2 };
 const PHONE_LAYOUT: LayoutPreset = { tilesX: 1, tilesY: 2 };
@@ -25,7 +27,8 @@ function withPerPage(preset: LayoutPreset): TeaGridLayout {
 export function resolveTeaGridLayout(width: number): TeaGridLayout {
   if (width <= PHONE_BREAKPOINT) return withPerPage(PHONE_LAYOUT);
   if (width <= DESKTOP_BREAKPOINT) return withPerPage(TABLET_LAYOUT);
-  return withPerPage(DESKTOP_LAYOUT);
+  if (width < LARGE_DESKTOP_BREAKPOINT) return withPerPage(DESKTOP_LAYOUT);
+  return withPerPage(LARGE_DESKTOP_LAYOUT);
 }
 
 export function useTeaGridLayout(): TeaGridLayout {

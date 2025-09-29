@@ -37,9 +37,17 @@
   width: 100%;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 768px) {
   .container {
-    --grid-w: min(62vw, 1120px);;
+    --grid-w: min(72vw, 1120px);
+    --grid-available-height: calc(100vh - 600px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    --grid-w: min(68vw, 1120px);
+    --grid-available-height: calc(100vh - 400px);
   }
 }
 

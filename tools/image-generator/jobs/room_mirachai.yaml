@@ -3,69 +3,86 @@ project_sizes: ["desktop_wide"]       # 1536x1024
 project_n: 1
 
 project_base_prompt: >
-  STRICTLY front-facing, flat symmetrical view of a cozy urban Mirachai tea house.
-  Wide glass wall with wooden frames on the left, outside sky and balcony greenery visible.
-  Inside: warm wooden floor, rustic shelves with books, jars, plants,
-  low tables with tea sets, and a tea kitchen counter on the right.
-  At the center of the back counter: a vintage vinyl record player.
-  Overhead pendant lamps and wall lights.
-  Semi-realistic painterly style with warm nostalgic textures, slightly dreamy atmosphere.
+  STRICTLY front-facing, flat symmetrical view of the SAME cozy Mirachai urban tea house interior.
+  Always keep the exact same layout and furniture across all variants.
+  Style: semi-realistic painterly background with cinematic light,
+  luminous natural colors, vibrant greenery, warm woods.
+  Cozy bohemian atmosphere with subtle magical realism (sparkles in light, gently glowing steam).
+  Strictly symmetrical, central vanishing point at the back wall. Do not crop or rotate.
   No people, no text, no logos.
 
-project_negative: "logos, watermarks, people, hands, CGI look, clutter"
+project_negative: "logos, watermarks, people, hands, CGI plastic look, clutter, missing or rearranged furniture"
 
 items:
   - name: "desktop_background_dawn"
     light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME tea house.
+      Left side: wide glass wall with wooden frames, balcony greenery and pale misty sky outside.
+      Center: full-height wooden shelving with books, jars, plants, and a vintage vinyl record player at exact center niche.
+      Right side: fixed tea kitchen counter with shelves above, kettle, mugs, teapots, jars.
+      Foreground: two low wooden tea tables with tea sets, placed on matching woven rugs.
+      Wooden floor, abundant plants in balance, three pendant lamps overhead, one wall sconce on right wall.
+      Pre-sunrise dawn: cool bluish glow outside, interior dim but visible, pendant lamps OFF.
+      On the right counter: TWO small candles LIT beside a steaming kettle, giving soft halos.
+      Steam faintly glowing in cool air; faint drifting motes visible.
       Strictly symmetrical, central vanishing point at the back wall. Do not crop or rotate.
-      Dawn: faint bluish pre-sunrise glow through the glass wall,
-      balcony plants silhouetted against pale misty sky.
-      Interior dim but visible, pendant lamps OFF.
-      Tea steam faintly glowing, tiny drifting motes in the air.
-      Vinyl player standby light faintly glowing.
 
   - name: "desktop_background_morning"
     light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME tea house.
+      Left side: wide glass wall with wooden frames, balcony greenery and clear morning sky outside.
+      Center: wooden shelving with books, jars, plants, vinyl player at exact center.
+      Right side: kitchen counter with kettle, mugs, teapots, jars; shelves above.
+      Foreground: two low tea tables with tea sets on woven rugs, wooden floor, lush plants, pendant lamps above, wall sconce on right.
+      Morning: brilliant golden sunlight pours through glass panes, beams across rugs and tables.
+      Strong but soft-edged shadows, warm highlights on jars, cups, plants.
+      Pendant lamps OFF. Dust motes sparkling in the beams, tea steam glowing in golden light.
       Strictly symmetrical, central vanishing point at the back wall. Do not crop or rotate.
-      Morning: golden sunlight beams through glass panes,
-      strong but soft-edged shadows across rug and plants.
-      Warm highlights on jars, cups, and shelves.
-      Pendant lamps OFF. Dust motes sparkling like tiny stars in the beams.
-      Tea steam lit by golden glow, vinyl player catching light.
 
   - name: "desktop_background_noon"
     light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME tea house.
+      Left side: wide glass wall with balcony greenery, bright neutral daylight sky outside.
+      Center: shelving with books, jars, plants, vinyl player at exact center.
+      Right side: fixed kitchen counter with kettle, mugs, teapots, jars, shelves above.
+      Foreground: two low tea tables with tea sets, rugs beneath, wooden floor, pendant lamps above, wall sconce.
+      Noon: bright neutral daylight floods evenly, everything crisp, high clarity.
+      Rug patterns vivid, shelves evenly lit, plants lush green.
+      Pendant lamps OFF. Subtle shimmer on teapot rim, faint sparkle on vinyl cover.
       Strictly symmetrical, central vanishing point at the back wall. Do not crop or rotate.
-      Noon: bright neutral daylight floods the room evenly,
-      rug colors vivid, shelves and plants fully visible.
-      No harsh contrast, everything crisp and painterly clear.
-      Pendant lamps OFF.
-      Subtle shimmer on teapot rim, faint sparkle on vinyl cover.
 
   - name: "desktop_background_afternoon"
     light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME tea house.
+      Left side: wide glass wall with greenery and afternoon sky outside.
+      Center: shelving with books, jars, plants, vinyl player at exact center.
+      Right side: kitchen counter with kettle, mugs, teapots, jars, shelves above.
+      Foreground: two low tea tables with tea sets, rugs, wooden floor, pendant lamps, wall sconce.
+      Afternoon: warm golden sunlight at angle, long dramatic shadows across floor and rugs.
+      Plants edged with glowing gold, counter glowing warmly.
+      Pendant lamps OFF. Faint shimmer in air, dreamy nostalgic mood.
       Strictly symmetrical, central vanishing point at the back wall. Do not crop or rotate.
-      Afternoon: warm angled sunlight streams through glass wall,
-      long golden shadows across floor and rug.
-      Leaves edged with glowing light, counter softly lit.
-      Pendant lamps OFF.
-      Air dreamy, nostalgic; faint shimmer as if light vibrates gently.
 
   - name: "desktop_background_evening"
     light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME tea house.
+      Left side: wide glass wall with balcony greenery, orange-pink sunset sky outside.
+      Center: shelving with books, jars, plants, vinyl player at exact center.
+      Right side: kitchen counter with kettle, mugs, teapots, jars, shelves above.
+      Foreground: two low tea tables with tea sets, rugs beneath, wooden floor, pendant lamps, wall sconce.
+      Evening: amber golden-hour glow, warm light stripes across rugs and shelves.
+      Pendant lamps ON dim (~20%), a few candles lit on tables.
+      Tea steam mixing with candle halos, subtle flickers like fireflies near plants.
       Strictly symmetrical, central vanishing point at the back wall. Do not crop or rotate.
-      Evening: deep amber glow, sunset sky orange-pink outside window.
-      Warm stripes of light across rug and shelves.
-      Pendant lamps ON dim (~20%), a few candles glowing softly.
-      Tea steam mixing with candle halos, subtle firefly-like flickers near plants.
-      Vinyl player illuminated warmly.
 
   - name: "desktop_background_night"
     light: >
+      STRICTLY front-facing, flat symmetrical composition of the SAME tea house.
+      Left side: wide glass wall with balcony greenery and dark indigo sky outside, stars visible.
+      Center: shelving with books, jars, plants, vinyl player at exact center.
+      Right side: kitchen counter with kettle, mugs, teapots, jars, shelves above.
+      Foreground: two low tea tables with tea sets, rugs beneath, wooden floor, pendant lamps, wall sconce.
+      Night: faint moonlight spilling in, silver-blue highlights on rugs and plants.
+      Pendant lamps ON (~40% warm glow), candles strongly lit, wall sconce ON.
+      Mixed cool moonlight and warm glows inside; tea steam reflects star-like sparkles.
       Strictly symmetrical, central vanishing point at the back wall. Do not crop or rotate.
-      Night: indigo sky outside glass wall, stars and crescent moon visible.
-      Cool moonlight spilling in, silver-blue highlights on rug and floor.
-      Pendant lamps ON (~40% warm glow), all candles lit strongly.
-      Steam from tea catching both lamp glow and moonlight,
-      as if faint constellations shimmer in the vapor.
-      Vinyl player softly glowing at the counter.
