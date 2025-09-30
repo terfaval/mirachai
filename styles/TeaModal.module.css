@@ -439,11 +439,11 @@
 
 .focusHighlightsRow {
   grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(8px, 1.4vw, 16px);
-  padding-top: clamp(8px, 1vw, 14px);
+  width: 100%;
+  padding-top: clamp(12px, 1.6vw, 20px);
 }
 
 .tasteHighlightCard {
@@ -495,7 +495,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(10px, 1.4vw, 14px);
+  padding: clamp(8px, 1.2vw, 12px);
   border-radius: 16px;
   background: rgba(248, 250, 252, 0.9);
   border: 1px solid rgba(15, 23, 42, 0.08);
@@ -515,8 +515,7 @@
 }
 
 .focusHighlightCard {
-  flex: 1 1 clamp(140px, 18vw, 220px);
-  max-width: clamp(160px, 24vw, 240px);
+  width: 100%;
 }
 
 .panelCard {
@@ -608,6 +607,10 @@
   .dashboardTasteCard {
     flex: 0 1 280px;
   }
+
+  .focusHighlightsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -656,6 +659,10 @@
     gap: 16px;
   }
 
+  .focusHighlightsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .focusChartCard {
     padding: 18px;
   }
@@ -667,6 +674,10 @@
   }
 
   .tasteHighlightsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .focusHighlightsRow {
     grid-template-columns: 1fr;
   }
 }

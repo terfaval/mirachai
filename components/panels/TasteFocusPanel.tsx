@@ -75,7 +75,7 @@ const buildTasteHighlights = (tea: any): TasteHighlight[] => {
 export default function TasteFocusPanel({ tea, colorDark }: Props) {
   const focusData = getFocusOrdered(tea); // [{key,label,value}] in fixed order
   const tasteChartSize = 220;
-  const focusChartSize = 200;
+  const focusChartSize = 160;
 
   const tasteHighlights = useMemo(() => buildTasteHighlights(tea), [tea]);
 
@@ -122,21 +122,21 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
                   </div>
                 );
               })}
+            </div>
             <div className={styles.focusHighlightsRow}>
-                {focusData.map((focus) => (
-                  <div
-                    key={focus.key}
-                    className={`${styles.tasteFocusCard} ${styles.focusChartCard} ${styles.focusHighlightCard}`}
-                  >
-                    <FocusChart
-                      data={[focus]}
-                      size={focusChartSize}
-                      colorDark={colorDark}
-                      layout="row"
-                    />
-                  </div>
-                ))}
-              </div>
+              {focusData.map((focus) => (
+                <div
+                  key={focus.key}
+                  className={`${styles.tasteFocusCard} ${styles.focusChartCard} ${styles.focusHighlightCard}`}
+                >
+                  <FocusChart
+                    data={[focus]}
+                    size={focusChartSize}
+                    colorDark={colorDark}
+                    layout="row"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -144,7 +144,6 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
     </>
   );
 }
-
 
 // Notes:
 // - We rely on TasteChart extended props (minValue, pointRadiusBase, connectByStrongest, colorDark).

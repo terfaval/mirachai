@@ -166,23 +166,25 @@ export default function TeaCard({
         role={onClick ? 'button' : undefined}
         tabIndex={onClick ? 0 : -1}
       >
-        <div
-          className={styles.mandala}
-          style={
-            {
-              '--mandala-fill': colorLight,
-              '--tiles-x': tilesX,
-              '--tiles-y': tilesY,
-              '--tile-x': tileX,
-              '--tile-y': tileY,
-              '--tile-ratio-x': tileRatioX,
-              '--tile-ratio-y': tileRatioY,
-              '--mandala-scale': 1,
-              '--mandala-prezoom': 2.3,
-              '--mandala-url': `url(${mandalaUrl})`,
-            } as React.CSSProperties
-          }
-        />
+        <div className={styles.mandalaFrame} aria-hidden>
+          <div
+            className={styles.mandala}
+            style={
+              {
+                '--mandala-fill': colorLight,
+                '--tiles-x': tilesX,
+                '--tiles-y': tilesY,
+                '--tile-x': tileX,
+                '--tile-y': tileY,
+                '--tile-ratio-x': tileRatioX,
+                '--tile-ratio-y': tileRatioY,
+                '--mandala-scale': 1,
+                '--mandala-prezoom': 2.3,
+                '--mandala-url': `url(${mandalaUrl})`,
+              } as React.CSSProperties
+            }
+          />
+        </div>
         <div className={styles.name}>{tea.name}</div>
         <div className={styles.mood}>{tea.mood_short}</div>
 

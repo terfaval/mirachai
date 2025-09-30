@@ -78,6 +78,15 @@
   transform-origin: calc(var(--px) * 100%) calc(var(--py) * 100%);
 }
 
+.mandalaFrame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ========== TIPOGRÁFIA ========== */
 /* Szép számok mindenhol */
 .card, .name, .mood, .chartLabel, .prepValue, .prepLabel, .intensityLabel {
