@@ -44,6 +44,13 @@
   }
 }
 
+@media (min-width: 1020px) {
+  .container {
+    --grid-w: min(62vw, 980px);
+    --grid-available-height: calc(100vh - 150px);
+  }
+}
+
 @media (min-width: 1440px) {
   .container {
     --grid-w: min(68vw, 1120px);
