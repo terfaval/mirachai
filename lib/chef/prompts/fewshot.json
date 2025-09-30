@@ -1,0 +1,42 @@
+{
+  "fewshots": [
+    {
+      "input": { "dishName": "csilisbab", "mustHave": [] },
+      "output": {
+        "concepts": [
+          {
+            "title": "Mediterrán csilisbab – quinoa",
+            "profile": "mediterran",
+            "summary": "Paradicsomos, zöldfűszeres csilisbab könnyített verzióban, vörösbab + quinoa komplett fehérjével.",
+            "focus": ["több rost", "komplett fehérje", "alacsonyabb zsiradék"],
+            "why_healthy": "Hüvelyes + quinoa komplett fehérjét ad, az olívaolaj és a zöldfűszerek könnyűek.",
+            "superfoods": ["quinoa"]
+          },
+          {
+            "title": "Ázsiai csilisbab – edamame",
+            "profile": "azsiai",
+            "summary": "Gyömbéres-szójaszószos alap, vörösbab és edamame zöldekkel, friss korianderrel.",
+            "focus": ["több rost", "növényi fehérje", "kevesebb cukor"],
+            "why_healthy": "Edamame és bab együtt magas növényi fehérjét és rostot adnak, hozzáadott cukor nélkül.",
+            "superfoods": ["edamame"]
+          }
+        ]
+      }
+    },
+    {
+      "input": { "dishName": "", "mustHave": ["fejes saláta","uborka","csicseriborsó"] },
+      "output": {
+        "concepts": [
+          {
+            "title": "Saláta bowl – csírák",
+            "profile": "salata",
+            "summary": "Ropogós leveles alap csicseriborsóval, avokádóval és friss csírákkal, citromos-tahinis öntettel.",
+            "focus": ["több rost", "teljes értékű fehérje", "ω-3 forrás"],
+            "why_healthy": "Hüvelyes + magvak kombinációja jó fehérje- és zsírsavprofil, hozzáadott cukor nélkül.",
+            "superfoods": ["csírák"]
+          }
+        ]
+      }
+    }
+  ]
+}

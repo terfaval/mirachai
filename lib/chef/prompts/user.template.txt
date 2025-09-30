@@ -1,0 +1,18 @@
+TASK: Propose 2–3 healthy, superfood-twisted recipe CONCEPTS.
+
+DISH (optional): {{dish}}
+MUST-HAVE INGREDIENTS (optional CSV): {{mustHaveCSV}}
+
+PROFILES (rules): {{profilesJSON}}
+HEALTH HEURISTICS: {{heuristicsJSON}}
+
+OUTPUT: STRICT JSON matching this schema (no extra text):
+{{schemaJSON}}
+
+Conventions:
+- title: "<Profil> <ételelv> – <superfood>"
+- "focus": concise, health-related bullets (2–4), ≤60 chars each.
+- "superfoods": must include at least one from the chosen profile.
+- Fit the concept to one of: mediterran, balkan, azsiai, salata.
+- If a dish name exists, create profile-faithful reinterpretations (not direct copies).
+- Language: Hungarian.

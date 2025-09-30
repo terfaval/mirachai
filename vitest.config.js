@@ -20,4 +20,8 @@ export default defineConfig({
   test: {
     exclude: [...defaultExclude, "tests/e2e/**"],
   },
+  "compilerOptions": {
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types", "./tests/types"]
+  },
 });
