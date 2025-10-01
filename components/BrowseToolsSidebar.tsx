@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import SearchBar from './SearchBar';
 import { SortKey, sortOptions } from './sortOptions';
 import styles from '../styles/BrowseToolsSidebar.module.css';
@@ -31,6 +31,11 @@ export default function BrowseToolsSidebar({
   const searchInputRef = useRef<HTMLInputElement>(null);
   const sortActive = sort !== 'relevanceDesc';
   const filtersActive = activeFilterCount > 0;
+  const router = useRouter();
+
+  const handleOpenStory = useCallback(() => {
+    void router.push('/story');
+  }, [router]);
 
   useEffect(() => {
     if (searchOpen) {
@@ -144,9 +149,14 @@ export default function BrowseToolsSidebar({
           </div>
         )}
       </div>
-    <Link href="/story" className={styles.storyButton} aria-label="Mirachai történet">
+    <button
+        type="button"
+        className={styles.storyButton}
+        onClick={handleOpenStory}
+        aria-label="Mirachai történet"
+      >
         <span className={styles.storyIcon}>?</span>
-      </Link>
+      </button>
     </div>
   );
 }

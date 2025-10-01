@@ -39,14 +39,20 @@ export default function StoryPage() {
             priority
             className="object-cover object-center opacity-98"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 85%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.75) 100%)",
+            }}
+          />
           <div className="relative z-10 mx-auto max-w-6xl px-6 pt-24 pb-20 flex flex-col items-center text-center">
             <Image
               src="/mirachai_logo.svg"
               alt="Mirachai"
               width={200}
               height={200}
-              className="mb-6 opacity-95"
+              className="mb-6 opacity-95 brightness-0 invert"
             />
             <motion.h1
               variants={fadeUp}
@@ -322,10 +328,7 @@ export default function StoryPage() {
               viewport={{ once: true }}
               className="mt-8 flex justify-center"
             >
-              <Link
-                href="/"
-                className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
-              >
+              <Link href="/" className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300">
                 Találd meg a teádat
               </Link>
             </motion.div>

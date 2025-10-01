@@ -29,6 +29,10 @@
   border: 2px solid rgba(255, 255, 255, 0.85);
   color: #ffffff;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
