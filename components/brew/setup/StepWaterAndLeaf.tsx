@@ -199,7 +199,20 @@ export default function StepWaterAndLeaf({
       <div className={styles.waterLeafPanel} tabIndex={-1} ref={focusRef}>
         <div className={styles.waterLeafAmounts}>
           <div className={styles.amountBlock}>
-            <span className={styles.amountLabel}>Tea levél</span>
+            <div className={styles.amountHeader}>
+              <span className={styles.amountLabel}>Tea levél</span>
+              {showUnitToggle ? (
+                <button
+                  type="button"
+                  className={styles.unitToggleSwitch}
+                  onClick={() => setUnitMode((mode) => (mode === 'grams' ? 'spoons' : 'grams'))}
+                  aria-pressed={unitMode === 'spoons'}
+                  aria-label={`Váltás ${unitMode === 'grams' ? 'kanál' : 'gramm'} mértékegységre`}
+                >
+                  {unitMode === 'grams' ? 'Gramm' : 'Kanál'}
+                </button>
+              ) : null}
+            </div>
             <span className={styles.amountValue}>{primaryTeaAmount}</span>
             {teaHints.length ? (
               <div className={styles.amountHints}>
@@ -221,28 +234,7 @@ export default function StepWaterAndLeaf({
         <div className={styles.ingredientsBox}>
           <div className={styles.ingredientsHeader}>
             <h4>Hozzávalók</h4>
-            {showUnitToggle ? (
-              <div className={styles.unitToggle} role="group" aria-label="Tea mértékegysége">
-                <button
-                  type="button"
-                  className={styles.unitToggleButton}
-                  data-active={unitMode === 'grams' ? 'true' : undefined}
-                  aria-pressed={unitMode === 'grams'}
-                  onClick={() => setUnitMode('grams')}
-                >
-                  Gramm
-                </button>
-                <button
-                  type="button"
-                  className={styles.unitToggleButton}
-                  data-active={unitMode === 'spoons' ? 'true' : undefined}
-                  aria-pressed={unitMode === 'spoons'}
-                  onClick={() => setUnitMode('spoons')}
-                >
-                  Kanál
-                </button>
-              </div>
-            ) : null}
+            
           </div>
 
           <div className={styles.ingredientsList}>

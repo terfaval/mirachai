@@ -765,6 +765,13 @@
   gap: 6px;
 }
 
+.amountHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .amountValueRow {
   display: flex;
   align-items: center;
@@ -788,6 +795,29 @@
   display: flex;
   gap: 12px;
   color: rgba(249, 250, 251, 0.7);
+}
+
+.unitToggleSwitch {
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(249, 250, 251, 0.9);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.unitToggleSwitch:hover,
+.unitToggleSwitch:focus-visible {
+  background: rgba(249, 115, 22, 0.4);
+  color: #f9fafb;
+}
+
+.unitToggleSwitch:focus-visible {
+  outline: 2px solid rgba(249, 250, 251, 0.75);
+  outline-offset: 2px;
 }
 
 .tempBadge {
@@ -835,37 +865,6 @@
 
 .ingredientsHeader h4 {
   margin: 0;
-}
-
-.unitToggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 4px;
-  border-radius: 999px;
-}
-
-.unitToggleButton {
-  border: none;
-  background: transparent;
-  color: rgba(249, 250, 251, 0.75);
-  font-weight: 600;
-  font-size: 13px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-.unitToggleButton[data-active='true'] {
-  background: rgba(249, 115, 22, 0.35);
-  color: #f9fafb;
-}
-
-.unitToggleButton:focus-visible {
-  outline: 2px solid rgba(249, 250, 251, 0.8);
-  outline-offset: 2px;
 }
 
 .ingredientsList {

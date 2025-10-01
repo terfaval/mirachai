@@ -2,24 +2,42 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-/**
- * Mirachai Story Page – scroll narrative
- * - Full-width, stage-by-stage storytelling
- * - Uses Tailwind for layout/typography
- * - Minimal framer-motion for subtle entrances
- *
- * Assets you’ll need to point to:
- *  - /public/bg/desktop_background_opening.jpg  (a nyitó varid)
- *  - /public/bg/desktop_background_morning.jpg  (példa további háttér)
- *  - /public/ui/mirachai_logo.svg
- *  - opcionálisan 3 kis illusztráció ikon: /public/ui/ico_app.svg, /public/ui/ico_house.svg, /public/ui/ico_product.svg
- */
+import { useState, type ReactNode } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
+
+type FlavorCard = {
+  category: string;
+  sub: string;
+  bg?: string; // optional category color class e.g. "from-emerald-500/30 to-emerald-700/40"
+};
+type BrewCard = {
+  icon: string;
+  title: string;
+  oneliner: string;
+};
+
+const FLAVOR_MOSAIC: FlavorCard[] = [
+  { category: "Japán Zöld", sub: "Kreatív lendület", bg: "from-emerald-500/25 to-emerald-700/30" },
+  { category: "Álom Kapu", sub: "Esti relax", bg: "from-indigo-500/25 to-fuchsia-700/30" },
+  { category: "Kínai Klasszikus", sub: "Nyári frissesség", bg: "from-lime-500/25 to-green-700/30" },
+  { category: "Fekete Teák", sub: "Reggeli mélység", bg: "from-amber-500/25 to-orange-700/30" },
+  { category: "Fehér Teák", sub: "Tiszta nyugalom", bg: "from-sky-400/25 to-blue-700/30" },
+  { category: "Gyógyfüvek", sub: "Puha esti meleg", bg: "from-rose-400/25 to-pink-700/30" },
+  { category: "Oolong", sub: "Virágos átmenet", bg: "from-violet-400/25 to-purple-700/30" },
+  { category: "Puer", sub: "Föld illata", bg: "from-stone-500/25 to-stone-700/30" },
+  { category: "Matcha", sub: "Sűrű fókusz", bg: "from-green-500/25 to-emerald-700/30" }
+];
+
+const BREW_MOSAIC: BrewCard[] = [
+  { icon: "/ui/ico_tinycup.svg", title: "Tiny cup", oneliner: "Egy kortyban derül ki a lényeg." },
+  { icon: "/ui/ico_teapot.svg", title: "Teapot", oneliner: "Megosztható nyugalom, pontos ritmusban." },
+  { icon: "/ui/ico_coldbrew.svg", title: "Cold brew", oneliner: "Időben áztatott tisztaság." },
+  { icon: "/ui/ico_samovar.svg", title: "Samovar", oneliner: "Meleg testű folyam, lassan hömpölyög." }
+];
 
 export default function StoryPage() {
   return (
@@ -30,29 +48,31 @@ export default function StoryPage() {
       </Head>
 
       <main className="min-h-screen w-full bg-neutral-950 text-neutral-100">
-        {/* HERO / OPENING – mágikus szoba egy asztallal + logo + tagline */}
-        <section className="relative w-full min-h-[92svh] overflow-hidden">
+        {/* HERO */}
+        <section className="relative w-full min-h-[92svh] overflow-hidden" data-analytics-id="story_view_hero">
           <Image
             src="/story/background_opening.png"
             alt="Mirachai opening background"
             fill
             priority
-            className="object-cover object-center opacity-98"
+            sizes="100vw"
+            className="object-cover object-center opacity-95"
           />
           <div
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(circle at 50% 85%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.75) 100%)",
+                "radial-gradient(circle at 50% 85%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.78) 100%)",
             }}
           />
           <div className="relative z-10 mx-auto max-w-6xl px-6 pt-24 pb-20 flex flex-col items-center text-center">
             <Image
               src="/mirachai_logo.svg"
-              alt="Mirachai"
+              alt="Mirachai logo"
               width={200}
               height={200}
               className="mb-6 opacity-95 brightness-0 invert"
+              priority
             />
             <motion.h1
               variants={fadeUp}
@@ -61,88 +81,185 @@ export default function StoryPage() {
               viewport={{ once: true, margin: "-20%" }}
               className="text-4xl md:text-6xl font-semibold tracking-tight"
             >
-              Tea-kultúra új dimenzióban
+              Ahol a gőz mesélni kezd
             </motion.h1>
             <motion.p
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-20%" }}
-              className="mt-4 max-w-3xl text-base md:text-lg text-neutral-200/90"
+              className="mt-4 max-w-3xl text-base md:text-lg text-neutral-200/90 leading-relaxed"
             >
-              Nem csak app. Nem csak teaház. Nem csak termék. Egy világ, ahová belépsz.
+              A Mirachai digitális teadoboz: több mint nyolcvan tea íze, elkészítése és hangulata egy helyen. Nem lexikon – inkább térkép, amely néha máshova vezet, mint tervezted.
             </motion.p>
-          </div>
-        </section>
-
-        {/* WHAT IS MIRACHAI – 3 pillér, röviden */}
-        <section className="relative w-full py-20 md:py-28 bg-neutral-900">
-          <div className="mx-auto max-w-6xl px-6">
-            <motion.h2
+            <motion.div
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="text-2xl md:text-4xl font-semibold"
+              className="mt-8"
             >
-              Mi a Mirachai?
-            </motion.h2>
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                data-analytics-id="story_click_enter"
+              >
+                Lépj be
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* MANIFESTO */}
+        <section className="relative w-full py-16 md:py-24 bg-neutral-900" data-analytics-id="story_view_manifesto">
+          <div className="mx-auto max-w-4xl px-6 text-center">
             <motion.p
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="mt-3 text-neutral-300 max-w-3xl"
+              className="whitespace-pre-line text-lg md:text-xl text-neutral-200/95 leading-relaxed"
             >
-              Ökoszisztéma a tea köré: digitális tudás, közösségi élmény és fizikai tér –
-              egymást erősítve, mirachaios hangulattal.
+{`Nem sietünk.
+A víz melegszik, a fény leül mellénk.
+A tea néha másképp mesél, mint várnánk.
+A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
             </motion.p>
+          </div>
+        </section>
 
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  title: "Digitális réteg",
-                  desc: "Interaktív tudásbázis, felfedező élmény, brewing guide.",
-                  icon: "/ui/ico_app.svg",
-                },
-                {
-                  title: "Fizikai réteg",
-                  desc: "Saját teaház: találkozóhely, élmény, közösség.",
-                  icon: "/ui/ico_house.svg",
-                },
-                {
-                  title: "Termék réteg",
-                  desc: "Signature teák, kiegészítők, később DIY és szezonális sorozatok.",
-                  icon: "/ui/ico_product.svg",
-                },
-              ].map((c, i) => (
+        {/* APP BEMUTATÁS — Íz & Felfedezés */}
+        <section className="relative w-full py-20 md:py-28 bg-neutral-950" data-analytics-id="story_view_app_intro">
+          <div className="mx-auto max-w-6xl px-6">
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="text-2xl md:text-4xl font-semibold"
+            >
+              Egy digitális teadoboz, ami vezet
+            </motion.h2>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+              {/* Bal: szöveg */}
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="space-y-4 text-neutral-300"
+              >
+                <p>
+                  A Mirachai app több mint nyolcvan teát mutat be: ízprofil, hatás, intenzitás, hőmérséklet és áztatás jelzi az irányt. Nem lexikon – inkább térkép, amelyben könnyebb rátalálni arra a teára, ami most hozzád szól.
+                </p>
+                <p>
+                  Ha megtaláltad, a főzésben is kapsz segítséget. Több mint tíz különböző módszer közül választhatsz – a gyors csészétől a lassú samovárig. Nem az a cél, hogy hibátlanul kövesd a szabályt, hanem hogy közben észrevedd: minden tea kicsit más történetet mond, mint amire számítottál.
+                </p>
+              </motion.div>
+
+              {/* Jobb: vizuál – teacard mozaik + brewmethod mozaik */}
+              <div className="space-y-8">
+                {/* Teacard mozaik */}
                 <motion.div
-                  key={c.title}
                   variants={fadeUp}
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  transition={{ delay: 0.05 * i }}
-                  className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 backdrop-blur-sm"
+                  className="grid grid-cols-2 sm:grid-cols-3 gap-3"
                 >
-                  {c.icon ? (
-                    <Image
-                      src={c.icon}
-                      alt=""
-                      width={36}
-                      height={36}
-                      className="mb-3 opacity-90"
-                    />
-                  ) : null}
-                  <h3 className="text-lg font-semibold">{c.title}</h3>
-                  <p className="mt-2 text-sm text-neutral-300">{c.desc}</p>
+                  {FLAVOR_MOSAIC.map((f, i) => (
+                    <figure
+                      key={f.category + i}
+                      className="relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/60 p-4"
+                    >
+                      <div className={`absolute inset-0 bg-gradient-to-br ${f.bg ?? "from-neutral-700/20 to-neutral-900/20"}`} />
+                      <div className="relative">
+                        <div className="text-sm font-medium">{f.category}</div>
+                        <div className="text-xs text-neutral-300 mt-1">{f.sub}</div>
+                        {/* mandala helye: tehetsz ide egy halvány svg-t háttérbe, ha lesz */}
+                      </div>
+                    </figure>
+                  ))}
                 </motion.div>
-              ))}
+
+                {/* Brewmethod mozaik 2x2 */}
+                <motion.div
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  className="grid grid-cols-2 gap-3"
+                >
+                  {BREW_MOSAIC.map((b) => (
+                    <figure
+                      key={b.title}
+                      className="group overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/60 p-4"
+                    >
+                      <div className="flex items-start gap-3">
+                        <Image src={b.icon} alt="" width={28} height={28} className="opacity-90" />
+                        <div>
+                          <div className="text-sm font-medium">{b.title}</div>
+                          <div className="text-xs text-neutral-300">{b.oneliner}</div>
+                        </div>
+                      </div>
+                    </figure>
+                  ))}
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* WORLD WE BUILD – triptichon (app – teaház – termék) */}
+        {/* KÖZÖSSÉGI MODELL — Hogyan lesz közös a tea? */}
+        <section className="relative w-full py-20 md:py-28 bg-neutral-900" data-analytics-id="story_view_community">
+          <div className="mx-auto max-w-6xl px-6">
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="text-2xl md:text-4xl font-semibold"
+            >
+              Közösség, ami kortyokból épül
+            </motion.h2>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="space-y-4 text-neutral-300"
+              >
+                <p>
+                  A Mirachai közösség alapja a teázás élménye. Minden tea után értékelhetsz, kedvencet jelölhetsz, vagy később akár saját keveréket is alkothatsz.
+                </p>
+                <p>
+                  A közös visszajelzések nemcsak a teautadat formálják, hanem hosszabb távon kedvezményekhez, limitált kiadásokhoz és közös döntésekhez is kaput nyitnak. Így a Mirachai nemcsak app, hanem élő, közös tér is.
+                </p>
+              </motion.div>
+
+              <motion.ul
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+              >
+                {[
+                  "Értékelés és kedvencelés – minden tea után rövid visszajelzést adhatsz.",
+                  "Saját keverékek – hozzávalókból saját mixet állíthatsz össze.",
+                  "Közös előnyök – kuponok, limitált kiadások, közös szavazások."
+                ].map((t, i) => (
+                  <li key={i} className="rounded-xl border border-neutral-800 bg-neutral-950/50 p-4 text-sm text-neutral-300">
+                    {t}
+                  </li>
+                ))}
+              </motion.ul>
+            </div>
+          </div>
+        </section>
+
+        {/* PARTNERSÉG — Finom hidak (tabs) */}
         <section className="relative w-full py-20 md:py-28 bg-neutral-950">
           <div className="mx-auto max-w-6xl px-6">
             <motion.h2
@@ -152,153 +269,41 @@ export default function StoryPage() {
               viewport={{ once: true }}
               className="text-2xl md:text-4xl font-semibold"
             >
-              A világ, amit építünk
+              Finom hidak
             </motion.h2>
-            <p className="mt-3 text-neutral-300 max-w-3xl">
-              A digitális, a fizikai és a termék rétegei egymásra hangolva adják a Mirachai élményt.
-            </p>
 
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
+            <Tabs
+              tabs={[
                 {
-                  img: "/bg/desktop_background_morning.jpg",
-                  label: "App",
-                  copy:
-                    "Felfedezés, tanulás, vizuális teadoboz – inspiráció és útmutatás.",
+                  id: "local",
+                  label: "Helyi mód",
+                  content: (
+                    <p className="text-neutral-300">
+                      Az app a helyben elérhető kínálatot mutatja digitális itallap formában. Rövid jelzések segítik a választást, így a vendég magabiztosabban dönt – te pedig csak hagyod, hogy a tea legyen a csali.
+                    </p>
+                  ),
                 },
                 {
-                  img: "/bg/desktop_background_evening.jpg",
-                  label: "Teaház",
-                  copy:
-                    "Valós tér, közösségi események, tematikus esték – rituálé és találkozás.",
+                  id: "collections",
+                  label: "Közös kollekciók",
+                  content: (
+                    <p className="text-neutral-300">
+                      Kísérleti tételek, szezonális kiadások és közös dobozok. A történet a készítésnél kezdődik – és közösen nyílik meg a közösség előtt.
+                    </p>
+                  ),
                 },
-                {
-                  img: "/bg/desktop_background_noon.jpg",
-                  label: "Termék",
-                  copy:
-                    "Signature keverékek és kiegészítők – fokozatosan bevezetve, közösséggel hangolva.",
-                },
-              ].map((b, i) => (
-                <motion.figure
-                  key={b.label}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.05 * i }}
-                  className="group overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/40"
-                >
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={b.img}
-                      alt={b.label}
-                      fill
-                      className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-                      <figcaption className="text-lg font-semibold">{b.label}</figcaption>
-                      <p className="text-sm text-neutral-300">{b.copy}</p>
-                    </div>
-                  </div>
-                </motion.figure>
-              ))}
-            </div>
+              ]}
+            />
           </div>
         </section>
 
-        {/* ROADMAP – 4 lépcső (egyszerű, őszinte) */}
-        <section className="relative w-full py-20 md:py-28 bg-neutral-900">
-          <div className="mx-auto max-w-6xl px-6">
-            <motion.h2
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="text-2xl md:text-4xl font-semibold"
-            >
-              Roadmap
-            </motion.h2>
-            <ol className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
-              {[
-                {
-                  step: "1",
-                  title: "Közösség & Tudás",
-                  copy: "App MVP + tartalom, finom hangulatok és útmutatók.",
-                },
-                {
-                  step: "2",
-                  title: "Saját Teaház",
-                  copy: "Központi helyszín – márkaélmény és közösség.",
-                },
-                {
-                  step: "3",
-                  title: "Klubtagság",
-                  copy: "Rendszeres élmény és előnyök a közösségnek.",
-                },
-                {
-                  step: "4",
-                  title: "Termék + Crowdfunding",
-                  copy: "Signature teák, kiegészítők – közösen indítva.",
-                },
-              ].map((r, i) => (
-                <motion.li
-                  key={r.step}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.05 * i }}
-                  className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6"
-                >
-                  <div className="text-sm text-neutral-400">Lépés {r.step}</div>
-                  <div className="mt-1 text-lg font-semibold">{r.title}</div>
-                  <p className="mt-2 text-sm text-neutral-300">{r.copy}</p>
-                </motion.li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        {/* DIFFERENTIATION – miért különleges */}
-        <section className="relative w-full py-20 md:py-28 bg-neutral-950">
-          <div className="mx-auto max-w-6xl px-6">
-            <motion.h2
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="text-2xl md:text-4xl font-semibold"
-            >
-              Miért különleges?
-            </motion.h2>
-            <div className="mt-6 grid gap-4 md:grid-cols-3">
-              {[
-                "Tea mint élményvilág, nem mint piac.",
-                "Digitális és fizikai réteg természetes integrációja.",
-                "Közösségi híd: kultúra megnyitása, nem kényszeres problémamegoldás.",
-              ].map((t, i) => (
-                <motion.p
-                  key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.05 * i }}
-                  className="text-sm text-neutral-300 rounded-xl border border-neutral-800 bg-neutral-900/50 p-4"
-                >
-                  {t}
-                </motion.p>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CLOSER – nagy atmoszférikus kép + CTA */}
+        {/* ZÁRÁS */}
         <section className="relative w-full min-h-[80svh] overflow-hidden">
           <Image
             src="/bg/desktop_background_evening.jpg"
-            alt="Mirachai evening"
+            alt="Mirachai evening background"
             fill
+            sizes="100vw"
             className="object-cover object-center opacity-90"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
@@ -310,17 +315,8 @@ export default function StoryPage() {
               viewport={{ once: true }}
               className="text-3xl md:text-5xl font-semibold"
             >
-              A Mirachai nem csak tea. Egy világ, ahová belépsz.
+              Ahol a tea gondolkodik helyetted
             </motion.h3>
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="mt-4 text-neutral-200/90"
-            >
-              Csatlakozz a történethez – digitálisan, fizikailag, közösségileg.
-            </motion.p>
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -328,13 +324,68 @@ export default function StoryPage() {
               viewport={{ once: true }}
               className="mt-8 flex justify-center"
             >
-              <Link href="/" className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300">
-                Találd meg a teádat
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                data-analytics-id="story_click_footer_enter"
+              >
+                Lépj be
               </Link>
             </motion.div>
           </div>
         </section>
       </main>
     </>
+  );
+}
+
+/** ---------- Segéd: Tabs komponens ---------- */
+function Tabs({
+  tabs,
+}: {
+  tabs: { id: string; label: string; content: ReactNode }[];
+}) {
+  const [active, setActive] = useState(tabs[0]?.id ?? "");
+
+  const handleTabClick = (id: string) => {
+    setActive(id);
+    if (typeof window !== "undefined") {
+      const eventName = `story_toggle_partner_tab:${id}`;
+      window.dispatchEvent(new CustomEvent(eventName));
+    }
+  };
+
+  return (
+    <div className="mt-6" data-analytics-id={`story_toggle_partner_tab:${active}`}>
+      <div className="flex gap-2 border-b border-neutral-800" role="tablist">
+        {tabs.map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            onClick={() => handleTabClick(t.id)}
+            className={`px-4 py-2 text-sm rounded-t-lg transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 ${
+              active === t.id
+                ? "bg-neutral-900 text-neutral-100 border border-neutral-800 border-b-transparent"
+                : "text-neutral-300 hover:text-neutral-100"
+            }`}
+            aria-pressed={active === t.id}
+            aria-selected={active === t.id}
+            aria-controls={`tab-${t.id}`}
+            id={`tab-button-${t.id}`}
+            role="tab"
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+      <div
+        className="border border-neutral-800 border-t-0 rounded-b-lg p-6 bg-neutral-900/60"
+        id={`tab-${active}`}
+        role="tabpanel"
+        aria-labelledby={`tab-button-${active}`}
+      >
+        {tabs.find((t) => t.id === active)?.content}
+      </div>
+    </div>
   );
 }
