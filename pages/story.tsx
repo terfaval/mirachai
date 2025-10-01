@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 /**
  * Mirachai Story Page – scroll narrative
@@ -314,6 +315,20 @@ export default function StoryPage() {
             >
               Csatlakozz a történethez – digitálisan, fizikailag, közösségileg.
             </motion.p>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="mt-8 flex justify-center"
+            >
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+              >
+                Találd meg a teádat
+              </Link>
+            </motion.div>
           </div>
         </section>
       </main>
