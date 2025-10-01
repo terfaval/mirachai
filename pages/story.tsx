@@ -37,15 +37,15 @@ export default function StoryPage() {
             alt="Mirachai opening background"
             fill
             priority
-            className="object-cover object-center opacity-90"
+            className="object-cover object-center opacity-98"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
           <div className="relative z-10 mx-auto max-w-6xl px-6 pt-24 pb-20 flex flex-col items-center text-center">
             <Image
               src="/mirachai_logo.svg"
               alt="Mirachai"
-              width={120}
-              height={120}
+              width={200}
+              height={200}
               className="mb-6 opacity-95"
             />
             <motion.h1
