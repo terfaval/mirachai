@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import SearchBar from './SearchBar';
 import { SortKey, sortOptions } from './sortOptions';
@@ -143,6 +144,9 @@ export default function BrowseToolsSidebar({
           </div>
         )}
       </div>
+    <Link href="/story" className={styles.storyButton} aria-label="Mirachai történet">
+        <span className={styles.storyIcon}>?</span>
+      </Link>
     </div>
   );
 }

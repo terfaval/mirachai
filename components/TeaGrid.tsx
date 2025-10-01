@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import TeaCard, { PanelKey } from './TeaCard';
 import styles from '../styles/TeaGrid.module.css';
@@ -197,6 +198,13 @@ export default function TeaGrid({
         </div>
       )}
       <div className={styles.gridWrap}>
+        <Link
+          href="/story"
+          className={styles.storyButtonMobile}
+          aria-label="Mirachai történet"
+        >
+          <span className={styles.storyIcon}>?</span>
+        </Link>
         <InfoPanelSidebar panel={panel} onChange={setPanel} />
         <BrowseToolsSidebar
           query={query}

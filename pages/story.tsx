@@ -33,7 +33,7 @@ export default function StoryPage() {
         {/* HERO / OPENING – mágikus szoba egy asztallal + logo + tagline */}
         <section className="relative w-full min-h-[92svh] overflow-hidden">
           <Image
-            src="/bg/desktop_background_opening.jpg"
+            src="/story/background_opening.png"
             alt="Mirachai opening background"
             fill
             priority
@@ -42,7 +42,7 @@ export default function StoryPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
           <div className="relative z-10 mx-auto max-w-6xl px-6 pt-24 pb-20 flex flex-col items-center text-center">
             <Image
-              src="/ui/mirachai_logo.svg"
+              src="/mirachai_logo.svg"
               alt="Mirachai"
               width={120}
               height={120}
