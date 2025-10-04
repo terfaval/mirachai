@@ -258,7 +258,7 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
                 className="grid grid-cols-1 sm:grid-cols-3 gap-4"
               >
                 {[
-                  "Értékelés és kedvencelés – minden tea után rövid visszajelzést adhatsz.",
+                  "Értékelés – minden tea után rövid visszajelzést adhatsz.",
                   "Saját keverékek – hozzávalókból saját mixet állíthatsz össze.",
                   "Közös előnyök – kuponok, limitált kiadások, közös szavazások."
                 ].map((t, i) => (
