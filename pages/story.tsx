@@ -281,7 +281,7 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
               viewport={{ once: true }}
               className="text-2xl md:text-4xl font-semibold"
             >
-              Finom hidak
+              Partnerség
             </motion.h2>
 
             <Tabs
