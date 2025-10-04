@@ -49,7 +49,10 @@ export default function StoryPage() {
 
       <main className="min-h-screen w-full bg-neutral-950 text-neutral-100">
         {/* HERO */}
-        <section className="relative w-full min-h-[92svh] overflow-hidden" data-analytics-id="story_view_hero">
+        <section
+          className="story-hero relative w-full min-h-[92svh] overflow-hidden"
+          data-analytics-id="story_view_hero"
+        >
           <Image
             src="/story/background_opening.png"
             alt="Mirachai opening background"
@@ -111,7 +114,10 @@ export default function StoryPage() {
         </section>
 
         {/* MANIFESTO */}
-        <section className="relative w-full py-16 md:py-24 bg-neutral-900" data-analytics-id="story_view_manifesto">
+        <section
+          className="story-manifesto relative w-full py-16 md:py-24 bg-neutral-900"
+          data-analytics-id="story_view_manifesto"
+        >
           <div className="mx-auto max-w-4xl px-6 text-center">
             <motion.p
               variants={fadeUp}
@@ -129,7 +135,10 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
         </section>
 
         {/* APP BEMUTATÁS — Íz & Felfedezés */}
-        <section className="relative w-full py-20 md:py-28 bg-neutral-950" data-analytics-id="story_view_app_intro">
+        <section
+          className="story-app-intro relative w-full py-20 md:py-28 bg-neutral-950"
+          data-analytics-id="story_view_app_intro"
+        >
           <div className="mx-auto max-w-6xl px-6">
             <motion.h2
               variants={fadeUp}
@@ -211,7 +220,10 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
         </section>
 
         {/* KÖZÖSSÉGI MODELL — Hogyan lesz közös a tea? */}
-        <section className="relative w-full py-20 md:py-28 bg-neutral-900" data-analytics-id="story_view_community">
+        <section
+          className="story-community relative w-full py-20 md:py-28 bg-neutral-900"
+          data-analytics-id="story_view_community"
+        >
           <div className="mx-auto max-w-6xl px-6">
             <motion.h2
               variants={fadeUp}
@@ -260,7 +272,7 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
         </section>
 
         {/* PARTNERSÉG — Finom hidak (tabs) */}
-        <section className="relative w-full py-20 md:py-28 bg-neutral-950">
+        <section className="story-partnership relative w-full py-20 md:py-28 bg-neutral-950">
           <div className="mx-auto max-w-6xl px-6">
             <motion.h2
               variants={fadeUp}
@@ -298,7 +310,7 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
         </section>
 
         {/* ZÁRÁS */}
-        <section className="relative w-full min-h-[80svh] overflow-hidden">
+        <section className="story-closing relative w-full min-h-[80svh] overflow-hidden">
           <Image
             src="/bg/desktop_background_evening.jpg"
             alt="Mirachai evening background"
