@@ -2,7 +2,8 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
+import { getCategoryColor, getLightColor, getDarkColor } from "../utils/colorMap";
+import { getMandalaPath } from "@/utils/mandala";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -12,7 +13,6 @@ const fadeUp = {
 type FlavorCard = {
   category: string;
   sub: string;
-  bg?: string; // optional category color class e.g. "from-emerald-500/30 to-emerald-700/40"
 };
 type BrewCard = {
   icon: string;
@@ -21,22 +21,41 @@ type BrewCard = {
 };
 
 const FLAVOR_MOSAIC: FlavorCard[] = [
-  { category: "Japán Zöld", sub: "Kreatív lendület", bg: "from-emerald-500/25 to-emerald-700/30" },
-  { category: "Álom Kapu", sub: "Esti relax", bg: "from-indigo-500/25 to-fuchsia-700/30" },
-  { category: "Kínai Klasszikus", sub: "Nyári frissesség", bg: "from-lime-500/25 to-green-700/30" },
-  { category: "Fekete Teák", sub: "Reggeli mélység", bg: "from-amber-500/25 to-orange-700/30" },
-  { category: "Fehér Teák", sub: "Tiszta nyugalom", bg: "from-sky-400/25 to-blue-700/30" },
-  { category: "Gyógyfüvek", sub: "Puha esti meleg", bg: "from-rose-400/25 to-pink-700/30" },
-  { category: "Oolong", sub: "Virágos átmenet", bg: "from-violet-400/25 to-purple-700/30" },
-  { category: "Puer", sub: "Föld illata", bg: "from-stone-500/25 to-stone-700/30" },
-  { category: "Matcha", sub: "Sűrű fókusz", bg: "from-green-500/25 to-emerald-700/30" }
+  { category: "Japán Zöld", sub: "Kreatív lendület" },
+  { category: "Álom Kapu", sub: "Esti relax" },
+  { category: "Kínai Klasszikus", sub: "Nyári frissesség" },
+  { category: "Fekete Teák", sub: "Reggeli mélység" },
+  { category: "Fehér Teák", sub: "Tiszta nyugalom" },
+  { category: "Gyógyfüvek", sub: "Puha esti meleg" },
+  { category: "Oolong", sub: "Virágos átmenet" },
+  { category: "Puer", sub: "Föld illata" },
+  { category: "Matcha", sub: "Sűrű fókusz" }
 ];
 
 const BREW_MOSAIC: BrewCard[] = [
-  { icon: "/ui/ico_tinycup.svg", title: "Tiny cup", oneliner: "Egy kortyban derül ki a lényeg." },
-  { icon: "/ui/ico_teapot.svg", title: "Teapot", oneliner: "Megosztható nyugalom, pontos ritmusban." },
-  { icon: "/ui/ico_coldbrew.svg", title: "Cold brew", oneliner: "Időben áztatott tisztaság." },
-  { icon: "/ui/ico_samovar.svg", title: "Samovar", oneliner: "Meleg testű folyam, lassan hömpölyög." }
+  { icon: "/methods/icon_standard_hot.svg", title: "Tiny cup", oneliner: "Egy kortyban derül ki a lényeg." },
+  { icon: "/methods/icon_moroccan_mint.svg", title: "Teapot", oneliner: "Megosztható nyugalom, pontos ritmusban." },
+  { icon: "/methods/icon_coldbrew.svg", title: "Cold brew", oneliner: "Időben áztatott tisztaság." },
+  { icon: "/methods/icon_samovar.svg", title: "Samovar", oneliner: "Meleg testű folyam, lassan hömpölyög." }
+];
+
+const COMMUNITY_POINTS = [
+  "Értékelés – minden tea után rövid visszajelzést adhatsz.",
+  "Saját keverékek – hozzávalókból saját mixet állíthatsz össze.",
+  "Közös előnyök – kuponok, limitált kiadások, közös szavazások.",
+];
+
+const PARTNERSHIP_ITEMS = [
+  {
+    title: "Helyi mód",
+    body:
+      "Az app a helyben elérhető kínálatot mutatja digitális itallap formában. Rövid jelzések segítik a választást, így a vendég magabiztosabban dönt – te pedig csak hagyod, hogy a tea legyen a csali.",
+  },
+  {
+    title: "Közös kollekciók",
+    body:
+      "Kísérleti tételek, szezonális kiadások és közös dobozok. A történet a készítésnél kezdődik – és közösen nyílik meg a közösség előtt.",
+  },
 ];
 
 export default function StoryPage() {
@@ -115,16 +134,36 @@ export default function StoryPage() {
 
         {/* MANIFESTO */}
         <section
-          className="story-manifesto relative w-full py-16 md:py-24 bg-neutral-900"
+          className="story-manifesto relative w-full overflow-hidden py-16 md:py-24"
           data-analytics-id="story_view_manifesto"
         >
-          <div className="mx-auto max-w-4xl px-6 text-center">
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(135deg, #022c22 0%, #064e3b 45%, #166534 100%)",
+            }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 opacity-45"
+            style={{
+              backgroundImage: "url(/teacard_background/Mandala.svg)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "260%",
+              mixBlendMode: "soft-light",
+              filter: "saturate(0.85)",
+            }}
+            aria-hidden
+          />
+          <div className="relative mx-auto max-w-4xl px-6 text-center">
             <motion.p
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="whitespace-pre-line text-lg md:text-xl text-neutral-200/95 leading-relaxed"
+              className="whitespace-pre-line text-lg md:text-xl leading-relaxed text-emerald-50/95"
             >
 {`Nem sietünk.
 A víz melegszik, a fény leül mellénk.
@@ -149,7 +188,7 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
             >
               Egy digitális teadoboz, ami vezet
             </motion.h2>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+            <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 items-start">
               {/* Bal: szöveg */}
               <motion.div
                 variants={fadeUp}
@@ -174,21 +213,48 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  className="grid grid-cols-2 sm:grid-cols-3 gap-3"
+                  className="grid grid-cols-2 gap-3 sm:grid-cols-2"
                 >
-                  {FLAVOR_MOSAIC.map((f, i) => (
-                    <figure
-                      key={f.category + i}
-                      className="relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/60 p-4"
-                    >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${f.bg ?? "from-neutral-700/20 to-neutral-900/20"}`} />
-                      <div className="relative">
-                        <div className="text-sm font-medium">{f.category}</div>
-                        <div className="text-xs text-neutral-300 mt-1">{f.sub}</div>
-                        {/* mandala helye: tehetsz ide egy halvány svg-t háttérbe, ha lesz */}
-                      </div>
-                    </figure>
-                  ))}
+                  {FLAVOR_MOSAIC.map((f, i) => {
+                    const base = getCategoryColor(f.category); // 'main'
+                    const light = getLightColor(f.category);   // 'light'
+                    const dark  = getDarkColor(f.category);    // 'dark'
+                    const mandala = getMandalaPath(f.category);
+                    const gradient = `linear-gradient(135deg, ${light ?? "#f8fafc"} 0%, ${base} 100%)`;
+                    return (
+                      <figure
+                        key={f.category + i}
+                        className="relative overflow-hidden rounded-2xl p-4 shadow-lg ring-1 ring-black/10 transition-transform duration-300 hover:-translate-y-1"
+                        style={{
+                          background: gradient,
+                        }}
+                      >
+                        <div
+                          className="pointer-events-none absolute inset-0 opacity-55"
+                          style={{
+                            backgroundImage: `url(${mandala})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "240%",
+                            backgroundPosition: "center",
+                            mixBlendMode: "soft-light",
+                            filter: "saturate(0.8)",
+                          }}
+                          aria-hidden
+                        />
+                        <div className="relative">
+                          <div
+                            className="font-['Titan One'] text-base tracking-tight text-neutral-900"
+                            style={{ color: dark }}
+                          >
+                            {f.category}
+                          </div>
+                          <div className="mt-1 font-sans text-xs text-neutral-900/80">
+                            {f.sub}
+                          </div>
+                        </div>
+                      </figure>
+                    );
+                  })}
                 </motion.div>
 
                 {/* Brewmethod mozaik 2x2 */}
@@ -202,13 +268,25 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
                   {BREW_MOSAIC.map((b) => (
                     <figure
                       key={b.title}
-                      className="group overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/60 p-4"
+                      className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/60 p-4 transition-transform duration-300 hover:-translate-y-1 hover:border-neutral-700"
                     >
-                      <div className="flex items-start gap-3">
-                        <Image src={b.icon} alt="" width={28} height={28} className="opacity-90" />
-                        <div>
-                          <div className="text-sm font-medium">{b.title}</div>
-                          <div className="text-xs text-neutral-300">{b.oneliner}</div>
+                      <div className="flex items-start gap-4">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-white/5">
+                          <Image
+                            src={b.icon}
+                            alt=""
+                            width={48}
+                            height={48}
+                            className="h-12 w-12 object-contain filter brightness-0 invert"
+                          />
+                        </div>
+                        <div className="flex flex-col">
+                          <div className="font-['Titan One'] text-lg text-neutral-50">
+                            {b.title}
+                          </div>
+                          <div className="mt-1 text-sm text-neutral-300">
+                            {b.oneliner}
+                          </div>
                         </div>
                       </div>
                     </figure>
@@ -234,7 +312,7 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
             >
               Közösség, ami kortyokból épül
             </motion.h2>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div className="mt-6 space-y-10">
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -255,24 +333,33 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+                className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
               >
-                {[
-                  "Értékelés – minden tea után rövid visszajelzést adhatsz.",
-                  "Saját keverékek – hozzávalókból saját mixet állíthatsz össze.",
-                  "Közös előnyök – kuponok, limitált kiadások, közös szavazások."
-                ].map((t, i) => (
-                  <li key={i} className="rounded-xl border border-neutral-800 bg-neutral-950/50 p-4 text-sm text-neutral-300">
-                    {t}
-                  </li>
-                ))}
+                {COMMUNITY_POINTS.map((point, i) => {
+                  const [rawTitle, ...rest] = point.split("–");
+                  const title = rawTitle.trim();
+                  const detail = rest.join("–").trim();
+                  return (
+                    <li
+                      key={i}
+                      className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4"
+                    >
+                      <div className="font-['Titan One'] text-base text-neutral-100">
+                        {title}
+                      </div>
+                      {detail ? (
+                        <p className="mt-2 text-sm text-neutral-300">{detail}</p>
+                      ) : null}
+                    </li>
+                  );
+                })}
               </motion.ul>
             </div>
           </div>
         </section>
 
-        {/* PARTNERSÉG — Finom hidak (tabs) */}
-        <section className="story-partnership relative w-full py-20 md:py-28 bg-neutral-950">
+        {/* PARTNERSÉG — Finom hidak (kettős grid) */}
+        <section className="story-partnership relative w-full bg-neutral-950 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-6">
             <motion.h2
               variants={fadeUp}
@@ -283,29 +370,25 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
             >
               Partnerség
             </motion.h2>
-
-            <Tabs
-              tabs={[
-                {
-                  id: "local",
-                  label: "Helyi mód",
-                  content: (
-                    <p className="text-neutral-300">
-                      Az app a helyben elérhető kínálatot mutatja digitális itallap formában. Rövid jelzések segítik a választást, így a vendég magabiztosabban dönt – te pedig csak hagyod, hogy a tea legyen a csali.
-                    </p>
-                  ),
-                },
-                {
-                  id: "collections",
-                  label: "Közös kollekciók",
-                  content: (
-                    <p className="text-neutral-300">
-                      Kísérleti tételek, szezonális kiadások és közös dobozok. A történet a készítésnél kezdődik – és közösen nyílik meg a közösség előtt.
-                    </p>
-                  ),
-                },
-              ]}
-            />
+            <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2">
+              {PARTNERSHIP_ITEMS.map((item) => (
+                <motion.div
+                  key={item.title}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6"
+                >
+                  <h3 className="font-['Titan One'] text-xl text-neutral-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-neutral-300">
+                    {item.body}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -348,56 +431,5 @@ A Mirachai: térkép egy világba, ami közben változtat rajtad.`}
         </section>
       </main>
     </>
-  );
-}
-
-/** ---------- Segéd: Tabs komponens ---------- */
-function Tabs({
-  tabs,
-}: {
-  tabs: { id: string; label: string; content: ReactNode }[];
-}) {
-  const [active, setActive] = useState(tabs[0]?.id ?? "");
-
-  const handleTabClick = (id: string) => {
-    setActive(id);
-    if (typeof window !== "undefined") {
-      const eventName = `story_toggle_partner_tab:${id}`;
-      window.dispatchEvent(new CustomEvent(eventName));
-    }
-  };
-
-  return (
-    <div className="mt-6" data-analytics-id={`story_toggle_partner_tab:${active}`}>
-      <div className="flex gap-2 border-b border-neutral-800" role="tablist">
-        {tabs.map((t) => (
-          <button
-            key={t.id}
-            type="button"
-            onClick={() => handleTabClick(t.id)}
-            className={`px-4 py-2 text-sm rounded-t-lg transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 ${
-              active === t.id
-                ? "bg-neutral-900 text-neutral-100 border border-neutral-800 border-b-transparent"
-                : "text-neutral-300 hover:text-neutral-100"
-            }`}
-            aria-pressed={active === t.id}
-            aria-selected={active === t.id}
-            aria-controls={`tab-${t.id}`}
-            id={`tab-button-${t.id}`}
-            role="tab"
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-      <div
-        className="border border-neutral-800 border-t-0 rounded-b-lg p-6 bg-neutral-900/60"
-        id={`tab-${active}`}
-        role="tabpanel"
-        aria-labelledby={`tab-button-${active}`}
-      >
-        {tabs.find((t) => t.id === active)?.content}
-      </div>
-    </div>
   );
 }
