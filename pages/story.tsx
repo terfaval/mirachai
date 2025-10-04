@@ -21,15 +21,10 @@ type BrewCard = {
 };
 
 const FLAVOR_MOSAIC: FlavorCard[] = [
-  { category: "Japán Zöld", sub: "Kreatív lendület" },
   { category: "Álom Kapu", sub: "Esti relax" },
-  { category: "Kínai Klasszikus", sub: "Nyári frissesség" },
-  { category: "Fekete Teák", sub: "Reggeli mélység" },
-  { category: "Fehér Teák", sub: "Tiszta nyugalom" },
-  { category: "Gyógyfüvek", sub: "Puha esti meleg" },
-  { category: "Oolong", sub: "Virágos átmenet" },
-  { category: "Puer", sub: "Föld illata" },
-  { category: "Matcha", sub: "Sűrű fókusz" }
+  { category: "Japán Zöld", sub: "Kreatív lendület" },
+  { category: "Indiai Chai", sub: "Fűszeres áramlás" },
+  { category: "Tiszta Fókusz", sub: "Éber koncentráció" },
 ];
 
 const BREW_MOSAIC: BrewCard[] = [
