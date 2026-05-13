@@ -312,16 +312,6 @@ export default function Home({ normalization, seedNowISODate }: HomeProps) {
     return sorted;
   }, [filtered, seedNowISODate, hourLocal]);
 
-  useEffect(() => {
-    // fejlesztéshez: nézd meg, tényleg átmegy-e az óra
-    console.debug('[relevance ctx]', {
-      seedNowISODate,
-      hourLocal,
-      sort,
-      filteredCount: filtered.length,
-    });
-  }, [seedNowISODate, hourLocal, sort, filtered.length]);
-  
   const sorted = useMemo(() => {
     if (sort === 'nameAsc') {
       return [...filtered].sort((a, b) => {

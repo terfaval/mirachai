@@ -428,16 +428,7 @@ export default function TeaModal({ tea, onClose }: Props) {
   
   const handleFaceChange = useCallback(
     (face: CubeFace) => {
-      console.log(
-        'face change requested:',
-        face,
-        'activeFace:',
-        activeFace,
-        'isRotating:',
-        isRotating,
-      );
       if (isRotating || face === activeFace) {
-        console.log('early return');
         return;
       }
 
@@ -514,21 +505,15 @@ export default function TeaModal({ tea, onClose }: Props) {
   const handleReviewCancel = useCallback(() => {
     setReviewContext(null);
     handleFaceChange('tea');
-  onClose();
-  }, [handleFaceChange, onClose]);
+  }, [handleFaceChange]);
 
   const handleReviewSubmit = useCallback(
-    (submission: ReviewFormSubmission) => {
-      if (reviewContext) {
-        console.log('Review submitted', { reviewContext, submission });
-      } else {
-        console.log('Review submitted', { submission });
-      }
+    (_submission: ReviewFormSubmission) => {
       setReviewContext(null);
       handleFaceChange('tea');
       onClose();
     },
-    [handleFaceChange, onClose, reviewContext],
+    [handleFaceChange, onClose],
   );
 
   const rotation =

@@ -148,22 +148,6 @@ export default function TeaGrid({
     };
   }, []);
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production' || !isMobile) return;
-    const visibleCount = displayTeas.filter(Boolean).length;
-    console.assert(
-      visibleCount <= 2,
-      `TeaGrid: mobil nézetben legfeljebb 2 tea jelenhet meg, most ${visibleCount} darab érkezett.`,
-    );
-    if (incomingTeas) {
-      const incomingCount = incomingTeas.filter(Boolean).length;
-      console.assert(
-        incomingCount <= 2,
-        `TeaGrid: mobil animáció közben legfeljebb 2 új tea érkezhet, most ${incomingCount} darab érkezett.`,
-      );
-    }
-  }, [displayTeas, incomingTeas, isMobile]);
-
   return (
     <div
       className={styles.container}

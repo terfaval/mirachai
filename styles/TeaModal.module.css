@@ -14,7 +14,7 @@
 .overlayBrewActive {
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(8px);
   transition: background 0.25s ease, backdrop-filter 0.25s ease;
 }
 
