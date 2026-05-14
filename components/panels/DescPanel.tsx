@@ -27,7 +27,8 @@ export default function DescPanel({
         backgroundPosition:'center',
         borderRadius:12,
         minHeight:220,
-        position:'relative'
+        position:'relative',
+        overflow: 'hidden'
       }}>
         <div className={styles.originLabel} style={{ background: categoryColor }}>
           {origin}

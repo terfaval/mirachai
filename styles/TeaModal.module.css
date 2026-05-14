@@ -415,43 +415,51 @@
   gap: clamp(16px, 2vw, 32px);
 }
 
+.tastePanelTop {
+  display: grid;
+  grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
+  gap: clamp(14px, 1.8vw, 24px);
+  align-items: start;
+}
+
 .tasteChartColumn {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
-  padding: clamp(6px, 1vw, 10px);
+  padding: clamp(4px, 0.8vw, 8px);
 }
 
 .tasteChartColumn > div {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 
 .tasteHighlightsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: clamp(8px, 1.4vw, 18px);
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: clamp(8px, 1vw, 12px);
   align-content: flex-start;
   width: 100%;
 }
 
 .focusHighlightsRow {
-  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(8px, 1.4vw, 16px);
+  gap: clamp(8px, 1vw, 12px);
   width: 100%;
-  padding-top: clamp(12px, 1.6vw, 20px);
+  padding-top: clamp(12px, 1.4vw, 16px);
+  margin-top: clamp(8px, 1vw, 12px);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .tasteHighlightCard {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: clamp(10px, 1.4vw, 14px);
-  border-radius: 16px;
+  padding: 10px 12px;
+  border-radius: 14px;
   background: rgba(248, 250, 252, 0.9);
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
@@ -459,9 +467,9 @@
 }
 
 .tasteHighlightIcon {
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   background-color: var(--taste-accent, rgba(15, 23, 42, 0.7));
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
@@ -473,7 +481,7 @@
 
 .tasteHighlightText {
   font-family: 'Lato', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.3;
   text-transform: lowercase;
 }
@@ -542,11 +550,12 @@
 
 .dashboardIngredients {
   position: relative;
-  overflow: visible;
-  display: flex;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
   align-items: center;
-  gap: 32px;
-  padding: 32px 24px;
+  gap: 18px;
+  padding: 22px 22px;
 }
 
 .dashboardIngredientsBar {
@@ -554,6 +563,8 @@
   width: 100%;
   display: flex;
   align-items: center;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .dashboardCaffeineOverlay {
@@ -566,12 +577,15 @@
 .dashboardCaffeineCard {
   background: #fff;
   border-radius: 999px;
-  padding: 12px;
+  padding: 8px;
   box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  align-self: center;
+  position: relative;
+  z-index: 2;
 }
 
 .dashboardRow {
@@ -1093,7 +1107,7 @@
 }
 
 .brewMethodsGrid {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .brewMethodsActions {
@@ -1134,6 +1148,9 @@
   color: inherit;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 14px;
+  min-height: 220px;
+  justify-content: space-between;
 }
 
 .brewMethodCard:hover {
@@ -1183,6 +1200,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 }
 
 .brewMethodName {
@@ -1199,6 +1217,10 @@
   font-size: 0.95rem;
   line-height: 1.6;
   color: rgba(17,24,39,0.7);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .brewMethodMetaBlock {

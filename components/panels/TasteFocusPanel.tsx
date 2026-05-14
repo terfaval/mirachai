@@ -69,13 +69,14 @@ const buildTasteHighlights = (tea: any): TasteHighlight[] => {
         return b.value - a.value;
       }
       return TASTE_ORDER.indexOf(a.key) - TASTE_ORDER.indexOf(b.key);
-    });
+    })
+    .slice(0, 6);
 };
 
 export default function TasteFocusPanel({ tea, colorDark }: Props) {
   const focusData = getFocusOrdered(tea); // [{key,label,value}] in fixed order
-  const tasteChartSize = 220;
-  const focusChartSize = 160;
+  const tasteChartSize = 205;
+  const focusChartSize = 148;
 
   const tasteHighlights = useMemo(() => buildTasteHighlights(tea), [tea]);
 
@@ -83,7 +84,7 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
     <>
       <section className={styles.panelElement} data-panel="taste">
         <div className={`${styles.panelBox} ${styles.tastePanelBox}`}>
-          <div className={styles.tastePanelContent}>
+          <div className={styles.tastePanelTop}>
             <div className={styles.tasteChartColumn}>
               <TasteChart
                 tea={tea}
@@ -123,21 +124,21 @@ export default function TasteFocusPanel({ tea, colorDark }: Props) {
                 );
               })}
             </div>
-            <div className={styles.focusHighlightsRow}>
-              {focusData.map((focus) => (
-                <div
-                  key={focus.key}
-                  className={`${styles.tasteFocusCard} ${styles.focusChartCard} ${styles.focusHighlightCard}`}
-                >
-                  <FocusChart
-                    data={[focus]}
-                    size={focusChartSize}
-                    colorDark={colorDark}
-                    layout="row"
-                  />
-                </div>
-              ))}
-            </div>
+          </div>
+          <div className={styles.focusHighlightsRow}>
+            {focusData.map((focus) => (
+              <div
+                key={focus.key}
+                className={`${styles.tasteFocusCard} ${styles.focusChartCard} ${styles.focusHighlightCard}`}
+              >
+                <FocusChart
+                  data={[focus]}
+                  size={focusChartSize}
+                  colorDark={colorDark}
+                  layout="row"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
