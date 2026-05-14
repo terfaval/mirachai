@@ -242,6 +242,17 @@
   overflow-x:hidden;
 }
 
+.contentStack {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+}
+
+.contentStack > * {
+  width: 100%;
+}
+
 /* új panelek */
 .topPanel{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
 .topCharts{ display:flex; align-items:center; gap:20px; }
@@ -258,6 +269,92 @@
   text-align:center;
   font-size: 2rem;
   margin: 32px 0 12px;
+}
+
+.headerPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, auto);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.headerMeta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.headerTitle {
+  margin: 0;
+  text-align: left;
+  font-size: clamp(1.9rem, 2.6vw, 2.6rem);
+}
+
+.headerPills {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  opacity: 0.92;
+}
+
+.headerCharts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+.headerChartCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 124px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.headerIntensityCard {
+  gap: 10px;
+}
+
+.headerChartLabel {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.64);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.headerChartValue {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.84rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@media (max-width: 1024px) {
+  .headerPanel {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .headerTitle {
+    text-align: center;
+  }
+
+  .headerPills {
+    justify-content: center;
+  }
 }
 
 /* pill-ek */
@@ -550,12 +647,13 @@
 
 .dashboardIngredients {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   display: grid;
-  grid-template-columns: 130px minmax(0, 1fr);
+  grid-template-columns: minmax(120px, 144px) minmax(0, 1fr);
   align-items: center;
-  gap: 18px;
-  padding: 22px 22px;
+  gap: clamp(18px, 2vw, 26px);
+  padding: 22px;
+  isolation: isolate;
 }
 
 .dashboardIngredientsBar {
@@ -564,7 +662,9 @@
   display: flex;
   align-items: center;
   min-width: 0;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  z-index: 3;
 }
 
 .dashboardCaffeineOverlay {
@@ -629,19 +729,20 @@
 
 @media (max-width: 768px) {
   .dashboardIngredients {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    justify-items: center;
     align-items: center;
     gap: 20px;
     padding: 32px 20px;
   }
 
   .dashboardCaffeineCard {
-    margin-bottom: 16px;
+    margin-bottom: 0;
     border-radius: 32px;
   }
 
   .dashboardIngredientsBar {
-    width: 100%;
+    width: min(100%, 520px);
   }
 
   .dashboardRow {
@@ -1445,6 +1546,28 @@
   .content{
     padding: 16px 15px;
     border-radius: 12px;
+  }
+
+  .contentStack {
+    gap: 16px;
+  }
+
+  .headerPanel {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .headerTitle {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .headerPills {
+    justify-content: center;
+  }
+
+  .headerCharts {
+    width: 100%;
   }
 
   /* intro face sűrítés */

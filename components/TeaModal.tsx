@@ -607,35 +607,27 @@ export default function TeaModal({ tea, onClose }: Props) {
                   background: `linear-gradient(180deg, ${colorLight} 0%, #FFFFFF 65%)`,
                 }}
               >
-                <HeaderPanel tea={tea} colorDark={colorDark} />
-                <div className={styles.spacer} />
-                <DescPanel
-                  description={tea.description ?? ''}
-                  colorDark={colorDark}
-                  categoryColor={colorMain}
-                  imageSrc={categoryStillLifeImage}
-                  origin={tea.origin ?? ''}
-                />
-                <div className={styles.spacer} />
-                <TeaDashboard tea={tea} colorDark={colorDark} />
-                <div className={styles.spacer} />
-                <TasteFocusPanel tea={tea} colorDark={colorDark} />
-                <div className={styles.spacer} />
-                {brewMethods.length > 0 ? (
-                  <>
+                <div className={styles.contentStack}>
+                  <HeaderPanel tea={tea} colorDark={colorDark} />
+                  <DescPanel
+                    description={tea.description ?? ''}
+                    colorDark={colorDark}
+                    categoryColor={colorMain}
+                    imageSrc={categoryStillLifeImage}
+                    origin={tea.origin ?? ''}
+                  />
+                  <TeaDashboard tea={tea} colorDark={colorDark} />
+                  <TasteFocusPanel tea={tea} colorDark={colorDark} />
+                  {brewMethods.length > 0 ? (
                     <BrewMethodsPanel
                       methods={brewMethods}
                       onSelect={handleMethodSelect}
                       selectedId={selectedMethodId}
                       onStart={handleBrewStart}
                     />
-                    <div className={styles.spacer} />
-                  </>
-                ) : null}
-                <div className={styles.spacer} />
-                <PrepServePanel tea={tea} infoText={tea.when ?? ''} />
-                <div className={styles.spacer} />
-
+                  ) : null}
+                  <PrepServePanel tea={tea} infoText={tea.when ?? ''} />
+                </div>
               </div>
             </div>
           </div>

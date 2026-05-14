@@ -14,6 +14,9 @@ interface Props {
    * to a horizontal row layout with the label on the right.
    */
   orientation?: 'row' | 'column';
+  dotSize?: number;
+  labelSize?: string;
+  dotGap?: number;
 }
 
 const LABELS = ['enyhe', 'közepes', 'erős'];
@@ -22,10 +25,13 @@ export default function IntensityDots({
   intensity,
   color = '#000',
   orientation = 'row',
+  dotSize = 12,
+  labelSize = '0.875rem',
+  dotGap = 4,
 }: Props) {
   const dotStyle = (active: boolean): React.CSSProperties => ({
-    width: 12,
-    height: 12,
+    width: dotSize,
+    height: dotSize,
     borderRadius: '50%',
     border: `1px solid ${active ? color : '#ccc'}`,
     backgroundColor: active ? color : 'transparent',
@@ -44,12 +50,12 @@ export default function IntensityDots({
       }}
       aria-label="intenzitás"
     >
-      <div style={{ display: 'flex', gap: 4 }}>
+      <div style={{ display: 'flex', gap: dotGap }}>
         {[1, 2, 3].map((i) => (
           <span key={`intensity-dot-${i}`} style={dotStyle(i <= intensity)} />
         ))}
       </div>
-      <span style={{ fontSize: '0.875rem', color }}>{LABELS[intensity - 1]}</span>
+      <span style={{ fontSize: labelSize, color }}>{LABELS[intensity - 1]}</span>
     </div>
   );
 }

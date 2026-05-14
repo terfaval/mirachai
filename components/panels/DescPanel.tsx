@@ -17,23 +17,23 @@ export default function DescPanel({
   origin,
 }: Props) {
   return (
-    <div style={{ display:'grid', gridTemplateColumns:'40% 60%', gap:16, minHeight:220 }}>
-      <div style={{ background: colorDark, color:'#fff', padding:'20px 24px', fontSize:'1.4rem', lineHeight:1.5, borderRadius:12, alignContent:'center' }}>
-        {description}
+    <section className={styles.descGrid}>
+      <div className={styles.descTextCard} style={{ background: colorDark }}>
+        <p className={styles.descText}>{description}</p>
       </div>
-      <div style={{
-        backgroundImage:`url(${imageSrc})`,
-        backgroundSize:'cover',
-        backgroundPosition:'center',
-        borderRadius:12,
-        minHeight:220,
-        position:'relative',
-        overflow: 'hidden'
-      }}>
-        <div className={styles.originLabel} style={{ background: categoryColor }}>
-          {origin}
-        </div>
+
+      <div
+        className={styles.descImageCard}
+        style={{
+          backgroundImage: `url(${imageSrc})`,
+        }}
+      >
+        {origin ? (
+          <div className={styles.originLabel} style={{ background: categoryColor }}>
+            {origin}
+          </div>
+        ) : null}
       </div>
-    </div>
+    </section>
   );
 }

@@ -88,8 +88,8 @@ export default function IngredientsStack({
 
   const tooltipClassName = (dir: Orientation) =>
     dir === "vertical"
-      ? "pointer-events-none absolute left-full top-1/2 z-20 ml-3 flex -translate-y-1/2 -translate-x-2 transform items-center opacity-0 transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100"
-      : "pointer-events-none absolute left-1/2 top-full z-20 mt-3 flex -translate-x-1/2 translate-y-2 transform flex-col items-center opacity-0 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100";
+      ? "pointer-events-none absolute left-full top-1/2 z-50 ml-3 flex -translate-y-1/2 -translate-x-2 transform items-center opacity-0 transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100"
+      : "pointer-events-none absolute left-1/2 top-full z-50 mt-3 flex -translate-x-1/2 translate-y-2 transform flex-col items-center opacity-0 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100";
 
   const tooltipBody = (slice: Slice) => (
     <div

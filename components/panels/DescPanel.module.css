@@ -1,3 +1,36 @@
+.descGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
+  gap: clamp(14px, 2vw, 22px);
+  align-items: stretch;
+}
+
+.descTextCard {
+  color: #fff;
+  padding: clamp(18px, 2vw, 26px);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.58;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  min-height: clamp(210px, 24vw, 280px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+}
+
+.descText {
+  margin: 0;
+}
+
+.descImageCard {
+  background-size: cover;
+  background-position: center;
+  border-radius: 14px;
+  min-height: clamp(210px, 24vw, 280px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+}
+
 .originLabel {
   position: absolute;
   right: 14px;
@@ -11,4 +44,15 @@
   background: rgba(255, 255, 255, 0.84) !important;
   backdrop-filter: blur(3px);
   z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .descGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .descTextCard,
+  .descImageCard {
+    min-height: 190px;
+  }
 }
