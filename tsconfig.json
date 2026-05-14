@@ -2,14 +2,13 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ES2020",
-    "moduleResolution": "node",
-    "ignoreDeprecations": "6.0",
+    "moduleResolution": "bundler",
+    "ignoreDeprecations": "5.0",
     "strict": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "baseUrl": ".",
     "paths": {
         "@/*": [
           "./src/*",
